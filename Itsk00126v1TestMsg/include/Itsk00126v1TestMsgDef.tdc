@@ -1,0 +1,188 @@
+message set definition
+{
+	include libdz1_support;
+	-- EAM
+	-- IoT 통합관리장치 상태정보
+	typedef struct IoTImDeviceSttusInfo
+	{
+		TString						 iot_im_device_id;					-- char(10), 장치구분(영문1자리) + 일련번호(9자리)
+		TString						 iot_im_device_link_sttus_code;		-- char(3), 001:정상, 002:이상
+	} IoTImDeviceSttusInfo;		// with api dump, clone
+	typedef array IoTImDeviceSttusInfoList (gethead, extract) [IoTImDeviceSttusInfo];
+
+	typedef struct C2CIoTImDeviceSttusInfoData
+	{
+		TString						 local_center_id;					-- char(10), 센터(1자리) + 	행정구역코드(5자리) + 일련번호(4자리), 필수
+		TString						 iot_im_device_id_qty;				-- char(4), 숫자 4자리(0001~9999), 필수
+		IoTImDeviceSttusInfoList	*iot_im_device_sttus_info_list;
+		TString						 creat_dt;							-- timestamp(yyyymmddhhmmss);
+	} C2CIoTImDeviceSttusInfoData;		// with api dump, clone
+
+	typedef struct C2CIoTImDeviceSttusInfo
+	{
+		TString							 command;		-- "c2c_lot_im_device_sttus_info"
+		TString							 event_name;	-- "c2c_iot_im_device_sttus_info",
+		TString							 event_type;	-- "request"
+		C2CIoTImDeviceSttusInfoData		*data;
+	} C2CIoTImDeviceSttusInfo;		// with api dump, clone
+
+	-- IoT 통합관리장치 관리목록 정보
+	typedef struct C2CIoTDeviceListRequestInfoData
+	{
+		TString							 local_center_id;					-- char(10), 센터(1자리) + 	행정구역코드(5자리) + 일련번호(4자리), 필수
+		TString							 event_name;						-- "c2c_iot_device_list_request_info"
+		TString							 event_type;						-- "request"
+	} C2CIoTDeviceListRequestInfoData;		// with api dump, clone
+
+	typedef struct C2CIoTDeviceListRequestInfo
+	{
+		TString							 command;		-- "message"
+		C2CIoTDeviceListRequestInfoData	*data;
+	} C2CIoTDeviceListRequestInfo;		// with api dump, clone
+
+	typedef struct C2CIoTDeviceEntry
+	{
+		TString							 iot_device_id;			-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+	} C2CIoTDeviceEntry;		// with api dump, clone
+	typedef array C2CIoTDeviceList (gethead, extract) [C2CIoTDeviceEntry];
+
+	typedef struct C2CImDeviceEntry
+	{
+		TString							 iot_im_device_id;		-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+		TString							 iot_device_id_qty;		-- char(4), 숫자 4자리(0001 ~ 9999), 필수
+		C2CIoTDeviceList				*iot_device_list;			
+	} C2CImDeviceEntry;		// with api dump, clone
+	typedef array C2CImDeviceList (gethead, extract) [C2CImDeviceEntry];
+
+	typedef struct C2CIoTDeviceListResponseInfoData
+	{
+		TString							 local_center_id;					-- char(10), 센터(1자리) + 행정구역코드(5자리) + 일련번호(4자리), 필수
+		TString							 event_name;
+		TString							 event_type;
+		TString							 iot_im_device_id_qty;				-- char(4), 숫자 4자리(0001~9999), 필수
+		C2CImDeviceList					*c2c_im_device_list;
+
+	} C2CIoTDeviceListResponseInfoData;		// with api dump, clone
+
+	typedef struct C2CIoTDeviceListResponseInfo
+	{
+		TString								 command;		-- "message"
+		C2CIoTDeviceListResponseInfoData	*data;			
+	} C2CIoTDeviceListResponseInfo;		// with api dump, clone
+
+	-- IoT 상태정보
+	typedef struct C2CIoTDeviceSttusInfoEntry
+	{
+		TString							 iot_device_id;				-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+		TString							 iot_device_sttus_code;		-- char(3), 001: 정상, 002: 이상
+		TString							 btry_sttus_code;			-- char(3), 001: 정상, 002: 이상
+		TString							 link_sttus_code;			-- char(3), 001: 정상, 002: 이상
+		int64							 data_trnsmis_cont;
+		TString							 iot_im_device_id;			-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+	} C2CIoTDeviceSttusInfoEntry;			// with api dump, clone
+	typedef array C2CIoTDeviceSttusInfoList (gethead, extract) [C2CIoTDeviceSttusInfoEntry];
+
+	typedef struct C2CIoTDeviceSttusInfoData
+	{
+		TString							 local_center_id;					-- char(10), 센터(1자리) + 행정구역코드(5자리) + 일련번호(4자리), 필수
+		TString							 iot_device_id_qty;				-- char(4), 숫자 4자리(0001~9999), 필수
+		C2CIoTDeviceSttusInfoList		*iot_device_sttus_info_list;
+		TString							 creat_dt;							-- timestamp(yyyymmddhhmmss);
+	} C2CIoTDeviceSttusInfoData;		// with api dump, clone
+	
+	typedef struct C2CIoTDeviceSttusInfo
+	{
+		TString							 command;							-- "c2c_iot_device_sttus_info"
+		C2CIoTDeviceSttusInfoData		*data;
+	} C2CIoTDeviceSttusInfo;		// with api dump, clone
+
+	-- 교통안전시설 정보
+	typedef struct C2CSafetySignalListRequestInfoData
+	{
+		TString							 local_center_id;					-- char(10), 센터(1자리) + 행정구역코드(5자리) + 일련번호(4자리), 필수
+		TString							 event_name;						-- "c2c_safety_signal_list_request_info"
+		TString							 event_type;						-- "request"
+	} C2CSafetySignalListRequestInfoData;		// with api dump, clone
+
+	typedef struct C2CSafetySignalListRequestInfo
+	{
+		TString								 command;							-- "message"
+		C2CSafetySignalListRequestInfoData	*data;
+	} C2CSafetySignalListRequestInfo;	// with api dump, clone
+
+	typedef struct C2CSafetySignalInfo
+	{
+		TString					 safety_signal_id;
+		TString					 administ_zone_code;
+		TString					 road_code;
+		real64					 lc_lat;
+		real64					 lc_lng;
+		TString					 safety_signal_ty_code;
+		TString					 safety_signal_sttus_code;
+	} C2CSafetySignalInfo;		// with api dump, clone
+
+	typedef array C2CSafetySignalInfoList (gethead, extract) [C2CSafetySignalInfo];
+
+	typedef struct C2CIotDeviceListSignalEntry
+	{
+		TString						iot_device_id;
+		TString						 safety_signal_id_qty;
+		C2CSafetySignalInfoList		*c2c_safety_signal_info_list;
+	} C2CIotDeviceListSignalEntry;			// with api dump, clone
+
+	typedef array C2CIotDeviceListSignal (gethead, extract) [C2CIotDeviceListSignalEntry];
+
+	typedef struct C2CImDeviceListSignalEntry
+	{
+		TString						 iot_im_device_id;
+		TString						 iot_device_id_qty;
+		C2CIotDeviceListSignal		*c2c_iot_device_list;
+		
+	} C2CImDeviceListSignalEntry;		// with api dump, clone
+	typedef array C2CImDeviceListSignal (gethead, extract) [C2CImDeviceListSignalEntry];
+
+	typedef struct C2CSafetySignalListResponseInfoData
+	{
+		TString							 local_center_id;					-- char(10), 센터(1자리) + 행정구역코드(5자리) + 일련번호(4자리), 필수
+		TString							 event_name;						-- "c2c_safety_signal_list_response_info"
+		TString							 event_type;						-- "response"
+		TString							 iot_im_device_id_qty;				-- char(4), 숫자 4자리(0001~9999), 필수
+		C2CImDeviceListSignal			*c2c_im_device_list;
+	} C2CSafetySignalListResponseInfoData;			// with api dump, clone
+
+	typedef struct C2CSafetySignalListResponseInfo
+	{
+		TString								 command;							-- "message"
+		C2CSafetySignalListResponseInfoData				*data;
+	} C2CSafetySignalListResponseInfo;				// with api dump, clone
+
+	typedef struct Itsk00126v1RequestData
+	{
+		TString					 local_center_id;
+		TString					 event_name;
+		TString					 event_type;
+	} Itsk00126v1RequestData;		// with api dump, clone
+
+	typedef struct Itsk00126v1Request
+	{
+		TString					 command;		-- message;
+		Itsk00126v1RequestData	*data;			
+	} Itsk00126v1Request;		// with api dump, clone
+
+	typedef union Itsk00126v1EAM
+	{
+		C2CIoTImDeviceSttusInfo				*c2c_iot_im_device_sttus_info;					-- IoT 통합관리장치 상태정보
+		
+		--C2CIoTDeviceListRequestInfo			*c2c_iot_device_list_request_info;				-- IoT 통합관리장치 관리목록정보 요청 메시지
+		Itsk00126v1Request					*c2c_iot_device_list_request_info;				-- IoT 통합관리장치 관리목록정보 요청 메시지
+		C2CIoTDeviceListResponseInfo		*c2c_iot_device_list_response_info;				-- IoT 통합관리장치 관리목록정보 응답 메시지
+		
+		C2CIoTDeviceSttusInfo				*c2c_iot_device_sttus_info;						-- IoT장치 상태정보
+
+		-- C2CSafetySignalListRequestInfo		*c2c_safety_signal_list_request_info;			-- 교통안전시설 정보 요청 메시지
+		Itsk00126v1Request					*c2c_safety_signal_list_request_info;			-- 교통안전시설 정보 요청 메시지
+		C2CSafetySignalListResponseInfo					*c2c_safety_signal_list_response_info;			-- 교통안전시설 정보 응답 메시지
+
+	} Itsk00126v1EAM;		// with api dump, clone
+
+}

@@ -1,0 +1,578 @@
+////////////////////////////////////////////////////////////////////////////////
+#include <dz1_time.h>
+#include <dz1_thread_stdio.h>
+#include <dz1_fifo.h>
+#include <dz1_ordered_fifo.h>
+#include <dz1_aatree.h>
+////////////////////////////////////////////////////////////////////////////////
+
+#include "dz1_file2src_arg.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcConvTextPublish
+static struct File2SrcConvTextPublishMapA
+{
+	str_t str;
+	File2SrcConvTextPublish v;
+} File2SrcConvTextPublishMapA[] =
+{
+	{ (char *)"String", File2SrcConvTextPublish_String },
+	{ (char *)"Binary", File2SrcConvTextPublish_Binary },
+	{ NULL, File2SrcConvTextPublish_max }
+};
+
+str_t File2SrcConvTextPublishStrA(File2SrcConvTextPublish v)
+{
+	struct File2SrcConvTextPublishMapA *i = NULL;
+	for (i = File2SrcConvTextPublishMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcConvTextPublish File2SrcConvTextPublishFromStrA(str_t str)
+{
+	struct File2SrcConvTextPublishMapA *i = NULL;
+	for (i = File2SrcConvTextPublishMapA; i->str; i++)
+		if (dz1_built_in_str_cmp(i->str, str) == 0) return i->v;
+	return File2SrcConvTextPublish_max;
+}
+#ifndef UNIX_SYSTEM
+static struct File2SrcConvTextPublishMapW
+{
+	wstr_t str;
+	File2SrcConvTextPublish v;
+} File2SrcConvTextPublishMapW[] =
+{
+	{ (wchar_t *)L"String", File2SrcConvTextPublish_String },
+	{ (wchar_t *)L"Binary", File2SrcConvTextPublish_Binary },
+	{ NULL, File2SrcConvTextPublish_max }
+};
+
+wstr_t File2SrcConvTextPublishStrW(File2SrcConvTextPublish v)
+{
+	struct File2SrcConvTextPublishMapW *i = NULL;
+	for (i = File2SrcConvTextPublishMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcConvTextPublish File2SrcConvTextPublishFromStrW(wstr_t str)
+{
+	struct File2SrcConvTextPublishMapW *i = NULL;
+	for (i = File2SrcConvTextPublishMapW; i->str; i++)
+		if (dz1_built_in_wstr_cmp(i->str, str) == 0) return i->v;
+	return File2SrcConvTextPublish_max;
+}
+#endif // UNIX_SYSTEM
+
+File2SrcConvTextPublish *File2SrcConvTextPublish_new(File2SrcConvTextPublish *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcConvTextPublish *__internal_ret = (File2SrcConvTextPublish *)Dz1Calloc(sizeof(File2SrcConvTextPublish), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+		ERR_CLEAR(errp);
+	}
+	return __internal_ret;
+}
+// File2SrcConvTextPublish
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcConvTextAttrPresent
+static struct File2SrcConvTextAttrPresentMapA
+{
+	str_t str;
+	File2SrcConvTextAttrPresent v;
+} File2SrcConvTextAttrPresentMapA[] =
+{
+	{ (char *)"PlaneText", File2SrcConvTextAttrPresent_PlaneText },
+	{ (char *)"HexDump", File2SrcConvTextAttrPresent_HexDump },
+	{ NULL, File2SrcConvTextAttrPresent_max }
+};
+
+str_t File2SrcConvTextAttrPresentStrA(File2SrcConvTextAttrPresent v)
+{
+	struct File2SrcConvTextAttrPresentMapA *i = NULL;
+	for (i = File2SrcConvTextAttrPresentMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcConvTextAttrPresent File2SrcConvTextAttrPresentFromStrA(str_t str)
+{
+	struct File2SrcConvTextAttrPresentMapA *i = NULL;
+	for (i = File2SrcConvTextAttrPresentMapA; i->str; i++)
+		if (dz1_built_in_str_cmp(i->str, str) == 0) return i->v;
+	return File2SrcConvTextAttrPresent_max;
+}
+#ifndef UNIX_SYSTEM
+static struct File2SrcConvTextAttrPresentMapW
+{
+	wstr_t str;
+	File2SrcConvTextAttrPresent v;
+} File2SrcConvTextAttrPresentMapW[] =
+{
+	{ (wchar_t *)L"PlaneText", File2SrcConvTextAttrPresent_PlaneText },
+	{ (wchar_t *)L"HexDump", File2SrcConvTextAttrPresent_HexDump },
+	{ NULL, File2SrcConvTextAttrPresent_max }
+};
+
+wstr_t File2SrcConvTextAttrPresentStrW(File2SrcConvTextAttrPresent v)
+{
+	struct File2SrcConvTextAttrPresentMapW *i = NULL;
+	for (i = File2SrcConvTextAttrPresentMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcConvTextAttrPresent File2SrcConvTextAttrPresentFromStrW(wstr_t str)
+{
+	struct File2SrcConvTextAttrPresentMapW *i = NULL;
+	for (i = File2SrcConvTextAttrPresentMapW; i->str; i++)
+		if (dz1_built_in_wstr_cmp(i->str, str) == 0) return i->v;
+	return File2SrcConvTextAttrPresent_max;
+}
+#endif // UNIX_SYSTEM
+
+File2SrcConvTextAttrPresent *File2SrcConvTextAttrPresent_new(File2SrcConvTextAttrPresent *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcConvTextAttrPresent *__internal_ret = (File2SrcConvTextAttrPresent *)Dz1Calloc(sizeof(File2SrcConvTextAttrPresent), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+		ERR_CLEAR(errp);
+	}
+	return __internal_ret;
+}
+// File2SrcConvTextAttrPresent
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcConvTextAttr
+File2SrcConvTextAttr *File2SrcConvTextAttr_new(File2SrcConvTextAttrPresent present, void *ptr, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcConvTextAttr *ret = (File2SrcConvTextAttr *)Dz1Calloc(sizeof(File2SrcConvTextAttr), 1, errp);
+	if (ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(File2SrcConvTextAttr_delAndSetNull, (void *)&ret);
+
+		ret->present = present;
+		switch(ret->present)
+		{
+		case File2SrcConvTextAttrPresent_PlaneText:
+			// _U_enum_clone
+			if (ptr != NULL) ret->x.PlaneText = *(File2SrcConvTextPublish *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case File2SrcConvTextAttrPresent_HexDump:
+			// _U_prim_clone
+			if (ptr != NULL) ret->x.HexDump = (u32_t *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case File2SrcConvTextAttrPresent_max:
+			break;
+		default:
+			ERR_SET_OUT(errp, EINVAL);
+			break;
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (File2SrcConvTextAttr_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void File2SrcConvTextAttr_purge(File2SrcConvTextAttr *p)
+{
+	if (!p) return;
+	switch(p->present)
+	{
+	case File2SrcConvTextAttrPresent_PlaneText:
+		break;
+	case File2SrcConvTextAttrPresent_HexDump:
+		Dz1u32_del(p->x.HexDump);
+		break;
+	default:
+		break;
+	}
+}
+
+void File2SrcConvTextAttr_del(File2SrcConvTextAttr *p)
+{
+	if (!p) return;
+	File2SrcConvTextAttr_purge(p);
+	Dz1Free(p);
+}
+
+// File2SrcConvTextAttr
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcVariableForm
+static struct File2SrcVariableFormMapA
+{
+	str_t str;
+	File2SrcVariableForm v;
+} File2SrcVariableFormMapA[] =
+{
+	{ (char *)"SingleVariable", File2SrcVariableForm_SingleVariable },
+	{ (char *)"ArrayByLine", File2SrcVariableForm_ArrayByLine },
+	{ (char *)"ArrayByBlock", File2SrcVariableForm_ArrayByBlock },
+	{ NULL, File2SrcVariableForm_max }
+};
+
+str_t File2SrcVariableFormStrA(File2SrcVariableForm v)
+{
+	struct File2SrcVariableFormMapA *i = NULL;
+	for (i = File2SrcVariableFormMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcVariableForm File2SrcVariableFormFromStrA(str_t str)
+{
+	struct File2SrcVariableFormMapA *i = NULL;
+	for (i = File2SrcVariableFormMapA; i->str; i++)
+		if (dz1_built_in_str_cmp(i->str, str) == 0) return i->v;
+	return File2SrcVariableForm_max;
+}
+#ifndef UNIX_SYSTEM
+static struct File2SrcVariableFormMapW
+{
+	wstr_t str;
+	File2SrcVariableForm v;
+} File2SrcVariableFormMapW[] =
+{
+	{ (wchar_t *)L"SingleVariable", File2SrcVariableForm_SingleVariable },
+	{ (wchar_t *)L"ArrayByLine", File2SrcVariableForm_ArrayByLine },
+	{ (wchar_t *)L"ArrayByBlock", File2SrcVariableForm_ArrayByBlock },
+	{ NULL, File2SrcVariableForm_max }
+};
+
+wstr_t File2SrcVariableFormStrW(File2SrcVariableForm v)
+{
+	struct File2SrcVariableFormMapW *i = NULL;
+	for (i = File2SrcVariableFormMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcVariableForm File2SrcVariableFormFromStrW(wstr_t str)
+{
+	struct File2SrcVariableFormMapW *i = NULL;
+	for (i = File2SrcVariableFormMapW; i->str; i++)
+		if (dz1_built_in_wstr_cmp(i->str, str) == 0) return i->v;
+	return File2SrcVariableForm_max;
+}
+#endif // UNIX_SYSTEM
+
+File2SrcVariableForm *File2SrcVariableForm_new(File2SrcVariableForm *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcVariableForm *__internal_ret = (File2SrcVariableForm *)Dz1Calloc(sizeof(File2SrcVariableForm), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+		ERR_CLEAR(errp);
+	}
+	return __internal_ret;
+}
+// File2SrcVariableForm
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcConvTextOpt
+File2SrcConvTextOpt *File2SrcConvTextOpt_new(File2SrcConvTextAttr *attr, 
+											 File2SrcVariableForm form, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcConvTextOpt *__internal_ret = (File2SrcConvTextOpt *)Dz1Calloc(sizeof(File2SrcConvTextOpt), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(File2SrcConvTextOpt_delAndSetNull, (void *)&__internal_ret);
+		
+		__internal_ret->attr = attr;
+		__internal_ret->form = form;
+		ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (File2SrcConvTextOpt_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+void File2SrcConvTextOpt_purge(File2SrcConvTextOpt *p)
+{
+	if (p == NULL) return;
+	File2SrcConvTextAttr_del(p->attr);
+}
+
+void File2SrcConvTextOpt_del(File2SrcConvTextOpt *p)
+{
+	if (p == NULL) return;
+	File2SrcConvTextOpt_purge(p);
+	Dz1Free(p);
+}
+
+// File2SrcConvTextOpt
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcConvOptPresent
+static struct File2SrcConvOptPresentMapA
+{
+	str_t str;
+	File2SrcConvOptPresent v;
+} File2SrcConvOptPresentMapA[] =
+{
+	{ (char *)"textMode", File2SrcConvOptPresent_textMode },
+	{ (char *)"binMode", File2SrcConvOptPresent_binMode },
+	{ NULL, File2SrcConvOptPresent_max }
+};
+
+str_t File2SrcConvOptPresentStrA(File2SrcConvOptPresent v)
+{
+	struct File2SrcConvOptPresentMapA *i = NULL;
+	for (i = File2SrcConvOptPresentMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcConvOptPresent File2SrcConvOptPresentFromStrA(str_t str)
+{
+	struct File2SrcConvOptPresentMapA *i = NULL;
+	for (i = File2SrcConvOptPresentMapA; i->str; i++)
+		if (dz1_built_in_str_cmp(i->str, str) == 0) return i->v;
+	return File2SrcConvOptPresent_max;
+}
+#ifndef UNIX_SYSTEM
+static struct File2SrcConvOptPresentMapW
+{
+	wstr_t str;
+	File2SrcConvOptPresent v;
+} File2SrcConvOptPresentMapW[] =
+{
+	{ (wchar_t *)L"textMode", File2SrcConvOptPresent_textMode },
+	{ (wchar_t *)L"binMode", File2SrcConvOptPresent_binMode },
+	{ NULL, File2SrcConvOptPresent_max }
+};
+
+wstr_t File2SrcConvOptPresentStrW(File2SrcConvOptPresent v)
+{
+	struct File2SrcConvOptPresentMapW *i = NULL;
+	for (i = File2SrcConvOptPresentMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcConvOptPresent File2SrcConvOptPresentFromStrW(wstr_t str)
+{
+	struct File2SrcConvOptPresentMapW *i = NULL;
+	for (i = File2SrcConvOptPresentMapW; i->str; i++)
+		if (dz1_built_in_wstr_cmp(i->str, str) == 0) return i->v;
+	return File2SrcConvOptPresent_max;
+}
+#endif // UNIX_SYSTEM
+
+File2SrcConvOptPresent *File2SrcConvOptPresent_new(File2SrcConvOptPresent *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcConvOptPresent *__internal_ret = (File2SrcConvOptPresent *)Dz1Calloc(sizeof(File2SrcConvOptPresent), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+		ERR_CLEAR(errp);
+	}
+	return __internal_ret;
+}
+// File2SrcConvOptPresent
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcConvOpt
+File2SrcConvOpt *File2SrcConvOpt_new(File2SrcConvOptPresent present, void *ptr, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcConvOpt *ret = (File2SrcConvOpt *)Dz1Calloc(sizeof(File2SrcConvOpt), 1, errp);
+	if (ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(File2SrcConvOpt_delAndSetNull, (void *)&ret);
+
+		ret->present = present;
+		switch(ret->present)
+		{
+		case File2SrcConvOptPresent_textMode:
+			// _U_cst_clone
+			if (ptr != NULL) ret->x.textMode = (File2SrcConvTextOpt *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case File2SrcConvOptPresent_binMode:
+			// _U_prim_clone
+			if (ptr != NULL) ret->x.binMode = (u32_t *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case File2SrcConvOptPresent_max:
+			break;
+		default:
+			ERR_SET_OUT(errp, EINVAL);
+			break;
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (File2SrcConvOpt_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void File2SrcConvOpt_purge(File2SrcConvOpt *p)
+{
+	if (!p) return;
+	switch(p->present)
+	{
+	case File2SrcConvOptPresent_textMode:
+		File2SrcConvTextOpt_del(p->x.textMode);
+		break;
+	case File2SrcConvOptPresent_binMode:
+		Dz1u32_del(p->x.binMode);
+		break;
+	default:
+		break;
+	}
+}
+
+void File2SrcConvOpt_del(File2SrcConvOpt *p)
+{
+	if (!p) return;
+	File2SrcConvOpt_purge(p);
+	Dz1Free(p);
+}
+
+// File2SrcConvOpt
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcOutputMode
+static struct File2SrcOutputModeMapA
+{
+	str_t str;
+	File2SrcOutputMode v;
+} File2SrcOutputModeMapA[] =
+{
+	{ (char *)"DOS", File2SrcOutputMode_DOS },
+	{ (char *)"UNIX", File2SrcOutputMode_UNIX },
+	{ NULL, File2SrcOutputMode_max }
+};
+
+str_t File2SrcOutputModeStrA(File2SrcOutputMode v)
+{
+	struct File2SrcOutputModeMapA *i = NULL;
+	for (i = File2SrcOutputModeMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcOutputMode File2SrcOutputModeFromStrA(str_t str)
+{
+	struct File2SrcOutputModeMapA *i = NULL;
+	for (i = File2SrcOutputModeMapA; i->str; i++)
+		if (dz1_built_in_str_cmp(i->str, str) == 0) return i->v;
+	return File2SrcOutputMode_max;
+}
+#ifndef UNIX_SYSTEM
+static struct File2SrcOutputModeMapW
+{
+	wstr_t str;
+	File2SrcOutputMode v;
+} File2SrcOutputModeMapW[] =
+{
+	{ (wchar_t *)L"DOS", File2SrcOutputMode_DOS },
+	{ (wchar_t *)L"UNIX", File2SrcOutputMode_UNIX },
+	{ NULL, File2SrcOutputMode_max }
+};
+
+wstr_t File2SrcOutputModeStrW(File2SrcOutputMode v)
+{
+	struct File2SrcOutputModeMapW *i = NULL;
+	for (i = File2SrcOutputModeMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+File2SrcOutputMode File2SrcOutputModeFromStrW(wstr_t str)
+{
+	struct File2SrcOutputModeMapW *i = NULL;
+	for (i = File2SrcOutputModeMapW; i->str; i++)
+		if (dz1_built_in_wstr_cmp(i->str, str) == 0) return i->v;
+	return File2SrcOutputMode_max;
+}
+#endif // UNIX_SYSTEM
+
+File2SrcOutputMode *File2SrcOutputMode_new(File2SrcOutputMode *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcOutputMode *__internal_ret = (File2SrcOutputMode *)Dz1Calloc(sizeof(File2SrcOutputMode), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+		ERR_CLEAR(errp);
+	}
+	return __internal_ret;
+}
+// File2SrcOutputMode
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// File2SrcConvArg
+File2SrcConvArg *File2SrcConvArg_new(str_t srcPath, 
+									 str_t srcName, 
+									 File2SrcConvOpt *opt, 
+									 str_t var_name, 
+									 str_t dstPath, 
+									 str_t dstName, 
+									 File2SrcOutputMode mode, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	File2SrcConvArg *__internal_ret = (File2SrcConvArg *)Dz1Calloc(sizeof(File2SrcConvArg), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(File2SrcConvArg_delAndSetNull, (void *)&__internal_ret);
+		
+		if (srcPath && (__internal_ret->srcPath = dz1_built_in_str_clone(srcPath, errp)) == NULL) ERR_OUT(errp);
+		else if (srcName && (__internal_ret->srcName = dz1_built_in_str_clone(srcName, errp)) == NULL) ERR_OUT(errp);
+		else if (var_name && (__internal_ret->var_name = dz1_built_in_str_clone(var_name, errp)) == NULL) ERR_OUT(errp);
+		else if (dstPath && (__internal_ret->dstPath = dz1_built_in_str_clone(dstPath, errp)) == NULL) ERR_OUT(errp);
+		else if (dstName && (__internal_ret->dstName = dz1_built_in_str_clone(dstName, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			__internal_ret->opt = opt;
+			__internal_ret->mode = mode;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (File2SrcConvArg_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+void File2SrcConvArg_purge(File2SrcConvArg *p)
+{
+	if (p == NULL) return;
+	dz1_built_in_str_del(p->srcPath);
+	dz1_built_in_str_del(p->srcName);
+	File2SrcConvOpt_del(p->opt);
+	dz1_built_in_str_del(p->var_name);
+	dz1_built_in_str_del(p->dstPath);
+	dz1_built_in_str_del(p->dstName);
+}
+
+void File2SrcConvArg_del(File2SrcConvArg *p)
+{
+	if (p == NULL) return;
+	File2SrcConvArg_purge(p);
+	Dz1Free(p);
+}
+
+// File2SrcConvArg
+////////////////////////////////////////////////////////////////////////////////
+

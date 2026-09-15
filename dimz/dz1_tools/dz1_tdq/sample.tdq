@@ -1,0 +1,83 @@
+load module sample;
+
+include sample_util;
+
+shape define MyDataRow
+{
+	build from MyDataRow
+	{
+		data = manual(blob, MyDataDBIO);
+	};
+	load to MyDataTbl;
+} MyDataRow;
+
+table define MyDataRow my_data_tbl as MyDataTbl;
+
+shape define AAAA
+{
+	build from MyStructAAAA
+	{
+		my_str = size(64);
+		my_date = ymd;
+		my_clock = hms;
+		my_stamp = stamp;
+		my_blob = manual(blobL, MyBinaryDBIO);
+	};
+	load to MyStructAAAAList;
+	index _NUM64_INDEX(my_num64) unique;
+} AAAA;
+
+shape define BBBB
+{
+	build from MyStructBBBB;
+	load to MyStructBBBBList;
+} BBBB;
+
+table define AAAA my_table_a as MyTableA;
+
+table define BBBB
+{
+	foreign key _TableAFK(my_unum64) = my_table_a:(restrict,restrict);
+} my_table_b as MyTableB;
+
+table define BBBB
+{
+	foreign key _TableAFK(my_unum64) = my_table_a(_NUM64_INDEX):(cascade,cascade);
+} my_table_c as MyTableC;
+
+query define CentralData2
+{
+	source my_table_a as A with
+	{
+		join left my_table_b as B on "B.my_unum64=A.my_unum64";
+		join left my_table_c as C on "C.my_unum64=A.my_unum64";
+	};
+	
+	column from CentralEntry
+	{
+		my_unum64 = A.my_unum64;
+		my_unum32 = B.my_unum32;
+		my_unum16 = C.my_unum16;
+		my_blob = A.my_blob;
+		value = @("A.my_unum64 + B.my_unum64 + C.my_unum64");
+	} to CentralList;
+} CentralData2;
+
+query define CentralData
+{
+	source my_table_a as A with
+	{
+		join left my_table_b as B on "B.my_unum64=A.my_unum64";
+		join left my_table_c as C on "C.my_unum64=A.my_unum64";
+	};
+	
+	column from CentralEntry
+	{
+		my_unum64 = A.my_unum64;
+		my_unum32 = B.my_unum32;
+		my_unum16 = C.my_unum16;
+		my_blob = A.my_blob;
+		value = @("A.my_unum64 + B.my_unum64 + C.my_unum64");
+	} to CentralList;
+} CentralData;
+

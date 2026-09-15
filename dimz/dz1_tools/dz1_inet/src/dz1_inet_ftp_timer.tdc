@@ -1,0 +1,10 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct Dz1InetFtpTimer
+	{
+		Dz1SockAddr					*peer;		// is key
+		Dz1SockAddr					*local;		// is key
+		uint32						 id;		// is key
+	} Dz1InetFtpTimer;					// with api dump, compare
+}

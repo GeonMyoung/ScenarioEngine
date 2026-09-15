@@ -1,0 +1,23 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef struct Dz1TcpSocketServerConnected
+	{
+		Dz1SockAddr					*peer;
+		Dz1SockAddr					*local;
+		Dz1TcpClientSocket			*sock;
+	} Dz1TcpSocketServerConnected;					// with api dump
+	
+	typedef struct Dz1TcpSocketServerReceived
+	{
+		Dz1SockAddr					*peer;
+		Dz1SockAddr					*local;
+		Dz1Binary					*pkt;
+	} Dz1TcpSocketServerReceived;					// with api dump
+
+	typedef struct Dz1TcpSocketServerOpen
+	{
+		uint16						 port;
+	} Dz1TcpSocketServerOpen;						// with api dump
+}

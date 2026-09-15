@@ -1,0 +1,11 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef struct __Dz1StdioDumbStruct__
+	{
+		uint32					dumb;
+	} __Dz1StdioDumbStruct__;
+
+--	typedef func void *Dz1CloneFunc(void *src, Dz1Error *err);	
+}

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{C810D5AE-D4AD-4D2D-9629-63C4C4D24B22}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{46F74408-ABE8-491F-8265-B12DD79B1E2A}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{DD34D4BA-92C2-4FE4-A714-20AF9BDBBB2C}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="asn">
+      <UniqueIdentifier>{865b8723-bbd7-4d1c-ab27-3c0be1ff35b9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\GitsnAsnUtil.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnAsnUtilDef.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnAsn1.c">
+      <Filter>asn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnAsnUtilSampleMsg.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnAsnUtilDefJson.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\GitsnAsnUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\GitsnAsnUtilDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\GitsnAsn1.h">
+      <Filter>asn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\GitsnAsnUtilSampleMsg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\GitsnAsnUtilDefJson.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\GitsnAsnUtilDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\GitsnAsnUtilDef.tjsonc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\GitsnAsn1.asn">
+      <Filter>asn</Filter>
+    </None>
+  </ItemGroup>
+</Project>

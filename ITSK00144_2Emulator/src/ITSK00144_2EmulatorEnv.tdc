@@ -1,0 +1,39 @@
+message set definition
+{
+	include ITSK00144_2EmulatorDef;
+	include Dz1SockUtilDef;
+
+	typedef struct ITSK00144_2ClientSession
+	{
+		Dz1SockAddr				*peer;			// is key
+		Dz1SockAddr				*local;			// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} ITSK00144_2ClientSession;		// with api dump, compare
+
+	typedef struct ITSK00144_2ServerSession
+	{
+		uint32					 acceptor;
+		Dz1SockAddr				*peer;		// is key
+		Dz1SockAddr				*local;		// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} ITSK00144_2ServerSession;		// with api dump, compare
+
+	typedef union ITSK00144_2Session
+	{
+		ITSK00144_2ClientSession		*client;
+		ITSK00144_2ServerSession		*server;
+	} ITSK00144_2Session;		// with api dump
+	typedef struct ITSK001442EmulatorEnv
+	{
+		void *tSelf;
+		ITSK00144_2Session		*session;		 // is notarg
+		uint8					 received_seq;		// is notarg
+		uint8					 send_seq;			// is notarg
+	} ITSK001442EmulatorEnv;				// with api dump
+}

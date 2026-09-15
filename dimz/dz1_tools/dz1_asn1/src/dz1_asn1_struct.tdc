@@ -1,0 +1,8 @@
+message set definition
+{
+	typedef struct DummyStruct
+	{
+		uint32				dumb;
+	} DummyStruct;
+
+}

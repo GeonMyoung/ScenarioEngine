@@ -1,0 +1,155 @@
+ILLEGALPARK-ENFORCEMENTSYSTEM-EXCHANGEINFO DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+IMPORTS Cmcn-CctvPTControl, Cmcn-CctvZoomControl, Cmcn-CctvFocusControl FROM CAM-CONTROL-TYPES;
+
+IpesReplyMessage ::= ENUMERATED { success(1), ... }
+
+-- 자동단속 운영제어 ------------------------------------------------------------
+IpesSystemOperationMessage ::= SEQUENCE
+{
+	ates-OperationMode				BOOLEAN		-- (start(0), stop(1))
+}
+
+-- 불법주정차위반단속 이미지 ----------------------------------------------------
+IpesImageDataEntry ::= SEQUENCE
+{
+	ates-ImageClassCode				ENUMERATED { numberPanel(1), vehicle(2), background(3) },
+	ates-ImageCaptureTime			GeneralizedTime,
+	ates-ImageDataLength			INTEGER (0..4294967295),
+	ates-ImageName					UTF8String
+}
+
+-- 불법주정차위반단속 데이터 ----------------------------------------------------
+IpesViolationDataMessage ::= SEQUENCE 
+{
+	ates-LocationId					INTEGER (1..256),
+	ates-EnforcementClassCode		ENUMERATED { none(0), initial(1), completed(2) },
+	ates-ParkingClassCode			ENUMERATED { none(0), normal(1), ... },
+	ates-VehicleClassCode			ENUMERATED { none(0), normal(1), ... },
+	ates-EnforcementZoneCode		INTEGER (1..256),
+	ates-EnforcementTime			GeneralizedTime,
+	ates-EnforcementTurn			INTEGER (1..65535),
+	ates-VehicleIdRecognitionCode	ENUMERATED { failed(0), partial(1), entire(2) },
+	ates-VehicleIdText				UTF8String,
+	ates-ImageDataTable				SEQUENCE OF IpesImageDataEntry
+}
+
+-- 단속지점 정보 ----------------------------------------------------------------
+IpesIPAddress ::= CHOICE
+{
+	ipv4							SEQUENCE
+	{
+		a			INTEGER(0..255),
+		b			INTEGER(0..255),
+		c			INTEGER(0..255),
+		d			INTEGER(0..255)
+	},
+	ipv6							OCTET STRING(SIZE(16))
+}
+
+IpesPlaceInfoEntry ::= SEQUENCE 
+{
+	ates-EnforcementClassCode		INTEGER (0..1),		-- (check(0), bust(1))
+	ates-EnforcementZoneCode		INTEGER (1..256),
+	ates-CameraProduntName			OCTET STRING (SIZE(1..100)),
+	ates-CameraIP					IpesIPAddress,
+	ates-CameraPort					INTEGER (1..65535),
+	ates-SessionId					OCTET STRING (SIZE(1..20)) OPTIONAL,	-- User ID
+	ates-SessionPw					OCTET STRING (SIZE(1..20)) OPTIONAL	-- User Password
+}
+
+IpesEnforcementLocationInfoMessage ::= SEQUENCE 
+{
+	ates-LocationId					INTEGER (1..256),
+	ates-PlaceInfoTable				SEQUENCE OF IpesPlaceInfoEntry
+}
+
+-- 촬상부 위치 제어 ------------------------------------------------------------
+
+IpesControlCameraDeviceMessage ::= SEQUENCE		-- 최소한 하나의 정보는 설정 하여야 함
+{
+	cmcn-CctvPTControl				Cmcn-CctvPTControl OPTIONAL,
+	cmcn-CctvZoomControl			Cmcn-CctvZoomControl OPTIONAL,
+	cmcn-CctvFocusControl			Cmcn-CctvFocusControl OPTIONAL
+}
+
+-- 촬상부 위치 절대좌표 정보 --------------------------------------------------------
+IpesCameraPositionMessage ::= SEQUENCE 
+{
+	cmcn-CctvPositionPanCode		INTEGER (0..1023),
+	cmcn-CctvPositionTiltCode		INTEGER (0..1023),
+	cmcn-CctvPositionZoomCode		INTEGER (0..1023),
+	cmcn-CctvPositionFocusCode		INTEGER (0..1023)
+}
+
+-- 프리셋 ----------------------------------------------------------------------
+IpesCameraPresetMessage ::= SEQUENCE
+{
+	cmcn-CctvPresetSetNumber		INTEGER -- (1..128)
+}
+
+-- 단속일정 정보 ----------------------------------------------------------------
+IpesTimeStamp ::= INTEGER(0..86399)				-- 0 = 00:00:00, 86399=23:59:59
+
+IpesEnforcementScheduleMessage ::= SEQUENCE OF SEQUENCE		-- 단속 일정을 재설정
+{
+	ates-VehicleIdCode				ENUMERATED { normal(0), taxi(1), bike(2), bus(3), truck(4) },
+	ates-SelectDateCode				ENUMERATED { all(0), mon(1), tue(2), wed(3), thu(4), fri(5), sat(6), sun(7), hol(8) },
+	ates-StartTime					IpesTimeStamp,
+	ates-CloseTime					IpesTimeStamp,
+	ates-DurationSec				INTEGER (1..3600)
+}
+
+-- 공휴일 정보 ------------------------------------------------------------------
+IpesHolidayDateListMessage ::= SEQUENCE
+{
+	year							INTEGER(2000..3000),
+	month							INTEGER(1..12),
+	day								INTEGER(1..31)
+}
+
+-- IPES 현재 상태 --------------------------------------------------------------
+IpesCurrentStatusMessage ::= SEQUENCE 
+{
+	ates-DoorStatus					ENUMERATED { unknown(0), open(1), close(2) },
+	ates-FanStatus					ENUMERATED { unknown(0), on(1), off(2) },
+	ates-HeaterStatus				ENUMERATED { unknown(0), on(1), off(2) },
+	ates-Temperature				INTEGER (-128..127),
+	ates-RetryToStatus				ENUMERATED { nomal(0), reset(1) } OPTIONAL		-- (?)
+}
+
+
+-- 함체 제어 --------------------------------------------------------------------
+IpesControllerControlMessage ::= CHOICE
+{
+	ates-Reset						NULL,
+	ates-SetDateTime				GeneralizedTime,
+	ates-FanControlMode CHOICE
+	{
+		on				NULL,
+		off				NULL,
+		automatic		INTEGER	(-128..127)		-- FAN 동작시작 온도 상한값
+	},
+	ates-HeaterCotrolMode CHOICE
+	{
+		on				NULL,
+		off				NULL,
+		automatic		INTEGER	(-128..127)		-- Heater 동작시작 온도 하한값
+	}
+}
+
+-- 시스템 버전 정보 ------------------------------------------------------------
+IpesSystemVersionInformationMessage ::= CHOICE
+{
+	ates-VersionValue SEQUENCE
+	{
+		ates-versionMajor			INTEGER,
+		ates-versionMinor			INTEGER,
+		ates-versionModify			INTEGER OPTIONAL,
+		ates-versionBuild			INTEGER OPTIONAL,
+		ates-releaseDate			GeneralizedTime OPTIONAL
+	},
+	ates-VersionDateTime			GeneralizedTime
+}
+
+END

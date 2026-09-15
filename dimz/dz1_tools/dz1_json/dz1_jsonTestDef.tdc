@@ -1,0 +1,67 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef native static MyExternHz from dz1_jsonTestTypes;	// with api dump, clone
+	
+	typedef enum MyEnum
+	{
+		abc,
+		bcd,
+		cde
+	} MyEnum;
+	
+	typedef struct MyStruct
+	{
+		uint8				 a;
+		uint16				 b;
+		uint32				 c;
+		uint64				 d;
+		TString				 e;
+	} MyStruct;											// with api dump, clone
+	typedef array MyStructList [MyStruct];
+
+	typedef union MyUnion
+	{
+		uint8				 a;
+		uint16				 b;
+		uint32				 c;
+		uint64				 d;
+		TString				 e;
+		MyStructList		*f;
+		real64				 g;
+		real32				 h;
+		MyEnum				 i;
+		MyExternHz			 j;
+	} MyUnion;											// with api dump, clone
+	typedef array MyUnionList [MyUnion];
+	
+	typedef struct MyComponent
+	{
+		uint32				 a;
+		MyStruct			*b;
+		MyUnion				*c;
+		MyStructList		*d;							// is notarg
+		MyUnionList			*e;							// is notarg
+		real64				 f;
+		real32				 g;
+		MyEnum				 h;
+		MyExternHz			 i;
+	} MyComponent;										// with api dump, clone
+	
+	typedef array StringList [TString];			// with api dump
+
+	typedef array Asn1MetaDataList [struct Asn1MetaData];
+	typedef struct Asn1MetaData
+	{
+		TString							 name;
+		TString							 value;
+		Asn1MetaDataList				*elements;		// is notarg
+	} Asn1MetaData;										// with api dump
+
+	typedef struct Asn1MetaDataModule
+	{
+		TString							 name;
+		Asn1MetaDataList				*elements;		// is notarg
+	} Asn1MetaDataModule;								// with api dump
+}

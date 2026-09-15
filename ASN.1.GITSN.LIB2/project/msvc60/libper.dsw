@@ -1,0 +1,49 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "libio"=..\libio\libio.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "libper"=.\libper.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/ZAT/ASN/BER_PER/SupportLib/libper", BQCAAAAA
+    ..\..\..\..\..\..\..\asn1project\asn\per081217\per\prj\libper
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/ASN/BER_PER/SupportLib/libper", ZRAAAAAA
+    ..\..\..\..\ber_per\supportlib\libper
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

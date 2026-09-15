@@ -1,0 +1,8 @@
+message set definition
+{
+	include Dz1TcpSerialServerDef;
+	typedef struct Dz1TcpSerialServerMsgDefault
+	{
+		uint32 *dummy;
+	} Dz1TcpSerialServerMsgDefault;					// with api dump
+}

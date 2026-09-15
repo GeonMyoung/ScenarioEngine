@@ -1,0 +1,1 @@
+This Directory is target library path of Makefile

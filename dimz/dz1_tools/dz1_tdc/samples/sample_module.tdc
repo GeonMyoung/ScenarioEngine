@@ -1,0 +1,7 @@
+message set definition {
+    include dz1_asn1_support;
+    include libdz1_support;
+
+	typedef array Dz1MyType(count) [uint16];
+
+}

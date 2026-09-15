@@ -1,0 +1,40 @@
+message set definition
+{
+	include Dz1TcpSerialClientDef;
+--	typedef native Dz1SocketBuf from dz1_socket_buf;
+	
+	typedef struct Dz1TcpSerialClientPort
+	{
+		int32						 port;			// is key
+		uint32						 baud;
+		int32						 bitPerByte;
+		Dz1SerialParity				 parity;
+		Dz1SerialStopBit			 stopBit;
+		bool						 fullDuplex;
+
+		Dz1SerialRTSCTS				 flowRTSCTS;
+		Dz1SerialDSRDTR				 flowDSRDTR;
+		Dz1SerialXONXOFF			 flowXONXOFF;
+
+		Dz1SerialByteConsume		 byteConsume;	void *byteConsumeParam;
+		Dz1SerialPinChanged			 ringInd;		void *ringIndParam;
+		Dz1SerialPinChanged			 ctsChanged;	void *ctsChangedParam;
+		Dz1SerialPinChanged			 dsrChanged;	void *dsrChangedParam;
+		Dz1SerialException			 exception;		void *exceptionParam;
+		
+		void						*req_sg;
+	} Dz1TcpSerialClientPort;						// with api dump, compare
+	
+	typedef unique table Dz1TcpSerialClientPortList(find, extract, count) [Dz1TcpSerialClientPort];
+	
+	typedef struct Dz1TcpSerialClientEnv
+	{
+		void						*tSelf;
+		
+		Dz1TcpClientSocket			*sock;
+		uint32						 rcvr;
+		Dz1SocketBuf				*rxBuf;
+		
+		Dz1TcpSerialClientPortList	*ports;			// is notarg
+	} Dz1TcpSerialClientEnv;						// with api dump
+}

@@ -1,0 +1,354 @@
+message set definition {
+	include libdz1_support;
+	include dz1_asn1_support;
+
+	typedef int64 Dz1ObjectID_00100;	// with api dump, fdump, clone
+
+	typedef uint16 Dz1DYear_00100;	// with api dump, fdump, clone
+
+	typedef uint8 Dz1DDay_00100;	// with api dump, fdump, clone
+
+	typedef uint8 Dz1DHour_00100;	// with api dump, fdump, clone
+
+	typedef uint8 Dz1DMinute_00100;	// with api dump, fdump, clone
+
+	typedef uint8 Dz1DMonth_00100;	// with api dump, fdump, clone
+
+	typedef int16 Dz1DOffset_00100;	// with api dump, fdump, clone
+
+	typedef uint16 Dz1DSecond_00100;	// with api dump, fdump, clone
+
+	typedef struct Dz1DDateTime_00100
+	{
+		Dz1DYear_00100   *year;  	// is notarg	-- ASN OPTIONAL
+		Dz1DMonth_00100  *month; 	// is notarg	-- ASN OPTIONAL
+		Dz1DDay_00100    *day;   	// is notarg	-- ASN OPTIONAL
+		Dz1DHour_00100   *hour;  	// is notarg	-- ASN OPTIONAL
+		Dz1DMinute_00100 *minute;	// is notarg	-- ASN OPTIONAL
+		Dz1DSecond_00100 *second;	// is notarg	-- ASN OPTIONAL
+		Dz1DOffset_00100 *offset;	// is notarg	-- ASN OPTIONAL
+	} Dz1DDateTime_00100;	// with api dump, fdump, clone
+
+	typedef int32 Dz1Longitude_00100;	// with api dump, fdump, clone
+
+	typedef int32 Dz1Latitude_00100;	// with api dump, fdump, clone
+
+	typedef int32 Dz1Elevation_00100;	// with api dump, fdump, clone
+
+
+	typedef enum Dz1TransmissionState_00100
+	{
+		neutral = 0,
+		park = 1,
+		forwardGears = 2,
+		reverseGears = 3,
+		reserved1 = 4,
+		reserved2 = 5,
+		reserved3 = 6,
+		unavailable = 7
+	} Dz1TransmissionState_00100;	// with api dump, fdump, clone
+
+	typedef struct Dz1TransmissionAndSpeed_00100
+	{
+		enum Dz1TransmissionState_00100  transmisson;
+		uint16                           speed;
+	} Dz1TransmissionAndSpeed_00100;	// with api dump, fdump, clone
+
+
+	typedef uint16 Dz1Velocity_00100;	// with api dump, fdump, clone
+
+	typedef uint16 Dz1Heading_00100;	// with api dump, fdump, clone
+
+	typedef struct Dz1PositionalAccuracy_00100
+	{
+		uint8   semiMajor;
+		uint8   semiMinor;
+		uint16  orientation;
+	} Dz1PositionalAccuracy_00100;	// with api dump, fdump, clone
+
+	typedef uint8 Dz1SemiMajorAxisAccuracy_00100;	// with api dump, fdump, clone
+
+	typedef uint16 Dz1SemiMajorAxisOrientation_00100;	// with api dump, fdump, clone
+
+	typedef uint8 Dz1SemiMinorAxisAccuracy_00100;	// with api dump, fdump, clone
+
+	typedef enum Dz1TimeConfidence_00100
+	{
+		unavailable = 0,
+		time_100_000 = 1,
+		time_050_000 = 2,
+		time_020_000 = 3,
+		time_010_000 = 4,
+		time_002_000 = 5,
+		time_001_000 = 6,
+		time_000_500 = 7,
+		time_000_200 = 8,
+		time_000_100 = 9,
+		time_000_050 = 10,
+		time_000_020 = 11,
+		time_000_010 = 12,
+		time_000_005 = 13,
+		time_000_002 = 14,
+		time_000_001 = 15,
+		time_000_000_5 = 16,
+		time_000_000_2 = 17,
+		time_000_000_1 = 18,
+		time_000_000_05 = 19,
+		time_000_000_02 = 20,
+		time_000_000_01 = 21,
+		time_000_000_005 = 22,
+		time_000_000_002 = 23,
+		time_000_000_001 = 24,
+		time_000_000_000_5 = 25,
+		time_000_000_000_2 = 26,
+		time_000_000_000_1 = 27,
+		time_000_000_000_05 = 28,
+		time_000_000_000_02 = 29,
+		time_000_000_000_01 = 30,
+		time_000_000_000_005 = 31,
+		time_000_000_000_002 = 32,
+		time_000_000_000_001 = 33,
+		time_000_000_000_000_5 = 34,
+		time_000_000_000_000_2 = 35,
+		time_000_000_000_000_1 = 36,
+		time_000_000_000_000_05 = 37,
+		time_000_000_000_000_02 = 38,
+		time_000_000_000_000_01 = 39
+	} Dz1TimeConfidence_00100;	// with api dump, fdump, clone
+
+	
+	typedef enum Dz1ElevationConfidence_00100
+	{
+		unavailable = 0,
+		elev_500_00 = 1,
+		elev_200_00 = 2,
+		elev_100_00 = 3,
+		elev_050_00 = 4,
+		elev_020_00 = 5,
+		elev_010_00 = 6,
+		elev_005_00 = 7,
+		elev_002_00 = 8,
+		elev_001_00 = 9,
+		elev_000_50 = 10,
+		elev_000_20 = 11,
+		elev_000_10 = 12,
+		elev_000_05 = 13,
+		elev_000_02 = 14,
+		elev_000_01 = 15
+	} Dz1ElevationConfidence_00100;	// with api dump, fdump, clone
+
+	typedef enum Dz1PositionConfidence_00100
+	{
+		unavailable = 0,
+		a500m = 1,
+		a200m = 2,
+		a100m = 3,
+		a50m = 4,
+		a20m = 5,
+		a10m = 6,
+		a5m = 7,
+		a2m = 8,
+		a1m = 9,
+		a50cm = 10,
+		a20cm = 11,
+		a10cm = 12,
+		a5cm = 13,
+		a2cm = 14,
+		a1cm = 15
+	} Dz1PositionConfidence_00100;	// with api dump, fdump, clone
+
+	typedef struct Dz1PositionConfidenceSet_00100
+	{
+		enum Dz1PositionConfidence_00100   pos;
+		enum Dz1ElevationConfidence_00100  elevation;
+	} Dz1PositionConfidenceSet_00100;	// with api dump, fdump, clone
+
+
+	
+	typedef enum Dz1HeadingConfidence_00100
+	{
+		unavailable = 0,
+		prec10deg = 1,
+		prec05deg = 2,
+		prec01deg = 3,
+		prec0_1deg = 4,
+		prec0_05deg = 5,
+		prec0_01deg = 6,
+		prec0_0125deg = 7
+	} Dz1HeadingConfidence_00100;	// with api dump, fdump, clone
+
+	typedef enum Dz1SpeedConfidence_00100
+	{
+		unavailable = 0,
+		prec100ms = 1,
+		prec10ms = 2,
+		prec5ms = 3,
+		prec1ms = 4,
+		prec0_1ms = 5,
+		prec0_05ms = 6,
+		prec0_01ms = 7
+	} Dz1SpeedConfidence_00100;	// with api dump, fdump, clone
+
+	typedef enum Dz1ThrottleConfidence_00100
+	{
+		unavailable = 0,
+		prec10percent = 1,
+		prec1percent = 2,
+		prec0_5percent = 3
+	} Dz1ThrottleConfidence_00100;	// with api dump, fdump, clone
+
+	typedef struct Dz1SpeedandHeadingandThrottleConfidence_00100
+	{
+		enum Dz1HeadingConfidence_00100   heading;
+		enum Dz1SpeedConfidence_00100     speed;
+		enum Dz1ThrottleConfidence_00100  throttle;
+	} Dz1SpeedandHeadingandThrottleConfidence_00100;	// with api dump, fdump, clone
+
+
+	typedef struct Dz1FullPositionVector_00100
+	{
+		Dz1DDateTime_00100                            *utcTime;        	// is notarg	-- ASN OPTIONAL
+		Dz1Longitude_00100                             lon;
+		Dz1Latitude_00100                              lat;
+		Dz1Elevation_00100                            *elevation;      	// is notarg	-- ASN OPTIONAL
+		Dz1Heading_00100                              *heading;        	// is notarg	-- ASN OPTIONAL
+		Dz1TransmissionAndSpeed_00100                 *speed;          	// is notarg	-- ASN OPTIONAL
+		Dz1PositionalAccuracy_00100                   *posAccuracy;    	// is notarg	-- ASN OPTIONAL
+		Dz1TimeConfidence_00100                       *timeConfidence; 	// is notarg	-- ASN OPTIONAL
+		Dz1PositionConfidenceSet_00100                *posConfidence;  	// is notarg	-- ASN OPTIONAL
+		Dz1SpeedandHeadingandThrottleConfidence_00100 *speedConfidence;	// is notarg	-- ASN OPTIONAL
+	} Dz1FullPositionVector_00100;	// with api dump, fdump, clone
+
+	typedef enum Dz1IncidentDetectionInfo_incident_Detected_Type
+	{
+		stalledVehicle = 1,
+		reverseDriving = 2,
+		pedestrian = 3,
+		roadwayDebris = 4,
+		rireSmoke = 5,
+		roadShouldersVehicle = 6,
+		roadkill = 7,
+		slowVehicle = 8,
+		delayCongested = 9
+	} Dz1IncidentDetectionInfo_incident_Detected_Type;	// with api dump, fdump, clone
+
+	typedef enum Dz1NMEACoord_compass
+	{
+		north,
+		south
+	} Dz1NMEACoord_compass;	// with api dump, fdump, clone
+
+	typedef struct Dz1NMEACoord_latitude
+	{
+		int64                 integerValue;
+		int64                 fractionValue;
+		uint8                 fracSize;
+		Dz1NMEACoord_compass  compass;
+	} Dz1NMEACoord_latitude;	// with api dump, fdump, clone
+
+	typedef struct Dz1NMEACoord_longitude
+	{
+		int64                 integerValue;
+		int64                 fractionValue;
+		uint8                 fracSize;
+		Dz1NMEACoord_compass  compass;
+	} Dz1NMEACoord_longitude;	// with api dump, fdump, clone
+
+	typedef struct Dz1NMEACoord
+	{
+		Dz1NMEACoord_latitude  *latitude;
+		Dz1NMEACoord_longitude *longitude;
+		Dz1Asn1OctetStr        *optData;  	// is notarg	-- ASN OPTIONAL
+	} Dz1NMEACoord;	// with api dump, fdump, clone
+
+	typedef struct Dz1IncidentDetectionInfo
+	{
+		Dz1Asn1VisibleStr                               *incident_Detected_Time;
+		Dz1IncidentDetectionInfo_incident_Detected_Type  incident_Detected_Type;
+		Dz1NMEACoord                                    *incident_Detected_Site;
+		uint8                                           *detected_Object_Size;    	// is notarg	-- ASN OPTIONAL
+		uint16                                           detected_Object_Distance;
+		uint16                                           detected_Object_Angle;
+		uint16                                           detected_Object_Speed;
+	} Dz1IncidentDetectionInfo;	// with api dump, fdump, clone
+
+	typedef enum Dz1IncidentTerminationInfo_terminate_incidentType
+	{
+		termination = 1,
+		timeout = 2
+	} Dz1IncidentTerminationInfo_terminate_incidentType;	// with api dump, fdump, clone
+
+	typedef struct Dz1IncidentTerminationInfo
+	{
+		Dz1IncidentTerminationInfo_terminate_incidentType  terminate_incidentType;
+	} Dz1IncidentTerminationInfo;	// with api dump, fdump, clone
+
+	typedef enum Dz1IncidentDetectionVideoFileInfoProvide_fileStatus
+	{
+		videoFileExists = 0,
+		videoFileAlreadyExists = 1
+	} Dz1IncidentDetectionVideoFileInfoProvide_fileStatus;	// with api dump, fdump, clone
+
+	typedef struct Dz1IncidentDetectionVideoFileInfoProvide
+	{
+		Dz1IncidentDetectionVideoFileInfoProvide_fileStatus  fileStatus;
+		Dz1Asn1OctetStr                                     *fileName;  	// is notarg	-- ASN OPTIONAL
+		int64                                               *fileSize;  	// is notarg	-- ASN OPTIONAL
+	} Dz1IncidentDetectionVideoFileInfoProvide;	// with api dump, fdump, clone
+
+	typedef struct Dz1ControlStateInfo
+	{
+		uint8  cpu;
+		uint8  ram;
+		uint8  disk;
+	} Dz1ControlStateInfo;	// with api dump, fdump, clone
+
+	typedef enum Dz1SensorStateInfo_state
+	{
+		normal = 0,
+		abnormal = 1
+	} Dz1SensorStateInfo_state;	// with api dump, fdump, clone
+
+	typedef struct Dz1SensorStateInfo
+	{
+		Dz1SensorStateInfo_state  msm;
+		Dz1SensorStateInfo_state  txb;
+		Dz1SensorStateInfo_state  rxb;
+		Dz1SensorStateInfo_state  pwr;
+	} Dz1SensorStateInfo;	// with api dump, fdump, clone
+
+	typedef enum Dz1Novelty
+	{
+		noveltyNew = 0,
+		noveltyUpdate = 1
+	} Dz1Novelty;	// with api dump, fdump, clone
+
+	typedef enum Dz1MovingObject_objectType
+	{
+		pedestrian = 0,
+		vehicle = 1,
+		bike = 2
+	} Dz1MovingObject_objectType;	// with api dump, fdump, clone
+
+	typedef struct Dz1MovingObject
+	{
+		Dz1MovingObject_objectType   objectType;
+		Dz1ObjectID_00100            objectID;
+		Dz1Novelty                  *novelty;           	// is notarg	-- ASN OPTIONAL
+		uint8                        reliability;
+		Dz1FullPositionVector_00100 *fullPositionVector;
+	} Dz1MovingObject;	// with api dump, fdump, clone
+
+	typedef array Dz1IncidentDetectionInfoResponse(count) [Dz1IncidentDetectionInfo];
+
+	typedef array Dz1IncidentTerminationInfoResponse(count) [Dz1IncidentTerminationInfo];
+
+	typedef array Dz1IncidentDetectionVideoFileInfoProvideResponse(count) [Dz1IncidentDetectionVideoFileInfoProvide];
+
+	typedef array Dz1ControlStateInfoResponse(count) [Dz1ControlStateInfo];
+
+	typedef array Dz1SensorStateInfoResponse(count) [Dz1SensorStateInfo];
+
+	typedef array Dz1MovingObjectResponse(count) [Dz1MovingObject];
+
+}

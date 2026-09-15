@@ -1,0 +1,39 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef native ObjectInfo from Dz1TdcInfoObject;				// with api dump, compare
+	typedef unique table ObjectInfoIndex(find, extract) [&ObjectInfo];
+	typedef array ObjectInfoSeq [&ObjectInfo];
+	
+	typedef struct Dz1JsonTargetObjects
+	{
+		ObjectInfoIndex					*index;						// is notarg, nodump
+		ObjectInfoSeq					*seq;						// is notarg
+	} Dz1JsonTargetObjects;											// with api dump
+
+	typedef unique table Dz1JsonCompileIncIndex(find, extract) [TString];	// with api dump
+	typedef array Dz1JsonCompileIncSeq						  [&TString];	// with api dump
+	typedef struct Dz1JsonCompileIncs
+	{
+		Dz1JsonCompileIncIndex			*index;						// is notarg, nodump
+		Dz1JsonCompileIncSeq			*seq;						// is notarg
+	} Dz1JsonCompileIncs;											// with api dump
+	
+	typedef struct Dz1JsonCompilerArg
+	{
+		Dz1JsonCompileIncs				*src_module_inc;
+		TString							 src_out_path;				// is notarg
+		TString							 hdr_out_path;				// is notarg
+		bool							 src_out;					// is notarg
+		bool							 hdr_out;					// is notarg
+		TString							 suffix;					// is notarg
+		
+		TString							 tgt_fn;					// is notarg
+		TString							 tgt_path;					// is notarg
+		TString							 tgt_name;					// is notarg
+		TString							 tgt_ext;					// is notarg
+		
+		TString							 output_name;				// is notarg
+	} Dz1JsonCompilerArg;											// with api dump
+}

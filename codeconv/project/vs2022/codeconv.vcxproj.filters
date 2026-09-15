@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4f877d42-88be-430e-805b-b9cbed283355}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\charsets">
+      <UniqueIdentifier>{18a2a99e-1aed-466f-8b3a-07eac8db9566}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{a20eefa4-708f-4771-bbff-3c57e1d3e6e4}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\codeconv.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\aliases.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\aliases2.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\aliases_aix.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\aliases_dos.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\aliases_extra.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\aliases_osf1.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\armscii_8.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ascii.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\big5.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\big5hkscs.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\c99.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ces_big5.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ces_gbk.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cjk_variants.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_1.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_15.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_2.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_3.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_4.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_4a.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_4b.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_5.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_6.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_7.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cns11643_inv.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\converters.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1046.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1124.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1125.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1129.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1133.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1161.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1162.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1163.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1250.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1251.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1252.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1253.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1254.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1255.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1256.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1257.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp1258.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp437.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp737.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp775.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp850.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp852.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp853.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp855.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp856.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp857.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp858.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp860.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp861.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp862.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp863.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp864.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp865.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp866.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp869.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp874.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp922.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp932.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp932ext.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp936ext.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp943.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp949.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp950.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cp950ext.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dec_hanyu.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dec_kanji.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\euc_cn.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\euc_jisx0213.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\euc_jp.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\euc_kr.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\euc_tw.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\flags.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\flushwc.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gb18030.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gb18030ext.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gb18030uni.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gb2312.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gbk.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gbkext1.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gbkext2.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gbkext_inv.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\georgian_academy.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\georgian_ps.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hkscs.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hp_roman8.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hz.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso2022_cn.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso2022_cnext.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso2022_jp.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso2022_jp1.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso2022_jp2.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso2022_jp3.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso2022_kr.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso646_cn.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso646_jp.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_1.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_10.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_13.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_14.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_15.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_16.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_2.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_3.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_4.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_5.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_6.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_7.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_8.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iso8859_9.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\isoir165.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\isoir165ext.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\java.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\jisx0201.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\jisx0208.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\jisx0212.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\jisx0213.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\johab.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\johab_hangul.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\koi8_r.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\koi8_ru.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\koi8_t.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\koi8_u.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ksc5601.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\loop_unicode.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\loop_wchar.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\loops.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_arabic.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_centraleurope.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_croatian.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_cyrillic.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_greek.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_hebrew.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_iceland.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_roman.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_romania.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_thai.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_turkish.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mac_ukraine.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mulelao.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\nextstep.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\riscos1.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shift_jisx0213.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sjis.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tcvn.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tds565.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tis620.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\translit.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs2.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs2be.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs2internal.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs2le.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs2swapped.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs4.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs4be.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs4internal.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs4le.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ucs4swapped.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\uhc_1.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\uhc_2.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utf16.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utf16be.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utf16le.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utf32.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utf32be.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utf32le.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utf7.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utf8.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vietcomb.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\viscii.h">
+      <Filter>Source Files\charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codeconv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

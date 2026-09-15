@@ -1,0 +1,17 @@
+message set definition
+{
+	include ScenarioEngineDef;
+	include Dz1JsonDef;
+	include dz1_web_socket_def;
+
+	typedef struct ScenarioEngineEnv
+	{
+		void					*tSelf;
+		void					*tScenario;
+		Dz1JsonSpec				*spec;
+		Dz1WebSocket			*wsock;
+		Dz1WebSockMsgList		*ws_msgs;			// is notarg
+		uint32					 seq;
+		uint32					 test_done_seq;
+	} ScenarioEngineEnv;				// with api dump
+}

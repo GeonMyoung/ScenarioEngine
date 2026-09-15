@@ -1,0 +1,5 @@
+JSON interface generate from ScenarioEngineWebSockMsgDef
+{
+	object ScenarioEngineInitializeContext cascade;
+	object ScenarioEngineWebSocketMessage cascade;
+}

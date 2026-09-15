@@ -1,0 +1,22 @@
+JSON interface generate from Iso14827TestHelperDef
+{
+	object Iso14827TestNotifyContext cascade;
+	object Iso14827TestValidateContext	cascade;
+
+	object Gitsn_BasicSafetyMessage cascade;
+	object Gitsn_MapData cascade;
+	object Gitsn_SPAT cascade;
+	object Gitsn_ProbeVehicleData cascade;
+	object Gitsn_RoadSideAlert cascade;
+	object Gitsn_TravelerInformation cascade;
+	object Gitsn_SensorDataSharingMessage cascade;
+	object Gitsn_TLS cascade;
+
+	object Gitsn_Iso14827C2CAuthMsg cascade;
+	
+	object Iso14827TestConfiguration cascade;
+
+	object SubscribeSpecList cascade;
+
+	object TechnicalRegulation1_Eam cascade;
+}

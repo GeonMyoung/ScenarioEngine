@@ -1,0 +1,118 @@
+message set definition {
+	include libdz1_support;
+
+	typedef struct MyStruct
+	{
+		struct MyStruct			*ppp;
+	} MyStruct;
+		
+	typedef func void JakeSeeBetaTaskException(void *ptr, Dz1Error *reason);
+		
+	typedef struct JakeSeeBetaTaskArg
+	{
+		wstr							 path;
+		wstr							 name;
+		JakeSeeBetaTaskException		 cb_exception;
+		void							*cb_arg;
+	} JakeSeeBetaTaskArg;					// with api dump
+
+	typedef native AAA from BBB;
+
+	typedef struct Dz1TdcObjectInfoPrimitive
+	{
+		AAA					 *samp;
+		str					 native;
+		bool				 isPointer;
+		str					 prefix;
+	} Dz1TdcObjectInfoPrimitive;				// with api dump, codec
+
+	typedef struct Dz1TdcObjectInfoEnumEntry
+	{
+		str					 name;				// is key
+		str					 valStr;
+		int32				 value;
+	} Dz1TdcObjectInfoEnumEntry;				// with api dump, compare, codec
+
+	typedef unique array Dz1TdcObjectInfoEnum(find, gethead, gettail) [Dz1TdcObjectInfoEnumEntry];
+
+	typedef struct Dz1TdcObjectInfoDefined
+	{
+		bool				 	 isForwarded;
+		struct Dz1TdcObject		*origin;		// is ref
+	} Dz1TdcObjectInfoDefined;					// with api dump, codec
+
+	typedef struct Dz1TdcObjectInfoStructEntry
+	{
+		bool					 isForwarded;
+		struct Dz1TdcObject		*type;			// is ref
+		bool					 isPointer;
+		str						 instance;		// is key
+		bool					 argInvolve;
+		bool					 isIndex;
+		bool					 isReferenced;
+	} Dz1TdcObjectInfoStructEntry;				// with api dump, compare, codec
+
+	typedef unique array Dz1TdcObjectInfoStruct(find) [Dz1TdcObjectInfoStructEntry];
+
+	typedef struct Dz1TdcObjectInfoUnionEntry
+	{
+		bool					 isForwarded;
+		struct Dz1TdcObject		*type;			// is ref
+		bool					 isPointer;
+		str						 instance;		// is key
+		bool					 isReferenced;
+	} Dz1TdcObjectInfoUnionEntry;				// with api dump, compare, codec
+
+	typedef unique array Dz1TdcObjectInfoUnion(find) [Dz1TdcObjectInfoUnionEntry];
+
+	typedef enum ArrayType
+	{
+		normal,
+		ordered
+	} ArrayType;
+
+	typedef struct Dz1TdcObjectInfoArray
+	{
+		uint32					 arrayApi;
+		struct Dz1TdcObject		*entry;			// is ref
+		ArrayType				 type;
+		bool					 unique;
+	} Dz1TdcObjectInfoArray;					// with api dump, codec
+
+	typedef union Dz1TdcObjectInfo
+	{
+		Dz1TdcObjectInfoPrimitive		*Primitive;
+		Dz1TdcObjectInfoEnum			*Enum;
+		Dz1TdcObjectInfoDefined			*Defined;
+		Dz1TdcObjectInfoStruct			*Struct;
+		Dz1TdcObjectInfoUnion			*Union;
+		Dz1TdcObjectInfoArray			*Array;
+		struct Dz1TdcObject				*Object;
+		union Dz1TdcUnion				*Test;
+	} Dz1TdcObjectInfo;					// with api dump, codec
+
+	typedef struct Dz1TdcObject
+	{
+		str					 name;		// is key
+		uint32				 api;
+		Dz1TdcObjectInfo	*info;
+	} Dz1TdcObject;						// with api dump, compare, codec
+
+	typedef union Dz1TdcUnion
+	{
+		int32 a;
+		int32 b;
+	} Dz1TdcUnion;	// with api dump, codec
+
+	typedef native ObjectInfo from Dz1TdcInfoObject;	// with api dump, compare
+	
+	struct ListControlGenNode;
+	typedef array ListControlGenList(find, extract, count) [struct ListControlGenNode];
+	
+	typedef struct ListControlGenNode
+	{
+		ObjectInfo					*obj;				// is ref, key
+		struct ListControlGenNode	*parent;
+		ListControlGenList			*childs;			// is notarg
+	} ListControlGenNode;								// with api dump, clone, compare
+}

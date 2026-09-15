@@ -1,0 +1,91 @@
+#ifndef _DZ1_TDC_TXT_REPLACE_ENV_H_
+#define _DZ1_TDC_TXT_REPLACE_ENV_H_
+
+////////////////////////////////////////////////////////////////////////////////
+#include <dz1_error.h>
+#include <dz1_int.h>
+#include <dz1_real.h>
+#include <dz1_str.h>
+#include <dz1_sock_addr.h>
+////////////////////////////////////////////////////////////////////////////////
+
+#include "libdz1_support.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// TxtReplaceEntry
+typedef struct TxtReplaceEntry
+{
+	str_t		symbol;
+	str_t		replace;
+} TxtReplaceEntry;
+
+DZ1_CPPLINK DZ1_DLLPORT TxtReplaceEntry *TxtReplaceEntry_new(str_t symbol, 
+															 str_t replace, Dz1Error *err);
+static __inline__ TxtReplaceEntry *TxtReplaceEntry_gen(Dz1Error *err) { return TxtReplaceEntry_new(NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceEntry_purge(TxtReplaceEntry *p);
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceEntry_del(TxtReplaceEntry *p);
+static __inline__ void TxtReplaceEntry_delAndSetNull(void *ptr)
+{
+	TxtReplaceEntry **p = (TxtReplaceEntry **)ptr;
+	if (p) { TxtReplaceEntry_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceEntry_dump(TxtReplaceEntry *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int TxtReplaceEntry_cmp(TxtReplaceEntry *a, TxtReplaceEntry *b); 
+// TxtReplaceEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// TxtReplaceList
+typedef struct TxtReplaceList
+{
+	void *storage;
+	unsigned int (*count)(struct TxtReplaceList *p);
+	Dz1Error (*travel)(struct TxtReplaceList *p, Dz1Error (*func)(void *ptr, TxtReplaceEntry *entry), void *ptr);
+	Dz1Error (*travelForward)(struct TxtReplaceList *p, Dz1Error (*func)(void *ptr, TxtReplaceEntry *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct TxtReplaceList *p, Dz1Error (*func)(void *ptr, TxtReplaceEntry *entry), void *ptr);
+	TxtReplaceEntry **(*get_array)(struct TxtReplaceList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct TxtReplaceList *p, TxtReplaceEntry *data);
+	bool_t (*remove)(struct TxtReplaceList *p, TxtReplaceEntry *key);
+	TxtReplaceEntry *(*extract)(struct TxtReplaceList *p, TxtReplaceEntry *key);
+	TxtReplaceEntry *(*find)(struct TxtReplaceList *p, TxtReplaceEntry *key);
+	int (*cmp)(TxtReplaceEntry *a, TxtReplaceEntry *b);
+} TxtReplaceList;
+
+DZ1_CPPLINK DZ1_DLLPORT TxtReplaceList *TxtReplaceList_new(Dz1Error *err);
+static __inline__ TxtReplaceList *TxtReplaceList_gen(Dz1Error *err) { return TxtReplaceList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceList_purge(TxtReplaceList *p);
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceList_del(TxtReplaceList *p);
+static __inline__ void TxtReplaceList_delAndSetNull(void *ptr)
+{
+	TxtReplaceList **p = (TxtReplaceList **)ptr;
+	if (p != NULL) { TxtReplaceList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceList_dump(TxtReplaceList *p, int tab);
+
+// TxtReplaceList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// TxtReplaceEnv
+typedef struct TxtReplaceEnv
+{
+	str_t				 leadin;
+	str_t				 leadout;
+	TxtReplaceList		*list;
+} TxtReplaceEnv;
+
+DZ1_CPPLINK DZ1_DLLPORT TxtReplaceEnv *TxtReplaceEnv_new(str_t leadin, 
+														 str_t leadout, Dz1Error *err);
+static __inline__ TxtReplaceEnv *TxtReplaceEnv_gen(Dz1Error *err) { return TxtReplaceEnv_new(NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceEnv_purge(TxtReplaceEnv *p);
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceEnv_del(TxtReplaceEnv *p);
+static __inline__ void TxtReplaceEnv_delAndSetNull(void *ptr)
+{
+	TxtReplaceEnv **p = (TxtReplaceEnv **)ptr;
+	if (p) { TxtReplaceEnv_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void TxtReplaceEnv_dump(TxtReplaceEnv *p, int tab);
+// TxtReplaceEnv
+////////////////////////////////////////////////////////////////////////////////
+
+#endif

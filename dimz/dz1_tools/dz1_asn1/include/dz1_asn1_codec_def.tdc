@@ -1,0 +1,20 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+	include dz1_io_stream_support;
+	include dz1_asn1_codec_ber_def;
+
+--	typedef reference Dz1Asn1TypeDescrChild		 from dz1_asn1_codec;
+
+	---------------------------------------------------------------------
+	-- Constraint
+	---------------------------------------------------------------------
+	struct Dz1Asn1TypeDescr;
+
+
+	---------------------------------------------------------------------
+	-- Type Descriptor
+	---------------------------------------------------------------------
+}
+

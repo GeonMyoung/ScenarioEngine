@@ -1,0 +1,11 @@
+message set definition
+{
+	include Dz1GifDef;
+
+	typedef struct Dz1GifParallelArg
+	{
+		Dz1GifDecodeOptParallel		*opt;				// is ref
+		Dz1GifDescr					*descr;				// is ref
+		Dz1GifGraphic				*graphic;			// is ref
+	} Dz1GifParallelArg;
+}

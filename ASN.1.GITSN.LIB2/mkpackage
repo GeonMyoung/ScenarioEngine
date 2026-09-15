@@ -1,0 +1,49 @@
+#!/bin/sh
+
+HEADERS=`find ./SupportLib -name *.h`
+
+OSNAME=`uname`
+CPU=`uname -p`
+if [ "$CPU" == "" ]; then
+	CPU=`uname -m`;
+	if [ "$CPU" == "" ]; then
+		echo "Unknown CPU name";
+		exit 1;
+	fi
+fi
+
+LIBTARGET=.target/SupportLib/$OSNAME-$CPU
+
+rm -rf .target;
+rm -f SupportLib.$OSNAME-$CPU.tar.gz;
+
+for i in $HEADERS;
+do
+	_DIRNAME=`dirname $i`;
+	DIRNAME=.target/include/${_DIRNAME#./SupportLib/}
+	BASENAME=`basename $i`;
+	echo "locating $BASENAME...";
+	if [ ! -d $DIRNAME ]; then 
+		mkdir -p $DIRNAME;
+	fi
+	cp $i $DIRNAME;
+done;
+
+echo "locating Library Files...";
+mkdir -p $LIBTARGET;
+cp SupportLib/lib/*.a $LIBTARGET;
+
+if [ ! -f $LIBTARGET/libper.a ]; then
+	echo "Remove PER Headers...";
+	rm -rf .target/include/PER;
+fi
+
+if [ ! -f $LIBTARGET/libxer.a ]; then
+	echo "Remove XER Headers...";
+	rm -rf .target/include/XER;
+fi
+
+echo "create Archive file..."
+tar -cvf SupportLib.$OSNAME-$CPU.tar -C .target SupportLib/ include/ > /dev/null;
+echo "compress Archive file..."
+gzip -9 SupportLib.$OSNAME-$CPU.tar

@@ -1,0 +1,12 @@
+#ifndef _CHECK_OBJECTIDENTIFIER_H
+#define _CHECK_OBJECTIDENTIFIER_H
+
+#include "OS/ASN1_Sys.h"
+#include "TYPE/ASN1_Type.h"
+
+
+ASN1_CPPLINK int ASN1_CHECK_OBJECTIDENTIFIER(OBJECTIDENTIFIER *ValueChecked, ASNUINT8 *ConsChecked);
+
+
+#endif
+

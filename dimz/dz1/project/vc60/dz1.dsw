@@ -1,0 +1,149 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "dz1"=.\dz1.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "dz1_aatree"=.\src\struct\dz1_aatree.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name dz1
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dz1_console"=.\SRC\KERNEL\dz1_console.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name dz1
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dz1_malloc"=.\src\kernel\dz1_malloc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name dz1
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dz1_task"=.\src\task\dz1_task.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name dz1
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dz1_tcp_socket_client"=.\src\inet\dz1_tcp_socket_client.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name dz1
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dz1_tcp_socket_server"=.\src\inet\dz1_tcp_socket_server.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name dz1
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dz1_thread"=.\src\kernel\dz1_thread.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name dz1
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "tdc"=.\src\mdefc\tdc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name dz1
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

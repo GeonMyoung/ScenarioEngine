@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{A43710D3-8C15-4755-AFC6-E4A028BCE1E1}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{895C6207-A8BC-449B-BEFA-D6BA6454E1B5}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{727DBADB-34D6-4A75-99BB-F8B9F6094788}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\engine">
+      <UniqueIdentifier>{1D9BC322-6949-4E5D-BBD8-775DA6FC50B4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\message">
+      <UniqueIdentifier>{868EDBC6-2DB3-4BE0-A2BD-98145C8B43A4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\GitsnDsrcEmulator.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnDsrcEmulatorDef.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnDsrcEmulatorArg.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnDsrcEmulatorEnv.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnDsrcEmulatorTimer.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnDsrcEmulatorTimerUtil.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnDsrcEmulatorMsgs.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GitsnDsrcEmulatorTest.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\GitsnDsrcEmulator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\GitsnDsrcEmulatorDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GitsnDsrcEmulatorArg.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GitsnDsrcEmulatorEnv.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GitsnDsrcEmulatorTimer.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GitsnDsrcEmulatorTimerUtil.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GitsnDsrcEmulatorMsg.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GitsnDsrcEmulatorMsgs.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\GitsnDsrcEmulatorDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\GitsnDsrcEmulatorArg.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\GitsnDsrcEmulatorEnv.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\GitsnDsrcEmulatorTimer.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\GitsnDsrcEmulatorMsgs.tdc">
+      <Filter>소스 파일\message</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

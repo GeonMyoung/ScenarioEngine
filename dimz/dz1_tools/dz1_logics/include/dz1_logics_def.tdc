@@ -1,0 +1,148 @@
+message set definition
+{
+	include libdz1_support;
+	typedef native Dz1LogicStringArrA		from dz1_logics_type;	// with			api dumpA, fdump, clone
+	typedef native Dz1LogicStringArrW		from dz1_logics_type;	// with windows api dumpW, fdump, clone
+	typedef native Dz1LogicStringArr		from dz1_logics_type;	// with			api dumpX, fdump, clone
+	typedef native Dz1LogicStringRefArrA	from dz1_logics_type;	// with			api dumpA, fdump, clone
+	typedef native Dz1LogicStringRefArrW	from dz1_logics_type;	// with windows api dumpW, fdump, clone
+	
+	-----------------------------------------------
+	-- Number Match Type
+	-----------------------------------------------
+	typedef enum Dz1LogicMatchType
+	{
+		LessThen,
+		GreaterThen,
+		Equal,
+		LessEqual,
+		GreaterEqual,
+		Like
+	} Dz1LogicMatchType;								// with api dumpX
+
+	-----------------------------------------------
+	-- Number Match Simple
+	-----------------------------------------------
+	typedef struct Dz1LogicMatchNumSimple
+	{
+		int64							 value;
+		Dz1LogicMatchType				 cond;
+	} Dz1LogicMatchNumSimple;							// with api dumpX, clone
+
+	-----------------------------------------------
+	-- Number Match Range
+	-----------------------------------------------
+	typedef struct Dz1LogicMatchNumRange
+	{
+		int64							 LowValue;
+		bool							 LowInclude;
+		
+		int64							 HighValue;
+		bool							 HighInclude;
+	} Dz1LogicMatchNumRange;							// with api dumpX, clone
+	
+	-----------------------------------------------
+	-- Number Match
+	-----------------------------------------------
+	typedef union Dz1LogicMatchNum
+	{
+		Dz1LogicMatchNumSimple			*simple;
+		Dz1LogicMatchNumRange			*range;
+	} Dz1LogicMatchNum;									// with api dumpX, clone
+
+	-----------------------------------------------
+	-- String Match Simple
+	-----------------------------------------------
+	typedef struct Dz1LogicMatchStringSimpleA
+	{
+		str								 value;			// is key
+		Dz1LogicMatchType				 cond;
+	} Dz1LogicMatchStringSimpleA;						// with api dumpA, clone, compare
+	
+	typedef struct Dz1LogicMatchStringSimpleW
+	{
+		wstr							 value;			// is key
+		Dz1LogicMatchType				 cond;
+	} Dz1LogicMatchStringSimpleW;						// with windows api dumpW, clone, compare
+	
+	-----------------------------------------------
+	-- String Match Complex
+	-----------------------------------------------
+	typedef struct Dz1LogicMatchStringsA
+	{
+		Dz1LogicStringArrA				*arr;
+		Dz1LogicMatchType				 cond;
+	} Dz1LogicMatchStringsA;							// with api dumpA, clone
+
+	typedef struct Dz1LogicMatchStringsW
+	{
+		Dz1LogicStringArrW				*arr;
+		Dz1LogicMatchType				 cond;
+	} Dz1LogicMatchStringsW;							// with windows api dumpW, clone
+
+	typedef struct Dz1LogicMatchRefStringsA
+	{
+		Dz1LogicStringRefArrA			*arr;
+		Dz1LogicMatchType				 cond;
+	} Dz1LogicMatchRefStringsA;							// with api dumpA, clone
+	
+	typedef struct Dz1LogicMatchRefStringsW
+	{
+		Dz1LogicStringRefArrW			*arr;
+		Dz1LogicMatchType				 cond;
+	} Dz1LogicMatchRefStringsW;							// with windows api dumpW, clone
+	
+	-----------------------------------------------
+	-- String Match
+	-----------------------------------------------
+	typedef union Dz1LogicMatchStringA
+	{
+		Dz1LogicMatchStringSimpleA		*simple;
+		Dz1LogicMatchStringsA			*complexA;
+		Dz1LogicMatchRefStringsA		*complexR;
+	} Dz1LogicMatchStringA;								// with api dumpA, clone
+
+	typedef union Dz1LogicMatchStringW
+	{
+		Dz1LogicMatchStringSimpleW		*simple;
+		Dz1LogicMatchStringsW			*complexA;
+		Dz1LogicMatchRefStringsW		*complexR;
+	} Dz1LogicMatchStringW;								// with windows api dumpW, clone
+	
+	-----------------------------------------------
+	-- Match
+	-----------------------------------------------
+	typedef union Dz1LogicMatchA
+	{
+		Dz1LogicMatchNum				*number;
+		Dz1LogicMatchStringA			*text;
+	} Dz1LogicMatchA;									// with api dumpA, clone
+	
+	typedef union Dz1LogicMatchW
+	{
+		Dz1LogicMatchNum				*number;
+		Dz1LogicMatchStringW			*text;
+	} Dz1LogicMatchW;									// with windows api dumpW, clone
+
+	typedef array Dz1LogicMatchListA(count) [Dz1LogicMatchA];
+	typedef array Dz1LogicMatchListW(count) [Dz1LogicMatchW];
+	---------------------------------------------------------------------------
+	-- Match Data
+	---------------------------------------------------------------------------
+	
+	-----------------------------------------------
+	-- Value Type
+	-----------------------------------------------
+	typedef enum Dz1LogicMatchValueType
+	{
+		Signed8,
+		Signed16,
+		Signed32,
+		Signed64,
+		Unsigned8,
+		Unsigned16,
+		Unsigned32,
+		Unsigned64,
+		String
+	} Dz1LogicMatchValueType;							// with api dumpX
+}

@@ -1,0 +1,13 @@
+JSON interface generate from ITSK00144_2TestScenarioDef
+{
+	object ITSK00144_2ProtocolFrame cascade;
+	object ITSK00144_2NotifyContext cascade;
+	object ITSK00144_2ValidateContext	cascade;
+
+	object ITSK00144_2TestConfiguration cascade;
+
+	object ITSK00144_2ProtocolFrameContext cascade;
+
+	object Gitsn_MapData cascade;
+	object Gitsn_TravelerInformation cascade;
+}

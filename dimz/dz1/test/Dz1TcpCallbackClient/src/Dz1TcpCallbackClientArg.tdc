@@ -1,0 +1,9 @@
+message set definition
+{
+	include Dz1TcpCallbackClientDef;
+	typedef struct Dz1TcpCallbackClientArg
+	{
+		Dz1TcpCallbackClientException	 exceptionProc;
+		void							*exceptionArg;
+	} Dz1TcpCallbackClientArg;
+}

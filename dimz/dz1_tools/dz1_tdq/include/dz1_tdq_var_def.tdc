@@ -1,0 +1,207 @@
+message set definition
+{
+	include libdz1_support;
+	------------------------------------------------------------------------------------
+	-- SQL Type
+	------------------------------------------------------------------------------------
+	typedef enum Dz1TdqType
+	{
+		num_s8,						-- TINYINT				000 0
+		num_u8,						-- TINYINT UNSIGNED		000 1
+		num_s16,					-- SMALLINT				001 0
+		num_u16,					-- SMALLINT UNSIGNED	001 1
+		num_s32,					-- INT					010 0
+		num_u32,					-- INT UNSIGNED			010 1
+		num_s64,					-- BIGINT				011 0
+		num_u64,					-- BIGINT UNSIGNED		011 1
+		
+		num_r32			= 0x10,		-- FLOAT
+		num_r64			= 0x11,		-- REAL
+		
+		string			= 0x20,		-- CHAR			0x20	000 0
+		vstring,					-- VARCHAR		0x21	000 1
+		tstring,					-- NCHAR		0x22	001 0
+		vtstring,					-- NVARCHAR		0x23	001 1
+		binary,						-- BINARY		0x24	010 0
+		vbinary,					-- VARBINARY	0x25	010 1
+		
+		date			= 0x30,		-- DATE			0x30	0000
+		time,						-- TIME			0x31	0001
+		timestamp,					-- TIMESTAMP	0x32	0010
+		
+		blob			= 0x40,		-- MEDIUMBLOB
+		blobL						-- LONGBLOB
+	} Dz1TdqType;
+
+	------------------------------------------------------------------------------------
+	-- SQL Type Spec
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqSqlNumSpec
+	{
+		int64						 size;
+		bool						 auto_inc;
+	} Dz1TdqSqlNumSpec;										// with api dump, clone
+
+	typedef struct Dz1TdqSqlRealSpec
+	{
+		int64						 percision;
+	} Dz1TdqSqlRealSpec;									// with api dump, clone
+
+	typedef struct Dz1TdqSqlStrSpec
+	{
+		int64						 size;
+	} Dz1TdqSqlStrSpec;										// with api dump, clone
+
+	typedef enum Dz1TdqSqlBlobSpec
+	{
+		embedded,
+		saved_file
+	} Dz1TdqSqlBlobSpec;
+
+	typedef union Dz1TdqSqlTypeSpec
+	{
+		Dz1TdqSqlNumSpec	[Dz1TdqType_num_s8]		*num_s8;
+		Dz1TdqSqlNumSpec	[Dz1TdqType_num_u8]		*num_u8;
+		Dz1TdqSqlNumSpec	[Dz1TdqType_num_s16]	*num_s16;
+		Dz1TdqSqlNumSpec	[Dz1TdqType_num_u16]	*num_u16;
+		Dz1TdqSqlNumSpec	[Dz1TdqType_num_s32]	*num_s32;
+		Dz1TdqSqlNumSpec	[Dz1TdqType_num_u32]	*num_u32;
+		Dz1TdqSqlNumSpec	[Dz1TdqType_num_s64]	*num_s64;
+		Dz1TdqSqlNumSpec	[Dz1TdqType_num_u64]	*num_u64;
+		
+		Dz1TdqSqlRealSpec	[Dz1TdqType_num_r32]	*num_r32;
+		Dz1TdqSqlRealSpec	[Dz1TdqType_num_r64]	*num_r64;
+		
+		Dz1TdqSqlStrSpec	[Dz1TdqType_string]		*string;
+		Dz1TdqSqlStrSpec	[Dz1TdqType_vstring]	*vstring;
+		Dz1TdqSqlStrSpec	[Dz1TdqType_tstring]	*tstring;
+		Dz1TdqSqlStrSpec	[Dz1TdqType_vtstring]	*vtstring;
+		Dz1TdqSqlStrSpec	[Dz1TdqType_binary]		*binary;
+		Dz1TdqSqlStrSpec	[Dz1TdqType_vbinary]	*vbinary;
+		
+		uint32				[Dz1TdqType_date]		*ymd;
+		uint32				[Dz1TdqType_time]		*hms;
+		uint32				[Dz1TdqType_timestamp]	*stamp;
+
+		Dz1TdqSqlBlobSpec	[Dz1TdqType_blob]		 blob;			--   16777215B(16M-1B)	: VARBINARY(16777215)
+		Dz1TdqSqlBlobSpec	[Dz1TdqType_blobL]		 blobL;			-- 4294967295B( 4G-1b)	: VARBINARY(MAX)
+	} Dz1TdqSqlTypeSpec;																// with api dump, clone
+
+	------------------------------------------------------------------------------
+	-- Variable Bind : String
+	------------------------------------------------------------------------------
+	typedef struct Dz1TdqSqlStr
+	{
+		TString											 text;							// is key
+		uint32											 alloc_byte;
+	} Dz1TdqSqlStr;																		// with api usernew, dump, clone, compare
+
+	------------------------------------------------------------------------------
+	-- Variable Bind : Date
+	------------------------------------------------------------------------------
+	typedef struct Dz1TdqSqlDate
+	{
+		int16											 year;							// is key
+		uint16											 month;							// is key
+		uint16											 day;							// is key
+	} Dz1TdqSqlDate;																	// with api userdump, clone, compare
+	
+	------------------------------------------------------------------------------
+	-- Variable Bind : Time
+	------------------------------------------------------------------------------
+	typedef struct Dz1TdqSqlTime
+	{
+		uint16											 hour;							// is key
+		uint16											 minute;						// is key
+		uint16											 second;						// is key
+	} Dz1TdqSqlTime;																	// with api userdump, clone, compare
+
+	------------------------------------------------------------------------------
+	-- Variable Bind : Timestamp
+	------------------------------------------------------------------------------
+	typedef struct Dz1TdqSqlStamp
+	{
+		int16											 year;							// is key
+		uint16											 month;							// is key
+		uint16											 day;							// is key
+		uint16											 hour;							// is key
+		uint16											 minute;						// is key
+		uint16											 second;						// is key
+		uint32											 frac;							// is key
+	} Dz1TdqSqlStamp;																	// with api userdump, clone, compare
+	
+	------------------------------------------------------------------------------
+	-- Variable Bind : BLOB Storage(reference buffer)
+	------------------------------------------------------------------------------
+	typedef struct Dz1TdqSqlBlobRef
+	{
+		void											*ptr;							// is ref, key
+		uint32											 sz;							// is key
+	} Dz1TdqSqlBlobRef;																	// with api dump, clone, usercmp
+
+	------------------------------------------------------------------------------
+	-- Variable Bind : BLOB
+	------------------------------------------------------------------------------
+	typedef union Dz1TdqSqlBlobToDB
+	{
+		Dz1Binary2						[0]				*embedded;
+		Dz1TdqSqlBlobRef				[1]				*ref_buf;
+		TString							[2]				 saved_file;
+	} Dz1TdqSqlBlobToDB;																// with api dump, clone, compare
+
+	typedef union Dz1TdqSqlBlobFromDB
+	{
+		Dz1Binary2						[0]				*embedded;
+		TString							[2]				 saved_file;
+	} Dz1TdqSqlBlobFromDB;																// with api dump, clone, compare
+
+	typedef struct Dz1TdqSqlBlob
+	{
+		Dz1TdqSqlBlobToDB								*writeToDB;						// is key
+		Dz1TdqSqlBlobFromDB								*readFromDB;					// is key
+		int64											 iosz;							// is notarg
+	} Dz1TdqSqlBlob;																	// with api userdump, clone, compare
+
+	------------------------------------------------------------------------------
+	-- Variable Bind
+	------------------------------------------------------------------------------
+	typedef union Dz1TdqSqlVar
+	{
+		int8				[Dz1TdqType_num_s8]			 s8;
+		uint8				[Dz1TdqType_num_u8]			 u8;
+		int16				[Dz1TdqType_num_s16]		 s16;
+		uint16				[Dz1TdqType_num_u16]		 u16;
+		int32				[Dz1TdqType_num_s32]		 s32;
+		uint32				[Dz1TdqType_num_u32]		 u32;
+		int64				[Dz1TdqType_num_s64]		 s64;
+		uint64				[Dz1TdqType_num_u64]		 u64;
+
+		float				[Dz1TdqType_num_r32]		 r32;
+		real				[Dz1TdqType_num_r64]		 r64;
+
+		Dz1TdqSqlStr		[Dz1TdqType_string]			*string;
+		Dz1TdqSqlStr		[Dz1TdqType_vstring]		*vstring;
+		Dz1TdqSqlStr		[Dz1TdqType_tstring]		*tstring;
+		Dz1TdqSqlStr		[Dz1TdqType_vtstring]		*vtstring;
+		Dz1Binary2			[Dz1TdqType_binary]			*binary;
+		Dz1Binary2			[Dz1TdqType_vbinary]		*vbinary;
+		
+		Dz1TdqSqlDate		[Dz1TdqType_date]			*ymd;
+		Dz1TdqSqlTime		[Dz1TdqType_time]			*hms;
+		Dz1TdqSqlStamp		[Dz1TdqType_timestamp]		*stamp;
+		
+		Dz1TdqSqlBlob		[Dz1TdqType_blob]			*blob;
+		Dz1TdqSqlBlob		[Dz1TdqType_blobL]			*blobL;
+
+		Dz1TdqType			[0xFFFF]					 nul;
+	} Dz1TdqSqlVar;																		// with api dump, clone, compare
+	typedef array Dz1TdqSqlVarArray			[Dz1TdqSqlVar];
+	typedef array Dz1TdqSqlVarRefArray		[&Dz1TdqSqlVar];
+	
+	typedef struct Dz1TdqSqlNamedVar
+	{
+		TString											 name;							// is key
+		Dz1TdqSqlVar									*val;
+	} Dz1TdqSqlNamedVar;																// with api dump, clone, compare
+	typedef unique table Dz1TdqSqlNamedVarList(find, extract) [Dz1TdqSqlNamedVar];
+}

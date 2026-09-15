@@ -1,0 +1,5 @@
+JSON interface generate from Itsk00126v1TestScenarioDef
+{
+	object Itsk00126v1EAM cascade;
+	object Itsk00126v1TestConfiguration cascade;
+}

@@ -1,0 +1,238 @@
+Dz1Asn1Test2 DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+MyEnum ::= ENUMERATED
+{
+	first,
+	second,
+	third,
+	fourth
+}
+
+Int1 ::= INTEGER(0..255)
+Int2 ::= INTEGER(0..65535)
+-- Int3 ::= INTEGER(0..16777215)
+-- Int4 ::= INTEGER(0..4294967295)
+-- Int5 ::= INTEGER(0..1099511627775)
+-- Int6 ::= INTEGER(0..281474976710655)
+
+sap-17423iTS-S-Appl-Reg			Int2	::= 1
+sap-17423iTS-S-Appl-RegFinal	Int2	::=14
+
+sap-ldmRegister 				Int2	::= 100
+sap-ldmDeregister 				Int2	::= 101
+sap-ldmAdd 						Int2	::= 102
+sap-ldmUpdate 					Int2	::= 103
+sap-ldmDelete 					Int2	::= 104
+sap-ldmSubscribe 				Int2	::= 105
+sap-ldmUnsubscribe 				Int2	::= 106
+sap-ldmQuery					Int2	::= 107
+sap-ldmRevokeAppNotify			Int2	::= 108
+sap-ldmNotify					Int2	::= 109
+sap-ldmRegisterManagement		Int2	::= 110
+
+sap-simUT 						Int2	::= 253
+sap-simLT 						Int2	::= 254
+sap-testEcho	 				Int2	::= 255
+
+MFSAP-CR ::= CLASS
+{
+	&mxref						RefMFSAP-C UNIQUE,
+	&MXParam
+}
+
+RefMFSAP-C ::= INTEGER 
+{	-- In support of conformance testing ISO 20026
+	c-simFUTcmd(sap-simUT), 									-- 253
+	c-simFLTcmd(sap-simLT), 									-- 254
+	c-testMF(sap-testEcho), 									-- 255
+	
+	-- In support of ISO 24102-4
+	c-iICrequestTX(11),
+	c-iICresponseTX(12),
+	c-rsmpMessageTX(13),
+	
+	-- In support of ISO 24102-6
+	
+	-- In support of EN ISO 18750
+	c-ldmRegisterMF(sap-ldmRegister), 							-- 100
+	c-ldmDeregisterMF(sap-ldmDeregister),						-- 101
+	c-ldmAddMF(sap-ldmAdd), 									-- 102
+	c-ldmUpdateMF(sap-ldmUpdate), 								-- 103
+	c-ldmDeleteMF(sap-ldmDelete), 								-- 104
+	c-ldmSubscribeMF(sap-ldmSubscribe), 						-- 105
+	c-ldmUnsubscribeMF(sap-ldmUnsubscribe),						-- 106
+	c-ldmQueryMF(sap-ldmQuery) 									-- 107
+}(0..65535)
+
+MF-Command MFSAP-CR ::= 
+{ 
+	ldmRegister | 
+	ldmDeregister | 
+	simFUTcmd | 
+	testMF
+	, ...
+}
+
+-----------------------------------------------------------------------------------------------
+-- MF-SAP Command.request --
+-----------------------------------------------------------------------------------------------
+ldmRegister 		MFSAP-CR	::= { &mxref c-ldmRegisterMF,		&MXParam LDMregisterRequest }
+ldmDeregister 		MFSAP-CR	::= { &mxref c-ldmDeregisterMF,		&MXParam LDMderegisterRequest }
+simFUTcmd 			MFSAP-CR	::= { &mxref c-simFUTcmd,			&MXParam SimFUTcmd }
+testMF 				MFSAP-CR	::= { &mxref c-testMF,				&MXParam EchoTest }
+
+SimFUTcmd 						::= FAsapRequest
+EchoTest						::= OCTET STRING(SIZE(0..255))
+
+-----------------------------------------------------------------------------------------------
+-- FA-SAP Down
+-----------------------------------------------------------------------------------------------
+FAsapRequest ::= SEQUENCE
+{
+	spRef 						FASAPDOWN.&primitiveRef( { FAsapspsdown } ),
+	servPrimitive 				FASAPDOWN.&Primitive( { FAsapspsdown } { @spRef } )
+}
+
+FASAPDOWN ::= CLASS 
+{
+	&primitiveRef				RefFASAP UNIQUE,
+	&Primitive
+}
+
+RefFASAP ::= INTEGER 
+{
+	c-ldmRegisterFA(sap-ldmRegister), 							-- 100
+	c-ldmDeregisterFA(sap-ldmDeregister), 						-- 101
+	c-ldmAddFA(sap-ldmAdd), 									-- 102
+	c-ldmUpdateFA(sap-ldmUpdate), 								-- 103
+	c-ldmDeleteFA(sap-ldmDelete), 								-- 104
+	c-ldmSubscribeFA(sap-ldmSubscribe), 						-- 105
+	c-ldmUnsubscribeFA(sap-ldmUnsubscribe), 					-- 106
+	c-ldmQueryFA(sap-ldmQuery), 								-- 107
+	c-ldmRevokeAppNotifyFA(sap-ldmRevokeAppNotify),				-- 108
+	c-ldmNotifyFA(sap-ldmNotify), 								-- 109
+	c-ldmRegisterManagementFA(sap-ldmRegisterManagement)		-- 110
+}(0 .. 65535)
+
+FAsapspsdown 					FASAPDOWN	::=
+{
+	ldmRegisterFA | 
+	ldmDeregisterFA
+	, ...
+}
+
+ldmRegisterFA 				FASAPDOWN ::= { &primitiveRef c-ldmRegisterFA, 				&Primitive LDMregisterRequest }
+ldmDeregisterFA 			FASAPDOWN ::= { &primitiveRef c-ldmDeregisterFA, 			&Primitive LDMderegisterRequest }
+
+LDMregisterRequest ::= SEQUENCE
+{
+	itssAppProcess				ITSsapiid,
+	ldmID						LDMid, 
+	priority					UserPriority,
+	permissions					LDMpermissionList,
+	secCredentials				LDMsecurityCredential
+}
+
+LDMderegisterRequest ::= SEQUENCE
+{
+	itssAppProcess				ITSsapiid,
+	ldmID						LDMid 
+}
+UserPriority ::= Int1		-- 0: lowest priority, 255: highest priority : Originally defined in ISO 21218
+
+LDMid ::= INTEGER
+{
+	c-ldmidUnknown(0),
+	c-ldmidDefault(255)
+}(0..255)
+LDMpermissionList					::= SEQUENCE OF LDMpermission
+LDMpermission						::= LDMdataObjectTypeID
+LDMdataObjectTypeID ::= INTEGER
+{
+	-- reserved for CEN/ISO standardized usage (1) - (1023)
+	-- reserved for ETSI standardized usage (1024) - (2047)
+	-- reserved for IEEE/SAE standardized usage (2048) - (3071)
+	-- reserved for further standardized usage (3072) - (8191)
+	-- reserved for registered usage (8192) - (64511)
+	-- reserved for private unregistered usage (64512) - (65535)
+	unknown(0)
+}(0..MAX)
+
+ITSsapiid ::= SEQUENCE
+{
+	itsaid						ITSaid,				-- ITSaid ::= VarLengthNumber
+	itssapid					ITSsapid,			-- ITSsapid ::= INTEGER { apid-unknown(0), apid-default-one(1) }
+	itsscu						ITS-scuId,			-- ITS-scuId ::= INTEGER { unknown(0), hosts(1), routers(2), testSystem(3), testCIunit(4), /* 5 - 15 are reserved, 16 - 65534 are private addresses */ any(65535) }(0..65535)
+	instance					AppInstance			-- AppInstance ::= INTEGER(0..255)
+}
+
+ITSaid ::= VarLengthNumber
+ITSsapid ::= INTEGER { apid-unknown(0), apid-default-one(1) }
+ITS-scuId ::= INTEGER
+{
+	unknown(0),
+	hosts(1),
+	routers(2),
+	testSystem(3),
+	testCIunit(4),
+	
+	-- 5 - 15 are reserved
+	-- 16 - 65534 are private addresses
+	
+	any(65535)
+}(0..65535)
+
+AppInstance ::= INTEGER(0..255)
+
+VarLengthNumber ::= CHOICE
+{
+	content		[0]		INTEGER(0..127), -- one octet length
+	extension	[1]		Ext1
+}
+
+Ext1 ::= CHOICE
+{
+	content		[0]		INTEGER(128..16511), -- two octets length
+	extension	[1]		Ext2
+}
+
+Ext2 ::= CHOICE
+{
+	content		[0]		INTEGER(16512..2113663), -- three octets length
+	extension	[1]		Ext3
+}
+
+Ext3 ::= INTEGER(2113664..270549119, ...) -- four and more octets length
+
+SECCRED ::= CLASS 
+{
+	&ref						Ref-SecCredLDM,
+	&Value
+}
+
+Ref-SecCredLDM ::= INTEGER
+{
+	c-LDMsecCred-Null(0),
+	c-LDMsecCred-AuthID(1)
+}(0..255)
+
+LDMsecurityCredential ::= SEQUENCE
+{
+	refSec 						SECCRED.&ref({LDMsecCredentials}),
+	secCred						SECCRED.&Value({LDMsecCredentials}{@refSec})
+}
+
+LDMsecCredentials SECCRED ::= 
+{ 
+	noSecCred | 
+	authID
+	, ... 
+} 
+
+noSecCred	SECCRED ::= { &ref c-LDMsecCred-Null,	&Value NullType }
+authID		SECCRED ::= { &ref c-LDMsecCred-AuthID,	&Value AuthID }
+
+NullType ::= NULL
+AuthID ::= BIT STRING(SIZE(256))									-- originally defined in ETSI EN 302 895
+
+END

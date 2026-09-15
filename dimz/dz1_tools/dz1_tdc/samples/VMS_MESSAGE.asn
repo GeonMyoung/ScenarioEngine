@@ -1,0 +1,320 @@
+VMS-MESSAGE DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+VmsImageFileInfo ::= SEQUENCE
+{
+	dyms-Filepath				VisibleString,
+	dyms-Filename				VisibleString
+}
+
+VmsFormObject ::= SEQUENCE -- 표출 조각
+{
+	dyms-ObjectHeader SEQUENCE 
+	{
+		dyms-ObjectType				ENUMERATED { image(0), text(1), ... },
+		dyms-ObjectDataSize			INTEGER,												-- ??????
+		dyms-DisplayBlinkStatus		ENUMERATED { deactivated(0), activated(1) },			-- 표출 내용을 점멸
+		dyms-BlinkIntervalTime		REAL (0..3) OPTIONAL,									-- 주길
+		dyms-CoordinatesX		    INTEGER,												-- dyms-objectDataType 표출 좌표
+		dyms-CoordinatesY		    INTEGER
+	},
+	dyms-ObjectDataType	CHOICE
+	{
+		dyms-ImageData	  SEQUENCE
+		{
+			dyms-ImageDataType		ENUMERATED { bmp(0), gif(1), jpg(2), pcx(3), ... },
+			dyms-ImageViewWidth		INTEGER,
+			dyms-ImageViewHight		INTEGER,
+			dyms-ImageInfo			CHOICE
+			{
+				imageData			OCTET STRING,
+				imagePathName		VmsImageFileInfo										-- 센터가 FTP서버역활, FTP서버의 경로/명
+			}			
+		},
+		dyms-Other		UTF8String
+	}
+}
+
+VmsFormEntry ::= SEQUENCE								-- 하나의 폼
+{
+	dyms-FormNumber			INTEGER(1..65535),			-- 표출 순서
+	dyms-DisplayTime		INTEGER(0..65535),			-- 표출 시간
+	dyms-Displaytype		ENUMERATED					-- 등장 방법
+	{
+		staticNormal(0),
+		shiftUp		(1),
+		ssiftDown	(2),
+		shiftLeft	(3),
+		shiftRight	(4),
+		scrollUp	(5),
+		scrollDown	(6),
+		scrollLeft	(7),
+		scrollRight	(8),
+		wipeUp		(9),
+		wipeDown	(10),
+		wipeLeft	(11),
+		wipeRight	(12),
+		curtrainVIn	(13),
+		curtainVOut	(14),
+		curtrainHIn	(15),
+		curtainHOut	(16),
+		traceRight	(17),
+		traceLeft	(18),
+		blindUp		(19),
+		blindDown	(20),
+		blindLeft	(21),
+		blindRight	(22),
+		blinking	(23)
+	},
+	dyms-Object SEQUENCE OF VmsFormObject				-- 화면을 구성하는 조각의 집합
+}
+
+-- 일반폼 or 디폴트 폼 
+VmsDisplayScenario ::= SEQUENCE							-- 화면 표출 시나리오
+{
+	dyms-FormID			INTEGER(0..65535),				-- ID
+	dyms-FormScenario	SEQUENCE OF VmsFormEntry		-- 다수개의 폼
+}
+  
+---------------------------------------------------
+-- 응답 메시지
+---------------------------------------------------
+VmsResultStatus ::=   ENUMERATED {sucess (1), ...}
+
+VmsTimeStamp ::= SEQUENCE
+{
+	hour		INTEGER(0..23),
+	min			INTEGER(0..59)
+}
+
+VmsCurrentStatusMessage ::= SEQUENCE 
+{
+	dyms-ControllerDoorStatus		ENUMERATED { open(0), close(1), unknown(9)},
+	dyms-ControllerFanStatus		ENUMERATED { off(0), on(1), unknown(9)},
+	dyms-ControllerHeaterStatus		ENUMERATED { off(0), on(1), unknown(9)},
+	dyms-ControllerTemperature		INTEGER (-127..127),
+
+	dyms-DisplayDoorStatus			ENUMERATED { open(0), close(1), unknown(9)},
+	dyms-DisplayFanStatus			ENUMERATED { off(0), on(1), unknown(9)},
+	dyms-DisplayHeaterStatus		ENUMERATED { off(0), on(1), unknown(9)},
+	dyms-DisplayPowerStatus			ENUMERATED { off(0), on(1), unknown(9)},
+	dyms-DisplayTemperature			INTEGER (-127..127),
+	dyms-DisplayHumidity			INTEGER (0..100),
+
+	dyms-LocalDisplayFormID			INTEGER (0..65535),
+	dyms-LocalDisplayFormNumber		INTEGER (0..65535),
+
+	dyms-RetryToStatus				ENUMERATED { normalcy(0), reset(1) },
+
+	dyms-PowerStatus				ENUMERATED { normal(0), abnormal(1), unknown(9)},
+	dyms-LedModuleStatus			ENUMERATED { normal(0), abnormal(1), unknown(9)},
+	dyms-CurrentBrightValue			INTEGER (0..100),
+
+	-- 외부환경 정보
+	dyms-OutsideTemprature			INTEGER (-127..127)			OPTIONAL,
+	dyms-OutsideHumidity			INTEGER (0..100)			OPTIONAL,
+	dyms-OtherStatus				INTEGER (0..100)			OPTIONAL, --default : 1
+
+	dyms-LampStatus					ENUMERATED { off(0), on(1), unknown(9)} OPTIONAL,
+	dyms-SpeakerStatus				ENUMERATED { off(0), on(1)}				OPTIONAL,
+
+	dyms-BatteriStatus				INTEGER (0..101)						OPTIONAL
+}
+
+VmsParameterSetMessage ::= CHOICE 
+{
+	dyms-Reset					BOOLEAN,
+	dyms-DispiayPowerControl	ENUMERATED
+	{
+		off				(0),
+		on				(1),
+		automatic		(2)
+	},
+	dyms-DisplayAutoModeSettingValue SEQUENCE
+	{
+		dyms-onTime		VmsTimeStamp,
+		dyms-offTime	VmsTimeStamp
+	},
+
+	dyms-ControlTimeSetting		GeneralizedTime,
+
+	dyms-DefaultFormWaitingTime	INTEGER (1..180),
+
+	dyms-FanControlMode ENUMERATED
+	{
+		off			(0),
+		on			(1),
+		automatic	(2)	
+	},
+	dyms-FanAutoModeSettingValue		INTEGER(-128..127),-- 팬 켜지는 온도 상한값
+	dyms-HeaterControlMode ENUMERATED
+	{
+		off			(0),
+		on			(1),
+		automatic	(2)	
+	},
+	dyms-HeaterAutoModeSettingValue		INTEGER(-128..127), -- 히터 켜지는 온도 하한값
+	dyms-BrightControlModeValue			ENUMERATED {automatic(0), manual(1), daytime(2), night(3)},
+	dyms-BrightManualValue				INTEGER(0..100),
+	dyms-BrightDaytimeModeValue			INTEGER(0..100),
+	dyms-BrightNightModeValue			INTEGER(0..100),
+	dyms-ViewCollorControl		ENUMERATED
+	{
+		red			(1),
+		green		(2),
+		blue		(3),
+		redGreen	(4),
+		redBlue		(5),
+		greenBlue	(6),
+		white		(7),
+		black		(8)
+	},
+	dyms-ModulePowerOffTemprature	INTEGER (-127..127),	-- 전원모듈Off 온도
+	dyms-ModuleErrorFindSetting		INTEGER (0..100),		-- pixel불량수에 따른 모듈 불량 판별 백분율
+	dyms-OutsideLampControl			ENUMERATED { off(0), on(1) }, 
+	dyms-SpeakerControl				ENUMERATED { off(0), on(1) }
+}
+
+-- 5
+VmsParameterGetMessage ::= SEQUENCE 
+{
+	dyms-PowerControlMode ENUMERATED
+	{
+		on			(1),
+		off			(2),
+		automatic	(3),
+		unknown		(4)
+	},
+	dyms-DisplayAutoModeSettingValue SEQUENCE
+	{
+		dyms-onTime		VmsTimeStamp,
+		dyms-offTime	VmsTimeStamp
+	},
+	dyms-FanControlModeValue			ENUMERATED {off(0), on(1), automatic(2), unknown(9)},
+	dyms-FanAutoModeSettingValue		INTEGER(0..100),
+
+	dyms-HeaterCotrolModeValue			ENUMERATED {off(0), on(1), automatic(2), unknown(9)},
+	dyms-HeaterAutoModeSettingValue		INTEGER(0..100),
+
+	dyms-BrightControlModeValue			ENUMERATED {automatic(0), manual(1), daytime(2), night(3)},
+	dyms-BrightManualValue				INTEGER(0..100),
+	dyms-BrightDaytimeModeValue			INTEGER(0..100),
+	dyms-BrightNightModeValue			INTEGER(0..100),
+
+	dyms-DefaultFormWaitingTimeValue	INTEGER (1..180),
+
+	dyms-ModulePowerOffTemprature		INTEGER (-127..127),	-- 전원모듈Off 온도
+
+	dyms-ModuleErrorPixelValue			INTEGER (0..100),
+
+	dyms-OutsideLampControl				ENUMERATED { off(0), on(1) } OPTIONAL,
+	dyms-SpeakerControl					ENUMERATED { off(0), on(1) } OPTIONAL,
+
+	dyms-ControlProgramVersion			UTF8String,             -- version info를 UTF8String형태로 출력
+	
+	dyms-ControllerTime					GeneralizedTime
+}
+
+-- VMS 표출부 전원 모듈
+Dyms-PowerStatus ::= ENUMERATED { off(0), on(1), unknown(9)}
+VMSPowerStatusMessage ::= SEQUENCE OF Dyms-PowerStatus
+
+-- LED 모듈 상태
+Dyms-DisplayModuleStatus ::= ENUMERATED { off(0), on(1), unknown(9)}
+VMSDisplayModuleStatusMessage ::= SEQUENCE 
+{
+	dyms-VmsDisplayModuleXCount	INTEGER(0..65535),
+	dyms-VmsDisplayModuleYCount	INTEGER(0..65535), -- ?
+	dyms-VmsDisplayModuleStatus	SEQUENCE OF Dyms-DisplayModuleStatus,
+	dyms-ModuleErrorPixelCount	INTEGER (0..255) --Unknown : 255
+}
+
+-- 표출면 Capture
+VMSDisplayStillImageMessage ::= SEQUENCE 
+{
+	dyms-FormID				INTEGER(0..65535),
+	dyms-FormNumber			INTEGER(0..65535),
+	dyms-ImageType			ENUMERATED { bmp(0), gif(1), jpg(2), pcx(3), png(4), ... },
+	dyms-DataSize			INTEGER,
+	dyms-CreateTime			GeneralizedTime,
+	dyms-LocalTotalPhase	INTEGER (0..255) OPTIONAL,
+	dyms-ImageData			OCTET STRING
+}
+
+VmdColorLedPixel ::= BIT STRING
+{
+	error0(0),
+	green0(1),
+	red0(2),
+	blue0(3),
+	error1(4),
+	green1(5),
+	red2(6),
+	blue3(7)
+}
+
+VMSLedPixelStatusMessage ::= SEQUENCE  -- 1024 x 1024
+{	
+	dyms-PixelWidth			INTEGER(1..512),						-- half of width
+	dyms-PixelHeight		INTEGER(1..1024),
+	dyms-PixelStatus		SEQUENCE OF VmdColorLedPixel			-- 2 * n pixel
+} 
+
+VMSLedPixelImageMessage ::= SEQUENCE 
+{
+	dyms-ImageType			ENUMERATED { bmp(0), gif(1), jpg(2), pcx(3), png(4), ... },
+	dyms-DataSize			INTEGER,
+	dyms-CreateTime			GeneralizedTime,
+	dyms-ImageData			OCTET STRING
+}
+
+-- ???
+Dyms-VMSLEDModuleStatus ::= SEQUENCE 
+{
+	dyms-ModuleXNumber				INTEGER (1..65535),
+	dyms-ModuleYNumber				INTEGER (1..65535),
+	dyms-LedDOTErrorStatus			ENUMERATED { normal(0), abnormal(1), unknown(9)},
+	dyms-LedDriverErrorStatus		ENUMERATED { normal(0), abnormal(1), unknown(9)},
+	dyms-LedInoutPowerErrorStatus	ENUMERATED { normal(0), abnormal(1), unknown(9)},
+	dyms-LedDuplicatedStatus		ENUMERATED { normal(0), duplicated(1), unknown(9)},
+	dyms-StillImageErrorStatus		ENUMERATED { normal(0), abnormal(1), unknown(9)}
+}
+VMSLedErrorTypeMessage ::= SEQUENCE OF Dyms-VMSLEDModuleStatus
+
+--VMSLocalFormUploadMessage ::= SEQUENCE 
+--{
+--	dyms-FormID				INTEGER(1..65535),
+--	dyms-FormScenario		SEQUENCE OF VmsFormEntry
+--}
+
+VMSFileDownloadMessage ::= SEQUENCE 
+{
+	dyms-DownloadType		ENUMERATED { movie(1), software(2), ... },
+	dyms-DstPath			ENUMERATED { save(1), save1(2), save2(3), ...},
+	dyms-SrcPath			UTF8String,
+	dyms-FileName			UTF8String,
+	dyms-FileSize			INTEGER(0..4294967295)
+}
+
+VMSFtpFileProcessMessage ::= SEQUENCE 
+{
+	dyms-ControlCode		ENUMERATED { download(0), upload (1)},
+	dyms-VmsPath			ENUMERATED { save(1), save1(2), save2(3), ...},
+	dyms-FtpPath			UTF8String,
+	dyms-FileName			UTF8String
+}
+
+VmsSystemVersionInformationMessage ::= CHOICE
+{
+	dyms-VersionValue SEQUENCE
+	{
+		dyms-versionMajor			INTEGER,
+		dyms-versionMinor			INTEGER,
+		dyms-versionModify			INTEGER OPTIONAL,
+		dyms-versionBuild			INTEGER OPTIONAL,
+		dyms-releaseDate			GeneralizedTime OPTIONAL
+	},
+	dyms-VersionDateTime			GeneralizedTime
+}
+
+
+END

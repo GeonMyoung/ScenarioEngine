@@ -1,0 +1,21 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef struct Dz1ParserUtilEnvEntry
+	{
+		uint32					 parserID;		// is key
+		void					*env;
+	} Dz1ParserUtilEnvEntry;					// with api dump, compare, clone
+	typedef unique table Dz1ParserUtilEnvList(find, extract, count) [Dz1ParserUtilEnvEntry];
+
+	typedef struct Dz1ParserIPv4Env
+	{
+		uint32					 dst;
+	} Dz1ParserIPv4Env;
+	
+	typedef struct Dz1ParserTcpListenAddrEnv
+	{
+		Dz1SockAddr				 addr;			// is notarg
+	} Dz1ParserTcpListenAddrEnv;
+}

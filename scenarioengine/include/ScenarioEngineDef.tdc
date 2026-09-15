@@ -1,0 +1,11 @@
+message set definition
+{
+	include libdz1_support;
+	typedef func void ScenarioEngineException(void *exceptionArg, Dz1Error *reason);
+	-- ScenarioEngineDef structure declared for Linker warning
+	typedef struct ScenarioEngineDef
+	{
+		int32		dummy;
+	} ScenarioEngineDef;
+	-- if you declare other structure on this file, then delete ScenarioEngineDef structure
+}

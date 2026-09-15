@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{334388B9-6BC3-460D-B68E-58AC9E7E4AAB}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{EAA4FEA2-0CB7-4006-8C33-AAA57BD9B034}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{127C8FDE-8F41-47DC-8B89-BE8F4E34D552}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\eam">
+      <UniqueIdentifier>{9075566d-ac3c-4eb5-a648-af62e63868ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\eam">
+      <UniqueIdentifier>{2b7870da-3082-47a1-b4a6-acfa98ef8133}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\TechnicalRegulation1Def.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TechnicalRegulation1MsgStructAPI.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TechnicalRegulation1DefJson.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TechnicalRegulation1EAM.c">
+      <Filter>소스 파일\eam</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TechnicalRegulation1EamDz1.c">
+      <Filter>소스 파일\eam</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\TechnicalRegulation1EamDz1.h">
+      <Filter>헤더 파일\eam</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\TechnicalRegulation1EAM.h">
+      <Filter>헤더 파일\eam</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TechnicalRegulation1Util.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\TechnicalRegulation1MsgStructAPI.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\TechnicalRegulation1Def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\TechnicalRegulation1DefJson.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\TechnicalRegulation1Util.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\TechnicalRegulation1Def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\TechnicalRegulation1Def.tjsonc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

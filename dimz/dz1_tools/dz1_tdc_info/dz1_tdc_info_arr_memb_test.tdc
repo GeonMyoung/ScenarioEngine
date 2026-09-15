@@ -1,0 +1,152 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+
+	typedef struct TestDataType
+	{
+		int32				 id;					// is key
+	} TestDataType;									// with api dumpX, fdumpX, compare, clone
+
+	typedef struct ArrayMemberData0
+	{
+		uint32				 int_arr1[16];
+	} ArrayMemberData0;								// with api dump, fdump, clone
+
+	typedef struct ArrayMemberData1
+	{
+		uint32				 int_arr1[int_cnt1];
+		uint32				 int_cnt1;
+
+		uint32				*int_arr2[int_cnt2];
+		uint32				 int_cnt2;
+
+		uint32				*int_arr3[int_cnt3, ref];
+		uint32				 int_cnt3;
+
+		uint32				*int_arr4[int_cnt4];			// is ref
+		uint32				 int_cnt4;
+
+		uint32				*int_arr5[int_cnt5, ref];		// is ref
+		uint32				 int_cnt5;
+
+
+		TestDataType		 data_arr1[data_cnt1];
+		uint32				 data_cnt1;
+
+		TestDataType		*data_arr2[data_cnt2];
+		uint32				 data_cnt2;
+
+		TestDataType		*data_arr3[data_cnt3, ref];
+		uint32				 data_cnt3;
+
+		TestDataType		*data_arr4[data_cnt4];			// is ref
+		uint32				 data_cnt4;
+
+		TestDataType		*data_arr5[data_cnt5, ref];		// is ref
+		uint32				 data_cnt5;
+
+
+		Dz1Asn1UTF8Str		 utf8_arr1[utf8_cnt1];
+		uint32				 utf8_cnt1;
+
+		Dz1Asn1UTF8Str		*utf8_arr2[utf8_cnt2];
+		uint32				 utf8_cnt2;
+
+		Dz1Asn1UTF8Str		*utf8_arr3[utf8_cnt3, ref];
+		uint32				 utf8_cnt3;
+
+		Dz1Asn1UTF8Str		*utf8_arr4[utf8_cnt4];			// is ref
+		uint32				 utf8_cnt4;
+
+		Dz1Asn1UTF8Str		*utf8_arr5[utf8_cnt5, ref];		// is ref
+		uint32				 utf8_cnt5;
+	} ArrayMemberData1;										// with api dumpX, fdumpX, clone
+
+	typedef struct ArrayMemberData2
+	{
+		uint32				 int_arr1[16];
+		uint32				*int_arr2[16];
+		uint32				*int_arr3[16, ref];
+		uint32				*int_arr4[16];					// is ref
+		uint32				*int_arr5[16, ref];				// is ref
+
+		TestDataType		 data_arr1[16];
+		TestDataType		*data_arr2[16];
+		TestDataType		*data_arr3[16, ref];
+		TestDataType		*data_arr4[16];					// is ref
+		TestDataType		*data_arr5[16, ref];			// is ref
+
+		Dz1Asn1UTF8Str		 u8_arr1[16];
+		Dz1Asn1UTF8Str		*u8_arr2[16];
+		Dz1Asn1UTF8Str		*u8_arr3[16, ref];
+		Dz1Asn1UTF8Str		*u8_arr4[16];					// is ref
+		Dz1Asn1UTF8Str		*u8_arr5[16, ref];				// is ref
+	} ArrayMemberData2;										// with api dumpX, fdumpX, clone
+
+	typedef struct ArrayMemberData3
+	{
+		uint32				 int_arr1["$$ == 0"];
+		uint32				*int_arr2["$$ == NULL"];
+		uint32				*int_arr3["$$ == NULL", ref];
+		uint32				*int_arr4["$$ == NULL"];		// is ref
+		uint32				*int_arr5["$$ == NULL", ref];	// is ref
+
+		TestDataType		 data_arr1["$$->id == 0"];
+		TestDataType		*data_arr2["$$ == NULL"];
+		TestDataType		*data_arr3["$$ == NULL", ref];
+		TestDataType		*data_arr4["$$ == NULL"];		// is ref
+		TestDataType		*data_arr5["$$ == NULL", ref];	// is ref
+
+		Dz1Asn1UTF8Str		 u8_arr1["$$->data == NULL && $$->size == 0"];
+		Dz1Asn1UTF8Str		*u8_arr2["$$ == NULL"];
+		Dz1Asn1UTF8Str		*u8_arr3["$$ == NULL", ref];
+		Dz1Asn1UTF8Str		*u8_arr4["$$ == NULL"];			// is ref
+		Dz1Asn1UTF8Str		*u8_arr5["$$ == NULL", ref];	// is ref
+	} ArrayMemberData3;										// with api dumpX, fdumpX, clone
+
+	typedef union ArrayMemberData4
+	{
+		uint32				 int_arr1[16, ref];
+		uint32				 int_arr2[16];					// is ref
+
+		uint32				*int_arr3[16];
+		uint32				*int_arr4[16];					// is ref
+
+		uint32				*int_arr5[16, ref];
+		uint32				*int_arr6[16, ref];				// is ref
+
+		TestDataType		 data_arr1[16];
+		TestDataType		*data_arr2[16];
+		TestDataType		*data_arr3[16, ref];
+		TestDataType		*data_arr4[16];					// is ref
+		TestDataType		*data_arr5[16, ref];			// is ref
+
+		Dz1Asn1UTF8Str		 u8_arr1[16];
+		Dz1Asn1UTF8Str		*u8_arr2[16];
+		Dz1Asn1UTF8Str		*u8_arr3[16, ref];
+		Dz1Asn1UTF8Str		*u8_arr4[16];					// is ref
+		Dz1Asn1UTF8Str		*u8_arr5[16, ref];				// is ref
+	} ArrayMemberData4;										// with api dumpX, fdumpX, clone
+
+	typedef union ArrayMemberData5
+	{
+		uint32				 int_arr1["$$ == 0"];
+		uint32				*int_arr2["$$ == NULL"];
+		uint32				*int_arr3["$$ == NULL", ref];
+		uint32				*int_arr4["$$ == NULL"];		// is ref
+		uint32				*int_arr5["$$ == NULL", ref];	// is ref
+
+		TestDataType		 data_arr1["$$->id == 0"];
+		TestDataType		*data_arr2["$$ == NULL"];
+		TestDataType		*data_arr3["$$ == NULL", ref];
+		TestDataType		*data_arr4["$$ == NULL"];		// is ref
+		TestDataType		*data_arr5["$$ == NULL", ref];	// is ref
+
+		Dz1Asn1UTF8Str		 u8_arr1["$$->data == NULL && $$->size == 0"];
+		Dz1Asn1UTF8Str		*u8_arr2["$$ == NULL"];
+		Dz1Asn1UTF8Str		*u8_arr3["$$ == NULL", ref];
+		Dz1Asn1UTF8Str		*u8_arr4["$$ == NULL"];			// is ref
+		Dz1Asn1UTF8Str		*u8_arr5["$$ == NULL", ref];	// is ref
+	} ArrayMemberData5;										// with api dumpX, fdumpX, clone
+}

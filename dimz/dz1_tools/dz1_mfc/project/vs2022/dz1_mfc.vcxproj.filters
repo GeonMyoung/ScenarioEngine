@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Control">
+      <UniqueIdentifier>{cd13bac1-00d2-4390-829d-9060c5013038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Data">
+      <UniqueIdentifier>{6e80d944-0e02-4239-8294-2faeff9c7eb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\File">
+      <UniqueIdentifier>{58108c99-d948-4567-9e60-14b3fd6a07a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Font">
+      <UniqueIdentifier>{b601a5dc-fddd-4c8f-933f-27b66917d6b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\dz1_mfc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcFileSelectDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcGdiUtil.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcHtmlUtil.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcKeyboard.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcStringUtil.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1WinReg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcListCtrlLanManPath.cpp">
+      <Filter>소스 파일\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcListCtrlTemplate.cpp">
+      <Filter>소스 파일\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcTreeCtrlFolder.cpp">
+      <Filter>소스 파일\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ListCtrlStyled.cpp">
+      <Filter>소스 파일\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1DirCatalogUtil.c">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcDef.c">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcDefLocal.c">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcDefUtil.c">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcFileUtil.c">
+      <Filter>소스 파일\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcFileUtilDef.c">
+      <Filter>소스 파일\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcFont.cpp">
+      <Filter>소스 파일\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcFontDef.c">
+      <Filter>소스 파일\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1MfcTreeCtrl.cpp">
+      <Filter>소스 파일\Control</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Dz1MfcFileSelectDlg.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1MfcGdiUtil.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1MfcHtmlUtil.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1WinReg.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1DirCatalogUtil.h">
+      <Filter>소스 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1MfcDefLocal.h">
+      <Filter>소스 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1MfcDefUtil.h">
+      <Filter>소스 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_mfc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1DirCatalogUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcComboBoxTemplate.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcDefUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcFileSelectDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcFileUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcFileUtilDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcFontDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcGdiUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcHtmlUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcKeyboard.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcListCtrlLanManPath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcListCtrlTemplate.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcStringUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcTreeCtrlFolder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1WinReg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ListCtrlStyled.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1MfcTreeCtrl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\src\Dz1MfcDefLocal.tdc">
+      <Filter>소스 파일\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\Dz1MfcDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\Dz1MfcFileUtilDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\Dz1MfcFontDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

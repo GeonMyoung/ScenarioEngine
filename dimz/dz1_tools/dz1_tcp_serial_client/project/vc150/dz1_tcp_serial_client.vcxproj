@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BB3C6078-791F-49F6-9F37-CEC51B589B8D}</ProjectGuid>
+    <RootNamespace>Dz1TcpSerialClient</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <TargetName>Dz1TcpSerialClient</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <TargetName>Dz1TcpSerialClient</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\dz1_tcp_serial_msg\include;..\..\..\..\dz1\include;..\..\..\..\..\codeconv\include;..\..\..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)Dz1TcpSerialClient.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\dz1_tcp_serial_msg\include;..\..\..\..\dz1\include;..\..\..\..\..\codeconv\include;..\..\..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)Dz1TcpSerialClient.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Dz1TcpSerialClient.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClientArg.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClientDef.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClientEnv.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClientEnvUtil.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClientMsgs.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClientTimer.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClientTimerUtil.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClient_close.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClient_get.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClient_open.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClient_recv.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClient_set.c" />
+    <ClCompile Include="..\..\src\Dz1TcpSerialClient_write.c" />
+    <ClCompile Include="..\..\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\Dz1TcpSerialClient.h" />
+    <ClInclude Include="..\..\include\Dz1TcpSerialClientDef.h" />
+    <ClInclude Include="..\..\src\Dz1TcpSerialClient.h" />
+    <ClInclude Include="..\..\src\Dz1TcpSerialClientArg.h" />
+    <ClInclude Include="..\..\src\Dz1TcpSerialClientEnv.h" />
+    <ClInclude Include="..\..\src\Dz1TcpSerialClientEnvUtil.h" />
+    <ClInclude Include="..\..\src\Dz1TcpSerialClientMsg.h" />
+    <ClInclude Include="..\..\src\Dz1TcpSerialClientMsgs.h" />
+    <ClInclude Include="..\..\src\Dz1TcpSerialClientTimer.h" />
+    <ClInclude Include="..\..\src\Dz1TcpSerialClientTimerUtil.h" />
+    <ClInclude Include="..\..\stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\Dz1TcpSerialClientDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialClientArg.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\src%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\src%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialClientEnv.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\src%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\src%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialClientMsgs.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\src%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\src%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialClientTimer.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\src%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include%3b..\..\src%3b..\..\..\dz1_tcp_serial_msg\include%3b..\..\..\..\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\dz1_tcp_serial_msg\project\vc150\dz1_tcp_serial_msg.vcxproj">
+      <Project>{c1e5c871-8b72-4458-90fe-6d3c8da05802}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\dz1_tdc\project\vc150\dz1_tdc.vcxproj">
+      <Project>{555ae26c-e7e0-45b7-a641-a8e554786f8d}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

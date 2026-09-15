@@ -1,0 +1,15 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef struct Dz1TcpCallbackEcho
+	{
+		uint32						 echoID;
+		Dz1TimeVal					*stamp;
+	} Dz1TcpCallbackEcho;				// with api dump, clone
+	
+	typedef union Dz1TcpCallbackMsg
+	{
+		Dz1TcpCallbackEcho			*echo;
+	} Dz1TcpCallbackMsg;				// with api dump, clone
+}

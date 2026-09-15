@@ -1,0 +1,9 @@
+message set definition
+{
+	include GitsnDsrcEmulatorDef;
+	typedef struct GitsnDsrcEmulatorArg
+	{
+		GitsnDsrcEmulatorException exceptionProc;
+		void *exceptionArg;
+	} GitsnDsrcEmulatorArg;
+}

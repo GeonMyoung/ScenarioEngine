@@ -1,0 +1,48 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef enum Dz1SerialParity
+	{
+		Dz1SerialParity_none,
+		Dz1SerialParity_even,
+		Dz1SerialParity_odd
+	} Dz1SerialParity;							// with api dumpX
+
+	typedef enum Dz1SerialStopBit
+	{
+		Dz1SerialStopBit_one,
+		Dz1SerialStopBit_oneHalf,
+		Dz1SerialStopBit_two
+	} Dz1SerialStopBit;							// with api dumpX
+
+	typedef enum Dz1SerialRTSCTS
+	{
+		Dz1SerialRTSCTS_manual,
+		Dz1SerialRTSCTS_on
+	} Dz1SerialRTSCTS;							// with api dumpX
+
+	typedef enum Dz1SerialDSRDTR
+	{
+		Dz1SerialDSRDTR_manual,
+		Dz1SerialDSRDTR_on
+	} Dz1SerialDSRDTR;							// with api dumpX
+
+	typedef enum Dz1SerialXONXOFF
+	{
+		Dz1SerialXONXOFF_off,
+		Dz1SerialXONXOFF_on
+	} Dz1SerialXONXOFF;							// with api dumpX
+
+	typedef enum Dz1SerialPinState
+	{
+		Dz1SerialPinState_low,
+		Dz1SerialPinState_high
+	} Dz1SerialPinState;						// with api dumpX
+
+	typedef func void Dz1SerialByteConsume(void *ptr, uint8 *data, size_t size);
+	typedef func void Dz1SerialPinChanged(void *ptr, Dz1SerialPinState state);
+	typedef func void Dz1SerialException(void *ptr, int32 portNum);
+
+	typedef void Dz1Serial;
+}

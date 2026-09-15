@@ -1,0 +1,8 @@
+message set definition
+{
+	include Itsk00126v1EmulatorDef;
+	typedef struct Itsk00126V1EmulatorMsgDefault
+	{
+		uint32 *dummy;
+	} Itsk00126V1EmulatorMsgDefault;					// with api dump
+}

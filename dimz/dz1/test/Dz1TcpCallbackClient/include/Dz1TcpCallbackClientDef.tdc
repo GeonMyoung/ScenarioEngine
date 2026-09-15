@@ -1,0 +1,10 @@
+message set definition
+{
+	include libdz1_support;
+	typedef func void Dz1TcpCallbackClientException(void *exceptionArg, Dz1Error *reason);
+	
+	typedef struct Dz1TcpCallbackClientDef
+	{
+		uint32						dumb;
+	} Dz1TcpCallbackClientDef;
+}

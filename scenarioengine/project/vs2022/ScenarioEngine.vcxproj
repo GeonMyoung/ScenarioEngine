@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\dimz\dz1_tools\dz1_json\project\vs2022\dz1_json.vcxproj">
+      <Project>{0B4A6ABE-24DD-42BE-B6F8-1E7331896B0B}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\dimz\dz1_tools\dz1_sock_util\project\vs2022\dz1_sock_util.vcxproj">
+      <Project>{037962C4-CC05-4373-98D3-17770D8C0F37}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\dimz\dz1_tools\dz1_socket_ssl\project\vs2022\dz1_socket_ssl.vcxproj">
+      <Project>{28BA6900-214E-4A6E-B56D-3FA2E5BDD223}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\dimz\dz1_tools\dz1_web_socket\project\vs2022\dz1_web_socket.vcxproj">
+      <Project>{2AE89C61-ACDE-484E-99F8-72EB64C8DB1A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\GitsnDSRCMsgTestScenario\project\vs2022\GitsnDSRCMsgTestScenario.vcxproj">
+      <Project>{a3db9ca5-cc79-427b-baeb-5ab20da2e80b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\iso14827testhelper\project\vs2022\Iso14827TestHelper.vcxproj">
+      <Project>{ea847d9c-5c3d-4fe4-934f-493df1ded869}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Itsk00126v1TestScenario\project\vs2022\Itsk00126v1TestScenario.vcxproj">
+      <Project>{702dca59-6f3d-45ac-b2ff-4d9e2e95a4e5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Itsk00126v2TestScenario\project\vs2022\Itsk00126v2TestScenario.vcxproj">
+      <Project>{2cf6787f-0cba-424b-aa0a-2735410e8237}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ITSK00144_2TestScenario\project\vs2022\ITSK00144_2TestScenario.vcxproj">
+      <Project>{a03db864-b2b3-4ca2-b9c7-a45672937245}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ScenarioEngineWebSockMsg\project\vs2022\ScenarioEngineWebSockMsg.vcxproj">
+      <Project>{F8F89D98-4BD7-430F-9330-F8CEF41090BE}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\trafficsignalcontrollertestscenario\project\vs2022\TrafficSignalControllerTestScenario.vcxproj">
+      <Project>{0602f2cf-3bea-4c89-bde2-fade1cbdce74}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{AF4E4EC6-80F7-40E9-880F-CD51F6554089}</ProjectGuid>
+    <RootNamespace>ScenarioEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\GitsnAsnUtil\include;..\..\..\GitsnDSRCMsgTestScenario\include;..\..\..\gitsntestdataprotocol\include;..\..\..\ITSK00100_3Util\include;..\..\..\technicalregulation1\include;..\..\..\technicalregulation2\include;..\..\..\Itsk00126v1TestMsg\include;..\..\..\Itsk00126v1TestScenario\include;..\..\..\Itsk00126v2TestMsg\include;..\..\..\Itsk00126v2TestScenario\include;..\..\..\ITSK00144_2TestMsg\include;..\..\..\ITSK00144_2TestScenario\include;..\..\..\Iso14827NewAsn;..\..\..\Iso14827dz1\include;..\..\..\ItsIso14827\include;..\..\..\iso14827testhelper\include;..\..\..\TrafficSignalControllerTestMsg\include;..\..\..\TrafficSignalControllerTestScenario\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\$(Platform)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\GitsnAsnUtil\include;..\..\..\GitsnDSRCMsgTestScenario\include;..\..\..\gitsntestdataprotocol\include;..\..\..\ITSK00100_3Util\include;..\..\..\technicalregulation1\include;..\..\..\technicalregulation2\include;..\..\..\Itsk00126v1TestMsg\include;..\..\..\Itsk00126v1TestScenario\include;..\..\..\Itsk00126v2TestMsg\include;..\..\..\Itsk00126v2TestScenario\include;..\..\..\ITSK00144_2TestMsg\include;..\..\..\ITSK00144_2TestScenario\include;..\..\..\Iso14827NewAsn;..\..\..\Iso14827dz1\include;..\..\..\ItsIso14827\include;..\..\..\iso14827testhelper\include;..\..\..\TrafficSignalControllerTestMsg\include;..\..\..\TrafficSignalControllerTestScenario\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\$(Platform)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\ScenarioEngine.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineDef.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineArg.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineEnv.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineEnvUtil.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineMsgIPC.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineMsgWebSock.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineTimer.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineTimerUtil.c" />
+    <ClCompile Include="..\..\src\ScenarioEngineMsgs.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\ScenarioEngine.h" />
+    <ClInclude Include="..\..\include\ScenarioEngineDef.h" />
+    <ClInclude Include="..\..\src\ScenarioEngineArg.h" />
+    <ClInclude Include="..\..\src\ScenarioEngineEnv.h" />
+    <ClInclude Include="..\..\src\ScenarioEngineEnvUtil.h" />
+    <ClInclude Include="..\..\src\ScenarioEngineTimer.h" />
+    <ClInclude Include="..\..\src\ScenarioEngineTimerUtil.h" />
+    <ClInclude Include="..\..\src\ScenarioEngineMsg.h" />
+    <ClInclude Include="..\..\src\ScenarioEngineMsgs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\ScenarioEngineDef.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\include\%(Filename).h;..\..\src\%(Filename).c;..\..\include\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\include\%(Filename).h;..\..\src\%(Filename).c;..\..\include\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\include\%(Filename).h;..\..\src\%(Filename).c;..\..\include\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\include\%(Filename).h;..\..\src\%(Filename).c;..\..\include\%(Filename).tdo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ScenarioEngineArg.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ScenarioEngineEnv.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ScenarioEngineTimer.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ScenarioEngineMsgs.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\src;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).h;..\..\src\%(Filename).c;..\..\src\%(Filename).tdo</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,12 @@
+message set definition
+{
+	include libdz1_support;
+	include Dz1TcpSerialMsgDef;
+	typedef func void Dz1TcpSerialClientException(void *exceptionArg, Dz1Error *reason);
+	-- Dz1TcpSerialClient structure declared for Linker warning
+	typedef struct Dz1TcpSerialClientDef
+	{
+		int32		dummy;
+	} Dz1TcpSerialClientDef;
+	-- if you declare other structure on this file, then delete Dz1TcpSerialClient structure
+}

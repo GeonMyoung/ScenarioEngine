@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="struct">
+      <UniqueIdentifier>{8a25cab6-c807-4ba3-aff9-cc1497fb0230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dialog">
+      <UniqueIdentifier>{b6c7175d-1ba9-4751-844a-138cfdd31916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dialog\about_dialog">
+      <UniqueIdentifier>{bbc5488d-7ccb-401c-8c83-48825fa319db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dialog\main_dialog">
+      <UniqueIdentifier>{05bfff43-efff-423a-b287-80403d398f58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dialog\todec">
+      <UniqueIdentifier>{55a1ef20-01e1-4ee0-b9b0-e279789c16cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dialog\tdo_column_dialog">
+      <UniqueIdentifier>{0b42e567-f47c-4ff1-830a-8dec2202bb3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dialog\tdo_dialog">
+      <UniqueIdentifier>{190e6588-d8a3-4fdc-92bd-bbeb88ddbc27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dialog\tdo_list_dialog">
+      <UniqueIdentifier>{fd66c9b3-01b2-4d1c-bd39-8c470062cc3f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\dz1_code_gen_gui.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenStrDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTextPadDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ListCtrlDz1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_code_gen_struct.c">
+      <Filter>struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_code_gen_struct_util.cpp">
+      <Filter>struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_code_gen_gui_about_dlg.cpp">
+      <Filter>dialog\about_dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_code_gen_gui_dlg.cpp">
+      <Filter>dialog\main_dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecArray.c">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecConfig2Dlg.cpp">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecConfigDlg.cpp">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecD.c">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecDef.c">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecDlg.cpp">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecHelper.cpp">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecPublish.c">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecPublishDlg.cpp">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecStream.c">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecStruct.c">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecUnion.c">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTodecUtil.c">
+      <Filter>dialog\todec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1CodeGenTdoColumnDlg.cpp">
+      <Filter>dialog\tdo_column_dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_code_gen_tdo_dlg.cpp">
+      <Filter>dialog\tdo_dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ListCtrlTdoObject.cpp">
+      <Filter>dialog\tdo_dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ListCtrlTdoUnknown.cpp">
+      <Filter>dialog\tdo_dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_code_gen_tdo_list_dlg.cpp">
+      <Filter>dialog\tdo_list_dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ListCtrlColumnsList.cpp">
+      <Filter>dialog\tdo_list_dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\dz1_code_gen_gui.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenStrDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTextPadDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ListCtrlDz1.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_code_gen_struct.h">
+      <Filter>struct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_code_gen_struct_util.h">
+      <Filter>struct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_code_gen_gui_about_dlg.h">
+      <Filter>dialog\about_dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_code_gen_gui_dlg.h">
+      <Filter>dialog\main_dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecArray.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecConfig2Dlg.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecConfigDlg.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecDef.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecDlg.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecHelper.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecPublish.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecPublishDlg.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecStream.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecStruct.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecUnion.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTodecUtil.h">
+      <Filter>dialog\todec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1CodeGenTdoColumnDlg.h">
+      <Filter>dialog\tdo_column_dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_code_gen_tdo_dlg.h">
+      <Filter>dialog\tdo_dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ListCtrlTdoObject.h">
+      <Filter>dialog\tdo_dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ListCtrlTdoUnknown.h">
+      <Filter>dialog\tdo_dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_code_gen_tdo_list_dlg.h">
+      <Filter>dialog\tdo_list_dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ListCtrlColumnsList.h">
+      <Filter>dialog\tdo_list_dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\res\dz1_code_gen_gui.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\dz1_code_gen_gui.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\res\dz1_code_gen_gui.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\dz1_code_gen_struct.tdc">
+      <Filter>struct</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Dz1CodeGenTodecDef.tdc">
+      <Filter>dialog\todec</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

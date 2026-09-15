@@ -1,0 +1,24 @@
+message set definition
+{
+	include dz1_tdq_tbl_def;
+	include dz1_tdq_qry_def;
+
+	typedef native Dz1TdqDbConnArg from dz1_tdq_types;		// with api dump, clone
+	typedef native Dz1TdqDbIface from dz1_tdq_types;		// with api dump
+	
+	------------------------------------------------------------------------------------
+	-- Database Scheme
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqDbScheme
+	{
+		Dz1TdqDbConnArg				*arg;
+		Dz1TdqDbIface				*dbh;					// is nodump, notarg
+		
+		Dz1TdqTblShapeList			*shapes;				// is notarg
+		
+		Dz1TdqTblInstanceList		*tables;				// is notarg
+		Dz1TdqTblInstanceSeq		*tblseq;				// is notarg
+		
+		Dz1TdqQueryList				*queries;				// is notarg
+	} Dz1TdqDbScheme;										// with api usernew, dump
+}

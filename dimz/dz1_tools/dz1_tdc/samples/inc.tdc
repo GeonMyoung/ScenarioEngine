@@ -1,0 +1,6 @@
+message set definition
+{
+--	typedef reference SomeUnionType from sample;
+
+	typedef reference union RefUnionType from sample;	// with api dump, fdump, clone
+}

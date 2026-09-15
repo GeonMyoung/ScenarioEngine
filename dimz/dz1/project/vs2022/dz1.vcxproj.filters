@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{eab9731b-cfe0-4f16-bfb6-bb232f054a0f}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\kernel">
+      <UniqueIdentifier>{f4b963b9-01dc-4d80-9302-27e284b5db4e}</UniqueIdentifier>
+      <Extensions>*.c</Extensions>
+    </Filter>
+    <Filter Include="Source Files\struct">
+      <UniqueIdentifier>{3308616e-89f2-4cfd-8800-885f5ad9abc2}</UniqueIdentifier>
+      <Extensions>*.c</Extensions>
+    </Filter>
+    <Filter Include="Source Files\task">
+      <UniqueIdentifier>{2b88eff5-0f36-4c26-8000-b37c40822869}</UniqueIdentifier>
+      <Extensions>*.c</Extensions>
+    </Filter>
+    <Filter Include="Source Files\termio">
+      <UniqueIdentifier>{004289a2-4f65-4d8b-8987-178ae057bfb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{f5c14870-1cd9-400d-89a2-8b715b1a3f34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\socket">
+      <UniqueIdentifier>{f3f3b172-d3d4-40d5-a845-8fbd8a32bba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parser">
+      <UniqueIdentifier>{bdb0f803-ab7e-4f26-bd24-48a99e726806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\shell">
+      <UniqueIdentifier>{b94fdf96-213f-4559-9158-c80c423f403c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fsm">
+      <UniqueIdentifier>{475e7325-8ef0-4564-b8ae-11d1b80d0fd2}</UniqueIdentifier>
+      <Extensions>C source file (*.c)|*.c</Extensions>
+    </Filter>
+    <Filter Include="Source Files\asn1">
+      <UniqueIdentifier>{ec653fe8-fa5f-42ad-bf2e-f0f4a6898b23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\crc">
+      <UniqueIdentifier>{e96ac1ea-71c8-484e-ac71-13438ea57886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\stream">
+      <UniqueIdentifier>{89263b1f-221b-4465-adc3-4158500806d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\crypt">
+      <UniqueIdentifier>{25a1e482-b072-4c0f-9dfe-ae1f315e68a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8dc61aeb-0232-4f32-a6f8-25400db73cfc}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\kernel\dz1_bcd_str.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_bin.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_bits.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_cleanup.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_codec.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_codec_bin.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_console.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_console_prompt.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_console_tty_linux.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_console_tty_platform.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_console_tty_win32crt.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_error.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_int.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_malloc.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_mutex.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_real.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_serial.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_stdio.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_stdio_bin.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_str.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_str_codeconv.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_sync.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_thread.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_thread_entry.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_thread_hash.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_thread_log.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_thread_misc.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_thread_pool.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_thread_stdio.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_time.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_timeval.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\kernel\dz1_usleep.c">
+      <Filter>Source Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_aatree.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_clock_index.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_dynamic_buffer.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_elastic_buf.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_fifo.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_fifo_dynamic.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_fifo_static.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_list.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_ordered_fifo.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\struct\dz1_stream_fifo.c">
+      <Filter>Source Files\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task\dz1_sigmsg.c">
+      <Filter>Source Files\task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task\dz1_sigmsg_fifo.c">
+      <Filter>Source Files\task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task\dz1_sigmsg_queue.c">
+      <Filter>Source Files\task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task\dz1_task.c">
+      <Filter>Source Files\task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task\dz1_task_sigmsg_router.c">
+      <Filter>Source Files\task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task\dz1_task_timer.c">
+      <Filter>Source Files\task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\termio\dz1_termio.c">
+      <Filter>Source Files\termio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\termio\dz1_termio_ansi.c">
+      <Filter>Source Files\termio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\termio\dz1_termio_win32crt.c">
+      <Filter>Source Files\termio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\termio\dz1_termio_xterm.c">
+      <Filter>Source Files\termio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\util\dz1_arg.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\util\dz1_fifo_reentrant.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\util\dz1_md5.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_appstack.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_sock_addr.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_acceptor.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_buf.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_callback.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_callback_skel.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_callback_skel_win32.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_callback_ssl.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_connector.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_fifo.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_receiver.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\socket\dz1_socket_uni.c">
+      <Filter>Source Files\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parser\dz1_parser.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parser\dz1_parser_emiter.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parser\dz1_parser_init.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parser\dz1_parser_lexer.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parser\dz1_parser_match.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parser\dz1_parser_syntax.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parser\dz1_parser_token.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shell\dz1_shell.c">
+      <Filter>Source Files\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shell\dz1_shell_args.c">
+      <Filter>Source Files\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shell\dz1_shell_builtin_cmds.c">
+      <Filter>Source Files\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shell\dz1_shell_cmd.c">
+      <Filter>Source Files\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shell\dz1_shell_history.c">
+      <Filter>Source Files\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shell\dz1_shell_input.c">
+      <Filter>Source Files\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shell\dz1_shell_parse.c">
+      <Filter>Source Files\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shell\dz1_shell_var.c">
+      <Filter>Source Files\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\fsm\dz1_fsm.c">
+      <Filter>Source Files\fsm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\fsm\dz1_fsm2.c">
+      <Filter>Source Files\fsm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\asn1\dz1_asn1_bitstring.c">
+      <Filter>Source Files\asn1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\asn1\dz1_asn1.c">
+      <Filter>Source Files\asn1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\asn1\dz1_asn1_octet_str.c">
+      <Filter>Source Files\asn1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\asn1\dz1_asn1_oid.c">
+      <Filter>Source Files\asn1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\asn1\dz1_asn1_unicode_str.c">
+      <Filter>Source Files\asn1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\asn1\dz1_asn1_restricted_str.c">
+      <Filter>Source Files\asn1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crc\dz1_crc16.c">
+      <Filter>Source Files\crc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crc\dz1_crc32.c">
+      <Filter>Source Files\crc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stream\dz1_elastic_buf_stream.c">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stream\dz1_file_buf_stream.c">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stream\dz1_in_stream.c">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stream\dz1_io_stream.c">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stream\dz1_io_stream_bin.c">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stream\dz1_out_stream.c">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stream\dz1_static_buf_stream.c">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crypt\dz1_crypt_aes.c">
+      <Filter>Source Files\crypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crypt\dz1_crypt_sha256.c">
+      <Filter>Source Files\crypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\asn1\dz1_asn1_external.c">
+      <Filter>Source Files\asn1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\asn1\dz1_asn1_emb_pdv.c">
+      <Filter>Source Files\asn1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crypt\dz1_crypt_sha1.c">
+      <Filter>Source Files\crypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\util\dz1_base64.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\util\dz1_uuid.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\kernel\dz1_console.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\kernel\dz1_console_prompt.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\kernel\dz1_console_tty_platform.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\kernel\dz1_thread.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\kernel\dz1_thread_entry.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\kernel\dz1_thread_hash.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\kernel\dz1_thread_log.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\kernel\dz1_thread_pool.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\kernel\dz1_thread_stdio.h">
+      <Filter>Source Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\struct\dz1_elastic_buf.h">
+      <Filter>Source Files\struct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\struct\dz1_fifo_dynamic.h">
+      <Filter>Source Files\struct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\struct\dz1_fifo_static.h">
+      <Filter>Source Files\struct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\struct\dz1_ordered_fifo.h">
+      <Filter>Source Files\struct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\task\dz1_sigmsg.h">
+      <Filter>Source Files\task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\task\dz1_sigmsg_fifo.h">
+      <Filter>Source Files\task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\task\dz1_sigmsg_queue.h">
+      <Filter>Source Files\task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\task\dz1_task_sigmsg_router.h">
+      <Filter>Source Files\task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\task\dz1_task_timer.h">
+      <Filter>Source Files\task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\termio\dz1_termio.h">
+      <Filter>Source Files\termio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\termio\dz1_termio_ansi.h">
+      <Filter>Source Files\termio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\termio\dz1_termio_win32crt.h">
+      <Filter>Source Files\termio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\termio\dz1_termio_xterm.h">
+      <Filter>Source Files\termio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\socket\dz1_socket.h">
+      <Filter>Source Files\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\socket\dz1_socket_callback.h">
+      <Filter>Source Files\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\socket\dz1_socket_callback_skel.h">
+      <Filter>Source Files\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\socket\dz1_socket_callback_ssl.h">
+      <Filter>Source Files\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\socket\dz1_socket_fifo.h">
+      <Filter>Source Files\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\parser\dz1_parser.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\parser\dz1_parser_emiter.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\parser\dz1_parser_match.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\parser\dz1_parser_syntax.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\parser\dz1_parser_token.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shell\dz1_shell.h">
+      <Filter>Source Files\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shell\dz1_shell_args.h">
+      <Filter>Source Files\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shell\dz1_shell_builtin_cmds.h">
+      <Filter>Source Files\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shell\dz1_shell_cmd.h">
+      <Filter>Source Files\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shell\dz1_shell_history.h">
+      <Filter>Source Files\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shell\dz1_shell_input.h">
+      <Filter>Source Files\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shell\dz1_shell_parse.h">
+      <Filter>Source Files\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shell\dz1_shell_var.h">
+      <Filter>Source Files\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stream\dz1_elastic_buf_stream.h">
+      <Filter>Source Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stream\dz1_file_buf_stream.h">
+      <Filter>Source Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stream\dz1_in_stream.h">
+      <Filter>Source Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stream\dz1_io_stream.h">
+      <Filter>Source Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stream\dz1_out_stream.h">
+      <Filter>Source Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stream\dz1_static_buf_stream.h">
+      <Filter>Source Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\crypt\dz1_crypt_aes.h">
+      <Filter>Source Files\crypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\crypt\dz1_crypt_sha256.h">
+      <Filter>Source Files\crypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_aatree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_appstack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_args.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_bcd_str.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_bin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_bits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_chunk_queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_cleanup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_clock_index.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_codec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_codec_bin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_conf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_crc16.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_crc32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_crypt_aes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_crypt_sha256.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_dynamic_buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_elastic_buf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_fifo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_fifo_reentrant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_fsm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_fsm2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_fsm_common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_int.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_io_stream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_io_stream_bin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_io_stream_support.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_malloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_md5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_mutex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_non_unix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_ordered_fifo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_parser_init.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_parser_lexer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_parser_token.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_real.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_serial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_shell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_sock_addr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_socket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_socket_acceptor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_socket_buf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_socket_callback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_socket_callback_ssl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_socket_connector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_socket_fifo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_socket_receiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_stdio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_stdio_bin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_str.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_stream_fifo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_sync.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_task.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_task_sigmsg_router.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_task_timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_termio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_thread_log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_thread_stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_thread_status.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_thread_stdio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_timeval.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_unix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_usleep.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_win32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_win32_cpp_builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_win32_msvc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\libdz1_support.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_task_support.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_crypt_sha1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\crypt\dz1_crypt_sha1.h">
+      <Filter>Source Files\crypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_base64.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_uuid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_stdio_support.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\include\dz1_asn1_support.tdc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\include\dz1_io_stream_support.tdc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\include\dz1_serial.tdc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\include\dz1_socket_receiver.tdc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\include\dz1_stdio_support.tdc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\include\dz1_sync.tdc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\include\libdz1_support.tdc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\include\dz1_task_support.tdc">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

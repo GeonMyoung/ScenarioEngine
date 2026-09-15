@@ -1,0 +1,160 @@
+message set definition
+{
+	include ItsIso14827DefLocal;
+	include ItsIso14827SessionDef;
+	
+	typedef native ItsIso14827DomainTxFifo from ItsIso14827Domain_txFIFO; // with api dump
+	------------------------------------------------------------------------------
+	-- Subscription	(->Center)
+	------------------------------------------------------------------------------
+	typedef enum ItsIso14827SubscriptionState
+	{
+		waitAddConfirm,
+		established,
+		waitUpdateConfirm,
+		waitDeleteConfirm
+	} ItsIso14827SubscriptionState;
+	
+	typedef enum ItsIso14827SubscriptionEvent
+	{
+		create,
+		update,
+		delete,
+		accept,
+		reject,
+--		confirm,
+		publication,
+		peerReject
+	} ItsIso14827SubscriptionEvent;
+	
+	typedef struct ItsIso14827SubscriptionReq
+	{
+		uint32										 pktNbr;
+		Iso14827SubscriptionData					*data;
+	} ItsIso14827SubscriptionReq;
+	
+	typedef union ItsIso14827SubscriptionOper
+	{
+		ItsIso14827SubscriptionReq					*create;
+		ItsIso14827SubscriptionReq					*update;
+		uint32										 terminate;
+	} ItsIso14827SubscriptionOper;
+	
+	typedef struct ItsIso14827ServerSubscriptionFsmArg
+	{
+		struct ItsIso14827ServerDomain				*server;		// is ref
+		struct ItsIso14827ServerDomainClientEntry	*client;		// is ref
+		Dz1Asn1UTF8Str								*domainName;
+		struct ItsIso14827SubscriptionEntry			*subscription;	// is ref
+		
+		ItsIso14827SubscriptionOper					*oper;			// is notarg
+		ItsIso14827SubscriptionOper					*retried;		// is notarg
+	} ItsIso14827ServerSubscriptionFsmArg;
+	
+	typedef struct ItsIso14827SubscriptionDate
+	{
+		uint32								 year;
+		uint32								 mon;
+		uint32								 day;
+	} ItsIso14827SubscriptionDate;								// with api dump
+	
+	typedef struct ItsIso14827SubscriptionEntry
+	{
+		uint32								 serial;			// is key
+		Dz1Fsm2								*fsm;
+		
+		uint32								 pktNbr;
+		Iso14827SubscriptionData			*data;
+		uint32								 pubSerial;			// is notarg
+		bool								 isActive;			// is notarg
+		bool								 isPaused;			// is notarg		
+		
+		time								 start;				// is notarg
+		time								 end;				// is notarg
+		
+		ItsIso14827SubscriptionDate			*daily;				// is notarg
+	} ItsIso14827SubscriptionEntry;								// with api dump, compare
+	
+	typedef unique table ItsIso14827SubscriptionList(find, extract, count) [ItsIso14827SubscriptionEntry];
+
+	------------------------------------------------------------------------------
+	-- Server Domain Client
+	------------------------------------------------------------------------------
+	typedef enum ItsIso14827ServerDomainClientState
+	{
+		waitLoginResult,
+		established,
+		terminated
+	} ItsIso14827ServerDomainClientState;
+	
+	typedef struct ItsIso14827ServerDomainClientEntry
+	{
+		Dz1Asn1UTF8Str								*peer;				// is key
+		Dz1Asn1OctetStr								*user;				// is key
+		ItsIso14827SessionKey						*key;
+		ItsIso14827SubscriptionList					*subscriptions;		// is notarg
+		ItsIso14827DomainTxFifo						*txFifo;
+		
+		uint32										 heartBeadPeriod;	-- in second
+		uint32										 responseWaitTime;	-- in second
+		
+		ItsIso14827ServerDomainClientState			 state;				// is notarg
+		uint32										 loginPktNbr;
+		uint32										*loginRetriedPktNbr;// is notarg
+		
+		ItsIso14827ServerDomainCallback				*cb;			// is ref
+		ItsIso14827ServerDomainViolatedPublication	*violatedPub;	// is notarg
+	} ItsIso14827ServerDomainClientEntry;							// with api dump, compare
+	
+	typedef unique table ItsIso14827ServerDomainClientList(find, extract, count) [ItsIso14827ServerDomainClientEntry];
+
+	typedef struct ItsIso14827ServerDomainSessionEntry
+	{
+		Dz1Asn1UTF8Str								*peer;				
+		Dz1Asn1OctetStr								*user;
+		ItsIso14827SessionKey						*key;				// is key
+		ItsIso14827SubscriptionList					*subscriptions;		// is notarg
+		ItsIso14827DomainTxFifo						*txFifo;
+		
+		uint32										 heartBeadPeriod;	-- in second
+		uint32										 responseWaitTime;	-- in second
+		
+		ItsIso14827ServerDomainClientState			 state;				// is notarg
+		uint32										 loginPktNbr;
+		uint32										*loginRetriedPktNbr;// is notarg
+		
+		ItsIso14827ServerDomainCallback				*cb;				// is ref
+		ItsIso14827ServerDomainViolatedPublication	*violatedPub;		// is notarg
+	} ItsIso14827ServerDomainSessionEntry;								// with api dump, compare
+	
+	typedef unique table ItsIso14827ServerDomainSessionList(find, extract, count) [&ItsIso14827ServerDomainSessionEntry];
+	
+	typedef struct ItsIso14827DomainInitiatorWaitEntry
+	{
+		Dz1Asn1UTF8Str								*peer;				// is key
+	} ItsIso14827DomainInitiatorWaitEntry;								// with api dump, compare
+	
+	typedef unique table ItsIso14827DomainInitiatorWaitList(find, extract, count) [ItsIso14827DomainInitiatorWaitEntry];
+
+
+	------------------------------------------------------------------------------
+	-- Server Domain
+	------------------------------------------------------------------------------
+	typedef struct ItsIso14827ServerDomain
+	{
+		Dz1Asn1UTF8Str								*name;				// is key
+		
+		uint32										 maxClients;
+
+		ItsIso14827CodecOIDMapList					*codecOidMap;
+		
+		ItsIso14827ServerDomainClientList			*clients;			// is notarg	-- Client Peer -> Session Mapping
+		ItsIso14827ServerDomainSessionList			*sessions;			// is notarg	-- Session -> Client Peer Mapping
+		
+		ItsIso14827DomainInitiatorWaitList			*initWaits;			// is notarg
+		
+		ItsIso14827ServerDomainCallback				*callback;			-- authenticate, echo, request, event(prepare, start, stop), periodic(prepare, start, invoke, stop)
+		uint32										 hdr_opt_flag;		// is notarg
+	} ItsIso14827ServerDomain;											// with api dump, compare
+
+}

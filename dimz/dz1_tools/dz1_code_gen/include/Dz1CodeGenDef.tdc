@@ -1,0 +1,111 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef struct Dz1CodeGenSetupEntry
+	{
+		str						label;
+		bool					useThisArg;
+	} Dz1CodeGenSetupEntry;
+
+	typedef struct Dz1CodeGenSetupTable
+	{
+		int32						 type;
+		Dz1CodeGenSetupEntry		*setup;
+	} Dz1CodeGenSetupTable;
+
+	---------------------------------------------------------------------------------
+	-- Replacement
+	---------------------------------------------------------------------------------
+	typedef struct Dz1CodeGenReplaceEnt
+	{
+		str							target;	// is key
+		str							replace;
+	} Dz1CodeGenReplaceEnt;					// with api dump, compare, clone
+	typedef unique table Dz1CodeGenReplaceList(find, extract, count) [ Dz1CodeGenReplaceEnt ];
+
+	---------------------------------------------------------------------------------
+	-- List Gen
+	---------------------------------------------------------------------------------
+	typedef enum Dz1CodeGenListType
+	{
+		addNode,
+		codec,
+		stream,
+		mfc_list_h,
+		mfc_list_cpp,
+		mfc_list_base,
+		mfc_list_changed,
+		mfc_list_clicked
+	} Dz1CodeGenListType;
+
+	---------------------------------------------------------------------------------
+	-- Stub Gen
+	---------------------------------------------------------------------------------
+	typedef enum Dz1CodeGenStubType
+	{
+		creation,
+		s_api,
+		s_codec,
+		u_codec,
+		v_codec,
+		codec_conv,
+		codec_test,
+		s_stream,
+		u_stream,
+		v_stream,
+		stream_conv,
+		stream_test,
+		test_gen,
+		test_ugen,
+		mfc_enum_combo_h
+	} Dz1CodeGenStubType;
+
+	---------------------------------------------------------------------------------
+	-- Parser Gen
+	---------------------------------------------------------------------------------
+	typedef enum Dz1CodeGenParserType
+	{
+		emitter,
+		parser
+	} Dz1CodeGenParserType;
+	
+	---------------------------------------------------------------------------------
+	-- Shell Gen
+	---------------------------------------------------------------------------------
+	typedef enum Dz1CodeGenShellType
+	{
+		root_cmd,
+		sub_cmd
+	} Dz1CodeGenShellType;
+
+	---------------------------------------------------------------------------------
+	-- TDC Support
+	typedef struct Dz1CodeGenListCtrlObjectParent
+	{
+		struct Dz1CodeGenListCtrlObjectParent	*p;
+		str										 instance;
+	} Dz1CodeGenListCtrlObjectParent;						// with api dump
+	
+	typedef native ObjectInfo from Dz1TdcInfoObject;		// with api dump
+	typedef enum Dz1CodeGenListCtrlInstanceMode
+	{
+		dot,
+		arrow,
+		arrowxdot
+	} Dz1CodeGenListCtrlInstanceMode;
+	
+	typedef struct Dz1CodeGenListColumn
+	{
+		uint32							 order;				// is key
+		str								 name;								-- column name
+		ObjectInfo						*type;								-- data type : ssize_t {typename}##_toText({typename} *p|v, TCHAT dst[1024]);
+		str								 instance;							-- instance name
+		Dz1CodeGenListCtrlInstanceMode	 mode;								-- .instance | ->instance | ->x.instance
+		Dz1CodeGenListCtrlObjectParent	*parent;							-- parent
+	} Dz1CodeGenListColumn;									// with api dump, compare
+	
+	typedef unique table Dz1CodeGenListColumnList(find, extract, count) [Dz1CodeGenListColumn];
+	-- TDC Support
+	---------------------------------------------------------------------------------
+}

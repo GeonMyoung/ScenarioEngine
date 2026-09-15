@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugDLL|Win32">
+      <Configuration>DebugDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugDLL|x64">
+      <Configuration>DebugDLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseDLL|Win32">
+      <Configuration>ReleaseDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseDLL|x64">
+      <Configuration>ReleaseDLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{93C1572C-8B8C-4B57-BA32-0992110D823C}</ProjectGuid>
+    <RootNamespace>ItsIso14827</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.32505.173</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\Iso14827dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\ASN.1.GITSN.LIB\SupportLib;..\..\..\GitsnLicenseChkFree\include;..\..\..\GitsnLicenseChk\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)$(TargetName).pdb</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\Iso14827dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\ASN.1.GITSN.LIB\SupportLib;..\..\..\GitsnLicenseChkFree\include;..\..\..\GitsnLicenseChk\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)$(TargetName).pdb</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\Iso14827dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\ASN.1.GITSN.LIB\SupportLib;..\..\..\GitsnLicenseChkFree\include;..\..\..\GitsnLicenseChk\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)$(TargetName).pdb</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\Iso14827dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\ASN.1.GITSN.LIB\SupportLib;..\..\..\GitsnLicenseChkFree\include;..\..\..\GitsnLicenseChk\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)$(TargetName).pdb</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\Iso14827dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\ASN.1.GITSN.LIB\SupportLib;..\..\..\GitsnLicenseChkFree\include;..\..\..\GitsnLicenseChk\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)$(TargetName).pdb</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\Iso14827dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\ASN.1.GITSN.LIB\SupportLib;..\..\..\GitsnLicenseChkFree\include;..\..\..\GitsnLicenseChk\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)$(TargetName).pdb</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\Iso14827dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\ASN.1.GITSN.LIB\SupportLib;..\..\..\GitsnLicenseChkFree\include;..\..\..\GitsnLicenseChk\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)$(TargetName).pdb</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\Iso14827dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\ASN.1.GITSN.LIB\SupportLib;..\..\..\GitsnLicenseChkFree\include;..\..\..\GitsnLicenseChk\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)$(TargetName).pdb</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\ItsIso14827.c" />
+    <ClCompile Include="..\..\src\ItsIso14827Arg.c" />
+    <ClCompile Include="..\..\src\ItsIso14827ClientDomainDef.c" />
+    <ClCompile Include="..\..\src\ItsIso14827ClientDomain_main.c" />
+    <ClCompile Include="..\..\src\ItsIso14827ClientDomain_send.c" />
+    <ClCompile Include="..\..\src\ItsIso14827Def.c" />
+    <ClCompile Include="..\..\src\ItsIso14827DefLocal.c" />
+    <ClCompile Include="..\..\src\ItsIso14827Types.c" />
+    <ClCompile Include="..\..\src\ItsIso14827DomainDef.c" />
+    <ClCompile Include="..\..\src\ItsIso14827DomainMgr_main.c" />
+    <ClCompile Include="..\..\src\ItsIso14827DomainMsgs.c" />
+    <ClCompile Include="..\..\src\ItsIso14827DomainTxFifoDef.c" />
+    <ClCompile Include="..\..\src\ItsIso14827Domain_send.c" />
+    <ClCompile Include="..\..\src\ItsIso14827Domain_txFIFO.c" />
+    <ClCompile Include="..\..\src\ItsIso14827Env.c" />
+    <ClCompile Include="..\..\src\ItsIso14827Msgs.c" />
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomainDef.c" />
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomainTimer.c" />
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomain_main.c" />
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomain_send.c" />
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomain_subscription.c" />
+    <ClCompile Include="..\..\src\ItsIso14827SessionDef.c" />
+    <ClCompile Include="..\..\src\ItsIso14827SessionMgr_main.c" />
+    <ClCompile Include="..\..\src\ItsIso14827SocketAcceptor.c" />
+    <ClCompile Include="..\..\src\ItsIso14827SocketAcceptorDef.c" />
+    <ClCompile Include="..\..\src\ItsIso14827SocketAcceptorMsgs.c" />
+    <ClCompile Include="..\..\src\ItsIso14827SocketReceiver.c" />
+    <ClCompile Include="..\..\src\ItsIso14827SocketReceiverDef.c" />
+    <ClCompile Include="..\..\src\ItsIso14827SocketReceiverMsgs.c" />
+    <ClCompile Include="..\..\src\ItsIso14827TaskSupport.c" />
+    <ClCompile Include="..\..\src\ItsIso14827Timer.c" />
+    <ClCompile Include="..\..\src\ItsIso14827TimerUtil.c" />
+    <ClCompile Include="..\..\src\ItsIso14827_license.c" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\ItsIso14827.h" />
+    <ClInclude Include="..\..\include\ItsIso14827Def.h" />
+    <ClInclude Include="..\..\include\ItsIso14827TaskSupport.h" />
+    <ClInclude Include="..\..\include\ItsIso14827Types.h" />
+    <ClInclude Include="..\..\src\ItsIso14827Arg.h" />
+    <ClInclude Include="..\..\src\ItsIso14827ClientDomainDef.h" />
+    <ClInclude Include="..\..\src\ItsIso14827ClientDomain_main.h" />
+    <ClInclude Include="..\..\src\ItsIso14827ClientDomain_send.h" />
+    <ClInclude Include="..\..\src\ItsIso14827DefLocal.h" />
+    <ClInclude Include="..\..\src\ItsIso14827DomainDef.h" />
+    <ClInclude Include="..\..\src\ItsIso14827DomainMgr_main.h" />
+    <ClInclude Include="..\..\src\ItsIso14827DomainMsg.h" />
+    <ClInclude Include="..\..\src\ItsIso14827DomainMsgs.h" />
+    <ClInclude Include="..\..\src\ItsIso14827DomainTxFifoDef.h" />
+    <ClInclude Include="..\..\src\ItsIso14827Domain_send.h" />
+    <ClInclude Include="..\..\src\ItsIso14827Domain_txFIFO.h" />
+    <ClInclude Include="..\..\src\ItsIso14827Env.h" />
+    <ClInclude Include="..\..\src\ItsIso14827Msg.h" />
+    <ClInclude Include="..\..\src\ItsIso14827Msgs.h" />
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomainDef.h" />
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomainTimer.h" />
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomain_main.h" />
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomain_send.h" />
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomain_subscription.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SessionDef.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SessionMgr_main.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SocketAcceptor.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SocketAcceptorDef.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SocketAcceptorMsg.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SocketAcceptorMsgs.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SocketReceiver.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SocketReceiverDef.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SocketReceiverMsg.h" />
+    <ClInclude Include="..\..\src\ItsIso14827SocketReceiverMsgs.h" />
+    <ClInclude Include="..\..\src\ItsIso14827TaskSupport.h" />
+    <ClInclude Include="..\..\src\ItsIso14827Timer.h" />
+    <ClInclude Include="..\..\src\ItsIso14827TimerUtil.h" />
+    <ClInclude Include="..\..\src\ItsIso14827Types.h" />
+    <ClInclude Include="..\..\src\ItsIso14827_license.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\ItsIso14827Def.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827Arg.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827ClientDomainDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827DefLocal.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827DomainDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827DomainMsgs.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827DomainTxFifoDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827Env.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827Msgs.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827ServerDomainDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SessionDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SocketAcceptorDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SocketAcceptorMsgs.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SocketReceiverDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SocketReceiverMsgs.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827Timer.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc -I ..\..\src -I ..\..\include -I ..\..\..\Iso14827dz1\include -I ..\..\..\dimz\dz1\include ..\..\src\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\GitsnLicenseChkFree\project\vs2022\GitsnLicenseChkFree.vcxproj">
+      <Project>{417330f1-8ceb-4a5b-9da8-009dc5d41d8a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Iso14827dz1\project\vs2022\Iso14827dz1.vcxproj">
+      <Project>{ffcbf51b-46f6-48b1-94e2-bcd8bbf4852a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

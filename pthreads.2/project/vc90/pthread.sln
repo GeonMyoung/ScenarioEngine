@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pthread", "pthread.vcproj", "{3F968544-3D37-446C-967C-B9426F0F527A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugDLL|Win32 = DebugDLL|Win32
+		Release|Win32 = Release|Win32
+		ReleaseDLL|Win32 = ReleaseDLL|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F968544-3D37-446C-967C-B9426F0F527A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3F968544-3D37-446C-967C-B9426F0F527A}.DebugDLL|Win32.ActiveCfg = DebugDLL|Win32
+		{3F968544-3D37-446C-967C-B9426F0F527A}.DebugDLL|Win32.Build.0 = DebugDLL|Win32
+		{3F968544-3D37-446C-967C-B9426F0F527A}.Release|Win32.ActiveCfg = Release|Win32
+		{3F968544-3D37-446C-967C-B9426F0F527A}.ReleaseDLL|Win32.ActiveCfg = ReleaseDLL|Win32
+		{3F968544-3D37-446C-967C-B9426F0F527A}.ReleaseDLL|Win32.Build.0 = ReleaseDLL|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

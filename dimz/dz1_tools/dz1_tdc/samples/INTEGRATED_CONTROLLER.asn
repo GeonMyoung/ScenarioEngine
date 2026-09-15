@@ -1,0 +1,142 @@
+INTEGRATED-CONTROLLER DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+-------------------------------------------------------------------
+--
+--  IC Message
+--
+-------------------------------------------------------------------
+Tcdv-IcTimeSpamp ::= SEQUENCE
+{
+	hour		INTEGER(0..23),
+	min			INTEGER(0..59)
+}
+
+-- 통합제어부 제어 정보
+Tcdv-IcControlMessage ::=  CHOICE
+{
+	tcdv-IcReset					NULL,
+	tcdv-IcwirelessModuleReset		NULL,
+	tcdv-IcSiteDeviceModuleReset	ENUMERATED { all(0), avi(1), cctv(2), vds(3), dsrc(4), vms(5), ipes(6), bles(7) },
+	tcdv-IcWireModuleReset			NULL,
+	tcdv-IcStatusDetecterReset		NULL,
+	tcdv-IcLocalTimeSet				GeneralizedTime,
+	tcdv-IcAutoTimeSet				Tcdv-IcTimeSpamp,
+	tcdv-IcMaxRetryValue			INTEGER(1..10),
+	tcdv-IcFanControlMode			CHOICE
+	{
+		on			NULL,
+		off			NULL,
+		automatic	INTEGER(-128..127)		--FAN동작온도 상한값
+	} ,
+
+	tcdv-IcHeaterCotrolMode			CHOICE
+	{
+		on			NULL,
+		off			NULL,
+		automatic	INTEGER(-128..127)		--Heater동작 하한값
+	}
+}
+
+-- 통합제어부 제어 응답 정보
+Tcdv-IcReplyMessage ::= ENUMERATED { success(1), ... }
+
+-- 전원부 상태정보
+Tcdv-IcPowerStatus ::= SEQUENCE
+{
+	ic							BOOLEAN,								-- ?
+	wireless					BOOLEAN,
+	avi							BOOLEAN,
+	cctv						BOOLEAN,
+	vds							BOOLEAN,
+	dsrc						BOOLEAN,
+	vms							BOOLEAN,
+	ipes						BOOLEAN,
+	bles						BOOLEAN,
+	wired						BOOLEAN,
+	statusDetecter				BOOLEAN
+}
+
+-- 통합제어부 상태정보
+IcCurrentStatusMessage ::= SEQUENCE
+{
+	tcdv-IcPowerStatus				Tcdv-IcPowerStatus,
+	
+	tcdv-IcWirelessModuleStatus		BOOLEAN				OPTIONAL, 
+	tcdv-IcSideDeviceStatus			BOOLEAN				OPTIONAL,		-- ?
+	
+	tcdv-IcWiredModuleStatus		BOOLEAN				OPTIONAL,
+	
+	tcdv-IcStatsDetecterStatus		BOOLEAN				OPTIONAL,
+	
+	tcdv-IcFanStatus				BOOLEAN				OPTIONAL,
+	tcdv-IcHeaterStatus				BOOLEAN				OPTIONAL,
+	tcdv-IcTemplateStatus			INTEGER (-128..127),
+	tcdv-IcHumediateStatus			INTEGER (-128..127)
+}
+
+-- 시스템 버젼
+Tcdv-IcSystemVersionInformationMessage ::= CHOICE
+{
+	tcdv-IcVersionValue SEQUENCE {
+		tcdv-IcVersionMajor		INTEGER,
+		tcdv-IcVersionMinor		INTEGER,
+		tcdv-IcVersionModify	INTEGER				OPTIONAL,
+		tcdv-IcVersionBuild		INTEGER				OPTIONAL,
+		tcdv-IcReleaseDate		GeneralizedTime		OPTIONAL
+	},
+	tcdv-IcVersionDateTime		GeneralizedTime
+}
+
+-- 통합제어기 파라미터 정보
+Tcdv-IcControlParameterMessage ::= SEQUENCE
+{
+	tcdv-IcAutoTime				Tcdv-IcTimeSpamp,
+	tcdv-IcLocalTime			GeneralizedTime,
+	tcdv-IcFanControlMode		CHOICE
+	{
+		on			NULL,
+		off			NULL,
+		automatic	INTEGER(-128..127)	--FAN동작온도 상한값
+	} ,
+
+	tcdv-IcHeaterControlMode			CHOICE
+	{
+		on			NULL,
+		off			NULL,
+		automatic	INTEGER(-128..127)	--Heater동작 하한값
+	},
+	tcdv-IcMaxRetryValue				INTEGER(1..10)
+}
+
+-- 요소장비 제어모듈 이상유무 정보
+Tcdv-IcSiteDeviceModuleStatusMessage ::= ENUMERATED { avi(1), cctv(2), vds(3), dsrc(4), vms(5), ipes(6), bles(7) }
+	
+-- 서브로컬센터 서비스 알림 정보
+Tcdv-IcSubLocalCenterMessage ::= SEQUENCE
+{
+	tcdv-IcDeviceType		ENUMERATED { dsrc(1), vms(2), all(3)},
+	tcdv-IcDataType			ENUMERATED { incidentMsg(1), ipsMsg(2), vehicleWarnningMsg(3), leftTurnMsg (4), busStopMsg (5) }
+}
+
+--트래킹 알고리즘 정보
+Tcdv-IcTrackingDataMessage ::= SEQUENCE
+{
+	tcdv-IcUgoEventCode				ENUMERATED
+	{ 
+		pedestrianDetected		(1),
+		againstDirection		(2),
+		stopVehicle				(3),
+		fallenObject			(4),
+		speed					(5),
+		volumeRate				(6)
+	},
+	tcdv-IcCameraID				OCTET STRING (SIZE(1..20)),
+	tcdv-IcRegion				OCTET STRING (SIZE(1..20)),
+	speed-PassedVehicleData		INTEGER,
+	speed-coefficientData		INTEGER,
+	vpvd-VehicleAverageSpeed	INTEGER,
+	tcdv-IcAverageDensity		INTEGER
+}
+
+
+END

@@ -1,0 +1,306 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+
+	---------------------------------------------------------------------------
+	-- Tag Value & List in File TAG
+	---------------------------------------------------------------------------
+	typedef union Dz1MetaTagValue
+	{
+		uint8							 data8;
+		uint16							 data16;
+		uint32							 data32;
+		uint64							 data64;
+		Dz1Binary						*binary;
+	} Dz1MetaTagValue;									// with api dump, compare, clone
+	typedef unique table Dz1MetaTagValueList(find, extract, count, gethead, gettail) [Dz1MetaTagValue];
+
+	---------------------------------------------------------------------------
+	-- Tag Entry & List in File TAG
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagDataEntry
+	{
+		uint32							 id;			// is key
+		Dz1MetaTagValueList				*values;		// is notarg
+	} Dz1MetaTagDataEntry;								// with api dump, compare, clone
+	typedef unique table Dz1MetaTagDataList(find, extract, count) [Dz1MetaTagDataEntry];
+
+	---------------------------------------------------------------------------
+	-- Tag DATA
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagData
+	{
+		uint32							 target_type;
+		Dz1MetaTagDataList				*tags;			// is notarg
+	} Dz1MetaTagData;									// with api dump, clone
+
+
+
+
+
+
+
+
+
+
+
+
+	---------------------------------------------------------------------------
+	-- Target Type
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTargetTypeEntry
+	{
+		uint32							 type;			// is key
+		Dz1Asn1UTF8Str					*name;
+		wstr							 name_w;		// is notarg
+	} Dz1MetaTargetTypeEntry;							// with api userdump, compare, clone
+
+	typedef unique table Dz1MetaTargetTypeList(find, extract, gettail, count) [Dz1MetaTargetTypeEntry];
+	
+
+
+	---------------------------------------------------------------------------
+	-- Tag Restriction
+	---------------------------------------------------------------------------
+	typedef enum Dz1MetaTagRestrictMode
+	{
+		accept,
+		reject
+	} Dz1MetaTagRestrictMode;
+	
+	typedef struct Dz1MetaTagRestrict
+	{
+		Dz1MetaTagRestrictMode			 mode;
+		Dz1MetaTargetTypeList			*list;			// is notarg
+	} Dz1MetaTagRestrict;								// with api userdump, clone
+	
+
+
+	---------------------------------------------------------------------------
+	-- Number Tag Descriptor
+	---------------------------------------------------------------------------
+	typedef enum Dz1MetaTagDescrNum
+	{
+		signed,
+		unsigned,
+		hex,
+		binary
+	} Dz1MetaTagDescrNum;
+	
+	typedef struct Dz1MetaTagDescrNumber
+	{
+		Dz1MetaTagDescrNum			type;
+	} Dz1MetaTagDescrNumber;							// with api dump
+	
+	typedef struct Dz1MetaTagDescrFloat
+	{
+		int32						 precision;									-- -1 = no precision, -2 = Exponent
+	} Dz1MetaTagDescrFloat;								// with api dump
+	
+	
+	
+	---------------------------------------------------------------------------
+	-- Grade Tag Descriptor
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagDescrGrade
+	{
+		uint32							 max_grade;
+		Dz1Asn1UTF8Str					*grade_unit;
+		wstr							 grade_unit_w;	// is notarg, nodump
+	} Dz1MetaTagDescrGrade;								// with api dump
+	
+	
+	
+	---------------------------------------------------------------------------
+	-- String Tag Descriptor
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagDescrString
+	{
+		str								 charset;
+	} Dz1MetaTagDescrString;							// with api dump
+
+
+
+	---------------------------------------------------------------------------
+	-- Enumerate Tag Descriptor
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagDescrEnumEntry
+	{
+		uint32							 value;			// is key
+		Dz1Asn1UTF8Str					*string;
+		wstr							 str_w;			// is notarg, nodump
+	} Dz1MetaTagDescrEnumEntry;							// with api dump, compare, clone
+	typedef unique table Dz1MetaTagDescrEnumList (find, extract, count, gettail) [Dz1MetaTagDescrEnumEntry];
+		
+	typedef struct Dz1MetaTagDescrEnumIndex
+	{
+		uint32							 value;
+		Dz1Asn1UTF8Str					*string;		// is key
+		wstr							 str_w;			// is notarg, nodump
+	} Dz1MetaTagDescrEnumIndex;							// with api dump, compare, clone
+	typedef unique table Dz1MetaTagDescrEnumTable (find, extract, count) [&Dz1MetaTagDescrEnumIndex];
+		
+	typedef func Dz1Error				    Dz1MetaTagDescrEnumsAdd(struct Dz1MetaTagDescrEnums *dst, Dz1MetaTagDescrEnumEntry *node);
+	typedef func Dz1MetaTagDescrEnumEntry  *Dz1MetaTagDescrEnumsFind(struct Dz1MetaTagDescrEnums *src, Dz1MetaTagDescrEnumEntry *key);
+	typedef func Dz1MetaTagDescrEnumEntry  *Dz1MetaTagDescrEnumsExtract(struct Dz1MetaTagDescrEnums *src, Dz1MetaTagDescrEnumEntry *key);
+	typedef func Dz1MetaTagDescrEnumEntry **Dz1MetaTagDescrEnumsGetArray(struct Dz1MetaTagDescrEnums *src, uint32 *ret_cnt, Dz1Error *err);
+	typedef func Dz1MetaTagDescrEnumEntry  *Dz1MetaTagDescrEnumsGetLast(struct Dz1MetaTagDescrEnums *src);
+	typedef struct Dz1MetaTagDescrEnums
+	{
+		Dz1MetaTagDescrEnumList			*values;		// is notarg
+		Dz1MetaTagDescrEnumTable		*strings;		// is notarg
+		Dz1MetaTagDescrEnumsAdd			 add;
+		Dz1MetaTagDescrEnumsFind		 find;
+		Dz1MetaTagDescrEnumsExtract		 extract;
+		Dz1MetaTagDescrEnumsGetArray	 get_array;
+		Dz1MetaTagDescrEnumsGetLast		 getTail;
+	} Dz1MetaTagDescrEnums;								// with api dump, userclone
+	
+	
+	
+	---------------------------------------------------------------------------
+	-- Date Tag Descriptor
+	---------------------------------------------------------------------------
+	typedef enum Dz1MetaTagDescrDate8Mode
+	{
+		even,
+		odd
+	} Dz1MetaTagDescrDate8Mode;
+	
+	typedef struct Dz1MetaTagDescrDate
+	{
+		Dz1MetaTagDescrDate8Mode		date8;
+	} Dz1MetaTagDescrDate;								// with api dump, clone
+
+
+
+	---------------------------------------------------------------------------
+	-- Alias Tag Descriptor
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagDescrAlias
+	{
+		uint32							 origin_descr_id;
+		struct Dz1MetaTagDescriptor		*origin_descr;		// is ref, notarg, nodump
+	} Dz1MetaTagDescrAlias;									// with api userdump
+	
+
+
+	---------------------------------------------------------------------------
+	-- User Tag Descriptor
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagDescriptorUser
+	{
+		uint32							 userHandlingType;							-- Application Specific Handling ID
+	} Dz1MetaTagDescriptorUser;								// with api dump
+	
+
+
+	---------------------------------------------------------------------------
+	-- Tag Descriptor
+	---------------------------------------------------------------------------
+	typedef union Dz1MetaTagDescriptor
+	{
+		uint32							*no_data;
+		
+		Dz1MetaTagDescrNumber			*number;									-- data8, data16, data32, data64 to cast Dz1MetaTagDescrNumber indicated and treate
+																					-- binary : use first 1, 2, 4, 8byte to treat as Dz1MetaTagDescrNumber
+																					
+		Dz1MetaTagDescrFloat			*floating;									-- data32, data64 only
+																					-- data8, data16 display as unknown
+																					-- binary : use first 4, 8byte to treat as Dz1MetaTagDescrFloat
+																					
+		Dz1MetaTagDescrGrade			*grade;										-- any of data8, data16, data32, data64
+																					-- binary : use first 1, 2, 4, 8byte to treat as Dz1MetaTagDescrGrade
+																					
+		Dz1MetaTagDescrEnums			*enumerate;									-- any of data8, data16, data32, data64
+																					-- binary : use first 1, 2, 4, 8byte to treat as Dz1MetaTagDescrEnums
+		
+		Dz1MetaTagDescrDate				*date;										-- data64 : signed 64bit 2000 +- days
+																					-- data32 : signed 32bit 2000 +- days
+																					-- data16 : signed 16bit 2000 +- days
+																					-- data8  : M(0xB:4bit) even/odd day(1~15:4bit)					<= 해석전용
+																					-- binary : use first 1, 2, 4, 8byte to treat as Dz1MetaTagDescrDate
+																					
+		uint32							*tim;										-- data64 : 0~86399 86400으로 나눈 나머지값	<= 해석전용
+																					-- data32 : 0~86399 86400으로 나눈 나머지값
+																					-- data16 : min of day(1439:12bit) qsec(0~14:4bit)	<= 초 값이 1/4초인 경우 사용
+																					-- data8  : deci min of day(8F) 144로 나눈 나머지값	<= 분 값이 10분 단위 정각인 경우 사용
+																					-- binary : use first 1, 2, 4, 8byte to treat as each type
+																					
+		uint32							*date_time;									-- data64 : time64_t
+																					-- data32 : time_t
+																					-- data16 : today + time(data16)	<= 해석 전용
+																					-- data8  : today + time(data8)		<= 해석 전용
+																					-- binary : use first 1, 2, 4, 8byte to treat as each type
+																					
+		Dz1MetaTagDescrString			*string;									-- binary : bin->data is string
+																					-- else   : sprintf("%d") to string convert
+																					
+		uint32							*web_url;									-- binary : bin->data is UTF8 string
+																					-- else   : invalid data
+																					
+		uint32							*binary;									-- binary
+																					-- else   : new binary and copy data
+																					
+		Dz1MetaTagDescriptorUser		*user;										-- each data type may be handled by user application
+		
+		Dz1MetaTagDescrAlias			*alias;										-- aliased
+	} Dz1MetaTagDescriptor;								// with api dump
+
+
+
+	---------------------------------------------------------------------------
+	-- Tag Entry & List
+	---------------------------------------------------------------------------
+	typedef enum Dz1MetaTagDataMode
+	{
+		Array,
+		Single,
+		Void
+	} Dz1MetaTagDataMode;
+	
+	typedef struct Dz1MetaTagDescrEntry
+	{
+		uint32							 id;			// is key
+		Dz1Asn1UTF8Str					*name;
+		wstr							 name_w;		// is notarg, nodump		-- CODEC에 관여 안함
+		Dz1MetaTagRestrict				*status;		// is notarg
+		Dz1MetaTagDescriptor			*descr;										-- type descriptor
+		Dz1MetaTagDataMode				 mode;			// is notarg
+		bool							 mandatory;
+	} Dz1MetaTagDescrEntry;								// with api userdump, compare
+	typedef unique table Dz1MetaTagDescrList(find, extract, count, gettail) [Dz1MetaTagDescrEntry];
+	
+
+
+	---------------------------------------------------------------------------
+	-- Tag User Type Entry & List
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagUserTypeEntry
+	{
+		uint32							 userType;		// is key
+		
+		Dz1Asn1UTF8Str					*userTypeName;
+		wstr							 userTypeNameW;	// is notarg, nodump
+
+		void							*resource;				-- user type이 사용할 외부 자원 핸들
+		Dz1DelFunc						 resource_del;
+		Dz1DumpFunc						 resource_dump;
+		
+		void							*userData;				-- resource를 관리하기 위한 사용자 데이터
+		Dz1DelFunc						 userDataDel;
+		Dz1DumpFunc						 userDataDump;
+	} Dz1MetaTagUserTypeEntry;							// with api userdel, dump, compare
+	typedef unique table Dz1MetaTagUserTypeList(find, extract, count) [Dz1MetaTagUserTypeEntry];
+	
+	---------------------------------------------------------------------------
+	-- Meta Tag DB
+	---------------------------------------------------------------------------
+	typedef struct Dz1MetaTagDB
+	{
+		Dz1MetaTargetTypeList			*types;			// is notarg
+		Dz1MetaTagDescrList				*table;			// is notarg
+		Dz1MetaTagUserTypeList			*userTypes;		// is notarg
+	} Dz1MetaTagDB;										// with api dump
+}

@@ -1,0 +1,8 @@
+message set definition
+{
+	include GitsnDSRCMsgTestScenarioDef;
+	typedef struct GitsnDSRCMsgTestScenarioMsgDefault
+	{
+		uint32 *dummy;
+	} GitsnDSRCMsgTestScenarioMsgDefault;					// with api dump
+}

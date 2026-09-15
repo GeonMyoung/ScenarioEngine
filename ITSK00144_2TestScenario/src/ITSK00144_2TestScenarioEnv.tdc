@@ -1,0 +1,120 @@
+message set definition
+{
+	include ITSK00144_2TestScenarioDef;
+	include Dz1JsonDef;
+	include Dz1SockUtilDef;
+
+
+	typedef struct ITSK00144_2ClientSession
+	{
+		Dz1SockAddr				*peer;			// is key
+		Dz1SockAddr				*local;			// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} ITSK00144_2ClientSession;		// with api dump, compare
+
+	typedef struct ITSK00144_2ServerSession
+	{
+		uint32					 acceptor;
+		Dz1SockAddr				*peer;		// is key
+		Dz1SockAddr				*local;		// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} ITSK00144_2ServerSession;		// with api dump, compare
+
+	typedef union ITSK00144_2Session
+	{
+		ITSK00144_2ClientSession		*client;
+		ITSK00144_2ServerSession		*server;
+	} ITSK00144_2Session;		// with api dump
+
+	typedef struct ITSK00144_2ScenarioServerRole
+	{
+		uint16							 local_port;
+		bool							 test_rsp_link_unit_status;
+		bool							 test_rsp_status;
+		bool							 test_rsp_list;
+		bool							 test_rsp_update_list;
+		bool							 test_rsp_reset;
+		bool							 test_session_maintain;
+		int64							 hb_duration;
+		I2XTrafficSafetyDeviceSerialNo	*id;				// is notarg
+		Dz1Binary						*received;				// is notarg
+	} ITSK00144_2ScenarioServerRole;		// with api dump, clone
+
+	typedef struct ITSK00144_2ScenarioLinkUnitRole
+	{
+		TString							 peer_ip;
+		uint16							 peer_port;
+		bool							 test_req_link_unit_status;
+		bool							 test_req_status;
+		bool							 test_req_list;
+		bool							 test_req_update_list;
+		bool							 test_req_reset;
+		bool							 test_session_maintain;
+		bool							 test_tim;
+		bool							 test_map;
+		int64							 hb_duration;
+		I2XTrafficSafetyDeviceSerialNo	*id;				
+	} ITSK00144_2ScenarioLinkUnitRole;		// with api dump, clone
+
+
+	typedef union ITSK00144_2Scenario
+	{
+		ITSK00144_2ScenarioServerRole		*serverRole;
+		ITSK00144_2ScenarioLinkUnitRole		*linkUnitRole;
+	} ITSK00144_2Scenario;		// with api dump, clone
+
+
+	typedef enum ITSK00144_2ScenarioEvent
+	{
+		start,
+		auth,
+		heartbeat,
+		data,
+		data2,
+		validate,
+		trigger,
+		disconnected
+	} ITSK00144_2ScenarioEvent;
+
+	typedef enum ITSK00144_2ScenarioServerState
+	{
+		initial,
+		wait_test_rsp_link_status,
+		wait_test_rsp_status,
+		wait_test_rsp_list,
+		wait_test_rsp_update_list,
+		wait_test_rsp_reset,
+		complete
+	} ITSK00144_2ScenarioServerState;	// with api dump, clone
+
+	typedef enum ITSK00144_2ScenarioClientState
+	{
+		initial,
+		wait_req,
+		complete
+	} ITSK00144_2ScenarioClientState;		// with api dump, clone
+
+	typedef struct ITSK001442TestScenarioEnv
+	{
+		void							*tSelf;
+		void							*tMain;
+		Dz1JsonSpec						*spec;
+		ITSK00144_2Session				*session;			// is notarg
+		ITSK00144_2Scenario				*scenario;			// is notarg
+
+		uint8							 received_seq;				// is notarg
+		uint8							 send_seq;				// is notarg
+
+		TString							 current_test;		// is notarg
+		bool							 is_run;			// is notarg
+		int32							 state;				// is notarg
+		uint32							 flags;				// is notarg
+		uint32							 testIdx;			// is notarg
+	} ITSK001442TestScenarioEnv;				// with api dump
+}

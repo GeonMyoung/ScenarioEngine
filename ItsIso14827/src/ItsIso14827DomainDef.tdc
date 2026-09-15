@@ -1,0 +1,34 @@
+message set definition
+{
+	include ItsIso14827ServerDomainDef;
+	include ItsIso14827ClientDomainDef;
+	--typedef native Dz1Asn1UTF8Str from dz1_asn1;
+	
+	typedef struct ItsIso14827DomainKey
+	{
+		ItsIso14827DomainType			 type;		// is key
+		Dz1Asn1UTF8Str					*name;		// is key
+	} ItsIso14827DomainKey;							// with api dump, compare, clone
+	
+	typedef union ItsIso14827Domain
+	{
+		ItsIso14827ServerDomain			*server;
+		ItsIso14827ClientDomain			*client;
+	} ItsIso14827Domain;							// with api dump, compare
+	
+	typedef unique table ItsIso14827DomainList(find, extract, count) [ItsIso14827Domain];
+	
+	typedef struct ItsIso14827DomainSessionEntry
+	{
+		ItsIso14827SessionKey			*session;	// is key
+		ItsIso14827DomainKey			*domain;
+	} ItsIso14827DomainSessionEntry;				// with api dump, compare
+	
+	typedef unique table ItsIso14827DomainSessionList(find, extract, count) [ItsIso14827DomainSessionEntry];
+	
+	typedef struct ItsIso14827DomainMgr
+	{
+		ItsIso14827DomainList			*domains;	// is notarg
+		ItsIso14827DomainSessionList	*sessions;	// is notarg
+	} ItsIso14827DomainMgr;							// with api dump
+}

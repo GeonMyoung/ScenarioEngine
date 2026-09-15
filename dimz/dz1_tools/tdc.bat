@@ -1,0 +1,2 @@
+.\tdc.exe
+pause

@@ -1,0 +1,593 @@
+#ifndef _DZ1_TDC_DZ1_CODE_GEN_TODEC_DEF_H_
+#define _DZ1_TDC_DZ1_CODE_GEN_TODEC_DEF_H_
+
+////////////////////////////////////////////////////////////////////////////////
+#include <dz1_error.h>
+#include <dz1_int.h>
+#include <dz1_real.h>
+#include <dz1_str.h>
+#include <dz1_sock_addr.h>
+////////////////////////////////////////////////////////////////////////////////
+
+#include "libdz1_support.h"
+#include "Dz1TdcInfoObject.h"
+#include "Dz1TdcInfoModule.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// _declare_ConstructMemberCodecLimitedInfo
+struct ConstructMemberCodecLimitedInfo;
+// _declare_ConstructMemberCodecLimitedInfo
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// _declare_ConstructMemberCodecEntry
+struct ConstructMemberCodecEntry;
+// _declare_ConstructMemberCodecEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CodecOneOfConstruct
+struct ConstructMemberCodecEntry;
+struct ConstructMemberCodecLimitedInfo;
+
+typedef struct CodecOneOfConstruct
+{
+	struct ConstructMemberCodecEntry			*parent;
+	str_t										 instance_name;
+	ObjectInfo									*obj;
+	struct ConstructMemberCodecLimitedInfo		*info;
+} CodecOneOfConstruct;
+
+DZ1_CPPLINK DZ1_DLLPORT CodecOneOfConstruct *CodecOneOfConstruct_new(struct ConstructMemberCodecEntry *parent_ref, 
+																	 str_t instance_name, 
+																	 ObjectInfo *obj_ref, 
+																	 struct ConstructMemberCodecLimitedInfo *info, Dz1Error *err);
+static __inline__ CodecOneOfConstruct *CodecOneOfConstruct_gen(Dz1Error *err) { return CodecOneOfConstruct_new(NULL, NULL, NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t CodecOneOfConstruct_copy(CodecOneOfConstruct *dst, CodecOneOfConstruct *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT CodecOneOfConstruct *CodecOneOfConstruct_clone(CodecOneOfConstruct *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void CodecOneOfConstruct_purge(CodecOneOfConstruct *p);
+DZ1_CPPLINK DZ1_DLLPORT void CodecOneOfConstruct_del(CodecOneOfConstruct *p);
+static __inline__ void CodecOneOfConstruct_delAndSetNull(void *ptr)
+{
+	CodecOneOfConstruct **p = (CodecOneOfConstruct **)ptr;
+	if (p) { CodecOneOfConstruct_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void CodecOneOfConstruct_dump(CodecOneOfConstruct *p, int tab);
+// CodecOneOfConstruct
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CodecPrimitiveByte
+struct ConstructMemberCodecEntry;
+
+typedef struct CodecPrimitiveByte
+{
+	struct ConstructMemberCodecEntry	*parent;
+	u32_t								 byte_len;
+	u32_t								 byte_sft;
+} CodecPrimitiveByte;
+
+DZ1_CPPLINK DZ1_DLLPORT CodecPrimitiveByte *CodecPrimitiveByte_new(struct ConstructMemberCodecEntry *parent_ref, 
+																   u32_t byte_len, 
+																   u32_t byte_sft, Dz1Error *err);
+static __inline__ CodecPrimitiveByte *CodecPrimitiveByte_gen(Dz1Error *err) { return CodecPrimitiveByte_new(NULL, 0, 0, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t CodecPrimitiveByte_copy(CodecPrimitiveByte *dst, CodecPrimitiveByte *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT CodecPrimitiveByte *CodecPrimitiveByte_clone(CodecPrimitiveByte *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void CodecPrimitiveByte_purge(CodecPrimitiveByte *p);
+DZ1_CPPLINK DZ1_DLLPORT void CodecPrimitiveByte_del(CodecPrimitiveByte *p);
+static __inline__ void CodecPrimitiveByte_delAndSetNull(void *ptr)
+{
+	CodecPrimitiveByte **p = (CodecPrimitiveByte **)ptr;
+	if (p) { CodecPrimitiveByte_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void CodecPrimitiveByte_dump(CodecPrimitiveByte *p, int tab);
+// CodecPrimitiveByte
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CodecPrimitiveBits
+struct ConstructMemberCodecEntry;
+
+typedef struct CodecPrimitiveBits
+{
+	struct ConstructMemberCodecEntry	*parent;
+	u32_t								 bit_len;
+	u32_t								 bit_sft;
+} CodecPrimitiveBits;
+
+DZ1_CPPLINK DZ1_DLLPORT CodecPrimitiveBits *CodecPrimitiveBits_new(struct ConstructMemberCodecEntry *parent_ref, 
+																   u32_t bit_len, 
+																   u32_t bit_sft, Dz1Error *err);
+static __inline__ CodecPrimitiveBits *CodecPrimitiveBits_gen(Dz1Error *err) { return CodecPrimitiveBits_new(NULL, 0, 0, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t CodecPrimitiveBits_copy(CodecPrimitiveBits *dst, CodecPrimitiveBits *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT CodecPrimitiveBits *CodecPrimitiveBits_clone(CodecPrimitiveBits *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void CodecPrimitiveBits_purge(CodecPrimitiveBits *p);
+DZ1_CPPLINK DZ1_DLLPORT void CodecPrimitiveBits_del(CodecPrimitiveBits *p);
+static __inline__ void CodecPrimitiveBits_delAndSetNull(void *ptr)
+{
+	CodecPrimitiveBits **p = (CodecPrimitiveBits **)ptr;
+	if (p) { CodecPrimitiveBits_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void CodecPrimitiveBits_dump(CodecPrimitiveBits *p, int tab);
+// CodecPrimitiveBits
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CodecPadding
+struct ConstructMemberCodecEntry;
+
+typedef struct CodecPadding
+{
+	struct ConstructMemberCodecEntry	*parent;
+	u32_t								 bit_len;
+} CodecPadding;
+
+DZ1_CPPLINK DZ1_DLLPORT CodecPadding *CodecPadding_new(struct ConstructMemberCodecEntry *parent_ref, 
+													   u32_t bit_len, Dz1Error *err);
+static __inline__ CodecPadding *CodecPadding_gen(Dz1Error *err) { return CodecPadding_new(NULL, 0, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t CodecPadding_copy(CodecPadding *dst, CodecPadding *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT CodecPadding *CodecPadding_clone(CodecPadding *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void CodecPadding_purge(CodecPadding *p);
+DZ1_CPPLINK DZ1_DLLPORT void CodecPadding_del(CodecPadding *p);
+static __inline__ void CodecPadding_delAndSetNull(void *ptr)
+{
+	CodecPadding **p = (CodecPadding **)ptr;
+	if (p) { CodecPadding_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void CodecPadding_dump(CodecPadding *p, int tab);
+// CodecPadding
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecInfoPresent
+typedef enum ConstructMemberCodecInfoPresent
+{
+	ConstructMemberCodecInfoPresent_one_of_structure,
+	ConstructMemberCodecInfoPresent_byte_of_primitive,
+	ConstructMemberCodecInfoPresent_bits_of_primitive,
+	ConstructMemberCodecInfoPresent_void_member,
+	ConstructMemberCodecInfoPresent_alternate,
+	ConstructMemberCodecInfoPresent_padding,
+	ConstructMemberCodecInfoPresent_max
+} ConstructMemberCodecInfoPresent;
+
+DZ1_CPPLINK str_t ConstructMemberCodecInfoPresentStrA(ConstructMemberCodecInfoPresent v);
+DZ1_CPPLINK ConstructMemberCodecInfoPresent ConstructMemberCodecInfoPresentFromStrA(str_t str);
+#ifndef UNIX_SYSTEM
+DZ1_CPPLINK wstr_t ConstructMemberCodecInfoPresentStrW(ConstructMemberCodecInfoPresent v);
+DZ1_CPPLINK ConstructMemberCodecInfoPresent ConstructMemberCodecInfoPresentFromStrW(wstr_t str);
+#ifdef UNICODE
+#define ConstructMemberCodecInfoPresentStr ConstructMemberCodecInfoPresentStrW
+#define ConstructMemberCodecInfoPresentFromStr ConstructMemberCodecInfoPresentFromStrW
+#else // UNICODE
+#define ConstructMemberCodecInfoPresentStr ConstructMemberCodecInfoPresentStrA
+#define ConstructMemberCodecInfoPresentFromStr ConstructMemberCodecInfoPresentFromStrA
+#endif // UNICODE
+#else // UNIX_SYSTEM
+#define ConstructMemberCodecInfoPresentStr ConstructMemberCodecInfoPresentStrA
+#define ConstructMemberCodecInfoPresentFromStr ConstructMemberCodecInfoPresentFromStrA
+#endif // UNIX_SYSTEM
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecInfoPresent *ConstructMemberCodecInfoPresent_new(ConstructMemberCodecInfoPresent *src, Dz1Error *err);
+static __inline__ ConstructMemberCodecInfoPresent *ConstructMemberCodecInfoPresent_gen(Dz1Error *err) { ConstructMemberCodecInfoPresent v = ConstructMemberCodecInfoPresent_max; return ConstructMemberCodecInfoPresent_new(&v, err); }
+#define ConstructMemberCodecInfoPresent_clone             ConstructMemberCodecInfoPresent_new
+static __inline__ void ConstructMemberCodecInfoPresent_del(ConstructMemberCodecInfoPresent *p) { if (p != NULL) Dz1Free(p); }
+static __inline__ void ConstructMemberCodecInfoPresent_delAndSetNull(void *ptr)
+{
+	ConstructMemberCodecInfoPresent **p = (ConstructMemberCodecInfoPresent **)ptr;
+	if (p != NULL) { ConstructMemberCodecInfoPresent_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecInfoPresent_dump(ConstructMemberCodecInfoPresent *v, int tab);
+// ConstructMemberCodecInfoPresent
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecInfo
+typedef struct ConstructMemberCodecInfo
+{
+	ConstructMemberCodecInfoPresent present;
+	union
+	{
+		void *__ptr__;
+		unsigned char b1[1];
+		unsigned char b2[2];
+		unsigned char b4[4];
+		CodecOneOfConstruct		*one_of_structure;
+		CodecPrimitiveByte		*byte_of_primitive;
+		CodecPrimitiveBits		*bits_of_primitive;
+		u32_t					*void_member;
+		str_t					 alternate;
+		CodecPadding			*padding;
+	} x;
+} ConstructMemberCodecInfo;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecInfo *ConstructMemberCodecInfo_new(ConstructMemberCodecInfoPresent present, void *ptr, Dz1Error *err);
+static __inline__ ConstructMemberCodecInfo *ConstructMemberCodecInfo_gen(Dz1Error *err) { return ConstructMemberCodecInfo_new(ConstructMemberCodecInfoPresent_max, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t  ConstructMemberCodecInfo_copy(ConstructMemberCodecInfo *dst, ConstructMemberCodecInfo *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecInfo *ConstructMemberCodecInfo_clone(ConstructMemberCodecInfo *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecInfo_purge(ConstructMemberCodecInfo *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecInfo_del(ConstructMemberCodecInfo *p);
+static __inline__ void ConstructMemberCodecInfo_delAndSetNull(void *ptr)
+{
+	ConstructMemberCodecInfo **p = (ConstructMemberCodecInfo **)ptr;
+	if (p != NULL) { ConstructMemberCodecInfo_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecInfo_dump(ConstructMemberCodecInfo *p, int tab);
+// ConstructMemberCodecInfo
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecLimitedInfoPresent
+typedef enum ConstructMemberCodecLimitedInfoPresent
+{
+	ConstructMemberCodecLimitedInfoPresent_byte_of_primitive = ConstructMemberCodecInfoPresent_byte_of_primitive,
+	ConstructMemberCodecLimitedInfoPresent_bits_of_primitive = ConstructMemberCodecInfoPresent_bits_of_primitive,
+	ConstructMemberCodecLimitedInfoPresent_alternate = ConstructMemberCodecInfoPresent_alternate,
+	ConstructMemberCodecLimitedInfoPresent_max
+} ConstructMemberCodecLimitedInfoPresent;
+
+DZ1_CPPLINK str_t ConstructMemberCodecLimitedInfoPresentStrA(ConstructMemberCodecLimitedInfoPresent v);
+DZ1_CPPLINK ConstructMemberCodecLimitedInfoPresent ConstructMemberCodecLimitedInfoPresentFromStrA(str_t str);
+#ifndef UNIX_SYSTEM
+DZ1_CPPLINK wstr_t ConstructMemberCodecLimitedInfoPresentStrW(ConstructMemberCodecLimitedInfoPresent v);
+DZ1_CPPLINK ConstructMemberCodecLimitedInfoPresent ConstructMemberCodecLimitedInfoPresentFromStrW(wstr_t str);
+#ifdef UNICODE
+#define ConstructMemberCodecLimitedInfoPresentStr ConstructMemberCodecLimitedInfoPresentStrW
+#define ConstructMemberCodecLimitedInfoPresentFromStr ConstructMemberCodecLimitedInfoPresentFromStrW
+#else // UNICODE
+#define ConstructMemberCodecLimitedInfoPresentStr ConstructMemberCodecLimitedInfoPresentStrA
+#define ConstructMemberCodecLimitedInfoPresentFromStr ConstructMemberCodecLimitedInfoPresentFromStrA
+#endif // UNICODE
+#else // UNIX_SYSTEM
+#define ConstructMemberCodecLimitedInfoPresentStr ConstructMemberCodecLimitedInfoPresentStrA
+#define ConstructMemberCodecLimitedInfoPresentFromStr ConstructMemberCodecLimitedInfoPresentFromStrA
+#endif // UNIX_SYSTEM
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecLimitedInfoPresent *ConstructMemberCodecLimitedInfoPresent_new(ConstructMemberCodecLimitedInfoPresent *src, Dz1Error *err);
+static __inline__ ConstructMemberCodecLimitedInfoPresent *ConstructMemberCodecLimitedInfoPresent_gen(Dz1Error *err) { ConstructMemberCodecLimitedInfoPresent v = ConstructMemberCodecLimitedInfoPresent_max; return ConstructMemberCodecLimitedInfoPresent_new(&v, err); }
+#define ConstructMemberCodecLimitedInfoPresent_clone             ConstructMemberCodecLimitedInfoPresent_new
+static __inline__ void ConstructMemberCodecLimitedInfoPresent_del(ConstructMemberCodecLimitedInfoPresent *p) { if (p != NULL) Dz1Free(p); }
+static __inline__ void ConstructMemberCodecLimitedInfoPresent_delAndSetNull(void *ptr)
+{
+	ConstructMemberCodecLimitedInfoPresent **p = (ConstructMemberCodecLimitedInfoPresent **)ptr;
+	if (p != NULL) { ConstructMemberCodecLimitedInfoPresent_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecLimitedInfoPresent_dump(ConstructMemberCodecLimitedInfoPresent *v, int tab);
+// ConstructMemberCodecLimitedInfoPresent
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecLimitedInfo
+typedef struct ConstructMemberCodecLimitedInfo
+{
+	ConstructMemberCodecLimitedInfoPresent present;
+	union
+	{
+		void *__ptr__;
+		unsigned char b1[1];
+		unsigned char b2[2];
+		unsigned char b4[4];
+		CodecPrimitiveByte		*byte_of_primitive;
+		CodecPrimitiveBits		*bits_of_primitive;
+		str_t					 alternate;
+	} x;
+} ConstructMemberCodecLimitedInfo;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecLimitedInfo *ConstructMemberCodecLimitedInfo_new(ConstructMemberCodecLimitedInfoPresent present, void *ptr, Dz1Error *err);
+static __inline__ ConstructMemberCodecLimitedInfo *ConstructMemberCodecLimitedInfo_gen(Dz1Error *err) { return ConstructMemberCodecLimitedInfo_new(ConstructMemberCodecLimitedInfoPresent_max, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t  ConstructMemberCodecLimitedInfo_copy(ConstructMemberCodecLimitedInfo *dst, ConstructMemberCodecLimitedInfo *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecLimitedInfo *ConstructMemberCodecLimitedInfo_clone(ConstructMemberCodecLimitedInfo *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecLimitedInfo_purge(ConstructMemberCodecLimitedInfo *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecLimitedInfo_del(ConstructMemberCodecLimitedInfo *p);
+static __inline__ void ConstructMemberCodecLimitedInfo_delAndSetNull(void *ptr)
+{
+	ConstructMemberCodecLimitedInfo **p = (ConstructMemberCodecLimitedInfo **)ptr;
+	if (p != NULL) { ConstructMemberCodecLimitedInfo_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecLimitedInfo_dump(ConstructMemberCodecLimitedInfo *p, int tab);
+// ConstructMemberCodecLimitedInfo
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecEntry
+struct ConstructCodecEntry;
+
+typedef struct ConstructMemberCodecEntry
+{
+	struct ConstructCodecEntry		*parent;
+	u32_t							 order;
+	str_t							 instance_name;
+	ObjectInfo						*obj;
+	ConstructMemberCodecInfo		*info;
+} ConstructMemberCodecEntry;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecEntry *ConstructMemberCodecEntry_new(struct ConstructCodecEntry *parent_ref, 
+																				 u32_t order, 
+																				 str_t instance_name, 
+																				 ObjectInfo *obj_ref, 
+																				 ConstructMemberCodecInfo *info, Dz1Error *err);
+static __inline__ ConstructMemberCodecEntry *ConstructMemberCodecEntry_gen(Dz1Error *err) { return ConstructMemberCodecEntry_new(NULL, 0, NULL, NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t ConstructMemberCodecEntry_copy(ConstructMemberCodecEntry *dst, ConstructMemberCodecEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecEntry *ConstructMemberCodecEntry_clone(ConstructMemberCodecEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecEntry_purge(ConstructMemberCodecEntry *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecEntry_del(ConstructMemberCodecEntry *p);
+static __inline__ void ConstructMemberCodecEntry_delAndSetNull(void *ptr)
+{
+	ConstructMemberCodecEntry **p = (ConstructMemberCodecEntry **)ptr;
+	if (p) { ConstructMemberCodecEntry_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecEntry_dump(ConstructMemberCodecEntry *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int ConstructMemberCodecEntry_cmp(ConstructMemberCodecEntry *a, ConstructMemberCodecEntry *b); 
+// ConstructMemberCodecEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecList
+typedef struct ConstructMemberCodecList
+{
+	void *storage;
+	unsigned int (*count)(struct ConstructMemberCodecList *p);
+	Dz1Error (*travel)(struct ConstructMemberCodecList *p, Dz1Error (*func)(void *ptr, ConstructMemberCodecEntry *entry), void *ptr);
+	Dz1Error (*travelForward)(struct ConstructMemberCodecList *p, Dz1Error (*func)(void *ptr, ConstructMemberCodecEntry *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct ConstructMemberCodecList *p, Dz1Error (*func)(void *ptr, ConstructMemberCodecEntry *entry), void *ptr);
+	ConstructMemberCodecEntry **(*get_array)(struct ConstructMemberCodecList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct ConstructMemberCodecList *p, ConstructMemberCodecEntry *data);
+	bool_t (*remove)(struct ConstructMemberCodecList *p, ConstructMemberCodecEntry *key);
+	ConstructMemberCodecEntry *(*extract)(struct ConstructMemberCodecList *p, ConstructMemberCodecEntry *key);
+	ConstructMemberCodecEntry *(*find)(struct ConstructMemberCodecList *p, ConstructMemberCodecEntry *key);
+	int (*cmp)(ConstructMemberCodecEntry *a, ConstructMemberCodecEntry *b);
+} ConstructMemberCodecList;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecList *ConstructMemberCodecList_new(Dz1Error *err);
+static __inline__ ConstructMemberCodecList *ConstructMemberCodecList_gen(Dz1Error *err) { return ConstructMemberCodecList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT ConstructMemberCodecList *ConstructMemberCodecList_clone(ConstructMemberCodecList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecList_purge(ConstructMemberCodecList *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecList_del(ConstructMemberCodecList *p);
+static __inline__ void ConstructMemberCodecList_delAndSetNull(void *ptr)
+{
+	ConstructMemberCodecList **p = (ConstructMemberCodecList **)ptr;
+	if (p != NULL) { ConstructMemberCodecList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructMemberCodecList_dump(ConstructMemberCodecList *p, int tab);
+
+// ConstructMemberCodecList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecMode
+typedef enum ConstructCodecMode
+{
+	ConstructCodecMode_static,
+	ConstructCodecMode_public,
+	ConstructCodecMode_header,
+	ConstructCodecMode_max
+} ConstructCodecMode;
+
+DZ1_CPPLINK str_t ConstructCodecModeStrA(ConstructCodecMode v);
+DZ1_CPPLINK ConstructCodecMode ConstructCodecModeFromStrA(str_t str);
+#ifndef UNIX_SYSTEM
+DZ1_CPPLINK wstr_t ConstructCodecModeStrW(ConstructCodecMode v);
+DZ1_CPPLINK ConstructCodecMode ConstructCodecModeFromStrW(wstr_t str);
+#ifdef UNICODE
+#define ConstructCodecModeStr ConstructCodecModeStrW
+#define ConstructCodecModeFromStr ConstructCodecModeFromStrW
+#else // UNICODE
+#define ConstructCodecModeStr ConstructCodecModeStrA
+#define ConstructCodecModeFromStr ConstructCodecModeFromStrA
+#endif // UNICODE
+#else // UNIX_SYSTEM
+#define ConstructCodecModeStr ConstructCodecModeStrA
+#define ConstructCodecModeFromStr ConstructCodecModeFromStrA
+#endif // UNIX_SYSTEM
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecMode *ConstructCodecMode_new(ConstructCodecMode *src, Dz1Error *err);
+static __inline__ ConstructCodecMode *ConstructCodecMode_gen(Dz1Error *err) { ConstructCodecMode v = ConstructCodecMode_max; return ConstructCodecMode_new(&v, err); }
+static __inline__ void ConstructCodecMode_del(ConstructCodecMode *p) { if (p != NULL) Dz1Free(p); }
+static __inline__ void ConstructCodecMode_delAndSetNull(void *ptr)
+{
+	ConstructCodecMode **p = (ConstructCodecMode **)ptr;
+	if (p != NULL) { ConstructCodecMode_del(*p); *p = NULL; }
+}
+// ConstructCodecMode
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecEntry
+typedef struct ConstructCodecEntry
+{
+	str_t						 opt_suffix;
+	ObjectInfo					*parent_obj;
+	ConstructCodecMode			 mode;
+	ConstructMemberCodecList	*member_codec;
+} ConstructCodecEntry;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecEntry *ConstructCodecEntry_new(str_t opt_suffix, 
+																	 ObjectInfo *parent_obj_ref, 
+																	 ConstructCodecMode mode, Dz1Error *err);
+static __inline__ ConstructCodecEntry *ConstructCodecEntry_gen(Dz1Error *err) { return ConstructCodecEntry_new(NULL, NULL, ConstructCodecMode_max, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t ConstructCodecEntry_copy(ConstructCodecEntry *dst, ConstructCodecEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecEntry *ConstructCodecEntry_clone(ConstructCodecEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecEntry_purge(ConstructCodecEntry *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecEntry_del(ConstructCodecEntry *p);
+static __inline__ void ConstructCodecEntry_delAndSetNull(void *ptr)
+{
+	ConstructCodecEntry **p = (ConstructCodecEntry **)ptr;
+	if (p) { ConstructCodecEntry_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecEntry_dump(ConstructCodecEntry *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int ConstructCodecEntry_cmp(ConstructCodecEntry *a, ConstructCodecEntry *b); 
+// ConstructCodecEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecList
+typedef struct ConstructCodecList
+{
+	void *storage;
+	unsigned int (*count)(struct ConstructCodecList *p);
+	Dz1Error (*travel)(struct ConstructCodecList *p, Dz1Error (*func)(void *ptr, ConstructCodecEntry *entry), void *ptr);
+	Dz1Error (*travelForward)(struct ConstructCodecList *p, Dz1Error (*func)(void *ptr, ConstructCodecEntry *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct ConstructCodecList *p, Dz1Error (*func)(void *ptr, ConstructCodecEntry *entry), void *ptr);
+	ConstructCodecEntry **(*get_array)(struct ConstructCodecList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct ConstructCodecList *p, ConstructCodecEntry *data);
+	bool_t (*remove)(struct ConstructCodecList *p, ConstructCodecEntry *key);
+	ConstructCodecEntry *(*extract)(struct ConstructCodecList *p, ConstructCodecEntry *key);
+	ConstructCodecEntry *(*find)(struct ConstructCodecList *p, ConstructCodecEntry *key);
+	ConstructCodecEntry *(*getHead)(struct ConstructCodecList *p);
+	int (*cmp)(ConstructCodecEntry *a, ConstructCodecEntry *b);
+} ConstructCodecList;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecList *ConstructCodecList_new(Dz1Error *err);
+static __inline__ ConstructCodecList *ConstructCodecList_gen(Dz1Error *err) { return ConstructCodecList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecList *ConstructCodecList_clone(ConstructCodecList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecList_purge(ConstructCodecList *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecList_del(ConstructCodecList *p);
+static __inline__ void ConstructCodecList_delAndSetNull(void *ptr)
+{
+	ConstructCodecList **p = (ConstructCodecList **)ptr;
+	if (p != NULL) { ConstructCodecList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecList_dump(ConstructCodecList *p, int tab);
+
+// ConstructCodecList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructObjectEntry
+typedef struct ConstructObjectEntry
+{
+	str_t					 obj_name;
+	ObjectInfo				*obj;
+	ConstructCodecList		*codecs;
+} ConstructObjectEntry;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructObjectEntry *ConstructObjectEntry_new(str_t obj_name, 
+																	   ObjectInfo *obj_ref, Dz1Error *err);
+static __inline__ ConstructObjectEntry *ConstructObjectEntry_gen(Dz1Error *err) { return ConstructObjectEntry_new(NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t ConstructObjectEntry_copy(ConstructObjectEntry *dst, ConstructObjectEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT ConstructObjectEntry *ConstructObjectEntry_clone(ConstructObjectEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructObjectEntry_purge(ConstructObjectEntry *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructObjectEntry_del(ConstructObjectEntry *p);
+static __inline__ void ConstructObjectEntry_delAndSetNull(void *ptr)
+{
+	ConstructObjectEntry **p = (ConstructObjectEntry **)ptr;
+	if (p) { ConstructObjectEntry_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructObjectEntry_dump(ConstructObjectEntry *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int ConstructObjectEntry_cmp(ConstructObjectEntry *a, ConstructObjectEntry *b); 
+// ConstructObjectEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructObjectList
+typedef struct ConstructObjectList
+{
+	void *storage;
+	unsigned int (*count)(struct ConstructObjectList *p);
+	Dz1Error (*travel)(struct ConstructObjectList *p, Dz1Error (*func)(void *ptr, ConstructObjectEntry *entry), void *ptr);
+	Dz1Error (*travelForward)(struct ConstructObjectList *p, Dz1Error (*func)(void *ptr, ConstructObjectEntry *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct ConstructObjectList *p, Dz1Error (*func)(void *ptr, ConstructObjectEntry *entry), void *ptr);
+	ConstructObjectEntry **(*get_array)(struct ConstructObjectList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct ConstructObjectList *p, ConstructObjectEntry *data);
+	bool_t (*remove)(struct ConstructObjectList *p, ConstructObjectEntry *key);
+	ConstructObjectEntry *(*extract)(struct ConstructObjectList *p, ConstructObjectEntry *key);
+	ConstructObjectEntry *(*find)(struct ConstructObjectList *p, ConstructObjectEntry *key);
+	int (*cmp)(ConstructObjectEntry *a, ConstructObjectEntry *b);
+} ConstructObjectList;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructObjectList *ConstructObjectList_new(Dz1Error *err);
+static __inline__ ConstructObjectList *ConstructObjectList_gen(Dz1Error *err) { return ConstructObjectList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT ConstructObjectList *ConstructObjectList_clone(ConstructObjectList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructObjectList_purge(ConstructObjectList *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructObjectList_del(ConstructObjectList *p);
+static __inline__ void ConstructObjectList_delAndSetNull(void *ptr)
+{
+	ConstructObjectList **p = (ConstructObjectList **)ptr;
+	if (p != NULL) { ConstructObjectList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructObjectList_dump(ConstructObjectList *p, int tab);
+
+// ConstructObjectList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecIncludeEntry
+typedef struct ConstructCodecIncludeEntry
+{
+	str_t		filename_ext;
+	bool_t		use_codate;
+} ConstructCodecIncludeEntry;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecIncludeEntry *ConstructCodecIncludeEntry_new(str_t filename_ext, Dz1Error *err);
+static __inline__ ConstructCodecIncludeEntry *ConstructCodecIncludeEntry_gen(Dz1Error *err) { return ConstructCodecIncludeEntry_new(NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t ConstructCodecIncludeEntry_copy(ConstructCodecIncludeEntry *dst, ConstructCodecIncludeEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecIncludeEntry *ConstructCodecIncludeEntry_clone(ConstructCodecIncludeEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecIncludeEntry_purge(ConstructCodecIncludeEntry *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecIncludeEntry_del(ConstructCodecIncludeEntry *p);
+static __inline__ void ConstructCodecIncludeEntry_delAndSetNull(void *ptr)
+{
+	ConstructCodecIncludeEntry **p = (ConstructCodecIncludeEntry **)ptr;
+	if (p) { ConstructCodecIncludeEntry_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecIncludeEntry_dump(ConstructCodecIncludeEntry *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int ConstructCodecIncludeEntry_cmp(ConstructCodecIncludeEntry *a, ConstructCodecIncludeEntry *b); 
+// ConstructCodecIncludeEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecIncludeList
+typedef struct ConstructCodecIncludeList
+{
+	void *storage;
+	unsigned int (*count)(struct ConstructCodecIncludeList *p);
+	Dz1Error (*travel)(struct ConstructCodecIncludeList *p, Dz1Error (*func)(void *ptr, ConstructCodecIncludeEntry *entry), void *ptr);
+	Dz1Error (*travelForward)(struct ConstructCodecIncludeList *p, Dz1Error (*func)(void *ptr, ConstructCodecIncludeEntry *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct ConstructCodecIncludeList *p, Dz1Error (*func)(void *ptr, ConstructCodecIncludeEntry *entry), void *ptr);
+	ConstructCodecIncludeEntry **(*get_array)(struct ConstructCodecIncludeList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct ConstructCodecIncludeList *p, ConstructCodecIncludeEntry *data);
+	bool_t (*remove)(struct ConstructCodecIncludeList *p, ConstructCodecIncludeEntry *key);
+	ConstructCodecIncludeEntry *(*extract)(struct ConstructCodecIncludeList *p, ConstructCodecIncludeEntry *key);
+	ConstructCodecIncludeEntry *(*find)(struct ConstructCodecIncludeList *p, ConstructCodecIncludeEntry *key);
+	int (*cmp)(ConstructCodecIncludeEntry *a, ConstructCodecIncludeEntry *b);
+} ConstructCodecIncludeList;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecIncludeList *ConstructCodecIncludeList_new(Dz1Error *err);
+static __inline__ ConstructCodecIncludeList *ConstructCodecIncludeList_gen(Dz1Error *err) { return ConstructCodecIncludeList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodecIncludeList *ConstructCodecIncludeList_clone(ConstructCodecIncludeList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecIncludeList_purge(ConstructCodecIncludeList *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecIncludeList_del(ConstructCodecIncludeList *p);
+static __inline__ void ConstructCodecIncludeList_delAndSetNull(void *ptr)
+{
+	ConstructCodecIncludeList **p = (ConstructCodecIncludeList **)ptr;
+	if (p != NULL) { ConstructCodecIncludeList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodecIncludeList_dump(ConstructCodecIncludeList *p, int tab);
+
+// ConstructCodecIncludeList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodec
+typedef struct ConstructCodec
+{
+	str_t							 tdo_name;
+	str_t							 tdo_path;
+	Dz1MdefcModule					*module;
+	str_t							 endian;
+	ConstructCodecIncludeList		*includes;
+	ConstructObjectList				*objs;
+	bool_t							 is_dirty;
+} ConstructCodec;
+
+DZ1_CPPLINK DZ1_DLLPORT ConstructCodec *ConstructCodec_new(str_t tdo_name, 
+														   str_t tdo_path, Dz1Error *err);
+static __inline__ ConstructCodec *ConstructCodec_gen(Dz1Error *err) { return ConstructCodec_new(NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodec_purge(ConstructCodec *p);
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodec_del(ConstructCodec *p);
+static __inline__ void ConstructCodec_delAndSetNull(void *ptr)
+{
+	ConstructCodec **p = (ConstructCodec **)ptr;
+	if (p) { ConstructCodec_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ConstructCodec_dump(ConstructCodec *p, int tab);
+// ConstructCodec
+////////////////////////////////////////////////////////////////////////////////
+
+#endif

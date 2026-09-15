@@ -1,0 +1,97 @@
+message set definition
+{
+	include Itsk00126v2TestScenarioDef;
+	include Dz1SockUtilDef;
+	include Dz1JsonDef;
+
+	typedef struct Itsk00126v2ClientSession
+	{
+		Dz1SockAddr				*peer;			// is key
+		Dz1SockAddr				*local;			// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} Itsk00126v2ClientSession;		// with api dump, compare
+
+	typedef struct Itsk00126v2ServerSession
+	{
+		uint32					 acceptor;
+		Dz1SockAddr				*peer;		// is key
+		Dz1SockAddr				*local;		// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} Itsk00126v2ServerSession;		// with api dump, compare
+
+	typedef union Itsk00126v2Session
+	{
+		Itsk00126v2ClientSession		*client;
+		Itsk00126v2ServerSession		*server;
+	} Itsk00126v2Session;		// with api dump
+
+	typedef struct Itsk00126v2ScenarioClientRole
+	{
+		TString							 peer_ip;
+		uint16							 peer_port;
+	} Itsk00126v2ScenarioClientRole;		// with api dump, clone
+
+	typedef struct Itsk00126v2ScenarioServerRole
+	{
+		bool					 local_port;
+		TString					 iot_im_device_id;
+		bool					 test_iot_im_device_sttus_info;
+		bool					 test_iot_device_list_response_info;
+
+		bool					 test_iot_device_sttus_info;
+	} Itsk00126v2ScenarioServerRole;		// with api dump, clone
+
+	typedef union Itsk00126v2Scenario
+	{
+		Itsk00126v2ScenarioClientRole	*clientRole;
+		Itsk00126v2ScenarioServerRole	*serverRole;
+	} Itsk00126v2Scenario;		//with api dump, clone
+
+
+	typedef enum Itsk00126v2ScenarioEvent
+	{
+		start,
+		auth,
+		trigger,
+		data,
+		disconnected
+	} Itsk00126v2ScenarioEvent;		// with api dump, clone
+
+
+	typedef enum Itsk00126v2ScenarioServerState
+	{
+		initial,
+		wait_test_iot_im_device_sttus_info,
+		wait_test_iot_device_list_response_info,
+		wait_test_iot_device_sttus_info,
+		complete
+	} Itsk00126v2ScenarioServerState;		// with api dump, clone
+
+
+	typedef enum Itsk00126v2ScenarioClientState
+	{
+		initial,
+		complete
+	} Itsk00126v2ScenarioClientState;		// with api dump, clone
+
+
+	typedef struct Itsk00126V2TestScenarioEnv
+	{
+		void *tSelf;
+		void *tMain;	
+		Dz1JsonSpec						*spec;
+		Itsk00126v2Session *session;		 // is notarg
+		Itsk00126v2Scenario	*scenario;		// is notarg
+		bool							 is_run;			// is notarg
+		int32							 state;				// is notarg
+		uint32							 flags;				// is notarg
+		uint32							 testIdx;			// is notarg
+		TString							 current_test;		// is notarg
+	} Itsk00126V2TestScenarioEnv;				// with api dump
+}

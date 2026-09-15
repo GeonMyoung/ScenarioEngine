@@ -1,0 +1,165 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+	include dz1_asn1_types_def;
+
+	typedef reference Dz1Asn1TypeDescr			 from dz1_asn1_codec;
+	typedef reference Dz1Asn1TypeDescrChild		 from dz1_asn1_codec;
+
+	---------------------------------------------------------------------
+	-- BER Tag Decode Context
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1BerDecoderTagState
+	{
+		first_byte,
+		tag_nums
+	} Dz1Asn1BerDecoderTagState;
+
+	typedef struct Dz1Asn1BerDecoderTagCtx
+	{
+		Dz1Asn1BerDecoderTagState		 state;
+		Dz1Asn1Tag						*wip;
+	} Dz1Asn1BerDecoderTagCtx;
+
+	---------------------------------------------------------------------
+	-- BER Length Decode Context
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1BerDecoderLengthState
+	{
+		initial,
+		data_wait
+	} Dz1Asn1BerDecoderLengthState;
+
+	typedef struct Dz1Asn1BerDecoderLengthCtx
+	{
+		Dz1Asn1BerDecoderLengthState	 state;
+		size_t							 remain_bytes;
+		uint64							 wip;
+	} Dz1Asn1BerDecoderLengthCtx;
+
+	---------------------------------------------------------------------
+	-- BER Data Decode Context
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1BerDecoderDataState
+	{
+		initial,
+		data_wait,
+		nested
+	} Dz1Asn1BerDecoderDataState;
+
+	typedef struct Dz1Asn1BerDecoderDataCtx
+	{
+		Dz1Asn1BerDecoderDataState		 state;			// is notarg
+		uint64							 u64data;		// is notarg
+		uint32							 u32data;		// is notarg
+		int32							 s32data;		// is notarg
+		uint8							 u8data;		// is notarg
+		int32							 idx;			// is notarg
+		Dz1Asn1WipValue					*wip;			// is notarg
+	} Dz1Asn1BerDecoderDataCtx;							// with api dumpX
+
+	---------------------------------------------------------------------
+	-- BER Decode Context
+	---------------------------------------------------------------------
+	typedef union Dz1Asn1BerDecoderCtx
+	{
+		Dz1Asn1BerDecoderTagCtx			*tag;
+		Dz1Asn1BerDecoderLengthCtx		*len;
+		Dz1Asn1BerDecoderDataCtx		*data;
+	} Dz1Asn1BerDecoderCtx;
+
+	---------------------------------------------------------------------
+	-- BER Decode Stack
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1BerDecoderStk
+	{
+		struct Dz1Asn1BerDecoderStk		*next;			// is notarg, cascadedump
+
+		Dz1Asn1TypeDescr				*descr;			// is ref
+		Dz1Asn1TagOpt					 tag_opt;
+		Dz1Asn1TypeDescrChild			*child;			// is ref, notarg
+
+		Dz1Asn1BerDecoderCtx			*ctx;			// is notarg
+
+		Dz1Asn1Tag						*tag;			// is notarg
+		uint64							 len;			// is notarg
+		Dz1Asn1WipValue					*data;			// is notarg
+
+		uint32							 consumed;		// is notarg
+
+		struct Dz1Asn1BerDecoderStk		*ret_stk;		// is notarg
+
+		int32							 tab;
+	} Dz1Asn1BerDecoderStk;								// with api dumpX
+
+
+	---------------------------------------------------------------------
+	-- BER Decoder
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1BerDecoder
+	{
+		Dz1Asn1TypeDescr				*target;		// is ref
+		Dz1Asn1BerDecoderStk			*stk;
+		Dz1Asn1WipValue					*ret;			// is notarg
+	} Dz1Asn1BerDecoder;
+
+	typedef func ssize_t Dz1Asn1DataBerDecF(Dz1Asn1BerDecoderDataCtx *dst, Dz1Asn1Stream *src, Dz1Asn1BerDecoderStk *stk, Dz1Asn1BerDecoder *decoder, Dz1Error *err);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	---------------------------------------------------------------------
+	-- BER Encode Option
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1BerEncoderOpt
+	{
+		cer,
+		der
+	} Dz1Asn1BerEncoderOpt;
+
+	---------------------------------------------------------------------
+	-- BER Encode Stack
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1BerEncoderStk
+	{
+		struct Dz1Asn1BerEncoderStk		*next;				// is notarg
+
+		Dz1Asn1TypeDescr				*descr;				// is ref
+		Dz1Asn1TagOpt					 tag_opt;
+		Dz1Asn1BerEncoderOpt			 codec_opt;
+
+		Dz1ElasticBuf					*elb;
+		bool							 is_constructed;	// is notarg
+
+		Dz1Asn1BerEncoderStk			*ret_stk;			// is notarg
+	} Dz1Asn1BerEncoderStk;									// with api dumpX
+
+
+	---------------------------------------------------------------------
+	-- BER Encoder
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1BerEncoderArg
+	{
+		Dz1Asn1BerEncoderOpt			 opt;
+	} Dz1Asn1BerEncoderArg;
+
+	typedef func bool	 Dz1Asn1DataBerEncF(Dz1ElasticBuf *dst, struct Dz1Asn1TypeDescr *descr, void *src, bool *ret_is_constructed_form, Dz1Asn1BerEncoderArg *enc_arg, Dz1Error *err);
+}
+

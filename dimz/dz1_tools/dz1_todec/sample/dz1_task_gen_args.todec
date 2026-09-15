@@ -1,0 +1,119 @@
+message codecs for "dz1_task_gen_args.tdo"
+{
+    include dz1_task_gen_args_util;
+
+    ----------------------------------------
+    -- GenArgs2VisualStudioEntry
+    ----------------------------------------
+    target GenArgs2VisualStudioEntry
+    {
+        codec default public
+        {
+            sequence
+            {
+                simple ver;
+                simple middle_path alter(UTF8);
+                simple proj_file_name alter(UTF8);
+                simple proj_guid alter(UTF8);
+            }
+        }
+    };
+
+    ----------------------------------------
+    -- GenArgs2VisualStudioList
+    ----------------------------------------
+    target GenArgs2VisualStudioList
+    {
+        codec default public
+        {
+            array (count default, entry default);
+        }
+    };
+
+    ----------------------------------------
+    -- GenArgs2LibraryEntry : STRUCT
+    ----------------------------------------
+    target GenArgs2LibraryEntry
+    {
+        codec default public
+        {
+            sequence
+            {
+		        simple name             alter(UTF8);
+		        simple path_root_abs    alter(UTF8);
+		        simple order;
+		        simple root2inc_path    alter(UTF8);
+		        simple root2lib_path    alter(UTF8);
+		        simple projects;
+            }
+        }
+    };
+
+    ----------------------------------------
+    -- GenArgs2LibraryList
+    ----------------------------------------
+    target GenArgs2LibraryList
+    {
+        codec default public
+        {
+            array (count default, entry default);
+        }
+    };
+
+    ----------------------------------------
+    -- GenArgs2LibraryInfo
+    ----------------------------------------
+    target GenArgs2LibraryInfo
+    {
+        codec default public
+        {
+            sequence
+            {
+		        simple table;
+            }
+        }
+    };
+
+    ----------------------------------------
+    -- GenArgs2VisualStudio
+    ----------------------------------------
+    target GenArgs2VisualStudio
+    {
+        codec default public
+        {
+            sequence
+            {
+		        simple pthread_root     alter(UTF8);
+		        simple gen_project;
+            }
+        }
+    };
+
+    ----------------------------------------
+    -- GenArgs2
+    ----------------------------------------
+    target GenArgs2
+    {
+        codec default public
+        {
+            sequence
+            {
+                constant { 0x00, 0x08, 0x00, 0x01 };
+		        simple gen_parent_path        alter(UTF8);
+		        simple gen_target_type;
+		        simple gen_target_name        alter(UTF8);
+		        simple gen_test_main;
+		        simple gen_makefile;
+		        simple nullflag(32) gen_studios;
+
+		        simple txt_mode;
+		        simple endian;
+		        simple name_rule;
+
+		        simple codeconv_root        alter(UTF8);
+		        simple dimz_root            alter(UTF8);
+		        simple libraries            postfix(rebuild);
+            }
+        }
+    };
+}

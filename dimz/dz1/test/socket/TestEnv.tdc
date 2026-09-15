@@ -1,0 +1,5 @@
+message set definition
+{
+	include libdz1_support;
+	
+}

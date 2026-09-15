@@ -1,0 +1,41 @@
+message set definition
+{
+	include dz1_tdq_var_def;
+
+	------------------------------------------------------------------------------------
+	-- Column NULL Option
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqNullOpt
+	{
+		TString						 dflt_val;
+	} Dz1TdqNullOpt;										// with api dump, clone
+	
+	------------------------------------------------------------------------------------
+	-- Column & List
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqColumn
+	{
+		TString						 name;					// is key
+		Dz1TdqSqlTypeSpec			*sql_type;
+		Dz1TdqNullOpt				*null_opt;
+	} Dz1TdqColumn;											// with api userdump, clone, compare
+	typedef unique table Dz1TdqColumnList(find, extract)		[ Dz1TdqColumn];
+	typedef unique table Dz1TdqColumnRefList(find, extract)		[&Dz1TdqColumn];
+	typedef array		 Dz1TdqColumnSeq						[ Dz1TdqColumn];
+	typedef array		 Dz1TdqColumnRefSeq						[&Dz1TdqColumn];
+	
+	------------------------------------------------------------------------------------
+	-- Row
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqRow
+	{
+		Dz1TdqColumnList			*index;					// is notarg, nodump
+		Dz1TdqColumnRefSeq			*seq;					// is notarg
+	} Dz1TdqRow;											// with api userdump, clone
+	
+	typedef struct Dz1TdqRowRef
+	{
+		Dz1TdqColumnRefList			*index;					// is notarg, nodump
+		Dz1TdqColumnRefSeq			*seq;					// is notarg
+	} Dz1TdqRowRef;											// with api userdump, clone
+}

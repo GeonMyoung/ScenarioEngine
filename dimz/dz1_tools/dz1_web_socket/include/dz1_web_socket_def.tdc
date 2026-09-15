@@ -1,0 +1,123 @@
+message set definition
+{
+	include libdz1_support;
+	include Dz1SockUtilDef;
+	include dz1_io_stream_support;
+
+	-------------------------------------------------------------------------
+	-- OP Code
+	-------------------------------------------------------------------------
+	typedef enum Dz1WebSockOpCode
+	{
+		unknown		= 0,
+		text		= 1,
+		binary		= 2,
+		terminate	= 8,
+		ping		= 9,
+		pong		= 10
+	} Dz1WebSockOpCode;
+
+	-------------------------------------------------------------------------
+	-- Dz1WebSockMsg & Array
+	-------------------------------------------------------------------------
+	typedef struct Dz1WebSockMsg
+	{
+		Dz1WebSockOpCode	 op;
+		Dz1Binary			*payload;
+	} Dz1WebSockMsg;										// with api dumpX
+	typedef array Dz1WebSockMsgList(extract, count) [Dz1WebSockMsg];
+
+	-------------------------------------------------------------------------
+	-- Dz1WebSocketScheme
+	-------------------------------------------------------------------------
+	typedef enum Dz1WebSocketScheme
+	{
+		ws,
+		wss
+	} Dz1WebSocketScheme;									// with api dumpX
+
+	-------------------------------------------------------------------------
+	-- Dz1WebSocketState
+	-------------------------------------------------------------------------
+	typedef enum Dz1WebSocketState
+	{
+		init,
+		requested,
+		established,
+		closing,
+		closed
+	} Dz1WebSocketState;									// with api dumpX
+
+	-------------------------------------------------------------------------
+	-- Dz1WebSocketAuth
+	-------------------------------------------------------------------------
+	typedef struct Dz1WebSocketAuth
+	{
+		Dz1Binary					*key_bin;
+		Dz1Binary					*cnf_bin;
+	} Dz1WebSocketAuth;										// with api dumpX
+
+	-------------------------------------------------------------------------
+	-- Dz1WebSockDecFrame & Array
+	-------------------------------------------------------------------------
+	typedef struct Dz1WebSockDecFrame
+	{
+		bool					 is_fin;
+		Dz1WebSockOpCode		 op_code;
+		uint64					 payload_len;
+		uint32					*mask;
+		Dz1ElasticBuf			*payload;
+	} Dz1WebSockDecFrame;								// with api dumpX
+	typedef array Dz1WebSockDecFrameList(extract, count) [Dz1WebSockDecFrame];
+
+	-------------------------------------------------------------------------
+	-- Dz1WebSockDecState
+	-------------------------------------------------------------------------
+	typedef enum Dz1WebSockDecState
+	{
+		fin_opcode,
+		mask_len0,
+		ext_len2,
+		ext_len8,
+		mask,
+		payload
+	} Dz1WebSockDecState;
+
+	-------------------------------------------------------------------------
+	-- Dz1WebSockDecCtx
+	-------------------------------------------------------------------------
+	typedef struct Dz1WebSockDecCtx
+	{
+		Dz1WebSockDecState		 state;
+		uint64					 len_remain;
+		Dz1WebSockDecFrame		*wip;
+		Dz1WebSockDecFrameList	*wip_list;				// is notarg
+		uint32					 mask_idx;				// is notarg
+	} Dz1WebSockDecCtx;									// with api dumpX
+
+	-------------------------------------------------------------------------
+	-- Dz1WebSocketA
+	-------------------------------------------------------------------------
+	typedef struct Dz1WebSocket
+	{
+		Dz1SockAddr					*peer;					// is key
+		Dz1SockAddr					*local;					// is key
+		Dz1TcpClientSocket			*sock;
+		Dz1SockUtilTxFifo			*tx_fifo;
+
+		Dz1WebSocketState			 state;					// is notarg
+		Dz1WebSocketAuth			*auth;					// is notarg
+
+		bool						 masking;
+		Dz1WebSockDecCtx			*ctx;
+		Dz1WebSockMsgList			*msgs;					// is notarg
+	} Dz1WebSocket;											// with api dumpX
+
+	typedef enum Dz1WebSocketCloseReason
+	{
+		normal_close = 1000,
+		process_shutdown,
+		protocol_error,
+		unknown_context
+	} Dz1WebSocketCloseReason;								// with api dumpX
+}

@@ -1,0 +1,13 @@
+message set definition
+{
+	include ScenarioEngineDef;
+	include dz1_asn1_support;
+
+	typedef struct ScenarioEngineArg
+	{
+		Dz1Asn1UTF8Str			*ws_server;
+		
+		ScenarioEngineException exceptionProc;
+		void *exceptionArg;
+	} ScenarioEngineArg;
+}

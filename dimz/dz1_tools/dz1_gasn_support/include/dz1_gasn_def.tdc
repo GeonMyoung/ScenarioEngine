@@ -1,0 +1,6 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef native ASN1WorkSpace from dz1_gasn_support;
+}

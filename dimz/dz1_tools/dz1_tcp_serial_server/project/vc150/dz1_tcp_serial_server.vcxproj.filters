@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{7933E0AF-BB8F-4BEE-AC28-9FAD397D7EBF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Engine">
+      <UniqueIdentifier>{cc0ec6df-e973-40aa-94a3-d5f4ec1b16c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SerialIO">
+      <UniqueIdentifier>{6ae1a550-03a6-4b8f-bec7-fdc4d04e8b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SocketIO">
+      <UniqueIdentifier>{84feec64-eae0-4e84-a3d7-6045dfa12097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{46EC376C-5398-4519-80CF-93CE4A61757E}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{E26DAF6B-356B-473E-A34E-F3EDAF66A978}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerCfgUtil.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerDef.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServer.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerArg.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerEnv.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerEnvUtil.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerMsgs.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerTimer.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerTimerUtil.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerSerialIO.c">
+      <Filter>소스 파일\SerialIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerSerialIOMsgs.c">
+      <Filter>소스 파일\SerialIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Dz1TcpSerialServerSocketIO.c">
+      <Filter>소스 파일\SocketIO</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerCfgUtil.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerArg.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerEnv.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerEnvUtil.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerMsg.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerMsgs.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerTimer.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerTimerUtil.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerSerialIO.h">
+      <Filter>소스 파일\SerialIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerSerialIOMsg.h">
+      <Filter>소스 파일\SerialIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerSerialIOMsgs.h">
+      <Filter>소스 파일\SerialIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Dz1TcpSerialServerSocketIO.h">
+      <Filter>소스 파일\SocketIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1TcpSerialServer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1TcpSerialServerCfgUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Dz1TcpSerialServerDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialServerArg.tdc">
+      <Filter>소스 파일\Engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialServerEnv.tdc">
+      <Filter>소스 파일\Engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialServerMsgs.tdc">
+      <Filter>소스 파일\Engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialServerTimer.tdc">
+      <Filter>소스 파일\Engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Dz1TcpSerialServerSerialIOMsgs.tdc">
+      <Filter>소스 파일\SerialIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\Dz1TcpSerialServerDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{D80DDF44-8D43-4791-A4C4-CB2BC8A7F4B6}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{9EEDF3A5-644E-4415-882F-B617131B179F}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{0FA117F7-B668-4EF6-B504-32AB7C34D5DB}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일\test">
+      <UniqueIdentifier>{26761a3d-3bc1-43c9-a601-47f67825d476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\ber">
+      <UniqueIdentifier>{4e1572a2-300e-4b91-bd02-a13961781cb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\per">
+      <UniqueIdentifier>{ddaa3858-483c-4726-a302-aa857beee959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\typedescr">
+      <UniqueIdentifier>{3df03434-6820-4312-ab87-bcc35e77c7e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\constraint">
+      <UniqueIdentifier>{9dcb19c0-178c-427b-beb0-4ca397e63e0c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\dz1_asn1_codec.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_asn1_codec_stream.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_codec.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_codec_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_codec_stream.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_asn1_struct.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\Dz1Asn1TestModule.h">
+      <Filter>리소스 파일\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\Dz1Asn1ExternalModule.h">
+      <Filter>리소스 파일\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_constraint.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_asn1_codec_ber.h">
+      <Filter>소스 파일\ber</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_types_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_asn1_types.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_types.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_asn1_codec_per.h">
+      <Filter>소스 파일\per</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_codec_ber.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_codec_per.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_codec_per_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_typedescr_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_asn1_typedescr.h">
+      <Filter>소스 파일\typedescr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_typedescr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_codec_ber_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_constraint_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_asn1_constraint.h">
+      <Filter>소스 파일\constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_asn1_constraint_types.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_asn1_constraint_types.h">
+      <Filter>소스 파일\constraint</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\dz1_asn1_codec_def.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_codec_stream.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_struct.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_codec_def_util.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_bitstring.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_boolean.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_integer.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_real.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_octet_str.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_null.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_oid.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_external.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_instance_of.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_enum.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_emb_pdv.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_relative_oid.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_time.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_restricted_str.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_char_str.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_cst_seq.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_open_type.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\Dz1Asn1TestModule.c">
+      <Filter>리소스 파일\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\Dz1Asn1ExternalModule.c">
+      <Filter>리소스 파일\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_choice.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_cst_set.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_cst_arr.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_codec_ber.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_codec.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_util.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_prefix.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_types_def.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_types.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_codec_per.c">
+      <Filter>소스 파일\per</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_per_boolean.c">
+      <Filter>소스 파일\per</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_codec_per_def.c">
+      <Filter>소스 파일\per</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_typedescr_def.c">
+      <Filter>소스 파일\typedescr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_typedescr.c">
+      <Filter>소스 파일\typedescr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_codec_ber_def.c">
+      <Filter>소스 파일\ber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_constraint.c">
+      <Filter>소스 파일\constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_constraint_def.c">
+      <Filter>소스 파일\constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_typedescr_f.c">
+      <Filter>소스 파일\typedescr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_typedescr_td.c">
+      <Filter>소스 파일\typedescr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_constraint_types.c">
+      <Filter>소스 파일\constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_asn1_per_integer.c">
+      <Filter>소스 파일\per</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\doc\informations.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\dz1_asn1_codec_def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\dz1_asn1_struct.tdc">
+      <Filter>소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_types_def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_codec_ber_def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_codec_per_def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_typedescr_def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_constraint_def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\test\sample.asn">
+      <Filter>리소스 파일\test</Filter>
+    </None>
+    <None Include="..\..\test\sample.bat">
+      <Filter>리소스 파일\test</Filter>
+    </None>
+    <None Include="..\..\test\sample_hana_tech.bat">
+      <Filter>리소스 파일\test</Filter>
+    </None>
+    <None Include="..\..\doc\ASN.1-PER.vsd">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\..\doc\PER_RestrictedCharacterString.xlsx">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\..\doc\syntax.vsd">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+</Project>

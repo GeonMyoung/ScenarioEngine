@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ks_c_5601-1987"?>
+    <VisualStudioProject
+    ProjectType="Visual C++"
+    Version="7.10"
+    Name="dz1_todecTest"
+    ProjectGUID="{E99DD646-7434-4D92-95D5-5AA8136BE235}"
+    RootNamespace="dz1_todecTest"
+    Keyword="Win32Proj"
+>
+    <Platforms>
+        <Platform Name="Win32"/>
+    </Platforms>
+    <Configurations>
+        <Configuration
+            Name="Release|Win32"
+            OutputDirectory="$(ConfigurationName)"
+            IntermediateDirectory="$(ConfigurationName)"
+            ConfigurationType="1"
+            UseOfMFC="1"
+            CharacterSet="2">
+            <Tool
+                Name="VCCLCompilerTool"
+                Optimization="2"
+                AdditionalIncludeDirectories="..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\."
+                PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+                MinimalRebuild="FALSE"
+                BasicRuntimeChecks="0"
+                RuntimeLibrary="0"
+                UsePrecompiledHeader="0"
+                WarningLevel="3"
+                Detect64BitPortabilityProblems="FALSE"
+                DebugInformationFormat="0"/>
+
+            <Tool
+                Name="VCLinkerTool"
+                AdditionalDependencies="ws2_32.lib"
+                OutputFile="$(OutDir)/dz1_todecTest.exe"
+                LinkIncremental="1"
+                GenerateDebugInformation="TRUE"
+                SubSystem="1"
+                OptimizeReferences="2"
+                EnableCOMDATFolding="2"
+                TargetMachine="1"/>
+            <Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="copy ..\..\..\..\..\pthreads.2\project\vc71\$(IntDir)\pthreadVC2.dll $(IntDir)"/>
+        </Configuration>
+        <Configuration
+            Name="Debug|Win32"
+            OutputDirectory="$(ConfigurationName)"
+            IntermediateDirectory="$(ConfigurationName)"
+            ConfigurationType="1"
+            UseOfMFC="1"
+            CharacterSet="2">
+            <Tool
+                Name="VCCLCompilerTool"
+                Optimization="0"
+                AdditionalIncludeDirectories="..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\."
+                PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+                MinimalRebuild="FALSE"
+                BasicRuntimeChecks="3"
+                RuntimeLibrary="1"
+                UsePrecompiledHeader="0"
+                WarningLevel="3"
+                Detect64BitPortabilityProblems="FALSE"
+                DebugInformationFormat="1"/>
+
+            <Tool
+                Name="VCLinkerTool"
+                AdditionalDependencies="ws2_32.lib"
+                OutputFile="$(OutDir)/dz1_todecTest.exe"
+                LinkIncremental="1"
+                GenerateDebugInformation="TRUE"
+                SubSystem="1"
+                TargetMachine="1"/>
+            <Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="copy ..\..\..\..\..\pthreads.2\project\vc71\$(IntDir)\pthreadVC2.dll $(IntDir)"/>
+        </Configuration>
+        <Configuration
+            Name="ReleaseDLL|Win32"
+            OutputDirectory="$(ConfigurationName)"
+            IntermediateDirectory="$(ConfigurationName)"
+            ConfigurationType="1"
+            UseOfMFC="1"
+            CharacterSet="2">
+            <Tool
+                Name="VCCLCompilerTool"
+                Optimization="2"
+                AdditionalIncludeDirectories="..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\."
+                PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+                MinimalRebuild="FALSE"
+                BasicRuntimeChecks="0"
+                RuntimeLibrary="2"
+                UsePrecompiledHeader="0"
+                WarningLevel="3"
+                Detect64BitPortabilityProblems="FALSE"
+                DebugInformationFormat="0"/>
+
+            <Tool
+                Name="VCLinkerTool"
+                AdditionalDependencies="ws2_32.lib"
+                OutputFile="$(OutDir)/dz1_todecTest.exe"
+                LinkIncremental="1"
+                GenerateDebugInformation="TRUE"
+                SubSystem="1"
+                OptimizeReferences="2"
+                EnableCOMDATFolding="2"
+                TargetMachine="1"/>
+            <Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="copy ..\..\..\..\..\pthreads.2\project\vc71\$(IntDir)\pthreadVC2.dll $(IntDir)"/>
+        </Configuration>
+        <Configuration
+            Name="DebugDLL|Win32"
+            OutputDirectory="$(ConfigurationName)"
+            IntermediateDirectory="$(ConfigurationName)"
+            ConfigurationType="1"
+            UseOfMFC="1"
+            CharacterSet="2">
+            <Tool
+                Name="VCCLCompilerTool"
+                Optimization="0"
+                AdditionalIncludeDirectories="..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\."
+                PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+                MinimalRebuild="FALSE"
+                BasicRuntimeChecks="3"
+                RuntimeLibrary="3"
+                UsePrecompiledHeader="0"
+                WarningLevel="3"
+                Detect64BitPortabilityProblems="FALSE"
+                DebugInformationFormat="1"/>
+
+            <Tool
+                Name="VCLinkerTool"
+                AdditionalDependencies="ws2_32.lib"
+                OutputFile="$(OutDir)/dz1_todecTest.exe"
+                LinkIncremental="1"
+                GenerateDebugInformation="TRUE"
+                SubSystem="1"
+                TargetMachine="1"/>
+            <Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="copy ..\..\..\..\..\pthreads.2\project\vc71\$(IntDir)\pthreadVC2.dll $(IntDir)"/>
+        </Configuration>
+    </Configurations>
+    <References>
+    </References>
+    <Files>
+        <Filter
+            Name="소스 파일"
+            Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+            UniqueIdentifier="{4D241007-CF14-4152-A9D2-E22CE23F2FA0}">
+            <File
+                RelativePath="..\..\dz1_todecTest.c">
+            </File>
+        </Filter>
+        <Filter
+            Name="헤더 파일"
+            Filter="h;hpp;hxx;hm;inl;inc;xsd"
+            UniqueIdentifier="{6C3D27A7-7746-499F-9D8A-9C2499DAE44A}">
+        </Filter>
+        <Filter
+            Name="리소스 파일"
+            Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+            UniqueIdentifier="{5C4B9EAB-2193-457B-8334-04000B1DC637}">
+        </Filter>
+    </Files>
+    <Globals>
+    </Globals>
+</VisualStudioProject>

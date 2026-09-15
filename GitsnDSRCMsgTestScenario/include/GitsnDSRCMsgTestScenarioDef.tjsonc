@@ -1,0 +1,9 @@
+JSON interface generate from GitsnDSRCMsgTestScenarioDef
+{
+
+	-- object Gitsn_MapData cascade;
+
+	object GitsnDSRCMsg cascade;
+
+	object GitsnDSRCMsgTestConfiguration cascade;
+}

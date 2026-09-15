@@ -1,0 +1,275 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_bmp_def;
+	
+	typedef native Dz1Sync from dz1_sync;
+	typedef native Dz1GifColorIndex from Dz1GifTypes;	// with api clone
+	typedef func Dz1Error Dz1GifRenderCallback(void *ptr, uint32 seq, uint32 dur_ms, Dz1BMP *bmp);
+
+	-------------------------------------------------------------------------
+	-- DATA SUB Block
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifDataSubBlock
+	{
+		Dz1Binary *bin;
+		struct Dz1GifDataSubBlock *next;	// is notarg
+	} Dz1GifDataSubBlock;					// with api dump, userdel
+	
+	-------------------------------------------------------------------------
+	-- Color & Array
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifColor
+	{
+		uint16			 idx;			// is key
+		uint8			 red;
+		uint8			 green;
+		uint8			 blue;
+	} Dz1GifColor;						// with api userdump, clone, compare
+	typedef unique table Dz1GifColorList(find, extract, count, gethead) [Dz1GifColor];
+	typedef struct Dz1GifColorArray
+	{
+		Dz1GifColorList			*list;	// is notarg
+		Dz1GifColorIndex		*idx;	// is notarg, nodump
+	} Dz1GifColorArray;					// with api dump, clone
+	
+	-------------------------------------------------------------------------
+	-- HEADER
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifHeader
+	{
+		str					sig;			-- 3 byte
+		str					ver;			-- 3 byte
+	} Dz1GifHeader;						// with api dump, clone
+	
+	-------------------------------------------------------------------------
+	-- GLOBAL IMAGE DESCRIPTOR
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifDescr
+	{
+		uint16				 width;
+		uint16				 height;
+		
+	-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< packed bit flag as 1 Byte
+		
+		bool				 gctPresent;		-- 1 Bit - Global Color Table Presence
+												-- 0 : No Global Color Table follows, the Background Color Index field is meaningless.
+												-- 1 : A Global Color Table will immediately follow, the Background Color Index field is meaningful.
+										
+		int8				 color_res;			-- 3 Bit(0..7) -> Actual Value = (color_res + 1) Bits per Palette
+		
+		bool				 gctIsSorted;		-- 1 Bit
+		
+		int8				 gctSizeExp;		-- 3 Bit(0..7) -> Actual Byte Size = 2 ^ (gctSize + 1);
+		
+	-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> packed bit flag as 1 Byte
+		
+		uint8				 bgcIdx;			-- Background Color Index - If the Global Color Table Flag is set to (zero), this field should be zero and should be ignored.
+		uint8				 aspect;			-- Aspect Ratio : 1..255 => (Pixel Aspect Ratio + 15) / 64 or 0 => No Aspect Means
+		Dz1GifColorArray	*palette;			// is notarg -- [Global Color Table]
+	} Dz1GifDescr;								// with api dump, clone
+	
+	-------------------------------------------------------------------------
+	-- LOCAL IMAGE DESCRIPTOR
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifImgDescr
+	{
+	--	uint8				 id;			-- constant value = 0x2C
+		uint32				 x;
+		uint32				 y;
+		uint32				 width;
+		uint32				 height;
+		
+	-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< packed bit flag as 1 Byte
+		bool				 lctPresent;	-- 1 bit
+		bool				 isInterlaced;	-- 1 bit	4 pass Interlace
+		bool				 lctIsSorted;	-- 1 bit
+	--	int8				 reserved;		-- 2 bit
+		int8				 lctSizeExp;	-- 3 bit -> Actual Byte Size = 2 ^ (lctSizeExp + 1);
+	-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> packed bit flag as 1 Byte
+	
+		Dz1GifColorArray	*palette;		// is notarg -- Local Color Table
+	} Dz1GifImgDescr;						// with api userdump, clone
+
+	-------------------------------------------------------------------------
+	-- GRAPHIC CONTROL EXT
+	-------------------------------------------------------------------------
+	typedef enum Dz1GifGraphicControlCmd		-- 배경프레임 + 이미지 => 결과프레임, 배경프레임 변경
+	{
+		noMean,
+		doNotDispose,							-- 이번 프레임을 배경프레임으로 복사
+		restoreToBgColor,						-- 배경 프레임을 단일로 바꿈
+		restoreToPrev							-- 배경 프레임 변경 없음
+	} Dz1GifGraphicControlCmd;
+	
+	typedef struct Dz1GifGraphicControlExt
+	{
+	--	uint8					 id;			-- constant value = 0x21
+	--	uint8					 label;			-- constant value = 0xF9
+	--	uint8					 size;			-- constant value = 0x04
+	-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< packed bit flag as 1 Byte
+	--							 reserved;		-- 3 bit
+		Dz1GifGraphicControlCmd	 disposal;		-- 3 bit
+		bool					 userInput;		-- 1 bit
+		bool					 tpColPresent;	-- 1 bit ==> Use Transparent Color
+	-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> packed bit flag as 1 Byte
+		uint16					 delay;			-- If not 0, this field specifies the number of
+	--											   hundredths (1/100) of a second to wait before continuing with the
+	--											   processing of the Data Stream. ==> t = delay * 0.01
+		uint8					 tpColorIdx;	-- The Transparency Index is such that when encountered,
+	--											   the corresponding pixel of the display device is not
+	--											   modified and processing goes on to the next pixel.
+	--	uint8					 blockTerm;		-- Data Sub-Block = NULL -> constant value = 0x00
+	} Dz1GifGraphicControlExt;				// with api dump, clone
+	
+	-------------------------------------------------------------------------
+	-- COMMENT EXT
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifCommentExt
+	{
+	--	uint8					 id;			-- constant value = 0x21
+	--	uint8					 label;			-- constant value = 0xFE
+		str						 text;			-- Treat as Data Sub-Block
+	} Dz1GifCommentExt;						// with api dump, clone
+
+	-------------------------------------------------------------------------
+	-- APP EXT
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifAppExt
+	{
+	--	uint8					 id;			-- constant value = 0x21
+	--	uint8					 label;			-- constant value = 0xFF
+	--	uint8					 size;			-- constant value = 0x0B(11)
+		str						 app;			-- 8 byte fixed length
+		Dz1Binary				*app_auth;		-- 3 byte fixed length
+		Dz1Binary				*app_data;		-- treat as Data Sub-Block
+	} Dz1GifAppExt;							// with api dump, clone
+	
+	-------------------------------------------------------------------------
+	-- PLAIN TEXT
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifRenderPlainTextExt
+	{
+	--	uint8				 id;			-- constant value = 0x21
+	--	uint8				 lable;			-- constant value = 0x01
+	--	uint8				 size;			-- constant value = 0x0C(12)
+		uint16				 x;
+		uint16				 y;
+		uint16				 width;
+		uint16				 height;
+		uint8				 cellWidth;
+		uint8				 cellHeight;
+		uint8				 fgColorIdx;
+		uint8				 bgColorIdx;
+		str					 text;			-- treat as Data Sub-Block
+	} Dz1GifRenderPlainTextExt;				// with api dump, clone
+	
+	-------------------------------------------------------------------------
+	-- IMAGE
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifTableBasedImgData
+	{
+		uint8						 lzwMinimumCodeSize;
+		Dz1Binary					*lzw;					-- treat as Data Sub Block
+	} Dz1GifTableBasedImgData;				// with api userdump, clone
+	
+	typedef struct Dz1GifRenderTableBasedImg
+	{
+		Dz1GifImgDescr				*descr;			-- 0x2C
+		Dz1Binary					*pixels;
+		
+	--	Dz1Sync						*sync;			// is ref
+		Dz1GifTableBasedImgData		*lzw;
+		
+	--	uint32						 thid;			-- parallel opt
+	--	bool						 isDone;		-- parallel opt
+	} Dz1GifRenderTableBasedImg;			// with api userdump, clone
+	
+	typedef union Dz1GifRenderingData
+	{
+		Dz1GifRenderTableBasedImg	*tbi;			-- 0x2C
+		Dz1GifRenderPlainTextExt	*pte;			-- 0x21 0x01
+	} Dz1GifRenderingData;					// with api dump, clone
+	
+	-------------------------------------------------------------------------
+	-- GRAPHIC BLOCK
+	-------------------------------------------------------------------------
+	typedef struct Dz1GifGraphic
+	{
+		Dz1GifGraphicControlExt		*gce;			-- 0x21 0xF9(optional) : like image handling opt
+		Dz1GifRenderingData			*data;			-- else : entire one image
+		uint32						 thid;			-- parallel opt
+		bool						 isDone;		-- parallel opt
+	} Dz1GifGraphic;						// with api dump, clone
+	
+	-------------------------------------------------------------------------
+	-- DATA Entry & Array
+	-------------------------------------------------------------------------
+	typedef union Dz1GifDataEntry
+	{
+		Dz1GifGraphic				*graphic;		-- 0x21 0xF9(control | 0x21 0x01(text) | 0x2C(
+		Dz1GifAppExt				*app_ext;		-- 0x21 0xFF
+		Dz1GifCommentExt			*comment;		-- 0x21 0xFE
+	} Dz1GifDataEntry;						// with api dump, clone
+	typedef array Dz1GifDataArr(count) [Dz1GifDataEntry];
+
+	--	Header
+	--		Logicial Screen Descriptor
+	--		[Global Color Table]
+	--		Data union
+	--		{ <----------------------------------------------------------- repeat from
+	--			Graphic Block
+	--			{
+	--				[Graphic Control Ext]			0x21 0xF9
+	--				GraphicRenderBlock ::= union
+	--				{
+	--					Table-Based Image			0x2C
+	--					{
+	--						Image Descriptor
+	--						[Local Color Table]
+	--						Image Data
+	--					}
+	--					Plain Text Extension		0x21 0x01
+	--				}
+	--			}
+	--			Application Extension				0x21 0xFF
+	--			Comment Extension					0x21 0xFE
+	--		} <------------------------------------------------------------ repeat here
+	--	Trailer
+
+	-------------------------------------------------------------------------
+	-- GIF
+	-------------------------------------------------------------------------
+	typedef struct Dz1Gif
+	{
+		Dz1GifHeader				*hdr;						-- Header ==> Sisniture + Version
+		Dz1GifDescr					*descr;						-- Logicial Screen Descriptor + [Global Color Table]
+		Dz1GifDataArr				*datas;		// is notarg	-- Repeat Entry
+	--	uint8						 trailer;					-- fixed value = 0x3B
+	} Dz1Gif;									// with api dump, clone
+	
+	typedef struct Dz1GifDecodeOptParallel
+	{
+		Dz1Sync						*sync;
+		uint32						 seq;		// is notarg
+	} Dz1GifDecodeOptParallel;
+	
+	typedef func void Dz1GifDecodeOptUserFunc(void *user_ptr, uint32 seq, uint32 dur_ms, Dz1BMP *image);
+	typedef struct Dz1GifDecodeOptSequential
+	{
+		Dz1BMP						*canvas;		// is notarg
+		Dz1BMP						*last;			// is notarg
+		Dz1GifGraphicControlCmd		 prev_dispos;	// is notarg
+		uint32						 seq;			// is notarg
+		
+		Dz1GifDecodeOptUserFunc		 user_handle;
+		void						*user_ptr;
+	} Dz1GifDecodeOptSequential;
+	
+	typedef union Dz1GifDecodeOpt
+	{
+		Dz1GifDecodeOptParallel		*parallel;
+		Dz1GifDecodeOptSequential	*sequential;
+	} Dz1GifDecodeOpt;
+}
+

@@ -1,0 +1,323 @@
+message set definition
+{
+	include libdz1_support;
+	---------------------------------------------------------------------
+	-- DESCRIBE MESSAGE
+	-- SETUP MESSAGE
+	-- START MESSAGE
+	-- STOP MESSAGE
+	-- TEARDOWN MESSAGE
+	-- NOTIFY MESSAGE
+
+	-- enum ScenarioEngineWebSocketMessageMethod
+	-- {
+	-- 	DESCRIBE,
+	-- 	SETUP,
+	-- 	NOTIFY,
+	-- 	START,
+	-- 	STOP,
+	-- 	TEARDOWN
+	-- } ScenarioEngineWebSocketMessageMethod;
+
+	typedef enum ScenarioEngineWebSocketStatusCode
+	{
+		Informational = 100,
+		OK = 200,
+		Redirection = 300,
+		ClientError = 400,
+		ServerError = 500,
+		AgentError = 600
+	} ScenarioEngineWebSocketStatusCode;
+
+	typedef enum ScenarioEngineProcessStatusCode
+	{
+		-- SUCCESS = 0
+		OK = 0,
+
+		-- MainScenario Failure
+		FAILURE = 1,							-- 표준적합성 시험 실패
+
+		-- SYSTEM ERROR (11 ~ 99)
+		AGENT_SYSTEM_ERROR = 11,                 -- 검증 엔진 시스템 오류
+		SERVER_DISCONNECTED = 12,                -- 서버와의 연결이 끊김
+		TEST_CONFIGURATION_ERROR = 13,			-- 시험 환경 설정 오류
+
+		-- NETWORK ERROR (100 ~ 199) 시험 대상과의 네트워크 오류
+		CONNECTION_FAIL = 100,                  -- 시험 대상에게 접속 시도 실패
+		DISCONNECTED = 101,                     -- 시험 대상과의 연결 끊김
+		TIMEOUT = 102,                          -- 응답 시간 초과
+
+		-- DATA CONFORM ERROR (200 ~ 299) 정보 연계 규격 검증 오류
+		-- COMMON
+		OUT_OF_RANGE = 201,                     -- 범위 초과
+		INVALID_PROCESS,						-- 유효하지 않은 절차
+		INVALID_IDENTIFIER,						-- 유효하지 않은 식별자
+		SESSION_DUPLICATE,						-- 중복 로그인 
+		LOGIN_AUTH_ERROR,						-- 로그인 인증 오류							
+    
+		-- ASN   
+		DECODE_FAIL = 210,                      -- 디코딩 실패
+		INVALID_ENCODING_RULE = 211,            -- 유효하지 않은 인코딩 규칙
+		INVALID_OID = 212,                      -- 유효하지 않은 OID
+		INVALID_DSRC_MSG_ID = 213,              -- 유효하지 않은 DSRC MSG ID
+    
+		-- JSON
+		JSON_PARSE_ERROR = 221,                 -- JSON 파싱 실패
+
+		-- PROTOBUF
+		PROTOBUF_DESERAILIZE_ERROR = 231,       -- ProtoBuf 역직렬화 실패
+
+		-- MESSAGE BROKER
+		INVALID_TOPIC = 241,                    -- 유효하지 않은 TOPIC 이름
+
+		 -- OPENAPI
+        INVALID_REQUEST = 251,                  -- 유효하지 않은 요청
+
+		-- UNKNOWN ERROR
+		UNKNOWN = 300                           -- 알 수 없음
+	
+ 	} ScenarioEngineProcessStatusCode;		// with api dump, clone
+
+	---------------------------------------------------------------------
+	-- DEFAULT : { START, STOP, TEARDOWN, ... }
+	typedef struct ScenarioEngineRequestMessageDefault
+	{
+		TString								 method;
+		uint32								 seq;
+	} ScenarioEngineRequestMessageDefault;			// with api dump, clone
+	-- DEFAULT : { START, STOP, TEARDOWN, ... }
+	---------------------------------------------------------------------
+
+	---------------------------------------------------------------------
+	-- DESCRIBE MESSAGE
+	typedef struct ScenarioEngineRequestMessageDescribe
+	{
+		TString								 method;				-- DESCRIBE
+		uint32								 seq;
+		TString								 type;					-- Agent | Controller
+	} ScenarioEngineRequestMessageDescribe;			// with api dump, clone
+	-- DESCRIBE MESSAGE
+	---------------------------------------------------------------------
+	
+	---------------------------------------------------------------------
+	-- INITIALIZE MESSAGE
+	typedef struct ScenarioEngineInitializeContext		
+	{
+		TString								 category;
+		TString								 testScenario;
+	} ScenarioEngineInitializeContext;				// with api dump, clone
+
+	typedef struct ScenarioEngineRequestMessageInitialize
+	{
+		TString								 method;				-- INITIALIZE
+		uint32								 seq;
+		Dz1Binary							*testScenario;			-- ScenarioEngineInitalizeContext JSON string의 base64 encoding
+	} ScenarioEngineRequestMessageInitialize;		// with api dump, clone
+	-- INITIALIZE MESSAGE
+	---------------------------------------------------------------------
+	
+	---------------------------------------------------------------------
+	-- UI_CONFIGURE MESSAGE
+	typedef struct ScenarioEngineRequestMessageUIConfigure
+	{
+		TString								 method;				-- UI_CONFIGURE
+		uint32								 seq;
+		Dz1Binary							*conf;					-- ui configure context의 JSON STRING, base64 encode
+	} ScenarioEngineRequestMessageUIConfigure;		// with api dump, clone
+	-- UI_CONFIGURE MESSAGE
+	---------------------------------------------------------------------
+
+	typedef struct ScenarioEngineRequestMessageWithData
+	{
+		TString								 method;	
+		uint32								 seq;		
+		TString								 data;
+	} ScenarioEngineRequestMessageWithData;			// with api dump, clone
+
+	---------------------------------------------------------------------
+	-- SETUP MESSAGE
+	typedef struct ScenarioEngineRequestMessageSetup 
+	{
+		TString								 method;	
+		uint32								 seq;		
+		TString								 testConfiguration;			-- testConfiguration의 JSON String
+	} ScenarioEngineRequestMessageSetup;					// with api dump, clone
+	-- SETUP MESSAGE
+	---------------------------------------------------------------------
+
+
+	---------------------------------------------------------------------
+	-- NOTIFY MESSAGE
+	typedef struct ScenarioEngineNotifyStateContext
+	{
+		TString								 testName;		
+		int64								 time;
+		TString								 state;					-- START | FINISH | TERMINATED
+	} ScenarioEngineNotifyStateContext;							// with api dump, clone
+
+	typedef struct ScenarioEngineNotifyInfoContext
+	{
+		TString								 testName;		-- String
+		int64								 time;			-- number
+		TString								 sender;		-- String
+		TString								 log;			-- String
+		Dz1Binary							*data;			-- ..
+		TString								 dataType;
+	} ScenarioEngineNotifyInfoContext;							// with api dump, clone
+
+	typedef struct ScenarioEngineNotifyErrorContext
+	{
+		TString								 testName;		-- String
+		int64								 time;
+		ScenarioEngineProcessStatusCode				 code;
+		TString								 desc;
+		TString								 log;
+		Dz1Binary							*data;
+	} ScenarioEngineNotifyErrorContext;							// with api dump, clone
+
+
+	-- NotifyArg
+	typedef struct ScenarioEngineNotifyStateArg
+	{
+		uint32								 testIdx;
+		ScenarioEngineNotifyStateContext				*context;
+	} ScenarioEngineNotifyStateArg;		// with api dump, clone
+
+	typedef struct ScenarioEngineNotifyInfoArg
+	{
+		uint32								 testIdx;
+		ScenarioEngineNotifyInfoContext				*context;
+	} ScenarioEngineNotifyInfoArg;		// with api dump, clone
+
+	typedef struct ScenarioEngineNotifyErrorArg
+	{
+		uint32								 testIdx;
+		ScenarioEngineNotifyErrorContext				*context;
+	} ScenarioEngineNotifyErrorArg;		// with api dump, clone
+
+
+	typedef struct ScenarioEngineRequestMessageNotifyState
+	{
+		TString								 method;
+		uint32								 seq;
+		uint32								 testIdx;
+		TString								 level;						
+		ScenarioEngineNotifyStateContext				*data;
+	} ScenarioEngineRequestMessageNotifyState;			// with api dump, clone
+
+	typedef struct ScenarioEngineRequestMessageNotifyInfo
+	{
+		TString								 method;
+		uint32								 seq;
+		uint32								 testIdx;
+		TString								 level;						
+		ScenarioEngineNotifyInfoContext				*data;
+	} ScenarioEngineRequestMessageNotifyInfo;			// with api dump, clone
+
+	typedef struct ScenarioEngineRequestMessageNotifyError
+	{
+		TString								 method;
+		uint32								 seq;
+		uint32								 testIdx;
+		TString								 level;						
+		ScenarioEngineNotifyErrorContext				*data;
+	} ScenarioEngineRequestMessageNotifyError;			// with api dump, clone
+
+	typedef union ScenarioEngineRequestMessageNotify
+	{
+	ScenarioEngineRequestMessageNotifyState	*state;
+	ScenarioEngineRequestMessageNotifyInfo	*info;
+	ScenarioEngineRequestMessageNotifyError	*error;
+	} ScenarioEngineRequestMessageNotify; // with api dump, clone
+
+	-- NOTIFY MESSAGE
+	---------------------------------------------------------------------
+
+	---------------------------------------------------------------------
+	-- VALIDATE
+	typedef struct ScenarioEngineValidateContext
+	{
+		TString									 testName;
+		int64									 time;
+		Dz1Binary								*raw;
+		Dz1Binary								*data;
+		ScenarioEngineProcessStatusCode					 code;
+		TString									 desc;
+	} ScenarioEngineValidateContext;				// with api dump, clone
+
+	typedef struct ScenarioEngineRequestMessageValidate
+	{
+		TString									 method;
+		uint32									 seq;
+		uint32									 testIdx;
+		ScenarioEngineValidateContext					*validate;
+	} ScenarioEngineRequestMessageValidate;		// with api dump, clone
+
+	typedef struct ScenarioEngineResponseMessageValidate
+	{
+		uint32									 seq;
+		uint32									 testIdx;
+		TString									 result;			-- SUCCESS, FAILURE
+		ScenarioEngineValidateContext					*validate;
+	} ScenarioEngineResponseMessageValidate;		// with api dump, clone
+
+	typedef struct ScenarioEngineValidateContextArg
+	{
+		uint32								 testIdx;
+		ScenarioEngineValidateContext				*context;
+	} ScenarioEngineValidateContextArg;			// with api dump, clone
+
+
+	-- VALIDATE
+	---------------------------------------------------------------------
+
+	---------------------------------------------------------------------
+	-- RESPONSE MESSAGE
+
+	typedef struct ScenarioEngineWebSocketResponseMessageContext
+	{
+		ScenarioEngineWebSocketStatusCode			 code;
+		TString								 reason;
+		TString								 data;
+	} ScenarioEngineWebSocketResponseMessageContext;	// with api dump
+
+	typedef struct ScenarioEngineResponseMessageDefault
+	{
+		uint32										 seq;
+		ScenarioEngineWebSocketResponseMessageContext		*result;
+	} ScenarioEngineResponseMessageDefault;  // with api dump
+	
+	
+
+	-- RESPONSE MESSAGE
+	---------------------------------------------------------------------
+
+	typedef union ScenarioEngineWebSocketMessageRequest
+	{
+		ScenarioEngineRequestMessageDefault		*request;
+		ScenarioEngineRequestMessageDescribe		*describe;
+		ScenarioEngineRequestMessageInitialize	*initialize;
+		ScenarioEngineRequestMessageUIConfigure	*uiConfigure;
+		ScenarioEngineRequestMessageWithData		*withData;
+		ScenarioEngineRequestMessageSetup		*setup;
+		ScenarioEngineRequestMessageNotify		*notify;
+		ScenarioEngineRequestMessageValidate		*validate;
+	} ScenarioEngineWebSocketMessageRequest;
+
+	typedef union ScenarioEngineWebSocketMessageResponse
+	{
+		ScenarioEngineResponseMessageDefault		*response;
+		ScenarioEngineResponseMessageValidate	*validate;
+	} ScenarioEngineWebSocketMessageResponse;	
+
+	typedef union ScenarioEngineWebSocketMessage
+	{
+		ScenarioEngineWebSocketMessageResponse			*rsp;
+		ScenarioEngineWebSocketMessageRequest			*req;
+	} ScenarioEngineWebSocketMessage;	
+
+}
+
+
+
+

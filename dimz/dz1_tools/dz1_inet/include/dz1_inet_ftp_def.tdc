@@ -1,0 +1,62 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef func void Dz1InetFtpException(void *ptr, Dz1Error *reason);
+
+	typedef enum Dz1InetFtpCmdResult
+	{
+		success,
+		omitted,
+		serviceNotReady,	-- SNR
+		serverBusy,			-- SB
+		serverFail,			-- SF
+		authFail,			-- AF
+		fileNotFound,		-- NSF
+		pathNotFound,		-- NSD
+		transferFail,		-- COMM
+		unknown,			-- U
+		noPermission		-- PERM
+	} Dz1InetFtpCmdResult;
+	
+	typedef struct Dz1InetFtpFileName
+	{
+		str			 path;		// is key
+		str			 name;		// is key
+		uint32		 size;
+	} Dz1InetFtpFileName;		// with api dump, compare, clone
+	
+	typedef union Dz1InetFtpFileInfo
+	{
+		Dz1InetFtpFileName			*file;
+		Dz1Binary					*buffer;	// is nodump
+	} Dz1InetFtpFileInfo;		// with api dump, clone
+
+	typedef enum Dz1InetFtpDirection
+	{
+		upload,
+		download
+	} Dz1InetFtpDirection;
+
+	typedef struct Dz1InetFtpTransfer
+	{
+		Dz1InetFtpDirection			 direction;	// is key
+		Dz1InetFtpFileName			*remote;	// is key
+		Dz1InetFtpFileInfo			*local;
+		bool						 overwrite;
+		Dz1InetFtpCmdResult			 result;	// is notarg
+		void						*userKey;
+	} Dz1InetFtpTransfer;						// with api dump, clone, compare
+	
+	typedef array Dz1InetFtpTransferList(count) [Dz1InetFtpTransfer];
+
+	--typedef struct Dz1InetFtpTransferResult
+	--{
+	--	Dz1InetFtpTransferList		*files;		// is ref
+	--	Dz1InetFtpCmdResult			 code;
+	--	Dz1InetFtpTransfer			*reason;
+	--} Dz1InetFtpTransferResult;					// with api dump
+	
+	typedef func void Dz1InetFtpFileDoneInform(void *ptr, Dz1SockAddr *peer, Dz1InetFtpTransfer *transfer);
+	typedef func void Dz1InetFtpMsgTransferDoneInform(void *ptr, Dz1SockAddr *peer, Dz1InetFtpTransferList **files);
+}

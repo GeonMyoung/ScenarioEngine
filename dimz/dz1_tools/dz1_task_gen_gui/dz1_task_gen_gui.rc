@@ -1,0 +1,277 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\dz1_task_gen_gui.rc2""  // Microsoft Visual C++에서 편집되지 않은 리소스\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\dz1_task_gen_gui.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DZ1_TASK_GEN_GUI_DIALOG DIALOGEX 0, 0, 508, 399
+STYLE DS_ABSALIGN | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "DIMZ Bootstrap"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Target",IDC_STATIC,2,2,504,80
+    RTEXT           "Type",IDC_STATIC,41,13,23,12,SS_CENTERIMAGE
+    COMBOBOX        IDC_COMBO_GEN_TARGET,67,13,56,89,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Text Mode",IDC_STATIC,142,13,35,12,SS_CENTERIMAGE
+    COMBOBOX        IDC_COMBO_TXT_MODE,180,13,32,89,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Generate Test main",IDC_CHECK_INCLUDE_TEST_CODE,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,405,13,71,12
+    RTEXT           "Parent Path",IDC_STATIC,9,29,55,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_PARENT_PATH,67,29,409,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "...",IDC_BUTTON_PARENT_PATH,478,29,22,12
+    RTEXT           "Project Name",IDC_STATIC,9,45,55,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_PROJ_NAME,67,45,409,12,ES_AUTOHSCROLL
+    RTEXT           "Naming Mode",IDC_STATIC,17,61,47,12,SS_CENTERIMAGE
+    COMBOBOX        IDC_COMBO_NAME_RULE,67,61,52,89,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_NAME_RULE,123,61,353,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Foundation Library",IDC_STATIC,2,84,504,61
+    RTEXT           "CODECONV Path",IDC_STATIC,8,95,55,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_CODECONV_ROOT,67,95,409,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "...",IDC_BUTTON_CODECONV_ROOT,478,95,22,12,WS_DISABLED
+    RTEXT           "DIMZ Path",IDC_STATIC,8,111,55,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_DIMZ_DZ1_ROOT,67,111,409,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "...",IDC_BUTTON_DIMZ_DZ1_ROOT,478,111,22,12,WS_DISABLED
+    RTEXT           "DIMZ Endian",IDC_STATIC,14,127,49,11,SS_CENTERIMAGE
+    COMBOBOX        IDC_COMBO_DIMZ_ENDIAN,67,127,48,89,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Additional Libraries",IDC_STATIC,2,147,504,156
+    CONTROL         "",IDC_LIST_LIBRARIES,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_DISABLED | WS_BORDER | WS_TABSTOP,6,159,494,121
+    PUSHBUTTON      "Add",IDC_BUTTON_LIBRARY_ADD,6,284,33,14,WS_DISABLED
+    PUSHBUTTON      "Delete",IDC_BUTTON_LIBRARY_DEL,41,284,33,14,WS_DISABLED
+    GROUPBOX        "Visual Studio",IDC_STATIC,2,305,504,47
+    RTEXT           "PTHREAD Path",IDC_STATIC,8,333,55,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_PTHREAD_ROOT,67,333,408,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "...",IDC_BUTTON_PTHREAD_ROOT,478,333,22,12,WS_DISABLED
+    RTEXT           "Project File",IDC_STATIC,8,319,55,9,SS_CENTERIMAGE
+    CONTROL         "vc90",IDC_CHECK_GEN_VC90_PROJ,"Button",BS_AUTOCHECKBOX | BS_TOP | WS_TABSTOP,68,319,32,9
+    CONTROL         "vs2022",IDC_CHECK_GEN_VS2022_PROJ,"Button",BS_AUTOCHECKBOX | BS_TOP | WS_TABSTOP,105,319,32,9
+    CONTROL         "Generate Solution File",IDC_CHECK_GEN_SOLUTION,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | BS_TOP | WS_DISABLED | WS_TABSTOP,398,319,77,9
+    GROUPBOX        "Command-line build",IDC_STATIC,2,354,504,26
+    RTEXT           "Makefile",IDC_STATIC,9,364,55,12,SS_CENTERIMAGE
+    CONTROL         "GNU make",IDC_CHECK_GEN_GCC_MAKEFILE,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,68,364,43,12
+    PUSHBUTTON      "Save",IDC_BUTTON_SAVE,2,383,33,14,WS_DISABLED
+    PUSHBUTTON      "Load",IDC_BUTTON_LOAD,38,383,33,14
+    DEFPUSHBUTTON   "Project 생성",IDC_BUTTON_GENERATE,448,383,58,14,WS_DISABLED
+    EDITTEXT        IDC_EDIT_LIBRARY,112,284,388,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "▲",IDC_BUTTON_LIBRARY_UP,76,284,15,14,WS_DISABLED
+    PUSHBUTTON      "▼",IDC_BUTTON_LIBRARY_DOWN,93,284,15,14,WS_DISABLED
+END
+
+IDD_LIB_COLLECTION_DLG DIALOGEX 0, 0, 423, 199
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "...",IDC_BUTTON_ROOT_PATH,271,14,25,12
+    PUSHBUTTON      "...",IDC_BUTTON_INCLUDE_PATH,178,48,25,12
+    EDITTEXT        IDC_EDIT_ROOT_PATH,7,14,261,12,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_EDIT_INCLUDE_PATH,7,48,167,12,ES_AUTOHSCROLL | WS_DISABLED
+    GROUPBOX        "Project Root",IDC_STATIC,2,2,301,31
+    GROUPBOX        "Include Path",IDC_STATIC,2,36,207,31
+    DEFPUSHBUTTON   "확인",IDC_BUTTON_OK,379,183,42,14
+    PUSHBUTTON      "...",IDC_BUTTON_LIBRARY_PATH,389,49,25,12
+    EDITTEXT        IDC_EDIT_LIBRARY_PATH,218,49,167,12,ES_AUTOHSCROLL | WS_DISABLED
+    GROUPBOX        "Library Path",IDC_STATIC,213,37,207,31
+    CONTROL         "",IDC_LIST_PROJECTS,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,8,80,407,74
+    GROUPBOX        "Visual Studio Project Files",IDC_STATIC,2,68,419,111
+    PUSHBUTTON      "Add",IDC_BUTTON_PROJECT_ADD,8,158,29,14
+    PUSHBUTTON      "Delete",IDC_BUTTON_PROJECT_DEL,40,158,29,14
+END
+
+IDD_DZ1_PROJ_SEL_DIALOG DIALOGEX 0, 0, 317, 34
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "`"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_PROJ_PATHNAME,69,14,189,14,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "...",IDC_BUTTON_PROJ_PATHNAME,262,14,17,14
+    DEFPUSHBUTTON   "확인",IDC_BUTTON_OK,283,14,28,14
+    GROUPBOX        "Project File",IDC_STATIC,64,2,251,30
+    GROUPBOX        "Project Version",IDC_STATIC,2,2,59,30
+    COMBOBOX        IDC_COMBO_PROJ_VER,7,14,48,345,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "Jake Lim @ GITSN"
+            VALUE "FileDescription", "Task Template Generater"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "dz1_task_gen_gui.exe"
+            VALUE "LegalCopyright", "Jake Lim @ GITSN.  All rights reserved."
+            VALUE "OriginalFilename", "dz1_task_gen_gui.exe"
+            VALUE "ProductName", "TaskGen"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DZ1_TASK_GEN_GUI_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 506
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 397
+    END
+
+    IDD_LIB_COLLECTION_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 421
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 197
+    END
+
+    IDD_DZ1_PROJ_SEL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 315
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 32
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DZ1_TASK_GEN_GUI_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DZ1_PROJ_SEL_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_LIB_COLLECTION_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\dz1_task_gen_gui.rc2"  // Microsoft Visual C++에서 편집되지 않은 리소스
+#include "afxres.rc"         // 표준 구성 요소
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

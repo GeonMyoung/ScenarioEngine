@@ -1,0 +1,209 @@
+message set definition
+{
+	include libdz1_support;
+	----------------------------------------------------------------------------------
+	-- EAM 1.0.14827.XXX
+	----------------------------------------------------------------------------------
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.1
+	-------------------------------------------------------------------------------------------------
+	typedef struct CurrentLinkStateEntry
+	{
+		TString					 link_id;					// is key
+		uint16					 speed_rate;				
+		uint32					 volume_rate;				// is notarg
+		uint16					 density_rate;				// is notarg
+		uint16					 ttime_qty;					// is notarg
+		uint16					 delay_qty;					// is notarg
+		uint32					 veh_q_len_qty;				// is notarg
+		uint8					 tfdt_occupy_percent;		 
+	} CurrentLinkStateEntry;				// with api dump, clone, compare
+	typedef unique table CurrentLinkStateList(find, extract, count, gethead) [CurrentLinkStateEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.2
+	-------------------------------------------------------------------------------------------------
+	typedef struct EventIdentityEntry
+	{
+		TString					node_id;						// is key
+		TString					link_id;						// is key
+		uint32					identification_num;				// is notarg
+		TString					loc_jurisdiction_name;			 
+		TString					loc_link_id;					 
+		TString					loc_node_id;					
+		TString					loc_roadway_name;				
+		uint8					evnt_code;						// is notarg
+		uint8					special_evnt_code;				// is notarg
+		uint8					planned_road_closure_code;		// is notarg
+		uint8					lanes_blocked_or_closed_num;	
+		uint8					*lanes_shoulder_block_code;		
+		TString					start_time;						
+		TString					end_time;						
+		uint32					time_duration;					
+	} EventIdentityEntry;				// with api dump, clone, compare
+	typedef unique table EventIdentityList(find, extract, count, gethead) [EventIdentityEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.3
+	-------------------------------------------------------------------------------------------------
+	typedef struct IncidentIdentityEntry
+	{
+		TString				node_id;							// is key
+		TString				link_id;							// is key
+		uint16				loc_offset_begin;					// is notarg
+		uint16				loc_offset_end;						// is notarg
+		TString				update_time;						
+		uint8				fatality_cnt;						// is notarg
+		uint8				injuries_cnt;						// is notarg
+		uint8				property_damage_code;				
+		TString				property_damage_desc;				// is notarg
+	} IncidentIdentityEntry;			// with api dump, clone, compare
+	typedef unique table IncidentIdentityList(find, extract, count, gethead) [IncidentIdentityEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.4
+	-------------------------------------------------------------------------------------------------
+	typedef struct IncidentConditionsEntry
+	{
+		TString				node_id;							// is key
+		TString				link_id;							// is key
+		TString				contact_org_name;					// is key
+		uint8				incident_code;						// is key
+		TString				other_incident_desc;				// is notarg
+		uint8				veh_invloved_code;					
+		TString				other_veh_invloved_desc;			// is notarg
+		uint8				status_code;						
+		TString				other_status_desc;					// is notarg
+		uint8				update_type_code;					
+		TString				other_update_desc;					// is notarg
+	} IncidentConditionsEntry;			// with api dump, clone, compare
+	typedef unique table IncidentConditionsList(find, extract, count, gethead) [IncidentConditionsEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.5
+	-------------------------------------------------------------------------------------------------
+	typedef struct RoadwaySurfaceStatusEntry
+	{
+		TString				node_id;							// is key
+		TString				link_id;							// is key
+		uint8				surface_cond_code;					
+		uint8				land_blocked_or_closed_code;		
+		uint16				precipitation_depth;				// is notarg
+		uint16				temperature_qty;					// is notarg
+	} RoadwaySurfaceStatusEntry;		// with api dump, clone, compare
+	typedef unique table RoadwaySurfaceStatusList(find, extract, count, gethead) [RoadwaySurfaceStatusEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.6
+	-------------------------------------------------------------------------------------------------
+	typedef struct WeatherInformationEntry
+	{
+		uint8				forecast_or_actual;					// is key
+		int8				temperature;						// is notarg
+		int8				high_temperature;					// is notarg
+		int8				low_temperature;					// is notarg
+		uint8				special_cond;						// is notarg
+		TString				other_cond_desc;					// is notarg
+		uint8				probability;						
+		uint8				visibility;							
+		uint8				wind_speed;							
+		uint8				wind_direct_code;					// is notarg
+		uint8				humidity;							// is notarg
+		uint8				pressure;							// is notarg
+		TString				sunrise_time;						// is notarg
+		TString				sunset_time;						// is notarg
+	} WeatherInformationEntry;			// with api dump, clone, compare
+	typedef unique table WeatherInformationList(find, extract, count, gethead) [WeatherInformationEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.7
+	-------------------------------------------------------------------------------------------------
+	typedef struct LinkRoadwayGeometryEntry
+	{
+		TString				begin_node_id;						// is key
+		int64				begin_node_latitude;				// is notarg
+		uint32				begin_node_longitude;				// is notarg
+		TString				end_node_id;						// is key
+		int64				end_node_latitude;					// is notarg
+		uint32				end_node_longitude;					// is notarg
+		TString				jurisdiction;						
+		uint8				type_code;							
+		TString				name;								
+		uint32				length;								
+		uint8				pavement_type_code;					
+		uint16				restriction_height;					// is notarg
+		uint16				left_shoulder_width;				// is notarg
+		uint16				restriction_length;					// is notarg
+		uint8				median_type_code;					
+		uint16				num_lanes;							
+		uint8				num_open_lanes;						
+		uint16				right_shoulder_width;				// is notarg
+	} LinkRoadwayGeometryEntry;			// with api dump, clone, compare
+	typedef unique table LinkRoadwayGeometryList(find, extract, count, gethead) [LinkRoadwayGeometryEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.8
+	-------------------------------------------------------------------------------------------------
+	typedef struct ProbeVehicleDetectionEntry
+	{
+		TString				veh_id;								// is key
+		uint8				veh_class;							// is key
+		TString				veh_timein;							
+		TString				veh_timeout;						
+		uint16				veh_traveltime;						
+		uint16				veh_avg_speed;						// is notarg
+		TString				avi_id;								// is notarg
+		int64				avi_latitude;						// is notarg
+		uint32				avi_longitude;						// is notarg
+		TString				ref_avi_id;							// is notarg
+		int64				ref_avi_latitude;					// is notarg
+		uint32				ref_avi_longitude;					// is notarg
+	} ProbeVehicleDetectionEntry;		// with api dump, clone, compare
+	typedef unique table ProbeVehicleDetectionList(find, extract, count, gethead) [ProbeVehicleDetectionEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.0.9
+	-------------------------------------------------------------------------------------------------
+	typedef struct DetectorCollectionEntry
+	{
+		TString				detector_id;						// is key
+		TString				detector_time;						
+		uint16				speed_rate;							
+		uint8				volume_rate;						// is notarg
+		uint8				occupancy_percent;					
+		uint32				veh_q_len_qty;						// is notarg
+	} DetectorCollectionEntry;			// with api dump, clone, compare
+	typedef unique table DetectorCollectionList(find, extract, count, gethead) [DetectorCollectionEntry];
+
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.14827.1.1.0
+	-------------------------------------------------------------------------------------------------
+	typedef struct ExtentionCommPDUEntry
+	{
+		uint32				idx;								// is key
+		uint32				aid;								// is key
+		time				delivery_start;						
+		time				delivery_stop;						
+		bool				signature;							// is notarg
+		int64				payload_type;						// is notarg
+		Dz1Binary		   *payload;							
+	} ExtentionCommPDUEntry;			// with api dump, clone, compare
+	typedef unique table ExtentionCommPDUList(find, extract, count, gethead) [ExtentionCommPDUEntry];
+	----------------------------------------------------------------------------------
+	-- EAM 1.0.14827.XXX
+	----------------------------------------------------------------------------------
+
+	typedef union TechnicalRegulation1_Eam
+	{
+		CurrentLinkStateList			*current_link_state;
+		EventIdentityList				*event_identity;
+		IncidentIdentityList			*incident_identity;
+		IncidentConditionsList			*incident_conditions;
+		RoadwaySurfaceStatusList		*roadway_surface_status;
+		WeatherInformationList			*weather_information;
+		LinkRoadwayGeometryList			*link_roadway_geometry;
+		ProbeVehicleDetectionList		*probe_vehicle_detection;
+		DetectorCollectionList			*detector_collection;
+		ExtentionCommPDUList			*extention_comm_pdu;
+	} TechnicalRegulation1_Eam;				// with api dump, clone
+}

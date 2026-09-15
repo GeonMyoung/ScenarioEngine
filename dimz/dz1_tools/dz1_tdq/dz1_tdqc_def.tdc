@@ -1,0 +1,109 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_tdq_def;
+	
+	typedef native ObjectInfo from Dz1TdcInfoObject;		// with api dump, compare
+	typedef native Dz1MdefcModule from Dz1TdcInfoModule;	// with api dump, compare
+	
+	--------------------------------------------------------------------------
+	-- Column Opt & list
+	--------------------------------------------------------------------------
+	typedef struct Dz1TdqcShapeOptEntry
+	{
+		TString							 instance;			// is key
+		TString							 api_prefix;
+	} Dz1TdqcShapeOptEntry;									// with api dump, clone, compare
+	typedef unique table Dz1TdqcShapeOptList(find, extract, count) [Dz1TdqcShapeOptEntry];
+	
+	--------------------------------------------------------------------------
+	-- Shape & list
+	--------------------------------------------------------------------------
+	typedef struct Dz1TdqcShape
+	{
+		TString							 name;				// is key
+		ObjectInfo						*src_obj;			// is ref
+		ObjectInfo						*dst_obj;			// is ref
+		Dz1TdqcShapeOptList				*memb_opt;			// is notarg
+		Dz1TdqTblShape					*target;
+		bool							 is_qurty_shape;	// is notarg
+	} Dz1TdqcShape;												// with api dump, clone, compare
+	typedef unique table Dz1TdqcShapeList(find, extract, count) [Dz1TdqcShape];
+
+	------------------------------------------------------------------------------------
+	-- Table Instance
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqcTblInstance
+	{
+		TString						 name;					// is key
+		Dz1TdqcShape				*shape;					// is ref
+		Dz1TdqFKList				*fks;					// is notarg
+		TString						 prefix;				// is notarg
+	} Dz1TdqcTblInstance;									// with api userdump, clone, compare
+	typedef unique table Dz1TdqcTblInstanceList(find, extract, count) [Dz1TdqcTblInstance];
+	typedef array Dz1TdqcTblInstanceSeq(count) [&Dz1TdqcTblInstance];
+
+	--------------------------------------------------------------------------
+	-- Query & list
+	--------------------------------------------------------------------------
+	typedef struct Dz1TdqcQuery
+	{
+		TString							 name;				// is key
+		ObjectInfo						*src_obj;			// is ref
+		ObjectInfo						*dst_obj;			// is ref
+		Dz1TdqQryRow					*sel;							-- NULL = *
+		Dz1TdqQueryTblSpec				*from;
+		
+		Dz1TdqQryRefCols				*groupby;			// is notarg
+		Dz1TdqcShapeOptList				*memb_opt;			// is notarg
+	} Dz1TdqcQuery;														// with api dump, clone, compare
+	typedef unique table Dz1TdqcQueryList(find, extract, count) [Dz1TdqcQuery];
+
+	--------------------------------------------------------------------------
+	-- Order & List
+	--------------------------------------------------------------------------
+	typedef union Dz1TdqcOrderEntry
+	{
+		Dz1TdqcShape					*shp;				// is ref
+		Dz1TdqcTblInstance				*tbl;				// is ref
+		Dz1TdqcQuery					*qry;				// is ref
+	} Dz1TdqcOrderEntry;									// with api dump, clone
+	typedef array Dz1TdqcOrderList(count) [Dz1TdqcOrderEntry];
+	
+	--------------------------------------------------------------------------
+	-- Module list
+	--------------------------------------------------------------------------
+	typedef unique table Dz1MdefcModuleList(find, extract, count) [Dz1MdefcModule];
+	
+	--------------------------------------------------------------------------
+	-- Compile Argument
+	--------------------------------------------------------------------------
+	typedef struct Dz1TdqcArg
+	{
+		TString							 mod_inc_path;		-- "-Ic:\...\include;..\..\include"
+		TString							 dst_path_c;		-- "-Sc:\.....\src"
+		TString							 dst_path_h;		-- "-Hc:\.....\include"
+		TString							 fn_postfix;		-- {TSQ FileN name}{fn_postfix}
+		bool							 output_src;		-- "-s"
+		bool							 output_hdr;		-- "-h"
+		TString							 target_file;
+	} Dz1TdqcArg;
+	
+	--------------------------------------------------------------------------
+	-- Target
+	--------------------------------------------------------------------------
+	typedef struct Dz1TdqcTarget
+	{
+		Dz1MdefcModuleList				*src;				// is notarg, nodump
+		Dz1TdqNameList					*incs;				// is notarg
+		
+		Dz1TdqcShapeList				*shapes;			// is notarg
+		
+		Dz1TdqcTblInstanceList			*tables;			// is notarg, nodump
+		Dz1TdqcTblInstanceSeq			*tblseq;			// is notarg
+		
+		Dz1TdqcQueryList				*queries;			// is notarg
+		
+		Dz1TdqcOrderList				*ord;				// is notarg
+	} Dz1TdqcTarget;										// with api dump
+}

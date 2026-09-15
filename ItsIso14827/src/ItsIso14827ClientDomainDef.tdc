@@ -1,0 +1,101 @@
+message set definition
+{
+	include ItsIso14827SessionDef;
+	include ItsIso14827DefLocal;
+	typedef native ItsIso14827DomainTxFifo from ItsIso14827Domain_txFIFO; // with api dump
+	------------------------------------------------------------------------------
+	-- Subscribe (Client->)
+	------------------------------------------------------------------------------
+	typedef struct ItsIso14827SubscribeEntry
+	{
+		uint32								 serial;			// is key
+		Iso14827SubscriptionData			*data;
+		uint32								*pubSerial;			// is notarg
+	} ItsIso14827SubscribeEntry;								//with api dump, compare
+	
+	typedef unique table ItsIso14827SubscribeList(find, extract, count) [ItsIso14827SubscribeEntry];
+
+	typedef enum ItsIso14827ClientDomainSessionState
+	{
+		pending,
+		established
+	} ItsIso14827ClientDomainSessionState;
+	
+	typedef enum ItsIso14827ClientDomainWaitState
+	{
+		none,
+		loginResultWait,
+		singleSubscriptionResultWait,
+		registeredSubscriptionResultWait,
+		subscriptionCancelResultWait,
+		logoutResultWait
+	} ItsIso14827ClientDomainWaitState;
+	
+	------------------------------------------------------------------------------
+	-- Client Session
+	------------------------------------------------------------------------------
+	typedef struct ItsIso14827ClientDomainServerEntry
+	{
+		Dz1Asn1UTF8Str						*peer;				// is key
+		Dz1Asn1OctetStr						*user;				// is key
+		ItsIso14827SessionKey				*key;
+		
+		ItsIso14827ClientDomainSessionState	 state;				// is notarg
+		
+		uint32								 subscribeAlloc;
+		ItsIso14827SubscribeList			*subscribes;		// is notarg
+		ItsIso14827ClientDomainWaitState	 userWaitState;		// is notarg
+		void								*userWait;			// is notarg
+		
+--		bool								 transferDoneSent;	// is notarg
+--		uint32								 transferDonePktNbr;// is notarg
+		
+		ItsIso14827DomainTxFifo				*txFifo;
+		uint32								 heartBeadPeriod;	-- in second
+		uint32								 responseWaitTime;	-- in second
+		ItsIso14827ClientDomainCallback		*cb;				// is ref
+		ItsIso14827ClientDomainViolatedSubscription *violatedSub;
+		uint32								 ctrl_flags;		// is notarg
+	} ItsIso14827ClientDomainServerEntry;						// with api dump, compare
+	
+	typedef unique table ItsIso14827ClientDomainServerList(find, extract, count) [ItsIso14827ClientDomainServerEntry];
+	
+	------------------------------------------------------------------------------
+	-- Client Session
+	------------------------------------------------------------------------------
+	typedef struct ItsIso14827ClientDomainSessionEntry
+	{
+		Dz1Asn1UTF8Str						*peer;
+		Dz1Asn1OctetStr						*user;
+		ItsIso14827SessionKey				*key;				// is key
+		
+		ItsIso14827ClientDomainSessionState	 state;				// is notarg
+
+		uint32								 subscribeAlloc;
+		ItsIso14827SubscribeList			*subscribes;		// is notarg
+		ItsIso14827ClientDomainWaitState	 userWaitState;		// is notarg
+		void								*userWait;			// is notarg
+		
+--		bool								 transferDoneSent;	// is notarg
+--		uint32								 transferDonePktNbr;// is notarg
+		
+		ItsIso14827DomainTxFifo				*txFifo;
+		uint32								 heartBeadPeriod;	-- in second
+		uint32								 responseWaitTime;	-- in second
+		ItsIso14827ClientDomainCallback		*cb;				// is ref
+	} ItsIso14827ClientDomainSessionEntry;						// with api dump, compare
+	
+	typedef unique table ItsIso14827ClientDomainSessionList(find, extract, count) [&ItsIso14827ClientDomainSessionEntry];
+	------------------------------------------------------------------------------
+	-- Client Domain
+	------------------------------------------------------------------------------
+	-- subscription 전송 시 응답이 올때 까지 Client는 Blocking되어야 한다.
+	typedef struct ItsIso14827ClientDomain
+	{
+		Dz1Asn1UTF8Str						*name;				// is key
+		ItsIso14827ClientDomainServerList	*servers;			// is notarg
+		ItsIso14827ClientDomainSessionList	*sessions;			// is notarg
+		ItsIso14827ClientDomainCallback		*callback;			-- established, refused, disconnected, dataDelivery
+		uint32								 hdr_opt_flag;		// is notarg
+	} ItsIso14827ClientDomain;									// with api dump, compare
+}

@@ -1,0 +1,16 @@
+<Project>
+  <!-- Generated C/H/TDO files are versioned. Preserve the imported working baseline. -->
+  <Target Name="ScenarioEngineUseVersionedSources" BeforeTargets="PrepareForBuild;SelectCustomBuild;ComputeCustomBuildOutput" Condition="'$(ScenarioEngineRegenerateSources)' != 'true'">
+    <ItemGroup>
+      <CustomBuild Remove="@(CustomBuild)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="ScenarioEngineCopyRuntime" AfterTargets="Build" Condition="'$(ConfigurationType)' == 'Application' and '$(Platform)' == 'x64'">
+    <ItemGroup>
+      <ScenarioEngineRuntime Include="$(OPEN_SSL_SDK_ROOT)\x64\libcrypto-1_1-x64.dll" Condition="Exists('$(OPEN_SSL_SDK_ROOT)\x64\libcrypto-1_1-x64.dll')" />
+      <ScenarioEngineRuntime Include="$(OPEN_SSL_SDK_ROOT)\x64\libssl-1_1-x64.dll" Condition="Exists('$(OPEN_SSL_SDK_ROOT)\x64\libssl-1_1-x64.dll')" />
+      <ScenarioEngineRuntime Include="$(ScenarioEngineWorkspaceRoot)pthreads.2\project\vs2022\$(Configuration)64\pthreadVC2.dll" Condition="Exists('$(ScenarioEngineWorkspaceRoot)pthreads.2\project\vs2022\$(Configuration)64\pthreadVC2.dll')" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ScenarioEngineRuntime)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

@@ -1,0 +1,9 @@
+message set definition
+{
+	include ITSK00144_2EmulatorDef;
+	typedef struct ITSK001442EmulatorArg
+	{
+		ITSK001442EmulatorException exceptionProc;
+		void *exceptionArg;
+	} ITSK001442EmulatorArg;
+}

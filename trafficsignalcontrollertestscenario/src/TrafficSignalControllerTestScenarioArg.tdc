@@ -1,0 +1,13 @@
+message set definition
+{
+	include TrafficSignalControllerTestScenarioDef;
+	include TrafficSignalControllerTestMsgDef;
+
+	typedef struct TrafficSignalControllerTestScenarioArg
+	{
+		void *tMain;
+		TString	testScenario;
+		TrafficSignalControllerTestScenarioException exceptionProc;
+		void *exceptionArg;
+	} TrafficSignalControllerTestScenarioArg;
+}

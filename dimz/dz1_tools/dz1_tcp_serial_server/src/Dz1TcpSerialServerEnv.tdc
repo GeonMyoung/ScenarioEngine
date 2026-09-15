@@ -1,0 +1,48 @@
+message set definition
+{
+	include Dz1TcpSerialServerDef;
+	
+	typedef struct Dz1TcpSerialServerPresetPort
+	{
+		uint32							 presetPortNum;	// is key
+		uint32							 thid;
+	} Dz1TcpSerialServerPresetPort;						// with api dump, compare
+	
+	typedef unique table Dz1TcpSerialServerPresetPortList(find, extract, count) [Dz1TcpSerialServerPresetPort];
+
+	typedef struct Dz1TcpSerialServerSerialArg
+	{
+		uint32							 dstQueueID;
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+	} Dz1TcpSerialServerSerialArg;						// with api dump
+	
+	typedef struct Dz1TcpSerialServerSerial
+	{
+		int32							 port;
+		void							*io;
+		Dz1TcpSerialServerSerialArg		*ioArg;
+	} Dz1TcpSerialServerSerial;							// with api dump
+	
+	typedef struct Dz1TcpSerialServerSession
+	{
+		Dz1SockAddr						*peer;			// is key
+		Dz1SockAddr						*local;			// is key
+		Dz1TcpClientSocket				*sock;
+		Dz1SocketBuf					*rxBuf;
+		Dz1SocketFifo2					*txFifo;
+		
+		bool							 isPresetPort;
+		Dz1TcpSerialServerSerial		*serial;		// is notarg
+	} Dz1TcpSerialServerSession;						// with api dump, compare
+		
+	typedef unique table Dz1TcpSerialServerSessionList(find, extract, count) [Dz1TcpSerialServerSession];
+	
+	typedef struct Dz1TcpSerialServerEnv
+	{
+		void								*tSelf;
+		uint32								 emulator;
+		Dz1TcpSerialServerPresetPortList	*presets;	// is notarg
+		Dz1TcpSerialServerSessionList		*sessions;	// is notarg
+	} Dz1TcpSerialServerEnv;							// with api dump
+}

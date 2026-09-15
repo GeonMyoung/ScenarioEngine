@@ -1,0 +1,67 @@
+message set definition
+{
+	include libdz1_support;
+	
+	-------------------------------------------------------------------------------------------------
+	-- NetworkInfo
+	-------------------------------------------------------------------------------------------------
+	
+	typedef struct NetworkInfoEntry
+	{
+		TString								ipAddress;					// is key
+		uint16								servicePort;				// is key
+		TString								provideServiceContext;
+	} NetworkInfoEntry;									// with api dump, clone, compare
+	typedef unique table NetworkInfoList(find, extract, count, gethead) [NetworkInfoEntry];
+	
+	-------------------------------------------------------------------------------------------------
+
+	-- 1.0.15784.2.0.1
+	-------------------------------------------------------------------------------------------------
+	
+	typedef struct CommTxPDUEntry
+	{
+		uint32								idx;						// is key
+		uint32								psid;
+		uint8								priority;
+		uint8								channel;
+		uint16								txInterval;
+		TString								ipAddress;					// is notarg
+		uint16								servicePort;				// is notarg
+		TString								provideServiceContext;		// is notarg
+		time								deliveryStart;
+		time								deliveryStop;
+		bool								signature;					// is notarg
+		int64								payloadType;				// is notarg
+		Dz1Binary						   *payload;
+		int8								txPower;					// is notarg
+		uint8								txDataRate;					// is notarg					
+		bool								channelNumberHdrExt;		// is notarg
+		bool								dataRateHdrExt;				// is notarg
+		bool								txPowerHdrExt;				// is notarg
+	} CommTxPDUEntry;									// with api dump, clone, compare
+	typedef unique table CommTxPDUList(find, extract, count, gethead) [CommTxPDUEntry];
+	
+	-------------------------------------------------------------------------------------------------
+	-- 1.0.15784.2.0.2
+	-------------------------------------------------------------------------------------------------
+	typedef struct CommRxPDUEntry
+	{
+		uint32								psid;						// is key
+		uint8								channel;
+		uint8								rcpi;
+		TString								peerAddress;				// is notarg
+		bool								sign;						// is notarg
+		int64								payloadType;				// is notarg
+		Dz1Binary						   *payload;		
+	} CommRxPDUEntry;									// with api dump, clone, compare
+	typedef unique table CommRxPDUList(find, extract, count, gethead) [CommRxPDUEntry];
+
+	typedef union TechnicalRegulation2_Eam
+	{
+		CommTxPDUList				*comm_tx_pdu;
+		CommRxPDUList				*comm_rx_pdu;
+	} TechnicalRegulation2_Eam;									// with api dump, clone
+
+
+}

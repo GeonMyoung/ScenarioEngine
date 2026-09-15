@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ -z $1 ] || [ -z $2 ] || [ -z $3 ]; then
+	echo "$0 <output_name> <src_dir> <ar_name>"
+else
+	OUTNAME=$1
+	WORKDIR=$2
+	AR=$3
+
+	cd $WORKDIR
+	for ccc in `ls *.a`; do
+		echo un-archive $ccc
+		$AR x $ccc
+		echo delete $ccc
+		rm -f $ccc
+	done
+	echo archive $OUTNAME
+	$AR rc $OUTNAME *.o
+	echo delete object file
+	rm -f *.o
+fi
+

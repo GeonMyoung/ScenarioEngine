@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "capturedDate": "2026-09-15",
+  "sourceScope": "police-test-platform/engine development projects; current working files including uncommitted changes",
+  "modules": [
+    {
+      "name": "ASN.1.GITSN.LIB2",
+      "materializedJunction": true,
+      "sourceRevision": null,
+      "files": 297,
+      "bytes": 2099621
+    },
+    {
+      "name": "codeconv",
+      "materializedJunction": true,
+      "sourceRevision": null,
+      "files": 213,
+      "bytes": 4789229
+    },
+    {
+      "name": "dimz",
+      "materializedJunction": true,
+      "sourceRevision": null,
+      "files": 2240,
+      "bytes": 23618459
+    },
+    {
+      "name": "GitsnAsnUtil",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 26,
+      "bytes": 13181424
+    },
+    {
+      "name": "GitsnDsrcEmulator",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 34,
+      "bytes": 156329
+    },
+    {
+      "name": "GitsnDSRCMsgTestScenario",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 41,
+      "bytes": 1237974
+    },
+    {
+      "name": "GitsnLicenseChkFree",
+      "materializedJunction": true,
+      "sourceRevision": null,
+      "files": 8,
+      "bytes": 28943
+    },
+    {
+      "name": "gitsntestdataprotocol",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 15,
+      "bytes": 74757
+    },
+    {
+      "name": "Iso14827dz1",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 35,
+      "bytes": 812297
+    },
+    {
+      "name": "Iso14827NewAsn",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 24,
+      "bytes": 1027229
+    },
+    {
+      "name": "iso14827testhelper",
+      "materializedJunction": false,
+      "sourceRevision": {
+        "commit": "864c2a1240238850069d9b412db72e341b06095a",
+        "branch": "main",
+        "workingTreeChangeCount": 40
+      },
+      "files": 60,
+      "bytes": 3603426
+    },
+    {
+      "name": "iso14827testmsgutil",
+      "materializedJunction": false,
+      "sourceRevision": {
+        "commit": "285965294d5c6b854d719ebc2dd3c915c985f319",
+        "branch": "main",
+        "workingTreeChangeCount": 4
+      },
+      "files": 15,
+      "bytes": 66607
+    },
+    {
+      "name": "ItsIso14827",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 160,
+      "bytes": 4680454
+    },
+    {
+      "name": "ITSK00100_3Util",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 22,
+      "bytes": 687012
+    },
+    {
+      "name": "Itsk00126v1Emulator",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 37,
+      "bytes": 222578
+    },
+    {
+      "name": "Itsk00126v1TestMsg",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 14,
+      "bytes": 226084
+    },
+    {
+      "name": "Itsk00126v1TestScenario",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 43,
+      "bytes": 476795
+    },
+    {
+      "name": "Itsk00126v2TestMsg",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 14,
+      "bytes": 132515
+    },
+    {
+      "name": "Itsk00126v2TestScenario",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 43,
+      "bytes": 432881
+    },
+    {
+      "name": "ITSK00144_2Emulator",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 35,
+      "bytes": 175342
+    },
+    {
+      "name": "ITSK00144_2TestMsg",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 16,
+      "bytes": 169580
+    },
+    {
+      "name": "ITSK00144_2TestScenario",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 45,
+      "bytes": 809612
+    },
+    {
+      "name": "pthreads.2",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 424,
+      "bytes": 2311152
+    },
+    {
+      "name": "scenarioengine",
+      "materializedJunction": false,
+      "sourceRevision": {
+        "commit": "b8b0fcc0b6102810e92f8d9ad1449a3601136fbc",
+        "branch": "main",
+        "workingTreeChangeCount": 0
+      },
+      "files": 43,
+      "bytes": 2254752
+    },
+    {
+      "name": "ScenarioEngineSetup",
+      "materializedJunction": false,
+      "sourceRevision": null,
+      "files": 6,
+      "bytes": 49136
+    },
+    {
+      "name": "scenarioenginewebsockmsg",
+      "materializedJunction": false,
+      "sourceRevision": {
+        "commit": "c5422b52408a39328af2d2ea58f6e341ca96702f",
+        "branch": "main",
+        "workingTreeChangeCount": 6
+      },
+      "files": 18,
+      "bytes": 291862
+    },
+    {
+      "name": "technicalregulation1",
+      "materializedJunction": false,
+      "sourceRevision": {
+        "commit": "d05aac5ec35f760f7f1f7da6c1cc5566b03628cd",
+        "branch": "main",
+        "workingTreeChangeCount": 12
+      },
+      "files": 26,
+      "bytes": 1173261
+    },
+    {
+      "name": "technicalregulation2",
+      "materializedJunction": false,
+      "sourceRevision": {
+        "commit": "c181750100ec77e29af1f6a523731fc1a18e942a",
+        "branch": "main",
+        "workingTreeChangeCount": 10
+      },
+      "files": 26,
+      "bytes": 275982
+    },
+    {
+      "name": "trafficsignalcontrollertestmsg",
+      "materializedJunction": false,
+      "sourceRevision": {
+        "commit": "261180ce8a55fa009567bbc7d588485273600889",
+        "branch": "main",
+        "workingTreeChangeCount": 12
+      },
+      "files": 25,
+      "bytes": 780547
+    },
+    {
+      "name": "trafficsignalcontrollertestscenario",
+      "materializedJunction": false,
+      "sourceRevision": {
+        "commit": "87655971b4f7019035894e32a57829947c89a472",
+        "branch": "main",
+        "workingTreeChangeCount": 27
+      },
+      "files": 39,
+      "bytes": 363667
+    }
+  ],
+  "externalSdks": [
+    {
+      "name": "OpenSSL",
+      "version": "1.1.1q",
+      "artifact": "dependencies/artifacts/OpenSSL-Win64-1.1.1q-build.zip",
+      "bytes": 69452911,
+      "sha256": "c49a37db4cfcf536de4792a3b01cf8d253a61f55d053a0eeb6aacee2389272f2",
+      "gitLfs": true,
+      "directory": "OpenSSL-Win64",
+      "platform": "x64",
+      "payload": "x64 headers, libraries, runtime DLLs and license notices; upstream tests and sample keys excluded"
+    }
+  ]
+}

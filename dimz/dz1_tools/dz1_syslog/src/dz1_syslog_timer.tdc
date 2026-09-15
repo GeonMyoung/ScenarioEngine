@@ -1,0 +1,7 @@
+message set definition
+{
+	typedef struct Dz1SysLogTimer
+	{
+		int32				id;			// is key
+	} Dz1SysLogTimer;					// with api dump, compare
+}

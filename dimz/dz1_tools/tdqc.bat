@@ -1,0 +1,1 @@
+.\tdqc.exe -p

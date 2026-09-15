@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{5436E05D-43BF-465A-9E1F-23CD3C10BFC7}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{C1B9E204-5A81-4FB3-9990-15E16799584E}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{499462EE-9A74-45EC-8BAC-F75148AC886C}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\dz1_tdqc.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_tdqc_def.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_tdqc_parser.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_tdqc_pub.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_tdqc_pub_qry.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_tdqc_pub_shp.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_tdqc_pub_tbl.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_tdqc_pub_util.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_tdqc_util.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sample.c">
+      <Filter>리소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sample_tdq.c">
+      <Filter>리소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\dz1_tdqc_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_tdqc_parser.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_tdqc_pub.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_tdqc_util.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\dz1_tdqc_def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\sample.h">
+      <Filter>리소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\sample.tdc">
+      <Filter>리소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\sample.tdo">
+      <Filter>리소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\sample.tdq">
+      <Filter>리소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\sample_init.bat">
+      <Filter>리소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\sample_tdq.h">
+      <Filter>리소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\sample_util.h">
+      <Filter>리소스 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

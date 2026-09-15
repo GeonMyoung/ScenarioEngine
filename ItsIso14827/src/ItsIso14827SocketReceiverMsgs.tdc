@@ -1,0 +1,10 @@
+message set definition
+{
+	include ItsIso14827Def;
+	typedef struct ItsIsoSocketReceiverReceived
+	{
+		ItsIso14827SessionKey		*key;
+		Dz1Binary					*packet;
+		time						 stamp;
+	} ItsIsoSocketReceiverReceived;			// with api dump
+}

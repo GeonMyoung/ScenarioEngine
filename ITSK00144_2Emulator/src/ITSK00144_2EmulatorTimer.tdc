@@ -1,0 +1,8 @@
+message set definition
+{
+	include ITSK00144_2EmulatorDef;
+	typedef struct ITSK001442EmulatorTimer
+	{
+		uint32 id; // is key
+	} ITSK001442EmulatorTimer; // with api dump, compare
+}

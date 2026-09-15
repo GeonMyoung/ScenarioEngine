@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="ks_c_5601-1987"?>
+
+<VisualStudioProject
+
+	ProjectType="Visual C++"
+
+	Version="7.10"
+
+	Name="dz1_code_gen"
+
+	ProjectGUID="{79269FF1-0120-419C-B9F3-DCF0343DFD5D}"
+
+	Keyword="Win32Proj">
+
+	<Platforms>
+
+		<Platform
+
+			Name="Win32"/>
+
+	</Platforms>
+
+	<Configurations>
+
+		<Configuration
+
+			Name="Debug|Win32"
+
+			OutputDirectory="$(ConfigurationName)"
+
+			IntermediateDirectory="$(ConfigurationName)"
+
+			ConfigurationType="4"
+
+			UseOfMFC="1"
+
+			CharacterSet="2">
+
+			<Tool
+
+				Name="VCCLCompilerTool"
+
+				Optimization="0"
+
+				AdditionalIncludeDirectories="..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\codeconv\include;..\..\..\..\..\pthreads.2"
+
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+
+				MinimalRebuild="FALSE"
+
+				BasicRuntimeChecks="3"
+
+				RuntimeLibrary="1"
+
+				UsePrecompiledHeader="2"
+
+				WarningLevel="3"
+
+				Detect64BitPortabilityProblems="FALSE"
+
+				DebugInformationFormat="1"/>
+
+			<Tool
+
+				Name="VCCustomBuildTool"/>
+
+			<Tool
+
+				Name="VCLibrarianTool"
+
+				OutputFile="$(OutDir)/dz1_code_gen.lib"/>
+
+			<Tool
+
+				Name="VCMIDLTool"/>
+
+			<Tool
+
+				Name="VCPostBuildEventTool"/>
+
+			<Tool
+
+				Name="VCPreBuildEventTool"/>
+
+			<Tool
+
+				Name="VCPreLinkEventTool"/>
+
+			<Tool
+
+				Name="VCResourceCompilerTool"/>
+
+			<Tool
+
+				Name="VCWebServiceProxyGeneratorTool"/>
+
+			<Tool
+
+				Name="VCXMLDataGeneratorTool"/>
+
+			<Tool
+
+				Name="VCManagedWrapperGeneratorTool"/>
+
+			<Tool
+
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+
+		</Configuration>
+
+		<Configuration
+
+			Name="Release|Win32"
+
+			OutputDirectory="$(ConfigurationName)"
+
+			IntermediateDirectory="$(ConfigurationName)"
+
+			ConfigurationType="4"
+
+			UseOfMFC="1"
+
+			CharacterSet="2">
+
+			<Tool
+
+				Name="VCCLCompilerTool"
+
+				AdditionalIncludeDirectories="..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\codeconv\include;..\..\..\..\..\pthreads.2"
+
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+
+				RuntimeLibrary="0"
+
+				UsePrecompiledHeader="2"
+
+				WarningLevel="3"
+
+				Detect64BitPortabilityProblems="FALSE"
+
+				DebugInformationFormat="0"/>
+
+			<Tool
+
+				Name="VCCustomBuildTool"/>
+
+			<Tool
+
+				Name="VCLibrarianTool"
+
+				OutputFile="$(OutDir)/dz1_code_gen.lib"/>
+
+			<Tool
+
+				Name="VCMIDLTool"/>
+
+			<Tool
+
+				Name="VCPostBuildEventTool"/>
+
+			<Tool
+
+				Name="VCPreBuildEventTool"/>
+
+			<Tool
+
+				Name="VCPreLinkEventTool"/>
+
+			<Tool
+
+				Name="VCResourceCompilerTool"/>
+
+			<Tool
+
+				Name="VCWebServiceProxyGeneratorTool"/>
+
+			<Tool
+
+				Name="VCXMLDataGeneratorTool"/>
+
+			<Tool
+
+				Name="VCManagedWrapperGeneratorTool"/>
+
+			<Tool
+
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+
+		</Configuration>
+
+	</Configurations>
+
+	<References>
+
+	</References>
+
+	<Files>
+
+		<Filter
+
+			Name="소스 파일"
+
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+
+			UniqueIdentifier="{3AD914CF-4468-4BD9-8910-46B9855DEDE6}">
+
+			<File
+				RelativePath="..\..\stdafx.cpp">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\dz1_code_genDef.c">
+			</File>
+		</Filter>
+
+		<Filter
+
+			Name="헤더 파일"
+
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+
+			UniqueIdentifier="{46426738-34EF-40D1-9A65-ED06C7ADEEB3}">
+
+			<File
+				RelativePath="..\..\include\dz1_code_genDef.tdc">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\$(InputName).tdc"
+						Outputs="..\..\src\$(InputName).c;..\..\include\$(InputName).h"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="..\..\..\..\dz1\..\dz1_tools\tdc.exe -I ..\..\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\$(InputName).tdc"
+						Outputs="..\..\src\$(InputName).c;..\..\include\$(InputName).h"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\include\dz1_code_genDef.h">
+			</File>
+			<File
+				RelativePath="..\..\stdafx.h">
+			</File>
+		</Filter>
+
+		<Filter
+
+			Name="리소스 파일"
+
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+
+			UniqueIdentifier="{21C71CD5-8791-47A4-A36C-0FA899DADB97}">
+
+		</Filter>
+
+		<File
+
+			RelativePath="..\..\ReadMe.txt">
+
+		</File>
+
+	</Files>
+
+	<Globals>
+
+	</Globals>
+
+</VisualStudioProject>
+

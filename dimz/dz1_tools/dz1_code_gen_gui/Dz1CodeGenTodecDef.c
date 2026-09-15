@@ -1,0 +1,2072 @@
+////////////////////////////////////////////////////////////////////////////////
+#include <dz1_time.h>
+#include <dz1_thread_stdio.h>
+#include <dz1_fifo.h>
+#include <dz1_ordered_fifo.h>
+#include <dz1_aatree.h>
+////////////////////////////////////////////////////////////////////////////////
+
+#include "Dz1CodeGenTodecDef.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// CodecOneOfConstruct
+CodecOneOfConstruct *CodecOneOfConstruct_new(ConstructMemberCodecEntry *parent/*_ref*/, 
+											 str_t instance_name, 
+											 ObjectInfo *obj/*_ref*/, 
+											 ConstructMemberCodecLimitedInfo *info, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	CodecOneOfConstruct *__internal_ret = (CodecOneOfConstruct *)Dz1Calloc(sizeof(CodecOneOfConstruct), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(CodecOneOfConstruct_delAndSetNull, (void *)&__internal_ret);
+		
+		if (instance_name && (__internal_ret->instance_name = dz1_built_in_str_clone(instance_name, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			__internal_ret->parent = parent;
+			__internal_ret->obj = obj;
+			__internal_ret->info = info;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (CodecOneOfConstruct_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t CodecOneOfConstruct_copy(CodecOneOfConstruct *dst, CodecOneOfConstruct *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if (src->instance_name && (dst->instance_name = dz1_built_in_str_clone(src->instance_name, errp)) == NULL) ERR_OUT(errp);
+	else if (src->info && (dst->info = ConstructMemberCodecLimitedInfo_clone(src->info, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		dst->parent = src->parent;
+		dst->obj = src->obj;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+CodecOneOfConstruct *CodecOneOfConstruct_clone(CodecOneOfConstruct *src, Dz1Error *err)
+{
+	CodecOneOfConstruct *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (CodecOneOfConstruct *)Dz1Calloc(sizeof(CodecOneOfConstruct), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(CodecOneOfConstruct_delAndSetNull, (void *)&dst);
+		if (CodecOneOfConstruct_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (CodecOneOfConstruct_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void CodecOneOfConstruct_purge(CodecOneOfConstruct *p)
+{
+	if (p == NULL) return;
+	dz1_built_in_str_del(p->instance_name);
+	ConstructMemberCodecLimitedInfo_del(p->info);
+}
+
+void CodecOneOfConstruct_del(CodecOneOfConstruct *p)
+{
+	if (p == NULL) return;
+	CodecOneOfConstruct_purge(p);
+	Dz1Free(p);
+}
+
+void CodecOneOfConstruct_dump(CodecOneOfConstruct *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		// Normal member
+		Dz1Thread_tprintf(tab, Dz1T("parent = ")); ConstructMemberCodecEntry_dump(p->parent, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("instance_name = ")); dz1_built_in_str_dump(p->instance_name, tab); 
+		// _imp_dump
+		// _imp_dump : pointer
+		Dz1Thread_tprintf(tab, Dz1T("obj = ")); ObjectInfo_dump(p->obj, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("info.")); ConstructMemberCodecLimitedInfo_dump(p->info, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// CodecOneOfConstruct
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CodecPrimitiveByte
+CodecPrimitiveByte *CodecPrimitiveByte_new(ConstructMemberCodecEntry *parent/*_ref*/, 
+										   u32_t byte_len, 
+										   u32_t byte_sft, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	CodecPrimitiveByte *__internal_ret = (CodecPrimitiveByte *)Dz1Calloc(sizeof(CodecPrimitiveByte), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(CodecPrimitiveByte_delAndSetNull, (void *)&__internal_ret);
+		
+		__internal_ret->parent = parent;
+		__internal_ret->byte_len = byte_len;
+		__internal_ret->byte_sft = byte_sft;
+		ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (CodecPrimitiveByte_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t CodecPrimitiveByte_copy(CodecPrimitiveByte *dst, CodecPrimitiveByte *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else
+	{
+		dst->parent = src->parent;
+		dst->byte_len = src->byte_len;
+		dst->byte_sft = src->byte_sft;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+CodecPrimitiveByte *CodecPrimitiveByte_clone(CodecPrimitiveByte *src, Dz1Error *err)
+{
+	CodecPrimitiveByte *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (CodecPrimitiveByte *)Dz1Calloc(sizeof(CodecPrimitiveByte), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(CodecPrimitiveByte_delAndSetNull, (void *)&dst);
+		if (CodecPrimitiveByte_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (CodecPrimitiveByte_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void CodecPrimitiveByte_purge(CodecPrimitiveByte *p)
+{
+	if (p == NULL) return;
+}
+
+void CodecPrimitiveByte_del(CodecPrimitiveByte *p)
+{
+	if (p == NULL) return;
+	CodecPrimitiveByte_purge(p);
+	Dz1Free(p);
+}
+
+void CodecPrimitiveByte_dump(CodecPrimitiveByte *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		// Normal member
+		Dz1Thread_tprintf(tab, Dz1T("parent = ")); ConstructMemberCodecEntry_dump(p->parent, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("byte_len = ")); Dz1u32_dump(&p->byte_len, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("byte_sft = ")); Dz1u32_dump(&p->byte_sft, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// CodecPrimitiveByte
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CodecPrimitiveBits
+CodecPrimitiveBits *CodecPrimitiveBits_new(ConstructMemberCodecEntry *parent/*_ref*/, 
+										   u32_t bit_len, 
+										   u32_t bit_sft, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	CodecPrimitiveBits *__internal_ret = (CodecPrimitiveBits *)Dz1Calloc(sizeof(CodecPrimitiveBits), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(CodecPrimitiveBits_delAndSetNull, (void *)&__internal_ret);
+		
+		__internal_ret->parent = parent;
+		__internal_ret->bit_len = bit_len;
+		__internal_ret->bit_sft = bit_sft;
+		ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (CodecPrimitiveBits_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t CodecPrimitiveBits_copy(CodecPrimitiveBits *dst, CodecPrimitiveBits *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else
+	{
+		dst->parent = src->parent;
+		dst->bit_len = src->bit_len;
+		dst->bit_sft = src->bit_sft;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+CodecPrimitiveBits *CodecPrimitiveBits_clone(CodecPrimitiveBits *src, Dz1Error *err)
+{
+	CodecPrimitiveBits *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (CodecPrimitiveBits *)Dz1Calloc(sizeof(CodecPrimitiveBits), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(CodecPrimitiveBits_delAndSetNull, (void *)&dst);
+		if (CodecPrimitiveBits_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (CodecPrimitiveBits_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void CodecPrimitiveBits_purge(CodecPrimitiveBits *p)
+{
+	if (p == NULL) return;
+}
+
+void CodecPrimitiveBits_del(CodecPrimitiveBits *p)
+{
+	if (p == NULL) return;
+	CodecPrimitiveBits_purge(p);
+	Dz1Free(p);
+}
+
+void CodecPrimitiveBits_dump(CodecPrimitiveBits *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		// Normal member
+		Dz1Thread_tprintf(tab, Dz1T("parent = ")); ConstructMemberCodecEntry_dump(p->parent, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("bit_len = ")); Dz1u32_dump(&p->bit_len, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("bit_sft = ")); Dz1u32_dump(&p->bit_sft, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// CodecPrimitiveBits
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CodecPadding
+CodecPadding *CodecPadding_new(ConstructMemberCodecEntry *parent/*_ref*/, 
+							   u32_t bit_len, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	CodecPadding *__internal_ret = (CodecPadding *)Dz1Calloc(sizeof(CodecPadding), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(CodecPadding_delAndSetNull, (void *)&__internal_ret);
+		
+		__internal_ret->parent = parent;
+		__internal_ret->bit_len = bit_len;
+		ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (CodecPadding_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t CodecPadding_copy(CodecPadding *dst, CodecPadding *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else
+	{
+		dst->parent = src->parent;
+		dst->bit_len = src->bit_len;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+CodecPadding *CodecPadding_clone(CodecPadding *src, Dz1Error *err)
+{
+	CodecPadding *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (CodecPadding *)Dz1Calloc(sizeof(CodecPadding), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(CodecPadding_delAndSetNull, (void *)&dst);
+		if (CodecPadding_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (CodecPadding_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void CodecPadding_purge(CodecPadding *p)
+{
+	if (p == NULL) return;
+}
+
+void CodecPadding_del(CodecPadding *p)
+{
+	if (p == NULL) return;
+	CodecPadding_purge(p);
+	Dz1Free(p);
+}
+
+void CodecPadding_dump(CodecPadding *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		// Normal member
+		Dz1Thread_tprintf(tab, Dz1T("parent = ")); ConstructMemberCodecEntry_dump(p->parent, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("bit_len = ")); Dz1u32_dump(&p->bit_len, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// CodecPadding
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecInfoPresent
+static struct ConstructMemberCodecInfoPresentMapA
+{
+	str_t str;
+	ConstructMemberCodecInfoPresent v;
+} ConstructMemberCodecInfoPresentMapA[] =
+{
+	{ (char *)"one_of_structure", ConstructMemberCodecInfoPresent_one_of_structure },
+	{ (char *)"byte_of_primitive", ConstructMemberCodecInfoPresent_byte_of_primitive },
+	{ (char *)"bits_of_primitive", ConstructMemberCodecInfoPresent_bits_of_primitive },
+	{ (char *)"void_member", ConstructMemberCodecInfoPresent_void_member },
+	{ (char *)"alternate", ConstructMemberCodecInfoPresent_alternate },
+	{ (char *)"padding", ConstructMemberCodecInfoPresent_padding },
+	{ NULL, ConstructMemberCodecInfoPresent_max }
+};
+
+str_t ConstructMemberCodecInfoPresentStrA(ConstructMemberCodecInfoPresent v)
+{
+	struct ConstructMemberCodecInfoPresentMapA *i = NULL;
+	for (i = ConstructMemberCodecInfoPresentMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+ConstructMemberCodecInfoPresent ConstructMemberCodecInfoPresentFromStrA(str_t str)
+{
+	struct ConstructMemberCodecInfoPresentMapA *i = NULL;
+	for (i = ConstructMemberCodecInfoPresentMapA; i->str; i++)
+		if (dz1_built_in_str_cmp(i->str, str) == 0) return i->v;
+	return ConstructMemberCodecInfoPresent_max;
+}
+#ifndef UNIX_SYSTEM
+static struct ConstructMemberCodecInfoPresentMapW
+{
+	wstr_t str;
+	ConstructMemberCodecInfoPresent v;
+} ConstructMemberCodecInfoPresentMapW[] =
+{
+	{ (wchar_t *)L"one_of_structure", ConstructMemberCodecInfoPresent_one_of_structure },
+	{ (wchar_t *)L"byte_of_primitive", ConstructMemberCodecInfoPresent_byte_of_primitive },
+	{ (wchar_t *)L"bits_of_primitive", ConstructMemberCodecInfoPresent_bits_of_primitive },
+	{ (wchar_t *)L"void_member", ConstructMemberCodecInfoPresent_void_member },
+	{ (wchar_t *)L"alternate", ConstructMemberCodecInfoPresent_alternate },
+	{ (wchar_t *)L"padding", ConstructMemberCodecInfoPresent_padding },
+	{ NULL, ConstructMemberCodecInfoPresent_max }
+};
+
+wstr_t ConstructMemberCodecInfoPresentStrW(ConstructMemberCodecInfoPresent v)
+{
+	struct ConstructMemberCodecInfoPresentMapW *i = NULL;
+	for (i = ConstructMemberCodecInfoPresentMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+ConstructMemberCodecInfoPresent ConstructMemberCodecInfoPresentFromStrW(wstr_t str)
+{
+	struct ConstructMemberCodecInfoPresentMapW *i = NULL;
+	for (i = ConstructMemberCodecInfoPresentMapW; i->str; i++)
+		if (dz1_built_in_wstr_cmp(i->str, str) == 0) return i->v;
+	return ConstructMemberCodecInfoPresent_max;
+}
+#endif // UNIX_SYSTEM
+
+ConstructMemberCodecInfoPresent *ConstructMemberCodecInfoPresent_new(ConstructMemberCodecInfoPresent *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructMemberCodecInfoPresent *__internal_ret = (ConstructMemberCodecInfoPresent *)Dz1Calloc(sizeof(ConstructMemberCodecInfoPresent), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+		ERR_CLEAR(errp);
+	}
+	return __internal_ret;
+}
+
+void ConstructMemberCodecInfoPresent_dump(ConstructMemberCodecInfoPresent *v, int tab)
+{
+	if (v == NULL) Dz1Thread_printf(Dz1T("NULL\n"));
+	else Dz1Thread_printf(Dz1T("%s\n"), ConstructMemberCodecInfoPresentStr(*v));
+}
+// ConstructMemberCodecInfoPresent
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecInfo
+ConstructMemberCodecInfo *ConstructMemberCodecInfo_new(ConstructMemberCodecInfoPresent present, void *ptr, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructMemberCodecInfo *ret = (ConstructMemberCodecInfo *)Dz1Calloc(sizeof(ConstructMemberCodecInfo), 1, errp);
+	if (ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(ConstructMemberCodecInfo_delAndSetNull, (void *)&ret);
+
+		ret->present = present;
+		switch(ret->present)
+		{
+		case ConstructMemberCodecInfoPresent_one_of_structure:
+			// _U_cst_clone
+			if (ptr != NULL) ret->x.one_of_structure = (CodecOneOfConstruct *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case ConstructMemberCodecInfoPresent_byte_of_primitive:
+			// _U_cst_clone
+			if (ptr != NULL) ret->x.byte_of_primitive = (CodecPrimitiveByte *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case ConstructMemberCodecInfoPresent_bits_of_primitive:
+			// _U_cst_clone
+			if (ptr != NULL) ret->x.bits_of_primitive = (CodecPrimitiveBits *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case ConstructMemberCodecInfoPresent_void_member:
+			// _U_prim_clone
+			if (ptr != NULL) ret->x.void_member = (u32_t *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case ConstructMemberCodecInfoPresent_alternate:
+			// _U_prim_clone
+			if (ptr && (ret->x.alternate = dz1_built_in_str_clone((str_t)ptr, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecInfoPresent_padding:
+			// _U_cst_clone
+			if (ptr != NULL) ret->x.padding = (CodecPadding *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case ConstructMemberCodecInfoPresent_max:
+			break;
+		default:
+			ERR_SET_OUT(errp, EINVAL);
+			break;
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructMemberCodecInfo_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+bool_t ConstructMemberCodecInfo_copy(ConstructMemberCodecInfo *ret, ConstructMemberCodecInfo *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL || ret == NULL) { errp->code = EINVAL; ERR_OUT(errp); }
+	else
+	{
+		ret->present = src->present;
+		switch(src->present)
+		{
+		case ConstructMemberCodecInfoPresent_one_of_structure:
+			// _U_cst_clone
+			if (src->x.one_of_structure && (ret->x.one_of_structure = CodecOneOfConstruct_clone(src->x.one_of_structure, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecInfoPresent_byte_of_primitive:
+			// _U_cst_clone
+			if (src->x.byte_of_primitive && (ret->x.byte_of_primitive = CodecPrimitiveByte_clone(src->x.byte_of_primitive, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecInfoPresent_bits_of_primitive:
+			// _U_cst_clone
+			if (src->x.bits_of_primitive && (ret->x.bits_of_primitive = CodecPrimitiveBits_clone(src->x.bits_of_primitive, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecInfoPresent_void_member:
+			// _U_prim_clone
+			if (src->x.void_member && (ret->x.void_member = Dz1u32_clone(src->x.void_member, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecInfoPresent_alternate:
+			// _U_prim_clone
+			if (src->x.alternate && (ret->x.alternate = dz1_built_in_str_clone(src->x.alternate, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecInfoPresent_padding:
+			// _U_cst_clone
+			if (src->x.padding && (ret->x.padding = CodecPadding_clone(src->x.padding, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		default:
+			ERR_SET_OUT(errp, EINVAL);
+			break;
+		}
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+ConstructMemberCodecInfo *ConstructMemberCodecInfo_clone(ConstructMemberCodecInfo *src, Dz1Error *err)
+{
+	ConstructMemberCodecInfo *ret = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { errp->code = EINVAL; ERR_OUT(errp); }
+	else if ((ret = (ConstructMemberCodecInfo *)Dz1Calloc(sizeof(ConstructMemberCodecInfo), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(ConstructMemberCodecInfo_delAndSetNull, (void *)&ret);
+		if (ConstructMemberCodecInfo_copy(ret, src, errp) == FALSE) { ERR_OUT(errp); }
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructMemberCodecInfo_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void ConstructMemberCodecInfo_purge(ConstructMemberCodecInfo *p)
+{
+	if (!p) return;
+	switch(p->present)
+	{
+	case ConstructMemberCodecInfoPresent_one_of_structure:
+		CodecOneOfConstruct_del(p->x.one_of_structure);
+		break;
+	case ConstructMemberCodecInfoPresent_byte_of_primitive:
+		CodecPrimitiveByte_del(p->x.byte_of_primitive);
+		break;
+	case ConstructMemberCodecInfoPresent_bits_of_primitive:
+		CodecPrimitiveBits_del(p->x.bits_of_primitive);
+		break;
+	case ConstructMemberCodecInfoPresent_void_member:
+		Dz1u32_del(p->x.void_member);
+		break;
+	case ConstructMemberCodecInfoPresent_alternate:
+		dz1_built_in_str_del(p->x.alternate);
+		break;
+	case ConstructMemberCodecInfoPresent_padding:
+		CodecPadding_del(p->x.padding);
+		break;
+	default:
+		break;
+	}
+}
+
+void ConstructMemberCodecInfo_del(ConstructMemberCodecInfo *p)
+{
+	if (!p) return;
+	ConstructMemberCodecInfo_purge(p);
+	Dz1Free(p);
+}
+
+void ConstructMemberCodecInfo_dump(ConstructMemberCodecInfo *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else switch(p->present)
+	{
+	case ConstructMemberCodecInfoPresent_one_of_structure:
+		Dz1Thread_printf(Dz1T("one_of_structure = ")); CodecOneOfConstruct_dump(p->x.one_of_structure, tab); 
+		break;
+	case ConstructMemberCodecInfoPresent_byte_of_primitive:
+		Dz1Thread_printf(Dz1T("byte_of_primitive = ")); CodecPrimitiveByte_dump(p->x.byte_of_primitive, tab); 
+		break;
+	case ConstructMemberCodecInfoPresent_bits_of_primitive:
+		Dz1Thread_printf(Dz1T("bits_of_primitive = ")); CodecPrimitiveBits_dump(p->x.bits_of_primitive, tab); 
+		break;
+	case ConstructMemberCodecInfoPresent_void_member:
+		Dz1Thread_printf(Dz1T("void_member = ")); Dz1u32_dump(p->x.void_member, tab); 
+		break;
+	case ConstructMemberCodecInfoPresent_alternate:
+		Dz1Thread_printf(Dz1T("alternate = ")); dz1_built_in_str_dump(p->x.alternate, tab); 
+		break;
+	case ConstructMemberCodecInfoPresent_padding:
+		Dz1Thread_printf(Dz1T("padding = ")); CodecPadding_dump(p->x.padding, tab); 
+		break;
+	default:
+		Dz1Thread_tprintf(tab, Dz1T("??? = %d\n"), p->present);
+		break;
+	}
+}
+
+// ConstructMemberCodecInfo
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecLimitedInfoPresent
+static struct ConstructMemberCodecLimitedInfoPresentMapA
+{
+	str_t str;
+	ConstructMemberCodecLimitedInfoPresent v;
+} ConstructMemberCodecLimitedInfoPresentMapA[] =
+{
+	{ (char *)"byte_of_primitive", ConstructMemberCodecLimitedInfoPresent_byte_of_primitive },
+	{ (char *)"bits_of_primitive", ConstructMemberCodecLimitedInfoPresent_bits_of_primitive },
+	{ (char *)"alternate", ConstructMemberCodecLimitedInfoPresent_alternate },
+	{ NULL, ConstructMemberCodecLimitedInfoPresent_max }
+};
+
+str_t ConstructMemberCodecLimitedInfoPresentStrA(ConstructMemberCodecLimitedInfoPresent v)
+{
+	struct ConstructMemberCodecLimitedInfoPresentMapA *i = NULL;
+	for (i = ConstructMemberCodecLimitedInfoPresentMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+ConstructMemberCodecLimitedInfoPresent ConstructMemberCodecLimitedInfoPresentFromStrA(str_t str)
+{
+	struct ConstructMemberCodecLimitedInfoPresentMapA *i = NULL;
+	for (i = ConstructMemberCodecLimitedInfoPresentMapA; i->str; i++)
+		if (dz1_built_in_str_cmp(i->str, str) == 0) return i->v;
+	return ConstructMemberCodecLimitedInfoPresent_max;
+}
+#ifndef UNIX_SYSTEM
+static struct ConstructMemberCodecLimitedInfoPresentMapW
+{
+	wstr_t str;
+	ConstructMemberCodecLimitedInfoPresent v;
+} ConstructMemberCodecLimitedInfoPresentMapW[] =
+{
+	{ (wchar_t *)L"byte_of_primitive", ConstructMemberCodecLimitedInfoPresent_byte_of_primitive },
+	{ (wchar_t *)L"bits_of_primitive", ConstructMemberCodecLimitedInfoPresent_bits_of_primitive },
+	{ (wchar_t *)L"alternate", ConstructMemberCodecLimitedInfoPresent_alternate },
+	{ NULL, ConstructMemberCodecLimitedInfoPresent_max }
+};
+
+wstr_t ConstructMemberCodecLimitedInfoPresentStrW(ConstructMemberCodecLimitedInfoPresent v)
+{
+	struct ConstructMemberCodecLimitedInfoPresentMapW *i = NULL;
+	for (i = ConstructMemberCodecLimitedInfoPresentMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+ConstructMemberCodecLimitedInfoPresent ConstructMemberCodecLimitedInfoPresentFromStrW(wstr_t str)
+{
+	struct ConstructMemberCodecLimitedInfoPresentMapW *i = NULL;
+	for (i = ConstructMemberCodecLimitedInfoPresentMapW; i->str; i++)
+		if (dz1_built_in_wstr_cmp(i->str, str) == 0) return i->v;
+	return ConstructMemberCodecLimitedInfoPresent_max;
+}
+#endif // UNIX_SYSTEM
+
+ConstructMemberCodecLimitedInfoPresent *ConstructMemberCodecLimitedInfoPresent_new(ConstructMemberCodecLimitedInfoPresent *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructMemberCodecLimitedInfoPresent *__internal_ret = (ConstructMemberCodecLimitedInfoPresent *)Dz1Calloc(sizeof(ConstructMemberCodecLimitedInfoPresent), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+		ERR_CLEAR(errp);
+	}
+	return __internal_ret;
+}
+
+void ConstructMemberCodecLimitedInfoPresent_dump(ConstructMemberCodecLimitedInfoPresent *v, int tab)
+{
+	if (v == NULL) Dz1Thread_printf(Dz1T("NULL\n"));
+	else Dz1Thread_printf(Dz1T("%s\n"), ConstructMemberCodecLimitedInfoPresentStr(*v));
+}
+// ConstructMemberCodecLimitedInfoPresent
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecLimitedInfo
+ConstructMemberCodecLimitedInfo *ConstructMemberCodecLimitedInfo_new(ConstructMemberCodecLimitedInfoPresent present, void *ptr, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructMemberCodecLimitedInfo *ret = (ConstructMemberCodecLimitedInfo *)Dz1Calloc(sizeof(ConstructMemberCodecLimitedInfo), 1, errp);
+	if (ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(ConstructMemberCodecLimitedInfo_delAndSetNull, (void *)&ret);
+
+		ret->present = present;
+		switch(ret->present)
+		{
+		case ConstructMemberCodecLimitedInfoPresent_byte_of_primitive:
+			// _U_cst_clone
+			if (ptr != NULL) ret->x.byte_of_primitive = (CodecPrimitiveByte *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case ConstructMemberCodecLimitedInfoPresent_bits_of_primitive:
+			// _U_cst_clone
+			if (ptr != NULL) ret->x.bits_of_primitive = (CodecPrimitiveBits *)ptr;
+			ERR_CLEAR(errp);
+			break;
+		case ConstructMemberCodecLimitedInfoPresent_alternate:
+			// _U_prim_clone
+			if (ptr && (ret->x.alternate = dz1_built_in_str_clone((str_t)ptr, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecLimitedInfoPresent_max:
+			break;
+		default:
+			ERR_SET_OUT(errp, EINVAL);
+			break;
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructMemberCodecLimitedInfo_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+bool_t ConstructMemberCodecLimitedInfo_copy(ConstructMemberCodecLimitedInfo *ret, ConstructMemberCodecLimitedInfo *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL || ret == NULL) { errp->code = EINVAL; ERR_OUT(errp); }
+	else
+	{
+		ret->present = src->present;
+		switch(src->present)
+		{
+		case ConstructMemberCodecLimitedInfoPresent_byte_of_primitive:
+			// _U_cst_clone
+			if (src->x.byte_of_primitive && (ret->x.byte_of_primitive = CodecPrimitiveByte_clone(src->x.byte_of_primitive, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecLimitedInfoPresent_bits_of_primitive:
+			// _U_cst_clone
+			if (src->x.bits_of_primitive && (ret->x.bits_of_primitive = CodecPrimitiveBits_clone(src->x.bits_of_primitive, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		case ConstructMemberCodecLimitedInfoPresent_alternate:
+			// _U_prim_clone
+			if (src->x.alternate && (ret->x.alternate = dz1_built_in_str_clone(src->x.alternate, errp)) == NULL) ERR_OUT(errp);
+			else {ERR_CLEAR(errp); }
+			break;
+		default:
+			ERR_SET_OUT(errp, EINVAL);
+			break;
+		}
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+ConstructMemberCodecLimitedInfo *ConstructMemberCodecLimitedInfo_clone(ConstructMemberCodecLimitedInfo *src, Dz1Error *err)
+{
+	ConstructMemberCodecLimitedInfo *ret = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { errp->code = EINVAL; ERR_OUT(errp); }
+	else if ((ret = (ConstructMemberCodecLimitedInfo *)Dz1Calloc(sizeof(ConstructMemberCodecLimitedInfo), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(ConstructMemberCodecLimitedInfo_delAndSetNull, (void *)&ret);
+		if (ConstructMemberCodecLimitedInfo_copy(ret, src, errp) == FALSE) { ERR_OUT(errp); }
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructMemberCodecLimitedInfo_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void ConstructMemberCodecLimitedInfo_purge(ConstructMemberCodecLimitedInfo *p)
+{
+	if (!p) return;
+	switch(p->present)
+	{
+	case ConstructMemberCodecLimitedInfoPresent_byte_of_primitive:
+		CodecPrimitiveByte_del(p->x.byte_of_primitive);
+		break;
+	case ConstructMemberCodecLimitedInfoPresent_bits_of_primitive:
+		CodecPrimitiveBits_del(p->x.bits_of_primitive);
+		break;
+	case ConstructMemberCodecLimitedInfoPresent_alternate:
+		dz1_built_in_str_del(p->x.alternate);
+		break;
+	default:
+		break;
+	}
+}
+
+void ConstructMemberCodecLimitedInfo_del(ConstructMemberCodecLimitedInfo *p)
+{
+	if (!p) return;
+	ConstructMemberCodecLimitedInfo_purge(p);
+	Dz1Free(p);
+}
+
+void ConstructMemberCodecLimitedInfo_dump(ConstructMemberCodecLimitedInfo *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else switch(p->present)
+	{
+	case ConstructMemberCodecLimitedInfoPresent_byte_of_primitive:
+		Dz1Thread_printf(Dz1T("byte_of_primitive = ")); CodecPrimitiveByte_dump(p->x.byte_of_primitive, tab); 
+		break;
+	case ConstructMemberCodecLimitedInfoPresent_bits_of_primitive:
+		Dz1Thread_printf(Dz1T("bits_of_primitive = ")); CodecPrimitiveBits_dump(p->x.bits_of_primitive, tab); 
+		break;
+	case ConstructMemberCodecLimitedInfoPresent_alternate:
+		Dz1Thread_printf(Dz1T("alternate = ")); dz1_built_in_str_dump(p->x.alternate, tab); 
+		break;
+	default:
+		Dz1Thread_tprintf(tab, Dz1T("??? = %d\n"), p->present);
+		break;
+	}
+}
+
+// ConstructMemberCodecLimitedInfo
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecEntry
+ConstructMemberCodecEntry *ConstructMemberCodecEntry_new(ConstructCodecEntry *parent/*_ref*/, 
+														 u32_t order, 
+														 str_t instance_name, 
+														 ObjectInfo *obj/*_ref*/, 
+														 ConstructMemberCodecInfo *info, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructMemberCodecEntry *__internal_ret = (ConstructMemberCodecEntry *)Dz1Calloc(sizeof(ConstructMemberCodecEntry), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(ConstructMemberCodecEntry_delAndSetNull, (void *)&__internal_ret);
+		
+		if (instance_name && (__internal_ret->instance_name = dz1_built_in_str_clone(instance_name, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			__internal_ret->parent = parent;
+			__internal_ret->order = order;
+			__internal_ret->obj = obj;
+			__internal_ret->info = info;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructMemberCodecEntry_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t ConstructMemberCodecEntry_copy(ConstructMemberCodecEntry *dst, ConstructMemberCodecEntry *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if (src->instance_name && (dst->instance_name = dz1_built_in_str_clone(src->instance_name, errp)) == NULL) ERR_OUT(errp);
+	else if (src->info && (dst->info = ConstructMemberCodecInfo_clone(src->info, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		dst->parent = src->parent;
+		dst->order = src->order;
+		dst->obj = src->obj;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+ConstructMemberCodecEntry *ConstructMemberCodecEntry_clone(ConstructMemberCodecEntry *src, Dz1Error *err)
+{
+	ConstructMemberCodecEntry *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (ConstructMemberCodecEntry *)Dz1Calloc(sizeof(ConstructMemberCodecEntry), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(ConstructMemberCodecEntry_delAndSetNull, (void *)&dst);
+		if (ConstructMemberCodecEntry_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructMemberCodecEntry_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void ConstructMemberCodecEntry_purge(ConstructMemberCodecEntry *p)
+{
+	if (p == NULL) return;
+	dz1_built_in_str_del(p->instance_name);
+	ConstructMemberCodecInfo_del(p->info);
+}
+
+void ConstructMemberCodecEntry_del(ConstructMemberCodecEntry *p)
+{
+	if (p == NULL) return;
+	ConstructMemberCodecEntry_purge(p);
+	Dz1Free(p);
+}
+
+void ConstructMemberCodecEntry_dump(ConstructMemberCodecEntry *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		// Normal member
+		Dz1Thread_tprintf(tab, Dz1T("parent = ")); ConstructCodecEntry_dump(p->parent, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("order = ")); Dz1u32_dump(&p->order, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("instance_name = ")); dz1_built_in_str_dump(p->instance_name, tab); 
+		// _imp_dump
+		// _imp_dump : pointer
+		Dz1Thread_tprintf(tab, Dz1T("obj = ")); ObjectInfo_dump(p->obj, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("info.")); ConstructMemberCodecInfo_dump(p->info, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+int ConstructMemberCodecEntry_cmp(ConstructMemberCodecEntry *a, ConstructMemberCodecEntry *b)
+{
+	int ret = 0;
+	if (a == NULL && b == NULL) { }
+	else if (a == NULL /* && b != NULL*/) ret = -1;
+	else if (/*a == NULL &&*/ b == NULL) ret = 1;
+	else if ((ret = Dz1u32_cmp(&a->order, &b->order)) != 0) { }
+	return ret;
+}
+// ConstructMemberCodecEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructMemberCodecList
+static Dz1Error ConstructMemberCodecList_add(ConstructMemberCodecList *p, ConstructMemberCodecEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	if (Dz1AATree_find(p->storage, data)) ERR_SET_OUT(&err, EEXIST);
+	else
+	{
+		err = Dz1AATree_insert(p->storage, data);
+		if (ERR_PROBE(&err)) ERR_OUT(&err);
+	}
+	return err;
+}
+
+static bool_t ConstructMemberCodecList_remove(ConstructMemberCodecList *p, ConstructMemberCodecEntry *key)
+{
+	return Dz1AATree_remove(p->storage, key);
+}
+
+static ConstructMemberCodecEntry *ConstructMemberCodecList_extract(ConstructMemberCodecList *p, ConstructMemberCodecEntry *key)
+{
+	return (ConstructMemberCodecEntry *)Dz1AATree_extract(p->storage, key);
+}
+
+typedef struct ConstructMemberCodecListMkArrArg
+{
+	ConstructMemberCodecEntry **arr;
+	unsigned int idx;
+} ConstructMemberCodecListMkArrArg;
+
+static Dz1Error _ConstructMemberCodecList_get_array(void *ptr, ConstructMemberCodecEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	ConstructMemberCodecListMkArrArg *arg = (ConstructMemberCodecListMkArrArg *)ptr;
+	arg->arr[arg->idx++] = p;
+	return err;
+}
+
+static ConstructMemberCodecEntry **ConstructMemberCodecList_get_array(ConstructMemberCodecList *p, unsigned int *ret_cnt, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err == NULL ? &_err : err;
+	ConstructMemberCodecEntry **ret = NULL;
+	unsigned int cnt = 0;
+	if (p == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = (ConstructMemberCodecEntry **)Dz1Calloc(sizeof(ConstructMemberCodecEntry *), (cnt = p->count(p)) + 1, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		ConstructMemberCodecListMkArrArg arg = { ret, 0 };
+		pthread_cleanup_push(Dz1Memory_cancel, (void *)ret);
+
+		*errp = p->travel(p, _ConstructMemberCodecList_get_array, (void *)&arg);
+		if (ERR_PROBE(errp)) ERR_OUT(errp);
+		else
+		{
+			if (ret_cnt) (*ret_cnt) = cnt;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1Memory_cancel, (void *)ret);
+	}
+	if (ERR_PROBE(errp)) ret = NULL;
+	return ret;
+}
+
+static Dz1Error ConstructMemberCodecList_travelForward(ConstructMemberCodecList *p, Dz1Error (*func)(void *ptr, ConstructMemberCodecEntry *data), void *ptr)
+{
+	return Dz1AATree_travelForward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static Dz1Error ConstructMemberCodecList_travelBackward(ConstructMemberCodecList *p, Dz1Error (*func)(void *ptr, ConstructMemberCodecEntry *data), void *ptr)
+{
+	return Dz1AATree_travelBackward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static ConstructMemberCodecEntry *ConstructMemberCodecList_find(ConstructMemberCodecList *p, ConstructMemberCodecEntry *key)
+{
+	return (ConstructMemberCodecEntry *)Dz1AATree_find(p->storage, key);
+}
+
+static unsigned int ConstructMemberCodecList_count(ConstructMemberCodecList *p)
+{
+	unsigned int ret = Dz1AATree_count(p->storage);
+	return ret;
+}
+
+ConstructMemberCodecList *ConstructMemberCodecList_new(Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructMemberCodecList *ret = (ConstructMemberCodecList *)Dz1Calloc(sizeof(ConstructMemberCodecList), 1, errp);
+	if (ret == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(ConstructMemberCodecList_delAndSetNull, (void *)&ret);
+
+		if ((ret->storage = Dz1AATree_new(
+				(Dz1CmpFunc)ConstructMemberCodecEntry_cmp,
+				(Dz1DelFunc)ConstructMemberCodecEntry_del,
+				NULL, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			ret->count = ConstructMemberCodecList_count;
+			ret->travel = ConstructMemberCodecList_travelForward;
+			ret->travelForward = ConstructMemberCodecList_travelForward;
+			ret->travelBackward = ConstructMemberCodecList_travelBackward;
+			ret->get_array = ConstructMemberCodecList_get_array;
+			ret->add = ConstructMemberCodecList_add;
+			ret->remove = ConstructMemberCodecList_remove;
+			ret->find = ConstructMemberCodecList_find;
+			ret->extract = ConstructMemberCodecList_extract;
+			ret->cmp = ConstructMemberCodecEntry_cmp;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructMemberCodecList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+static Dz1Error _ConstructMemberCodecList_clone(void *ptr, ConstructMemberCodecEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	ConstructMemberCodecList *p = (ConstructMemberCodecList *)ptr;
+	ConstructMemberCodecEntry *cloned = ConstructMemberCodecEntry_clone(data, &err); // normal
+	err = Dz1AATree_insert(p->storage, cloned); // chk
+	if (ERR_PROBE(&err)) ERR_OUT(&err);
+	return err;
+}
+
+ConstructMemberCodecList *ConstructMemberCodecList_clone(ConstructMemberCodecList *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructMemberCodecList *ret = NULL;
+	if (src == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = ConstructMemberCodecList_new(errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(ConstructMemberCodecList_delAndSetNull, (void *)&ret);
+
+		*errp = Dz1AATree_travelForward(src->storage, (Dz1AATreeTravelFunc)_ConstructMemberCodecList_clone, (void *)ret);
+
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructMemberCodecList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void ConstructMemberCodecList_purge(ConstructMemberCodecList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_empty(p->storage);
+}
+
+void ConstructMemberCodecList_del(ConstructMemberCodecList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_del(p->storage);
+	Dz1Free(p);
+}
+
+static Dz1Error _ConstructMemberCodecList_dump(void *ptr, ConstructMemberCodecEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	Dz1ListFDumpArg2 *arg = (Dz1ListFDumpArg2 *)ptr;
+	int tab = *(int *)arg->tab;
+	Dz1Thread_tprintf(tab, Dz1T("entry = ")); ConstructMemberCodecEntry_dump(p, tab);
+	return err;
+}
+
+void ConstructMemberCodecList_dump(ConstructMemberCodecList *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1ListFDumpArg2 arg = { NULL, &tab };
+		Dz1Thread_tprintf(tab, Dz1T("{\n")); tab++;
+		p->travel(p, _ConstructMemberCodecList_dump, (void *)&arg);
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// ConstructMemberCodecList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecMode
+static struct ConstructCodecModeMapA
+{
+	str_t str;
+	ConstructCodecMode v;
+} ConstructCodecModeMapA[] =
+{
+	{ (char *)"static", ConstructCodecMode_static },
+	{ (char *)"public", ConstructCodecMode_public },
+	{ (char *)"header", ConstructCodecMode_header },
+	{ NULL, ConstructCodecMode_max }
+};
+
+str_t ConstructCodecModeStrA(ConstructCodecMode v)
+{
+	struct ConstructCodecModeMapA *i = NULL;
+	for (i = ConstructCodecModeMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+ConstructCodecMode ConstructCodecModeFromStrA(str_t str)
+{
+	struct ConstructCodecModeMapA *i = NULL;
+	for (i = ConstructCodecModeMapA; i->str; i++)
+		if (dz1_built_in_str_cmp(i->str, str) == 0) return i->v;
+	return ConstructCodecMode_max;
+}
+#ifndef UNIX_SYSTEM
+static struct ConstructCodecModeMapW
+{
+	wstr_t str;
+	ConstructCodecMode v;
+} ConstructCodecModeMapW[] =
+{
+	{ (wchar_t *)L"static", ConstructCodecMode_static },
+	{ (wchar_t *)L"public", ConstructCodecMode_public },
+	{ (wchar_t *)L"header", ConstructCodecMode_header },
+	{ NULL, ConstructCodecMode_max }
+};
+
+wstr_t ConstructCodecModeStrW(ConstructCodecMode v)
+{
+	struct ConstructCodecModeMapW *i = NULL;
+	for (i = ConstructCodecModeMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+ConstructCodecMode ConstructCodecModeFromStrW(wstr_t str)
+{
+	struct ConstructCodecModeMapW *i = NULL;
+	for (i = ConstructCodecModeMapW; i->str; i++)
+		if (dz1_built_in_wstr_cmp(i->str, str) == 0) return i->v;
+	return ConstructCodecMode_max;
+}
+#endif // UNIX_SYSTEM
+
+ConstructCodecMode *ConstructCodecMode_new(ConstructCodecMode *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructCodecMode *__internal_ret = (ConstructCodecMode *)Dz1Calloc(sizeof(ConstructCodecMode), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+		ERR_CLEAR(errp);
+	}
+	return __internal_ret;
+}
+// ConstructCodecMode
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecEntry
+ConstructCodecEntry *ConstructCodecEntry_new(str_t opt_suffix, 
+											 ObjectInfo *parent_obj/*_ref*/, 
+											 ConstructCodecMode mode, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructCodecEntry *__internal_ret = (ConstructCodecEntry *)Dz1Calloc(sizeof(ConstructCodecEntry), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(ConstructCodecEntry_delAndSetNull, (void *)&__internal_ret);
+		
+		if (opt_suffix && (__internal_ret->opt_suffix = dz1_built_in_str_clone(opt_suffix, errp)) == NULL) ERR_OUT(errp);
+		else if ((__internal_ret->member_codec = ConstructMemberCodecList_gen(errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			__internal_ret->parent_obj = parent_obj;
+			__internal_ret->mode = mode;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodecEntry_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t ConstructCodecEntry_copy(ConstructCodecEntry *dst, ConstructCodecEntry *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if (src->opt_suffix && (dst->opt_suffix = dz1_built_in_str_clone(src->opt_suffix, errp)) == NULL) ERR_OUT(errp);
+	else if (src->member_codec && (dst->member_codec = ConstructMemberCodecList_clone(src->member_codec, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		dst->parent_obj = src->parent_obj;
+		dst->mode = src->mode;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+ConstructCodecEntry *ConstructCodecEntry_clone(ConstructCodecEntry *src, Dz1Error *err)
+{
+	ConstructCodecEntry *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (ConstructCodecEntry *)Dz1Calloc(sizeof(ConstructCodecEntry), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(ConstructCodecEntry_delAndSetNull, (void *)&dst);
+		if (ConstructCodecEntry_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodecEntry_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void ConstructCodecEntry_purge(ConstructCodecEntry *p)
+{
+	if (p == NULL) return;
+	dz1_built_in_str_del(p->opt_suffix);
+	ConstructMemberCodecList_del(p->member_codec);
+}
+
+void ConstructCodecEntry_del(ConstructCodecEntry *p)
+{
+	if (p == NULL) return;
+	ConstructCodecEntry_purge(p);
+	Dz1Free(p);
+}
+
+void ConstructCodecEntry_dump(ConstructCodecEntry *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		Dz1Thread_tprintf(tab, Dz1T("opt_suffix = ")); dz1_built_in_str_dump(p->opt_suffix, tab); 
+		// _imp_dump
+		// _imp_dump : pointer
+		Dz1Thread_tprintf(tab, Dz1T("parent_obj = ")); ObjectInfo_dump(p->parent_obj, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("mode = %s(%d)\n"), ConstructCodecModeStr(p->mode), p->mode);
+		Dz1Thread_tprintf(tab, Dz1T("member_codec = ")); ConstructMemberCodecList_dump(p->member_codec, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+int ConstructCodecEntry_cmp(ConstructCodecEntry *a, ConstructCodecEntry *b)
+{
+	int ret = 0;
+	if (a == NULL && b == NULL) { }
+	else if (a == NULL /* && b != NULL*/) ret = -1;
+	else if (/*a == NULL &&*/ b == NULL) ret = 1;
+	else if (a->opt_suffix == NULL && b->opt_suffix == NULL) ret = 0;
+	else if (a->opt_suffix == NULL /*&& b->opt_suffix != NULL*/) ret = -1;
+	else if (/*a->opt_suffix != NULL &&*/ b->opt_suffix == NULL) ret = 1;
+	else if ((ret = dz1_built_in_str_cmp(a->opt_suffix, b->opt_suffix)) != 0) { }
+	return ret;
+}
+// ConstructCodecEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecList
+static Dz1Error ConstructCodecList_add(ConstructCodecList *p, ConstructCodecEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	if (Dz1AATree_find(p->storage, data)) ERR_SET_OUT(&err, EEXIST);
+	else
+	{
+		err = Dz1AATree_insert(p->storage, data);
+		if (ERR_PROBE(&err)) ERR_OUT(&err);
+	}
+	return err;
+}
+
+static bool_t ConstructCodecList_remove(ConstructCodecList *p, ConstructCodecEntry *key)
+{
+	return Dz1AATree_remove(p->storage, key);
+}
+
+static ConstructCodecEntry *ConstructCodecList_extract(ConstructCodecList *p, ConstructCodecEntry *key)
+{
+	return (ConstructCodecEntry *)Dz1AATree_extract(p->storage, key);
+}
+
+typedef struct ConstructCodecListMkArrArg
+{
+	ConstructCodecEntry **arr;
+	unsigned int idx;
+} ConstructCodecListMkArrArg;
+
+static Dz1Error _ConstructCodecList_get_array(void *ptr, ConstructCodecEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	ConstructCodecListMkArrArg *arg = (ConstructCodecListMkArrArg *)ptr;
+	arg->arr[arg->idx++] = p;
+	return err;
+}
+
+static ConstructCodecEntry **ConstructCodecList_get_array(ConstructCodecList *p, unsigned int *ret_cnt, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err == NULL ? &_err : err;
+	ConstructCodecEntry **ret = NULL;
+	unsigned int cnt = 0;
+	if (p == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = (ConstructCodecEntry **)Dz1Calloc(sizeof(ConstructCodecEntry *), (cnt = p->count(p)) + 1, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		ConstructCodecListMkArrArg arg = { ret, 0 };
+		pthread_cleanup_push(Dz1Memory_cancel, (void *)ret);
+
+		*errp = p->travel(p, _ConstructCodecList_get_array, (void *)&arg);
+		if (ERR_PROBE(errp)) ERR_OUT(errp);
+		else
+		{
+			if (ret_cnt) (*ret_cnt) = cnt;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1Memory_cancel, (void *)ret);
+	}
+	if (ERR_PROBE(errp)) ret = NULL;
+	return ret;
+}
+
+static Dz1Error ConstructCodecList_travelForward(ConstructCodecList *p, Dz1Error (*func)(void *ptr, ConstructCodecEntry *data), void *ptr)
+{
+	return Dz1AATree_travelForward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static Dz1Error ConstructCodecList_travelBackward(ConstructCodecList *p, Dz1Error (*func)(void *ptr, ConstructCodecEntry *data), void *ptr)
+{
+	return Dz1AATree_travelBackward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static ConstructCodecEntry *ConstructCodecList_find(ConstructCodecList *p, ConstructCodecEntry *key)
+{
+	return (ConstructCodecEntry *)Dz1AATree_find(p->storage, key);
+}
+
+static ConstructCodecEntry *ConstructCodecList_getHead(ConstructCodecList *p)
+{
+	return (ConstructCodecEntry *)Dz1AATree_getHead(p->storage);
+}
+
+static unsigned int ConstructCodecList_count(ConstructCodecList *p)
+{
+	unsigned int ret = Dz1AATree_count(p->storage);
+	return ret;
+}
+
+ConstructCodecList *ConstructCodecList_new(Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructCodecList *ret = (ConstructCodecList *)Dz1Calloc(sizeof(ConstructCodecList), 1, errp);
+	if (ret == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(ConstructCodecList_delAndSetNull, (void *)&ret);
+
+		if ((ret->storage = Dz1AATree_new(
+				(Dz1CmpFunc)ConstructCodecEntry_cmp,
+				(Dz1DelFunc)ConstructCodecEntry_del,
+				NULL, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			ret->count = ConstructCodecList_count;
+			ret->travel = ConstructCodecList_travelForward;
+			ret->travelForward = ConstructCodecList_travelForward;
+			ret->travelBackward = ConstructCodecList_travelBackward;
+			ret->get_array = ConstructCodecList_get_array;
+			ret->add = ConstructCodecList_add;
+			ret->remove = ConstructCodecList_remove;
+			ret->find = ConstructCodecList_find;
+			ret->extract = ConstructCodecList_extract;
+			ret->getHead = ConstructCodecList_getHead;
+			ret->cmp = ConstructCodecEntry_cmp;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodecList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+static Dz1Error _ConstructCodecList_clone(void *ptr, ConstructCodecEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	ConstructCodecList *p = (ConstructCodecList *)ptr;
+	ConstructCodecEntry *cloned = ConstructCodecEntry_clone(data, &err); // normal
+	err = Dz1AATree_insert(p->storage, cloned); // chk
+	if (ERR_PROBE(&err)) ERR_OUT(&err);
+	return err;
+}
+
+ConstructCodecList *ConstructCodecList_clone(ConstructCodecList *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructCodecList *ret = NULL;
+	if (src == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = ConstructCodecList_new(errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(ConstructCodecList_delAndSetNull, (void *)&ret);
+
+		*errp = Dz1AATree_travelForward(src->storage, (Dz1AATreeTravelFunc)_ConstructCodecList_clone, (void *)ret);
+
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodecList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void ConstructCodecList_purge(ConstructCodecList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_empty(p->storage);
+}
+
+void ConstructCodecList_del(ConstructCodecList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_del(p->storage);
+	Dz1Free(p);
+}
+
+static Dz1Error _ConstructCodecList_dump(void *ptr, ConstructCodecEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	Dz1ListFDumpArg2 *arg = (Dz1ListFDumpArg2 *)ptr;
+	int tab = *(int *)arg->tab;
+	Dz1Thread_tprintf(tab, Dz1T("entry = ")); ConstructCodecEntry_dump(p, tab);
+	return err;
+}
+
+void ConstructCodecList_dump(ConstructCodecList *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1ListFDumpArg2 arg = { NULL, &tab };
+		Dz1Thread_tprintf(tab, Dz1T("{\n")); tab++;
+		p->travel(p, _ConstructCodecList_dump, (void *)&arg);
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// ConstructCodecList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructObjectEntry
+ConstructObjectEntry *ConstructObjectEntry_new(str_t obj_name, 
+											   ObjectInfo *obj/*_ref*/, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructObjectEntry *__internal_ret = (ConstructObjectEntry *)Dz1Calloc(sizeof(ConstructObjectEntry), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(ConstructObjectEntry_delAndSetNull, (void *)&__internal_ret);
+		
+		if (obj_name && (__internal_ret->obj_name = dz1_built_in_str_clone(obj_name, errp)) == NULL) ERR_OUT(errp);
+		else if ((__internal_ret->codecs = ConstructCodecList_gen(errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			__internal_ret->obj = obj;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructObjectEntry_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t ConstructObjectEntry_copy(ConstructObjectEntry *dst, ConstructObjectEntry *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if (src->obj_name && (dst->obj_name = dz1_built_in_str_clone(src->obj_name, errp)) == NULL) ERR_OUT(errp);
+	else if (src->codecs && (dst->codecs = ConstructCodecList_clone(src->codecs, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		dst->obj = src->obj;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+ConstructObjectEntry *ConstructObjectEntry_clone(ConstructObjectEntry *src, Dz1Error *err)
+{
+	ConstructObjectEntry *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (ConstructObjectEntry *)Dz1Calloc(sizeof(ConstructObjectEntry), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(ConstructObjectEntry_delAndSetNull, (void *)&dst);
+		if (ConstructObjectEntry_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructObjectEntry_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void ConstructObjectEntry_purge(ConstructObjectEntry *p)
+{
+	if (p == NULL) return;
+	dz1_built_in_str_del(p->obj_name);
+	ConstructCodecList_del(p->codecs);
+}
+
+void ConstructObjectEntry_del(ConstructObjectEntry *p)
+{
+	if (p == NULL) return;
+	ConstructObjectEntry_purge(p);
+	Dz1Free(p);
+}
+
+void ConstructObjectEntry_dump(ConstructObjectEntry *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		Dz1Thread_tprintf(tab, Dz1T("obj_name = ")); dz1_built_in_str_dump(p->obj_name, tab); 
+		// _imp_dump
+		// _imp_dump : pointer
+		Dz1Thread_tprintf(tab, Dz1T("obj = ")); ObjectInfo_dump(p->obj, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("codecs = ")); ConstructCodecList_dump(p->codecs, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+int ConstructObjectEntry_cmp(ConstructObjectEntry *a, ConstructObjectEntry *b)
+{
+	int ret = 0;
+	if (a == NULL && b == NULL) { }
+	else if (a == NULL /* && b != NULL*/) ret = -1;
+	else if (/*a == NULL &&*/ b == NULL) ret = 1;
+	else if (a->obj_name == NULL && b->obj_name == NULL) ret = 0;
+	else if (a->obj_name == NULL /*&& b->obj_name != NULL*/) ret = -1;
+	else if (/*a->obj_name != NULL &&*/ b->obj_name == NULL) ret = 1;
+	else if ((ret = dz1_built_in_str_cmp(a->obj_name, b->obj_name)) != 0) { }
+	return ret;
+}
+// ConstructObjectEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructObjectList
+static Dz1Error ConstructObjectList_add(ConstructObjectList *p, ConstructObjectEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	if (Dz1AATree_find(p->storage, data)) ERR_SET_OUT(&err, EEXIST);
+	else
+	{
+		err = Dz1AATree_insert(p->storage, data);
+		if (ERR_PROBE(&err)) ERR_OUT(&err);
+	}
+	return err;
+}
+
+static bool_t ConstructObjectList_remove(ConstructObjectList *p, ConstructObjectEntry *key)
+{
+	return Dz1AATree_remove(p->storage, key);
+}
+
+static ConstructObjectEntry *ConstructObjectList_extract(ConstructObjectList *p, ConstructObjectEntry *key)
+{
+	return (ConstructObjectEntry *)Dz1AATree_extract(p->storage, key);
+}
+
+typedef struct ConstructObjectListMkArrArg
+{
+	ConstructObjectEntry **arr;
+	unsigned int idx;
+} ConstructObjectListMkArrArg;
+
+static Dz1Error _ConstructObjectList_get_array(void *ptr, ConstructObjectEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	ConstructObjectListMkArrArg *arg = (ConstructObjectListMkArrArg *)ptr;
+	arg->arr[arg->idx++] = p;
+	return err;
+}
+
+static ConstructObjectEntry **ConstructObjectList_get_array(ConstructObjectList *p, unsigned int *ret_cnt, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err == NULL ? &_err : err;
+	ConstructObjectEntry **ret = NULL;
+	unsigned int cnt = 0;
+	if (p == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = (ConstructObjectEntry **)Dz1Calloc(sizeof(ConstructObjectEntry *), (cnt = p->count(p)) + 1, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		ConstructObjectListMkArrArg arg = { ret, 0 };
+		pthread_cleanup_push(Dz1Memory_cancel, (void *)ret);
+
+		*errp = p->travel(p, _ConstructObjectList_get_array, (void *)&arg);
+		if (ERR_PROBE(errp)) ERR_OUT(errp);
+		else
+		{
+			if (ret_cnt) (*ret_cnt) = cnt;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1Memory_cancel, (void *)ret);
+	}
+	if (ERR_PROBE(errp)) ret = NULL;
+	return ret;
+}
+
+static Dz1Error ConstructObjectList_travelForward(ConstructObjectList *p, Dz1Error (*func)(void *ptr, ConstructObjectEntry *data), void *ptr)
+{
+	return Dz1AATree_travelForward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static Dz1Error ConstructObjectList_travelBackward(ConstructObjectList *p, Dz1Error (*func)(void *ptr, ConstructObjectEntry *data), void *ptr)
+{
+	return Dz1AATree_travelBackward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static ConstructObjectEntry *ConstructObjectList_find(ConstructObjectList *p, ConstructObjectEntry *key)
+{
+	return (ConstructObjectEntry *)Dz1AATree_find(p->storage, key);
+}
+
+static unsigned int ConstructObjectList_count(ConstructObjectList *p)
+{
+	unsigned int ret = Dz1AATree_count(p->storage);
+	return ret;
+}
+
+ConstructObjectList *ConstructObjectList_new(Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructObjectList *ret = (ConstructObjectList *)Dz1Calloc(sizeof(ConstructObjectList), 1, errp);
+	if (ret == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(ConstructObjectList_delAndSetNull, (void *)&ret);
+
+		if ((ret->storage = Dz1AATree_new(
+				(Dz1CmpFunc)ConstructObjectEntry_cmp,
+				(Dz1DelFunc)ConstructObjectEntry_del,
+				NULL, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			ret->count = ConstructObjectList_count;
+			ret->travel = ConstructObjectList_travelForward;
+			ret->travelForward = ConstructObjectList_travelForward;
+			ret->travelBackward = ConstructObjectList_travelBackward;
+			ret->get_array = ConstructObjectList_get_array;
+			ret->add = ConstructObjectList_add;
+			ret->remove = ConstructObjectList_remove;
+			ret->find = ConstructObjectList_find;
+			ret->extract = ConstructObjectList_extract;
+			ret->cmp = ConstructObjectEntry_cmp;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructObjectList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+static Dz1Error _ConstructObjectList_clone(void *ptr, ConstructObjectEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	ConstructObjectList *p = (ConstructObjectList *)ptr;
+	ConstructObjectEntry *cloned = ConstructObjectEntry_clone(data, &err); // normal
+	err = Dz1AATree_insert(p->storage, cloned); // chk
+	if (ERR_PROBE(&err)) ERR_OUT(&err);
+	return err;
+}
+
+ConstructObjectList *ConstructObjectList_clone(ConstructObjectList *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructObjectList *ret = NULL;
+	if (src == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = ConstructObjectList_new(errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(ConstructObjectList_delAndSetNull, (void *)&ret);
+
+		*errp = Dz1AATree_travelForward(src->storage, (Dz1AATreeTravelFunc)_ConstructObjectList_clone, (void *)ret);
+
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructObjectList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void ConstructObjectList_purge(ConstructObjectList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_empty(p->storage);
+}
+
+void ConstructObjectList_del(ConstructObjectList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_del(p->storage);
+	Dz1Free(p);
+}
+
+static Dz1Error _ConstructObjectList_dump(void *ptr, ConstructObjectEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	Dz1ListFDumpArg2 *arg = (Dz1ListFDumpArg2 *)ptr;
+	int tab = *(int *)arg->tab;
+	Dz1Thread_tprintf(tab, Dz1T("entry = ")); ConstructObjectEntry_dump(p, tab);
+	return err;
+}
+
+void ConstructObjectList_dump(ConstructObjectList *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1ListFDumpArg2 arg = { NULL, &tab };
+		Dz1Thread_tprintf(tab, Dz1T("{\n")); tab++;
+		p->travel(p, _ConstructObjectList_dump, (void *)&arg);
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// ConstructObjectList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecIncludeEntry
+ConstructCodecIncludeEntry *ConstructCodecIncludeEntry_new(str_t filename_ext, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructCodecIncludeEntry *__internal_ret = (ConstructCodecIncludeEntry *)Dz1Calloc(sizeof(ConstructCodecIncludeEntry), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(ConstructCodecIncludeEntry_delAndSetNull, (void *)&__internal_ret);
+		
+		if (filename_ext && (__internal_ret->filename_ext = dz1_built_in_str_clone(filename_ext, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodecIncludeEntry_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t ConstructCodecIncludeEntry_copy(ConstructCodecIncludeEntry *dst, ConstructCodecIncludeEntry *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if (src->filename_ext && (dst->filename_ext = dz1_built_in_str_clone(src->filename_ext, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		dst->use_codate = src->use_codate;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+ConstructCodecIncludeEntry *ConstructCodecIncludeEntry_clone(ConstructCodecIncludeEntry *src, Dz1Error *err)
+{
+	ConstructCodecIncludeEntry *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (ConstructCodecIncludeEntry *)Dz1Calloc(sizeof(ConstructCodecIncludeEntry), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(ConstructCodecIncludeEntry_delAndSetNull, (void *)&dst);
+		if (ConstructCodecIncludeEntry_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodecIncludeEntry_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void ConstructCodecIncludeEntry_purge(ConstructCodecIncludeEntry *p)
+{
+	if (p == NULL) return;
+	dz1_built_in_str_del(p->filename_ext);
+}
+
+void ConstructCodecIncludeEntry_del(ConstructCodecIncludeEntry *p)
+{
+	if (p == NULL) return;
+	ConstructCodecIncludeEntry_purge(p);
+	Dz1Free(p);
+}
+
+void ConstructCodecIncludeEntry_dump(ConstructCodecIncludeEntry *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		Dz1Thread_tprintf(tab, Dz1T("filename_ext = ")); dz1_built_in_str_dump(p->filename_ext, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("use_codate = ")); Dz1Bool_dump(&p->use_codate, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+int ConstructCodecIncludeEntry_cmp(ConstructCodecIncludeEntry *a, ConstructCodecIncludeEntry *b)
+{
+	int ret = 0;
+	if (a == NULL && b == NULL) { }
+	else if (a == NULL /* && b != NULL*/) ret = -1;
+	else if (/*a == NULL &&*/ b == NULL) ret = 1;
+	else if (a->filename_ext == NULL && b->filename_ext == NULL) ret = 0;
+	else if (a->filename_ext == NULL /*&& b->filename_ext != NULL*/) ret = -1;
+	else if (/*a->filename_ext != NULL &&*/ b->filename_ext == NULL) ret = 1;
+	else if ((ret = dz1_built_in_str_cmp(a->filename_ext, b->filename_ext)) != 0) { }
+	return ret;
+}
+// ConstructCodecIncludeEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodecIncludeList
+static Dz1Error ConstructCodecIncludeList_add(ConstructCodecIncludeList *p, ConstructCodecIncludeEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	if (Dz1AATree_find(p->storage, data)) ERR_SET_OUT(&err, EEXIST);
+	else
+	{
+		err = Dz1AATree_insert(p->storage, data);
+		if (ERR_PROBE(&err)) ERR_OUT(&err);
+	}
+	return err;
+}
+
+static bool_t ConstructCodecIncludeList_remove(ConstructCodecIncludeList *p, ConstructCodecIncludeEntry *key)
+{
+	return Dz1AATree_remove(p->storage, key);
+}
+
+static ConstructCodecIncludeEntry *ConstructCodecIncludeList_extract(ConstructCodecIncludeList *p, ConstructCodecIncludeEntry *key)
+{
+	return (ConstructCodecIncludeEntry *)Dz1AATree_extract(p->storage, key);
+}
+
+typedef struct ConstructCodecIncludeListMkArrArg
+{
+	ConstructCodecIncludeEntry **arr;
+	unsigned int idx;
+} ConstructCodecIncludeListMkArrArg;
+
+static Dz1Error _ConstructCodecIncludeList_get_array(void *ptr, ConstructCodecIncludeEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	ConstructCodecIncludeListMkArrArg *arg = (ConstructCodecIncludeListMkArrArg *)ptr;
+	arg->arr[arg->idx++] = p;
+	return err;
+}
+
+static ConstructCodecIncludeEntry **ConstructCodecIncludeList_get_array(ConstructCodecIncludeList *p, unsigned int *ret_cnt, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err == NULL ? &_err : err;
+	ConstructCodecIncludeEntry **ret = NULL;
+	unsigned int cnt = 0;
+	if (p == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = (ConstructCodecIncludeEntry **)Dz1Calloc(sizeof(ConstructCodecIncludeEntry *), (cnt = p->count(p)) + 1, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		ConstructCodecIncludeListMkArrArg arg = { ret, 0 };
+		pthread_cleanup_push(Dz1Memory_cancel, (void *)ret);
+
+		*errp = p->travel(p, _ConstructCodecIncludeList_get_array, (void *)&arg);
+		if (ERR_PROBE(errp)) ERR_OUT(errp);
+		else
+		{
+			if (ret_cnt) (*ret_cnt) = cnt;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1Memory_cancel, (void *)ret);
+	}
+	if (ERR_PROBE(errp)) ret = NULL;
+	return ret;
+}
+
+static Dz1Error ConstructCodecIncludeList_travelForward(ConstructCodecIncludeList *p, Dz1Error (*func)(void *ptr, ConstructCodecIncludeEntry *data), void *ptr)
+{
+	return Dz1AATree_travelForward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static Dz1Error ConstructCodecIncludeList_travelBackward(ConstructCodecIncludeList *p, Dz1Error (*func)(void *ptr, ConstructCodecIncludeEntry *data), void *ptr)
+{
+	return Dz1AATree_travelBackward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static ConstructCodecIncludeEntry *ConstructCodecIncludeList_find(ConstructCodecIncludeList *p, ConstructCodecIncludeEntry *key)
+{
+	return (ConstructCodecIncludeEntry *)Dz1AATree_find(p->storage, key);
+}
+
+static unsigned int ConstructCodecIncludeList_count(ConstructCodecIncludeList *p)
+{
+	unsigned int ret = Dz1AATree_count(p->storage);
+	return ret;
+}
+
+ConstructCodecIncludeList *ConstructCodecIncludeList_new(Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructCodecIncludeList *ret = (ConstructCodecIncludeList *)Dz1Calloc(sizeof(ConstructCodecIncludeList), 1, errp);
+	if (ret == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(ConstructCodecIncludeList_delAndSetNull, (void *)&ret);
+
+		if ((ret->storage = Dz1AATree_new(
+				(Dz1CmpFunc)ConstructCodecIncludeEntry_cmp,
+				(Dz1DelFunc)ConstructCodecIncludeEntry_del,
+				NULL, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			ret->count = ConstructCodecIncludeList_count;
+			ret->travel = ConstructCodecIncludeList_travelForward;
+			ret->travelForward = ConstructCodecIncludeList_travelForward;
+			ret->travelBackward = ConstructCodecIncludeList_travelBackward;
+			ret->get_array = ConstructCodecIncludeList_get_array;
+			ret->add = ConstructCodecIncludeList_add;
+			ret->remove = ConstructCodecIncludeList_remove;
+			ret->find = ConstructCodecIncludeList_find;
+			ret->extract = ConstructCodecIncludeList_extract;
+			ret->cmp = ConstructCodecIncludeEntry_cmp;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodecIncludeList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+static Dz1Error _ConstructCodecIncludeList_clone(void *ptr, ConstructCodecIncludeEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	ConstructCodecIncludeList *p = (ConstructCodecIncludeList *)ptr;
+	ConstructCodecIncludeEntry *cloned = ConstructCodecIncludeEntry_clone(data, &err); // normal
+	err = Dz1AATree_insert(p->storage, cloned); // chk
+	if (ERR_PROBE(&err)) ERR_OUT(&err);
+	return err;
+}
+
+ConstructCodecIncludeList *ConstructCodecIncludeList_clone(ConstructCodecIncludeList *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructCodecIncludeList *ret = NULL;
+	if (src == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = ConstructCodecIncludeList_new(errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(ConstructCodecIncludeList_delAndSetNull, (void *)&ret);
+
+		*errp = Dz1AATree_travelForward(src->storage, (Dz1AATreeTravelFunc)_ConstructCodecIncludeList_clone, (void *)ret);
+
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodecIncludeList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void ConstructCodecIncludeList_purge(ConstructCodecIncludeList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_empty(p->storage);
+}
+
+void ConstructCodecIncludeList_del(ConstructCodecIncludeList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_del(p->storage);
+	Dz1Free(p);
+}
+
+static Dz1Error _ConstructCodecIncludeList_dump(void *ptr, ConstructCodecIncludeEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	Dz1ListFDumpArg2 *arg = (Dz1ListFDumpArg2 *)ptr;
+	int tab = *(int *)arg->tab;
+	Dz1Thread_tprintf(tab, Dz1T("entry = ")); ConstructCodecIncludeEntry_dump(p, tab);
+	return err;
+}
+
+void ConstructCodecIncludeList_dump(ConstructCodecIncludeList *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1ListFDumpArg2 arg = { NULL, &tab };
+		Dz1Thread_tprintf(tab, Dz1T("{\n")); tab++;
+		p->travel(p, _ConstructCodecIncludeList_dump, (void *)&arg);
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// ConstructCodecIncludeList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ConstructCodec
+ConstructCodec *ConstructCodec_new(str_t tdo_name, str_t tdo_path, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	ConstructCodec *__internal_ret = (ConstructCodec *)Dz1Calloc(sizeof(ConstructCodec), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(ConstructCodec_delAndSetNull, (void *)&__internal_ret);
+		
+		if (tdo_name && (__internal_ret->tdo_name = dz1_built_in_str_clone(tdo_name, errp)) == NULL) ERR_OUT(errp);
+		else if (tdo_path && (__internal_ret->tdo_path = dz1_built_in_str_clone(tdo_path, errp)) == NULL) ERR_OUT(errp);
+		else if ((__internal_ret->includes = ConstructCodecIncludeList_gen(errp)) == NULL) ERR_OUT(errp);
+		else if ((__internal_ret->objs = ConstructObjectList_gen(errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (ConstructCodec_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+void ConstructCodec_purge(ConstructCodec *p)
+{
+	if (p == NULL) return;
+	dz1_built_in_str_del(p->tdo_name);
+	dz1_built_in_str_del(p->tdo_path);
+	Dz1MdefcModule_del(p->module);
+	dz1_built_in_str_del(p->endian);
+	ConstructCodecIncludeList_del(p->includes);
+	ConstructObjectList_del(p->objs);
+}
+
+void ConstructCodec_del(ConstructCodec *p)
+{
+	if (p == NULL) return;
+	ConstructCodec_purge(p);
+	Dz1Free(p);
+}
+
+void ConstructCodec_dump(ConstructCodec *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		Dz1Thread_tprintf(tab, Dz1T("tdo_name = ")); dz1_built_in_str_dump(p->tdo_name, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("tdo_path = ")); dz1_built_in_str_dump(p->tdo_path, tab); 
+		// _imp_dump
+		// _imp_dump : pointer
+		Dz1Thread_tprintf(tab, Dz1T("module = ")); Dz1MdefcModule_dump(p->module, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("endian = ")); dz1_built_in_str_dump(p->endian, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("includes = ")); ConstructCodecIncludeList_dump(p->includes, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("objs = ")); ConstructObjectList_dump(p->objs, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("is_dirty = ")); Dz1Bool_dump(&p->is_dirty, tab); 
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// ConstructCodec
+////////////////////////////////////////////////////////////////////////////////
+

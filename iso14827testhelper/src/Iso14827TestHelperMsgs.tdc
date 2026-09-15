@@ -1,0 +1,8 @@
+message set definition
+{
+	include Iso14827TestHelperDef;
+	typedef struct Iso14827TestHelperMsgDefault
+	{
+		uint32 *dummy;
+	} Iso14827TestHelperMsgDefault;					// with api dump
+}

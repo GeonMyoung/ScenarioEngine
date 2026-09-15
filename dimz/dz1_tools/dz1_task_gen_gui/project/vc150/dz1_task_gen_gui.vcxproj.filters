@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\control">
+      <UniqueIdentifier>{a3a019ba-5df3-4621-adc1-2320c94b1dde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Dialog">
+      <UniqueIdentifier>{b25c27e4-d9ec-467f-b9cb-c1b374aecaf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Dialog\0.main">
+      <UniqueIdentifier>{cd60a965-55f4-41ce-aeba-6cee55468023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Dialog\proj_select">
+      <UniqueIdentifier>{595bf754-40be-4d90-9e5e-6a2de31e4b89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Dialog\lib_collection">
+      <UniqueIdentifier>{6fc7e74d-c4f5-4ec5-96e4-7fb03d406c6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\dz1_task_gen_gui.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ListCtrlLibraries.cpp">
+      <Filter>소스 파일\control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ListCtrlProjects.cpp">
+      <Filter>소스 파일\control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_task_gen_dlg.cpp">
+      <Filter>소스 파일\Dialog\0.main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1ProjSelDlg.cpp">
+      <Filter>소스 파일\Dialog\proj_select</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dz1LibCollectionDlg.cpp">
+      <Filter>소스 파일\Dialog\lib_collection</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\dz1_task_gen_combo_box.h">
+      <Filter>소스 파일\control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ListCtrlLibraries.h">
+      <Filter>소스 파일\control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ListCtrlProjects.h">
+      <Filter>소스 파일\control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_task_gen_dlg.h">
+      <Filter>소스 파일\Dialog\0.main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1ProjSelDlg.h">
+      <Filter>소스 파일\Dialog\proj_select</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dz1LibCollectionDlg.h">
+      <Filter>소스 파일\Dialog\lib_collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_task_gen_gui.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\res\dz1_task_gen_gui.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\dz1_task_gen_gui.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\res\dz1_task_gen_gui.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="..\..\res\dz1_task_gen_gui.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\ReadMe.txt" />
+  </ItemGroup>
+</Project>

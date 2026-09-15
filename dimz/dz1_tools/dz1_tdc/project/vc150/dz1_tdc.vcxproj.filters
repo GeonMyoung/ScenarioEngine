@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{b5872aa6-372b-4216-8eba-37dcec1e44fa}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\publish">
+      <UniqueIdentifier>{67f858b5-2163-49c0-9783-b49774f84a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\spec">
+      <UniqueIdentifier>{eb554191-033e-4fa3-ab8e-be4f17e453b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parser">
+      <UniqueIdentifier>{00c7a84e-238d-4d19-87c6-6dfe42a0defe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{d98dbe37-1ebc-4987-8480-4e0e2228de56}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="sample">
+      <UniqueIdentifier>{5a060a30-dda3-4651-b52b-2990d563a472}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\misc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_array_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_enum_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_index_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_structure_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_tdc.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_union_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_spec_dz1.c">
+      <Filter>Source Files\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_spec_parser.c">
+      <Filter>Source Files\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_asn_parser.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_parser.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\misc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_array_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_enum_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_index_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_structure_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_tdc.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_union_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_spec_dz1.h">
+      <Filter>Source Files\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_spec_parser.h">
+      <Filter>Source Files\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_asn_parser.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_mdefc_parser.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\samples\BUSLANE_ENFORCEMENTSYSTEM_EXCHANGEINFO.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\CAM_CONTROL_TYPES.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\Dz1TdcObject.tdc">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\EFC_FOUNDATION_TYPES.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\ILLEGALPARK_ENFORCEMENTSYSTEM_EXCHANGEINFO.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\INTEGRATED_CONTROLLER.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\ISO14827_1.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\ISO14827_2.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\sample.tdc">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\sample_module.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\sample_module.tdc">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\T_APDUs.asn">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\samples\VMS_MESSAGE.asn">
+      <Filter>sample</Filter>
+    </None>
+  </ItemGroup>
+</Project>

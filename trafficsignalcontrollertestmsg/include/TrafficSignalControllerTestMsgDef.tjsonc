@@ -1,0 +1,6 @@
+JSON interface generate from TrafficSignalControllerTestMsgDef
+{
+	object TrafficSignalControllerRequest cascade;
+	object TrafficSignalControllerResponse cascade;
+	object TrafficSignalControllerTestConfiguration cascade;
+}

@@ -1,0 +1,8 @@
+message set definition
+{
+	include GitsnDSRCMsgTestScenarioDef;
+	typedef struct GitsnDSRCMsgTestScenarioTimer
+	{
+		uint32 id; // is key
+	} GitsnDSRCMsgTestScenarioTimer; // with api dump, compare
+}

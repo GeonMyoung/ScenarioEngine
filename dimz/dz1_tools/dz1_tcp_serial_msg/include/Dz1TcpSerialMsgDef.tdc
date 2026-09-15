@@ -1,0 +1,80 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_serial;
+	
+	typedef struct Dz1TcpSerialMsgOpen
+	{
+		int32					 port;
+		uint32					 baud;
+		
+		Dz1SerialParity			 parity;
+		Dz1SerialStopBit		 stopBit;
+		bool					 fullDuplex;
+
+		Dz1SerialRTSCTS			 flowRTSCTS;
+		Dz1SerialDSRDTR			 flowDSRDTR;
+		Dz1SerialXONXOFF		 flowXONXOFF;
+
+		bool					 useRingInd;
+		bool					 useCtsChanged;
+		bool					 useDsrChanged;
+	} Dz1TcpSerialMsgOpen;							// with api dump, clone
+	
+	typedef struct Dz1TcpSerialMsgPin
+	{
+		int32					 port;
+		Dz1SerialPinState		 v;
+	} Dz1TcpSerialMsgPin;							// with api dump, clone
+	
+	typedef struct Dz1TcpSerialMsgPinResult
+	{
+		int32					 port;
+		Dz1SerialPinState		 v;
+		int32					 status;
+	} Dz1TcpSerialMsgPinResult;						// with api dump, clone
+
+	typedef struct Dz1TcpSerialMsgStream
+	{
+		int32					 port;
+		Dz1Binary				*stream;
+	} Dz1TcpSerialMsgStream;						// with api dump, clone
+	
+	typedef struct Dz1TcpSerialMsgReply
+	{
+		int32					 port;
+		int32					 status;
+	} Dz1TcpSerialMsgReply;							// with api dump, clone
+	
+	typedef union Dz1TcpSerialMsg
+	{
+		Dz1TcpSerialMsgOpen			*openPortReq;
+		Dz1TcpSerialMsgReply		*openPortRsp;
+		
+		int32						 closePortReq;
+		Dz1TcpSerialMsgReply		*closePortRsp;
+		
+		Dz1TcpSerialMsgStream		*writePortReq;
+		Dz1TcpSerialMsgReply		*writePortRsp;
+		
+		int32						 writeDoneReq;
+		Dz1TcpSerialMsgReply		*writeDoneRsp;
+		
+		Dz1TcpSerialMsgPin			*setRTSReq;
+		Dz1TcpSerialMsgReply		*setRTSRsp;
+
+		int32						 getCTSReq;
+		Dz1TcpSerialMsgPinResult	*getCTSRsp;
+		
+		Dz1TcpSerialMsgPin			*setDTRReq;
+		Dz1TcpSerialMsgReply		*setDTRRsp;
+
+		int32						 getDSRReq;
+		Dz1TcpSerialMsgPinResult	*getDSRRsp;
+		
+		Dz1TcpSerialMsgStream		*received;
+		Dz1TcpSerialMsgPin			*ringIndicated;
+		Dz1TcpSerialMsgPin			*ctsChanged;
+		Dz1TcpSerialMsgPin			*dsrChanged;
+	} Dz1TcpSerialMsg;								// with api dump, clone
+}

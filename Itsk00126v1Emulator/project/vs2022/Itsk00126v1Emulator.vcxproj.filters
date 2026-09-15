@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{DC4E33A7-0204-4E4C-90D4-05881EDCC1EA}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{65C37285-DC69-49AA-B48C-EC9293584EDE}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{DF55A2EB-5C06-4F6E-B2B2-D99BC370FEA2}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\engine">
+      <UniqueIdentifier>{6BA34093-60F5-4079-A9F2-A781070232AD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\message">
+      <UniqueIdentifier>{D69AD93C-EE20-4A50-9185-3497E45E8D96}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Itsk00126v1Emulator.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Itsk00126v1EmulatorDef.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Itsk00126v1EmulatorArg.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Itsk00126v1EmulatorEnv.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Itsk00126v1EmulatorTimer.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Itsk00126v1EmulatorTimerUtil.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Itsk00126v1EmulatorMsgs.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Itsk00126v1EmulatorClient.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Itsk00126v1EmulatorDefJson.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\Itsk00126v1Emulator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Itsk00126v1EmulatorDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Itsk00126v1EmulatorArg.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Itsk00126v1EmulatorEnv.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Itsk00126v1EmulatorTimer.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Itsk00126v1EmulatorTimerUtil.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Itsk00126v1EmulatorMsg.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Itsk00126v1EmulatorMsgs.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Itsk00126v1EmulatorDefJson.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\Itsk00126v1EmulatorDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Itsk00126v1EmulatorArg.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Itsk00126v1EmulatorEnv.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Itsk00126v1EmulatorTimer.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Itsk00126v1EmulatorMsgs.tdc">
+      <Filter>소스 파일\message</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\Itsk00126v1EmulatorDef.tjsonc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

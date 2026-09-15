@@ -1,0 +1,57 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_constraint_def;
+	include dz1_asn1_codec_ber_def;
+	include dz1_asn1_codec_per_def;
+
+	struct Dz1Asn1TypeDescr;
+
+	---------------------------------------------------------------------
+	-- References
+	---------------------------------------------------------------------
+	typedef reference Dz1Asn1TypeAPI from dz1_asn1_types;
+	typedef reference Dz1Asn1TypeDescrChild		 from dz1_asn1_typedescr;
+
+
+	------------------------------------------------------------------------------------
+	-- Dz1Asn1DefaultInfo
+	------------------------------------------------------------------------------------
+	typedef struct Dz1Asn1DefaultInfo
+	{
+		void							*value;
+		Dz1CmpFunc						 is_same;
+	} Dz1Asn1DefaultInfo;
+
+	------------------------------------------------------------------------------------
+	-- Dz1Asn1TypeDescrPresence
+	------------------------------------------------------------------------------------
+	typedef union Dz1Asn1TypeDescrPresence
+	{
+		uint32							*opt;
+		Dz1Asn1DefaultInfo				*dflt;
+	} Dz1Asn1TypeDescrPresence;
+
+	------------------------------------------------------------------------------------
+	-- Dz1Asn1TypeDescr
+	------------------------------------------------------------------------------------
+	typedef func bool Dz1Asn1FinalizeF(void *dst, Dz1Asn1WipValue *src, struct Dz1Asn1TypeDescr *descr, Dz1Error *errp);
+	typedef struct Dz1Asn1TypeDescr
+	{
+		Dz1Asn1UTF8Str					*name;			// is key
+		Dz1Asn1Tag						*tag;			// is ref
+
+		Dz1Asn1TypeDescrChild			*childs;		// is ref, nodump		-- prefixed, construct
+
+		Dz1Asn1TypeComformance			*conformance;	// is ref, nodump
+
+		Dz1Asn1TypeAPI					*wip_api;		// is ref, nodump
+
+		Dz1Asn1DataBerEncF				 ber_enc;		// is nodump
+		Dz1Asn1DataBerDecF				 ber_dec;		// is nodump
+
+		Dz1Asn1FinalizeF				 finalize;		// is nodump			-- decode finilize
+
+		Dz1Asn1TypeAPI					*user_api;		// is ref, nodump
+	} Dz1Asn1TypeDescr;									// with api dumpX, fdumpX
+}

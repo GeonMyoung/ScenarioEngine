@@ -1,0 +1,8 @@
+message set definition
+{
+	include ScenarioEngineDef;
+	typedef struct ScenarioEngineTimer
+	{
+		uint32 id; // is key
+	} ScenarioEngineTimer; // with api dump, compare
+}

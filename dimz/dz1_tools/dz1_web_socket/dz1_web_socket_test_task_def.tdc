@@ -1,0 +1,44 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+	include dz1_task_support;
+	include dz1_web_socket_def;
+
+	typedef func void Dz1WebSocketTaskExceptionCB(void *ptr, Dz1Error *reason);
+	typedef struct Dz1WebSocketTaskArg
+	{
+		Dz1WebSocketTaskExceptionCB	 cb;
+		void						*cb_param;
+	} Dz1WebSocketTaskArg;							// with api dumpX, clone
+
+	typedef struct Dz1WebSocketTaskTimer
+	{
+		uint32						 id;				// is key
+	} Dz1WebSocketTaskTimer;							// with api dumpX, compare
+
+	typedef struct Dz1WebSocketTaskEnv
+	{
+		Dz1Task						*tSelf;				// is ref
+		Dz1WebSocket				*wsock;
+		Dz1WebSockMsgList			*msgs;				// is notarg
+		Dz1TaskSigMsg			    *pend_sg;			// is notarg
+	} Dz1WebSocketTaskEnv;								// with api dumpX
+
+	typedef struct Dz1WebSocketTaskMsgOpen
+	{
+		Dz1Asn1UTF8Str				*uri;
+	} Dz1WebSocketTaskMsgOpen;							// with api dumpX
+
+	typedef union Dz1WebSocketTaskMsgSend
+	{
+		Dz1Asn1UTF8Str				*text;
+		Dz1Binary					*bin;
+		Dz1Binary					*ping;
+	} Dz1WebSocketTaskMsgSend;							// with api dumpX
+
+	typedef struct Dz1WebSocketTaskMsgClose
+	{
+		Dz1Asn1UTF8Str				*opt_text;
+	} Dz1WebSocketTaskMsgClose;							// with api dumpX
+}

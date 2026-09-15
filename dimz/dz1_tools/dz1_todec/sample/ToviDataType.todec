@@ -1,0 +1,432 @@
+message codecs for "ToviDataType.tdo"
+{
+	include ToviDataBasicStream;
+	include ToviDataValueStream;
+	include ToviDataInstanceStream;
+
+	----------------------------------------
+	-- TovisTypeEnumMemb
+	----------------------------------------
+	target TovisTypeEnumMemb
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple order;
+				simple name alter("Dz1StrA16UTF8");
+				simple nullflag(8) value_opt;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeEnumMembList
+	----------------------------------------
+	target TovisTypeEnumMembList
+	{
+		codec default public
+		{
+			array (count default, entry default postfix(regToIndex));
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeEnumMembIndex
+	----------------------------------------
+--	target TovisTypeEnumMembIndex
+--	{
+--		codec default public
+--		{
+--			array (count default, entry default);
+--		}
+--	};
+
+	----------------------------------------
+	-- TovisTypeEnumMembInfo
+	----------------------------------------
+	target TovisTypeEnumMembInfo
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple ordered;
+--				simple named;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeEnumInfo
+	----------------------------------------
+	target TovisTypeEnumInfo
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple name alter("Dz1A16UTF8");
+				simple nullflag(8) members;
+			}
+		},
+		codec Indicator public
+		{
+			sequence
+			{
+				simple name alter("Dz1A16UTF8");
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeStructMemb
+	----------------------------------------
+	target TovisTypeStructMemb
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple order;
+				simple name alter("Dz1A16UTF8");
+				simple type alter(Indicator);
+				simple nullflag(8) attr;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeStructMembList
+	----------------------------------------
+	target TovisTypeStructMembList
+	{
+		codec default public
+		{
+			array (count default, entry default);
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeStructMembIndex
+	----------------------------------------
+--	target TovisTypeStructMembIndex
+--	{
+--		codec default public
+--		{
+--			array (count default, entry default);
+--		}
+--	};
+
+	----------------------------------------
+	-- TovisTypeStructMembInfo
+	----------------------------------------
+	target TovisTypeStructMembInfo
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple ordered;
+--				simple named;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeStructInfo
+	----------------------------------------
+	target TovisTypeStructInfo
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple name alter("Dz1A16UTF8");
+				simple nullflag(8) members;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeUnionMemb
+	----------------------------------------
+	target TovisTypeUnionMemb
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple order;
+				simple name alter("Dz1A16UTF8");
+				simple type alter(Indicator);
+				simple nullflag(8) attr;
+				simple nullflag(8) present_opt;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeUnionMembList
+	----------------------------------------
+	target TovisTypeUnionMembList
+	{
+		codec default public
+		{
+			array (count default, entry default);
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeUnionMembIndex
+	----------------------------------------
+--	target TovisTypeUnionMembIndex
+--	{
+--		codec default public
+--		{
+--			array (count default, entry default);
+--		}
+--	};
+
+	----------------------------------------
+	-- TovisTypeUnionMembInfo
+	----------------------------------------
+	target TovisTypeUnionMembInfo
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple ordered;
+	--			simple named;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeUnionInfo
+	----------------------------------------
+	target TovisTypeUnionInfo
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple name alter("Dz1StrA16UTF8");
+				simple nullflag(8) members;
+			}
+		},
+		codec Indicator public
+		{
+			sequence
+			{
+				simple name alter("Dz1StrA16UTF8");
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeArrayCmpInfo
+	----------------------------------------
+	target TovisTypeArrayCmpInfo
+	{
+		codec default public
+		{
+			union (present default);
+			sequence
+			{
+				simple specific alter("Dz1A16UTF8");
+				simple memb_ref;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeArrayElement
+	----------------------------------------
+	target TovisTypeArrayElement
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple elem_type alter(Indicator);
+				simple nullflag(8) elem_attr;
+				simple nullflag(8) cmp_info;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeArrayInfo
+	----------------------------------------
+	target TovisTypeArrayInfo
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple name alter("Dz1StrA16UTF8");
+				simple nullflag(8) element;
+			}
+		},
+		codec Indicator public
+		{
+			sequence
+			{
+				simple name alter("Dz1StrA16UTF8");
+				simple nullflag(8) element;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisTypeNamedInfo
+	----------------------------------------
+	target TovisTypeNamedInfo
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple src alter("Dz1StrA16UTF8");
+--				simple resolve;
+			}
+		},
+		codec Indicator public
+		{
+			sequence
+			{
+				simple src alter("Dz1StrA16UTF8");
+--				simple resolve;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisDataInfo
+	----------------------------------------
+	target TovisDataInfo
+	{
+		codec default public
+		{
+			union (present default);
+			sequence
+			{
+				simple nul;
+				simple primitive;
+				simple enumerate;
+				simple structure;
+				simple unified;
+				simple table;
+				simple named;
+			},
+			postfix("Indication");
+		}
+/*
+		codec Indicator public
+		{
+			union (present default);
+			sequence
+			{
+				simple nul;
+				simple primitive;
+				simple enumerate alter(Indicator);
+				simple structure alter(Indicator);
+				simple unified alter(Indicator);
+				simple table alter(Indicator);
+				simple named alter(Indicator);
+			},
+			postfix("Indication");
+		}
+*/
+	};
+
+	----------------------------------------
+	-- TovisDataType
+	----------------------------------------
+	target TovisDataType
+	{
+		codec default public
+		{
+			sequence
+			{
+				simple name;
+				simple data alter(Indicator);
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisDataTypeList
+	----------------------------------------
+	target TovisDataTypeList
+	{
+		codec default public
+		{
+			array (count default, entry default);
+		}
+	};
+
+	----------------------------------------
+	-- TovisDataTypeRefList
+	----------------------------------------
+	target TovisDataTypeRefList
+	{
+		codec default public
+		{
+			array (count default, entry default);
+		}
+	};
+
+	----------------------------------------
+	-- TovisDataTypeSeq
+	----------------------------------------
+	target TovisDataTypeSeq
+	{
+		codec default public
+		{
+			array (count default, entry default);
+		}
+	};
+
+	----------------------------------------
+	-- TovisDataObject
+	----------------------------------------
+	target TovisDataObject
+	{
+		codec default public
+		{
+			union (present default);
+			sequence
+			{
+				simple enumerate;
+				simple structure;
+				simple unified;
+				simple table;
+			}
+		}
+	};
+
+	----------------------------------------
+	-- TovisDataObjects
+	----------------------------------------
+	target TovisDataObjects
+	{
+		codec default public
+		{
+			array (count default, entry default);
+		}
+	};
+
+	----------------------------------------
+	-- TovisDataObjectsRef
+	----------------------------------------
+	target TovisDataObjectsRef
+	{
+		codec default public
+		{
+			array (count default, entry default);
+		}
+	};
+}

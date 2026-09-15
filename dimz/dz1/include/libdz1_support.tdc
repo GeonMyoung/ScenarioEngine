@@ -1,0 +1,53 @@
+message set definition
+{
+	-- common
+	typedef func			void				Dz1CancelFunc(void *ptr);
+	typedef func			void				Dz1DelFunc(void *ptr);
+	typedef func			int32				Dz1CmpFunc(void *a, void *b);
+	typedef func			void				Dz1DumpFunc(void *ptr, int32 tab);
+
+	-- dz1_int.h
+	typedef native static	ssize_t				from dz1_int;			// with api dumpX, fdumpX, clone, compare
+	typedef native static	size_t				from dz1_int;			// with api dumpX, fdumpX, clone, compare
+
+	-- dz1_timeval.h
+	typedef native			Dz1TimeVal			from dz1_timeval;		// with api dumpX, fdumpX, clone, compare
+
+	-- dz1_bin.h
+	typedef native			Dz1Binary			from dz1_bin;			// with api dumpX, fdumpX, compare, clone
+	typedef native			Dz1Binary2			from dz1_bin;			// with api dumpX, fdumpX, compare, clone
+
+	-- dz1_error.h
+	typedef native			Dz1Error			from dz1_error;			// with api dumpX, fdumpX, clone
+	typedef func			void				*Dz1GenFunc(Dz1Error *err);
+
+	-- dz1_stdio.h
+	typedef native			FILE				from dz1_stdio;
+	typedef func			void				*Dz1CloneFunc(void *ptr, Dz1Error *err);
+	typedef func			void				Dz1FDumpFunc(FILE *fp, void *ptr, int32 tab);
+
+	-- dz1_mutex.h
+	typedef native			Dz1Mutex			from dz1_mutex;
+	typedef native			Dz1Cond				from dz1_mutex;
+
+	-- dz1_sock_addr.h
+	typedef enum Dz1SocketVer
+	{
+		inet4,
+		inet6
+	} Dz1SocketVer;														// with api dumpX, fdumpX, compare, clone
+	typedef native			Dz1SockAddr			from dz1_sock_addr;		// with api dumpX, fdumpX, compare, clone
+	
+	-- dz1_socket.h
+	typedef native			Dz1TcpClientSocket	from dz1_socket;
+	typedef native			Dz1TcpServerSocket	from dz1_socket;
+	typedef native			Dz1UdpSocket		from dz1_socket;
+
+	-- dz1_socket_buf.h
+	typedef native			Dz1SocketBuf		from dz1_socket_buf;	// with api dumpX, clone
+	
+	-- dz1_socket_fifo.h
+	typedef native			Dz1SocketFifo		from dz1_socket_fifo;	// with api dumpX
+	typedef native			Dz1SocketFifo2		from dz1_socket_fifo;	// with api dumpX	
+	typedef native			Dz1SocketFifo3		from dz1_socket_fifo;	// with api dumpX	
+}

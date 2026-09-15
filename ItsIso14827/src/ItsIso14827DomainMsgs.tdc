@@ -1,0 +1,251 @@
+message set definition
+{
+	include ItsIso14827DefLocal;
+
+	-----------------------------------------------------------------------------
+	-- Create Server
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainCreateServer
+	{
+		Dz1Asn1UTF8Str					*name;
+		uint32							 maxClient;
+		ItsIso14827CodecOIDMapList		*codecOIDMap;
+		ItsIso14827ServerDomainCallback	*cbs;
+	} ItsIso14827DomainCreateServer;							// with api dump
+
+	-----------------------------------------------------------------------------
+	-- Create Client
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainCreateClient
+	{
+		Dz1Asn1UTF8Str					*name;
+		ItsIso14827ClientDomainCallback	*cbs;
+	} ItsIso14827DomainCreateClient;							// with api dump
+
+	-----------------------------------------------------------------------------
+	-- Initiate (Server -> Client)
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainInitiate
+	{
+		Dz1SockAddr						*peerAddr;
+		Dz1SockAddr						*localAddr;
+		Dz1TcpClientSocket				*sock;
+		
+		Iso14827Initiate				*data;
+		
+		Dz1Asn1Codec					 initialCodec;
+		ItsIso14827CRCCheck				 initialCRCMode;
+	} ItsIso14827DomainInitiate;								// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Login : Active (Client -> Server)
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainLogin
+	{
+		Dz1Asn1Codec					 initialCodec;
+		Iso14827RejectLogin				 reason;
+
+		Dz1SockAddr						*peerAddr;
+		Dz1SockAddr						*localAddr;
+		Dz1TcpClientSocket				*sock;
+
+		Dz1Asn1OctetStr					*authInfo;
+		Iso14827Login					*data;
+		
+		ItsIso14827CRCCheck				 initialCRCMode;
+
+		ItsIso14827ClientDomainViolatedSubscription	*violatedSub;
+	} ItsIso14827DomainLogin;									// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Login : Passive (Client -> Server)
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainBind
+	{
+		Dz1Asn1Codec initialCodec;
+		Iso14827RejectLogin				 reason;
+
+		Dz1Asn1UTF8Str					*myDomain;
+		Dz1Asn1UTF8Str					*peerDomain;
+		ItsIso14827SessionKey			*bindKey;
+		
+		Dz1Asn1OctetStr					*authInfo;
+		Iso14827Login					*data;
+		
+		ItsIso14827ClientDomainViolatedSubscription	*violatedSub;
+	} ItsIso14827DomainBind;									// with api dump
+
+	-----------------------------------------------------------------------------
+	-- Login Accept (Server -> Client)
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainLoginAccept
+	{
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		Dz1Asn1Codec					 selectedCodec;
+		ItsIso14827CRCCheck				 CRCMode;
+		ItsIso14827ServerDomainViolatedPublication *violatedPub;
+	} ItsIso14827DomainLoginAccept;								// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Login Reject (Server -> Client)
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainLoginReject
+	{
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		Iso14827RejectLogin				 reason;
+	} ItsIso14827DomainLoginReject;								// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Terminate (Server -> Client)
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainTerminateClient
+	{
+		Dz1Asn1UTF8Str					*myDomain;
+		Dz1Asn1UTF8Str					*peerDomain;
+		Dz1Asn1OctetStr					*user;
+		Iso14827Terminate				 reason;
+	} ItsIso14827DomainTerminateClient;							// with api dump
+
+	-----------------------------------------------------------------------------
+	-- Logout (Client -> Server)
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainLogout
+	{
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		Iso14827Logout					 reason;
+	} ItsIso14827DomainLogout;									// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Echo Reply
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainEchoReply
+	{
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		uint32							 confirmPktNbr;
+	} ItsIso14827DomainEchoReply;								// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Subscription Prepare Accept
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainPrepareAccept
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		uint32							 serial;
+	} ItsIso14827DomainPrepareAccept;							// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Subscription Prepare Reject
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainPrepareReject
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		uint32							 serial;
+		Iso14827RejectSubscription		 reason;
+	} ItsIso14827DomainPrepareReject;							// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Publication
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainDataProvide
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		uint32							 serial;
+		Iso14827EndAppMsg				*eam;
+	} ItsIso14827DomainDataProvide;								// with api dump
+
+	-----------------------------------------------------------------------------
+	-- Publication Management
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainDataControl
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		uint32							 serial;
+		Iso14827PublicationMgmt			 cmd;
+	} ItsIso14827DomainDataControl;								// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Subscription
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainSubscription
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		Iso14827SubscriptionData		*data;
+		
+		uint32							 retSerial;				// is notarg
+		Iso14827RejectSubscription		 retError;				// is notarg
+	} ItsIso14827DomainSubscription;							// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Subscription Managemnt
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainSubCancel
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		uint32							 serial;		
+		Iso14827SubscriptionCancel		 reason;
+	} ItsIso14827DomainSubCancel;								// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Publication Data Rejcet
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827DomainRejectPubData
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*domainName;
+		Dz1Asn1UTF8Str					*peerName;
+		Dz1Asn1OctetStr					*user;
+		uint32							 serial;
+		uint32							 pubSerial;
+		Iso14827RejectPubDataReason		 reason;
+	} ItsIso14827DomainRejectPubData;							// with api dump
+	
+	-----------------------------------------------------------------------------
+	-- Non-Standard Publication
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827ViolatedPublication
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*myDomain;
+		Dz1Asn1UTF8Str					*peerDomain;
+		Dz1Asn1OctetStr					*user;
+		Iso14827Publication				*pub;
+	} ItsIso14827ViolatedPublication;							// with api dump
+
+	-----------------------------------------------------------------------------
+	-- Non-Standard Subscription
+	-----------------------------------------------------------------------------
+	typedef struct ItsIso14827ViolatedSubscription
+	{
+		ItsIso14827DomainType			 domainType;
+		Dz1Asn1UTF8Str					*myDomain;
+		Dz1Asn1UTF8Str					*peerDomain;
+		Dz1Asn1OctetStr					*user;
+		Iso14827Subscription			*sub;
+	} ItsIso14827ViolatedSubscription;							// with api dump
+}

@@ -1,0 +1,7 @@
+message set definition
+{
+	typedef struct Dz1SysLogArg
+	{
+		int32			dummy;
+	} Dz1SysLogArg;
+}

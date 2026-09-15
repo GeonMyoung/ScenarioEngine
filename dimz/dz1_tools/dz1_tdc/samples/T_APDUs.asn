@@ -1,0 +1,392 @@
+-------------------------------------------------------------------------------
+-- DSRC Data
+-------------------------------------------------------------------------------
+T-APDUs DEFINITIONS AUTOMATIC TAGS ::=BEGIN
+
+IMPORTS DebitRq, DebitRs FROM EFC-FOUNDATION-TYPES;
+
+--	IMPORTS
+--	ContainerJ.y FROM ApplicationJ
+--	RecordJ.y FROM ApplicationJ
+
+Action-Request::= SEQUENCE{
+	mode 				BOOLEAN,
+	eid 				Dsrc-EID,
+	actionType 			ActionType,
+	accessCredentials 	OCTET STRING (SIZE (0..127,...)) 	OPTIONAL,
+	actionParameter 	Container 		OPTIONAL,
+	iid 				Dsrc-EID 		OPTIONAL
+}
+
+Action-Response::= SEQUENCE{
+	fill 				BIT STRING (SIZE(1)),
+	eid 				Dsrc-EID,
+	iid 				Dsrc-EID 		OPTIONAL,
+	responseParameter 	Container 		OPTIONAL,
+	ret 				ReturnStatus 	OPTIONAL
+}
+
+ActionType::=INTEGER (0..127,...)
+
+	-- 0 : getStamped
+	-- 1 : setStamped
+	-- 2 : getSecure
+	-- 3 : setSecure
+	-- 4 : getInstance
+	-- 5 : setInstance
+	-- 6 : getNonce
+	-- 7 : setNonce
+	-- 8 : transferChannel
+	-- 9 : copy
+	-- 10 : setMMI
+	-- 11 : substract
+	-- 12 : add
+	-- 13 : debit
+	-- 14 : credit
+	-- 15 : echo
+	-- (16..118) Reserved for ISO/CEN use
+	-- (119-127) Reserved for private use
+	
+ApplicationContextMark ::= Container -- OCTET STRING(SIZE(0..127,...))
+
+	-- ApplicationContextMark 예제 설명은 EFC-ContextMark로 언급한
+	-- ISO TS 14906에서 찾을 수 있다
+	
+ApplicationList::=SEQUENCE (SIZE (0..127,...)) OF SEQUENCE {
+	aid 			DSRCApplicationEntityID,
+	eid 			Dsrc-EID OPTIONAL,
+	parameter 		ApplicationContextMark OPTIONAL
+}
+	
+AttributeIdList::=SEQUENCE (SIZE(0.. 127,...)) OF INTEGER(0..127,...)
+
+AttributeList::=SEQUENCE (SIZE(0..127,...)) OF Attributes
+
+Attributes::=SEQUENCE {
+	attributeId INTEGER (0..127,...),
+	attributeValue Container
+}
+
+BeaconID::=SEQUENCE{
+	manufacturerid INTEGER(0.. 65535),
+	individualid INTEGER(0..134217727)
+} -- for registration of manufacturerid see www.nni.nl/cen278
+
+BroadcastPool::=SEQUENCE{
+	directoryvalue 		Directory,
+	content 			SEQUENCE (SIZE(0..127,...)) OF File
+}
+
+BST::=SEQUENCE{
+	rsu 				BeaconID,
+	time 				Time,
+	profile 			Profile,
+	mandApplications 	ApplicationList,
+	nonmandApplications ApplicationList 	OPTIONAL,
+	profileList 		SEQUENCE (SIZE(0..127,...)) OF Profile
+}
+
+Container ::= CHOICE {
+	integer						[0]		INTEGER,
+ 	bitstring					[1]		BIT STRING,
+ 	octetstring					[2]		OCTET STRING (SIZE (0..127,...)),
+ 	universalString				[3]		UniversalString,
+ 	beaconId					[4]		BeaconID,
+ 	t-apdu						[5]		T-APDUs,
+ 	dsrcApplicationEntityId		[6]		DSRCApplicationEntityID,
+ 	dsrc-Ase-Id					[7]		Dsrc-EID,
+ 	attrIdList					[8]		AttributeIdList,
+ 	attrList					[9]		AttributeList,
+    broadcastPool				[10] 	BroadcastPool,
+    directory					[11] 	Directory,
+    file						[12] 	File,
+	fileType					[13] 	FileType,
+    record						[14] 	Record,
+    time						[15] 	Time,
+    vector 						[16]	SEQUENCE(SIZE(0..255)) OF INTEGER(0..127,...),
+	dummy0						[17]	NULL, --ReservedForISO[17..96],
+    dummy1						[18]	NULL,
+    dummy2						[19]	NULL,
+    dummy3						[20]	NULL,
+    dummy4						[21]	NULL,
+    dummy5						[22]	NULL,
+    dummy6						[23]	NULL,
+    dummy7						[24]	NULL,
+    dummy8						[25]	NULL,
+    dummy9						[26]	NULL,
+    dummy10						[27]	NULL,
+	debrq 						[28] 	DebitRq,
+	debrs			 			[29] 	DebitRs,
+    dummy13						[30]	NULL,
+    dummy14						[31]	NULL,
+    dummy15						[32]	NULL,
+    dummy16						[33]	NULL,
+    dummy17						[34]	NULL,
+    dummy18						[35]	NULL,
+    dummy19						[36]	NULL,
+    dummy20						[37]	NULL,
+    dummy21						[38]	NULL,
+    dummy22						[39]	NULL,
+    dummy23						[40]	NULL,
+    dummy34						[41]	NULL,
+    dummy35						[42]	NULL,
+    dummy36						[43]	NULL,
+    dummy37						[44]	NULL,
+    dummy38						[45]	NULL,
+    dummy39						[46]	NULL,
+    dummy30						[47]	NULL,
+    dummy41						[48]	NULL,
+    dummy42						[49]	NULL,
+    dummy43						[50]	NULL,
+    dummy44						[51]	NULL,
+    dummy45						[52]	NULL,
+    dummy46						[53]	NULL,
+    dummy47						[54]	NULL,
+    dummy48						[55]	NULL,
+    dummy49						[56]	NULL,
+    dummy50						[57]	NULL,
+    dummy51						[58]	NULL,
+    dummy52						[59]	NULL,
+    dummy53						[60]	NULL,
+    dummy54						[61]	NULL,
+    dummy55						[62]	NULL,
+    dummy56						[63]	NULL,
+    dummy57						[64]	NULL,
+    dummy58						[65]	NULL,
+    dummy59						[66]	NULL,
+    dummy60						[67]	NULL,
+    dummy61						[68]	NULL,
+    dummy62						[69]	NULL,
+    dummy63						[70]	NULL,
+    dummy64						[71]	NULL,
+    dummy65						[72]	NULL,
+    dummy66						[73]	NULL,
+    dummy67						[74]	NULL,
+    dummy68						[75]	NULL,
+    dummy69						[76]	NULL,
+    dummy70						[77]	NULL,
+    dummy71						[78]	NULL,
+    dummy72						[79]	NULL,
+    dummy73						[80]	NULL,
+    dummy74						[81]	NULL,
+    dummy75						[82]	NULL,
+    dummy76						[83]	NULL,
+    dummy77						[84]	NULL,
+    dummy78						[85]	NULL,
+    dummy79						[86]	NULL,
+    dummy80						[87]	NULL,
+    dummy81						[88]	NULL,
+    dummy82						[89]	NULL,
+    dummy83						[90]	NULL,
+    dummy84						[91]	NULL,
+    dummy85						[92]	NULL,
+    dummy86						[93]	NULL,
+    dummy87						[94]	NULL,
+    dummy88						[95]	NULL,
+    dummy89						[96]	NULL,
+    private0					[97]	NULL, --Private[97..127]
+    private1					[98]	NULL,
+    private2					[99]	NULL,
+    private3					[101]	NULL,
+    private4					[102]	NULL,
+    private5					[103]	NULL,
+    private6					[104]	NULL,
+    private7					[105]	NULL,
+    private8					[106]	NULL,
+    private9					[107]	NULL,
+    private10					[108]	NULL,
+    private11					[109]	NULL,
+    private12					[110]	NULL,
+    private13					[111]	NULL,
+    private14					[112]	NULL,
+    private15					[113]	NULL,
+    private16					[114]	NULL,
+    private17					[115]	NULL,
+    private18					[116]	NULL,
+    private19					[117]	NULL,
+    private20					[118]	NULL,
+    private21					[119]	NULL,
+    private22					[120]	NULL,
+    private23					[121]	NULL,
+    private24					[122]	NULL,
+    private25					[123]	NULL,
+    private26					[124]	NULL,
+    private27					[125]	NULL,
+    private28					[126]	NULL,
+    private29					[127]	NULL,
+    ...
+--	dummy17                     [17]  	Not used,
+                                        -- repeat this line up to
+
+--	broadcastfile 				[97] 	BroadcastFile private
+
+--	dummy98                     [98]  	Not used,
+                                        -- repeat this line up to
+--	dummy127                    [127]	Not used, ...
+--	contI.x		 				[i]   	ContainerI.x
+						    --	this line shall be given for each imported
+						    -- 	ContainerI.x, where I.x is replaced by the related
+						    -- 	suffix and i is the registered tag starting with 0
+						    -- 	Gaps shall be filled with contI.x [i] BIT STRING.
+						    -- 	For an example, see Annex A in ISO TS 14906
+}
+
+FileType ::= NULL -- not defined
+
+Directory ::= SEQUENCE (SIZE(0..127,...)) OF FileName
+
+Dsrc-EID ::= INTEGER(0..127, ...)
+
+DSRCApplicationEntityID ::= INTEGER {
+	system 							(0),
+	electronic-fee-collection 		(1),
+	freight-fleet-management 		(2),
+	public-transport 				(3),
+	traffic-traveller-information 	(4),
+	traffic-control    				(5),
+	parking-management 				(6),
+	geographic-road-database 		(7),
+	medium-range-preinformation 	(8),
+	man-machine-interface 			(9),
+	intersystem-interface 			(10),
+	automatic-vehicle-identification (11),
+	emergency-warning     			(12),
+	private               			(13),
+	multi-purpose-payment 			(14),
+	dsrc-resource-manager 			(15),
+	after-theft-systems   			(16)
+	-- (17..28) are reserved for ISO/CEN DSRC applications
+	-- (29..30) are reserved for private use
+	-- 31 is reserved for ISO/CEN-DSRC-applications
+}(0..31,...)
+
+-- For the latest standard use of application definition, refer
+-- to www.nni.nl/cen278
+-- As an example, the application "electronic-fee-collection (1)"
+-- is standardised by EN/ISO 14906
+
+Event-Report-Request ::= SEQUENCE {
+	mode 					BOOLEAN,
+	eid 					Dsrc-EID,
+	eventType 				EventType,
+	accessCredentials 		OCTET STRING (SIZE(0..127,...)) OPTIONAL,
+	eventParameter 			Container 						OPTIONAL,
+	iid 					Dsrc-EID				 		OPTIONAL
+}
+
+Event-Report-Response ::= SEQUENCE {
+	fill 					BIT STRING (SIZE(2)),
+	eid 					Dsrc-EID,
+	iid 					Dsrc-EID 		OPTIONAL,
+	ret 					ReturnStatus 	OPTIONAL
+}
+
+EventType ::= INTEGER {
+	release (0)
+	-- (1..118) are reserved for ISO/CEN use
+	-- (119..127) are reserved for private use
+}(0..127,...)
+
+File ::= SEQUENCE(SIZE(0..127,...)) OF Record
+
+FileName ::= SEQUENCE{
+	aseID		Dsrc-EID,
+	fileID		INTEGER(0..255,...)
+}
+
+Get-Request ::= SEQUENCE {
+	fill 				BIT STRING (SIZE(1)),
+	eid 				Dsrc-EID,
+	accessCredentials 	OCTET STRING (SIZE(0..127,...)) OPTIONAL,
+	iid 				Dsrc-EID						OPTIONAL,
+	attrIdList 			AttributeIdList					OPTIONAL
+}
+
+Get-Response ::= SEQUENCE {
+	fill 				BIT STRING (SIZE(1)),
+	eid 				Dsrc-EID,
+	iid 				Dsrc-EID 		OPTIONAL,
+	attributelist 		AttributeList 	OPTIONAL,
+	ret 				ReturnStatus 	OPTIONAL
+}
+
+Initialisation-Request ::= BST
+
+Initialisation-Response ::= VST
+
+NamedFile ::= SEQUENCE {
+	name				FileName,
+	file				File
+}
+
+ObeConfiguration ::= SEQUENCE {
+	equipmentClass 		INTEGER(0..32767),
+	manufacturerID 		INTEGER(0..65535),
+	obeStatus 			INTEGER(0..65535) OPTIONAL
+}
+
+Profile ::= INTEGER {
+	profile0 (0), -- DSRC Profile 0 as defined in EN 13372
+	profile1 (1) -- DSRC Profile 1 as defined in EN 13372
+	-- (2..118) are reserved for ISO/CEN use,
+	-- (119..127) are reserved for private use
+}(0..127,...)
+
+Record ::= CHOICE {
+	simple 			VisibleString,
+	...,
+	octetstring 	OCTET STRING,
+	...
+}
+
+ReturnStatus ::= INTEGER {
+	noError 					(0),
+	accessDenied 				(1),
+	argumentError 				(2),
+	complexityLimitation 		(3),
+	processingFailure    		(4),
+	processing 			 		(5),
+	chainingError 		 		(6)
+	-- (7..127) are reserved for future CEN use
+}(0..127,...)
+
+Set-Request ::= SEQUENCE {
+	fill 				BIT STRING (SIZE(1)),
+	mode 				BOOLEAN,
+	eid					Dsrc-EID,
+	accessCredentials 	OCTET STRING (SIZE(0..127,...)) OPTIONAL,
+	attrList 			AttributeList,
+	iid 				Dsrc-EID OPTIONAL
+}
+
+Set-Response ::= SEQUENCE {
+	fill 				BIT STRING (SIZE(2)),
+	eid  				Dsrc-EID,
+	iid  				Dsrc-EID 		OPTIONAL,
+	ret  				ReturnStatus 	OPTIONAL
+}
+
+Time ::= INTEGER(0..4294967295)
+	-- “UNIX time”: number of seconds since midnight at the 
+	-- start of 1st January 1970                              
+	
+T-APDUs ::= CHOICE {
+	action-request   		[0] Action-Request,
+	action-response  		[1] Action-Response,
+	event-report-request  	[2] Event-Report-Request,
+	event-report-response 	[3] Event-Report-Response,
+	set-request  			[4] Set-Request,
+	set-response 			[5] Set-Response,
+	get-request  			[6] Get-Request,
+	get-response 			[7] Get-Response,
+	initialisation-request  [8] Initialisation-Request,
+	initialisation-response [9] Initialisation-Response
+}
+
+VST ::= SEQUENCE {
+	fill 					BIT STRING (SIZE(4)),
+	profile 				Profile,
+	applications 			ApplicationList,
+	obeConfiguration 		ObeConfiguration
+}
+END

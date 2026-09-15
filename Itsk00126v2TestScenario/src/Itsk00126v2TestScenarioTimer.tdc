@@ -1,0 +1,8 @@
+message set definition
+{
+	include Itsk00126v2TestScenarioDef;
+	typedef struct Itsk00126V2TestScenarioTimer
+	{
+		uint32 id; // is key
+	} Itsk00126V2TestScenarioTimer; // with api dump, compare
+}

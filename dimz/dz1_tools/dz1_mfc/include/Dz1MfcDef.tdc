@@ -1,0 +1,150 @@
+message set definition
+{
+	include dz1_stdio_support;
+	include dz1_logics_def;
+	
+	------------------------------------------------------------------------
+	-- Keyboard Event
+	------------------------------------------------------------------------
+	typedef enum Dz1MfcKeyboardEvent
+	{
+		Pressed,
+		Repeated,
+		Released
+	} Dz1MfcKeyboardEvent;					// with api compare
+	
+	typedef struct Dz1MfcKeyboardKeyEntry
+	{
+		Dz1MfcKeyboardEvent		 event;		// is key
+		bool					 isExtKey;	// is key
+		uint32					 code;		// is key
+		int32					 cmd;
+		int32					 arg;
+	} Dz1MfcKeyboardKeyEntry;				// with api dump, compare, clone
+	typedef unique table Dz1MfcKeyboardKeyList(find, extract) [Dz1MfcKeyboardKeyEntry];
+	
+	------------------------------------------------------------------------
+	-- LANMAN Path
+	------------------------------------------------------------------------
+	typedef struct Dz1MfcLanManPathEntry
+	{
+		TString					 name;		// is key
+	} Dz1MfcLanManPathEntry;				// with api dump, compare, clone
+	typedef unique table Dz1MfcLanManPathList(find, extract) [Dz1MfcLanManPathEntry];
+
+	------------------------------------------------------------------------
+	-- List Filter	
+	------------------------------------------------------------------------
+	typedef struct Dz1MfcListFilterValueRangeSigned
+	{
+		int64								 lowValue;
+		int64								 highValue;
+	} Dz1MfcListFilterValueRangeSigned;					// with api dump, clone
+	
+	typedef struct Dz1MfcListFilterValueRangeUnsigned
+	{
+		uint64								 lowValue;
+		uint64								 highValue;
+	} Dz1MfcListFilterValueRangeUnsigned;				// with api dump, clone
+	
+	typedef union Dz1MfcListFilterValue
+	{
+		int64								 sNum;
+		uint64								 uNum;
+		Dz1MfcListFilterValueRangeSigned	*sRange;
+		Dz1MfcListFilterValueRangeUnsigned	*uRange;
+		TString								 txtValue;
+		Dz1LogicStringArr					*txtList;
+	} Dz1MfcListFilterValue;							// with api dump, clone
+	
+	typedef struct Dz1MfcListFilterEntry
+	{
+		int32								 col;		// is key
+		Dz1LogicMatchType					 mode;
+		Dz1MfcListFilterValue				*value;
+	} Dz1MfcListFilterEntry;							// with api dump, compare, clone
+	typedef unique table Dz1MfcListFilterList(find, extract) [Dz1MfcListFilterEntry];
+
+	------------------------------------------------------------------------
+	-- ARGC & ARGV
+	------------------------------------------------------------------------
+	typedef struct Dz1MfcProgInfoArgEntry
+	{
+		uint32								 idx;		// is key
+		TString								 str;
+	} Dz1MfcProgInfoArgEntry;							// with api dump, compare, clone
+	typedef unique table Dz1MfcProgInfoArgList(find, extract) [Dz1MfcProgInfoArgEntry];
+	
+	typedef struct Dz1MfcProgInfo
+	{
+		TString								 cmd_line;
+		
+		TString								 path_name_ext;
+		
+		TString								 path;
+		TString								 name_ext;
+		
+		TString								 name;
+		TString								 ext;
+		
+		Dz1MfcProgInfoArgList				*args;		// is notarg
+	} Dz1MfcProgInfo;									// with api dump, clone
+
+	typedef native Dz1DirCatalogA from dz1_stdio;		// with api compare
+	typedef unique table Dz1DirCatalogACache(find, extract) [Dz1DirCatalogA];
+
+	typedef native Dz1DirCatalogW from dz1_stdio;		// with api compare
+	typedef unique table Dz1DirCatalogWCache(find, extract) [Dz1DirCatalogW];
+
+	------------------------------------------------------------------------
+	-- PathTree
+	------------------------------------------------------------------------
+	typedef unique table Dz1MfcPathTreeNodeList(find, extract) [struct Dz1MfcPathTreeNode];
+	typedef struct Dz1MfcPathTreeNode
+	{
+		TString								 name;		// is key
+		struct Dz1MfcPathTreeNode			*parent;
+		Dz1MfcPathTreeNodeList				*childs;	// is notarg
+	} Dz1MfcPathTreeNode;								// with api dump, compare, clone
+	
+	------------------------------------------------------------------------
+	-- Html TAG
+	------------------------------------------------------------------------
+	typedef struct Dz1MfcHtmlParseEnv
+	{
+		TString								 src;
+		TString								 lex_ptr;
+	} Dz1MfcHtmlParseEnv;								// with api dump, clone
+	
+	typedef enum Dz1MfcHtmlTokenType
+	{
+		undef,
+		space,
+		new_line,
+		start,
+		stop,
+		term,
+		equal,
+		string,
+		symbol
+	} Dz1MfcHtmlTokenType;
+	
+	typedef struct Dz1MfcHtmlToken
+	{
+		Dz1MfcHtmlTokenType					 type;
+		TString								 value;
+	} Dz1MfcHtmlToken;									// with api dump, clone
+	
+	typedef struct Dz1MfcHtmlTagAttr
+	{
+		TString								 id;		// is key
+		TString								 value;
+	} Dz1MfcHtmlTagAttr;								// with api dump, clone, compare
+	typedef unique table Dz1MfcHtmlTagAttrList(find, extract) [Dz1MfcHtmlTagAttr];
+	
+	typedef struct Dz1MfcHtmlTag
+	{
+		TString								 tag_name;
+		Dz1MfcHtmlTagAttrList				*attr;		// is notarg
+	} Dz1MfcHtmlTag;									// with api dump, clone
+}

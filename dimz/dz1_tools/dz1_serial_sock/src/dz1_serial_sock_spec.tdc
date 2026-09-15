@@ -1,0 +1,13 @@
+message set definition
+{
+	include libdz1_support;
+	typedef native Dz1Sync from dz1_sync;
+	--typedef native Dz1SocketBuf from dz1_socket_buf;
+	typedef struct Dz1SerialSocketSpecific
+	{
+		Dz1Sync					*sync;
+		Dz1SocketBuf			*buf;
+		bool					 eof;
+		void					*io;
+	} Dz1SerialSocketSpecific;
+}

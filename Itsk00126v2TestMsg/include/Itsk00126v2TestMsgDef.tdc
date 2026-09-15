@@ -1,0 +1,106 @@
+message set definition
+{
+	include libdz1_support;
+	-- EAM
+
+	-- IoT 통합관리장치 상태정보
+	typedef struct F2CIoTImDeviceSttusInfoData
+	{
+		TString						 iot_im_device_id;					-- char(10), 장치구분(영문1자리) + 일련번호(9자리)
+		TString						 iot_im_device_link_sttus_code;		-- char(3), 001:정상, 002:이상
+		TString						 creat_dt;							-- timestamp(yyyymmddhhmmss);
+	} F2CIoTImDeviceSttusInfoData;		// with api dump, clone
+
+	typedef struct F2CIoTImDeviceSttusInfo
+	{
+		TString							 command;		-- "iot_im_device_sttus_info"
+		F2CIoTImDeviceSttusInfoData		*data;
+	} F2CIoTImDeviceSttusInfo;		// with api dump, clone
+
+	-- IoT 통합관리장치 관리목록 정보
+	typedef struct F2CIoTDeviceEntry
+	{
+		TString							 iot_device_id;			-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+	} F2CIoTDeviceEntry;		// with api dump, clone
+	typedef array F2CIoTDeviceList (gethead, extract) [F2CIoTDeviceEntry];
+
+	typedef struct F2CIoTDeviceListResponseInfoData
+	{
+		TString							 iot_im_device_id;					-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+		TString							 event_name;
+		TString							 event_type;
+		TString						 iot_device_id_qty;					-- char(4), 숫자 4자리(0001 ~ 9999), 필수
+		F2CIoTDeviceList				*iot_device_list;		
+	} F2CIoTDeviceListResponseInfoData;		// with api dump, clone
+
+	typedef struct F2CIoTDeviceListResponseInfo
+	{
+		TString								 command;		-- "message"
+		F2CIoTDeviceListResponseInfoData	*data;			
+	} F2CIoTDeviceListResponseInfo;		// with api dump, clone
+
+	typedef struct F2CIotDeviceListResetInfoData
+	{
+		TString							 iot_im_device_id;					-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+		TString						 iot_device_id_qty;		-- char(4), 숫자 4자리(0001 ~ 9999), 필수
+		F2CIoTDeviceList				*iot_device_update_list;		
+		TString							 creat_dt;							-- timestamp(yyyymmddhhmmss)
+	} F2CIotDeviceListResetInfoData;		// with api dump, clone
+
+	typedef struct F2CIotDeviceListResetInfo
+	{
+		TString								 command;		-- "message"
+		F2CIotDeviceListResetInfoData		*data;
+	} F2CIotDeviceListResetInfo;		// with api dump, clone
+
+
+	-- IoT 상태정보
+	typedef struct F2CIoTDeviceSttusInfoEntry
+	{
+		TString							 iot_device_id;				-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+		TString							 iot_device_sttus_code;		-- char(3), 001: 정상, 002: 이상
+		TString							 btry_sttus_code;			-- char(3), 001: 정상, 002: 이상
+		TString							 link_sttus_code;			-- char(3), 001: 정상, 002: 이상
+		int64							 data_trnsmis_cont;
+	} F2CIoTDeviceSttusInfoEntry;			// with api dump, clone
+	typedef array F2CIoTDeviceSttusInfoList (gethead, extract) [F2CIoTDeviceSttusInfoEntry];
+
+	typedef struct F2CIoTDeviceSttusInfoData
+	{
+		TString							 iot_im_device_id;				-- char(10), 장치구분(영문1자리) + 일련번호(9자리), 필수
+		TString							 iot_device_id_qty;				-- char(4), 숫자 4자리(0001~9999), 필수
+		F2CIoTDeviceSttusInfoList		*iot_device_sttus_info_list;
+		TString							 creat_dt;							-- timestamp(yyyymmddhhmmss);
+	} F2CIoTDeviceSttusInfoData;		// with api dump, clone
+	
+	typedef struct F2CIoTDeviceSttusInfo
+	{
+		TString							 command;							-- "F2C_iot_device_sttus_info"
+		F2CIoTDeviceSttusInfoData		*data;
+	} F2CIoTDeviceSttusInfo;		// with api dump, clone
+
+	typedef struct Itsk00126v2RequestData
+	{
+		TString					 iot_im_device_id;
+		TString					 event_name;
+		TString					 event_type;
+	} Itsk00126v2RequestData;		// with api dump, clone
+
+	typedef struct Itsk00126v2Request
+	{
+		TString					 command;		-- message;
+		Itsk00126v2RequestData	*data;			
+	} Itsk00126v2Request;		// with api dump, clone
+
+	typedef union Itsk00126v2EAM
+	{
+		F2CIoTImDeviceSttusInfo				*f2c_iot_im_device_sttus_info;					-- IoT 통합관리장치 상태정보								f -> c
+		
+		Itsk00126v2Request					*fc2_iot_device_list_request_info;				-- IoT 통합관리장치 관리목록정보 요청 메시지				c -> f
+		F2CIoTDeviceListResponseInfo		*fc2_iot_device_list_response_info;				-- IoT 통합관리장치 관리목록정보 응답 메시지				f -> c
+		F2CIoTDeviceListResponseInfo		*fc2_iot_device_list_reset_info;				-- IoT 통합관리장치 관리목록정보 갱신 메시지				c -> f
+		
+		F2CIoTDeviceSttusInfo				*fc2_iot_device_sttus_info;						-- IoT장치 상태정보											f -> c
+	} Itsk00126v2EAM;		// with api dump, clone
+
+}

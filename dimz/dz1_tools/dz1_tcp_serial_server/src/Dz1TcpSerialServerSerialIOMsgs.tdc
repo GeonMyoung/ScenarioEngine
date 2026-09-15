@@ -1,0 +1,24 @@
+message set definition
+{
+	include Dz1TcpSerialServerDef;
+	include Dz1TcpSerialMsgDef;
+	typedef struct Dz1TcpSerialServerMsgRecv
+	{
+		Dz1SockAddr				*peer;
+		Dz1SockAddr				*local;
+		Dz1Binary				*stream;
+	} Dz1TcpSerialServerMsgRecv;					// with api dump
+
+	typedef struct Dz1TcpSerialServerMsgPin
+	{
+		Dz1SockAddr				*peer;
+		Dz1SockAddr				*local;
+		Dz1SerialPinState		 v;
+	} Dz1TcpSerialServerMsgPin;						// with api dump
+
+	typedef struct Dz1TcpSerialServerMsgException
+	{
+		Dz1SockAddr				*peer;
+		Dz1SockAddr				*local;
+	} Dz1TcpSerialServerMsgException;				// with api dump
+}

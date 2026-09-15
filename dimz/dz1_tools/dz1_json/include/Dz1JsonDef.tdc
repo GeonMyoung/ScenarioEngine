@@ -1,0 +1,150 @@
+message set definition
+{
+	include dz1_io_stream_support;
+	
+	typedef enum Dz1JsonNewLine
+	{
+		continuous,
+		cr,							-- CR = 0x0D(\r)
+		lf,							-- LF = 0x0A(\n)
+		crlf						-- CR = 0x0D, LF = 0x0A(\r\n)
+	} Dz1JsonNewLine;
+
+	typedef struct Dz1JsonNewLineInfo
+	{
+		TString						 str;
+		size_t						 len;
+		uint32						 tab;
+	} Dz1JsonNewLineInfo;
+	
+	typedef func void *Dz1JsonObjGenF(Dz1Error *err);
+	typedef func void  Dz1JsonObjDelF(void *obj_ptr);
+
+	-------------------------------------------------------------------------------
+	-- Token Type
+	-------------------------------------------------------------------------------
+	typedef enum Dz1JsonTokenType
+	{
+		comma,				-- ','
+		dot,				-- '.'
+		white_space,		-- ' ', '\t', '\r', '\n'
+		lst_start,			-- '{'
+		lst_end,			-- '}'
+		blk_start,			-- '['
+		blk_end,			-- ']'
+		colon,				-- ':'
+		plus,				-- '+'
+		minus,				-- '-'
+		number,				-- ['0'..'9']+
+		string,				-- '"' [AnyLetter]* '"'
+		nul,				-- null
+		symbol				-- [AnyLetter]+
+	} Dz1JsonTokenType;
+	
+	-------------------------------------------------------------------------------
+	-- Token
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonToken
+	{
+		Dz1JsonTokenType					 t;
+		TString								 v;
+	} Dz1JsonToken;												// with api userdump, clone
+	
+	struct Dz1JsonVarBind;
+	-------------------------------------------------------------------------------
+	-- Primitive Spec
+	-------------------------------------------------------------------------------
+	typedef func bool Dz1JsonSpecPrimitiveStringifyF(void *obj, Dz1ElasticBuf *buf, Dz1Error *err);
+	typedef func bool Dz1JsonSpecPrimitiveLoaderF(struct Dz1JsonVarBind *dst_obj, Dz1JsonToken *tok, Dz1Error *err);
+	typedef struct Dz1JsonSpecPrimitive
+	{
+		struct Dz1JsonSpecEntry				*owner;				// is ref, nodump
+		Dz1JsonSpecPrimitiveLoaderF			 loader;
+		Dz1JsonSpecPrimitiveStringifyF		 stringify;
+	} Dz1JsonSpecPrimitive;										// with api dump, clone
+
+	-------------------------------------------------------------------------------
+	-- Construct Spec
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonSpecChild
+	{
+		TString								 name;				// is key
+		TString								 type;
+		uint32								 index;
+	} Dz1JsonSpecChild;											// with api userdump, clone, compare
+	typedef unique table Dz1JsonSpecChilds(find, extract) [Dz1JsonSpecChild];
+	
+	typedef enum Dz1JsonConstructType
+	{
+		struct,
+		union
+	} Dz1JsonConstructType;
+	
+	typedef func bool Dz1JsonConstructSetChildF(void *parent_ptr, struct Dz1JsonVarBind *info, Dz1Error *err);
+	typedef func void *Dz1JsonConstructGetChildF(void *parent_ptr, Dz1JsonSpecChild **info, Dz1JsonSpecChilds *lists);
+	typedef struct Dz1JsonSpecConstruct					-- struct union
+	{
+		struct Dz1JsonSpecEntry				*owner;				// is ref, nodump
+		Dz1JsonSpecChilds					*childs;			// is notarg
+		Dz1JsonConstructType				 type;
+		Dz1JsonConstructSetChildF			 set_child;
+		Dz1JsonConstructGetChildF			 get_child;
+	} Dz1JsonSpecConstruct;										// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Array Spec
+	-------------------------------------------------------------------------------
+	typedef func bool Dz1JsonArrayAppendF(void *dst, struct Dz1JsonVarBind *var, Dz1Error *err);
+	typedef func uint32 Dz1JsonArrayCountF(void *obj);
+	typedef func Dz1Error Dz1JsonArrayEntryF(void *arg, void *node_obj);
+	typedef func Dz1Error Dz1JsonArrayTravelF(void *obj, Dz1JsonArrayEntryF f, void *arg);
+	typedef struct Dz1JsonSpecArray
+	{
+		struct Dz1JsonSpecEntry				*owner;				// is ref, nodump
+		TString								 elem_type;
+		Dz1JsonArrayAppendF					 append;
+		Dz1JsonArrayCountF					 count;
+		Dz1JsonArrayTravelF					 travel;
+	} Dz1JsonSpecArray;											// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Spec Data
+	-------------------------------------------------------------------------------
+	typedef union Dz1JsonSpecData
+	{
+		Dz1JsonSpecPrimitive				*pr;
+		Dz1JsonSpecConstruct				*cst;
+		Dz1JsonSpecArray					*ar;
+	} Dz1JsonSpecData;											// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Spec Entry & List
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonSpecEntry
+	{
+		TString								 name;				// is key		-- type name
+		Dz1JsonObjGenF						 gen;
+		Dz1JsonObjDelF						 del;
+		Dz1JsonSpecData						*data;
+	} Dz1JsonSpecEntry;											// with api dump, clone, compare
+	typedef unique table Dz1JsonSpecList(find, extract) [Dz1JsonSpecEntry];
+
+	-------------------------------------------------------------------------------
+	-- Spec
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonSpec
+	{
+		Dz1JsonSpecList						*types;				// is notarg
+	} Dz1JsonSpec;												// with api dump
+	
+	-------------------------------------------------------------------------------
+	-- Variable Bind
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonVarBind
+	{
+		Dz1JsonSpecChild					*id;				// is ref
+		Dz1JsonSpecEntry					*type;				// is ref
+		void								*data;
+	} Dz1JsonVarBind;											// with api userdel, dump
+
+}

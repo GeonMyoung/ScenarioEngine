@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{1763D65F-643A-43E6-9454-FA93E4183BE8}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{12FA334A-553F-419F-BD4F-789FD5CBD8C9}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{787F9E2B-A7D2-43E0-B604-515F2CD82FD2}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\engine">
+      <UniqueIdentifier>{B6D73186-305A-48BA-B50C-FC0CE376D41F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\message">
+      <UniqueIdentifier>{1D8ECD4D-8DB0-4638-AB36-D6DF836690C8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenario.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenarioDef.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenarioArg.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenarioEnv.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenarioTimer.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenarioTimerUtil.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenarioMsgs.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenario_commandMsgProc.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenarioEnvUtil.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TrafficSignalControllerTestScenarioProc.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\TrafficSignalControllerTestScenario.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\TrafficSignalControllerTestScenarioDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TrafficSignalControllerTestScenarioArg.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TrafficSignalControllerTestScenarioEnv.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TrafficSignalControllerTestScenarioTimer.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TrafficSignalControllerTestScenarioTimerUtil.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TrafficSignalControllerTestScenarioMsg.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TrafficSignalControllerTestScenarioMsgs.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TrafficSignalControllerTestScenarioEnvUtil.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TrafficSignalControllerTestScenarioProc.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\TrafficSignalControllerTestScenarioDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\TrafficSignalControllerTestScenarioArg.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\TrafficSignalControllerTestScenarioEnv.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\TrafficSignalControllerTestScenarioTimer.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\TrafficSignalControllerTestScenarioMsgs.tdc">
+      <Filter>소스 파일\message</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,907 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{D069F463-8DE7-4C86-89B8-BEBAE86648CA}</ProjectGuid>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Release</Config>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<BCC_wcsu>false</BCC_wcsu>
+			<BCC_wsus>false</BCC_wsus>
+			<BCC_wpch>false</BCC_wpch>
+			<BCC_waus>false</BCC_waus>
+			<BCC_wspa>false</BCC_wspa>
+			<BCC_wrch>false</BCC_wrch>
+			<OutputExt>lib</OutputExt>
+			<BCC_wovf>false</BCC_wovf>
+			<BCC_wccc>false</BCC_wccc>
+			<Multithreaded>true</Multithreaded>
+			<PackageImports>vclx.bpi;vcl.bpi;dbrtl.bpi;Rave76VCL.bpi;bdertl.bpi;rtl.bpi;bcbie.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;vcldb.bpi;vcldbx.bpi;dsnap.bpi;dsnapcon.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;adortl.bpi;vclib.bpi;ibxpress.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;intrawebdb_100_120.bpi;Intraweb_100_120.bpi;VclSmp.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;vclribbon.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DataSnapIndy10ServerTransport.bpi;DataSnapProviderClient.bpi;DataSnapServer.bpi;DbxClientDriver.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;dbxcds.bpi;DBXSybaseASEDriver.bpi;DBXSybaseASADriver.bpi;DBXOracleDriver.bpi;DBXMSSQLDriver.bpi;DBXInformixDriver.bpi;DBXDb2Driver.bpi</PackageImports>
+			<AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+			<ProjectType>CppStaticLibrary</ProjectType>
+			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+			<Defines>NO_STRICT</Defines>
+			<IncludePath>..\SupportLib\OS;..\SupportLib\MEM;..\SupportLib\IO;..\SupportLib\XER;..\SupportLib\TYPE;..\SupportLib\TOOL;..\SupportLib\PER;..\SupportLib\BER;$(CG_BOOST_ROOT)\boost\tr1\tr1;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;$(CG_BOOST_ROOT)</IncludePath>
+			<ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
+			<BCC_wpar>false</BCC_wpar>
+			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<IncludePath>..\SupportLib;$(BDS)\include</IncludePath>
+			<TLIB_PageSize>32</TLIB_PageSize>
+			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<Defines>_DEBUG;$(Defines)</Defines>
+			<BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+			<IntermediateOutputDir>Debug</IntermediateOutputDir>
+			<ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+			<BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+			<DCC_Define>DEBUG</DCC_Define>
+			<BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+			<TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+			<BCC_StackFrames>true</BCC_StackFrames>
+			<ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+			<TASM_Debugging>Full</TASM_Debugging>
+			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<TLIB_PageSize>32</TLIB_PageSize>
+			<IncludePath>..\SupportLib;$(BDS)\include</IncludePath>
+			<Defines>NDEBUG;$(Defines)</Defines>
+			<IntermediateOutputDir>Release</IntermediateOutputDir>
+			<ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<TASM_Debugging>None</TASM_Debugging>
+		</PropertyGroup>
+		<ItemGroup>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_BITSTRING.c">
+				<BuildOrder>0</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_BITSTRING.h">
+				<BuildOrder>1</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_BMPString.c">
+				<BuildOrder>2</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_BMPString.h">
+				<BuildOrder>3</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_BOOLEAN.c">
+				<BuildOrder>4</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_BOOLEAN.h">
+				<BuildOrder>5</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_CHARACTERSTRING.c">
+				<BuildOrder>6</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_CHARACTERSTRING.h">
+				<BuildOrder>7</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_ENUMERATED.c">
+				<BuildOrder>8</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_ENUMERATED.h">
+				<BuildOrder>9</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_GeneralizedTime.c">
+				<BuildOrder>10</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_GeneralizedTime.h">
+				<BuildOrder>11</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_GeneralString.c">
+				<BuildOrder>12</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_GeneralString.h">
+				<BuildOrder>13</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_GraphicString.c">
+				<BuildOrder>14</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_GraphicString.h">
+				<BuildOrder>15</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_IA5String.c">
+				<BuildOrder>16</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_IA5String.h">
+				<BuildOrder>17</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_INTEGER.c">
+				<BuildOrder>18</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_INTEGER.h">
+				<BuildOrder>19</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_NULL.c">
+				<BuildOrder>20</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_NULL.h">
+				<BuildOrder>21</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_NumericString.c">
+				<BuildOrder>22</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_NumericString.h">
+				<BuildOrder>23</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_ObjectDescriptor.c">
+				<BuildOrder>24</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_ObjectDescriptor.h">
+				<BuildOrder>25</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_OBJECTIDENTIFIER.c">
+				<BuildOrder>26</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_OBJECTIDENTIFIER.h">
+				<BuildOrder>27</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_OCTETSTRING.c">
+				<BuildOrder>28</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_OCTETSTRING.h">
+				<BuildOrder>29</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_OpenType.c">
+				<BuildOrder>30</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_OpenType.h">
+				<BuildOrder>31</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_PrintableString.c">
+				<BuildOrder>32</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_PrintableString.h">
+				<BuildOrder>33</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_REAL.c">
+				<BuildOrder>34</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_REAL.h">
+				<BuildOrder>35</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_RELATIVE_OID.c">
+				<BuildOrder>36</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_RELATIVE_OID.h">
+				<BuildOrder>37</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_STRING.c">
+				<BuildOrder>38</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_STRING.h">
+				<BuildOrder>39</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_TeletexString.c">
+				<BuildOrder>40</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_TeletexString.h">
+				<BuildOrder>41</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_UniversalString.c">
+				<BuildOrder>42</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_UniversalString.h">
+				<BuildOrder>43</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_UTCTime.c">
+				<BuildOrder>44</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_UTCTime.h">
+				<BuildOrder>45</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_UTF8String.c">
+				<BuildOrder>46</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_UTF8String.h">
+				<BuildOrder>47</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_VideotexString.c">
+				<BuildOrder>48</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_VideotexString.h">
+				<BuildOrder>49</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\BER\ASN1_BER_VisibleString.c">
+				<BuildOrder>50</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\BER\ASN1_BER_VisibleString.h">
+				<BuildOrder>51</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\BER\ASN1bersrc.h">
+				<BuildOrder>52</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\PER\ASN1persrc.h">
+				<BuildOrder>53</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_BITSTRING.c">
+				<BuildOrder>54</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_BITSTRING.h">
+				<BuildOrder>55</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_BMPString.c">
+				<BuildOrder>56</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_BMPString.h">
+				<BuildOrder>57</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_BOOLEAN.c">
+				<BuildOrder>58</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_BOOLEAN.h">
+				<BuildOrder>59</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_CHARACTERSTRING.c">
+				<BuildOrder>60</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_CHARACTERSTRING.h">
+				<BuildOrder>61</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_ENUMERATED.c">
+				<BuildOrder>62</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_ENUMERATED.h">
+				<BuildOrder>63</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_GeneralizedTime.c">
+				<BuildOrder>64</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_GeneralizedTime.h">
+				<BuildOrder>65</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_GeneralString.c">
+				<BuildOrder>66</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_GeneralString.h">
+				<BuildOrder>67</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_GraphicString.c">
+				<BuildOrder>68</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_GraphicString.h">
+				<BuildOrder>69</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_IA5String.c">
+				<BuildOrder>70</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_IA5String.h">
+				<BuildOrder>71</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_INTEGER.c">
+				<BuildOrder>72</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_INTEGER.h">
+				<BuildOrder>73</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_NumericString.c">
+				<BuildOrder>74</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_NumericString.h">
+				<BuildOrder>75</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_ObjectDescriptor.c">
+				<BuildOrder>76</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_ObjectDescriptor.h">
+				<BuildOrder>77</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_OBJECTIDENTIFIER.c">
+				<BuildOrder>78</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_OBJECTIDENTIFIER.h">
+				<BuildOrder>79</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_OCTETSTRING.c">
+				<BuildOrder>80</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_OCTETSTRING.h">
+				<BuildOrder>81</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_OpenType.c">
+				<BuildOrder>82</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_OpenType.h">
+				<BuildOrder>83</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_PrintableString.c">
+				<BuildOrder>84</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_PrintableString.h">
+				<BuildOrder>85</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_REAL.c">
+				<BuildOrder>86</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_REAL.h">
+				<BuildOrder>87</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_RELATIVE_OID.c">
+				<BuildOrder>88</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_RELATIVE_OID.h">
+				<BuildOrder>89</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_SET.c">
+				<BuildOrder>90</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_SET.h">
+				<BuildOrder>91</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_STRING.c">
+				<BuildOrder>92</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_STRING.h">
+				<BuildOrder>93</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_TeletexString.c">
+				<BuildOrder>94</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_TeletexString.h">
+				<BuildOrder>95</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_UniversalString.c">
+				<BuildOrder>96</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_UniversalString.h">
+				<BuildOrder>97</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_UTCTime.c">
+				<BuildOrder>98</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_UTCTime.h">
+				<BuildOrder>99</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_UTF8String.c">
+				<BuildOrder>100</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_UTF8String.h">
+				<BuildOrder>101</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_VideotexString.c">
+				<BuildOrder>102</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_VideotexString.h">
+				<BuildOrder>103</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\PER\ASN1_PER_VisibleString.c">
+				<BuildOrder>104</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\PER\ASN1_PER_VisibleString.h">
+				<BuildOrder>105</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\TOOL\ASN1Tool.h">
+				<BuildOrder>108</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_BER_Check_Length.c">
+				<BuildOrder>109</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_BER_Check_Length.h">
+				<BuildOrder>110</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHAR_TOOL.c">
+				<BuildOrder>111</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHAR_TOOL.h">
+				<BuildOrder>112</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_BITSTRING.c">
+				<BuildOrder>113</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_BITSTRING.h">
+				<BuildOrder>114</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_BMPString.c">
+				<BuildOrder>115</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_BMPString.h">
+				<BuildOrder>116</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_BOOLEAN.c">
+				<BuildOrder>117</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_BOOLEAN.h">
+				<BuildOrder>118</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_CHARACTERSTRING.c">
+				<BuildOrder>119</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_CHARACTERSTRING.h">
+				<BuildOrder>120</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_ENUMERATED.c">
+				<BuildOrder>121</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_ENUMERATED.h">
+				<BuildOrder>122</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_GeneralizedTime.c">
+				<BuildOrder>123</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_GeneralizedTime.h">
+				<BuildOrder>124</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_GeneralString.c">
+				<BuildOrder>125</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_GeneralString.h">
+				<BuildOrder>126</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_GraphicString.c">
+				<BuildOrder>127</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_GraphicString.h">
+				<BuildOrder>128</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_IA5String.c">
+				<BuildOrder>129</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_IA5String.h">
+				<BuildOrder>130</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_INTEGER.c">
+				<BuildOrder>131</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_INTEGER.h">
+				<BuildOrder>132</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_NULL.c">
+				<BuildOrder>133</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_NULL.h">
+				<BuildOrder>134</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_NumericString.c">
+				<BuildOrder>135</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_NumericString.h">
+				<BuildOrder>136</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_ObjectDescriptor.c">
+				<BuildOrder>137</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_ObjectDescriptor.h">
+				<BuildOrder>138</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_OBJECTIDENTIFIER.c">
+				<BuildOrder>139</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_OBJECTIDENTIFIER.h">
+				<BuildOrder>140</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_OCTETSTRING.c">
+				<BuildOrder>141</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_OCTETSTRING.h">
+				<BuildOrder>142</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_OpenType.c">
+				<BuildOrder>143</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_OpenType.h">
+				<BuildOrder>144</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_PrintableString.c">
+				<BuildOrder>145</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_PrintableString.h">
+				<BuildOrder>146</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_REAL.c">
+				<BuildOrder>147</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_REAL.h">
+				<BuildOrder>148</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_RELATIVE_OID.c">
+				<BuildOrder>149</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_RELATIVE_OID.h">
+				<BuildOrder>150</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_STRING.c">
+				<BuildOrder>151</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_STRING.h">
+				<BuildOrder>152</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_TeletexString.c">
+				<BuildOrder>153</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_TeletexString.h">
+				<BuildOrder>154</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_UniversalString.c">
+				<BuildOrder>155</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_UniversalString.h">
+				<BuildOrder>156</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_UTCTime.c">
+				<BuildOrder>157</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_UTCTime.h">
+				<BuildOrder>158</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_UTF8String.c">
+				<BuildOrder>159</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_UTF8String.h">
+				<BuildOrder>160</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_VideotexString.c">
+				<BuildOrder>161</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_VideotexString.h">
+				<BuildOrder>162</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_CHECK_VisibleString.c">
+				<BuildOrder>163</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_CHECK_VisibleString.h">
+				<BuildOrder>164</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_Length.c">
+				<BuildOrder>165</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_Length.h">
+				<BuildOrder>166</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_List.c">
+				<BuildOrder>167</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_List.h">
+				<BuildOrder>168</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_Operate_Byte.c">
+				<BuildOrder>169</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_Operate_Byte.h">
+				<BuildOrder>170</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_Print.c">
+				<BuildOrder>171</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_Print.h">
+				<BuildOrder>172</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_Set.c">
+				<BuildOrder>173</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_Set.h">
+				<BuildOrder>174</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_Tag.c">
+				<BuildOrder>175</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_Tag.h">
+				<BuildOrder>176</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_Tool_BitString.c">
+				<BuildOrder>177</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_Tool_BitString.h">
+				<BuildOrder>178</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_Tool_String.c">
+				<BuildOrder>179</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_Tool_String.h">
+				<BuildOrder>180</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_Tool_Time.c">
+				<BuildOrder>181</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_Tool_Time.h">
+				<BuildOrder>182</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\ASN1_XER_Check_Length.c">
+				<BuildOrder>183</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\ASN1_XER_Check_Length.h">
+				<BuildOrder>184</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\TOOL\Infinite_tool.c">
+				<BuildOrder>186</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\TOOL\Infinite_tool.h">
+				<BuildOrder>187</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\TYPE\ASN1_Type.h">
+				<BuildOrder>189</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\XER\ASN1xersrc.h">
+				<BuildOrder>191</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_BITSTRING.c">
+				<BuildOrder>192</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_BITSTRING.h">
+				<BuildOrder>193</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_BMPString.c">
+				<BuildOrder>194</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_BMPString.h">
+				<BuildOrder>195</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_BOOLEAN.c">
+				<BuildOrder>196</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_BOOLEAN.h">
+				<BuildOrder>197</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_CHARACTERSTRING.c">
+				<BuildOrder>198</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_CHARACTERSTRING.h">
+				<BuildOrder>199</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_ENUMERATED.c">
+				<BuildOrder>200</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_ENUMERATED.h">
+				<BuildOrder>201</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_GeneralizedTime.c">
+				<BuildOrder>202</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_GeneralizedTime.h">
+				<BuildOrder>203</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_GeneralString.c">
+				<BuildOrder>204</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_GeneralString.h">
+				<BuildOrder>205</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_GraphicString.c">
+				<BuildOrder>206</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_GraphicString.h">
+				<BuildOrder>207</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_IA5String.c">
+				<BuildOrder>208</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_IA5String.h">
+				<BuildOrder>209</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_INTEGER.c">
+				<BuildOrder>210</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_INTEGER.h">
+				<BuildOrder>211</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_Name.c">
+				<BuildOrder>212</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_Name.h">
+				<BuildOrder>213</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_NULL.c">
+				<BuildOrder>214</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_NULL.h">
+				<BuildOrder>215</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_NumericString.c">
+				<BuildOrder>216</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_NumericString.h">
+				<BuildOrder>217</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_ObjectDescriptor.c">
+				<BuildOrder>218</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_ObjectDescriptor.h">
+				<BuildOrder>219</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_OBJECTIDENTIFIER.c">
+				<BuildOrder>220</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_OBJECTIDENTIFIER.h">
+				<BuildOrder>221</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_OCTETSTRING.c">
+				<BuildOrder>222</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_OCTETSTRING.h">
+				<BuildOrder>223</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_OpenType.c">
+				<BuildOrder>224</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_OpenType.h">
+				<BuildOrder>225</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_PrintableString.c">
+				<BuildOrder>226</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_PrintableString.h">
+				<BuildOrder>227</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_REAL.c">
+				<BuildOrder>228</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_REAL.h">
+				<BuildOrder>229</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_RELATIVE_OID.c">
+				<BuildOrder>230</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_RELATIVE_OID.h">
+				<BuildOrder>231</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_SET.c">
+				<BuildOrder>232</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_SET.h">
+				<BuildOrder>233</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_STRING.c">
+				<BuildOrder>234</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_STRING.h">
+				<BuildOrder>235</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_TeletexString.c">
+				<BuildOrder>236</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_TeletexString.h">
+				<BuildOrder>237</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_UniversalString.c">
+				<BuildOrder>238</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_UniversalString.h">
+				<BuildOrder>239</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_UTCTime.c">
+				<BuildOrder>240</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_UTCTime.h">
+				<BuildOrder>241</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_UTF8String.c">
+				<BuildOrder>242</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_UTF8String.h">
+				<BuildOrder>243</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_VideotexString.c">
+				<BuildOrder>244</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_VideotexString.h">
+				<BuildOrder>245</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\XER\ASN1_XER_VisibleString.c">
+				<BuildOrder>246</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\XER\ASN1_XER_VisibleString.h">
+				<BuildOrder>247</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\IO\ASN1IO.h">
+				<BuildOrder>250</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\IO\ASN1_WorkSpace.c">
+				<BuildOrder>251</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\IO\ASN1_WorkSpace.h">
+				<BuildOrder>252</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\IO\ASNIO.h">
+				<BuildOrder>253</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\MEM\ASN1_mpool.c">
+				<BuildOrder>259</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\MEM\ASN1_mpool.h">
+				<BuildOrder>260</BuildOrder>
+			</None>
+			<CppCompile Include="..\..\SupportLib\MEM\ASN1_xmalloc.c">
+				<BuildOrder>261</BuildOrder>
+			</CppCompile>
+			<None Include="..\..\SupportLib\MEM\ASN1_xmalloc.h">
+				<BuildOrder>262</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\MEM\mpool.h">
+				<BuildOrder>265</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\MEM\signal.h">
+				<BuildOrder>266</BuildOrder>
+			</None>
+			<None Include="..\..\SupportLib\OS\ASN1_Sys.h">
+				<BuildOrder>267</BuildOrder>
+			</None>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+			<Borland.ProjectType>CppStaticLibrary</Borland.ProjectType>
+			<BorlandProject>
+				<CPlusPlusBuilder.Personality>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1042</VersionInfo>
+						<VersionInfo Name="CodePage">949</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Debugging>
+						<Debugging Name="DebugSourceDirs"/>
+					</Debugging>
+					<Parameters>
+						<Parameters Name="RunParams"/>
+						<Parameters Name="Launcher"/>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="DebugCWD"/>
+						<Parameters Name="HostApplication"/>
+						<Parameters Name="RemoteHost"/>
+						<Parameters Name="RemotePath"/>
+						<Parameters Name="RemoteParams"/>
+						<Parameters Name="RemoteLauncher"/>
+						<Parameters Name="UseRemoteLauncher">False</Parameters>
+						<Parameters Name="RemoteCWD"/>
+						<Parameters Name="RemoteDebug">False</Parameters>
+						<Parameters Name="Debug Symbols Search Path"/>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<ProjectProperties>
+						<ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+						<ProjectProperties Name="ManagePaths">True</ProjectProperties>
+						<ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+					</ProjectProperties>
+				</CPlusPlusBuilder.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

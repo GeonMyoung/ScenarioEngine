@@ -1,0 +1,20 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef struct Dz1SockUtilUriInfoA
+	{
+		str							 prot;						// is key
+		str							 host;						// is key
+		uint16						 port;						// is key
+		str							 path;						// is key
+	} Dz1SockUtilUriInfoA;										// with api dumpA, clone, compare
+
+	typedef struct Dz1SockUtilUriInfoW
+	{
+		wstr						 prot;						// is key
+		wstr						 host;						// is key
+		uint16						 port;						// is key
+		wstr						 path;						// is key
+	} Dz1SockUtilUriInfoW;										// with windows api dumpW, clone, compare
+}

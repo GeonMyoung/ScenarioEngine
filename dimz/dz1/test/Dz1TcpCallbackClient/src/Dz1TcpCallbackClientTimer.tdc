@@ -1,0 +1,10 @@
+message set definition
+{
+	include Dz1TcpCallbackClientDef;
+	typedef struct Dz1TcpCallbackClientTimer
+	{
+		uint32						 id;		// is key
+		Dz1SockAddr					*peer;		// is key
+		Dz1SockAddr					*local;		// is key
+	} Dz1TcpCallbackClientTimer; // with api dump, compare
+}

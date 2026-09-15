@@ -1,0 +1,45 @@
+message set definition
+{
+	include libdz1_support;
+	typedef enum Dz1BMPBPP		-- 1,4,8,16,24,32 => 2, 16, 256, 32767, true, 
+	{
+		bw				= 1,	-- black and white
+		color16			= 4,	-- 16 color
+		color256		= 8,	-- 256 color
+		color64K		= 16,	-- 65535 color
+		colorTrue		= 24,	-- True Color
+		colorTrue32		= 32	-- True Color with 4 byte aligned
+	} Dz1BMPBPP;
+	
+	typedef enum Dz1BMPComp
+	{
+		RGB,
+		RLE8,
+		RLE4,
+		BITFIELDS,
+		JPEG,
+		PNG
+	} Dz1BMPComp;
+	
+	typedef struct Dz1BMPDIB
+	{
+		uint32				 hdr_size;			-- should be 40			4	4
+		int32				 width;				--						4	8
+		int32				 height;			--						4	12
+		uint16				 planes;			-- should be 1			2	14
+		uint16				 bpp;				-- size 2 byte			2	16
+		uint32				 comp;				-- size 4 byte			4	20
+		uint32				 decompress_size;	--						4	24
+		int32				 horizontal_ppm;	-- pixel per miter		4	28
+		int32				 vertical_ppm;		-- pixel per miter		4	32
+		uint32				 palette_color;		--						4	36
+		uint32				 important_color;	-- probably 0			4	40
+	} Dz1BMPDIB;								// with api dump, clone
+	
+	typedef struct Dz1BMP
+	{
+		Dz1BMPDIB			*hdr;
+		uint8				*image;
+		Dz1Binary			*chunk;
+	} Dz1BMP;									// with api dump, userdel, userclone
+}

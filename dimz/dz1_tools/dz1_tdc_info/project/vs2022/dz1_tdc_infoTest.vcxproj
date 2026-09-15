@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{6949F11C-64C9-4256-B746-6EABD8503B44}</ProjectGuid>
+    <RootNamespace>dz1_tdc_test</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>dz1_tdc_test</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.32505.173</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Test$(Configuration)\</OutDir>
+    <IntDir>Test$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>Test$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>Test$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Test$(Configuration)\</OutDir>
+    <IntDir>Test$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>Test$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>Test$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\codeconv\include;..\..\..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_CONSOLE;__CLEANUP_C;__SYSTEM_ENDIAN_LITTLE__;__WORDSIZE=32;_DEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)dz1_tdc_infoTest.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\..\pthreads.2\project\vs2022\$(Configuration)\pthreadVC2.dll .\$(IntDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\codeconv\include;..\..\..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_CONSOLE;__CLEANUP_C;__SYSTEM_ENDIAN_LITTLE__;__WORDSIZE=64;_DEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)dz1_tdc_infoTest.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\..\pthreads.2\project\vs2022\$(Configuration)$(PlatformArchitecture)\pthreadVC2.dll .\$(IntDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\codeconv\include;..\..\..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_CONSOLE;__CLEANUP_C;__SYSTEM_ENDIAN_LITTLE__;__WORDSIZE=32;NDEBUG</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\..\pthreads.2\project\vs2022\$(Configuration)\pthreadVC2.dll .\$(IntDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\codeconv\include;..\..\..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_CONSOLE;__CLEANUP_C;__SYSTEM_ENDIAN_LITTLE__;__WORDSIZE=64;NDEBUG</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\..\pthreads.2\project\vs2022\$(Configuration)$(PlatformArchitecture)\pthreadVC2.dll .\$(IntDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\dz1_tdc_info_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_arr_memb_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_prim_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_structA_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_structW_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_structX_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_struct_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_test_ref.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_test_types.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_unionA_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_unionW_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_unionX_test.c" />
+    <ClCompile Include="..\..\dz1_tdc_info_union_test.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\codeconv\project\vs2022\codeconv.vcxproj">
+      <Project>{9b4ab3ef-8c73-4bbf-8176-9e00ac6fccc3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\pthreads.2\project\vs2022\pthread.vcxproj">
+      <Project>{3f968544-3d37-446c-967c-b9426f0f527a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\dz1\project\vs2022\dz1.vcxproj">
+      <Project>{78edee71-c212-4c81-9aff-02f055137471}</Project>
+    </ProjectReference>
+    <ProjectReference Include="dz1_tdc_info.vcxproj">
+      <Project>{411b94ec-4c72-499f-9d0c-38bbe46e6177}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\dz1_tdc_info_prim_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\dz1_tdc_info_arr_memb_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_prim_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_structA_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_structW_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_structX_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_struct_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_test_ref.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_test_types.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_unionA_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_unionW_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_unionX_test.h" />
+    <ClInclude Include="..\..\dz1_tdc_info_union_test.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\dz1_tdc_info_arr_memb_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <None Include="..\..\dz1_tdc_info_arr_memb_test.tdo" />
+    <None Include="..\..\dz1_tdc_info_prim_test.tdo" />
+    <CustomBuild Include="..\..\dz1_tdc_info_structA_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\dz1_tdc_info_structW_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\dz1_tdc_info_struct_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <None Include="..\..\dz1_tdc_info_structA_test.tdo" />
+    <None Include="..\..\dz1_tdc_info_structW_test.tdo" />
+    <CustomBuild Include="..\..\dz1_tdc_info_structX_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <None Include="..\..\dz1_tdc_info_structX_test.tdo" />
+    <None Include="..\..\dz1_tdc_info_struct_test.tdo" />
+    <CustomBuild Include="..\..\dz1_tdc_info_union_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\dz1_tdc_info_unionX_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\dz1_tdc_info_unionA_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <None Include="..\..\dz1_tdc_info_unionA_test.tdo" />
+    <CustomBuild Include="..\..\dz1_tdc_info_unionW_test.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\..\..\dz1\include ..\..\%(FileName).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile %(FileName).tdc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile %(FileName).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\%(FileName).c;..\..\%(FileName).h;..\..\%(FileName).tdo</Outputs>
+    </CustomBuild>
+    <None Include="..\..\dz1_tdc_info_unionW_test.tdo" />
+    <None Include="..\..\dz1_tdc_info_unionX_test.tdo" />
+    <None Include="..\..\dz1_tdc_info_union_test.tdo" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

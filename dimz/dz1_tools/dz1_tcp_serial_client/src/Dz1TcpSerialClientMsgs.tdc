@@ -1,0 +1,63 @@
+message set definition
+{
+	include Dz1TcpSerialClientDef;
+
+	typedef struct Dz1TcpSerialClientMsgDefault
+	{
+		uint32 *dummy;
+	} Dz1TcpSerialClientMsgDefault;					// with api dump
+	
+	typedef struct Dz1TcpSerialClientMsgOpen
+	{
+		int32					portNum;
+		uint32					baud;
+		int32					bitPerByte;
+		Dz1SerialParity			parity;
+		Dz1SerialStopBit		stopBit;
+		bool					fullDuplex;
+
+		Dz1SerialRTSCTS			flowRTSCTS;
+		Dz1SerialDSRDTR			flowDSRDTR;
+		Dz1SerialXONXOFF		flowXONXOFF;
+
+		Dz1SerialByteConsume	byteConsume;	void *byteConsumeParam;
+		Dz1SerialPinChanged		ringInd;		void *ringIndParam;
+		Dz1SerialPinChanged		ctsChanged;		void *ctsChangedParam;
+		Dz1SerialPinChanged		dsrChanged;		void *dsrChangedParam;
+		Dz1SerialException		exception;		void *exceptionParam;
+		
+		void					*ret;
+	} Dz1TcpSerialClientMsgOpen;					// with api dump
+
+	typedef struct Dz1TcpSerialClientMsgPort
+	{
+		int32					portNum;
+	} Dz1TcpSerialClientMsgPort;					// with api dump
+
+	typedef struct Dz1TcpSerialClientMsgPin
+	{
+		int32					portNum;
+		Dz1SerialPinState		pin;
+	} Dz1TcpSerialClientMsgPin;						// with api dump
+
+	typedef struct Dz1TcpSerialClientMsgChunk
+	{
+		int32					 portNum;
+		Dz1Binary				*stream;
+		ssize_t					 ret;
+	} Dz1TcpSerialClientMsgChunk;					// with api dump
+	
+	typedef struct Dz1TcpSerialClientMsgSetByteConsume
+	{
+		int32					 portNum;
+		Dz1SerialByteConsume	 byteConsume;
+		void					*byteConsumeParam;
+	} Dz1TcpSerialClientMsgSetByteConsume;			// with api dump
+	
+	typedef struct Dz1TcpSerialClientMsgReceived
+	{
+		Dz1SockAddr				*peer;
+		Dz1SockAddr				*local;
+		Dz1Binary				*stream;
+	} Dz1TcpSerialClientMsgReceived;				// with api dump
+}

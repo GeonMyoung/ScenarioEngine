@@ -1,0 +1,29 @@
+message set definition
+{
+	include libdz1_support;
+--	include dz1_asn1_support;
+
+	typedef unique	table MyStrUniqueTable	(find, extract, gethead, gettail) [str];
+	typedef ordered table MyStrOrderedTable (find, extract, gethead, gettail) [str];
+	typedef			table MyStrTable		(remove, find, extract, gethead, gettail) [str];
+
+	typedef unique	table MyWStrUniqueTable	(find, extract, gethead, gettail) [wstr];
+	typedef ordered table MyWStrOrderedTable (find, extract, gethead, gettail) [wstr];
+	typedef			table MyWStrTable		(remove, find, extract, gethead, gettail) [wstr];
+
+	typedef unique	table MyIntUniqueTable	(find, extract, gethead, gettail) [int32];
+	typedef ordered table MyIntOrderedTable (find, extract, gethead, gettail) [int32];
+	typedef			table MyIntTable		(remove, find, extract, gethead, gettail) [int32];
+
+	typedef enum MyEnum
+	{
+		first,
+		second = 3
+	} MyEnum;											// with api compare, dumpA
+
+	typedef unique	table MyEnumUniqueTable	(find, extract, gethead, gettail)	[MyEnum] "name = ";
+	typedef ordered table MyEnumOrderedTable(find, extract, gethead, gettail)	[MyEnum] "seq = ";
+	typedef			table MyEnumTable		(gethead, gettail)					[MyEnum] "";
+
+	typedef index MyEnumIndex(gethead, gettail)									[MyEnum] "";
+}

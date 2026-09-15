@@ -1,0 +1,357 @@
+#include <dz1_time.h>
+#include <dz1_thread_stdio.h>
+#include <dz1_fifo.h>
+#include <dz1_ordered_fifo.h>
+#include <dz1_aatree.h>
+
+#include "Dz1TcpCallbackServerEnv.h"
+
+static struct Dz1TcpCallbackSessionLifeMapA
+{
+	str_t str;
+	Dz1TcpCallbackSessionLife v;
+} Dz1TcpCallbackSessionLifeMapA[] =
+{
+	{ "immediateDie", Dz1TcpCallbackSessionLife_immediateDie },
+	{ "negotiateAndDie", Dz1TcpCallbackSessionLife_negotiateAndDie },
+	{ "tenSeconds", Dz1TcpCallbackSessionLife_tenSeconds },
+	{ "halfHour", Dz1TcpCallbackSessionLife_halfHour },
+	{ "immotal0", Dz1TcpCallbackSessionLife_immotal0 },
+	{ "immotal1", Dz1TcpCallbackSessionLife_immotal1 },
+	{ "immotal2", Dz1TcpCallbackSessionLife_immotal2 },
+	{ "immotal3", Dz1TcpCallbackSessionLife_immotal3 },
+	{ "immotal4", Dz1TcpCallbackSessionLife_immotal4 },
+	{ NULL, Dz1TcpCallbackSessionLife_max }
+};
+
+str_t Dz1TcpCallbackSessionLifeStrA(Dz1TcpCallbackSessionLife v)
+{
+	struct Dz1TcpCallbackSessionLifeMapA *i = NULL;
+	for (i = Dz1TcpCallbackSessionLifeMapA; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+Dz1TcpCallbackSessionLife Dz1TcpCallbackSessionLifeFromStrA(str_t str)
+{
+	struct Dz1TcpCallbackSessionLifeMapA *i = NULL;
+	for (i = Dz1TcpCallbackSessionLifeMapA; i->str; i++)
+		if (strcmp(i->str, str) == 0) return i->v;
+	return Dz1TcpCallbackSessionLife_max;
+}
+
+static struct Dz1TcpCallbackSessionLifeMapW
+{
+	wstr_t str;
+	Dz1TcpCallbackSessionLife v;
+} Dz1TcpCallbackSessionLifeMapW[] =
+{
+	{ L"immediateDie", Dz1TcpCallbackSessionLife_immediateDie },
+	{ L"negotiateAndDie", Dz1TcpCallbackSessionLife_negotiateAndDie },
+	{ L"tenSeconds", Dz1TcpCallbackSessionLife_tenSeconds },
+	{ L"halfHour", Dz1TcpCallbackSessionLife_halfHour },
+	{ L"immotal0", Dz1TcpCallbackSessionLife_immotal0 },
+	{ L"immotal1", Dz1TcpCallbackSessionLife_immotal1 },
+	{ L"immotal2", Dz1TcpCallbackSessionLife_immotal2 },
+	{ L"immotal3", Dz1TcpCallbackSessionLife_immotal3 },
+	{ L"immotal4", Dz1TcpCallbackSessionLife_immotal4 },
+	{ NULL, Dz1TcpCallbackSessionLife_max }
+};
+
+wstr_t Dz1TcpCallbackSessionLifeStrW(Dz1TcpCallbackSessionLife v)
+{
+	struct Dz1TcpCallbackSessionLifeMapW *i = NULL;
+	for (i = Dz1TcpCallbackSessionLifeMapW; i->str; i++)
+		if (i->v == v) return i->str;
+	return NULL;
+}
+
+Dz1TcpCallbackSessionLife Dz1TcpCallbackSessionLifeFromStrW(wstr_t str)
+{
+	struct Dz1TcpCallbackSessionLifeMapW *i = NULL;
+	for (i = Dz1TcpCallbackSessionLifeMapW; i->str; i++)
+		if (wcscmp(i->str, str) == 0) return i->v;
+	return Dz1TcpCallbackSessionLife_max;
+}
+
+Dz1TcpCallbackSessionLife *Dz1TcpCallbackSessionLife_new(Dz1TcpCallbackSessionLife *src, Dz1Error *err){
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1TcpCallbackSessionLife *__internal_ret = (Dz1TcpCallbackSessionLife *)Dz1Calloc(sizeof(Dz1TcpCallbackSessionLife), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		*__internal_ret = *src;
+	}
+	return __internal_ret;
+}
+
+void Dz1TcpCallbackSessionLife_dump(Dz1TcpCallbackSessionLife *v, int tab)
+{
+	if (v == NULL) Dz1Thread_printf("NULL\n");
+	else Dz1Thread_printf("%s\n", Dz1TcpCallbackSessionLifeStrA(*v));
+}
+
+Dz1TcpCallbackSession *Dz1TcpCallbackSession_new(Dz1SockAddr *peer, 
+												 Dz1SockAddr *local, 
+												 Dz1TcpClientSocket *sock, 
+												 Dz1SocketBuf *rx_buf, 
+												 Dz1SocketFifo *tx_fifo, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1TcpCallbackSession *__internal_ret = (Dz1TcpCallbackSession *)Dz1Calloc(sizeof(Dz1TcpCallbackSession), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(Dz1TcpCallbackSession_delAndSetNull, (void *)&__internal_ret);
+
+		__internal_ret->peer = peer;
+		__internal_ret->local = local;
+		__internal_ret->sock = sock;
+		__internal_ret->rx_buf = rx_buf;
+		__internal_ret->tx_fifo = tx_fifo;
+		ERR_CLEAR(errp);
+
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1TcpCallbackSession_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+void Dz1TcpCallbackSession_del(Dz1TcpCallbackSession *p)
+{
+	if (p == NULL) return;
+	if (p->peer) Dz1SockAddr_del(p->peer);
+	if (p->local) Dz1SockAddr_del(p->local);
+	if (p->sock) Dz1TcpClientSocket_del(p->sock);
+	if (p->rx_buf) Dz1SocketBuf_del(p->rx_buf);
+	if (p->tx_fifo) Dz1SocketFifo_del(p->tx_fifo);
+	Dz1Free(p);
+}
+
+void Dz1TcpCallbackSession_dump(Dz1TcpCallbackSession *p, int tab)
+{
+	if (!p) { Dz1Thread_printf("NULL\n"); return; }
+	Dz1Thread_printf("{\n"); tab++;
+
+	if (p->peer == NULL) Dz1Thread_tprintf(tab, "peer = NULL\n");
+	else { Dz1Thread_tprintf(tab, "peer = "); Dz1SockAddr_dump(p->peer, tab); /* using dump func */ }
+
+	if (p->local == NULL) Dz1Thread_tprintf(tab, "local = NULL\n");
+	else { Dz1Thread_tprintf(tab, "local = "); Dz1SockAddr_dump(p->local, tab); /* using dump func */ }
+
+	if (p->sock == NULL) Dz1Thread_tprintf(tab, "sock = NULL\n");
+	else { Dz1Thread_tprintf(tab, "sock = %p\n", p->sock); /* no way to dump */ }
+
+	if (p->rx_buf == NULL) Dz1Thread_tprintf(tab, "rx_buf = NULL\n");
+	else { Dz1Thread_tprintf(tab, "rx_buf = "); Dz1SocketBuf_dump(p->rx_buf, tab); /* using dump func */ }
+
+	if (p->tx_fifo == NULL) Dz1Thread_tprintf(tab, "tx_fifo = NULL\n");
+	else { Dz1Thread_tprintf(tab, "tx_fifo = "); Dz1SocketFifo_dump(p->tx_fifo, tab); /* using dump func */ }
+
+	Dz1Thread_tprintf(--tab, "}\n");
+}
+
+int Dz1TcpCallbackSession_cmp(Dz1TcpCallbackSession *a, Dz1TcpCallbackSession *b)
+{
+	int ret = 0;
+	if ((ret = Dz1SockAddr_cmp(a->peer, b->peer)) != 0) return ret;
+	else if ((ret = Dz1SockAddr_cmp(a->local, b->local)) != 0) return ret;
+	else return ret;
+}
+
+static Dz1Error Dz1TcpCallbackSessionList_add(Dz1TcpCallbackSessionList *p, Dz1TcpCallbackSession *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	if (Dz1AATree_find(p->storage, data)) ERR_SET_OUT(&err, EEXIST);
+	else
+	{
+		err = Dz1AATree_insert(p->storage, data);
+		if (ERR_PROBE(&err)) ERR_OUT(&err);
+	}
+	return err;
+}
+
+static void Dz1TcpCallbackSessionList_remove(Dz1TcpCallbackSessionList *p, Dz1TcpCallbackSession *key)
+{
+	Dz1AATree_remove(p->storage, key);
+}
+
+static Dz1TcpCallbackSession *Dz1TcpCallbackSessionList_extract(Dz1TcpCallbackSessionList *p, Dz1TcpCallbackSession *key)
+{
+	return (Dz1TcpCallbackSession *)Dz1AATree_extract(p->storage, key);
+}
+
+typedef struct Dz1TcpCallbackSessionListMkArrArg
+{
+	Dz1TcpCallbackSession **arr;
+	unsigned int idx;
+} Dz1TcpCallbackSessionListMkArrArg;
+
+static Dz1Error _Dz1TcpCallbackSessionList_get_array(void *ptr, Dz1TcpCallbackSession *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	Dz1TcpCallbackSessionListMkArrArg *arg = (Dz1TcpCallbackSessionListMkArrArg *)ptr;
+	arg->arr[arg->idx++] = p;
+	return err;
+}
+
+static Dz1TcpCallbackSession **Dz1TcpCallbackSessionList_get_array(Dz1TcpCallbackSessionList *p, unsigned int *ret_cnt, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err == NULL ? &_err : err;
+	Dz1TcpCallbackSession **ret = NULL;
+	unsigned int cnt = 0;
+	if (p == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = (Dz1TcpCallbackSession **)Dz1Calloc(sizeof(Dz1TcpCallbackSession *), (cnt = p->count(p)) + 1, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		Dz1TcpCallbackSessionListMkArrArg arg = { ret, 0 };
+		pthread_cleanup_push(Dz1Memory_cancel, (void *)ret);
+
+		*errp = p->travel(p, _Dz1TcpCallbackSessionList_get_array, (void *)&arg);
+		if (ERR_PROBE(errp)) ERR_OUT(errp);
+		else
+		{
+			if (ret_cnt) (*ret_cnt) = cnt;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1Memory_cancel, (void *)ret);
+	}
+	if (ERR_PROBE(errp)) ret = NULL;
+	return ret;
+}
+
+static Dz1Error Dz1TcpCallbackSessionList_travelForward(Dz1TcpCallbackSessionList *p, Dz1Error (*func)(void *ptr, Dz1TcpCallbackSession *data), void *ptr)
+{
+	return Dz1AATree_travelForward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static Dz1Error Dz1TcpCallbackSessionList_travelBackward(Dz1TcpCallbackSessionList *p, Dz1Error (*func)(void *ptr, Dz1TcpCallbackSession *data), void *ptr)
+{
+	return Dz1AATree_travelBackward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static Dz1TcpCallbackSession *Dz1TcpCallbackSessionList_find(Dz1TcpCallbackSessionList *p, Dz1TcpCallbackSession *key)
+{
+	return (Dz1TcpCallbackSession *)Dz1AATree_find(p->storage, key);
+}
+
+static unsigned int Dz1TcpCallbackSessionList_count(Dz1TcpCallbackSessionList *p)
+{
+	unsigned int ret = Dz1AATree_count(p->storage);
+	return ret;
+}
+
+void _Dz1TcpCallbackSessionList_dump(Dz1TcpCallbackSession *p, int tab)
+{
+	if (p == NULL) Dz1Thread_tprintf(tab, "entry = NULL\n");
+	else
+	{
+		Dz1Thread_tprintf(tab, "entry = ");
+		Dz1TcpCallbackSession_dump(p, tab);
+	}
+}
+
+Dz1TcpCallbackSessionList *Dz1TcpCallbackSessionList_new(Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1TcpCallbackSessionList *ret = (Dz1TcpCallbackSessionList *)Dz1Calloc(sizeof(Dz1TcpCallbackSessionList), 1, errp);
+	if (ret == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(Dz1TcpCallbackSessionList_delAndSetNull, (void *)&ret);
+
+		if ((ret->storage = Dz1AATree_new(
+				(Dz1CmpFunc)Dz1TcpCallbackSession_cmp,
+				(Dz1DelFunc)Dz1TcpCallbackSession_del,
+				(Dz1DumpFunc)_Dz1TcpCallbackSessionList_dump, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			ret->add = Dz1TcpCallbackSessionList_add;
+			ret->remove = Dz1TcpCallbackSessionList_remove;
+			ret->extract = Dz1TcpCallbackSessionList_extract;
+			ret->get_array = Dz1TcpCallbackSessionList_get_array;
+			ret->travel = Dz1TcpCallbackSessionList_travelForward;
+			ret->travelForward = Dz1TcpCallbackSessionList_travelForward;
+			ret->travelBackward = Dz1TcpCallbackSessionList_travelBackward;
+			ret->find = Dz1TcpCallbackSessionList_find;
+			ret->cmp = Dz1TcpCallbackSession_cmp;
+			ret->count = Dz1TcpCallbackSessionList_count;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1TcpCallbackSessionList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void Dz1TcpCallbackSessionList_del(Dz1TcpCallbackSessionList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_del(p->storage);
+	Dz1Free(p);
+}
+
+void Dz1TcpCallbackSessionList_dump(Dz1TcpCallbackSessionList *p, int tab)
+{
+	if (!p) { Dz1Thread_printf("NULL\n"); return; }
+	if (p->storage)
+	{
+		Dz1Thread_printf("{\n"); tab++;
+		Dz1AATree_dump(p->storage, tab);
+		Dz1Thread_tprintf(--tab, "}\n");
+	}
+}
+
+Dz1TcpCallbackServerEnv *Dz1TcpCallbackServerEnv_new(void *tSelf, 
+													 u32_t acceptor, 
+													 u32_t acceptor_ssl, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1TcpCallbackServerEnv *__internal_ret = (Dz1TcpCallbackServerEnv *)Dz1Calloc(sizeof(Dz1TcpCallbackServerEnv), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(Dz1TcpCallbackServerEnv_delAndSetNull, (void *)&__internal_ret);
+
+		if ((__internal_ret->sessions = Dz1TcpCallbackSessionList_new(errp)) == NULL) ERR_OUT(errp); // ASN OPTIONAL
+		else
+		{
+			__internal_ret->tSelf = tSelf;
+			__internal_ret->acceptor = acceptor;
+			__internal_ret->acceptor_ssl = acceptor_ssl;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1TcpCallbackServerEnv_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+void Dz1TcpCallbackServerEnv_del(Dz1TcpCallbackServerEnv *p)
+{
+	if (p == NULL) return;
+	if (p->sessions) Dz1TcpCallbackSessionList_del(p->sessions);
+	Dz1Free(p);
+}
+
+void Dz1TcpCallbackServerEnv_dump(Dz1TcpCallbackServerEnv *p, int tab)
+{
+	if (!p) { Dz1Thread_printf("NULL\n"); return; }
+	Dz1Thread_printf("{\n"); tab++;
+
+	if (p->tSelf == NULL) Dz1Thread_tprintf(tab, "tSelf = NULL\n");
+	else Dz1Thread_tprintf(tab, "tSelf = %p\n", p->tSelf);
+
+	Dz1Thread_tprintf(tab, "acceptor = "); Dz1u32_dump(&p->acceptor, tab);
+
+	Dz1Thread_tprintf(tab, "acceptor_ssl = "); Dz1u32_dump(&p->acceptor_ssl, tab);
+
+	if (p->sessions == NULL) Dz1Thread_tprintf(tab, "sessions = NULL\n");
+	else { Dz1Thread_tprintf(tab, "sessions = "); Dz1TcpCallbackSessionList_dump(p->sessions, tab); /* using dump func */ }
+
+	Dz1Thread_tprintf(tab, "tLast = "); Dz1TimeVal_dump(&p->tLast, tab);
+
+	Dz1Thread_tprintf(tab, "tx_amt = "); Dz1u64_dump(&p->tx_amt, tab);
+
+	Dz1Thread_tprintf(tab, "rx_amt = "); Dz1u64_dump(&p->rx_amt, tab);
+
+	Dz1Thread_tprintf(--tab, "}\n");
+}
+

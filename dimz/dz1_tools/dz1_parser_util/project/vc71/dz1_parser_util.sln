@@ -1,0 +1,69 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "codeconv", "..\..\..\..\..\codeconv\project\vc71\codeconv.vcproj", "{209A3631-30A3-47F5-81F9-2F405CDE61F5}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pthread", "..\..\..\..\..\pthreads.2\project\vc71\pthread.vcproj", "{85EDA171-C9DB-4B1C-811B-5429B283E0D2}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dz1", "..\..\..\..\dz1\project\vc71\dz1.vcproj", "{9F46952E-41A9-4B5D-9948-F2A6B73CC5CD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tdc", "..\..\..\..\dz1\..\dz1_tools\dz1_tdc\project\vc71\tdc.vcproj", "{B672A728-005E-4416-909A-6728AD50E0E9}"
+	ProjectSection(ProjectDependencies) = postProject
+	{209A3631-30A3-47F5-81F9-2F405CDE61F5} = {209A3631-30A3-47F5-81F9-2F405CDE61F5}
+	{85EDA171-C9DB-4B1C-811B-5429B283E0D2} = {85EDA171-C9DB-4B1C-811B-5429B283E0D2}
+	{9F46952E-41A9-4B5D-9948-F2A6B73CC5CD} = {9F46952E-41A9-4B5D-9948-F2A6B73CC5CD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dz1_parser_util", "dz1_parser_util.vcproj", "{C88AF8A0-109B-4B10-8EB3-28155D918A2B}"
+	ProjectSection(ProjectDependencies) = postProject
+	{B672A728-005E-4416-909A-6728AD50E0E9} = {B672A728-005E-4416-909A-6728AD50E0E9}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dz1_parser_utilTest", "dz1_parser_utilTest.vcproj", "{D4CE3161-E709-4E99-B55B-160B45455689}"
+	ProjectSection(ProjectDependencies) = postProject
+	{209A3631-30A3-47F5-81F9-2F405CDE61F5} = {209A3631-30A3-47F5-81F9-2F405CDE61F5}
+	{85EDA171-C9DB-4B1C-811B-5429B283E0D2} = {85EDA171-C9DB-4B1C-811B-5429B283E0D2}
+	{9F46952E-41A9-4B5D-9948-F2A6B73CC5CD} = {9F46952E-41A9-4B5D-9948-F2A6B73CC5CD}
+	{C88AF8A0-109B-4B10-8EB3-28155D918A2B} = {C88AF8A0-109B-4B10-8EB3-28155D918A2B}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{209A3631-30A3-47F5-81F9-2F405CDE61F5}.Debug.ActiveCfg = Debug|Win32
+		{209A3631-30A3-47F5-81F9-2F405CDE61F5}.Debug.Build.0 = Debug|Win32
+		{209A3631-30A3-47F5-81F9-2F405CDE61F5}.Release.ActiveCfg = Release|Win32
+		{209A3631-30A3-47F5-81F9-2F405CDE61F5}.Release.Build.0 = Release|Win32
+		{85EDA171-C9DB-4B1C-811B-5429B283E0D2}.Debug.ActiveCfg = Debug|Win32
+		{85EDA171-C9DB-4B1C-811B-5429B283E0D2}.Debug.Build.0 = Debug|Win32
+		{85EDA171-C9DB-4B1C-811B-5429B283E0D2}.Release.ActiveCfg = Release|Win32
+		{85EDA171-C9DB-4B1C-811B-5429B283E0D2}.Release.Build.0 = Release|Win32
+		{9F46952E-41A9-4B5D-9948-F2A6B73CC5CD}.Debug.ActiveCfg = Debug|Win32
+		{9F46952E-41A9-4B5D-9948-F2A6B73CC5CD}.Debug.Build.0 = Debug|Win32
+		{9F46952E-41A9-4B5D-9948-F2A6B73CC5CD}.Release.ActiveCfg = Release|Win32
+		{9F46952E-41A9-4B5D-9948-F2A6B73CC5CD}.Release.Build.0 = Release|Win32
+		{B672A728-005E-4416-909A-6728AD50E0E9}.Debug.ActiveCfg = Debug|Win32
+		{B672A728-005E-4416-909A-6728AD50E0E9}.Debug.Build.0 = Debug|Win32
+		{B672A728-005E-4416-909A-6728AD50E0E9}.Release.ActiveCfg = Release|Win32
+		{B672A728-005E-4416-909A-6728AD50E0E9}.Release.Build.0 = Release|Win32
+		{C88AF8A0-109B-4B10-8EB3-28155D918A2B}.Debug.ActiveCfg = Debug|Win32
+		{C88AF8A0-109B-4B10-8EB3-28155D918A2B}.Debug.Build.0 = Debug|Win32
+		{C88AF8A0-109B-4B10-8EB3-28155D918A2B}.Release.ActiveCfg = Release|Win32
+		{C88AF8A0-109B-4B10-8EB3-28155D918A2B}.Release.Build.0 = Release|Win32
+		{D4CE3161-E709-4E99-B55B-160B45455689}.Debug.ActiveCfg = Debug|Win32
+		{D4CE3161-E709-4E99-B55B-160B45455689}.Debug.Build.0 = Debug|Win32
+		{D4CE3161-E709-4E99-B55B-160B45455689}.Release.ActiveCfg = Release|Win32
+		{D4CE3161-E709-4E99-B55B-160B45455689}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

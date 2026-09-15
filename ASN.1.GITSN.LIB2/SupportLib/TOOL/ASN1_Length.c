@@ -1,0 +1,676 @@
+#include "ASN1_Print.h"
+#include "ASN1_Length.h"
+
+ASNINT64 Compute_Single_Value(ASNUINT8 **StringDealwith);
+
+ASNINT32 ASN1_PER_Enc_intUnConsLength(ASN1WorkSpace * ws, ASNUINT32 *length)
+{	
+	ASNUINT8 ch;
+	ASNUINT32 temp_length = *length;
+	ch = (ASNUINT8)temp_length>>3;
+	//ch = (ASNUINT8)length>>3;
+
+	return 0;
+}
+
+ASNINT32 ASN1_PER_Enc_intConsLength(ASN1WorkSpace * ws, ASNUINT64 *tvalue, Asn1ConsInfo *conss)
+{
+	ASNUINT8 ch;
+	ASNUINT64 range,value = *tvalue;
+
+	for (ch=0;;ch++){
+		value= (ASNUINT64)value  >> 8;
+		if(value==0){break;} 
+	}
+	range = conss->upper - conss->lower + 1;
+	if ((65535 < range) && (range<= ASN1_CONSTu64(4294967295)))
+	{
+		// printf("len in 2 bit =%d\n",ch);
+		/*Per_Bit_Save_Process(ws,ch,2,UNALIGN)*/
+		return 0;
+	}
+	if ((ASN1_CONSTu64(4294967295) < range) && (range<= ASN1_CONSTu64(18446744073709551615)))
+	{
+		// printf("len in 3 bit =%d\n",ch);
+		/*Per_Bit_Save_Process(ws,ch,3,UNALIGN)*/
+		return 0;
+	}
+	return 0;
+}
+		 
+ASNINT32 ASN1_BER_Dec_Length(ASN1WorkSpace *ws)
+{
+	ASNUINT32 i;
+	ASNUINT32 F_Uc_Length = 0;
+	ASNUINT32 F_Uc_Length_temp=0;
+	if (ws->buffer.current[0] <= 127)
+	{
+		F_Uc_Length_temp = *ws->buffer.current;
+		ws->buffer.current +=1;							//move pointer
+	}
+	else
+	{
+		if (ws->buffer.current[0] == 128)
+		{
+			ws->dataSize = -1;
+			ws->buffer.current +=1;	
+			return 0;
+		}
+		F_Uc_Length = ws->buffer.current[0] & 0x7F;	
+		for (i = 1;i<=F_Uc_Length;i++)					
+		{
+			F_Uc_Length_temp <<= 8;
+			F_Uc_Length_temp += ws->buffer.current[i];
+		}
+		ws->buffer.current += F_Uc_Length+1;
+	}	
+	
+	ws->dataSize = F_Uc_Length_temp;
+	return 0;
+}
+
+ASNINT32 ASN1_BER_Enc_Length(ASN1WorkSpace *ws,ASNUINT32L length)
+{
+	ASNINT32 i = 0;
+	ASNINT32 j = 0;
+	ASNUINT8 F_Uc_temp[4];
+	ASNUINT32L F_Ul_length = length;
+	ASNUINT32L F_Ul_length_l = 0;
+	ASNUINT8 F_Uc_rem = (ASNUINT8)F_Ul_length;
+	ASNUINT32L F_Ul_quot = F_Ul_length >> 8;
+//	ws->dataSize = 0;
+	memset(F_Uc_temp,0,4);
+	if (F_Ul_length <= 127)					//check length<=127
+	{
+
+		ASN1_BER_FillBuffer(ws,&F_Uc_rem,1,j);
+/*		ws->buffer.current[j++] = F_Uc_rem;*/
+		ws->buffer.current += 1;
+	}
+	else									
+	{
+		while (F_Ul_quot)					//process encode length
+		{
+			F_Uc_temp[i++] = F_Uc_rem;
+			F_Uc_rem = (ASNUINT8)F_Ul_quot & 0xff;
+			F_Ul_quot = F_Ul_quot >> 8;
+		}
+		if(F_Ul_quot == 0)
+		{
+			F_Uc_temp[i++] = F_Uc_rem;
+		}		
+		F_Ul_length_l = i;
+		ws->buffer.current[j++] = (ASNUINT8)(0x80 | F_Ul_length_l);		
+		for(--i;i >= 0;i--)								// save buf
+		{
+			ASN1_BER_FillBuffer(ws,&F_Uc_temp[i],1,j++);
+/*			ws->buffer.current[j++] = F_Uc_temp[i];*/
+		}
+		ws->buffer.current += F_Ul_length_l+1;
+	}
+	return 0;
+}
+
+
+ASNINT32 ASN_BER_Dec_Length(ASN1WorkSpace *ws)
+{
+	ASNUINT32 i;
+	ASNUINT32 F_Uc_Length = 0;
+	ASNUINT32 F_Uc_Length_temp=0;
+	if (ws->buffer.current[0] <= 127)
+	{
+		F_Uc_Length_temp = *ws->buffer.current;
+		ws->buffer.current +=1;							//move pointer
+	}
+	else
+	{
+		if (ws->buffer.current[0] == 128)
+		{
+			ws->dataSize = -1;
+			ws->buffer.current +=1;	
+			return 0;
+		}
+		F_Uc_Length = ws->buffer.current[0] & 0x7F;	
+		for (i = 1;i<=F_Uc_Length;i++)					
+		{
+			F_Uc_Length_temp <<= 8;
+			F_Uc_Length_temp += ws->buffer.current[i];
+		}
+		ws->buffer.current += F_Uc_Length+1;
+	}	
+	
+	ws->dataSize = F_Uc_Length_temp;
+	return 0;
+}
+
+ASNINT32 ASN1_BER_User_Dec_Length(ASN1WorkSpace *ws,ASNINT32* length)
+{
+	ASNUINT32 i;
+	ASNUINT32 F_Uc_Length = 0;
+	ASNUINT32 F_Uc_Length_temp=0;
+	if (ws->buffer.current[0] <= 127)
+	{
+		F_Uc_Length_temp = *ws->buffer.current;
+		ws->buffer.current +=1;							//move pointer
+	}
+	else
+	{
+		if (ws->buffer.current[0] == 128)
+		{
+			ws->dataSize = -1;
+			*length = -1;
+			ws->buffer.current +=1;	
+			return 0;
+		}
+		F_Uc_Length = ws->buffer.current[0] & 0x7F;	
+		for (i = 1;i<=F_Uc_Length;i++)					
+		{
+			F_Uc_Length_temp <<= 8;
+			F_Uc_Length_temp += ws->buffer.current[i];
+		}
+		ws->buffer.current += F_Uc_Length+1;
+	}	
+	
+	ws->dataSize = F_Uc_Length_temp;
+	*length = F_Uc_Length_temp;
+	return 0;
+}
+
+ASNINT32 ASN1_BER_Enc_StrmEOC(ASN1WorkSpace *ws)
+{
+
+	ASNUINT8 asnzero[2];
+	memset(asnzero,0,2);
+	ASN1_BER_FillBuffer(ws,asnzero,2,0);
+	ws->buffer.current+=2;
+	/*
+	*ws->buffer.current = 0x00;
+	ws->buffer.current++;
+	*ws->buffer.current = 0x00;
+	ws->buffer.current++;
+	*/
+	return 0;
+}
+
+ASNINT32 ASN1_BER_Dec_StrmEOC(ASN1WorkSpace *ws)
+{
+	if (*ws->buffer.current == 0x00 && *(ws->buffer.current+1) == 0x00)
+	{
+		ws->buffer.current+=2;
+	}
+	else
+	{
+		return 0;
+	}	
+	return 1;
+}
+
+ASNINT32 ASN1_BER_Dec_Isloop(ASN1WorkSpace *ws, ASNUINT8 *position, ASNINT32 length)
+{
+	if (-1 == length)
+	{
+		if (!(*ws->buffer.current == 0x00 && *(ws->buffer.current + 1) == 0x00)) return 1;	// END-OF-CONTENTS
+	}
+	else if (ws->buffer.current < position + length) return 1;
+	
+	return 0;
+
+}
+
+ASNINT32 IfFixedLength(ASNINT32 length)
+{
+	return length;
+}
+
+ASNINT32 GetDataLength(ASN1WorkSpace *ws)
+{
+	if (ws == NULL){
+		return -11;
+	}
+	
+	if (ws->buffer.bitOffset != 8){
+		return (ws->buffer.current - ws->buffer.data)+1;
+	}
+	return ws->buffer.current - ws->buffer.data;
+	
+}
+
+ASNINT32 GetDataLength_Per(ASN1WorkSpace *ws)
+{
+	return ws->buffer.current - ws->buffer.data+1;
+}
+
+ASNINT32 GetIndefiniteToLength(ASN1WorkSpace *ws,ASN1WorkSpace *newws)
+{
+	int len;
+	ASNINT8 *p = ws->buffer.data;
+//	ASN1_BER_Dec_OpenType_Loop(ws,0);
+	len = GetDataLength(ws)-4;
+	memmove(newws->buffer.current,p,1);
+	newws->buffer.current++;
+	ASN1_BER_Enc_Length(newws,len);
+	memmove(newws->buffer.current,p+2,len);
+	newws->buffer.current += len;
+	return 0;
+}
+
+ASNINT32 IndefinelenTodefinelen(ASN1WorkSpace *ws)
+{
+	save_length_list SLenList;
+	ASNUINT8* Temp_current = NULL;
+	Temp_current = ws->buffer.current;
+	if (ws == NULL){
+		return -27;
+	}
+	if (ws->buffer.data == ws->buffer.Vdeocd_valid){
+		return -28;
+	}
+	
+	ws->buffer.current = ws->buffer.data;
+	Creat_Len_Init_List(&SLenList);
+
+    if(0>Init_Len_SLenList(ws,&SLenList))
+		return -29;
+    if(Temp_current>ws->buffer.current){
+		return -56;
+	}
+	ws->buffer.current = ws->buffer.data;
+	Indef_Change_def(ws,&SLenList);
+    
+	Destroy_Len_List(&SLenList);
+	return 0;
+
+}
+
+ASNINT32 Init_Len_SLenList(ASN1WorkSpace *ws,save_length_list* LenS)
+{
+	ASNUINT8* tagvalue;
+	ASNUINT8* lenvalue;
+	ASNINT32 level = 0;
+	ASNINT32 indef = 0;
+	save_length_node* pnode;
+
+	Insert_Len_Node(LenS,&pnode);
+
+	tagvalue = ws->buffer.current;
+	ASN1_BER_OpenType_Tag(ws);
+	pnode->T_len = ws->buffer.current - tagvalue;
+	pnode->L_place = ws->buffer.current;//save length place
+	ASN_BER_Dec_Length(ws);
+    if (1<ws->buffer.current-pnode->L_place)
+		pnode->L_indef = ws->buffer.current-pnode->L_place;
+	else
+		pnode->L_indef = 1;
+    indef = ws->dataSize; 
+	lenvalue = ws->buffer.current;
+
+	if (*tagvalue & 0x20)
+	{
+		while (ASN1_BER_Dec_Isloop(ws,lenvalue,indef))
+		{
+			level=Init_Len_SLenList(ws,LenS);
+			if (-1 == level){
+				return -1;
+			}
+			
+			pnode->L_shift = Change_Len(level);
+			pnode->L_vlen =  pnode->L_vlen+level;
+		}
+ 		if ((-1 == indef)  &&      
+			(*ws->buffer.current == 0x00 && *(ws->buffer.current+1) == 0x00)){
+			//if indefinite length and current pointer end flag,current add two 
+			if (0>ASN1_BER_IsWSrange(ws,2)){
+				return -1;
+			}
+ 			ws->buffer.current += 2;
+			//else
+ 			//	reset decode data
+			//Init_Len_SLenList(ws,LenS);
+		}
+
+			
+	}
+
+	else
+	{
+		if (0>ASN1_BER_IsWSrange(ws,ws->dataSize)){
+			return -1;
+		}
+
+		ws->buffer.current += ws->dataSize;
+		/*ws->buffer.current += ws->dataSize;*/
+        pnode->L_vlen = ws->dataSize;
+        pnode->Is_cORp = 1;
+		pnode->L_shift = Change_Len(pnode->L_vlen);
+    	return pnode->T_len+pnode->L_shift+pnode->L_vlen;
+	}
+
+	pnode->L_shift = Change_Len(pnode->L_vlen);
+    return pnode->T_len+pnode->L_shift+pnode->L_vlen;
+}
+
+
+
+ASNINT32 Creat_Len_Init_List(save_length_list *pointer) //creat and init list
+{
+	/**pointer = (ASNList*)malloc(sizeof(ASNList));*/
+	pointer->head = (save_length_node*)malloc(sizeof(save_length_node));
+	pointer->current = pointer->head;
+	if ((NULL == pointer) || (NULL == pointer->head))
+	{
+		asn_printf("Assign Memory Error\n");
+		return -1;
+	}
+
+	pointer->node_number = 0;
+	return 0;
+	
+	
+}
+
+ASNINT32 Insert_Len_Node(save_length_list *pointer ,save_length_node** data) //creat and insert node
+{
+	(*data) = (save_length_node*)malloc(sizeof(save_length_node)); //creat insert node
+	if (NULL == (*data))
+	{
+		return -1;
+	}
+
+	(*data)->Is_cORp = 0;
+	(*data)->L_indef = 0;
+	(*data)->L_place = NULL;
+	(*data)->L_shift = 0;
+	(*data)->L_vlen  = 0;
+	(*data)->T_len   = 0;
+	(*data)->next    = NULL;
+    
+	pointer->current->next = (*data);
+	pointer->current = pointer->current->next;//add node
+	pointer->node_number++;	
+    return 0;
+	
+}
+
+ASNINT32 Delete_Len_Node(save_length_list *pointer) //delete node
+{
+	save_length_node* F_Vd_Temp_Del_Node;
+	F_Vd_Temp_Del_Node = pointer->head->next;
+	pointer->head->next = pointer->head->next->next;
+    free(F_Vd_Temp_Del_Node);
+	pointer->node_number--;
+	return 0;
+	
+}
+
+ASNINT32 Destroy_Len_List(save_length_list *pointer) //destroy list
+{
+	while (0 != pointer->node_number)
+	{
+		Delete_Len_Node(pointer);
+	}
+	free(pointer->head);
+	return 0;
+}
+
+ASNINT32 Change_Len(ASNUINT64 length)
+{
+	if		(0		 <= length && length <= 127)			return 1;
+	else if	(128	 <= length && length <= 255)			return 2;
+	else if (256	 <= length && length <= 65535)			return 3;
+	else if	(65536	 <= length && length <= 1677215)		return 4;
+	else if	(1677216 <= length && length <= 429496729525)	return 5;
+	else return -1;
+}
+
+ASN1_CPPLINK ASNINT32 Indef_Change_def(ASN1WorkSpace *ws,save_length_list* LenS)
+{
+/*	int i,j;*/
+	ASN1WorkSpace Temp_ws;
+	ASN1_INIT_WS_INFO(&Temp_ws);
+	ASN1_RESET_WS_INFO(&Temp_ws,(Temp_ws.buffer.end - Temp_ws.buffer.data)+(ws->buffer.Vdeocd_valid - ws->buffer.data));
+	LenS->current = LenS->head->next;
+
+	while (LenS->current != NULL)
+	{
+		if ((*ws->buffer.current == 0x00 && *(ws->buffer.current+1) == 0x00))
+		{
+			ws->buffer.current+=2;
+			continue;
+		}
+
+		*Temp_ws.buffer.current = *ws->buffer.current;
+
+		ws->buffer.current++;
+		Temp_ws.buffer.current++;
+ 
+		if (LenS->current->L_place == ws->buffer.current)
+		{
+			
+			if (LenS->current->Is_cORp == 1)
+			{
+				memmove(Temp_ws.buffer.current,ws->buffer.current,
+					  (LenS->current->L_vlen+LenS->current->L_shift));
+
+				Temp_ws.buffer.current += (LenS->current->L_vlen+LenS->current->L_shift);
+				ws->buffer.current += (LenS->current->L_vlen+LenS->current->L_shift);
+				LenS->current = LenS->current->next;
+			}
+			else
+			{
+				ASN1_BER_Enc_Length(&Temp_ws,LenS->current->L_vlen);
+				ws->buffer.current += LenS->current->L_indef;
+				LenS->current = LenS->current->next;
+			}
+		}
+		
+	}
+
+	memset(ws->buffer.data,'\0',(ws->buffer.end - ws->buffer.data));
+	memmove(ws->buffer.data,Temp_ws.buffer.data,
+		   (Temp_ws.buffer.current - Temp_ws.buffer.data));
+	
+	ws->buffer.current = ws->buffer.data;
+	ws->buffer.current+= (Temp_ws.buffer.current - Temp_ws.buffer.data);
+	
+	ASN1_Destroy_WORKSPACE(&Temp_ws);
+    return 0;
+}
+/*
+ASNINT32 ASN1_Compute_EnumElement(ASNUINT8 *StringForEnum)
+{
+	ASNINT8 i;
+	ASNUINT32 IntValueLenth = 0;
+
+	for (i=0;i<4;i++)
+	{
+		IntValueLenth <<= 4;
+		IntValueLenth |= StringForEnum[i];
+	}	
+
+	return IntValueLenth;
+}
+
+ASNINT64 ASN1_Compute_IntElement(ASNUINT8 *StringForInt)
+{
+	ASNINT8 i;
+	ASNUINT32 IntValueLenth = 0;
+	
+	for (i=0;i<8;i++)
+	{
+		IntValueLenth <<= 8;
+		IntValueLenth |= StringForInt[i];
+	}	
+	
+	return IntValueLenth;
+}
+*/
+ASN1ConsCheck String_to_CheckStruct(ASNUINT8 **StringDealwith, ASNSTRING *DefaultAlphabet)
+{
+
+	ASN1ConsCheck	 ConsCheckStruct = { NULL, NULL, { 0, 0 } };
+	ASNUINT8		*sp = *StringDealwith;
+	ASNUINT32		 ByteCount = 0;
+
+	/*for int*/
+	ConsCheckStruct.Length[0] = (ASNINT32)Compute_Single_Value(&sp);
+	
+	if (0 != ConsCheckStruct.Length[0]) 
+	{
+		ASNINT32 i = 0;
+		ConsCheckStruct.StringforRange = calloc(ConsCheckStruct.Length[0], 8);
+		for (i = 0; i < ConsCheckStruct.Length[0]; i++)
+			ConsCheckStruct.StringforRange[i] = Compute_Single_Value(&sp);
+	}
+	
+	/*for string*/
+	ConsCheckStruct.Length[1] = (ASNINT32)Compute_Single_Value(&sp);
+	
+	if (0 == ConsCheckStruct.Length[1]) 
+	{
+		if (NULL != DefaultAlphabet) 
+		{
+			ConsCheckStruct.Length[1]			= DefaultAlphabet->nchar;
+			ConsCheckStruct.StringforAlphabet	= DefaultAlphabet->asnstring;
+		}
+	}
+	else ConsCheckStruct.StringforAlphabet = sp;
+
+	return ConsCheckStruct;
+}
+
+ASNINT64 Compute_Single_Value(ASNUINT8 **StringDealwith)
+{
+	ASNUINT32	 i = 0;
+	ASNINT64	 sz = 0;
+	ASNINT8		 IsMinus = 0;
+	ASNUINT32	 ByteCount = 0;
+	ASNUINT8	*sp = *StringDealwith;
+	
+	if (!(sp[i] & 0x80)) sz = sp[i];
+	else
+	{
+		ByteCount = sp[i] & 0x3f;
+		sp++;
+
+		if (sp[i] & 0x80) 
+		{
+			IsMinus = 1;
+
+			for (; i < ByteCount; i++) sp[i] = ~sp[i];
+
+			i--;
+			sp[i] += 1;
+
+			while (0 == sp[i] && i > 0) sp[--i] += 1;
+		}
+		
+		for (i = 0; i < ByteCount; i++)
+		{
+			sz <<= 8;
+			sz |= sp[i];
+		}
+	}
+	*StringDealwith += 1 + ByteCount;
+
+	return IsMinus ? -sz : sz;
+}
+
+ASNINT32 ASN1_Dec_EXT_UNKnow(ASN1WorkSpace *ws)
+{
+	ASNUINT8* tagvalue;
+	ASNUINT8* lenvalue;
+	ASNINT32 level = 0;
+	ASNINT32 indef = 0;
+	
+	tagvalue = ws->buffer.current;
+	ASN1_BER_OpenType_Tag(ws);
+	ASN_BER_Dec_Length(ws);
+
+	if (*tagvalue & 0x20)
+	{
+		lenvalue = ws->buffer.current;
+		while (ASN1_BER_Dec_Isloop(ws,lenvalue,indef)){
+			level=ASN1_Dec_EXT_UNKnow(ws);
+		}
+		if ((-1 == indef)  &&      
+			(*ws->buffer.current == 0x00 && *(ws->buffer.current+1) == 0x00))
+			ws->buffer.current += 2;
+	}
+	else
+	{
+		ws->buffer.current += ws->dataSize;
+		return 0;
+	}
+    return 0;
+}
+
+ASNINT32 ASN1_Dec_Seq_EXT_UNKnow(ASN1WorkSpace *ws,ASNUINT8 *pointer,ASNINT32 lenght)
+{
+	if(-1 == lenght){
+		while(ASN1_BER_Dec_Isloop(ws,NULL,-1)){
+			ASN1_Dec_EXT_UNKnow(ws);
+		}
+	}
+	else{
+		if (ws->buffer.current - pointer == lenght){
+			return 0;
+		}
+		else{
+			ws->buffer.current = pointer+lenght;
+		}
+	}
+	return 0;
+}
+
+ASNINT32 ASN1_BER_IsWSrange(ASN1WorkSpace *ws, ASNINT32 byte_size)
+{
+	if (ws->buffer.current + byte_size > ws->buffer.Vdeocd_valid)
+		return -1;
+	else return 0;
+}
+
+ASNINT32 ASN1_PER_IsWSrange(ASN1WorkSpace *ws, ASNUINT32 byte_size)
+{
+	ASNINT32 temp_byte_size = 0;
+	ASNINT32 temp_length = 0;
+	ASNINT32 temp_bitoffset = ws->buffer.bitOffset;
+
+	if(ws->buffer.bitOffset == 0){
+		temp_length = 1;
+		temp_bitoffset = 8;
+	}
+	else
+		temp_length = 0;
+
+	temp_byte_size = byte_size - temp_bitoffset;
+	temp_length += (temp_byte_size/8);
+	if (byte_size > 8){
+		if (temp_byte_size%8 != 0){
+			temp_length++;
+		}
+	}
+
+	if (ws->buffer.current + temp_length > ws->buffer.Vdeocd_valid){
+		return -1;
+	}
+	else
+		return 0;
+}
+
+ASNINT32 ASN1_XER_IsWSrange(ASN1WorkSpace *ws, ASNINT32 byte_size)
+{
+	if (ws->buffer.current + byte_size > ws->buffer.Vdeocd_valid){
+		return -1;
+	}
+	else
+		return 0;
+}
+
+ASNINT32 ASN1_BER_IsWSrange_IndefinelenTodefinelen(ASN1WorkSpace *ws, ASNINT32 byte_size)
+{
+	if (ws->buffer.current + byte_size > ws->buffer.end){
+		return -1;
+	}
+	else
+		return 0;
+}

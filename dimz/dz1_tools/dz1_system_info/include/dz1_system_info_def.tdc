@@ -1,0 +1,8 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct Dz1SystemInfo
+	{
+		int32		dummy;
+	} Dz1SystemInfo;
+}

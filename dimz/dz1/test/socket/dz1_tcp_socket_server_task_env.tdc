@@ -1,0 +1,31 @@
+message set definition
+{
+	include libdz1_support;
+	typedef native Dz1SocketFifo from dz1_socket_fifo;
+	
+	typedef struct ReceiverEntry
+	{
+		Dz1SockAddr			*peer;		// is key
+		Dz1SockAddr			*local;		// is key
+		Dz1TcpClientSocket	*sock;
+		uint32				 rcvr;
+		Dz1SocketFifo		*tx;
+	} ReceiverEntry;					// with api dump, compare
+	
+	typedef unique table ReceiverList(find, extract)	[ReceiverEntry];
+
+	typedef struct AcceptorEntry
+	{
+		uint16				 port;		// is key
+		uint32				 acceptor;
+	} AcceptorEntry;					// with api dump, compare
+	
+	typedef unique table AcceptorList(find, extract) [AcceptorEntry];
+	
+	typedef struct Dz1TcpSocketServerTaskEnv
+	{
+		void				*tSelf;
+		AcceptorList		*acceptors;	// is notarg
+		ReceiverList		*receivers;	// is notarg
+	} Dz1TcpSocketServerTaskEnv;		// with api dump
+}

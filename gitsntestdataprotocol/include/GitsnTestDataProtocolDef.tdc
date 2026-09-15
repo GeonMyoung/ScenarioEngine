@@ -1,0 +1,17 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef struct GitsnTestDataFrame
+	{
+		uint16				 preamble;			-- 0xAA55
+		uint16				 sequence;			
+		uint8				 frameType;			-- 0b00: normal frame, 0b11: fragment frame, 0b10: fragment last frame
+		uint16				 size;				-- 14 bit
+		uint8				 channelNum;		-- cnPort ∞Ì¡§
+		Dz1Binary			*payload;			-- 1017 byte			-- in case prj4, uper encoding of eam
+	} GitsnTestDataFrame;	// with api dump, clone
+
+	typedef array GitsnTestDataFrames(extract, gethead) [GitsnTestDataFrame];
+
+}

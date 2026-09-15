@@ -1,0 +1,26 @@
+message set definition
+{
+	include Iso14827TestHelperDef;
+	include dz1_asn1_support;
+
+	typedef native Iso14827TestMsgStructAPI from Iso14827TestMsgUtil;
+
+	typedef struct Iso14827TestHelperArg
+	{
+		
+
+		void*								tMain;
+		void*								t14827;			
+		TString								testScenario;
+
+		Iso14827TestMsgStructAPI			*msg_api;			// is ref
+
+		uint8								codec_bits;			
+		uint16								hb_dur_s;
+		uint8								rsp_time_s;
+		Dz1Asn1Codec						initial_codec;
+
+		Iso14827TestHelperException exceptionProc;
+		void *exceptionArg;
+	} Iso14827TestHelperArg;
+}

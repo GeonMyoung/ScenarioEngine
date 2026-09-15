@@ -1,0 +1,246 @@
+message set definition
+{
+	include Dz1JsonDef;
+	
+	typedef struct NewLineMap
+	{
+		Dz1JsonNewLine				 mode;
+		TString						 str;
+		size_t						 len;
+	} NewLineMap;
+
+	typedef unique table Dz1JsonSpecRefList(find, extract) [&Dz1JsonSpecEntry];
+	typedef struct Dz1JsonSpecUndefinedEntry
+	{
+		TString								 name;				// is key
+		Dz1JsonSpecRefList					*refs;				// is notarg
+	} Dz1JsonSpecUndefinedEntry;								// with api userdump, compare
+	typedef unique table Dz1JsonSpecUndefinedList(find, extract) [Dz1JsonSpecUndefinedEntry];
+
+	-------------------------------------------------------------------------------
+	-- Ingress Fifo
+	-------------------------------------------------------------------------------
+	typedef native Dz1JsonConv from Dz1JsonConv;	
+	typedef struct Dz1JsonFifoUngetE
+	{
+		uint32								 c32;
+		struct Dz1JsonFifoUngetE			*next;				// is cascadedump
+	} Dz1JsonFifoUngetE;
+	
+	typedef struct Dz1JsonFifo
+	{
+		str									 ingress_charset;
+		Dz1JsonConv							*conv;
+		Dz1ElasticBuf						*ingress_buf;
+		Dz1Stream							*pop_stream;
+		Dz1JsonFifoUngetE					*ungetc_head;		// is notarg
+	} Dz1JsonFifo;												// with api dump
+
+	-------------------------------------------------------------------------------
+	-- Number Lexing Mode
+	-------------------------------------------------------------------------------
+	typedef enum Dz1JsonNumberParse
+	{
+		undef,
+		decimal,
+		exponent,
+		exp_digit,
+		hex,
+		oct,
+		binary
+	} Dz1JsonNumberParse;
+	
+	-------------------------------------------------------------------------------
+	-- Lexing State
+	-------------------------------------------------------------------------------
+	typedef enum Dz1JsonLexerState
+	{
+		no_lexing,
+		number_lexing,
+		string_lexing,
+		symbol_lexing
+	} Dz1JsonLexerState;
+	
+	-------------------------------------------------------------------------------
+	-- Lexer
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonLexer
+	{
+		Dz1JsonLexerState					 state;				// is notarg
+		uint32								 flags;				// is notarg
+		
+		Dz1ElasticBuf						*buf;
+		Dz1JsonToken						*token;				// is notarg
+
+		uint32								 temp;				// is notarg
+		uint32								 t_len;				// is notarg
+
+		uint32								 dbgs;				// is notarg
+	} Dz1JsonLexer;												// with api dump
+
+
+
+
+
+
+
+	-------------------------------------------------------------------------------
+	-- Primitive Stack	
+	-------------------------------------------------------------------------------
+	typedef enum Dz1JsonStackPrimitiveState
+	{
+		init
+	} Dz1JsonStackPrimitiveState;
+	
+	typedef struct Dz1JsonStackPrimitive
+	{
+		Dz1JsonStackPrimitiveState			 state;
+	} Dz1JsonStackPrimitive;									// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Struct Stack	
+	-------------------------------------------------------------------------------
+	typedef enum Dz1JsonStackStructState
+	{
+		init,
+		parsing_lstart,		-- {
+		parsing_pair,
+		parsing_comma,
+		parsing_lend		-- }
+	} Dz1JsonStackStructState;
+	
+	typedef struct Dz1JsonStackStruct
+	{
+		Dz1JsonStackStructState				 state;
+	} Dz1JsonStackStruct;										// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Union Stack	
+	-------------------------------------------------------------------------------
+	typedef enum Dz1JsonStackUnionState
+	{
+		init,
+		parsing_lstart,		-- {
+		parsing_pair,
+		parsing_lend		-- }
+	} Dz1JsonStackUnionState;
+	
+	typedef struct Dz1JsonStackUnion
+	{
+		Dz1JsonStackUnionState				 state;
+	} Dz1JsonStackUnion;										// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Array Stack	
+	-------------------------------------------------------------------------------
+	typedef enum Dz1JsonStackArrayState
+	{
+		init,
+--		parsing_lstart,		-- {
+		parsing_bstart,		-- [
+		parsing_object,		-- { ... }
+		parsing_comma,		-- ,
+		parsing_bend		-- ]
+--		parsing_lend		-- }
+	} Dz1JsonStackArrayState;
+	
+	typedef struct Dz1JsonStackArray
+	{
+		Dz1JsonStackArrayState				 state;
+	} Dz1JsonStackArray;										// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Pair Stack	
+	-------------------------------------------------------------------------------	
+	typedef enum Dz1JsonStackPairState
+	{
+		init,
+		parsing_name,
+		parsing_colon,
+		parsing_object
+	} Dz1JsonStackPairState;
+		
+	typedef struct Dz1JsonStackPair
+	{
+		Dz1JsonStackPairState				 state;
+		Dz1JsonSpecEntry					*par_type;			// is ref
+		void								*par_ptr;
+	} Dz1JsonStackPair;											// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Object Stack	(Primitive wrapper)
+	-------------------------------------------------------------------------------	
+	typedef enum Dz1JsonStackObjState
+	{
+		init,
+		parsing_lstart,						-- '{'
+		parsing_object,
+		parsing_lend						-- '}'
+	} Dz1JsonStackObjState;
+	
+	typedef struct Dz1JsonStackObj
+	{
+		Dz1JsonStackObjState				 state;				// is notarg
+	} Dz1JsonStackObj;											// with api dump, clone
+	-------------------------------------------------------------------------------
+	-- Stack Data
+	-------------------------------------------------------------------------------
+	typedef union Dz1JsonStackData
+	{
+		Dz1JsonStackPrimitive				*pr;
+		Dz1JsonStackStruct					*st;
+		Dz1JsonStackUnion					*un;
+		Dz1JsonStackArray					*ar;
+		Dz1JsonStackPair					*pair;
+		Dz1JsonStackObj						*obj;
+	} Dz1JsonStackData;											// with api dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Stack
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonStack
+	{
+		Dz1JsonStackData					*data;
+		
+		Dz1JsonVarBind						*dst_var;
+		Dz1JsonVarBind						*ret_var;			// is notarg
+
+		struct Dz1JsonStack					*next;				// is notarg, nodump
+	} Dz1JsonStack;												// with api userdump
+
+
+
+
+	-------------------------------------------------------------------------------
+	-- Output Entry
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonOutputEntry
+	{
+		struct Dz1JsonOutputEntry			*next;				// is cascadedump
+		void								*result;
+		Dz1JsonObjDelF						 result_del;
+	} Dz1JsonOutputEntry;										// with api userdel, dump, clone
+	
+	typedef struct Dz1JsonOutputFifo
+	{
+		Dz1JsonOutputEntry					*head;				// is notarg
+		Dz1JsonOutputEntry					*tail;				// is notarg, nodump, ref
+	} Dz1JsonOutputFifo;										// with api userdel, dump, clone
+	
+	-------------------------------------------------------------------------------
+	-- Parser
+	-------------------------------------------------------------------------------
+	typedef struct Dz1JsonEnv
+	{
+		Dz1JsonLexer						*lexer;		
+		Dz1JsonSpec							*spec;				// is ref, nodump
+		Dz1JsonSpecEntry					*root_spe;			// is ref
+		
+		Dz1JsonFifo							*ingress;
+		Dz1JsonOutputFifo					*egress;
+		Dz1JsonStack						*stk;				// is notarg, cascadedump
+		
+		Dz1JsonConv							*stringify_conv;
+		Dz1ElasticBuf						*stringify_buf;		// is notarg
+	} Dz1JsonEnv;												// with api dump
+}

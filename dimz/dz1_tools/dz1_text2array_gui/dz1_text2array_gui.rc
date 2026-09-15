@@ -1,0 +1,243 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\dz1_text2array_gui.rc2""  // Microsoft Visual C++에서 편집되지 않은 리소스\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\dz1_text2array_gui.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DZ1_TEXT2ARRAY_GUI_DIALOG DIALOGEX 0, 0, 319, 200
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_SRC,50,15,232,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "...",IDC_BUTTON_SRC,285,15,26,12
+    COMBOBOX        IDC_COMBO_SRC_MODE,50,28,57,78,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_SRC_TEXT_ATTR,50,42,57,78,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_VARIABLE,50,76,232,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO_OUT_VAR_MODE,50,89,84,78,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OUT_DATA_MODE,50,103,84,78,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_DST,50,135,231,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "...",IDC_BUTTON_DST,285,135,26,12,WS_DISABLED
+    COMBOBOX        IDC_COMBO_DST_FORMAT,50,148,65,78,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DST_FILES,50,161,65,78,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "Convert",IDC_BUTTON_CONV,280,184,37,14,WS_DISABLED
+    RTEXT           "입력 파일",IDC_STATIC,5,15,41,12,SS_CENTERIMAGE
+    RTEXT           "출력 경로",IDC_STATIC,5,135,41,12,SS_CENTERIMAGE
+    RTEXT           "변수 명",IDC_STATIC,5,76,41,12,SS_CENTERIMAGE
+    GROUPBOX        "Source",IDC_STATIC,2,2,315,59
+    GROUPBOX        "Generation",IDC_STATIC,2,64,315,57
+    RTEXT           "파일 특성",IDC_STATIC,5,28,41,12,SS_CENTERIMAGE
+    RTEXT           "파일 내용",IDC_STATIC,5,42,41,12,SS_CENTERIMAGE
+    RTEXT           "변수 생성",IDC_STATIC,5,89,41,12,SS_CENTERIMAGE
+    RTEXT           "데이터 출력",IDC_STATIC,5,103,41,12,SS_CENTERIMAGE
+    GROUPBOX        "Output",IDC_STATIC,2,125,315,55
+    RTEXT           "출력 포멧",IDC_STATIC,5,148,41,12,SS_CENTERIMAGE
+    RTEXT           "출력 파일",IDC_STATIC,5,161,41,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_SOURCE,145,148,136,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    RTEXT           "Source",IDC_STATIC,121,148,22,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_HEADER,145,161,136,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    RTEXT           "Header",IDC_STATIC,121,161,22,12,SS_CENTERIMAGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "dz1_text2array_gui.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "dz1_text2array_gui.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "변환", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DZ1_TEXT2ARRAY_GUI_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 317
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 198
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DZ1_TEXT2ARRAY_GUI_DIALOG DLGINIT
+BEGIN
+    IDC_COMBO_SRC_MODE, 0x403, 11, 0
+0xd8c5, 0xbabd, 0xaec6, 0xc4c6, 0xcfc0, "\000" 
+    IDC_COMBO_SRC_MODE, 0x403, 13, 0
+0xd9b9, 0xccc0, 0xcab3, 0xaeb8, 0xc4c6, 0xcfc0, "\000" 
+    IDC_COMBO_SRC_TEXT_ATTR, 0x403, 12, 0
+0xf8bc, 0xf6bc, 0xc520, 0xbdd8, 0xc6ba, 0x00ae, 
+    IDC_COMBO_SRC_TEXT_ATTR, 0x403, 12, 0
+0x3631, 0xf8c1, 0xf6bc, 0xb420, 0xc7fd, 0x00c1, 
+    IDC_COMBO_OUT_VAR_MODE, 0x403, 12, 0
+0xdcb4, 0xcfc0, 0xc620, 0xc0f7, 0xc5ce, 0x00cd, 
+    IDC_COMBO_OUT_VAR_MODE, 0x403, 19, 0
+0xf7c6, 0xcec0, 0xcdc5, 0xe8b9, 0xadbf, 0xc128, 0xb4d9, 0xc0dc, 0x29a7, 
+"\000" 
+    IDC_COMBO_OUT_VAR_MODE, 0x403, 21, 0
+0xf7c6, 0xcec0, 0xcdc5, 0xe8b9, 0xadbf, 0xba28, 0xb7ed, 0xb4b0, 0xc0dc, 
+0x29a7, "\000" 
+    IDC_COMBO_OUT_DATA_MODE, 0x403, 7, 0
+0xaeb9, 0xdac0, 0xadbf, "\000" 
+    IDC_COMBO_OUT_DATA_MODE, 0x403, 3, 0
+0xaab0, "\000" 
+    IDC_COMBO_DST_FORMAT, 0x403, 4, 0
+0x4f44, 0x0053, 
+    IDC_COMBO_DST_FORMAT, 0x403, 5, 0
+0x4e55, 0x5849, "\000" 
+    IDC_COMBO_DST_FILES, 0x403, 12, 0
+0x6548, 0x6461, 0x7265, 0x4f20, 0x6c6e, 0x0079, 
+    IDC_COMBO_DST_FILES, 0x403, 12, 0
+0x6f53, 0x7275, 0x6563, 0x4f20, 0x6c6e, 0x0079, 
+    IDC_COMBO_DST_FILES, 0x403, 14, 0
+0x6f53, 0x7275, 0x6563, 0x482b, 0x6165, 0x6564, 0x0072, 
+    IDC_COMBO_DST_FILES, 0x403, 14, 0
+0x6548, 0x6461, 0x7265, 0x5320, 0x6174, 0x6974, 0x0063, 
+    0
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\dz1_text2array_gui.rc2"  // Microsoft Visual C++에서 편집되지 않은 리소스
+#include "afxres.rc"         // 표준 구성 요소
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

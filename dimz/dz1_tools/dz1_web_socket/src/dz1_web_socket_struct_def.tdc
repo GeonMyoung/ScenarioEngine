@@ -1,0 +1,13 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_web_socket_def;
+
+	typedef struct Dz1WebSockInitInfo
+	{	-- do not make dump api
+		Dz1WebSocketScheme			 scheme;
+		str							 host_u8;
+		uint16						 port;
+		str							 path_u8;
+	} Dz1WebSockInitInfo;
+}

@@ -1,0 +1,15 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct Dz1File2SrcDataEntry
+	{
+		Dz1Binary				*block;
+	} Dz1File2SrcDataEntry;					// with api dump
+	
+	typedef array Dz1File2SrcDataList(count, gethead) [Dz1File2SrcDataEntry];
+	
+	typedef struct Dz1File2SrcData
+	{
+		Dz1File2SrcDataList		*list;		// is notarg
+	} Dz1File2SrcData;						// with api dump
+}

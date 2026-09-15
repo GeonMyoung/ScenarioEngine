@@ -1,0 +1,8 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef native Dz1Task					from dz1_task;
+	typedef native Dz1TaskSigMsg			from dz1_task;
+	typedef native static Dz1TaskProcStatus	from dz1_task;
+}

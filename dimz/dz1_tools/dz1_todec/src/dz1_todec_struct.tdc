@@ -1,0 +1,157 @@
+message set definition
+{
+	include dz1_todecDef;
+	typedef native ObjectInfo from Dz1TdcInfoModule;
+
+	--------------------------------------------------------------------------------
+	-- Nesting Target's Pointer Node Entry & List
+	--------------------------------------------------------------------------------
+	typedef struct PointerNodeEntry
+	{
+		uint32						 idx;			// is key
+		ObjectInfo					*obj;			// is ref
+		str							 name;
+	} PointerNodeEntry;								// with api dump, clone, compare
+	typedef unique table PointerNodeList(find, extract) [PointerNodeEntry];
+	
+	--------------------------------------------------------------------------------
+	-- Primitive type Sub-Byte
+	--------------------------------------------------------------------------------
+	typedef struct StreamElementSimplePartial
+	{	-- %%% = (byte_tp)((@@@ >> shf) & mask)
+		-- $$$ = (dst_tp)((byte & mask) << shf))
+		str							 byte_tp;
+		Dz1TodecUnitSize			 byte_sz;
+		str							 dst_tp;
+		str							 mask;
+		int32						 shf;
+	} StreamElementSimplePartial;					// with api dump, clone
+	
+	--------------------------------------------------------------------------------
+	-- Stream Element(1:1) Publish Method
+	--------------------------------------------------------------------------------
+	typedef union StreamElementSimpleMethod
+	{
+		uint32						*def;
+		StreamElementSimplePartial	*part;
+		Dz1TodecRestrictDescr		*restricted;
+		str							 alter;
+	} StreamElementSimpleMethod;					// with api dump, clone
+	
+	typedef struct StreamElementVariable
+	{
+		ObjectInfo					*target;		// is ref
+		ObjectInfo					*origin;		// is ref
+		ObjectInfo					*mother;		// is ref
+		
+		PointerNodeList				*ptrs;			// is notarg
+		str							 variable;
+		bool						 var_is_ptr;
+		str							 instance;
+	} StreamElementVariable;						// with api dump, clone
+	
+	--------------------------------------------------------------------------------
+	-- Simple Stream Element(1:1)
+	--------------------------------------------------------------------------------
+	typedef struct StreamElementSimple
+	{
+		StreamElementVariable		*var;
+		StreamElementSimpleMethod	*met;
+		Dz1TodecUnitSize			 nul_flag;
+		str							 postfix;
+	} StreamElementSimple;							// with api dump, clone
+	
+	--------------------------------------------------------------------------------
+	-- Conditional Stream Element(1:1)
+	--------------------------------------------------------------------------------
+	typedef struct StreamElementConditional
+	{
+		StreamElementVariable		*var;
+		str							 decider;
+		StreamElementSimpleMethod	*met;
+		str							 postfix;
+	} StreamElementConditional;						// with api dump, clone
+
+	--------------------------------------------------------------------------------
+	-- Complex Stream Element bit descr
+	--------------------------------------------------------------------------------
+	typedef struct StreamElementBitInfo
+	{
+		StreamElementVariable		*var;
+		Dz1TodecBitDescr			*met;
+	} StreamElementBitInfo;							// with api dump, clone
+	
+	--------------------------------------------------------------------------------
+	-- Complex Stream Element bit Entry & List
+	--------------------------------------------------------------------------------
+	typedef union StreamElementBit
+	{
+		StreamElementBitInfo		*data;
+		uint8						 pad;
+	} StreamElementBit;								// with api dump, clone
+	typedef array StreamElementBits [StreamElementBit];
+	
+	--------------------------------------------------------------------------------
+	-- Complex Stream Element(1:n)
+	--------------------------------------------------------------------------------
+	typedef struct StreamElementComplex
+	{
+		Dz1TodecUnitSize			 stream_sz;
+		StreamElementBits			*seq;			// is notarg
+	} StreamElementComplex;							// with api dump, clone
+	
+	--------------------------------------------------------------------------------
+	-- Stream Element
+	--------------------------------------------------------------------------------
+	typedef union StreamElementInfo
+	{
+		StreamElementComplex		*complex;
+		StreamElementSimple			*simple;
+		StreamElementConditional	*conditional;
+		uint16						 pad;
+		Dz1Binary					*value;
+		StreamElementVariable		*omit;
+	} StreamElementInfo;							// with api dump, clone
+	typedef array StreamElementList [StreamElementInfo];
+	
+	--------------------------------------------------------------------------------
+	-- Union Property
+	--------------------------------------------------------------------------------
+	typedef struct StreamObjectAttrUnion
+	{
+		StreamElementSimple			*pr;
+	} StreamObjectAttrUnion;						// with api dump, clone
+
+	--------------------------------------------------------------------------------
+	-- Array Property
+	--------------------------------------------------------------------------------
+	typedef struct StreamObjectAttrArray
+	{
+		StreamElementSimple			*cnt;
+		StreamElementSimple			*etr;			-- entry method
+		str							 postfix;
+	} StreamObjectAttrArray;						// with api dump, clone
+	
+	--------------------------------------------------------------------------------
+	-- Object Property
+	--------------------------------------------------------------------------------
+	typedef union StreamObjectAttr
+	{
+		uint32						*st;
+		StreamObjectAttrUnion		*un;			-- union present
+		StreamObjectAttrArray		*ar;			-- array count
+	} StreamObjectAttr;								// with api dump, clone
+	
+	--------------------------------------------------------------------------------
+	-- Codec Stream
+	--------------------------------------------------------------------------------
+	typedef struct StreamInfo
+	{
+		uint32						 read_var;
+		uint32						 write_var;
+		StreamObjectAttr			*attr;
+		StreamElementList			*seq;			// is notarg
+	} StreamInfo;									// with api dump, clone
+	
+	typedef array StreamList [StreamInfo];
+}

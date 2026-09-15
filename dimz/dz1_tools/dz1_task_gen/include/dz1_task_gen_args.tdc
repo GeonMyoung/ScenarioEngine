@@ -1,0 +1,130 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef enum Dz1GenTextMode
+	{
+		DOS,
+		UNIX
+	} Dz1GenTextMode;
+	
+	typedef enum Dz1GenTarget
+	{
+		StaticLibrary,
+		Task
+	} Dz1GenTarget;
+
+	typedef enum ProjectVcConf
+	{
+		Debug,
+		DebugDLL,
+		Release,
+		ReleaseDLL
+	} ProjectVcConf;
+	
+	typedef enum Dz1TaskGenEndian
+	{
+		Little,
+		Big
+	} Dz1TaskGenEndian;
+
+	typedef enum GenArgs2Naming
+	{
+		canonical,
+		underscore
+	} GenArgs2Naming;
+
+	typedef enum GenArgs2VisualStudioVer
+	{
+		vc71,
+		vc90,
+		vs2015,
+		vs2017,
+		vs2019,
+		vs2022
+	} GenArgs2VisualStudioVer;
+
+	typedef enum GenArgs2VisualStudioVerSupport
+	{
+		vc90	= "GenArgs2VisualStudioVer_vc90",
+		vs2022	= "GenArgs2VisualStudioVer_vs2022"
+	} GenArgs2VisualStudioVerSupport;
+
+	--------------------------------------------------------------------------------
+	-- Generate Args 2 Visual Studio Project
+	--------------------------------------------------------------------------------
+	typedef struct GenArgs2VisualStudioEntry
+	{
+		GenArgs2VisualStudioVer				 ver;					// is key
+		TString								 middle_path;						-- middle path which from root_abs to proj file path
+		TString								 proj_file_name;
+		TString								 proj_guid;
+	} GenArgs2VisualStudioEntry;									// with api dump, clone, compare
+	typedef unique table GenArgs2VisualStudioList(find, extract, count) [GenArgs2VisualStudioEntry];
+
+	--------------------------------------------------------------------------------
+	-- Generate Args 2 Library
+	--------------------------------------------------------------------------------
+	typedef struct GenArgs2LibraryEntry
+	{
+		TString								 name;					// is key
+		TString								 path_root_abs;
+		uint32								 order;
+		TString								 root2inc_path;
+		TString								 root2lib_path;
+		GenArgs2VisualStudioList			*projects;				// is notarg
+	} GenArgs2LibraryEntry;											// with api dump, compare, clone
+	typedef unique table GenArgs2LibraryList(find, extract, count) [GenArgs2LibraryEntry];
+	typedef unique index GenArgs2LibraryRefIndex(gettail) [&GenArgs2LibraryEntry(order)];
+
+	typedef func GenArgs2LibraryEntry	*GenArgs2LibraryInfoFindF(struct GenArgs2LibraryInfo *list, GenArgs2LibraryEntry *key);
+	typedef func Dz1Error				 GenArgs2LibraryInfoAddF(struct GenArgs2LibraryInfo *list, GenArgs2LibraryEntry *node);
+	typedef func void					 GenArgs2LibraryInfoRemoveF(struct GenArgs2LibraryInfo *list, GenArgs2LibraryEntry *key);
+	typedef func GenArgs2LibraryEntry	**GenArgs2LibraryInfoArrayF(struct GenArgs2LibraryInfo *list, uint32 *cnt, Dz1Error *err);
+
+	typedef struct GenArgs2LibraryInfo
+	{
+		GenArgs2LibraryList					*table;					// is notarg	-- 모든 라이브러리
+		GenArgs2LibraryRefIndex				*inorder;				// is notarg	-- 순서
+
+		GenArgs2LibraryInfoAddF				 add;					// is notarg
+		GenArgs2LibraryInfoRemoveF			 remove;				// is notarg
+		GenArgs2LibraryInfoFindF			 find;					// is notarg
+		GenArgs2LibraryInfoFindF			 extract;				// is notarg
+		GenArgs2LibraryInfoArrayF			 get_array;				// is notarg
+	} GenArgs2LibraryInfo;											// with api usernew, dump, clone
+
+	--------------------------------------------------------------------------------
+	-- Generate Args 2 Visual Studio Config
+	--------------------------------------------------------------------------------
+	typedef constant DZ1_TASK_GEN_SOLUTION	0x80000000;
+	typedef constant DZ1_TASK_GEN_VC90		0x00000001;
+	typedef constant DZ1_TASK_GEN_VS2022	0x00000002;
+
+	typedef struct GenArgs2VisualStudio
+	{
+		TString								 pthread_root;
+		uint32								 gen_project;			-- bit flag
+	} GenArgs2VisualStudio;											// with api dump, clone
+
+	--------------------------------------------------------------------------------
+	-- Generate Args 2
+	--------------------------------------------------------------------------------
+	typedef struct GenArgs2
+	{
+		TString								 gen_parent_path;
+		Dz1GenTarget						 gen_target_type;		-- task or lib
+		TString								 gen_target_name;		-- AaaBbbCcc or aaa_bbb_ccc
+		bool								 gen_test_main;
+		bool								 gen_makefile;
+		GenArgs2VisualStudio				*gen_studios;
+
+		Dz1GenTextMode						 txt_mode;				-- CR or CRLF
+		Dz1TaskGenEndian					 endian;				-- little or 
+		GenArgs2Naming						 name_rule;				-- 대소문자를 사용한 붙여쓰기, 언더바를 이용한 띄어쓰기
+
+		TString								 codeconv_root;
+		TString								 dimz_root;
+		GenArgs2LibraryInfo					*libraries;
+	} GenArgs2;
+}

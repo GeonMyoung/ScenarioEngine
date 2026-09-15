@@ -1,0 +1,58 @@
+message set definition
+{
+	include libdz1_support;
+	typedef enum Dz1SocketReceierBehavior
+	{
+		Dz1SocketReceierBehavior_continue,
+		Dz1SocketReceierBehavior_term,
+		Dz1SocketReceierBehavior_max
+	} Dz1SocketReceierBehavior;
+	
+	typedef func Dz1Error Dz1TcpSocketReceiverInitFunc(void **ret, void *userParam,
+													   Dz1SockAddr *peer,
+													   Dz1SockAddr *local,
+													   Dz1TcpClientSocket *s);
+													   
+	typedef func Dz1Error Dz1UdpSocketReceiverInitFunc(void **ret, void *userParam,
+													   Dz1SockAddr *local,
+													   Dz1UdpSocket *s);
+
+	-- Issue Dz1*SocketReceiverForwardFunc when Receiver got data from socket
+	typedef func Dz1SocketReceierBehavior Dz1TcpSocketReceiverForwardFunc(void *uArg, void *uRsc,
+																		  Dz1SockAddr *peer,
+																		  Dz1SockAddr *local,
+																		  Dz1TcpClientSocket *s,
+																		  uint8 *data, size_t size,
+																		  Dz1Error *errp);
+																		  
+	typedef func Dz1SocketReceierBehavior Dz1UdpSocketReceiverForwardFunc(void *uArg, void *uRsc,
+																		  Dz1SockAddr *peer,
+																		  Dz1SockAddr *local,
+																		  Dz1UdpSocket *s,
+																		  uint8 *data, size_t size,
+																		  Dz1Error *errp);
+
+	-- Issue Dz1*SocketReceiverTimeoutFunc when Receiver got timeout
+	typedef func Dz1SocketReceierBehavior Dz1TcpSocketReceiverTimeoutFunc(void *uArg, void *uRsc,
+																		  Dz1SockAddr *peer,
+																		  Dz1SockAddr *local,
+																		  Dz1TcpClientSocket *s,
+																		  Dz1Error *errp);
+																		  
+	typedef func Dz1SocketReceierBehavior Dz1UdpSocketReceiverTimeoutFunc(void *uArg, void *uRsc,
+																		  Dz1SockAddr *local,
+																		  Dz1UdpSocket *s,
+																		  Dz1Error *errp);
+
+	-- Issue Dz1*SocketReceiverExceptionFunc when Receiver got exception
+	typedef func void Dz1TcpSocketReceiverExceptionFunc(void *uArg, void *uRsc,
+														Dz1SockAddr *peer,
+														Dz1SockAddr *local,
+													    Dz1TcpClientSocket *s,
+													    Dz1Error *reason);
+													    
+	typedef func void Dz1UdpSocketReceiverExceptionFunc(void *uArg, void *uRsc,
+														Dz1SockAddr *local,
+														Dz1UdpSocket *s,
+														Dz1Error *reason);
+}

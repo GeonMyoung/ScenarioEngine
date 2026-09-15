@@ -1,0 +1,8 @@
+message set definition
+{
+	include GitsnDsrcEmulatorDef;
+	typedef struct GitsnDsrcEmulatorMsgDefault
+	{
+		uint32 *dummy;
+	} GitsnDsrcEmulatorMsgDefault;					// with api dump
+}

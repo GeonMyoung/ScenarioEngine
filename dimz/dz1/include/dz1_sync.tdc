@@ -1,0 +1,10 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef struct Dz1Sync
+	{
+		Dz1Mutex			lock;
+		Dz1Cond				cond;
+	} Dz1Sync;						
+}

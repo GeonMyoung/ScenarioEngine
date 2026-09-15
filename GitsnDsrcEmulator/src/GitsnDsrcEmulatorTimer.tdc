@@ -1,0 +1,8 @@
+message set definition
+{
+	include GitsnDsrcEmulatorDef;
+	typedef struct GitsnDsrcEmulatorTimer
+	{
+		uint32 id; // is key
+	} GitsnDsrcEmulatorTimer; // with api dump, compare
+}

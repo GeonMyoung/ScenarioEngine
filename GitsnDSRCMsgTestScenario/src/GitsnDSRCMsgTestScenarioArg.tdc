@@ -1,0 +1,11 @@
+message set definition
+{
+	include GitsnDSRCMsgTestScenarioDef;
+	typedef struct GitsnDSRCMsgTestScenarioArg
+	{
+		void *tMain;
+		TString testScenario;
+		GitsnDSRCMsgTestScenarioException exceptionProc;
+		void *exceptionArg;
+	} GitsnDSRCMsgTestScenarioArg;
+}

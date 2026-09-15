@@ -1,0 +1,338 @@
+////////////////////////////////////////////////////////////////////////////////
+#include <dz1_time.h>
+#include <dz1_thread_stdio.h>
+#include <dz1_fifo.h>
+#include <dz1_ordered_fifo.h>
+#include <dz1_aatree.h>
+////////////////////////////////////////////////////////////////////////////////
+
+#include "Dz1ParserUtilDef.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1ParserUtilEnvEntry
+Dz1ParserUtilEnvEntry *Dz1ParserUtilEnvEntry_new(u32_t parserID, void *env, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1ParserUtilEnvEntry *__internal_ret = (Dz1ParserUtilEnvEntry *)Dz1Calloc(sizeof(Dz1ParserUtilEnvEntry), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(Dz1ParserUtilEnvEntry_delAndSetNull, (void *)&__internal_ret);
+		
+		__internal_ret->parserID = parserID;
+		__internal_ret->env = env;
+		ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1ParserUtilEnvEntry_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+bool_t Dz1ParserUtilEnvEntry_copy(Dz1ParserUtilEnvEntry *dst, Dz1ParserUtilEnvEntry *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (dst == NULL || src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else
+	{
+		dst->parserID = src->parserID;
+		dst->env = src->env;
+		ERR_CLEAR(errp);
+	}
+	return ERR_PROBE(errp) ? FALSE : TRUE;
+}
+
+Dz1ParserUtilEnvEntry *Dz1ParserUtilEnvEntry_clone(Dz1ParserUtilEnvEntry *src, Dz1Error *err)
+{
+	Dz1ParserUtilEnvEntry *dst = NULL;
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	if (src == NULL) { ERR_SET_OUT(errp, EINVAL); }
+	else if ((dst = (Dz1ParserUtilEnvEntry *)Dz1Calloc(sizeof(Dz1ParserUtilEnvEntry), 1, errp)) == NULL) { ERR_OUT(errp); }
+	else
+	{
+		pthread_cleanup_push(Dz1ParserUtilEnvEntry_delAndSetNull, (void *)&dst);
+		if (Dz1ParserUtilEnvEntry_copy(dst, src, errp) == FALSE) ERR_SET_OUT(errp, EINVAL);
+		else ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1ParserUtilEnvEntry_delAndSetNull, (void *)&dst);
+	}
+	return dst;
+}
+
+void Dz1ParserUtilEnvEntry_purge(Dz1ParserUtilEnvEntry *p)
+{
+	if (p == NULL) return;
+}
+
+void Dz1ParserUtilEnvEntry_del(Dz1ParserUtilEnvEntry *p)
+{
+	if (p == NULL) return;
+	Dz1ParserUtilEnvEntry_purge(p);
+	Dz1Free(p);
+}
+
+void Dz1ParserUtilEnvEntry_dump(Dz1ParserUtilEnvEntry *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1Thread_printf(Dz1T("{\n")); tab++;
+		Dz1Thread_tprintf(tab, Dz1T("parserID = ")); Dz1u32_dump(&p->parserID, tab); 
+		Dz1Thread_tprintf(tab, Dz1T("env = %p\n"), p->env);
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+int Dz1ParserUtilEnvEntry_cmp(Dz1ParserUtilEnvEntry *a, Dz1ParserUtilEnvEntry *b)
+{
+	int ret = 0;
+	if (a == NULL && b == NULL) { }
+	else if (a == NULL /* && b != NULL*/) ret = -1;
+	else if (/*a == NULL &&*/ b == NULL) ret = 1;
+	else if ((ret = Dz1u32_cmp(&a->parserID, &b->parserID)) != 0) { }
+	return ret;
+}
+// Dz1ParserUtilEnvEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1ParserUtilEnvList
+static Dz1Error Dz1ParserUtilEnvList_add(Dz1ParserUtilEnvList *p, Dz1ParserUtilEnvEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	if (Dz1AATree_find(p->storage, data)) ERR_SET_OUT(&err, EEXIST);
+	else
+	{
+		err = Dz1AATree_insert(p->storage, data);
+		if (ERR_PROBE(&err)) ERR_OUT(&err);
+	}
+	return err;
+}
+
+static bool_t Dz1ParserUtilEnvList_remove(Dz1ParserUtilEnvList *p, Dz1ParserUtilEnvEntry *key)
+{
+	return Dz1AATree_remove(p->storage, key);
+}
+
+static Dz1ParserUtilEnvEntry *Dz1ParserUtilEnvList_extract(Dz1ParserUtilEnvList *p, Dz1ParserUtilEnvEntry *key)
+{
+	return (Dz1ParserUtilEnvEntry *)Dz1AATree_extract(p->storage, key);
+}
+
+typedef struct Dz1ParserUtilEnvListMkArrArg
+{
+	Dz1ParserUtilEnvEntry **arr;
+	unsigned int idx;
+} Dz1ParserUtilEnvListMkArrArg;
+
+static Dz1Error _Dz1ParserUtilEnvList_get_array(void *ptr, Dz1ParserUtilEnvEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	Dz1ParserUtilEnvListMkArrArg *arg = (Dz1ParserUtilEnvListMkArrArg *)ptr;
+	arg->arr[arg->idx++] = p;
+	return err;
+}
+
+static Dz1ParserUtilEnvEntry **Dz1ParserUtilEnvList_get_array(Dz1ParserUtilEnvList *p, unsigned int *ret_cnt, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err == NULL ? &_err : err;
+	Dz1ParserUtilEnvEntry **ret = NULL;
+	unsigned int cnt = 0;
+	if (p == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = (Dz1ParserUtilEnvEntry **)Dz1Calloc(sizeof(Dz1ParserUtilEnvEntry *), (cnt = p->count(p)) + 1, errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		Dz1ParserUtilEnvListMkArrArg arg = { ret, 0 };
+		pthread_cleanup_push(Dz1Memory_cancel, (void *)ret);
+
+		*errp = p->travel(p, _Dz1ParserUtilEnvList_get_array, (void *)&arg);
+		if (ERR_PROBE(errp)) ERR_OUT(errp);
+		else
+		{
+			if (ret_cnt) (*ret_cnt) = cnt;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1Memory_cancel, (void *)ret);
+	}
+	if (ERR_PROBE(errp)) ret = NULL;
+	return ret;
+}
+
+static Dz1Error Dz1ParserUtilEnvList_travelForward(Dz1ParserUtilEnvList *p, Dz1Error (*func)(void *ptr, Dz1ParserUtilEnvEntry *data), void *ptr)
+{
+	return Dz1AATree_travelForward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static Dz1Error Dz1ParserUtilEnvList_travelBackward(Dz1ParserUtilEnvList *p, Dz1Error (*func)(void *ptr, Dz1ParserUtilEnvEntry *data), void *ptr)
+{
+	return Dz1AATree_travelBackward(p->storage, (Dz1AATreeTravelFunc)func, ptr);
+}
+
+static Dz1ParserUtilEnvEntry *Dz1ParserUtilEnvList_find(Dz1ParserUtilEnvList *p, Dz1ParserUtilEnvEntry *key)
+{
+	return (Dz1ParserUtilEnvEntry *)Dz1AATree_find(p->storage, key);
+}
+
+static unsigned int Dz1ParserUtilEnvList_count(Dz1ParserUtilEnvList *p)
+{
+	unsigned int ret = Dz1AATree_count(p->storage);
+	return ret;
+}
+
+Dz1ParserUtilEnvList *Dz1ParserUtilEnvList_new(Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1ParserUtilEnvList *ret = (Dz1ParserUtilEnvList *)Dz1Calloc(sizeof(Dz1ParserUtilEnvList), 1, errp);
+	if (ret == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(Dz1ParserUtilEnvList_delAndSetNull, (void *)&ret);
+
+		if ((ret->storage = Dz1AATree_new(
+				(Dz1CmpFunc)Dz1ParserUtilEnvEntry_cmp,
+				(Dz1DelFunc)Dz1ParserUtilEnvEntry_del,
+				NULL, errp)) == NULL) ERR_OUT(errp);
+		else
+		{
+			ret->count = Dz1ParserUtilEnvList_count;
+			ret->travel = Dz1ParserUtilEnvList_travelForward;
+			ret->travelForward = Dz1ParserUtilEnvList_travelForward;
+			ret->travelBackward = Dz1ParserUtilEnvList_travelBackward;
+			ret->get_array = Dz1ParserUtilEnvList_get_array;
+			ret->add = Dz1ParserUtilEnvList_add;
+			ret->remove = Dz1ParserUtilEnvList_remove;
+			ret->find = Dz1ParserUtilEnvList_find;
+			ret->extract = Dz1ParserUtilEnvList_extract;
+			ret->cmp = Dz1ParserUtilEnvEntry_cmp;
+			ERR_CLEAR(errp);
+		}
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1ParserUtilEnvList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+static Dz1Error _Dz1ParserUtilEnvList_clone(void *ptr, Dz1ParserUtilEnvEntry *data)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	Dz1ParserUtilEnvList *p = (Dz1ParserUtilEnvList *)ptr;
+	Dz1ParserUtilEnvEntry *cloned = Dz1ParserUtilEnvEntry_clone(data, &err); // normal
+	err = Dz1AATree_insert(p->storage, cloned); // chk
+	if (ERR_PROBE(&err)) ERR_OUT(&err);
+	return err;
+}
+
+Dz1ParserUtilEnvList *Dz1ParserUtilEnvList_clone(Dz1ParserUtilEnvList *src, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1ParserUtilEnvList *ret = NULL;
+	if (src == NULL) ERR_SET_OUT(errp, EINVAL);
+	else if ((ret = Dz1ParserUtilEnvList_new(errp)) == NULL) ERR_OUT(errp);
+	else
+	{
+		pthread_cleanup_push(Dz1ParserUtilEnvList_delAndSetNull, (void *)&ret);
+
+		*errp = Dz1AATree_travelForward(src->storage, (Dz1AATreeTravelFunc)_Dz1ParserUtilEnvList_clone, (void *)ret);
+
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1ParserUtilEnvList_delAndSetNull, (void *)&ret);
+	}
+	return ret;
+}
+
+void Dz1ParserUtilEnvList_purge(Dz1ParserUtilEnvList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_empty(p->storage);
+}
+
+void Dz1ParserUtilEnvList_del(Dz1ParserUtilEnvList *p)
+{
+	if (!p) return;
+	if (p->storage) Dz1AATree_del(p->storage);
+	Dz1Free(p);
+}
+
+static Dz1Error _Dz1ParserUtilEnvList_dump(void *ptr, Dz1ParserUtilEnvEntry *p)
+{
+	Dz1Error err = DZ1_ERROR_INITIALIZER;
+	Dz1ListFDumpArg2 *arg = (Dz1ListFDumpArg2 *)ptr;
+	int tab = *(int *)arg->tab;
+	Dz1Thread_tprintf(tab, Dz1T("entry = ")); Dz1ParserUtilEnvEntry_dump(p, tab);
+	return err;
+}
+
+void Dz1ParserUtilEnvList_dump(Dz1ParserUtilEnvList *p, int tab)
+{
+	if (!p) Dz1Thread_printf(Dz1T("NULL\n"));
+	else
+	{
+		Dz1ListFDumpArg2 arg = { NULL, &tab };
+		Dz1Thread_tprintf(tab, Dz1T("{\n")); tab++;
+		p->travel(p, _Dz1ParserUtilEnvList_dump, (void *)&arg);
+		Dz1Thread_tprintf(--tab, Dz1T("}\n"));
+	}
+}
+// Dz1ParserUtilEnvList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1ParserIPv4Env
+Dz1ParserIPv4Env *Dz1ParserIPv4Env_new(u32_t dst, Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1ParserIPv4Env *__internal_ret = (Dz1ParserIPv4Env *)Dz1Calloc(sizeof(Dz1ParserIPv4Env), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(Dz1ParserIPv4Env_delAndSetNull, (void *)&__internal_ret);
+		
+		__internal_ret->dst = dst;
+		ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1ParserIPv4Env_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+void Dz1ParserIPv4Env_purge(Dz1ParserIPv4Env *p)
+{
+	if (p == NULL) return;
+}
+
+void Dz1ParserIPv4Env_del(Dz1ParserIPv4Env *p)
+{
+	if (p == NULL) return;
+	Dz1ParserIPv4Env_purge(p);
+	Dz1Free(p);
+}
+
+// Dz1ParserIPv4Env
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1ParserTcpListenAddrEnv
+Dz1ParserTcpListenAddrEnv *Dz1ParserTcpListenAddrEnv_new(Dz1Error *err)
+{
+	Dz1Error _err = DZ1_ERROR_INITIALIZER, *errp = err ? err : &_err;
+	Dz1ParserTcpListenAddrEnv *__internal_ret = (Dz1ParserTcpListenAddrEnv *)Dz1Calloc(sizeof(Dz1ParserTcpListenAddrEnv), 1, errp);
+	if (__internal_ret == NULL) { ERR_SET_OUT(errp, ENOMEM); }
+	else
+	{
+		pthread_cleanup_push(Dz1ParserTcpListenAddrEnv_delAndSetNull, (void *)&__internal_ret);
+		
+		ERR_CLEAR(errp);
+		pthread_cleanup_pop(ERR_PROBE(errp)); // (Dz1ParserTcpListenAddrEnv_delAndSetNull, (void *)&__internal_ret)
+	}
+	return __internal_ret;
+}
+
+void Dz1ParserTcpListenAddrEnv_purge(Dz1ParserTcpListenAddrEnv *p)
+{
+	if (p == NULL) return;
+	Dz1SockAddr_purge(&p->addr);
+}
+
+void Dz1ParserTcpListenAddrEnv_del(Dz1ParserTcpListenAddrEnv *p)
+{
+	if (p == NULL) return;
+	Dz1ParserTcpListenAddrEnv_purge(p);
+	Dz1Free(p);
+}
+
+// Dz1ParserTcpListenAddrEnv
+////////////////////////////////////////////////////////////////////////////////
+

@@ -1,0 +1,39 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+	-----------------------------------------------------------------
+	-- normal mode
+	-----------------------------------------------------------------
+	typedef native TestTypeInfo from dz1_tdc_info_test_types;			// with api dumpX, fdumpX
+	typedef reference TestExternalType from dz1_tdc_info_test_ref;
+	struct MyDataEntry;
+	typedef struct MyDataInfo
+	{
+		MyDataInfo					*next;				// is nodump
+		struct MyDataEntry			*data;
+		TestExternalType			*opt;
+		TestTypeInfo				 info1;
+		TestTypeInfo				*info2;
+		TestTypeInfo				*info3;				// is ref
+	} MyDataInfo;										// with api dump, fdump, clone
+
+
+	typedef struct MyDataEntry
+	{
+		Dz1Asn1UTF8Str				*name;				// is key
+		uint32						 val;				// is key
+	} MyDataEntry;										// with api dump, fdump, clone, compare
+
+	typedef unique  table	 MyDataUniqueList(find, extract, gethead, gettail)			[MyDataEntry] "cos = ";
+	typedef ordered table	MyDataOrderedList(find, extract, gethead, gettail)			[MyDataEntry] "tan = ";
+	typedef			table		   MyDataList(remove, find, extract, gethead, gettail)	[MyDataEntry] "";
+
+	typedef unique table	 MyDataUniqueRefList(find, extract, gethead, gettail) [&MyDataEntry];
+	typedef ordered table	MyDataOrderedRefList(find, extract, gethead, gettail) [&MyDataEntry];
+	typedef			table		   MyDataRefList(remove, find, extract, gethead, gettail) [&MyDataEntry];
+
+	typedef index MyDataIndex [MyDataEntry(val)];
+	typedef index MyDataRefIndex [&MyDataEntry(val)];
+
+}

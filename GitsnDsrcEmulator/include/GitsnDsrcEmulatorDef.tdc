@@ -1,0 +1,11 @@
+message set definition
+{
+	include libdz1_support;
+	typedef func void GitsnDsrcEmulatorException(void *exceptionArg, Dz1Error *reason);
+	-- GitsnDsrcEmulatorDef structure declared for Linker warning
+	typedef struct GitsnDsrcEmulatorDef
+	{
+		int32		dummy;
+	} GitsnDsrcEmulatorDef;
+	-- if you declare other structure on this file, then delete GitsnDsrcEmulatorDef structure
+}

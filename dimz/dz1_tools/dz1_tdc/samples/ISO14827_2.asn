@@ -1,0 +1,337 @@
+ISO14827-2 {iso(1) standard(0) std14827(14827) part2(2)} DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+IMPORTS ISO14827-MESSAGE FROM ISO14827-1 {iso(1) standard(0) std14827(14827) part1(1)};
+
+DatexDataPacket ::= SEQUENCE 
+{
+	datex-Version-number	ENUMERATED 
+	{
+		experimental (0), 
+		version1 (1),
+		...
+	}, 
+	datex-Data				OCTET STRING, 
+	datex-Crc-nbr			OCTET STRING (SIZE (2))
+}
+
+C2CAuthenticatedMessage ::= SEQUENCE {
+	datex-AuthenticationInfo-text	OCTET STRING (SIZE (0..255)),
+	datex-DataPacket-number			INTEGER (0..4294967295), 
+	datex-DataPacketPriority-number	INTEGER (0..10), 
+	options							HeaderOptions,
+	pdu								PDUs 
+}
+
+
+HeaderOptions ::= SEQUENCE 
+{
+	datex-Origin-text					UTF8String (SIZE (0..40))	OPTIONAL,
+	datex-OriginAddress-location		OCTET STRING				OPTIONAL,
+	datex-Sender-text					UTF8String (SIZE (0..40))	OPTIONAL,
+	datex-SenderAddress-location		OCTET STRING				OPTIONAL,
+	datex-Destination-text				UTF8String (SIZE (0..40))	OPTIONAL,
+	datex-DestinationAddress-location	OCTET STRING				OPTIONAL,
+	datex-Cost							Cost						OPTIONAL,
+	datex-DataPacket-time				IsoTime						OPTIONAL
+}
+
+Cost ::= SEQUENCE 
+{
+	amount-Currency-code	 	OCTET STRING (SIZE (3)),
+	amount-Factor-quantity		INTEGER,
+	amount-Quantity-quantity	INTEGER
+}
+
+PDUs ::= CHOICE 
+{	
+	datex-Initiate-null		[1] Initiate,
+	login					[2] Login, 
+	fred					[3] FrED,
+	terminate				[4] Terminate,
+	logout					[5] Logout,
+	subscription			[6] Subscription,
+	publication				[7] Publication,
+	transfer-done			[8] TransferDone,
+	accept					[9] Accept,
+	reject					[10] Reject
+}
+
+Initiate ::= SEQUENCE {
+	datex-Sender-txt		UTF8String (SIZE (0..40)),
+	datex-Destination-txt	UTF8String (SIZE (0..40))
+}
+
+Login ::= SEQUENCE 
+{
+	datex-Sender-txt					UTF8String (SIZE (0..40)),
+	datex-Destination-txt				UTF8String (SIZE (0..40)),
+	datexLogin-UserName-txt				OCTET STRING,
+	datexLogin-Password-txt				OCTET STRING,
+	datexLogin-EncodingRules-id			SEQUENCE OF OBJECT IDENTIFIER,
+	datexLogin-HeartbeatDurationMax-qty	INTEGER (0..65535), 
+	datexLogin-ResponseTimeOut-qty		INTEGER (0..255),
+	datexLogin-Initiator-cd				ENUMERATED 
+	{
+		serverInitiated,
+		clientInitiated,
+		...
+	},
+	datexLogin-DatagramSize-qty		INTEGER (0..65535)
+}
+
+FrED ::= INTEGER (0..4294967295)  -- datexFrED-ConfirmPacket-nbr
+
+Terminate ::= ENUMERATED -- datexTerminate-Reason-cd
+{
+	other, 
+	serverRequested,
+	clientRequested,
+	serverShutdown,
+	clientShutdown,
+	serverCommProblems,
+	clientCommProblems,
+	...
+}
+
+Logout ::= ENUMERATED	-- datexLogout-Reason-cd
+{
+	other,
+	serverRequested,
+	clientRequested,
+	serverShutdown,
+	clientShutdown,
+	serverCommProblems,
+	clientCommProblems,
+	...
+}
+
+Subscription ::= SEQUENCE 
+{
+	datexSubscribe-Serial-nbr	INTEGER (0..4294967295), 
+	datexSubscribe-Type			SubscriptionType,
+	...
+}
+
+SubscriptionType ::= CHOICE 
+{
+	subscription					SubscriptionData, 
+	datexSubscribe-CancelReason-cd	ENUMERATED 
+	{
+		other, 
+		dataNotNeeded,
+		errorsInPublication, 
+		pendingLogout, 
+		processingMgmt, 
+		bandwidthMgmt,
+		...
+	} 
+}
+
+SubscriptionData ::= SEQUENCE 
+{
+	datexSubscribe-Persistent-bool		BOOLEAN,
+	datexSubscribe-Status-cd			ENUMERATED 
+	{
+		new, 
+		update
+	},
+	datexSubscribe-Mode					SubscriptionMode,
+	datexSubscribe-PublishFormat-cd		ENUMERATED 
+	{
+		other, 
+		ftp, 
+		tftp, 
+		dataPacket,
+		...
+	},
+	datexSubscription-Priority-nbr		INTEGER(1..10),
+	datexSubscribe-Guarantee-bool		BOOLEAN,
+	datexSubscribe-Pdu					EndApplicationMessage
+}
+
+SubscriptionMode ::= CHOICE 
+{
+	single				NULL,
+	event-driven		Registered,
+	periodic			Registered
+}
+
+Registered::= CHOICE 
+{
+	continuous				SEQUENCE 
+	{
+		datexRegistered-UpdateDelay-qty	INTEGER (0..4294967295)  DEFAULT 0, -- 0 means as soon as possible
+		datexRegistered-StartTime		IsoTime	OPTIONAL,					-- defaults to immediate
+		datexRegistered-EndTime			IsoTime	OPTIONAL					-- defaults to "until cancelled"
+	},
+
+	daily				SEQUENCE 
+	{
+		datexRegistered-UpdateDelay-qty	INTEGER (0..4294967295) 	DEFAULT 0,	-- 0 means as soon as possible
+		datexRegistered-DaysOfWeek-cd	BIT STRING								-- has to be checked
+		{ 
+			other(0), 
+			sunday(1), 
+			monday(2), 
+			tuesday(3), 
+			wednesday(4), 
+			thursday(5), 
+			friday(6), 
+			saturday(7)
+		} (SIZE(8)),
+		datexRegistered-StartDate		IsoTime		OPTIONAL,					-- defaults to immediate
+		datexRegistered-EndDate			IsoTime		OPTIONAL,					-- defaults to "until cancelled"
+		datexRegistered-StartTime		IsoTime		OPTIONAL,					-- defaults to midnight
+		datexRegistered-Duration-qty	INTEGER (0..65535)	OPTIONAL			-- defaults to 1440 (i.e., 24 hours)
+	}
+}
+
+IsoTime ::= SEQUENCE 
+{
+	time-Year-qty			INTEGER (-32768..32767)	OPTIONAL,	-- defaults to current year unless otherwise specified
+	time-Month-qty			INTEGER (1..12)			OPTIONAL,	-- defaults to current month unless otherwise specified
+	time-Day-qty			INTEGER (1..31)			OPTIONAL,	-- defaults to current day unless otherwise specified
+	time-Hour-qty			INTEGER (0..23)			DEFAULT 0,
+	time-Minute-qty			INTEGER (0..59) 		DEFAULT 0,
+	time-Second-qty			INTEGER (0..60) 		DEFAULT 0,
+	time-SecondFractions	CHOICE 
+	{
+		deci-seconds		INTEGER (0..9),
+		centi-seconds		INTEGER (0..99),
+		milli-seconds		INTEGER (0..999),
+		...
+	} DEFAULT 0,
+	time-Timezone			SEQUENCE							-- defaults to UTC
+	{
+		timezone-Hour-qty	INTEGER (-13..13) 		DEFAULT 0,
+		time-Minute-qty		INTEGER (0..59) 		DEFAULT 0
+	} OPTIONAL 
+}
+
+Publication ::= SEQUENCE 
+{
+	datexPublish-Guaranteed-bool	BOOLEAN,
+	datexPublish-Format				Publish-Format
+}
+
+Publish-Format ::= CHOICE 
+{
+	datexPublish-Data			SEQUENCE OF	PublicationData,
+	datexPublish-FileName-txt	UTF8String (SIZE (0..2000)) 
+}
+
+PublicationData ::= SEQUENCE
+{
+	datexPublish-SubscribeSerial-nbr	INTEGER (0..4294967295), 
+	datexPublish-Serial-nbr				INTEGER (0..4294967295),
+	datexPublish-LatePublicationFlag	BOOLEAN,
+	datexPublish-Type					PublicationType
+}
+
+PublicationType ::= CHOICE 
+{
+	datexPublication-Management-cd		ENUMERATED 
+	{
+		temporarilySuspended, 
+		resume, 
+		terminate-other, 
+		terminate-dataNoLongerAvailable, 
+		terminate-publicationsBeingRejected, 
+		terminate-PendingShutdown, 
+		terminate-processingMgmt, 
+		terminate-bandwidthMgmt, 
+		terminate-accessDenied, 
+		unknownRequest, 
+		...
+	},
+	datexPublish-Data					EndApplicationMessage
+}
+
+EndApplicationMessage ::= SEQUENCE
+{
+	endApplication-Message-id			ISO14827-MESSAGE.&id,
+	endApplication-Message-msg			ISO14827-MESSAGE.&MessageBody
+}
+
+TransferDone ::= SEQUENCE 
+{
+--	datexTransferDone-Publication-nbr	INTEGER (0..4294967295), 		deprecated on ISO-14827-2:2005
+	datexTransferDone-FileName-txt		UTF8String (SIZE (0..2000)), 
+	datexTransferDone-Success-bool		BOOLEAN
+}
+
+Accept ::= SEQUENCE 
+{
+	datexAccept-Packet-nbr		INTEGER (0..4294967295),
+	datexAccept-Type			CHOICE 
+	{
+		login					OBJECT IDENTIFIER,					-- encoding rules
+		single-subscription 	NULL,
+		registered-subscription	INTEGER (0..4294967295),	-- the accepted value for the UpdateDelay parameter
+		publication 			NULL 
+	}
+}
+
+Reject ::= SEQUENCE 
+{
+	datexReject-Packet-nbr			INTEGER (0..4294967295), 
+	datexReject-Type				RejectType,					--	has to be checked
+	datexReject-AlternateRequest	AlternateRequest 	OPTIONAL	
+}
+
+RejectType ::= CHOICE 
+{
+	datexReject-Login-cd			ENUMERATED 
+	{
+		other, 
+		unknownDomainName, 
+		accessDenied, 
+		invalidNamePassword, 
+		timeoutTooSmall, 
+		timeoutTooLarge, 
+		heartbeatTooSmall, 
+		heartbeatTooLarge, 
+		sessionExists, 
+		maxSessionsReached,
+		...
+	},
+	datexReject-Subscription-cd		ENUMERATED 
+	{
+		other, 
+		unknownSubscriptionNbr, 
+		invalidTimes, 
+		frequencyTooSmall, 
+		frequencyTooLarge, 
+		invalid-mode,
+		publishFormatNotSupported, 
+		unknowSubscriptionMsgId, 
+		invalidSubscriptionMsgId, 
+		invalidSubscriptionContent,
+		...
+	},
+	datexReject-Publication-cd			ENUMERATED
+	{
+		other,
+		invalidPublishFormat,
+		...
+	},
+	rejectPublicationData				SEQUENCE
+	{
+		datexReject-SubscriptionSerial-nbr	INTEGER (0..4294967295),
+		datexReject-PublicationSerial-nbr	INTEGER (0..4294967295),
+		datexReject-PublicationData-cd		ENUMERATED 
+		{
+			other, 
+			unknownSubscription, 
+			unknownPublicationNbr, 
+			unknownPublicationMsgId, 
+			invalidPublicationMsgId, 
+			invalidPublicationMsgContent,
+			repeatedPublicationNbr,
+			...
+		} 
+	}
+}
+AlternateRequest ::= SubscriptionType
+
+END

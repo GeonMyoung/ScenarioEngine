@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="ks_c_5601-1987"?>
+
+<VisualStudioProject
+
+	ProjectType="Visual C++"
+
+	Version="7.10"
+
+	Name="Dz1TcpCallbackMsg"
+
+	ProjectGUID="{59D39987-C27B-4D0D-A36B-D80487A2F81C}"
+
+	Keyword="Win32Proj">
+
+	<Platforms>
+
+		<Platform
+
+			Name="Win32"/>
+
+	</Platforms>
+
+	<Configurations>
+
+		<Configuration
+
+			Name="Debug|Win32"
+
+			OutputDirectory="$(ConfigurationName)"
+
+			IntermediateDirectory="$(ConfigurationName)"
+
+			ConfigurationType="4"
+
+			UseOfMFC="1"
+
+			CharacterSet="2">
+
+			<Tool
+
+				Name="VCCLCompilerTool"
+
+				Optimization="0"
+
+				AdditionalIncludeDirectories="..\..\include;..\..\..\..\\include;..\..\..\..\..\..\codeconv\include;..\..\..\..\..\..\pthreads.2"
+
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+
+				MinimalRebuild="FALSE"
+
+				BasicRuntimeChecks="3"
+
+				RuntimeLibrary="1"
+
+				UsePrecompiledHeader="2"
+
+				WarningLevel="3"
+
+				Detect64BitPortabilityProblems="FALSE"
+
+				DebugInformationFormat="1"/>
+
+			<Tool
+
+				Name="VCCustomBuildTool"/>
+
+			<Tool
+
+				Name="VCLibrarianTool"
+
+				OutputFile="$(OutDir)/Dz1TcpCallbackMsg.lib"/>
+
+			<Tool
+
+				Name="VCMIDLTool"/>
+
+			<Tool
+
+				Name="VCPostBuildEventTool"/>
+
+			<Tool
+
+				Name="VCPreBuildEventTool"/>
+
+			<Tool
+
+				Name="VCPreLinkEventTool"/>
+
+			<Tool
+
+				Name="VCResourceCompilerTool"/>
+
+			<Tool
+
+				Name="VCWebServiceProxyGeneratorTool"/>
+
+			<Tool
+
+				Name="VCXMLDataGeneratorTool"/>
+
+			<Tool
+
+				Name="VCManagedWrapperGeneratorTool"/>
+
+			<Tool
+
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+
+		</Configuration>
+
+		<Configuration
+
+			Name="Release|Win32"
+
+			OutputDirectory="$(ConfigurationName)"
+
+			IntermediateDirectory="$(ConfigurationName)"
+
+			ConfigurationType="4"
+
+			UseOfMFC="1"
+
+			CharacterSet="2">
+
+			<Tool
+
+				Name="VCCLCompilerTool"
+
+				AdditionalIncludeDirectories="..\..\include;..\..\..\..\\include;..\..\..\..\..\..\codeconv\include;..\..\..\..\..\..\pthreads.2"
+
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+
+				RuntimeLibrary="0"
+
+				UsePrecompiledHeader="2"
+
+				WarningLevel="3"
+
+				Detect64BitPortabilityProblems="FALSE"
+
+				DebugInformationFormat="0"/>
+
+			<Tool
+
+				Name="VCCustomBuildTool"/>
+
+			<Tool
+
+				Name="VCLibrarianTool"
+
+				OutputFile="$(OutDir)/Dz1TcpCallbackMsg.lib"/>
+
+			<Tool
+
+				Name="VCMIDLTool"/>
+
+			<Tool
+
+				Name="VCPostBuildEventTool"/>
+
+			<Tool
+
+				Name="VCPreBuildEventTool"/>
+
+			<Tool
+
+				Name="VCPreLinkEventTool"/>
+
+			<Tool
+
+				Name="VCResourceCompilerTool"/>
+
+			<Tool
+
+				Name="VCWebServiceProxyGeneratorTool"/>
+
+			<Tool
+
+				Name="VCXMLDataGeneratorTool"/>
+
+			<Tool
+
+				Name="VCManagedWrapperGeneratorTool"/>
+
+			<Tool
+
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+
+		</Configuration>
+
+	</Configurations>
+
+	<References>
+
+	</References>
+
+	<Files>
+
+		<Filter
+
+			Name="소스 파일"
+
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+
+			UniqueIdentifier="{0DC9D41C-6EEC-4238-BDE6-B9907A402A9F}">
+
+			<File
+				RelativePath="..\..\stdafx.cpp">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\Dz1TcpCallbackMsgDef.c">
+			</File>
+		</Filter>
+
+		<Filter
+
+			Name="헤더 파일"
+
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+
+			UniqueIdentifier="{1961180D-8FD2-4FED-8FEC-D8D76AFA9916}">
+
+			<File
+				RelativePath="..\..\include\Dz1TcpCallbackMsgDef.tdc">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="..\..\..\..\\..\dz1_tools\tdc.exe -I ..\..\include;..\..\..\..\\include -s ..\..\src ..\..\include\$(InputName).tdc"
+						Outputs="..\..\src\$(InputName).c;..\..\include\$(InputName).h"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="..\..\..\..\\..\dz1_tools\tdc.exe -I ..\..\include;..\..\..\..\\include -s ..\..\src ..\..\include\$(InputName).tdc"
+						Outputs="..\..\src\$(InputName).c;..\..\include\$(InputName).h"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\include\Dz1TcpCallbackMsgDef.h">
+			</File>
+			<File
+				RelativePath="..\..\stdafx.h">
+			</File>
+		</Filter>
+
+		<Filter
+
+			Name="리소스 파일"
+
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+
+			UniqueIdentifier="{2CFD842F-00A6-40FB-AB40-7A4EF7246C64}">
+
+		</Filter>
+
+		<File
+
+			RelativePath="..\..\ReadMe.txt">
+
+		</File>
+
+	</Files>
+
+	<Globals>
+
+	</Globals>
+
+</VisualStudioProject>
+

@@ -1,0 +1,227 @@
+message set definition
+{
+	include libdz1_support;
+	typedef native Dz1MdefcModule from Dz1TdcInfoModule;
+	typedef native Dz1ElasticBuf from dz1_elastic_buf; // with api dump, clone
+	
+	-----------------------------------------------------------------------------------
+	-- Misc
+	-----------------------------------------------------------------------------------
+	typedef enum Dz1TodecUnitSize
+	{
+		Byte1 = 1,
+		Byte2 = 2,
+		Byte4 = 4,
+		Byte8 = 8
+	} Dz1TodecUnitSize;
+	
+	typedef enum Dz1TodecOrigin
+	{
+		MSB,
+		LSB
+	} Dz1TodecOrigin;
+	
+	typedef struct Dz1TodecBitDescr
+	{	-- %%% |= (byte_tp)((@@@ >> trim) & mask(take)) << $pos
+		-- $$$ = (dst_tp)((%%% >> $pos) & mask(take)) << shf)
+		uint8							 bit_trim;
+		uint8							 bit_take;
+	} Dz1TodecBitDescr;										// with api dump, clone
+	
+	typedef struct Dz1TodecByteDescr
+	{	-- %%% = (byte_tp)((@@@ >> trim) & mask(take))
+		-- $$$ = (dst_tp)((byte & mask(take)) << trim))
+		uint8							 byte_trim;
+		Dz1TodecUnitSize				 byte_take;			-- output size
+	} Dz1TodecByteDescr;									// with api dump, clone
+
+	typedef union Dz1TodecRestrictDescr
+	{
+		uint32							 fixed;
+		Dz1TodecUnitSize				 dynamic;
+	} Dz1TodecRestrictDescr;								// with api dump, clone
+	-----------------------------------------------------------------------------------
+	-- Bunch of Source : Bunch Entry Nested Descriptor
+	-----------------------------------------------------------------------------------
+	typedef struct Dz1TodecBunchDataEntry
+	{
+		str								 src_name;
+		Dz1TodecBitDescr				*src_descr;			-- NULL = copy source's full bits(resolved source should be primitive)
+	} Dz1TodecBunchDataEntry;								// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- Bunch of Source : Bunch Entry & List
+	-----------------------------------------------------------------------------------
+	typedef union Dz1TodecBunchEntry
+	{
+		Dz1TodecBunchDataEntry			*data_bits;
+		uint8							 pad_bits;
+	} Dz1TodecBunchEntry;									// with api dump, clone
+	typedef array Dz1TodecBunchSeq [Dz1TodecBunchEntry];
+	
+	-----------------------------------------------------------------------------------
+	-- Bunch of Source
+	-----------------------------------------------------------------------------------
+	typedef struct Dz1TodecBunchOfSource					-- src_1 + src_2 + src_n -> target_sz(1|2|4|8)
+	{
+		Dz1TodecUnitSize				 target_sz;
+		Dz1TodecBunchSeq				*seq;				// is notarg
+	} Dz1TodecBunchOfSource;								// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- Single Source Descriptor
+	-----------------------------------------------------------------------------------
+	typedef union Dz1TodecSingleDescr
+	{
+		Dz1TodecByteDescr				*partial_byte;		-- primitive, data_storage only
+		Dz1TodecRestrictDescr			*restricted;		-- primitive, address_storage only
+		str								 alter_codec;
+	} Dz1TodecSingleDescr;									// with api dump, clone
+	
+	-----------------------------------------------------------------------------------
+	-- Single Source
+	-----------------------------------------------------------------------------------
+	typedef struct Dz1TodecSingleSource						-- extraction(src) -> target
+	{
+		str								 src_name;
+		Dz1TodecSingleDescr				*src_descr;			-- partial_byte, restricted, alternate : NULL = {TARGET}의 _read/_write를 호출
+		Dz1TodecUnitSize				 nul_flag;
+		str								 postfix;			// is notarg
+	} Dz1TodecSingleSource;									// with api dump, clone
+	
+	typedef struct Dz1TodecConditionalSource			-- extraction(src) -> target
+	{
+		str								 src_name;
+		str								 decider;			-- Encoding/Decoding 할지 말지 결정하는 코드
+		Dz1TodecSingleDescr				*src_descr;			-- partial_byte, restricted, alternate : NULL = {TARGET}의 _read/_write를 호출
+		str								 postfix;			// is notarg
+	} Dz1TodecConditionalSource;							// with api dump, clone
+	-----------------------------------------------------------------------------------
+	-- Codec Attr Descr
+	-----------------------------------------------------------------------------------
+	typedef union Dz1TodecTargetCodecAttrDescr
+	{
+		uint32							*omit;				-- 생략
+		uint32							*def;				-- 기본
+		Dz1TodecByteDescr				*partial_byte;		-- 부분
+		str								 alter_codec;		-- 지정Codec
+	} Dz1TodecTargetCodecAttrDescr;							// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- Codec Attr for Union
+	-----------------------------------------------------------------------------------
+	typedef struct Dz1TodecTargetCodecAttrUnion
+	{
+		Dz1TodecTargetCodecAttrDescr	*pr;				-- NULL이면 생략
+	} Dz1TodecTargetCodecAttrUnion;							// with api dump, clone
+	
+	-----------------------------------------------------------------------------------
+	-- Codec Attr for Array
+	-----------------------------------------------------------------------------------
+	typedef struct Dz1TodecTargetCodecAttrArray
+	{
+		Dz1TodecTargetCodecAttrDescr	*cnt;				-- NULL이면 Default
+		Dz1TodecTargetCodecAttrDescr	*body;				-- NULL이면 Default
+		str								 postfix;
+	} Dz1TodecTargetCodecAttrArray;							// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- Codec Attr
+	-----------------------------------------------------------------------------------
+	typedef union Dz1TodecTargetCodecAttr
+	{
+		uint32							*st;				-- no attribute info
+		Dz1TodecTargetCodecAttrUnion	*un;
+		Dz1TodecTargetCodecAttrArray	*ar;
+	} Dz1TodecTargetCodecAttr;								// with api dump, clone
+	
+	-----------------------------------------------------------------------------------
+	-- Codec Entry : Stream Entry & List
+	-----------------------------------------------------------------------------------
+	typedef union Dz1TodecStreamEntry
+	{
+		Dz1TodecBunchOfSource			*bunch;				-- structure 전용 : target_sz을 build한 다음 WRITEn을 호출
+		Dz1TodecConditionalSource		*conditional;		-- structure 전용 : 조건에 따라 Encode/Decode 수행
+
+		str								 omit;				-- union 전용 : 해당 항목 생략
+
+		Dz1TodecSingleSource			*single;			-- 해당 type의 _read/_write를 호출
+		uint16							 pad;				-- zero padding
+		Dz1ElasticBuf					*value;				-- constant
+	} Dz1TodecStreamEntry;									// with api dump, clone
+	typedef array Dz1TodecStreamList [Dz1TodecStreamEntry];
+	
+	-----------------------------------------------------------------------------------
+	-- Dz1TodecTarget : Codec Entrey & List
+	-----------------------------------------------------------------------------------
+	typedef enum Dz1TodecTargetCodecMode
+	{
+		public,
+		header,
+		private
+	} Dz1TodecTargetCodecMode;
+	
+	typedef struct Dz1TodecTargetCodecEntry					-- single CODEC for a TYPE
+	{
+		str								 alter_codec;		// is key							-- function name convention
+		Dz1TodecTargetCodecMode			 mode;													-- header only, public, private
+		Dz1TodecTargetCodecAttr			*attr;													-- Kind of Target Type : Union, Struct, Array
+		Dz1TodecStreamList				*seq;				// is notarg						-- member descriptor
+		str								 postfix;			// is notarg						-- function be called after decode
+	} Dz1TodecTargetCodecEntry;								// with api dump, clone, compare
+	typedef unique table Dz1TodecTargetCodecList(find, extract) [Dz1TodecTargetCodecEntry];
+	
+	-----------------------------------------------------------------------------------
+	-- Dz1TodecTarget
+	-----------------------------------------------------------------------------------
+	typedef struct Dz1TodecTarget
+	{
+		str								 src_name;			// is key							-- type name
+		Dz1TodecTargetCodecList			*codecs;			// is notarg
+	} Dz1TodecTarget;										// with api dump, clone, compare
+	
+	typedef array Dz1TodecTargetList [Dz1TodecTarget];
+	typedef unique table Dz1TodecTargetTable(find, extract) [&Dz1TodecTarget];
+	
+	typedef struct Dz1TodecIncEntry
+	{
+		str								 name;				// is key
+	} Dz1TodecIncEntry;										// with api dump, clone, compare
+	typedef unique table Dz1TodecIncIndex(find, extract) [&Dz1TodecIncEntry];
+	typedef array Dz1TodecIncList [Dz1TodecIncEntry];
+	
+	-----------------------------------------------------------------------------------
+	-- Dz1TodecInclude
+	-----------------------------------------------------------------------------------
+	typedef struct Dz1TodecInclude
+	{
+		Dz1TodecIncIndex				*ref_idx;			// is notarg
+		Dz1TodecIncList					*seq;				// is notarg
+	} Dz1TodecInclude;										// with api dump, clone
+	
+	-----------------------------------------------------------------------------------
+	-- Dz1Todec
+	-----------------------------------------------------------------------------------
+	typedef struct Dz1Todec
+	{
+		str								 mod_name;
+		Dz1TodecInclude					*incl;				// is notarg
+		Dz1TodecTargetList				*list;				// is notarg
+		Dz1TodecTargetTable				*idx;				// is notarg,nodump
+	} Dz1Todec;												// with api usernew, dump, clone
+	
+	-----------------------------------------------------------------------------------
+	-- Dz1TodecPubArg
+	-----------------------------------------------------------------------------------
+	typedef constant TODEC_FLAGS_USE_STACK			0x00000001;
+
+	typedef struct Dz1TodecPubArg
+	{
+		str								 mod_inc_path;		-- "-Ic:\...\include;..\..\include"
+		str								 dst_path_c;		-- "-Sc:\.....\src"
+		str								 dst_path_h;		-- "-Hc:\.....\include"
+		bool							 output_src;		-- "-s"
+		bool							 output_hdr;		-- "-h"
+		uint32							 flags;
+	} Dz1TodecPubArg;										// with api dump
+}

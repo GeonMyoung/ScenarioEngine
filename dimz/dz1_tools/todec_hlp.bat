@@ -1,0 +1,2 @@
+todec.exe -help
+pause

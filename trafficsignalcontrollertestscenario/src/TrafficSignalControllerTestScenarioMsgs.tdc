@@ -1,0 +1,8 @@
+message set definition
+{
+	include TrafficSignalControllerTestScenarioDef;
+	typedef struct TrafficSignalControllerTestScenarioMsgDefault
+	{
+		uint32 *dummy;
+	} TrafficSignalControllerTestScenarioMsgDefault;					// with api dump
+}

@@ -1,0 +1,97 @@
+기본 아이템 그룹 -> Configuration 과 Platform 조합에 대한 Label을 설정한다.
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugDLL|Win32">	<--- Label
+      <Configuration>DebugDLL</Configuration>	<--- Configuration
+      <Platform>Win32</Platform>			<--- Platform
+    </ProjectConfiguration>
+  </ItemGroup>
+
+전역 속성 그룹
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{6E5E44CA-0DCE-49C5-98A5-E29803447390}</ProjectGuid>
+    <RootNamespace>BsmdStruct</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+
+개발환경 CPP 기본 설정 Import
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+빌드 속성 설정 -> 특정 조건에 대한 빌드 속성을 설정한다.
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>	<--- 결과 형태
+    <PlatformToolset>v143</PlatformToolset>			<--- 개발 툴
+    <UseOfMfc>Dynamic</UseOfMfc>				<--- MFC라이브러리 사용 대상
+    <CharacterSet>MultiByte</CharacterSet>			<--- 개발에 사용할 문자셋
+  </PropertyGroup>
+
+개발환경 CPP 추가 설정 Import
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+
+개발환경 CPP 조건부 설정 Import
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+
+조건부 입력/출력 경로 설정
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+
+조건부 컴파일러/라이브러리 설정
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2\.;..\..\..\ASN.1.GITSN.LIB2\SupportLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+
+소스파일 그룹
+  <ItemGroup>
+    <ClCompile Include="..\..\src\BsmdStruct.c" />
+    <ClCompile Include="..\..\src\BsmdStructDef.c" />
+  </ItemGroup>
+
+헤더파일 그룹
+  <ItemGroup>
+    <ClInclude Include="..\..\include\BsmdStruct.h" />
+    <ClInclude Include="..\..\include\BsmdStructDef.h" />
+  </ItemGroup>
+
+
+커스텀 빌드 그룹
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\BsmdStructDef.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include%3b..\..\..\codeconv\include%3b..\..\..\dimz\dz1\include%3b..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include%3b..\..\..\codeconv\include%3b..\..\..\dimz\dz1\include%3b..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+
+외부 라이브러리 프로젝트 그룹
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ASN.1.GITSN.LIB2\project\vs2022\ASN.1.GITSN.LIB2.vcxproj">
+      <Project>{b6b94c84-1937-4698-ad5b-c874256dd328}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\dimz\dz1_tools\dz1_gasn_support\project\vs2022\dz1_gasn_support.vcxproj">
+      <Project>{1078a2ca-86aa-4611-862c-bbae31164914}</Project>
+    </ProjectReference>
+  </ItemGroup>
+
+출력 설정 Import
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

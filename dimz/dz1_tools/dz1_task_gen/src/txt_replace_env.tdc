@@ -1,0 +1,18 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct TxtReplaceEntry
+	{
+		str				 symbol;		// is key
+		str				 replace;
+	} TxtReplaceEntry;					// with api dump, compare
+	
+	typedef unique table TxtReplaceList(find, extract, count) [TxtReplaceEntry];
+	
+	typedef struct TxtReplaceEnv
+	{
+		str				 leadin;
+		str				 leadout;
+		TxtReplaceList	*list;			// is notarg
+	} TxtReplaceEnv;					// with api dump
+}

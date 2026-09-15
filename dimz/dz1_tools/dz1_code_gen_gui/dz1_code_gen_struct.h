@@ -1,0 +1,86 @@
+#ifndef _DZ1_TDC_DZ1_CODE_GEN_STRUCT_H_
+#define _DZ1_TDC_DZ1_CODE_GEN_STRUCT_H_
+
+////////////////////////////////////////////////////////////////////////////////
+#include <dz1_error.h>
+#include <dz1_int.h>
+#include <dz1_real.h>
+#include <dz1_str.h>
+#include <dz1_sock_addr.h>
+////////////////////////////////////////////////////////////////////////////////
+
+#include "libdz1_support.h"
+#include "Dz1TdcInfoObject.h"
+#include "Dz1TdcInfoStructure.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// _declare_ListControlGenNode
+struct ListControlGenNode;
+// _declare_ListControlGenNode
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ListControlGenList
+typedef struct ListControlGenList
+{
+	void *storage;
+	unsigned int (*count)(struct ListControlGenList *p);
+	Dz1Error (*travel)(struct ListControlGenList *p, Dz1Error (*func)(void *ptr, struct ListControlGenNode *entry), void *ptr);
+	Dz1Error (*travelForward)(struct ListControlGenList *p, Dz1Error (*func)(void *ptr, struct ListControlGenNode *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct ListControlGenList *p, Dz1Error (*func)(void *ptr, struct ListControlGenNode *entry), void *ptr);
+	struct ListControlGenNode **(*get_array)(struct ListControlGenList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct ListControlGenList *p, struct ListControlGenNode *data);
+	struct ListControlGenNode *(*extract)(struct ListControlGenList *p, struct ListControlGenNode *ptr);
+	struct ListControlGenNode *(*find)(struct ListControlGenList *p, struct ListControlGenNode *key);
+	int (*cmp)(struct ListControlGenNode *a, struct ListControlGenNode *b);
+} ListControlGenList;
+
+DZ1_CPPLINK DZ1_DLLPORT ListControlGenList *ListControlGenList_new(Dz1Error *err);
+static __inline__ ListControlGenList *ListControlGenList_gen(Dz1Error *err) { return ListControlGenList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT ListControlGenList *ListControlGenList_clone(ListControlGenList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ListControlGenList_purge(ListControlGenList *p);
+DZ1_CPPLINK DZ1_DLLPORT void ListControlGenList_del(ListControlGenList *p);
+static __inline__ void ListControlGenList_delAndSetNull(void *ptr)
+{
+	ListControlGenList **p = (ListControlGenList **)ptr;
+	if (p != NULL) { ListControlGenList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ListControlGenList_dump(ListControlGenList *p, int tab);
+
+// ListControlGenList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// ListControlGenNode
+struct ListControlGenNode;
+
+typedef struct ListControlGenNode
+{
+	str_t							 name;
+	ObjectInfo						*obj;
+	bool_t							 isItem;
+	struct ListControlGenNode		*parent;
+	ListControlGenList				*childs;
+	void							*hTreeItem;
+} ListControlGenNode;
+
+DZ1_CPPLINK DZ1_DLLPORT ListControlGenNode *ListControlGenNode_new(str_t name, 
+																   ObjectInfo *obj_ref, 
+																   bool_t isItem, 
+																   struct ListControlGenNode *parent, Dz1Error *err);
+static __inline__ ListControlGenNode *ListControlGenNode_gen(Dz1Error *err) { return ListControlGenNode_new(NULL, NULL, 0, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t ListControlGenNode_copy(ListControlGenNode *dst, ListControlGenNode *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT ListControlGenNode *ListControlGenNode_clone(ListControlGenNode *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void ListControlGenNode_purge(ListControlGenNode *p);
+DZ1_CPPLINK DZ1_DLLPORT void ListControlGenNode_del(ListControlGenNode *p);
+static __inline__ void ListControlGenNode_delAndSetNull(void *ptr)
+{
+	ListControlGenNode **p = (ListControlGenNode **)ptr;
+	if (p) { ListControlGenNode_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void ListControlGenNode_dump(ListControlGenNode *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int ListControlGenNode_cmp(ListControlGenNode *a, ListControlGenNode *b); 
+// ListControlGenNode
+////////////////////////////////////////////////////////////////////////////////
+
+#endif

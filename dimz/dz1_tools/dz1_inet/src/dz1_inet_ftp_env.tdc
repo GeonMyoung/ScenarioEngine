@@ -1,0 +1,87 @@
+message set definition
+{
+	include dz1_inet_ftp_def;
+	include dz1_inet_ftp_control_pi_msg;
+
+	typedef native Dz1Fsm2 from dz1_fsm2;
+		
+	typedef struct Dz1InetFtpDTPSpec
+	{
+		Dz1InetFtpDTPType		*type;
+		Dz1InetFtpDTPStruct		 stru;
+		Dz1InetFtpDTPMode		 mode;
+	} Dz1InetFtpDTPSpec;				// with api dump
+
+	typedef struct Dz1InetFtpPathNode
+	{
+		struct Dz1InetFtpPathNode	*next;	// is notarg, nodump
+		str							 path;
+	} Dz1InetFtpPathNode;					// with api dump
+	
+	typedef struct Dz1InetFtpPathList
+	{
+		Dz1InetFtpPathNode			*head;	// is notarg, cascadedump
+		Dz1InetFtpPathNode			*tail;	// is notarg, ref, nodump
+	} Dz1InetFtpPathList;					// with api dump
+	
+	typedef struct Dz1InetFtpPathInfo
+	{
+		Dz1InetFtpPathList			*list;		// is notarg
+		Dz1InetFtpPathNode			*current;	// is notarg, ref
+	} Dz1InetFtpPathInfo;						// with api dump
+	
+	typedef struct Dz1InetFtpTransferNode
+	{
+		struct Dz1InetFtpTransferNode	*next;		// is notarg, nodump
+		Dz1InetFtpTransfer				*target;	// is ref
+--		int32							 rxSize;	// is notarg
+		Dz1InetFtpPathInfo				*pathInfo;	// is notarg
+	} Dz1InetFtpTransferNode;						// with api dump
+	
+	typedef struct Dz1InetFtpTransferJobs
+	{
+		Dz1InetFtpTransferNode			*head;		// is notarg, cascadedump
+		Dz1InetFtpTransferNode			*tail;		// is notarg, ref, nodump
+	} Dz1InetFtpTransferJobs;						// with api dump
+	
+	typedef struct Dz1InetFtpSession
+	{
+		Dz1SockAddr					*peer;		// is key
+		Dz1SockAddr					*local;		// is key
+		Dz1TcpClientSocket			*sock;
+		uint32						 rcvr;
+		
+		str							 user;
+		str							 password;
+		str							 account;	
+		bool						 isPassive;
+
+		str							 remoteCharSetName;
+				
+		Dz1TcpServerSocket			*portSock;	// is notarg
+		Dz1TcpClientSocket			*dataSock;	// is notarg
+		
+		Dz1InetFtpTransferJobs		*jobs;		// is notarg
+		Dz1InetFtpTransferNode		*curJob;	// is notarg, ref
+		Dz1InetFtpCmdResult			 curStatus;	// is notarg
+		
+--		Dz1InetFtpSessionState		 state;		// is notarg
+		Dz1Fsm2						*fsm;		// is notarg
+		
+		Dz1InetFtpDTPSpec			*dtpSpec;
+		uint32						 dtp;
+		
+		Dz1InetFtpFileDoneInform	 fileDone;
+		void						*fileDoneParam;
+
+		void						*sg;
+	} Dz1InetFtpSession;				// with api dump, compare
+
+	typedef unique table Dz1InetFtpSessionList(find, extract, count) [Dz1InetFtpSession];
+	
+	typedef struct Dz1InetFtpEnv
+	{
+		void						*tSelf;
+		Dz1InetFtpSessionList		*sessionList;	// is notarg
+	} Dz1InetFtpEnv;								// with api dump
+}

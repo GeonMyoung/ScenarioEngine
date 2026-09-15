@@ -1,0 +1,61 @@
+message set definition
+{
+	include TrafficSignalControllerTestMsgDef;
+
+	typedef struct  TrafficSignalControllerTestMsgFrame_status_response
+	{
+		CrossStatusBasicInfo				*lc_status;
+		CrossStatusExtInfo_r27				*ex_status;					// is notarg
+	} TrafficSignalControllerTestMsgFrame_status_response;		// with api dump, clone
+
+
+	typedef union TrafficSignalControllerTestMsgFrameContext
+	{
+		-- control
+		CrossControlCmd											[0x10]	*control_req;
+		CrossIndicator											[0x11]	*control_rsp;
+		
+		-- status
+		CrossIndicator											[0x12]	*status_req;
+		TrafficSignalControllerTestMsgFrame_status_response		[0x13]	*status_rsp;
+
+		-- detector
+		CrossIndicator											[0x22] *detector_req;
+		DetectorInfo											[0x23] *detector_rsp;
+
+		-- siganl_phase_download								
+		SignalPhaseInfoDown_r27									[0x30] *signal_phase_download_req;
+		CrossIndicator											[0x31] *signal_phase_download_rsp;
+
+		-- signal_phase_up
+		CrossIndicator											[0x32] *signal_phase_upload_req;
+		SignalPhaseInfoUp										[0x33] *signal_phase_upload_rsp;
+
+		-- clock download
+		ClockInfo												[0x40] *clock_download_req;
+		CrossIndicator											[0x41] *clock_download_rsp;
+
+		-- clock upload
+		CrossIndicator											[0x42] *clock_upload_req;
+		ClockInfo												[0x43] *clock_upload_rsp;
+
+		-- special command
+		SpecialCommandInfo										[0x50] *special_command_req;
+		SpecialCommandPPCNumberList								[0x51] *special_command_rsp;
+		
+		-- Firmware
+		FirmwareUpgradeData										[0x56] *fw_upgrade_req;
+		FirmwareUpgradeError									[0x57] *fw_upgrade_rsp;
+
+
+
+	} TrafficSignalControllerTestMsgFrameContext;		// with api dump, clone
+
+
+	typedef struct TrafficSignalControllerTestMsgFrame
+	{
+		uint8						 cross_id;			// is key
+		Dz1Binary					*context;			// is key
+	} TrafficSignalControllerTestMsgFrame;		// with api dump, compare, clone
+
+}

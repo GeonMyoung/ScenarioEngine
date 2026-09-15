@@ -1,0 +1,44 @@
+message set definition
+{
+	include libdz1_support;
+	include Dz1SockUtilDef;
+	
+	typedef struct Dz1SockUtilAcceptorArg
+	{
+		uint32								 parentQueueID;
+		uint32								 acceptorID;
+	} Dz1SockUtilAcceptorArg;
+	
+	typedef reference Dz1SockUtilBulkConnectReqeust from Dz1SockUtilBulkConnector; // with api dumpX, compare
+
+	typedef unique table	Dz1SockUtilBulkConnectReqeustIndex(find, extract)	[ Dz1SockUtilBulkConnectReqeust];
+	typedef array			Dz1SockUtilBulkConnectReqeustFifo(gethead, extract)	[&Dz1SockUtilBulkConnectReqeust];
+
+	typedef struct Dz1SockUtilBulkConnectingEntry
+	{
+		Dz1SockUtilBulkConnectReqeust		*req;				// is key, ref
+		uint32								 thid;
+	} Dz1SockUtilBulkConnectingEntry;							// with api dumpX, compare
+	
+	typedef unique table Dz1SockUtilBulkConnectingList(find, extract) [Dz1SockUtilBulkConnectingEntry];
+	
+	typedef struct Dz1SockUtilBulkConnectEnv
+	{
+		uint8								 maxConcurrency;
+
+		Dz1SockUtilBulkConnectReqeustIndex	*index;				// is notarg
+		Dz1SockUtilBulkConnectReqeustFifo	*requestFifo;		// is notarg
+		
+		Dz1SockUtilBulkConnectingList		*connectingList;	// is notarg
+	} Dz1SockUtilBulkConnectEnv;								// with api dumpX
+	
+
+	typedef struct Dz1SockUtilBulkConnectMsg
+	{
+		Dz1SockAddr							*peer;
+
+		Dz1TcpClientSocket					*sock;
+		Dz1SockAddr							*local;
+	} Dz1SockUtilBulkConnectMsg;								// with api dumpX
+}
+

@@ -1,0 +1,37 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct Dz1StorageChunkEntry
+	{
+		uint32					idx;		// is key
+	} Dz1StorageChunkEntry;					// with api dump, compare
+	typedef unique table Dz1StorageChunkList(find, extract, count) [Dz1StorageChunkEntry];
+	
+	typedef struct Dz1StorageBlock
+	{
+		uint32					idx;		// is key
+		uint32					prev_idx;
+		uint32					next_idx;
+		uint32					flag;
+	} Dz1StorageBlock;						// with api userdump, compare
+	typedef unique table Dz1StorageBlockList(find, extract, count, gethead) [Dz1StorageBlock];
+	typedef array Dz1StorageBlockArray(count) [&Dz1StorageBlock];
+	
+	typedef struct Dz1StorageArchive
+	{
+		uint32					 entry_idx;		// is key
+		Dz1StorageBlockArray	*blocks;		// is notarg
+	} Dz1StorageArchive;						// with api dump, compare
+	typedef unique table Dz1StorageArchiveList(find, extract, count) [Dz1StorageArchive];
+	
+	typedef struct Dz1StorageInfo
+	{
+		Dz1StorageBlockList		*blocks;		// is notarg
+		Dz1StorageBlockArray	*spaces;		// is notarg
+		Dz1StorageArchiveList	*archives;		// is notarg
+		Dz1StorageBlockArray	*missings;		// is notarg
+		Dz1StorageBlockArray	*collisions;	// is notarg
+	} Dz1StorageInfo;							// with api dump
+
+	typedef void Dz1StorageHandle;	
+}

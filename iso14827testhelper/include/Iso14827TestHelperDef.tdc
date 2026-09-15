@@ -1,0 +1,1248 @@
+message set definition
+{
+	include dz1_asn1_support;
+	include libdz1_support;
+	include GitsnAsnUtilDef;
+	include ItsIso14827Def;
+	include Iso14827dz1;
+	include TechnicalRegulation1Def;
+
+	typedef func void Iso14827TestHelperException(void *exceptionArg, Dz1Error *reason);
+
+
+	----------------------------------------------------------------------------------
+	-- Iso14827dz1
+	----------------------------------------------------------------------------------
+
+	typedef struct Gitsn_Iso14827Cost
+	{
+		TString			 currency;
+		int32			 factor;
+		int32			 qty;
+	} Gitsn_Iso14827Cost;			// with api dump, clone
+
+	typedef union Gitsn_Iso14827TimeFrac
+	{
+		int32				 deci;
+		int32				 centi;
+		int32				 milli;
+	} Gitsn_Iso14827TimeFrac;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827TimeZone
+	{
+		int32				 modH;
+		int32				 modM;
+	} Gitsn_Iso14827TimeZone;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827Time
+	{
+		int32				*year;
+		int32				*month;
+		int32				*day;
+		int32				 h;
+		int32				 m;
+		int32				 s;
+		Gitsn_Iso14827TimeFrac	*frac;
+		Gitsn_Iso14827TimeZone	*zone;
+	} Gitsn_Iso14827Time;			// with api userdump, clone
+
+	typedef struct Gitsn_Iso14827HdrOpt
+	{
+		TString				 origin;
+		TString				 originAddr;
+		TString				 sender;
+		TString				 senderAddr;
+		TString				 dest;
+		TString				 destAddr;
+		Gitsn_Iso14827Cost	*cost;
+		Gitsn_Iso14827Time	*t;
+	} Gitsn_Iso14827HdrOpt;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827Initiate
+	{
+		TString				 sender;
+		TString				 dest;
+	} Gitsn_Iso14827Initiate;			// with api dump, clone
+
+	typedef array Gitsn_Dz1OIDList(find, count) [TString];
+
+	typedef enum Gitsn_Iso14827LoginInitiator { serverInitiated, clientInitiated } Gitsn_Iso14827LoginInitiator;
+
+	typedef struct Gitsn_Iso14827Login
+	{
+		TString					 sender;
+		TString					 dest;
+		TString					 user;
+		TString					 pass;
+		Gitsn_Dz1OIDList		*encRules;	// is notarg
+		int32					 hbDur;
+		int32					 timeout;
+		Gitsn_Iso14827LoginInitiator	 initiator;
+		uint16					 datagramSize;
+	} Gitsn_Iso14827Login;			// with api dump, clone
+
+	typedef enum Gitsn_Iso14827Terminate
+	{
+		other,
+		serverRequested,
+		clientRequested,
+		serverShutdown,
+		clientShutdown,
+		serverCommProblems,
+		clientCommProblems
+	} Gitsn_Iso14827Terminate;
+
+	typedef enum Gitsn_Iso14827Logout
+	{
+		other,
+		serverRequested,
+		clientRequested,
+		serverShutdown,
+		clientShutdown,
+		serverCommProblems,
+		clientCommProblems
+	} Gitsn_Iso14827Logout;
+
+	typedef enum Gitsn_Iso14827SubscriptionDataStatus { NEW, UPDATED } Gitsn_Iso14827SubscriptionDataStatus;
+
+	typedef struct Gitsn_Iso14827RegisteredContinuous
+	{
+		uint32							 updateDelay;		-- DEFAULT 0
+		Gitsn_Iso14827Time					*start;				-- OPTIONAL
+		Gitsn_Iso14827Time					*end;				-- OPTIONAL
+	} Gitsn_Iso14827RegisteredContinuous;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827RegisteredDaily
+	{
+		uint32							 updateDelay;		-- DEFAULT 0
+		uint8							 daysOfWeek;		-- other(0), sunday(1)..saturday(7)
+		Gitsn_Iso14827Time					*startDate;			-- OPTIONAL
+		Gitsn_Iso14827Time					*endDate;			-- OPTIONAL
+		Gitsn_Iso14827Time					*startTime;			-- OPTIONAL(=00:00:00)
+		uint16							*duration;			-- OPTIONAL(=1440)
+	} Gitsn_Iso14827RegisteredDaily;			// with api dump, clone
+
+	typedef union Gitsn_Iso14827Registered
+	{
+		Gitsn_Iso14827RegisteredContinuous	*continuous;
+		Gitsn_Iso14827RegisteredDaily			*daily;
+	} Gitsn_Iso14827Registered;			// with api dump, clone
+
+	typedef union Gitsn_Iso14827SubscriptionDataMode
+	{
+		int32				*single;
+		Gitsn_Iso14827Registered	*eventDriven;
+		Gitsn_Iso14827Registered	*periodic;
+	} Gitsn_Iso14827SubscriptionDataMode;			// with api dump, clone
+
+	typedef enum Gitsn_Iso14827SubscriptionDataFormat { other, ftp, tftp, dataPacket } Gitsn_Iso14827SubscriptionDataFormat;
+
+	-- END APPLICATION MESSAGE DEFINITION
+	typedef struct Gitsn_Iso14827EndAppMsg
+	{
+		TString							 oid;
+		Dz1Binary						*data;
+	} Gitsn_Iso14827EndAppMsg;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827SubscriptionData
+	{
+		bool							 persistent;
+		Gitsn_Iso14827SubscriptionDataStatus	 status;
+		Gitsn_Iso14827SubscriptionDataMode	*mode;
+		Gitsn_Iso14827SubscriptionDataFormat	 fmt;
+		int32							 priority;
+		bool							 guarantee;
+		Gitsn_Iso14827EndAppMsg				*msg;
+	} Gitsn_Iso14827SubscriptionData;			// with api dump, clone
+
+	typedef enum Gitsn_Iso14827SubscriptionCancel
+	{
+		other,
+		dataNotNeeded,
+		errorsInPublication,
+		pendingLogout,
+		processingMgmt,
+		bandwidthMgmt
+	} Gitsn_Iso14827SubscriptionCancel;
+
+	typedef union Gitsn_Iso14827SubscriptionType
+	{
+		Gitsn_Iso14827SubscriptionData	*data;
+		Gitsn_Iso14827SubscriptionCancel	 reason;
+	} Gitsn_Iso14827SubscriptionType;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827Subscription
+	{
+		uint32						 serial;
+		Gitsn_Iso14827SubscriptionType	*type;
+	} Gitsn_Iso14827Subscription;			// with api dump, clone
+
+	typedef enum Gitsn_Iso14827PublicationMgmt
+	{
+		temporarilySuspended,
+		resume,
+		terminateOther,
+		terminateDataNoLongerAvailable,
+		terminatePublicationsBeingRejected,
+		terminatePendingShutdown,
+		terminateProcessingMgmt,
+		terminateBandwidthMgmt,
+		terminateAccessDenied,
+		unknownRequest
+	} Gitsn_Iso14827PublicationMgmt;
+
+	typedef union Gitsn_Iso14827PublicationType
+	{
+		Gitsn_Iso14827PublicationMgmt		 mgmt;
+		Gitsn_Iso14827EndAppMsg			*msg;
+	} Gitsn_Iso14827PublicationType;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827PublicationData
+	{
+		uint32						 subscriptionSerial;	// is key
+		uint32						 serial;				// is key
+		bool						 isLated;
+		Gitsn_Iso14827PublicationType		*type;
+	} Gitsn_Iso14827PublicationData;			// with api dump, compare, clone
+
+	typedef unique array Gitsn_Iso14827PublicationDataList(find, extract, gethead, count) [Gitsn_Iso14827PublicationData];
+
+	typedef union Gitsn_Iso14827PublishFormat
+	{
+		Gitsn_Iso14827PublicationDataList		*dataList;
+		TString									 filename;
+	} Gitsn_Iso14827PublishFormat;								// with api dump, clone
+
+	typedef struct Gitsn_Iso14827Publication
+	{
+		bool							 guaranteed;
+		Gitsn_Iso14827PublishFormat		*fmt;
+	} Gitsn_Iso14827Publication;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827TransferDone
+	{
+		TString						 filename;
+		bool						 isSuccess;
+	} Gitsn_Iso14827TransferDone;			// with api dump, clone
+
+	typedef union Gitsn_Iso14827AcceptType
+	{
+		TString	 					 login;
+		int32						*singleSubscription;
+		uint32						 registeredSubscription;	-- Registered Subscription Serial
+		int32						*publication;
+	} Gitsn_Iso14827AcceptType;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827Accept
+	{
+		uint32						 pktNbr;
+		Gitsn_Iso14827AcceptType			*acceptType;
+	} Gitsn_Iso14827Accept;			// with api dump, clone
+
+	typedef enum Gitsn_Iso14827RejectLogin
+	{
+		other,
+		unknownDomainName,
+		accessDenied,
+		invalidPassword,
+		timeoutTooSmall,
+		timeoutTooLarge,
+		heartbeatTooSmall,
+		heartbeatTooLarge,
+		sessionExist,
+		maxSessionReached
+	} Gitsn_Iso14827RejectLogin;
+
+	typedef enum Gitsn_Iso14827RejectSubscription
+	{
+		other,
+		unknownSubscriptionNbr,
+		invalidTimes,
+		frequencyTooSmall,
+		frequencyTooLarge,
+		invalidMode,
+		publishFormatNotSupported,
+		unknownSubscriptionMsgId,
+		invalidSubscriptionMsgId,
+		invalidSubscriptionContent
+	} Gitsn_Iso14827RejectSubscription;
+
+	typedef enum Gitsn_Iso14827RejectPublication
+	{
+		other,
+		invalidPublishFormat
+	} Gitsn_Iso14827RejectPublication;
+
+	typedef enum Gitsn_Iso14827RejectPubDataReason
+	{
+		other,
+		unknownSubscription,
+		unknownPublicationNbr,
+		unknownPublicationMsgId,
+		invalidPublicationMsgId,
+		invalidPublicationMsgContent,
+		repeatedPublicationNbr
+	} Gitsn_Iso14827RejectPubDataReason;
+
+	typedef struct Gitsn_Iso14827RejectPubData
+	{
+		uint32						subSerial;
+		uint32						pubSerial;
+		Gitsn_Iso14827RejectPubDataReason	reason;
+	} Gitsn_Iso14827RejectPubData;			// with api dump, clone
+
+	typedef union Gitsn_Iso14827RejectType
+	{
+		Gitsn_Iso14827RejectLogin			login;
+		Gitsn_Iso14827RejectSubscription	subscription;
+		Gitsn_Iso14827RejectPublication	publication;
+		Gitsn_Iso14827RejectPubData		*pubData;
+	} Gitsn_Iso14827RejectType;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827Reject
+	{
+		uint32						 pktNbr;
+		Gitsn_Iso14827RejectType			*type;
+		Gitsn_Iso14827SubscriptionType	*altReq;
+	} Gitsn_Iso14827Reject;			// with api dump, clone
+
+	typedef union Gitsn_Iso14827PDUs
+	{
+		Gitsn_Iso14827Initiate		*initiate;
+		Gitsn_Iso14827Login			*login;
+		uint32					 fred;
+		Gitsn_Iso14827Terminate		 term;
+		Gitsn_Iso14827Logout			 logout;
+		Gitsn_Iso14827Subscription	*subscription;
+		Gitsn_Iso14827Publication		*publication;
+		Gitsn_Iso14827TransferDone	*transferDone;
+		Gitsn_Iso14827Accept			*ack;
+		Gitsn_Iso14827Reject			*nak;
+	} Gitsn_Iso14827PDUs;			// with api dump, clone
+
+	typedef struct Gitsn_Iso14827C2CAuthMsg
+	{
+		TString			 authInfo;
+		uint32			 pktNbr;			// is key
+		int32			 priority;
+		Gitsn_Iso14827HdrOpt	*hdrOpt;
+		Gitsn_Iso14827PDUs	*pdu;
+	} Gitsn_Iso14827C2CAuthMsg;					// with api dump, compare
+
+	typedef enum Gitsn_Iso14827DatexVersionNumber
+	{
+		experimental = 0,
+		version1 = 1
+	} Gitsn_Iso14827DatexVersionNumber;
+	
+	typedef struct Gitsn_Iso14827DatexDataPacket
+	{
+		Gitsn_Iso14827DatexVersionNumber	 version;
+		Dz1Asn1OctetStr					*data;
+		uint16							crc16;
+	} Gitsn_Iso14827DatexDataPacket;	// with api dump
+
+	----------------------------------------------------------------------------------
+	-- Iso14827dz1
+	----------------------------------------------------------------------------------
+
+
+
+
+
+
+	----------------------------------------------------------------------------------
+	-- Subscription Spec Type
+	----------------------------------------------------------------------------------
+	typedef union SubscribeSpecTypeReg
+	{
+		Iso14827RegisteredContinuous	*continuous;
+		Iso14827RegisteredDaily			*daily;
+	} SubscribeSpecTypeReg;										// with api dump, clone
+
+	typedef struct SubscribeSpecTypeRegistered
+	{
+		bool							 is_periodic;
+		SubscribeSpecTypeReg			*reg_info;
+		Iso14827SubscriptionCancel		 when_cancel;			-- 취소시 사유
+	} SubscribeSpecTypeRegistered;								// with api dump, clone
+
+	typedef union SubscribeSpecType
+	{
+		uint32							 single;
+		SubscribeSpecTypeRegistered		*registered;
+	} SubscribeSpecType;										// with api dump, clone
+	
+	----------------------------------------------------------------------------------
+	-- Subscription Spec Entry & List
+	----------------------------------------------------------------------------------
+	typedef struct SubscribeSpecEntry
+	{
+		TString							 oid;					// is key
+		uint8							 priority;
+		SubscribeSpecType				*type;
+	} SubscribeSpecEntry;										// with api userdump, clone, compare
+	typedef unique table SubscribeSpecList(find, extract, count, gethead) [SubscribeSpecEntry];
+
+	----------------------------------------------------------------------------------
+	-- internet address
+	----------------------------------------------------------------------------------
+	typedef struct ConfTestSocketAddress
+	{
+		TString							 addr;
+		uint16							 port;
+	} ConfTestSocketAddress;									// with api userdump, clone
+
+	----------------------------------------------------------------------------------
+	-- Conformance Connection Info
+	----------------------------------------------------------------------------------
+	typedef union Iso14827TestConnection
+	{
+		uint16							 passive;
+		ConfTestSocketAddress			*active;
+	} Iso14827TestConnection;							// with api dump, clone
+
+	typedef union TechnicalRegulation2Connection
+	{
+		uint16							 passive;
+		ConfTestSocketAddress			*active;
+	} TechnicalRegulation2Connection;							// with api dump, clone
+
+	typedef struct SubscribeSpecDuo
+	{
+		SubscribeSpecEntry								*session1;
+		SubscribeSpecEntry								*session2;
+	} SubscribeSpecDuo;											// with api dump, clone
+
+	typedef enum Iso14827TestAuth
+	{
+		success,
+		not_found,
+		invalid_passwd,
+		codec_not_support
+	} Iso14827TestAuth;
+
+	typedef func Iso14827TestAuth Iso14827TestUserAuthF(Dz1Asn1OctetStr *user, Dz1Asn1OctetStr *path, Dz1Asn1OctetStr *autninfo, uint8 selctable_codec_bit, Dz1Asn1Codec *ret_selected_codec);
+
+	-- VALIDATE SET
+
+	typedef struct PolicePrj4ValidateSet_centerClient2rse
+	{
+		bool				test_bsm;
+	} PolicePrj4ValidateSet_centerClient2rse;			// with api dump, clone
+
+	typedef struct PolicePrj4ValidateSet_rseServer2center
+	{
+		bool				test_bsm;
+	} PolicePrj4ValidateSet_rseServer2center;		// with api dump, clone
+
+	typedef struct PolicePrj4ValidateSet_rseClient2center
+	{
+		bool				test_map;
+		bool				test_rsa;
+		bool				test_tim;
+	} PolicePrj4ValidateSet_rseClient2center;			// with api dump, clone
+
+	typedef struct PolicePrj4ValidateSet_centerServer2rse
+	{
+		bool				test_map;
+		bool				test_rsa;
+		bool				test_tim;
+	} PolicePrj4ValidateSet_centerServer2rse;			// with api dump, clone
+
+	typedef struct PolicePrj4ValidateSet_signalserverServer2center
+	{
+		bool				test_spat;
+		bool				test_tls;
+	} PolicePrj4ValidateSet_signalserverServer2center;			// with api dump, clone
+
+	typedef struct ITSK00100_3ValidateSet_c2cClient
+	{
+		bool					 test_pub_incident_detection_info;
+		bool					 test_pub_incident_termination_info;
+		bool					 test_pub_incident_detection_video_file_info_provide;
+		bool					 test_pub_control_state_info;
+		bool					 test_pub_sensor_state_info;
+		bool					 test_pub_moving_object;					
+	} ITSK00100_3ValidateSet_c2cClient;		// with api dump, clone
+
+	typedef struct ITSK00100_3ValidateSet_c2cServer
+	{
+		bool					 test_pub_incident_detection_info;
+		bool					 test_pub_incident_termination_info;
+		bool					 test_pub_incident_detection_video_file_info_provide;
+		bool					 test_pub_control_state_info;
+		bool					 test_pub_sensor_state_info;
+		bool					 test_pub_moving_object;					
+	} ITSK00100_3ValidateSet_c2cServer;		// with api dump, clone
+
+
+	typedef struct TechnicalRegulation1ValidateSet_clientRole1
+	{
+		bool	test_pub_current_link_state;
+		bool	test_pub_event_identity;
+		bool	test_pub_incident_identity;
+		bool	test_pub_incident_conditions;
+		bool	test_pub_roadway_surface_status;
+		bool	test_pub_weather_information;
+		bool	test_pub_link_roadway_geometry;
+		bool	test_pub_probe_vehicle_detection;
+		bool	test_pub_detector_collection;
+		bool	test_pub_extention_comm_pdu;
+	} TechnicalRegulation1ValidateSet_clientRole1;		// with api dump, clone
+
+	typedef struct TechnicalRegulation1ValidateSet_serverRole1
+	{
+		bool	test_sub_current_link_state;
+		bool	test_sub_event_identity;
+		bool	test_sub_incident_identity;
+		bool	test_sub_incident_conditions;
+		bool	test_sub_roadway_surface_status;
+		bool	test_sub_weather_information;
+		bool	test_sub_link_roadway_geometry;
+		bool	test_sub_probe_vehicle_detection;
+		bool	test_sub_detector_collection;
+		bool	test_sub_extention_comm_pdu;
+	} TechnicalRegulation1ValidateSet_serverRole1;		// with api dump, clone
+
+
+	typedef struct TechnicalRegulation2ValidateSet_clientRole1
+	{
+		bool	test_pub_comm_tx_pdu;
+		bool	test_pub_comm_rx_pdu;
+	} TechnicalRegulation2ValidateSet_clientRole1;		// with api dump, clone
+	typedef struct TechnicalRegulation2ValidateSet_serverRole1
+	{
+		bool	test_pub_comm_tx_pdu;
+		bool	test_pub_comm_rx_pdu;
+	} TechnicalRegulation2ValidateSet_serverRole1;		// with api dump, clone
+
+	typedef union Iso14827TestValidateSet
+	{
+		-- police_prj4
+		PolicePrj4ValidateSet_centerClient2rse		*centerClient2rse;
+		PolicePrj4ValidateSet_rseServer2center		*rseServer2center;
+		PolicePrj4ValidateSet_rseClient2center		*rseClient2center;
+		PolicePrj4ValidateSet_centerServer2rse		*centerServer2rse;
+		PolicePrj4ValidateSet_signalserverServer2center	*signalserverServer2center;
+
+
+		ITSK00100_3ValidateSet_c2cClient			*itsk00100_3c2cClient;
+		ITSK00100_3ValidateSet_c2cServer			*itsk00100_3c2cServer;
+
+		TechnicalRegulation1ValidateSet_clientRole1	*technical_regulation1_clientRole1;
+		TechnicalRegulation1ValidateSet_serverRole1	*technical_regulation1_serverRole1;
+
+		TechnicalRegulation2ValidateSet_clientRole1	*technical_regulation2_clientRole1;
+		TechnicalRegulation2ValidateSet_serverRole1	*technical_regulation2_serverRole1;
+	} Iso14827TestValidateSet;						// with api dump, clone
+
+
+	----------------------------------------------------------------------------------
+	-- Server Role Scenario
+	----------------------------------------------------------------------------------
+	typedef struct Iso14827TestServerRoleSubsEntry
+	{
+		TString							 oid;					// is key
+	} Iso14827TestServerRoleSubsEntry;					// with api dump, clone, compare
+	typedef unique table Iso14827TestServerRoleSubsList(find, extract, count) [Iso14827TestServerRoleSubsEntry];
+
+	typedef struct Iso14827TestServerRoleViolatedSubTest
+	{
+		uint32							 sub_serial;
+		bool							 guaranteed;
+		TString							 oid;
+		int32							 wait_pub_s;
+	} Iso14827TestServerRoleViolatedSubTest;			// with api dump, clone
+
+	typedef struct Iso14827TestServerRole1
+	{
+		Dz1Asn1UTF8Str									*my_domain;
+		Dz1Asn1UTF8Str									*peer_domain;
+		Iso14827TestConnection							*connection;
+		
+		bool											 test_session;
+		bool											 test_login_retry;		-- 최초 로그인 시도 시 재전송 시험								FALSE면 시험 안함
+
+		Iso14827TestServerRoleSubsList					*test_subs;				-- 요청 시험(시험대상 OID 목록)									NULL이면 시험 안함 (NULL이 아니면 비어있으면 안됨)			
+
+		Iso14827TestValidateSet							*validate_set;
+
+		bool											 test_request_retry;	-- 최초 서브스크립션 재전송 시험								FALSE면 시험 안함
+		bool											 test_invalid_pub;		-- 최초 서브스크립션(등록형) 시 비정상 퍼블리케이션 응답 시험	FALSE면 시험 안함
+
+		-- Iso14827TestServerRoleViolatedSubTest			*test_violated_pub;		-- 서버가 서브스크립션을 전송하는 시험							NULL이면 시험 안함
+	} Iso14827TestServerRole1;							// with api dump, clone
+
+	typedef struct Iso14827TestServerRole2
+	{
+		Dz1Asn1UTF8Str									*my_domain;
+		Dz1Asn1UTF8Str									*peer_domain;
+		Iso14827TestConnection							*connection;
+		uint32											 subs_timeout_s;
+		Iso14827PublicationMgmt							 subs_cancel_reason;
+	} Iso14827TestServerRole2;							// with api dump, clone
+
+	typedef struct Iso14827TestServerRole3
+	{
+		Dz1Asn1UTF8Str									*my_domain;
+		Dz1Asn1UTF8Str									*peer_domain;
+		Iso14827TestConnection							*connection;
+		
+		bool											 test_session;			-- 세션 설정													FALSE면 검증 안함
+		bool											 test_login_retry;		-- 최초 로그인 시도 시 재전송 시험								FALSE면 시험 안함
+
+		uint32											 subs_timeout_s;
+		Iso14827PublicationMgmt							 subs_cancel_reason;
+
+		Iso14827TestValidateSet							*validate_set;
+
+		bool											 test_request_retry;	-- 최초 서브스크립션 재전송 시험								FALSE면 시험 안함
+		bool											 test_invalid_pub;		-- 최초 서브스크립션(등록형) 시 비정상 퍼블리케이션 응답 시험	FALSE면 시험 안함
+	} Iso14827TestServerRole3;							// with api dump, clone
+
+	----------------------------------------------------------------------------------
+	-- Client Role Scenario
+	----------------------------------------------------------------------------------
+	typedef struct Iso14827TestClientAccount
+	{
+		Dz1Asn1UTF8Str									*my_domain;
+		Dz1Asn1OctetStr									*authinfo;
+		Dz1Asn1OctetStr									*userid;
+		Dz1Asn1OctetStr									*passwd;
+	} Iso14827TestClientAccount;						// with api userdump, clone
+
+	typedef struct Iso14827TestClientPassive
+	{
+		uint16											 local_port;
+		uint16											 peer_port;
+		Iso14827TestClientAccount				*account1;
+		Iso14827TestClientAccount				*account2;
+	} Iso14827TestClientPassive;						// with api dump, clone
+
+	typedef struct Iso14827TestClientActive
+	{
+		ConfTestSocketAddress							*peer;
+		Iso14827TestClientAccount				*account1;
+		Iso14827TestClientAccount				*account2;
+	} Iso14827TestClientActive;							// with api dump, clone
+
+	typedef union Iso14827TestClientConnection
+	{
+		Iso14827TestClientPassive				*passive;
+		Iso14827TestClientActive				*active;
+	} Iso14827TestClientConnection;						// with api dump, clone
+
+	
+
+	typedef struct Iso14827TestClientRole1
+	{
+		Iso14827TestClientConnection					*connection;
+		Dz1Asn1UTF8Str									*peer_domain;
+		
+		bool											 test_session;				-- 세션 설정 시험
+		bool											 test_login_invalid;		-- 비정상 로그인 시험											FALSE면 안함
+		bool											 test_login_duplicate;		-- 중복 로그인 시험												FALSE면 안함
+		bool											 test_session_maintain;		-- 세션 유지 및 연결 해제 시험									FALSE면 안함
+
+		bool											 test_normal_pub;
+		Iso14827TestValidateSet							*validate_set;
+
+		SubscribeSpecList								*subs_invalid_list;			-- 비정상 정보 요청 시험, OID가 비정상 값이어야 함				비어있으면 테스트 안함 -> 서브스크립션 분석
+		SubscribeSpecList								*subs_normal_list;			-- 10종 정상 정보 요청(single)시험								비어있으면 테스트 안함 -> 정보 제공 기능 시험
+		SubscribeSpecEntry								*subs_cancel;				-- 임의 1종(등록형) 명시적 취소 시험							NULL이면 테스트 안함
+		SubscribeSpecEntry								*subs_pub_retry;			-- 임의 1종 퍼블리케이션 재전송 시험							NULL이면 테스트 안함
+
+		Iso14827SubscriptionCancel						 subs_cancel_reason;
+	} Iso14827TestClientRole1;							// with api dump, clone
+
+	typedef struct Iso14827TestClientRole1TR
+	{
+		Iso14827TestClientConnection					*connection;
+		Dz1Asn1UTF8Str									*peer_domain;
+		
+		bool											 test_session;				-- 세션 설정 시험
+		bool											 test_login_invalid;		-- 비정상 로그인 시험											FALSE면 안함
+		bool											 test_login_duplicate;		-- 중복 로그인 시험												FALSE면 안함
+		bool											 test_session_maintain;		-- 세션 유지 및 연결 해제 시험									FALSE면 안함
+
+		bool											 test_normal_pub;
+		Iso14827TestValidateSet							*validate_set;
+
+		SubscribeSpecList								*subs_invalid_list;			-- 비정상 정보 요청 시험, OID가 비정상 값이어야 함				비어있으면 테스트 안함 -> 서브스크립션 분석
+		SubscribeSpecList								*subs_normal_list;			-- 10종 정상 정보 요청(single)시험								비어있으면 테스트 안함 -> 정보 제공 기능 시험
+		SubscribeSpecEntry								*subs_cancel;				-- 임의 1종(등록형) 명시적 취소 시험							NULL이면 테스트 안함
+		SubscribeSpecEntry								*subs_pub_retry;			-- 임의 1종 퍼블리케이션 재전송 시험							NULL이면 테스트 안함
+
+		Iso14827SubscriptionCancel						 subs_cancel_reason;
+	} Iso14827TestClientRole1TR;							// with api dump, clone
+
+	typedef struct Iso14827TestClientRole2
+	{
+		Iso14827TestClientConnection			*connection;
+		Dz1Asn1UTF8Str									*peer_domain;
+		SubscribeSpecList								*subs_total_list;			-- 통합 시험													비어있으면 테스트 안함
+		uint32											 expireTime			;		-- 통합 시험 요청 정보의 만료 시간, 최소 3분
+		Iso14827SubscriptionCancel						 subs_cancel_reason;
+	} Iso14827TestClientRole2;							// with api dump, clone
+
+	typedef struct Iso14827TestDuoClientRole
+	{
+		Iso14827TestClientConnection	*connection;
+		Dz1Asn1UTF8Str							*peer_domain;
+		SubscribeSpecDuo						*subs_duo;							-- 다중 세션 시험, 세션별 임의 1종								NULL이면 테스트 안함
+	} Iso14827TestDuoClientRole;						// with api dump, clone
+	----------------------------------------------------------------------------------
+	-- Duo Session Scenario
+	----------------------------------------------------------------------------------
+	typedef struct Iso14827TestAccount
+	{
+		Dz1Asn1OctetStr									*authinfo;
+		Dz1Asn1OctetStr									*userid;
+		Dz1Asn1OctetStr									*passwd;
+	} Iso14827TestAccount;								// with api dump, clone
+
+	-- typedef struct Iso14827TestDuoSessionRole
+	-- {
+	-- 	Dz1Asn1UTF8Str									*my_domain;
+	-- 	Dz1Asn1UTF8Str									*peer_domain;
+	-- 	------------------------------------------------------------------ 14827 CLIENT
+	-- 	Iso14827TestConnection					*c_peer_server;				-- TCP : passive-port, active-addr, port
+	-- 	Iso14827TestAccount						*c_account;					-- 14827 : client connect server: auth, user, pass
+	-- 	SubscribeSpecEntry								*c_sub;						-- 임의 1종 정상 요청
+	-- 	------------------------------------------------------------------ 14827 SERVER
+	-- 	Iso14827TestConnection					*s_peer_client;				-- TCP : passive-port, active-addr, port
+	-- } Iso14827TestDuoSessionRole;						// with api dump, clone
+	
+	typedef struct Iso14827TestDuoSessionRole
+	{
+		Dz1Asn1UTF8Str									*my_domain;
+		------------------------------------------------------------------ 14827 CLIENT
+		Dz1Asn1UTF8Str									*peer_server_domain;
+		Iso14827TestConnection					*c_peer_server;				-- TCP : passive-port, active-addr, port
+		Iso14827TestAccount						*c_account;					-- 14827 : client connect server: auth, user, pass
+		SubscribeSpecEntry								*c_sub;						-- 임의 1종 정상 요청
+		------------------------------------------------------------------ 14827 SERVER
+		Dz1Asn1UTF8Str							*peer_client_domain;		
+		Iso14827TestConnection					*s_peer_client;				-- TCP : passive-port, active-addr, port
+	} Iso14827TestDuoSessionRole;						// with api dump, clone
+
+	----------------------------------------------------------------------------------
+	-- Client Test Event Struct
+	----------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------
+	-- Test Scenario
+	----------------------------------------------------------------------------------
+	typedef union Iso14827TestScenario
+	{
+		Iso14827TestServerRole1					*server1;					-- 정보제공 일반 시험
+		Iso14827TestServerRole2					*server2;					-- 정보제공 통합 시험
+		Iso14827TestServerRole3					*server3;					-- 국2 
+
+		Iso14827TestClientRole1					*client1;					-- 정보요청 모든 시험
+		Iso14827TestClientRole2					*client2;					-- 정보요청 모든 시험
+		Iso14827TestDuoClientRole				*duo_client;				-- 다중 세션 설정 시험
+		Iso14827TestDuoSessionRole				*duo_session;				-- 병행 세션 시험
+
+		Iso14827TestClientRole1TR				*client1_tr;				-- 기본교통정보교환
+
+	} Iso14827TestScenario;								// with api dump, clone
+
+
+	-- process code
+
+	typedef enum Iso14827TestProcessStatusCode
+	{
+		-- SUCCESS = 0
+		OK = 0,									-- 처리 성공, 표준적합성 시험 성공, ...
+
+		-- MainScenario Failure
+		FAILURE = 1,							-- 표준적합성 시험 실패
+
+		-- SYSTEM ERROR (11 ~ 99)
+		AGENT_SYSTEM_ERROR = 11,                 -- 검증 엔진 시스템 오류
+		SERVER_DISCONNECTED = 12,                -- 서버와의 연결이 끊김
+		TEST_CONFIGURATION_ERROR = 13,			-- 시험 환경 설정 오류
+
+		-- NETWORK ERROR (100 ~ 199) 시험 대상과의 네트워크 오류
+		CONNECTION_FAIL = 100,                  -- 시험 대상에게 접속 시도 실패
+		DISCONNECTED = 101,                     -- 시험 대상과의 연결 끊김
+		TIMEOUT = 102,                          -- 응답 시간 초과
+
+		-- DATA CONFORM ERROR (200 ~ 299) 정보 연계 규격 검증 오류
+		-- COMMON
+		OUT_OF_RANGE = 201,                     -- 범위 초과
+		INVALID_PROCESS,						-- 유효하지 않은 절차
+		INVALID_IDENTIFIER,						-- 유효하지 않은 식별자
+		SESSION_DUPLICATE,						-- 중복 로그인 
+
+		-- ASN   
+		DECODE_FAIL = 210,                      -- 디코딩 실패
+		INVALID_ENCODING_RULE = 211,            -- 유효하지 않은 인코딩 규칙
+		INVALID_OID = 212,                      -- 유효하지 않은 OID
+		INVALID_DSRC_MSG_ID = 213,              -- 유효하지 않은 DSRC MSG ID
+    
+		-- JSON
+		JSON_PARSE_ERROR = 221,                 -- JSON 파싱 실패
+
+		-- PROTOBUF
+		PROTOBUF_DESERAILIZE_ERROR = 231,       -- ProtoBuf 역직렬화 실패
+
+		-- MESSAGE BROKER
+		INVALID_TOPIC = 241,                    -- 유효하지 않은 TOPIC 이름
+
+		-- UNKNOWN ERROR
+		UNKNOWN = 300                           -- 알 수 없음
+	
+ 	} Iso14827TestProcessStatusCode;		// with api dump, clone
+	typedef struct Iso14827TestNotifyStateContext
+	{
+		TString								 testName;
+		int64								 time;
+		TString								 state;
+	} Iso14827TestNotifyStateContext;							// with api dump, clone
+
+	typedef struct Iso14827TestNotifyInfoContext
+	{
+		TString								 testName;
+		int64								 time;
+		TString								 sender;
+		TString								 log;
+		Dz1Binary							*data;
+		TString								 dataType;
+	} Iso14827TestNotifyInfoContext;							// with api dump, clone
+
+	typedef struct Iso14827TestNotifyErrorContext
+	{
+		TString								 testName;
+		int64								 time;
+		Iso14827TestProcessStatusCode				 code;
+		TString								 desc;
+		TString								 log;
+		Dz1Binary							*data;
+	} Iso14827TestNotifyErrorContext;							// with api dump, clone
+
+    typedef union Iso14827TestNotifyContext
+    {
+        Iso14827TestNotifyStateContext					*state;
+		Iso14827TestNotifyInfoContext					*info;
+		Iso14827TestNotifyErrorContext					*error;
+    } Iso14827TestNotifyContext;            // with api dump, clone
+
+
+	-- NotifyArg
+	typedef struct Iso14827TestNotifyStateArg
+	{
+		uint32										testIdx;
+		Iso14827TestNotifyStateContext				*context;
+	} Iso14827TestNotifyStateArg;		// with api dump, clone
+
+	typedef struct Iso14827TestNotifyInfoArg
+	{
+		uint32										 testIdx;
+		Iso14827TestNotifyInfoContext				*context;
+	} Iso14827TestNotifyInfoArg;		// with api dump, clone
+
+	typedef struct Iso14827TestNotifyErrorArg
+	{
+		uint32										 testIdx;
+		Iso14827TestNotifyErrorContext				*context;
+	} Iso14827TestNotifyErrorArg;		// with api dump, clone
+
+	typedef struct Iso14827TestValidateContext
+	{
+		TString									 testName;
+		int64									 time;
+		Dz1Binary								*raw;
+		Dz1Binary								*data;
+		Iso14827TestProcessStatusCode			 code;
+		TString									 desc;
+	} Iso14827TestValidateContext;	// with api dump, clone
+	typedef struct Iso14827TestValidateContextArg
+	{
+		uint32										 testIdx;
+		Iso14827TestValidateContext					*context;
+	} Iso14827TestValidateContextArg;			// with api dump, clone
+
+
+	-- TestConfiguration
+	-- ITSK-00143-3 (경4)
+	typedef struct PolicePrj4TestConfiguration_centerClient2rse
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		TString					 peer_ip;
+		int64					 peer_port;
+		TString					 user;
+		TString					 pass;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_invalid;			-- 기본 기능 시험 - 유효하지 않은 로그인정보에 대한 세션설정 거부
+		bool					 test_session_maintain;			-- 기본 기능 시험 - 비정상적 세션 연결 감지
+
+		-- 정보 제공 시험
+		bool					 test_normal_pub;				
+		bool					 test_bsm;						
+
+		-- 시나리오별 시험
+		bool					 test_login_duplicate;			-- 시나리오별 시험 - 중복로그인 정보 처리
+		bool					 test_invalid_sub;				-- 시나리오별 시험 - 서브스크립션 분석
+		bool					 test_subs_cancel;				-- 시나리오별 시험 - 서브스크립션에 의한 퍼블리케이션의 명시적 취소
+		bool					 test_pub_retry;				-- 시나리오별 시험 - 재전송
+
+	} PolicePrj4TestConfiguration_centerClient2rse;		// with api dump, clone
+
+	typedef struct PolicePrj4TestConfiguration_rseServer2center
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		int64					 local_port;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_retry;				-- 기본 기능 시험 - 로그인패킷의 재전송
+
+		-- 정보 요청 시험
+		int64					 subs_timeout_s;				-- periodic 만료 시간 (초)
+		bool					 test_bsm;						-- bsm 검증
+
+		-- 시나리오별 시험
+		bool					 test_sub_retry;				-- 서브크스크립션의 재전송
+		bool					 test_invalid_pub;				-- 유효하지 않은 퍼블리케이션 패킷
+	} PolicePrj4TestConfiguration_rseServer2center;		// with api dump, clone
+
+	typedef struct PolicePrj4TestConfiguration_rseClient2center
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		TString					 peer_ip;
+		int64					 peer_port;
+		TString					 user;
+		TString					 pass;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_invalid;			-- 기본 기능 시험 - 유효하지 않은 로그인정보에 대한 세션설정 거부
+		bool					 test_session_maintain;			-- 기본 기능 시험 - 비정상적 세션 연결 감지
+
+		-- 정보 제공 시험
+		bool					 test_normal_pub;				
+		bool					 test_map;						
+		bool					 test_rsa;						
+		bool					 test_tim;						
+
+		-- 시나리오별 시험
+		bool					 test_login_duplicate;			-- 시나리오별 시험 - 중복로그인 정보 처리
+		bool					 test_invalid_sub;				-- 시나리오별 시험 - 서브스크립션 분석
+		bool					 test_subs_cancel;				-- 시나리오별 시험 - 서브스크립션에 의한 퍼블리케이션의 명시적 취소
+		bool					 test_pub_retry;				-- 시나리오별 시험 - 재전송
+
+	} PolicePrj4TestConfiguration_rseClient2center;		// with api dump, clone
+
+	typedef struct PolicePrj4TestConfiguration_centerServer2rse
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		int64					 local_port;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_retry;				-- 기본 기능 시험 - 로그인패킷의 재전송
+
+		-- 정보 요청 시험
+		int64					 subs_timeout_s;				-- periodic 만료 시간 (초)
+		bool					 test_map;						-- map 검증
+		bool					 test_rsa;						-- rsa 검증
+		bool					 test_tim;						-- tim 검증
+
+		-- 시나리오별 시험
+		bool					 test_sub_retry;				-- 서브크스크립션의 재전송
+		bool					 test_invalid_pub;				-- 유효하지 않은 퍼블리케이션 패킷
+	} PolicePrj4TestConfiguration_centerServer2rse;		// with api dump, clone
+
+	typedef struct PolicePrj4TestConfiguration_signalserverServer2center
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		int64					 local_port;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_retry;				-- 기본 기능 시험 - 로그인패킷의 재전송
+
+		-- 정보 요청 시험
+		int64					 subs_timeout_s;				-- periodic 만료 시간 (초)
+		bool					 test_spat;						-- spat 검증
+		bool					 test_tls;						-- tls 검증
+
+		-- 시나리오별 시험
+		bool					 test_sub_retry;				-- 서브크스크립션의 재전송
+		bool					 test_invalid_pub;				-- 유효하지 않은 퍼블리케이션 패킷
+	} PolicePrj4TestConfiguration_signalserverServer2center;		// with api dump, clone
+
+	typedef struct ITSK00100_3TestConfigurationServerRole
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		int64					 local_port;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_retry;				-- 기본 기능 시험 - 로그인패킷의 재전송
+
+		bool					 test_sub_incident_detection_info;
+		bool					 test_sub_incident_termination_info;
+		bool					 test_sub_incident_detection_video_file_info_provide;
+		bool					 test_sub_control_state_info;
+		bool					 test_sub_sensor_state_info;
+		bool					 test_sub_moving_object;
+		-- 시나리오별 시험
+		bool					 test_sub_retry;				-- 서브크스크립션의 재전송
+		bool					 test_invalid_pub;				-- 유효하지 않은 퍼블리케이션 패킷
+	} ITSK00100_3TestConfigurationServerRole;		// with api dump, clone
+
+	typedef struct ITSK00100_3TestConfigurationClientRole
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		TString					 peer_ip;
+		int64					 peer_port;
+		TString					 user;
+		TString					 pass;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_invalid;			-- 기본 기능 시험 - 유효하지 않은 로그인정보에 대한 세션설정 거부
+		bool					 test_session_maintain;			-- 기본 기능 시험 - 비정상적 세션 연결 감지
+
+		-- 정보 제공 시험
+		bool					 test_normal_pub;
+		bool					 test_pub_incident_detection_info;
+		bool					 test_pub_incident_termination_info;
+		bool					 test_pub_incident_detection_video_file_info_provide;
+		bool					 test_pub_control_state_info;
+		bool					 test_pub_sensor_state_info;
+		bool					 test_pub_moving_object;
+		-- 시나리오별 시험
+		bool					 test_login_duplicate;			-- 시나리오별 시험 - 중복로그인 정보 처리
+		bool					 test_invalid_sub;				-- 시나리오별 시험 - 서브스크립션 분석
+		bool					 test_subs_cancel;				-- 시나리오별 시험 - 서브스크립션에 의한 퍼블리케이션의 명시적 취소
+		bool					 test_pub_retry;				-- 시나리오별 시험 - 재전송
+
+	} ITSK00100_3TestConfigurationClientRole;			// with api dump, clone
+
+	typedef struct TechnicalRegulation1TestConfiguration_clientRole1
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		TString					 peer_ip;
+		int64					 peer_port;
+		TString					 user;
+		TString					 pass;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_invalid;			-- 기본 기능 시험 - 유효하지 않은 로그인정보에 대한 세션설정 거부
+		bool					 test_session_maintain;			-- 기본 기능 시험 - 비정상적 세션 연결 감지
+
+		-- 정보 제공 시험
+		bool					 test_normal_pub;
+		bool					 test_pub_current_link_state;
+		bool					 test_pub_event_identity;
+		bool					 test_pub_incident_identity;
+		bool					 test_pub_incident_conditions;
+		bool					 test_pub_roadway_surface_status;
+		bool					 test_pub_weather_information;
+		bool					 test_pub_link_roadway_geometry;
+		bool					 test_pub_probe_vehicle_detection;
+		bool					 test_pub_detector_collection;
+		bool					 test_pub_extention_comm_pdu;
+
+		-- 시나리오별 시험
+		bool					 test_login_duplicate;			-- 시나리오별 시험 - 중복로그인 정보 처리
+		bool					 test_invalid_sub;				-- 시나리오별 시험 - 서브스크립션 분석
+		bool					 test_subs_cancel;				-- 시나리오별 시험 - 서브스크립션에 의한 퍼블리케이션의 명시적 취소
+		bool					 test_pub_retry;				-- 시나리오별 시험 - 재전송
+
+	} TechnicalRegulation1TestConfiguration_clientRole1;		// with api dump, clone
+
+
+	typedef struct TechnicalRegulation2TestConfiguration_clientRole1
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		TString					 peer_ip;
+		int64					 peer_port;
+		TString					 user;
+		TString					 pass;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_invalid;			-- 기본 기능 시험 - 유효하지 않은 로그인정보에 대한 세션설정 거부
+		bool					 test_session_maintain;			-- 기본 기능 시험 - 비정상적 세션 연결 감지
+
+		-- 정보 제공 시험
+		bool					 test_normal_pub;
+		bool					 test_pub_comm_tx_pdu;
+		bool					 test_pub_comm_rx_pdu;
+
+		-- 시나리오별 시험
+		bool					 test_login_duplicate;			-- 시나리오별 시험 - 중복로그인 정보 처리
+		bool					 test_invalid_sub;				-- 시나리오별 시험 - 서브스크립션 분석
+		bool					 test_subs_cancel;				-- 시나리오별 시험 - 서브스크립션에 의한 퍼블리케이션의 명시적 취소
+		bool					 test_pub_retry;				-- 시나리오별 시험 - 재전송
+
+	} TechnicalRegulation2TestConfiguration_clientRole1;		// with api dump, clone
+
+	typedef struct TechnicalRegulation1TestConfiguration_serverRole1
+	{
+		-- 세션 설정
+		TString					 my_domain;						// is notarg
+		TString					 peer_domain;					// is notarg
+		int64					 local_port;
+
+		-- 기본 기능 시험
+		bool					 test_session;
+		bool					 test_login_retry;				-- 기본 기능 시험 - 로그인패킷의 재전송
+
+
+		bool					 test_normal_sub;
+		-- bool					 test_sub_current_link_state;
+		-- bool					 test_sub_event_identity;
+		-- bool					 test_sub_incident_identity;
+		-- bool					 test_sub_incident_conditions;
+		-- bool					 test_sub_roadway_surface_status;
+		-- bool					 test_sub_weather_information;
+		-- bool					 test_sub_link_roadway_geometry;
+		-- bool					 test_sub_probe_vehicle_detection;
+		-- bool					 test_sub_detector_collection;
+		-- bool					 test_sub_extention_comm_pdu;
+
+		-- 시나리오별 시험
+		bool					 test_sub_retry;				-- 서브크스크립션의 재전송
+		bool					 test_invalid_pub;				-- 유효하지 않은 퍼블리케이션 패킷
+	} TechnicalRegulation1TestConfiguration_serverRole1;		// with api dump, clone
+
+
+	typedef struct TechnicalRegulationTestConfiguration_clientRole2
+	{
+		-- 세션 설정
+		TString					 my_domain;
+		TString					 peer_domain;
+		TString					 peer_ip;
+		int64					 peer_port;
+		TString					 user;
+		TString					 pass;
+
+		-- 정보제공통합시험
+		bool					 test_total;
+		int64					 expire_time;
+	} TechnicalRegulationTestConfiguration_clientRole2;		// with api dump, clone
+
+	typedef struct TechnicalRegulationTestConfiguration_serverRole2
+	{
+		-- 세션 설정
+		TString					 my_domain;
+		TString					 peer_domain;
+		int64					 local_port;
+
+		-- 정보요청통합시험
+		bool					 test_total;
+		int64					 subs_timeout_s;
+	} TechnicalRegulationTestConfiguration_serverRole2;		// with api dump, clone
+
+	typedef struct TechnicalRegulationTestConfiguration_duoClientRole
+	{
+		-- 세션설정
+		TString		peer_domain;
+		TString		peer_ip;
+		int64		peer_port;
+
+		-- client1
+		TString		my_domain1;
+		TString		user1;
+		TString		pass1;
+		-- client2
+		TString		my_domain2;
+		TString		user2;
+		TString		pass2;
+
+		bool					 test_duo_client;
+	} TechnicalRegulationTestConfiguration_duoClientRole;		// with api dump, clone
+
+	typedef struct TechnicalRegulationTestConfiguration_duoSessionRole
+	{
+		bool					 test_duo_session;
+		-- 공통 세션 설정
+		TString		my_domain;
+		TString		peer_ip;
+
+		-- client domain 설정
+		TString		peer_server_domain;
+		int64		peer_server_port;
+		TString		user;
+		TString		pass;
+		
+		-- server doamin 설정
+		TString		peer_client_domain;
+		int64		peer_client_port;
+	} TechnicalRegulationTestConfiguration_duoSessionRole;		// with api dump, clone
+
+
+
+	typedef union Iso14827TestConfiguration
+	{
+		-- Police prj4 c2f
+		PolicePrj4TestConfiguration_centerClient2rse		*centerClient2rse;
+		PolicePrj4TestConfiguration_rseServer2center		*rseServer2center;
+		PolicePrj4TestConfiguration_rseClient2center		*rseClient2center;
+		PolicePrj4TestConfiguration_centerServer2rse		*centerServer2rse;
+
+		-- Police prj4 c2c
+		PolicePrj4TestConfiguration_signalserverServer2center *signalserver2center;
+
+		-- 00100-3
+		ITSK00100_3TestConfigurationClientRole				*itsk00100_3c2cClient;
+		ITSK00100_3TestConfigurationServerRole				*itsk00100_3c2cServer;
+
+		-- technical regulation1
+		TechnicalRegulation1TestConfiguration_clientRole1	*technical_regulation1_clientRole1;
+		TechnicalRegulation1TestConfiguration_serverRole1	*technical_regulation1_serverRole1;
+
+		TechnicalRegulation2TestConfiguration_clientRole1	*technical_regulation2_clientRole;
+
+		TechnicalRegulationTestConfiguration_clientRole2	*technical_regulation1_clientRole2;
+		TechnicalRegulationTestConfiguration_serverRole2	*technical_regulation1_serverRole2;
+		TechnicalRegulationTestConfiguration_duoClientRole	*technical_regulation1_duoClientRole;
+		TechnicalRegulationTestConfiguration_duoSessionRole	*technical_regulation1_duoSessionRole;
+
+
+		TechnicalRegulationTestConfiguration_clientRole2	*technical_regulation2_clientRole2;
+		TechnicalRegulationTestConfiguration_serverRole2	*technical_regulation2_serverRole2;
+		TechnicalRegulationTestConfiguration_duoClientRole	*technical_regulation2_duoClientRole;
+		TechnicalRegulationTestConfiguration_duoSessionRole	*technical_regulation2_duoSessionRole;
+
+
+
+	} Iso14827TestConfiguration; // with api dump, clone
+
+
+	typedef struct Iso14827TestHelperC2CHookArg
+	{
+		Iso14827C2CAuthMsg				*msg;
+		TString							 current_test;
+		bool							 isReceived;
+	} Iso14827TestHelperC2CHookArg;		// with api dump, clone
+
+}

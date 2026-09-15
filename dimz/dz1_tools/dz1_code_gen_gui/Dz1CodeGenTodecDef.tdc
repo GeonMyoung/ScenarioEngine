@@ -1,0 +1,151 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef native ObjectInfo from Dz1TdcInfoObject;			// with api dump, compare
+	typedef native Dz1MdefcModule from Dz1TdcInfoModule;		// with api dump
+
+	struct ConstructMemberCodecLimitedInfo;
+	struct ConstructMemberCodecEntry;
+	-------------------------------------------------------------------------------------
+	-- member of member codec -> (union, struct)member가 struct인 경우 하위 Member 선택 설정
+	-------------------------------------------------------------------------------------
+	typedef struct CodecOneOfConstruct
+	{
+		struct ConstructMemberCodecEntry		*parent;					// is ref	-- should be structure
+		str										 instance_name;				-- a name of (parent->obj->(info)->members)
+		ObjectInfo								*obj;						// is ref
+		union ConstructMemberCodecLimitedInfo	*info;						-- NULL = type default
+		
+	} CodecOneOfConstruct;													// with api dump, clone
+	
+	-------------------------------------------------------------------------------------
+	-- Premitive Codec -> (struct, union)member가 primitive인 경우 특정 Byte를 만드는 설정
+	-------------------------------------------------------------------------------------
+	typedef struct CodecPrimitiveByte
+	{
+		struct ConstructMemberCodecEntry		*parent;					// is ref
+
+		uint32									 byte_len;					-- LSB기반 취할 Byte수
+		uint32									 byte_sft;					-- Shift할 Byte수
+	} CodecPrimitiveByte;													// with api dump, clone
+	
+	-------------------------------------------------------------------------------------
+	-- Member Bits -> (struct, union)member의 특정 Bits만 취함
+	-------------------------------------------------------------------------------------
+	typedef struct CodecPrimitiveBits
+	{
+		struct ConstructMemberCodecEntry		*parent;					// is ref
+		
+		uint32									 bit_len;					-- LSB기반 취할 Bit수
+		uint32									 bit_sft;					-- Shift할 bit수
+	} CodecPrimitiveBits;													// with api dump, clone
+	
+	-------------------------------------------------------------------------------------
+	-- Padding Codec Info
+	-------------------------------------------------------------------------------------
+	typedef struct CodecPadding
+	{
+		struct ConstructMemberCodecEntry		*parent;					// is ref
+		uint32									 bit_len;
+	} CodecPadding;															// with api dump, clone
+
+	-------------------------------------------------------------------------------------
+	-- Construct Member Codec Info
+	-------------------------------------------------------------------------------------
+	typedef union ConstructMemberCodecInfo
+	{
+		CodecOneOfConstruct						*one_of_structure;			-- owner->obj->type이 structure인 경우에만
+		CodecPrimitiveByte						*byte_of_primitive;
+		CodecPrimitiveBits						*bits_of_primitive;
+		uint32									*void_member;				-- union only
+		str										 alternate;					-- specific function prefix
+		CodecPadding							*padding;
+	} ConstructMemberCodecInfo;												// with api dump, clone
+	
+	typedef union ConstructMemberCodecLimitedInfo
+	{
+		CodecPrimitiveByte		[ConstructMemberCodecInfoPresent_byte_of_primitive]		*byte_of_primitive;
+		CodecPrimitiveBits		[ConstructMemberCodecInfoPresent_bits_of_primitive]		*bits_of_primitive;
+		str						[ConstructMemberCodecInfoPresent_alternate]				 alternate;					-- specific function prefix
+	} ConstructMemberCodecLimitedInfo;										// with api dump, clone
+	
+	-------------------------------------------------------------------------------------
+	-- Construct Member Codec Entry
+	-------------------------------------------------------------------------------------
+	typedef struct ConstructMemberCodecEntry
+	{
+		struct ConstructCodecEntry				*parent;					// is ref
+
+		uint32									 order;						// is key	-- union => present, meaningless		
+		str										 instance_name;							-- a name of (parent->obj->info->members)
+																						-- @present	for union
+																						-- @count	for Array/Table
+																						-- @element for Array/Table
+																						-- @pad		for structure
+
+		ObjectInfo								*obj;						// is ref	-- Resolved Object by instance_name	: can be NULL
+		ConstructMemberCodecInfo				*info;									-- NULL == type default
+	} ConstructMemberCodecEntry;											// with api dump, clone, compare
+	typedef unique table ConstructMemberCodecList(find, extract, count) [ConstructMemberCodecEntry];
+	
+	-------------------------------------------------------------------------------------
+	-- Construct Codec Variation
+	-------------------------------------------------------------------------------------
+	typedef enum ConstructCodecMode
+	{
+		static,
+		public,
+		header
+	} ConstructCodecMode;
+	
+	typedef struct ConstructCodecEntry
+	{
+		str										 opt_suffix;				// is key
+		
+		ObjectInfo								*parent_obj;				// is ref		-- after resolv
+		
+		ConstructCodecMode						 mode;										-- static, public, header_only
+		ConstructMemberCodecList				*member_codec;				// is notarg	-- codec sequence
+	} ConstructCodecEntry;													// with api dump, clone, compare
+	typedef unique table ConstructCodecList(find, extract, count, gethead) [ConstructCodecEntry];
+
+	--------------------------------------------------------------------------------------------------------
+	-- Target Object Entry & List
+	--------------------------------------------------------------------------------------------------------
+	typedef struct ConstructObjectEntry
+	{
+		str										 obj_name;					// is key
+		ObjectInfo								*obj;						// is ref
+		ConstructCodecList						*codecs;					// is notarg
+	} ConstructObjectEntry;													// with api dump, clone, compare
+	typedef unique table ConstructObjectList(find, extract, count) [ConstructObjectEntry];
+
+	--------------------------------------------------------------------------------------------------------
+	-- Include Path Entry & List
+	--------------------------------------------------------------------------------------------------------
+	typedef struct ConstructCodecIncludeEntry
+	{
+		str										 filename_ext;				// is key
+		bool									 use_codate;				// is notarg
+	} ConstructCodecIncludeEntry;											// with api dump, clone, compare
+	typedef unique table ConstructCodecIncludeList(find, extract, count) [ConstructCodecIncludeEntry];
+	
+	--------------------------------------------------------------------------------------------------------
+	-- Codec Module
+	--------------------------------------------------------------------------------------------------------
+	typedef struct ConstructCodec
+	{
+		str										 tdo_name;
+		str										 tdo_path;
+		Dz1MdefcModule							*module;					// is notarg	-- not be saved
+		
+		str										 endian;					// is notarg
+		
+		ConstructCodecIncludeList				*includes;					// is notarg
+		
+		ConstructObjectList						*objs;						// is notarg	-- not be saved
+		bool									 is_dirty;					// is notarg
+	} ConstructCodec;														// with api dump
+	
+}

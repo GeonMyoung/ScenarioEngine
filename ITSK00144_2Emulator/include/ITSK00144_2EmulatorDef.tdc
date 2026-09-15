@@ -1,0 +1,11 @@
+message set definition
+{
+	include libdz1_support;
+	typedef func void ITSK001442EmulatorException(void *exceptionArg, Dz1Error *reason);
+	-- ITSK001442EmulatorDef structure declared for Linker warning
+	typedef struct ITSK001442EmulatorDef
+	{
+		int32		dummy;
+	} ITSK001442EmulatorDef;
+	-- if you declare other structure on this file, then delete ITSK001442EmulatorDef structure
+}

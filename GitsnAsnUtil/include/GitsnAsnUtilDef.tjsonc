@@ -1,0 +1,4 @@
+JSON interface generate from GitsnAsnUtilDef
+{
+	object Gitsn_TravelerInformation cascade;
+}

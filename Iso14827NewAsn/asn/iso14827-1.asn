@@ -1,0 +1,36 @@
+ISO14827-1 {iso(1) standard(0) std14827(14827) part1(1)} DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+ISO14827-MESSAGE ::= CLASS
+{
+	&name					PrintableString (SIZE(0..255)),
+	&definition				PrintableString (SIZE(0..65535)),
+	&remarks				PrintableString (SIZE(0..65535)) OPTIONAL,
+	&MessageBody,
+	&messageType			ENUMERATED { publication, subscription },
+	&subscriptionType		ENUMERATED
+	{
+		single,
+		event-driven,
+		single-or-event,
+		periodic,
+		single-or-periodic,
+		event-or-periodic,
+		single-event-periodic
+	} OPTIONAL,
+	&initialPublication		PrintableString (SIZE(0..255)) OPTIONAL,
+	&subsequentPublications	PrintableString (SIZE(0..255)) OPTIONAL,
+	&id						OBJECT IDENTIFIER
+}
+WITH SYNTAX
+{
+	NAME						&name
+	DEFINITION					&definition
+	[REMARKS					&remarks]
+	MESSAGE-BODY				&MessageBody
+	MESSAGE-TYPE				&messageType
+	[SUBSCRIPTION-TYPE			&subscriptionType]
+	[INITIAL-PUBLICATION		&initialPublication]
+	[SUBSEQUENT-PUBLICATIONS	&subsequentPublications]
+	ID							&id
+}
+END

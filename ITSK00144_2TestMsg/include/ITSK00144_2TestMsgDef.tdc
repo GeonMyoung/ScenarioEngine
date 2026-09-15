@@ -1,0 +1,144 @@
+message set definition
+{
+	include libdz1_support;
+	-- I2XTrafficSafetyDeviceServer 교통안전시설 서버
+	-- I2XTrafficSafetyDeviceLinkUnit 교통안전시설 인프라 연계장치
+
+	-- 0x11 I2X 교통안전시설 연계장치 장비 상태 정보 요청, I2XTrafficDeviceLinkUnitStatusRequest
+	-- 0x12 I2X 교통안전시설 연계장치 장비 상태 정보 응답
+
+	typedef struct ITSK00144_2Reserved0
+	{
+		-- Byte 1 ~ 9
+		uint8					 reserved1;
+		uint8					 reserved2;
+		uint8					 reserved3;
+		uint8					 reserved4;
+		uint8					 reserved5;
+		uint8					 reserved6;
+		uint8					 reserved7;
+		uint8					 reserved8;
+		uint8					 reserved9;
+	} ITSK00144_2Reserved0;		// with api dump, clone
+
+	typedef struct ITSK00144_2Reserved18
+	{
+		-- Byte 1~7
+		uint8					 reserved1;
+		uint8					 reserved2;
+		uint8					 reserved3;
+		uint8					 reserved4;
+		uint8					 reserved5;
+		uint8					 reserved6;
+		uint8					 reserved7;
+	} ITSK00144_2Reserved18;		// with api dump, clone
+	
+	typedef struct I2XTrafficSafetyDeviceSerialNo
+	{
+		-- Byte 1, 장치구분자
+		uint8					 type;			-- S: 안전 표지 (Traffic Sign)
+												-- P: 노면 표지 (Pavement Marking)
+												-- M: I2X 교통안전시설 연계장치 (Management Device)
+		-- Byte 2~5, 장치 고유 번호
+		uint32					 id;			-- 1, 100, 3
+	} I2XTrafficSafetyDeviceSerialNo;		// with api dump, clone
+	-- } I2XTrafficSafetyDeviceSerialNo;		// with api userdump, clone
+	typedef array I2XTrafficSafetyDeviceSerialNoList(gethead, extract) [I2XTrafficSafetyDeviceSerialNo];
+
+	typedef struct I2XTrafficSafetyDeviceList
+	{
+		-- Byte 1~2
+		uint16								 cnt;
+
+		-- Byte 3 + (5*n)
+		I2XTrafficSafetyDeviceSerialNoList	*id;
+	} I2XTrafficSafetyDeviceList;			// with api dump, clone
+
+	
+	
+	typedef struct I2XTrafficSafetyDeviceLinkUnitStatus
+	{
+		-- Byte 1
+		bool					 isActive;
+		-- Byte 2
+		bool					 control_comm;
+		-- Byte 3	
+		bool					 wave_comm;
+		-- Byte 4
+		uint8					 temperature;
+		-- Byte 5
+		uint8					 humidity;
+		-- Byte 6
+		bool					 isOpen;
+		-- Byte 7
+		bool					 isFanOn;
+		-- Byte 8			
+		bool					 isHeaterOn;
+	} I2XTrafficSafetyDeviceLinkUnitStatus;		// with api dump, clone
+
+	typedef struct I2XTrafficSafetyDeviceStatus
+	{
+		-- Byte 1~5
+		I2XTrafficSafetyDeviceSerialNo		*id;
+		-- Byte 6
+		bool								 isActive;		-- bit 0
+		bool								 isBatteryOn;	-- bit 1
+		bool								 isPowered;		-- bit 2
+		bool								 isPowerOn;		-- bit 3
+		bool								 isConnected;	-- bit 4
+		-- Byte 7							 
+		uint8								 cnt;
+	} I2XTrafficSafetyDeviceStatus;				// with api dump, clone
+	typedef array I2XTrafficSafetyDeviceStatusList (gethead, count, extract) [I2XTrafficSafetyDeviceStatus];
+
+	typedef struct I2XTrafficSafetyDeviceStatusInfo
+	{
+		-- Byte 1~2
+		uint16							 num;
+		-- 3 ~ (+ 7*n)
+		I2XTrafficSafetyDeviceStatusList	*status;
+	} I2XTrafficSafetyDeviceStatusInfo;			// with api dump, clone
+
+	
+
+	typedef union ITSK00144_2Data
+	{
+		ITSK00144_2Reserved0					[0x11]	*req_link_unit_status;
+		I2XTrafficSafetyDeviceLinkUnitStatus	[0x12] *rsp_link_unit_status;							-- 장비 상태 정보 응답
+
+		ITSK00144_2Reserved0					[0x13]	*req_status;
+		I2XTrafficSafetyDeviceStatusInfo		[0x14] *rsp_status;										-- 교통안전시설별 상태 정보 응답
+
+		ITSK00144_2Reserved0					[0x15]	*req_list;
+		I2XTrafficSafetyDeviceList				[0x16] *rsp_list;										-- IoT 교통안전시설 List 응답
+
+		I2XTrafficSafetyDeviceList				[0x17]	*req_update_list;
+		I2XTrafficSafetyDeviceList				[0x18] *rsp_update_list;								-- IoT 교통안전시설 List 갱신 응답
+
+		ITSK00144_2Reserved0					[0x81]	*reset;
+	
+		ITSK00144_2Reserved0					[0x99]	*hb;
+
+		ITSK00144_2Reserved0					[0xA0] *ack;											-- I2X 교통안전시설 연계장치 RESET 응답
+		ITSK00144_2Reserved0					[0xA1] *nack;
+
+	} ITSK00144_2Data;	// with api dump, clone
+
+
+	typedef struct ITSK00144_2ProtocolFrameContext
+	{
+		I2XTrafficSafetyDeviceSerialNo		*id;
+		uint8								 seq;
+		uint8								 opcode;
+		ITSK00144_2Data						*data;
+	} ITSK00144_2ProtocolFrameContext;		// with api dump, clone
+	typedef struct ITSK00144_2ProtocolFrame
+	{
+		-- header
+
+		uint16								 length;			-- id + seq + opcode + data = 5 + 1 + 1 + n
+		Dz1Binary							*context;
+		uint16								 crc;
+		-- tail 
+	} ITSK00144_2ProtocolFrame;		// with api dump, clone
+}

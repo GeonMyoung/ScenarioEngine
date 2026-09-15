@@ -1,0 +1,9 @@
+message set definition
+{
+	typedef struct Dz1InetFtpReceiverArg
+	{
+		void	*tControl;
+--		str		 localCharSetName;
+--		str		 remoteCharSetName;
+	} Dz1InetFtpReceiverArg;
+}

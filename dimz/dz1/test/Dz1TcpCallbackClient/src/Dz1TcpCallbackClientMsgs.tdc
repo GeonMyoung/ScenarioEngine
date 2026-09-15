@@ -1,0 +1,21 @@
+message set definition
+{
+	include Dz1TcpCallbackClientDef;
+	typedef struct Dz1TcpCallbackClientMsgDefault
+	{
+		uint32 *dummy;
+	} Dz1TcpCallbackClientMsgDefault;					// with api dump
+	
+	typedef struct Dz1TcpCallbackClientMsgReceived
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+		Dz1Binary						*packet;
+	} Dz1TcpCallbackClientMsgReceived;					// with api dump
+	
+	typedef struct Dz1TcpCallbackClientMsgSent
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+	} Dz1TcpCallbackClientMsgSent;						// with api dump
+}

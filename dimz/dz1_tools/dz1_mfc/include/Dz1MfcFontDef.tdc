@@ -1,0 +1,20 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef struct Dz1MfcFontEntry
+	{
+		TString					 name;					// is key
+		TString					 font_name;
+		uint16					 font_size;
+		void					*font;					// is notarg, nodump
+	} Dz1MfcFontEntry;									// with api usernew, userdel, userclone, dump, clone, compare
+	
+	typedef unique table Dz1MfcFontList(find, extract, count) [Dz1MfcFontEntry];
+	
+	typedef struct Dz1MfcFonts
+	{
+		Dz1MfcFontList			*Dz1MfcFontList;		// is notarg
+		real64					 factor;
+	} Dz1MfcFonts;										// with api dump
+}

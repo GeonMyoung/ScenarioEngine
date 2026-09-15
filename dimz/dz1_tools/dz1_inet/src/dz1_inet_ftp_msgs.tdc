@@ -1,0 +1,65 @@
+message set definition
+{
+	include dz1_inet_ftp_control_pi_msg;
+	include dz1_inet_ftp_def;
+	
+	------------------------------------------------
+	-- User Message
+	------------------------------------------------
+	typedef struct Dz1InetFtpMsgTransfer
+	{
+		-- Foundation Arguments
+		Dz1SockAddr						*peer;
+		str								 user;
+		str								 pass;
+		str								 account;
+		bool							 isPassive;
+		
+		-- Transfer File List
+		Dz1InetFtpTransferList			*files;
+		
+		-- File Transfer Result Informer
+		Dz1InetFtpFileDoneInform		 fileDone;
+		void							*fileDoneParam;
+	} Dz1InetFtpMsgTransfer;							// with api dump
+
+	typedef struct Dz1InetFtpMsgTransferArg
+	{
+		Dz1InetFtpMsgTransferDoneInform	 cb;
+		void							*cbParam;
+	} Dz1InetFtpMsgTransferArg;							// with api dump
+	
+	typedef struct Dz1InetFtpMsgFileDone
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+	} Dz1InetFtpMsgFileDone;							// with api dump
+	------------------------------------------------
+	-- Internal Common Message
+	------------------------------------------------
+	typedef struct Dz1InetFtpBasicMsg
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+		uint32							 size;
+	} Dz1InetFtpBasicMsg;								// with api dump
+
+	------------------------------------------------
+	-- FTP CTP Message
+	------------------------------------------------
+	typedef Dz1InetFtpBasicMsg Dz1InetFtpRcvrMsgException;
+	
+	typedef struct Dz1InetFtpRcvrMsgReply
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+		Dz1InetFtpCPIMsgReply			*reply;
+		Dz1Binary						*pkt;			// is notarg, nodump
+	} Dz1InetFtpRcvrMsgReply;							// with api dump
+
+	------------------------------------------------
+	-- FTP DTP Message
+	------------------------------------------------
+	typedef Dz1InetFtpRcvrMsgException Dz1InetFtpDTPMsg;
+	
+}

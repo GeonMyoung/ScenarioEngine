@@ -1,0 +1,75 @@
+message set definition
+{
+	include dz1_tdq_row_def;
+
+	------------------------------------------------------------------------------------
+	-- Index Entry & List
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqIndexEntry
+	{
+		TString						 suffix_name;	// is key
+		Dz1TdqRowRef				*own_cols;		// is notarg
+		bool						 unique;
+	} Dz1TdqIndexEntry;								// with api userdump, clone, compare
+	typedef unique table Dz1TdqIndexList(find, extract) [Dz1TdqIndexEntry];
+
+	------------------------------------------------------------------------------------
+	-- Table Shape
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqTblShape
+	{
+		TString						 name;					// is key
+		Dz1TdqRow					*row;
+		Dz1TdqRowRef				*pk;
+		Dz1TdqIndexList				*indexes;				// is notarg
+	} Dz1TdqTblShape;										// with api dump, clone, compare
+	typedef unique table Dz1TdqTblShapeList(find, extract) [Dz1TdqTblShape];
+	
+	------------------------------------------------------------------------------------
+	-- Ordered Name Entry & List
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqNameEntry
+	{
+		uint32						 order;					// is key
+		TString						 name;
+	} Dz1TdqNameEntry;										// with api dump, clone, compare
+	typedef unique table Dz1TdqNameList(find, extract, gethead, gettail) [Dz1TdqNameEntry];
+
+	------------------------------------------------------------------------------------
+	-- Foreign Key Entry & List
+	------------------------------------------------------------------------------------
+	typedef enum Dz1TdqForeignKeyMode
+	{
+		no_action,
+		cascade,
+		set_null,
+		set_default,
+		restrict
+	} Dz1TdqForeignKeyMode;
+
+	typedef struct Dz1TdqFKEntry
+	{
+		TString						 suffix_name;			// is key
+		Dz1TdqRowRef				*own_cols;				// is notarg
+		
+		struct Dz1TdqTblInstance	*peer_tbl;				// is ref
+		TString						 peer_idx_suffix_opt;	-- NULL mean PK
+		
+		Dz1TdqForeignKeyMode		 on_update;
+		Dz1TdqForeignKeyMode		 on_delete;
+	} Dz1TdqFKEntry;										// with api userdump, clone, compare
+	typedef unique table Dz1TdqFKList(find, extract) [Dz1TdqFKEntry];
+	
+	------------------------------------------------------------------------------------
+	-- Table Instance
+	------------------------------------------------------------------------------------
+	typedef struct Dz1TdqTblInstance
+	{
+		TString						 name;					// is key
+		Dz1TdqTblShape				*shape;					// is ref
+		Dz1TdqFKList				*fks;					// is notarg
+	} Dz1TdqTblInstance;									// with api userdump, clone, compare
+	typedef unique table Dz1TdqTblInstanceList(find, extract)	[Dz1TdqTblInstance];
+	typedef array Dz1TdqTblInstanceSeq							[&Dz1TdqTblInstance];
+	
+}

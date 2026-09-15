@@ -1,0 +1,33 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "libio"=.\libio.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/ASN/PER_TEST_081229/PER_TEST/asn_per_lib/Prj/libio", HALBAAAA
+    e:\新建文件夹 (5)\per_test\supportlib\libio
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

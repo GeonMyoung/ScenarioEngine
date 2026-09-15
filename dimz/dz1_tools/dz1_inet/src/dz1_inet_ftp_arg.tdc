@@ -1,0 +1,11 @@
+message set definition
+{
+	include dz1_inet_ftp_def;
+	
+	typedef struct Dz1InetFtpArg
+	{
+		str						 localCharSetName;
+		Dz1InetFtpException		 func;
+		void					*ptr;
+	} Dz1InetFtpArg;
+}

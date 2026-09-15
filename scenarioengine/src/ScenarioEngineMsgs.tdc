@@ -1,0 +1,8 @@
+message set definition
+{
+	include ScenarioEngineDef;
+	typedef struct ScenarioEngineMsgDefault
+	{
+		uint32 *dummy;
+	} ScenarioEngineMsgDefault;					// with api dump
+}

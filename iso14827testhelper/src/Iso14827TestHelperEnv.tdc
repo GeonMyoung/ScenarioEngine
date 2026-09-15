@@ -1,0 +1,298 @@
+message set definition
+{
+	include Dz1JsonDef;
+	include Iso14827TestHelperDef;
+	-- include Iso14827TestMsgDef;
+
+	typedef struct Prj2TxDataCheckList
+	{
+		bool				 test_map;
+		bool				 test_spat;
+		bool				 test_sdsm;
+	} Prj2TxDataCheckList;		// with api dump, clone
+
+	typedef struct Prj2RxDataCheckList
+	{
+		bool				 test_pvd;
+	} Prj2RxDataCheckList;		// with api dump, clone
+
+	typedef union Iso14827TestDataCheckList
+	{
+		Prj2TxDataCheckList		*prj2_tx;
+		Prj2RxDataCheckList		*prj2_rx;
+	} Iso14827TestDataCheckList;		// with api dump, clone
+
+	typedef struct Iso14827TestScenarioSetup		
+	{
+		Iso14827TestScenario				*scenario;
+	} Iso14827TestScenarioSetup;			// with api dump, clone
+
+	-------------------------------------------------------------------------------
+	-- CLIENT Mode 1 State
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestClient1State
+	{
+		initial,
+		wait_initiate,			-- 비정상 로그인 및 로그인 시험
+		wait_login_dup,			-- 중복 로그인 시험
+		wait_disconnect,		-- 세션 유지 시험
+		wait_restart,			-- 세션 유지시험으로 끊긴 연결 복구
+		wait_invalid_subs,		-- 비정상 n종 서브스크립션 시험
+		wait_normal_subs,		-- 정상 10종 서브스크립션 시험
+		wait_subs_cancel,		-- 서브스크립션 명시적 취소
+		wait_deferred_ack,		-- 퍼블리케이션 재전송 시험(임의 1종)
+		wait_terminate,
+		complete
+	} Iso14827TestClient1State;
+	-------------------------------------------------------------------------------
+	-- CLIENT Mode 1 State
+	-------------------------------------------------------------------------------
+	
+	-------------------------------------------------------------------------------
+	-- CLIENT Mode 2 State
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestClient2State
+	{
+		initial,
+		connected,				-- 접속 완료, hb 대기
+		wait_total_test,		-- 통합 정보 제공 시험
+		wait_terminate,			-- 본 세션 연결해제
+		complete
+	} Iso14827TestClient2State;
+	-------------------------------------------------------------------------------
+	-- DUO CLIENT Mode State
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestDuoClientState
+	{
+		initial,
+		wait_duo_client1_established,
+		wait_duo_subs_test,		-- 다중세션 - (서로다른 임의 1종) 정보제공 시험
+		wait_duo_terminate,		-- 다중세션 - 연결 해제complete
+		wait_terminate,			-- 본 세션 연결해제
+		complete
+	} Iso14827TestDuoClientState;
+	-------------------------------------------------------------------------------
+	-- DUO CLIENT Mode State
+	-------------------------------------------------------------------------------
+	-------------------------------------------------------------------------------
+	-- SERVER Mode 1 State
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestServer1State
+	{
+		initial,
+		wait_auth,
+		wait_connected,
+		established,
+		wait_violated_pub,
+		wait_disconnect,
+		complete
+	} Iso14827TestServer1State;
+	-------------------------------------------------------------------------------
+	-- SERVER Mode 1 State
+	-------------------------------------------------------------------------------
+	-------------------------------------------------------------------------------
+	-- SERVER Mode 2 State
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestServer2State
+	{
+		initial,
+		wait_auth,
+		wait_connected,
+		established,
+		wait_timeout,
+		wait_logout,
+		complete
+	} Iso14827TestServer2State;
+	-------------------------------------------------------------------------------
+	-- SERVER Mode 2 State
+	-------------------------------------------------------------------------------
+
+	-------------------------------------------------------------------------------
+	-- SERVER Mode 2 State
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestServer3State
+	{
+		initial,
+		wait_auth,
+		wait_connected,
+		established,
+		wait_timeout,
+		wait_disconnect,
+		complete
+	} Iso14827TestServer3State;
+	-------------------------------------------------------------------------------
+	-- SERVER Mode 2 State
+	-------------------------------------------------------------------------------
+
+	-------------------------------------------------------------------------------
+	-- DUO SESSION Mode State
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestDuoSessionServerState
+	{
+		initial,
+		wait_auth,
+		wait_connected,
+		established,
+		idle,
+		wait_logout,
+		complete
+	} Iso14827TestDuoSessionServerState;
+	
+	typedef enum Iso14827TestDuoSessionClientState
+	{
+		initial,
+		wait_initiate,
+		wait_heartbeat,
+		wait_pub_data,
+		idle,
+		wait_disconnect,
+		complete
+	} Iso14827TestDuoSessionClientState;
+	-------------------------------------------------------------------------------
+	-- DUO SESSION Mode State
+	-------------------------------------------------------------------------------
+
+	-------------------------------------------------------------------------------
+	-- CLIENT Mode Event
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestClientEvent
+	{
+		start,
+		trigger,
+		validate,
+
+		initiated				= 200,
+		echo,
+		data,
+		data_ctrl,
+		terminate,
+		disconnected,
+		sub_received,
+
+		timeout					= 1000
+	} Iso14827TestClientEvent;
+	-------------------------------------------------------------------------------
+	-- CLIENT Mode Event
+	-------------------------------------------------------------------------------
+
+	-------------------------------------------------------------------------------
+	-- SERVER Mode Event
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestServerEvent
+	{
+		start,
+		validate,
+
+		auth					= 100,	
+		connected,
+		heartbeat,
+		req_single,
+		req_event_driven,
+		req_periodic,
+		data_start,
+		data_period,
+		data_stop,
+		pubdata_rejected,
+		req_expired,
+		logout,
+		pub_received,
+
+		timeout					= 1000
+	} Iso14827TestServerEvent;
+
+	-------------------------------------------------------------------------------
+	-- SERVER Mode Event
+	-------------------------------------------------------------------------------
+
+	-------------------------------------------------------------------------------
+	-- DUO SESSION Mode Event
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestDuoSessionEvent
+	{
+		start,
+		trigger,
+
+		auth			= 100,
+		connected,
+		heartbeat,
+		req_single,
+		req_event_driven,
+		req_periodic,
+		data_start,
+		data_period,
+		data_stop,
+		pubdata_rejected,
+		req_expired,
+		logout,
+		pub_received,
+
+		initiated		= 200,
+		echo,
+		data,
+		data_ctrl,
+		terminate,
+		disconnected,
+		sub_received,
+
+		timeout			= 1000
+	} Iso14827TestDuoSessionEvent;
+	-------------------------------------------------------------------------------
+	-- DUO SESSION Mode Event
+	-------------------------------------------------------------------------------
+
+	-------------------------------------------------------------------------------
+	-- Subscribe Entry & List
+	-------------------------------------------------------------------------------
+	typedef enum Iso14827TestSubType
+	{
+		single,
+		event_driven,
+		periodic
+	} Iso14827TestSubType;
+
+	typedef struct Iso14827TestSubEntry
+	{
+		Dz1Asn1UTF8Str								*peer;					// is key
+		uint32										 sid;					// is key
+		TString										 oid;
+		Iso14827TestSubType					 type;
+		uint32										 cnt;					// is notarg
+	} Iso14827TestSubEntry;			// with api dump, clone, compare
+	typedef unique table Iso14827TestSubList(find, extract, count, gethead) [Iso14827TestSubEntry];
+
+	-------------------------------------------------------------------------------
+	-- Task Envrioment
+	-------------------------------------------------------------------------------
+	typedef struct Iso14827TestHelperEnv
+	{
+		void										*tSelf;					// is nodump
+		void										*t14827;				// is ref, nodump
+		void										*tMain;					
+		Dz1JsonSpec									*spec;
+				
+		Iso14827TestScenario						*scenario;				// is notarg
+
+		bool										 is_run;				// is notarg
+
+		-- Dz1TdqDbScheme							*dbh;					// is nodump
+		
+		int32										 state;					// is notarg
+		uint32										 flags;					// is notarg
+
+		Dz1Asn1Codec								 selected_codec;		// is notarg			--	Server1		Server2		Client		Duo-Server
+		Dz1Asn1Codec								 selected_codec_duo;	// is notarg			--	Server1		Server2					Duo-Client
+		Dz1Asn1OctetStr								*user;					// is notarg			--							Client
+		Dz1SockAddr									*server_addr;			// is notarg			--							Client
+		Iso14827TestClientAccount					*primary_acc;			// is notarg, ref		--							Client
+		Iso14827TestClientAccount					*secondary_acc;			// is notarg, ref		--							Client
+		SubscribeSpecList							*test_subs;										--							Client
+		SubscribeSpecList							*test_subs2;			// is notarg							--							Client
+		uint32										 test_subs_id;			// is notarg			--							Client		Duo-Client
+		Iso14827TestSubList							*subs_reg;										--	Server1		Server2		Client		Duo-Server
+		Iso14827TestSubList							*subs_reg2;										--							Client		
+		Iso14827TestDataCheckList					*check_list;			// is notarg
+		TString										 current_test;			// is notarg
+		uint32										 testIdx;				// is notarg
+		uint64										 hb_cnt;				// is notarg
+	} Iso14827TestHelperEnv;				// with api dump
+}

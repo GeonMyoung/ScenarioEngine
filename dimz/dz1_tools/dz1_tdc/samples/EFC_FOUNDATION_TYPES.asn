@@ -1,0 +1,79 @@
+-------------------------------------------------------------------------------
+-- Electronic Fee Charde Foundation Types
+-------------------------------------------------------------------------------
+EFC-FOUNDATION-TYPES DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+DebitRq::= SEQUENCE {
+	debitPaymentFee 	PaymentFee,
+	nonce 				OCTET STRING,
+	keyRef 				INTEGER(0..255)
+}
+
+DebitRs ::= SEQUENCE {
+	debitResult 		ResultFin,
+	debitAuthenticator 	OCTET STRING
+}
+
+Int2 ::= INTEGER(0..65535)
+
+PaymentFee ::= SEQUENCE {
+	-- The fee (toll, charge or fare) which is requested by the
+	-- service provider for the service provided or to be provided.
+	paymentFeeAmount Int2,
+
+	-- paymentFeeAmount is the value of the fee being charged for the
+	-- service. If no unit (payment fee unit) is specified, then
+	-- it is known by default.
+	paymentFeeUnit PayUnit
+
+	-- paymentFeeUnit is the unit in which the fee is expressed.
+}
+
+PayUnit ::= OCTET STRING(SIZE(2))
+
+	-- The unique designation of a Currency as defined in ISO 4217
+	-- using the ISO numeric binary coded decimal representation.
+	-- The code can also express a company specific token or a
+	-- "charging unit code" as used in the freight.unit in which
+	-- the fee is expressed.
+	-- Value Assignment :
+	-- '0xxx¡¯H Currency in main units
+	-- '1xxx¡¯H Currency in minor units of 10 :1 ('dime')
+	-- '2xxx¡¯H Currency in minor units of 100 :1 ('cents')
+	-- '3xxx¡¯H Currency in minor units of 1000 :1
+	-- '4xxx¡¯H Currency in 'major' units / 10
+	-- (e.g. 10 Belgian Francs)
+	-- '5xxx¡¯H Currency in 'major' units / 100
+	-- (e.g. 100 Italian Lire)
+	-- '6xxx¡¯H Currency in 'major' units / 1000
+	-- '7xxx¡¯H Currency in 'major' units / 10000
+	-- '8xxx¡¯H Currency in 'major' units / 100000
+	-- where xxx is the BCD representation of "Currency"
+	-- as defined in ISO 4217
+	-- '9xxx¡¯H Tokens
+	-- where xxx is Purse Provider specific coding.
+	-- 'Axxx¡¯H Charging Unit Codes,
+	-- denoting quantification of the service provided
+	-- (e.g. man-hours)
+
+ResultFin ::= OCTET STRING (SIZE(1))
+
+	-- A code designating whether a card transaction was completed successfully 
+	-- or not. Value Assignment : Hexadecimal
+	-- Most significant 4 bits: 0 OK :
+	-- '0x¡¯H OK
+	-- Most significant 4 bits > 0 Not OK :
+	-- '1x¡¯H Not OK, not specified further
+	-- '2x¡¯H Not OK, Abnormal (First or Previous) Event
+	-- '3x¡¯H Not OK, Contract not accepted
+	-- '4x¡¯H Not OK, Account or Purse not accepted
+	-- 'x0¡¯H not specified further
+	-- 'x1¡¯H Balance close to zero
+	-- 'x2¡¯H Balance now negative
+	-- ¡®x3¡¯H Balance Overflow
+	-- 'x4¡¯H Provider not accepted
+	-- 'x5¡¯H Authentication failure
+	-- x6¡¯H Vehicle Class incorrect
+		
+END
+

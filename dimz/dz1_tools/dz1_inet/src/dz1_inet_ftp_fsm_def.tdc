@@ -1,0 +1,31 @@
+message set definition
+{
+	typedef enum Dz1InetFtpState
+	{
+		initial,
+		sentUSER,
+		sentPASS,
+		sentACCT,
+		sentTYPE,
+		sentCWDd,
+		sentPASVPORT,
+		sentRETRSTOR,	-- wait TRX
+		waitANY,
+		sentCWDu,
+		sentMKD,
+		sentCWDs,
+		sentSIZE,
+		waitDTP,
+		waitDONE,
+		sentFEAT
+	} Dz1InetFtpState;
+	
+	typedef enum Dz1InetFtpEvent
+	{
+		prepare,
+		success,
+		andNext,
+		error,
+		transferDone
+	} Dz1InetFtpEvent;
+}

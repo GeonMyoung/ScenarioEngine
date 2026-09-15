@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\socket">
+      <UniqueIdentifier>{6bd229ab-92cf-45ae-bc15-e886ecfc8559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\engine">
+      <UniqueIdentifier>{bfee5a1e-eb97-4a3d-887b-9d96e4f5de51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\message">
+      <UniqueIdentifier>{7ab3ffcc-6a91-4087-9544-33993c2216de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_control_pi.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_control_pi_msg.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_def.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_def_util.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_dtp.c">
+      <Filter>소스 파일\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_dtp_arg.c">
+      <Filter>소스 파일\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_receiver.c">
+      <Filter>소스 파일\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_receiver_arg.c">
+      <Filter>소스 파일\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_arg.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_env.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_env_util.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_fsm.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_fsm_def.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_timer.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_timer_util.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_message.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_msgs.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_inet_ftp_transfer.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_control_pi.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_control_pi_msg.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_def_util.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_dtp.h">
+      <Filter>소스 파일\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_dtp_arg.h">
+      <Filter>소스 파일\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_receiver.h">
+      <Filter>소스 파일\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_receiver_arg.h">
+      <Filter>소스 파일\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_arg.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_env.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_env_util.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_fsm.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_fsm_def.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_timer.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_timer_util.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_message.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_msg.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_msgs.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dz1_inet_ftp_transfer.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_inet_ftp.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_inet_ftp_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\src\dz1_inet_ftp_control_pi_msg.tdc">
+      <Filter>소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\dz1_inet_ftp_dtp_arg.tdc">
+      <Filter>소스 파일\socket</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\dz1_inet_ftp_receiver_arg.tdc">
+      <Filter>소스 파일\socket</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\dz1_inet_ftp_arg.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\dz1_inet_ftp_env.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\dz1_inet_ftp_fsm_def.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\dz1_inet_ftp_timer.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\dz1_inet_ftp_msgs.tdc">
+      <Filter>소스 파일\message</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_inet_ftp_def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

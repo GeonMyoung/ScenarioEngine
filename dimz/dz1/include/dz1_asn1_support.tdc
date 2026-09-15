@@ -1,0 +1,176 @@
+message set definition {
+	typedef enum Dz1Asn1Type
+	{
+		eoc				= 0,	-- End of Context
+		boolean			= 1,	--													Primitive
+		integer			= 2,	--													Primitive
+		bit_str			= 3,	--														Binary
+		octet_str		= 4,	--														Binary
+		nul				= 5,	--													Primitive
+		oid				= 6,	--														Binary
+		obj_descr		= 7,	-- ASN1_TYPE_OBJECTDESCRIPTION								String	Restricted		[UNIVERSAL 7] IMPLICIT GraphicString
+		external		= 8,	-- ASN1_TYPE_EXTERNAL, ASN1_TYPE_INSTANCEOF				Custom						X.690 - 8.18.1
+		realnum			= 9,	-- ASN1_TYPE_REAL									Primitive
+		enumerated		= 10,	-- ASN1_TYPE_ENUMERATED								Primitive
+		embPDV			= 11,	-- ASN1_TYPE_EMBEDDEDPDV								Custom						X.680 - 36.5
+		utf8str			= 12,	-- ASN1_TYPE_UFT8String										String	Restricted		Unicode Text							Known-multiplier
+		reloid			= 13,	-- ASN1_TYPE_RELATIVEOID								Binary				
+		time			= 14,	-- ASN1_TYPE_DATETIME										String Restricted		ISO-8601 String aka UTF-8
+	--	Reserved		= 15,
+		seq				= 16,	-- ASN1_TYPE_SEQUENCE,	ASN1_TYPE_SEQUENCEOF			Construct
+		set				= 17,	-- ASN1_TYPE_SET,		ASN1_TYPE_SETOF					Construct
+		digit_str		= 18,	-- ASN1_TYPE_NumericString									String	Restricted		Octet Text								Known-multiplier
+		print_str		= 19,	-- ASN1_TYPE_PrintableString								String	Restricted		Octet Text								Known-multiplier
+		teletex_str		= 20,	-- ASN1_TYPE_TeletexString, ASN1_TYPE_T61String				String	Restricted		Binary Text
+		videotex_str	= 21,	-- ASN1_TYPE_VideotexString									String	Restricted		Binary Text
+		ia5_str			= 22,	-- ASN1_TYPE_IA5String										String	Restricted		Octet Text								Known-multiplier
+		utc_time		= 23,	-- ASN1_TYPE_UTCTime										String	Restricted		[UNIVERSAL 23] IMPLICIT VisibleString	Known-multiplier
+		general_time	= 24,	-- ASN1_TYPE_GeneralizedTime								String	Restricted		[UNIVERSAL 24] IMPLICIT VisibleString	Known-multiplier
+		graphic_str		= 25,	-- ASN1_TYPE_GraphicString									String	Restricted		Binary Text
+		visible_str		= 26,	-- ASN1_TYPE_VisibleString, ASN1_TYPE_ISO646String			String	Restricted		Octet Text								Known-multiplier
+		general_str		= 27,	-- ASN1_TYPE_GeneralString									String	Restricted		Binary Text
+		uni_str			= 28,	-- ASN1_TYPE_UniversalString								String	Restricted		Unicode Text							Known-multiplier
+		char_str		= 29,	-- ASN1_TYPE_CHARACTER_STRING		-> Custom Type			String	Unrestricted	Embedded-PDV
+		bmp_str			= 30,	-- ASN1_TYPE_BMPString										String	Restricted		Unicode Text							Known-multiplier
+		date			= 31,	-- ASN1_TYPE_DATE											String Restricted		ISO-8601 String aka UTF-8
+		time_of_day		= 32,	-- ASN1_TYPE_TIMEOFDAY										String Restricted		ISO-8601 String aka UTF-8
+		date_time		= 33,	-- ASN1_TYPE_DATETIME										String Restricted		ISO-8601 String aka UTF-8
+		duration		= 34	-- ASN1_TYPE_DURATION										String Restricted		ISO-8601 String aka UTF-8
+	} Dz1Asn1Type;									// with api dumpX, clone
+	
+	typedef constant Dz1Asn1Type_instance		Dz1Asn1Type_external;				-- 8
+	typedef constant Dz1Asn1Type_seqof			Dz1Asn1Type_seq;					-- 16
+	typedef constant Dz1Asn1Type_setof			Dz1Asn1Type_set;					-- 17
+	typedef constant Dz1Asn1Type_t61_str		Dz1Asn1Type_teletex_str;			-- 20
+	typedef constant Dz1Asn1Type_iso646_str		Dz1Asn1Type_visible_str;			-- 26
+	
+	typedef enum Dz1Asn1Codec
+	{
+		ber,
+		aper,
+		uper,
+		xer,
+		cxer,
+		unknown
+	} Dz1Asn1Codec;
+	
+	typedef native			Dz1Asn1Any			from dz1_asn1;	// with api dumpX, fdumpX, compare, clone
+	typedef native			Dz1Asn1Custom		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone
+	
+	typedef native static	Dz1Asn1Bool			from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	1
+	typedef native static	Dz1Asn1Int			from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	2
+	typedef native			Dz1Asn1BitStr		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	3
+	typedef native			Dz1Asn1OctetStr		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	4
+	typedef native static	Dz1Asn1Null			from dz1_asn1;	// with api dumpX, fdumpX,			clone		--	5
+	typedef native			Dz1Asn1OID			from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	6
+	typedef native			Dz1Asn1ObjDescr		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	7
+
+	---------------------------------------------------------------------
+	-- External Encoding
+	---------------------------------------------------------------------
+	typedef union Dz1Asn1ExternalEncoding
+	{
+		Dz1Asn1Any						*single_ASN1_type;
+		Dz1Asn1OctetStr					*octet_aligned;
+		Dz1Asn1BitStr					*arbitrary;
+	} Dz1Asn1ExternalEncoding;									// with api dumpX, fdumpX, clone
+
+	---------------------------------------------------------------------
+	-- External																									--	8
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1External								-- EXPLICIT TABS
+	{
+		Dz1Asn1OID						*direct_reference;					// is notarg
+		Dz1Asn1Int						*indirect_reference;				// is notarg
+		Dz1Asn1ObjDescr					*data_value_descriptor;				// is notarg
+		Dz1Asn1ExternalEncoding			*encoding;
+	} Dz1Asn1External;											// with api dumpX, fdumpX, clone
+
+	---------------------------------------------------------------------
+	-- Instance-of																								--	8
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1InstanceOf
+	{
+		Dz1Asn1OID				*type_id;
+		Dz1Asn1Any				*value;										-- tag [0]
+	} Dz1Asn1InstanceOf;										// with api dumpX, fdumpX, clone
+
+	typedef native static	Dz1Asn1Real			from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	9
+	typedef native static	Dz1Asn1Enum			from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	10
+
+	---------------------------------------------------------------------
+	-- Embedded-PDV Syntaxes
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1EmbPdvSyntaxes
+	{
+		Dz1Asn1OID						*abstract;
+		Dz1Asn1OID						*transfer;
+	} Dz1Asn1EmbPdvSyntaxes;						// with api dumpX, fdumpX, clone
+
+	---------------------------------------------------------------------
+	-- Embedded-PDV Context Negotiation
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1EmbPdvCtxNego
+	{
+		Dz1Asn1Int						 presentation_context_id;
+		Dz1Asn1OID						*transfer_syntax;
+	} Dz1Asn1EmbPdvCtxNego;							// with api dumpX, fdumpX, clone
+
+	---------------------------------------------------------------------
+	-- Embedded-PDV Identification
+	---------------------------------------------------------------------
+	typedef union Dz1Asn1EmbPdvID
+	{
+		Dz1Asn1EmbPdvSyntaxes			*syntaxes;
+		Dz1Asn1OID						*syntax;
+		Dz1Asn1Int						 presentation_context_id;
+		Dz1Asn1EmbPdvCtxNego			*context_negotiation;
+		Dz1Asn1OID						*transfer_syntax;
+		Dz1Asn1Null						 fixed;
+	} Dz1Asn1EmbPdvID;								// with api dumpX, fdumpX, clone
+
+	---------------------------------------------------------------------
+	-- Embedded-PDV
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1EmbPdv																				--	11
+	{
+		Dz1Asn1EmbPdvID					*identifier;
+		Dz1Asn1OctetStr					*data_value;
+	} Dz1Asn1EmbPdv;								// with api dumpX, fdumpX, clone
+
+	typedef native			Dz1Asn1UTF8Str		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	12
+	typedef native			Dz1Asn1RelativeOID	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	13
+	typedef native			Dz1Asn1Time			from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	14
+																												--	15 : Reserved
+																												--	16 : SEQUENCE, SEQUENCE OF
+																												--	17 : SET, SET OF
+	typedef native			Dz1Asn1DigitStr		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	18
+	typedef native			Dz1Asn1PrintStr		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	19
+	typedef native			Dz1Asn1TeletexStr	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	20
+	typedef native			Dz1Asn1T61Str		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	20
+	typedef native			Dz1Asn1VideotexStr	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	21
+	typedef native			Dz1Asn1IA5Str		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	22
+	typedef native			Dz1Asn1UTCTime		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	23 : UTC Time
+	typedef native			Dz1Asn1GeneralTime	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	24 : Generalized Time
+	typedef native			Dz1Asn1GraphicStr	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	25
+	typedef native			Dz1Asn1VisibleStr	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	26
+	typedef native			Dz1Asn1Iso646Str	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	26
+	typedef native			Dz1Asn1GeneralStr	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	27
+	typedef native			Dz1Asn1UniversalStr	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	28
+
+	---------------------------------------------------------------------
+	-- CHARACTER STRING
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1CharStr																				--	29
+	{
+		Dz1Asn1EmbPdvID					*identifier;
+		Dz1Asn1OctetStr					*str_value;
+	} Dz1Asn1CharStr;								// with api dumpX, fdumpX, clone
+
+	typedef native			Dz1Asn1BMPStr		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	30
+
+	typedef native			Dz1Asn1Date			from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	31
+	typedef native			Dz1Asn1TimeOfDay	from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	32
+	typedef native			Dz1Asn1DateTime		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	33
+	typedef native			Dz1Asn1Duration		from dz1_asn1;	// with api dumpX, fdumpX, compare, clone		--	34
+}

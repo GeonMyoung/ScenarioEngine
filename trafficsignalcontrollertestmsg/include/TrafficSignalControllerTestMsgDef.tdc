@@ -1,0 +1,773 @@
+message set definition
+{
+	include libdz1_support;
+
+	----------------------------------------------------
+	-- 교차로제어정보
+	----------------------------------------------------
+	typedef enum CrossControlRingRcCmd
+	{
+		none,
+		EndPhase1,
+		EndPhase2,
+		EndPhase3,
+		EndPhase4,
+		EndPhase5,
+		EndPhase6,
+		EndPhase7,
+		EndPhase8
+	} CrossControlRingRcCmd;
+
+	typedef struct CrossControlRingRcDualCmd
+	{
+		CrossControlRingRcCmd			 ring_b;
+		CrossControlRingRcCmd			 ring_a;
+	} CrossControlRingRcDualCmd;				// with api dump, clone
+
+	typedef enum CrossControlRingLcCmd
+	{
+		none,
+		SetPhase1,
+		SetPhase2,
+		SetPhase3,
+		SetPhase4,
+		SetPhase5,
+		SetPhase6,
+		SetPhase7,
+		SetPhase8,
+		SetPhaseNext
+	} CrossControlRingLcCmd;
+
+	typedef struct CrossControlRingLcDualCmd
+	{
+		CrossControlRingLcCmd			 ring_b;
+		CrossControlRingLcCmd			 ring_a;
+	} CrossControlRingLcDualCmd;				// with api dump, clone
+
+	typedef union CrossControlSingleCmd
+	{
+		CrossControlRingLcCmd	[0x00]	 lc_fixed;
+		CrossControlRingLcCmd	[0x10]	 lc_control;
+		CrossControlRingLcCmd	[0x12]	 lc_actuation;
+
+		CrossControlRingRcCmd	[0x14]	 rc_actuation;
+		CrossControlRingRcCmd	[0x16]	 rc_online;
+	} CrossControlSingleCmd;				// with api dump, clone
+
+	typedef union CrossControlDualCmd
+	{
+		CrossControlRingLcDualCmd		[0x00]	 *lc_fixed;
+		CrossControlRingLcDualCmd		[0x10]	 *lc_control;
+		CrossControlRingLcDualCmd		[0x12]	 *lc_actuation;
+
+		CrossControlRingRcDualCmd		[0x14]	 *rc_actuation;
+		CrossControlRingRcDualCmd		[0x16]	 *rc_online;
+	} CrossControlDualCmd;				// with api dump, clone
+
+	typedef union CrossControlCmd
+	{
+		CrossControlSingleCmd	[0] *single;		
+		CrossControlDualCmd		[1] *dual;
+	} CrossControlCmd;					// with api dump, clone
+
+	typedef struct CrossControlInformation
+	{
+		uint8								 cross_id;
+		CrossControlCmd						*command;
+	} CrossControlInformation;					// with api dump, clone
+	----------------------------------------------------
+	-- 교차로제어정보
+	----------------------------------------------------
+
+	typedef struct CrossIndicator
+	{
+		uint8						 cross_id;
+	} CrossIndicator;					// with api dump, clone
+
+	----------------------------------------------------
+	-- 교차로상황정보
+	----------------------------------------------------
+	typedef enum CrossStatusBasicInfo_OperationMode
+	{
+		fixed,
+		lc,
+		lc_actuator,
+		rc_actuator = 4,
+		rc
+	} CrossStatusBasicInfo_OperationMode;					
+
+	typedef enum CrossStatusBasicInfo_BlinkReason
+	{
+		unknown,
+		power_on,
+		config,
+		switched,
+		contradiction,
+		db_error,
+		lights_off,
+		sys_fault
+	} CrossStatusBasicInfo_BlinkReason;
+
+	typedef struct CrossStatusBasicInfo
+	{
+		-- Byte 1
+		bool						 power_fail;
+		bool						 comm_fail;	
+		bool						 lamp_oper;
+		bool						 is_dual_ring;
+		bool						 ppc_enabled;
+		CrossStatusBasicInfo_OperationMode	 oper_mode;			-- 3 bit
+		-- Byte 2
+		uint8						 ring_a_phase;		-- 3 bit = 0 ~ 7
+		uint8						 ring_a_step;		-- 5 bit = 0 ~ 31
+		-- Byte 3
+		uint8						 ring_b_phase;		-- 3 bit = 0 ~ 7
+		uint8						 ring_b_step;		-- 5 bit = 0 ~ 31
+		-- Byte 4
+		bool						 pannel_is_manual;
+		bool						 pannel_manual_sw;
+		bool						 pannel_blink_sw;
+		bool						 pannel_light_out_sw;
+		bool						 is_contradiction;
+		bool						 is_light_out;
+		bool						 is_blink;
+		bool						 is_database;
+		-- Byte 5
+		bool						 push_button_enable;
+		CrossStatusBasicInfo_BlinkReason			 blink_reason;			-- 3 bit = 0 ~ 7
+		bool						 is_timed_left_signal;
+		bool						 manual_enabled;
+		bool						 conflict_enabled;
+		bool						 is_door_opened;
+		-- Byte 6
+		uint8						 contradiction_lsu;		-- 4 bit
+		bool						 contradiction_from_sw;
+		uint8						 contradiction_curcuit;	-- 3 bit
+		-- Byte 7~9
+		uint8						 pedestrian_lamp;		-- 8 bit direction flag
+		uint8						 push_button_pending;
+		uint8						 push_button_status;
+		-- Byte 10~16
+		uint8						 opt_board_status;
+		uint8						 period_counter;
+		uint8						 total_period;
+		uint8						 curr_period;
+		uint8						 period_offset;
+		uint8						 hold_phase;
+		uint8						 omit_phase;
+		-- Byte 17
+		bool						 is_four_color_lamp;
+		uint8						 oper_map_id;		-- 3 bit = 0 ~ 7
+		bool						 jam_ctrl_enabled;
+		bool						 jam_ctrl_mode;
+		bool						 jam_term_early0;
+		bool						 jam_term_early1;
+	-- Byte 18~19, 20~21
+		uint16						 firmware_id;
+		uint16						 firmware_idx;
+	-- Byte 22
+		uint8						 database_status;
+	-- Byte 23-24
+		uint8						 ppc_control_status;
+		uint8						 ups_control_status;
+	-- Byte 25
+		bool						 map_is_dirty;				-- bit 0
+		bool						 lock_installed;			-- bit 1
+		bool						 lock_is_locked;			-- bit 2
+		bool						 db_is_locked;				-- bit 3
+	} CrossStatusBasicInfo;					// with api dump, clone
+
+	typedef enum CrossStatusExtInfo_ContradictionReason
+	{
+		none,
+		voltage,
+		current,
+		map
+	} CrossStatusExtInfo_ContradictionReason;
+
+	typedef struct CrossStatusExtInfo_r27
+	{
+		uint8									 type;						-- Byte 1
+		uint8									 ver;						-- Byte 2
+		Dz1Binary								*ppc_data;					-- Byte 3~18	16 Byte
+		uint32									 detector_status;			-- Byte 19~22	32 bit flags
+		uint8									 mlc_slc_comm_fail;			-- Byte 23		4 bit / 4 bit
+		uint8									 contradiction_slc;			-- Byte 24
+		-- Byte 25
+		CrossStatusExtInfo_ContradictionReason	 contradiction_prove;		--				3 bit
+		uint8									 contradiction_circuit;		--				5 bit = 0 ~ 31(value = 1 ~ 14)
+
+		uint8									 ring_a_phase;				-- Byte 26
+		uint8									 ring_a_step;				-- Byte 27
+		uint8									 ring_b_phase;				-- Byte 28
+		uint8									 ring_b_step;				-- Byte 29
+																			-- Byte 30~50	Padding 21 Byte				
+	} CrossStatusExtInfo_r27;					// with api dump, clone
+	
+	typedef struct CrossStatusExtInfo_r29
+	{
+		uint8									 type;						-- Byte 1
+		uint8									 ver;						-- Byte 2
+		Dz1Binary								*ppc_data;					-- Byte 3~18	16 Byte
+		uint32									 detector_status;			-- Byte 19~22	32 bit flags
+		uint8									 mlc_slc_comm_fail;			-- Byte 23		4 bit / 4 bit
+		uint8									 contradiction_slc;			-- Byte 24
+		-- Byte 25
+		CrossStatusExtInfo_ContradictionReason	 contradiction_prove;		--				3 bit
+		uint8									 contradiction_circuit;		--				5 bit = 0 ~ 31(value = 1 ~ 14)
+
+		uint8									 ring_a_phase;				-- Byte 26
+		uint8									 ring_a_step;				-- Byte 27
+		uint8									 ring_b_phase;				-- Byte 28
+		uint8									 ring_b_step;				-- Byte 29
+																			-- Byte 30~50	Padding 21 Byte
+																			
+
+		uint16									 period_cnt;				-- Byte 30~31
+		uint16									 last_period_len;			-- Byte 32~33
+		uint16									 current_period;			-- Byte 34~35
+		uint16									 offset;					-- Byte 36~50	Padding	15 Byte
+	} CrossStatusExtInfo_r29;					// with api dump, clone
+
+
+	typedef struct CrossStatusInformation
+	{
+		uint8								 cross_id;
+		CrossStatusBasicInfo				*lc_status;
+		CrossStatusExtInfo_r27				*ex_status;				// is notarg -- optional
+	} CrossStatusInformation;						// with api dump, clone			
+
+
+	----------------------------------------------------
+	-- 교차로상황정보
+	----------------------------------------------------
+
+	----------------------------------------------------
+	-- 검지기 정보 Upload
+	----------------------------------------------------
+	typedef struct DetectorInfoFlagMap
+	{
+		-- 7 bit is reserved by detector flag
+		-- bool			 is_occupy;		// is key		-- custom field
+		bool			 bit6;
+		bool			 bit5;
+		bool			 bit4;
+		bool			 bit3;
+		bool			 bit2;
+		bool			 bit1;
+		bool			 bit0;
+	} DetectorInfoFlagMap;		// with api dump, clone
+	
+	typedef struct DetectorInfoFlagMaps
+	{
+		DetectorInfoFlagMap		*detector1;
+		DetectorInfoFlagMap		*detector2;
+		DetectorInfoFlagMap		*detector3;
+		DetectorInfoFlagMap		*detector4;
+		DetectorInfoFlagMap		*detector5;
+		DetectorInfoFlagMap		*detector6;
+		DetectorInfoFlagMap		*detector7;
+		DetectorInfoFlagMap		*detector8;
+		DetectorInfoFlagMap		*detector9;
+		DetectorInfoFlagMap		*detector10;
+		DetectorInfoFlagMap		*detector11;
+		DetectorInfoFlagMap		*detector12;
+		DetectorInfoFlagMap		*detector13;
+		DetectorInfoFlagMap		*detector14;
+		DetectorInfoFlagMap		*detector15;
+		DetectorInfoFlagMap		*detector16;
+		DetectorInfoFlagMap		*detector17;
+		DetectorInfoFlagMap		*detector18;
+		DetectorInfoFlagMap		*detector19;
+		DetectorInfoFlagMap		*detector20;
+		DetectorInfoFlagMap		*detector21;
+		DetectorInfoFlagMap		*detector22;
+		DetectorInfoFlagMap		*detector23;
+		DetectorInfoFlagMap		*detector24;
+		DetectorInfoFlagMap		*detector25;
+		DetectorInfoFlagMap		*detector26;
+		DetectorInfoFlagMap		*detector27;
+		DetectorInfoFlagMap		*detector28;
+		DetectorInfoFlagMap		*detector29;
+		DetectorInfoFlagMap		*detector30;
+		DetectorInfoFlagMap		*detector31;
+		DetectorInfoFlagMap		*detector32;
+	} DetectorInfoFlagMaps;							// with api dump, clone
+
+	typedef struct DetectorInfoValueMap
+	{
+		uint8					detector1;
+		uint8					detector2;
+		uint8					detector3;
+		uint8					detector4;
+		uint8					detector5;
+		uint8					detector6;
+		uint8					detector7;
+		uint8					detector8;
+		uint8					detector9;
+		uint8					detector10;
+		uint8					detector11;
+		uint8					detector12;
+		uint8					detector13;
+		uint8					detector14;
+		uint8					detector15;
+		uint8					detector16;
+		uint8					detector17;
+		uint8					detector18;
+		uint8					detector19;
+		uint8					detector20;
+		uint8					detector21;
+		uint8					detector22;
+		uint8					detector23;
+		uint8					detector24;
+		uint8					detector25;
+		uint8					detector26;
+		uint8					detector27;
+		uint8					detector28;
+		uint8					detector29;
+		uint8					detector30;
+		uint8					detector31;
+		uint8					detector32;
+	} DetectorInfoValueMap;	// with api dump, clone
+	typedef struct DetectorInfo
+	{
+		-- Byte 1 ~ 32
+		DetectorInfoFlagMaps				*detector_info_flags;
+		-- Byte 33 ~ 64
+		DetectorInfoValueMap				*detector_not_occupy_times;
+		-- Byte 65 ~ 96
+		DetectorInfoValueMap				*detector_occupy_times;
+		-- Byte 97 ~ 128
+		DetectorInfoValueMap				*detector_traffic_volumes;
+		-- Byte 129 ~ 160
+		DetectorInfoValueMap				*detector_traffic_saturations;
+		-- Byte 161 ~ 192
+		DetectorInfoValueMap				*detector_saturation_flow_rate_per_speeds;
+		-- Byte 193 ~ 224
+		DetectorInfoValueMap				*detector_saturation_not_ocuppy_time;
+	} DetectorInfo;					// with api dump, clone
+
+	
+	typedef struct DetectorInformation
+	{
+		uint8					 cross_id;
+		DetectorInfo			*detector_info;
+	} DetectorInformation;			// with api dump, clone
+
+	----------------------------------------------------
+	-- 검지기 정보 Upload
+	----------------------------------------------------
+
+	----------------------------------------------------
+	-- 현시정보 Download
+	----------------------------------------------------
+	typedef struct SignalPhaseInfoPeriodicOperationTime
+	{
+		-- Byte 1 ~ 8
+		uint8					 ring_a_phase1;
+		uint8					 ring_a_phase2;
+		uint8					 ring_a_phase3;
+		uint8					 ring_a_phase4;
+		uint8					 ring_a_phase5;
+		uint8					 ring_a_phase6;
+		uint8					 ring_a_phase7;
+		uint8					 ring_a_phase8;
+
+		-- Byte 9 ~ 16
+		uint8					 ring_b_phase1;
+		uint8					 ring_b_phase2;
+		uint8					 ring_b_phase3;
+		uint8					 ring_b_phase4;
+		uint8					 ring_b_phase5;
+		uint8					 ring_b_phase6;
+		uint8					 ring_b_phase7;
+		uint8					 ring_b_phase8;
+	} SignalPhaseInfoPeriodicOperationTime;					// with api dump, clone
+
+	typedef struct SignalPhaseInfoDownBasic
+	{
+		-- Byte 1 ~ 16
+		SignalPhaseInfoPeriodicOperationTime			*periodic_oper_time1;
+		-- Byte 17
+		uint8					 offset;
+	}SignalPhaseInfoDownBasic;		// with api dump, clone
+
+	typedef struct SignalPhaseInfoDown_r27
+	{
+		-- Byte 1 ~ 17
+		SignalPhaseInfoDownBasic						*mandatory;
+
+		-- Byte 18 ~ 33
+		SignalPhaseInfoPeriodicOperationTime			*periodic_oper_time2;		// is notarg -- optional
+
+		-- Byte 34 ~ 49
+		SignalPhaseInfoPeriodicOperationTime			*periodic_oper_time3;		// is notarg -- optional
+	} SignalPhaseInfoDown_r27;				// with api dump, clone
+
+	typedef struct SignalPhaseInfoDown_r29
+	{
+		-- Byte 1 ~ 17
+		SignalPhaseInfoDownBasic						*mandatory;
+
+		-- Byte 18 ~ 33
+		SignalPhaseInfoPeriodicOperationTime			*periodic_oper_time2;		// is notarg -- optional
+
+		-- Byte 34 ~ 49
+		SignalPhaseInfoPeriodicOperationTime			*periodic_oper_time3;		// is notarg -- optional
+
+		-- Byte 50-51
+		uint16											 offset1;
+		uint16											 offset2;					// is notarg -- optional
+		uint16											 offset3;					// is notarg -- optional
+	} SignalPhaseInfoDown_r29;				// with api dump, clone
+
+
+	typedef struct SignalPhaseInformationDownload
+	{
+		uint8									 cross_id;
+		SignalPhaseInfoDown_r27					*signal_phase_info_down;
+	} SignalPhaseInformationDownload;		// with api dump, clone
+	----------------------------------------------------
+	-- 현시정보 Download
+	----------------------------------------------------
+
+	----------------------------------------------------
+	-- 현시정보 Upload
+	----------------------------------------------------
+
+	typedef struct SignalPhaseInfoUpPPCControl
+	{
+		uint8										 ppc_blink_time;				// is notarg -- optional
+		uint8										 ppc_all_red_time;				// is notarg -- optional
+		uint8										 ppc_priority_signal;			// is notarg -- optional
+	} SignalPhaseInfoUpPPCControl;				// with api dump, clone
+	 
+	typedef struct SignalPhaseInfoUp
+	{
+		-- Byte 1 ~ 16
+		SignalPhaseInfoPeriodicOperationTime		*operation_time;
+		-- Byte 17 ~ 32
+		SignalPhaseInfoPeriodicOperationTime		*pedestrianoperation_time;		// is notarg -- optional
+		-- 33 ~ 35
+		SignalPhaseInfoUpPPCControl					*ppc_control;					// is notarg -- optional
+	} SignalPhaseInfoUp;			// with api dump, clone
+		
+	typedef struct SignalPhaseInformationUpload
+	{
+		uint8							 cross_id;
+		SignalPhaseInfoUp				*signal_phase_info_up;
+	} SignalPhaseInformationUpload;			// with api dump, clone
+
+	----------------------------------------------------
+	-- 현시정보 Upload
+	----------------------------------------------------
+
+
+	----------------------------------------------------
+	-- Clock Download
+	----------------------------------------------------
+	typedef enum ClockInfoWeekIndex
+	{
+		sun = 0,
+		mon,
+		tue,
+		wed,
+		thu,
+		fri,
+		sat
+	} ClockInfoWeekIndex;
+
+	typedef struct ClockInfo
+	{
+		-- Byte 1 ~ 6
+		uint8					 year;
+		uint8					 month;
+		uint8					 day;
+		uint8					 hour;
+		uint8					 minute;
+		uint8					 second;
+		-- Byte 7
+		ClockInfoWeekIndex		 week_index;
+	} ClockInfo;					// with api dump, clone
+
+	typedef struct ClockInformationDownload
+	{
+		uint8					 cross_id;
+		ClockInfo				*clock_info_down;
+	} ClockInformationDownload;		// with api dump, clone
+	----------------------------------------------------
+	-- Clock Download
+	----------------------------------------------------
+
+	----------------------------------------------------
+	-- Clock Upload
+	----------------------------------------------------
+	
+	typedef struct ClockInformationUpload
+	{
+		uint8					 cross_id;
+		ClockInfo				*clock_info_up;
+	} ClockInformationUpload;			// with api dump, clone
+
+	----------------------------------------------------
+	-- Clock Upload
+	----------------------------------------------------
+
+
+	----------------------------------------------------
+	-- Special Command
+	----------------------------------------------------
+	
+	typedef struct SpecialCommandPPCVehicleProperty
+	{
+		uint32					property;			
+	} SpecialCommandPPCVehicleProperty;			// with api dump, clone
+	typedef array SpecialCommandPPCVehicleProperties(extract, count, gethead) [SpecialCommandPPCVehicleProperty];
+
+	typedef struct SpecialCommandInfoPPCControlManage
+	{
+		-- Byte 1
+		-- bit 7 is reserved
+		bool						 is_org_code_registered_vehicle_request;
+		bool						 is_register_org_code;
+		bool						 is_delete_org_code;
+		bool						 is_register_vehicle_num;
+		bool						 is_delete_vehicle_num;
+		bool						 vehicle_code;
+		-- bit 0 is reserved
+
+		-- Byte 2
+		uint8						 org_manage_code;
+		
+		-- Byte 3 ~ 6
+		SpecialCommandPPCVehicleProperty	*vehicle_property;
+	} SpecialCommandInfoPPCControlManage;	// with api dump, clone
+
+	typedef struct SpecialCommandInfo
+	{
+		-- Byte 1
+		bool						 is_shut_down;
+		bool						 is_blink_control;
+		bool						 is_lamp_light_control;
+		bool						 is_confilct;
+		bool						 is_manual;
+		bool						 is_confilct_reset;
+		bool						 is_scu_reset;
+		bool						 is_mcu_reset;
+		-- Byte 2
+		bool						 is_ppc_control;
+		bool						 is_pedestrian_button;
+		bool						 is_x_control;
+		bool						 is_spill_back_control;
+		bool						 is_phase_omit;
+		bool						 is_phase_hold;
+		bool						 is_actuation_control;
+		bool						 is_stagger_control;
+		-- Byte 3 ~ 6
+		uint8						 operation_flag;
+		uint8						 hold_omit_phase;
+		uint8						 stagger_plan;
+		uint8						 spill_back_direction_code;
+		-- Byte 7
+		uint8						 sub_phase_spill_back;		-- 4 bit 0~15	(7..4)
+		uint8						 main_phase_spill_back;		-- 4 bit 0~15	(3..0)
+
+		-- Byte 8 ~ 13
+		SpecialCommandInfoPPCControlManage	*ppc_control_manage;
+
+	} SpecialCommandInfo;				// with api dump, clone
+
+	typedef struct SpecialCommandInformation
+	{
+		uint8				 cross_id;
+		SpecialCommandInfo	*special_command;
+	} SpecialCommandInformation;		// with api dump, clone
+
+
+
+	typedef struct SpecialCommandPPCNumberList_is_emergency
+	{
+		bool				 is_emergency;
+	} SpecialCommandPPCNumberList_is_emergency;		// with api dump, clone
+
+	typedef struct SpecialCommandPPCNumberList_org_code
+	{
+		uint8				 org_code;
+	} SpecialCommandPPCNumberList_org_code;			// with api dump, clone
+
+	typedef struct SpecialCommandPPCNumberList_org_code_num
+	{
+		uint8				 org_code_num;
+	} SpecialCommandPPCNumberList_org_code_num;			// with api dump, clone
+	
+	typedef struct SpecialCommandPPCNumberList_org_code_type
+	{
+		uint32				 org_code_type;
+	} SpecialCommandPPCNumberList_org_code_type;			// with api dump, clone
+
+
+	typedef struct SpecialCommandPPCNumberList
+	{
+		-- Byte 1
+		SpecialCommandPPCNumberList_is_emergency	*is_emergency;
+		-- Byte 2				
+		SpecialCommandPPCNumberList_org_code		*org_code;
+		-- Byte 3
+		SpecialCommandPPCNumberList_org_code_num	*org_code_num;
+		-- Byte 4 ~ 7
+		SpecialCommandPPCNumberList_org_code_type	*org_code_type;
+		-- Byte 8 ~
+		SpecialCommandPPCVehicleProperties	*vehicle_properties;
+	} SpecialCommandPPCNumberList;		// with api dump, clone
+
+	typedef struct SpecialCommandInformationResponse
+	{
+		uint8						 cross_id;
+		SpecialCommandPPCNumberList	*ppc_register_num_list;		// is notarg -- OPTIONAL
+	} SpecialCommandInformationResponse;		// with api dump, clone
+
+	----------------------------------------------------
+	-- Special Command
+	----------------------------------------------------
+
+	----------------------------------------------------
+	-- Option Board msg upload/download (optinal)
+	----------------------------------------------------
+	--
+	----------------------------------------------------
+	-- Option Board msg upload/download (optinal)
+	----------------------------------------------------
+
+	----------------------------------------------------
+	-- Firmware upgrade 
+	----------------------------------------------------
+	typedef struct FirmwareUpgradeData
+	{
+		-- Byte 1 ~ 2
+		uint16					 fw_module_id;
+		-- Byte 3 ~ 6
+		uint32					 fw_module_size;
+		-- Byte 7 ~ 21
+		TString					 fname;
+		-- Byte 22
+		uint8					 major_version;
+		-- Byte 23				 
+		uint8					 minor_version;
+		-- Byte 24			
+		uint8					 module_version;
+		-- Byte 25 ~ 26
+		uint16					 revision_version;
+		-- Byte 27
+		bool					 is_forced_upgrade;
+		-- Byte 28
+		uint8					 reboot_option;
+		-- Byte 29 ~ 32
+		uint32					 crc32;
+	} FirmwareUpgradeData;			// with api dump, clone
+
+	typedef struct FirmwareUpgradeCommand
+	{
+		uint8					 cross_id;
+		FirmwareUpgradeData		*fw_upgrade_data;
+	} FirmwareUpgradeCommand;		// with api dump, clone
+
+	typedef enum FirmwareUpgradeErrorCode
+	{
+		no_error,
+		lower_version_than_current_module,
+		mismatched_vender_code,
+		crc_error,
+		module_size_exceeds_the_initial_size,
+		other
+	} FirmwareUpgradeErrorCode;
+
+	typedef struct FirmwareUpgradeError
+	{
+		FirmwareUpgradeErrorCode		code;
+	}FirmwareUpgradeError;			// with api dump, clone
+	typedef struct FirmwareUpgradeResponse
+	{
+		uint8					 cross_id;
+		FirmwareUpgradeError	 *error;
+	} FirmwareUpgradeResponse;		// with api dump, clone
+	----------------------------------------------------
+	-- Firmware upgrade 
+	----------------------------------------------------
+
+	----------------------------------------------------
+	-- Traffic Signal Controller Test Request list
+	----------------------------------------------------
+	typedef union TrafficSignalControllerRequest
+	{
+		CrossControlInformation					[0x10]	*control;
+		CrossIndicator							[0x12]	*status;
+		-- CrossStatusRequest						[0x12]	*status;
+		CrossIndicator							[0x22]	*detector;
+		SignalPhaseInformationDownload			[0x30]	*signal_phase_down;
+		CrossIndicator							[0x32]	*signal_phase_up;
+		ClockInformationDownload				[0x40]	*clock_down;
+		CrossIndicator							[0x42]	*clock_up;
+		SpecialCommandInformation				[0x50]	*special_cmd;
+		FirmwareUpgradeCommand					[0x56]	*fw_upgrade_cmd;
+	} TrafficSignalControllerRequest;				// with api dump, clone
+
+	typedef union TrafficSignalControllerResponse
+	{
+		CrossIndicator							[0x11]	*control;
+		CrossStatusInformation					[0x13]	*status;
+		DetectorInformation						[0x23]	*detector;
+		CrossIndicator							[0x31]	*signal_phase_down;
+		SignalPhaseInformationUpload			[0x33]	*signal_phase_up;
+		CrossIndicator							[0x41]	*clock_down;
+		ClockInformationUpload					[0x43]	*clock_up;
+		SpecialCommandInformationResponse		[0x51]	*special_cmd;
+		FirmwareUpgradeResponse					[0x57]	*fw_upgrade_cmd;
+	} TrafficSignalControllerResponse;				// with api dump, clone
+
+	----------------------------------------------------
+	-- Traffic Signal Controller Test Request list
+	----------------------------------------------------
+
+	
+
+
+
+
+
+-- 	typedef enum TrafficSignalControllerEamType
+-- 	{
+-- 		CrossControlInformation = 0,
+-- 		CrossStatusInformation,
+-- 		DetectorInformation,
+-- 		SignalPhaseInformationDownload,
+-- 		SignalPhaseInformationUpload,
+-- 		ClockDownload,
+-- 		ClockUpload,
+-- 		SpecialCommand,
+-- 		FirmwareUpgrade
+-- 	} TrafficSignalControllerEamType;
+-- 
+-- 	typedef struct TrafficSignalControllerScenarioArgument
+-- 	{
+-- 		TString								 ip;
+-- 		uint16								 port;
+-- 		uint8								 cross_id;
+-- 		TrafficSignalControllerEamType		 eam_type;	
+-- 		TString								 req_str;
+-- 	} TrafficSignalControllerScenarioArgument;				// with api dump, -- clone
+-- 
+-- 	typedef struct TrafficSignalControllerNotifyContext
+-- 	{
+-- 		Dz1Binary							*data;
+-- 		TString								 log;
+-- 	} TrafficSignalControllerNotifyContext;				// with api dump, clone
+
+
+typedef struct TrafficSignalControllerTestConfiguration
+	{
+		uint16								 port;
+		bool								 test_data;
+		uint8								 cross_id;
+		TString								 req_str;
+	} TrafficSignalControllerTestConfiguration;		// with api dump, clone
+}

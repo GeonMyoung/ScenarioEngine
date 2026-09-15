@@ -1,0 +1,84 @@
+message set definition
+{
+	include GitsnDSRCMsgTestScenarioDef;
+	include Dz1SockUtilDef;
+	include GitsnTestDataProtocolDef;
+	include Dz1JsonDef;
+
+	typedef struct GitsnDSRCMsgClientSession
+	{
+		Dz1SockAddr				*peer;			// is key
+		Dz1SockAddr				*local;			// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} GitsnDSRCMsgClientSession;								// with api dump, compare
+	
+
+	typedef struct GitsnDSRCMsgServerSession
+	{
+		uint32					 acceptor;
+		Dz1SockAddr				*peer;		// is key
+		Dz1SockAddr				*local;		// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} GitsnDSRCMsgServerSession;				// with api dump, compare
+
+	typedef union GitsnDSRCMsgSession
+	{
+		GitsnDSRCMsgClientSession		*client;
+		GitsnDSRCMsgServerSession		*server;
+	} GitsnDSRCMsgSession;			// with api dump
+
+	typedef struct GitsnDSRCMsgScenario
+	{
+		uint16				 local_port;
+		bool					 test_map;				-- 18
+		bool					 test_spat;				-- 19
+		bool					 test_bsm;				-- 20
+		bool					 test_eva;				-- 22
+		bool					 test_pvd;				-- 26
+		bool					 test_rsa;				-- 27
+		bool					 test_rtcm;				-- 28
+		bool					 test_srm;				-- 28
+		bool					 test_ssm;				-- 29
+		bool					 test_tim;				-- 31
+		bool					 test_psm;				-- 32
+		bool					 test_sdsm;				-- 41
+		bool					 test_tls;				-- 50
+	} GitsnDSRCMsgScenario;		// with api dump, clone
+
+	typedef enum GitsnDSRCMsgScenarioEvent
+	{
+		start,
+		auth,
+		trigger,
+		data,
+		validate,
+		disconnected
+	} GitsnDSRCMsgScenarioEvent;		// with api dump, clone
+	typedef enum GitsnDSRCMsgScenarioState
+	{
+		initial,
+		wait_data,
+		complete
+	} GitsnDSRCMsgScenarioState;		// with api dump, clone
+	 
+	typedef struct GitsnDSRCMsgTestScenarioEnv
+	{
+		void *tSelf;
+		void *tMain;
+		Dz1JsonSpec		*spec;
+		GitsnDSRCMsgSession	*session;		// is notarg
+		GitsnDSRCMsgScenario	*scenario;		// is notarg
+		bool				 is_run;			// is notarg
+		int32				 state;				// is notarg
+		uint32				 flags;				// is notarg
+		GitsnTestDataFrames	*dfs;				// is notarg
+		uint32				 testIdx;			// is notarg
+		TString				 current_test;		// is notarg
+	} GitsnDSRCMsgTestScenarioEnv;				// with api dump
+}

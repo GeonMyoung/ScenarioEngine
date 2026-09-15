@@ -1,0 +1,97 @@
+message set definition
+{
+	include dz1_asn1_types_def;
+
+	------------------------------------------------------------------------------------
+	-- References
+	------------------------------------------------------------------------------------
+	typedef reference Dz1Asn1TypeDescr					from dz1_asn1_typedescr;
+	typedef reference Dz1Asn1MetaDataRealRangeInfo		from dz1_asn1_constraint;			// with api dumpX, fdumpX
+	typedef reference Dz1Asn1ConstructConstraintEntry	from dz1_asn1_constraint;			// with api dumpX, fdumpX
+	typedef reference Dz1Asn1ConstructConstraintGrp		from dz1_asn1_constraint;			// with api dumpX, fdumpX
+
+	------------------------------------------------------------------------------------
+	-- Natives
+	------------------------------------------------------------------------------------
+	typedef native Dz1Asn1MetaDataRangeInfo			from dz1_asn1_constraint_types;		// with api dumpX, fdumpX
+
+	------------------------------------------------------------------------------------
+	-- Dz1Asn1ConstructChildPresence
+	------------------------------------------------------------------------------------
+	typedef enum Dz1Asn1ConstructChildPresence
+	{
+		abssent,
+		present,
+		optional
+	} Dz1Asn1ConstructChildPresence;								// with api dumpX, fdumpX
+
+	------------------------------------------------------------------------------------
+	-- Dz1Asn1ConstructChildConstraint
+	------------------------------------------------------------------------------------
+	typedef struct Dz1Asn1ConstructChildConstraint									-- NamedConstraint
+	{
+		Dz1Asn1TypeDescr						*childType;			// is ref
+		Dz1Asn1GetChildF						 getChildPtr;
+		Dz1Binary								*preEncoded;						-- Value Constraints
+		Dz1Asn1ConstructChildPresence			 presence;							-- Presence Constraints
+	} Dz1Asn1ConstructChildConstraint;								// with api dumpX, fdumpX
+
+	------------------------------------------------------------------------------------
+	-- Dz1Asn1ConstructConstraintTreeNode
+	------------------------------------------------------------------------------------
+	typedef union Dz1Asn1ConstructConstraintTreeNode
+	{
+		Dz1Asn1ConstructConstraintEntry			*constraints;
+		Dz1Asn1ConstructConstraintGrp			*AND_grp;
+		Dz1Asn1ConstructConstraintGrp			*OR_grp;
+	} Dz1Asn1ConstructConstraintTreeNode;							// with api dumpX, fdumpX
+
+	typedef func size_t  Dz1Asn1KnownMultiplerStrlenF(Dz1Asn1OctetStr *v);
+	typedef func uint32 *Dz1Asn1KnownMultiplerStrToUCS4F(Dz1Asn1OctetStr *v, Dz1Error *err);
+
+	------------------------------------------------------------------------------------
+	-- Dz1Asn1KnownMultiplerConstraints
+	------------------------------------------------------------------------------------
+	typedef struct Dz1Asn1KnownMultiplerConstraints
+	{
+		Dz1Asn1UTF8Str							*pattern;			-- pattern
+	} Dz1Asn1KnownMultiplerConstraints;								// with api dumpX, fdumpX
+
+	---------------------------------------------------------------------
+	-- Contraints
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1Constraint
+	{
+		void										*value;
+		-- Contained subtype -> no need
+
+		Dz1Asn1MetaDataRangeInfo					*i_ranges;		-- alst used for Permitted Alphabet
+		Dz1Asn1MetaDataRealRangeInfo				*f_ranges;
+
+		Dz1Asn1MetaDataRange						*size;
+
+		struct Dz1Asn1TypeDescr						*type_of_any;	-- ANY type only
+
+		struct Dz1Asn1Constraint					*component;		-- simple type, array type
+		Dz1Asn1ConstructConstraintTreeNode			*components;	-- construct type
+
+		Dz1Asn1KnownMultiplerConstraints			*str_conf;		-- Pattern & etc
+
+		-- --- TIME TYPE ---
+		-- Property setting	-> TBD
+		-- Duration range	-> TBD
+		-- Time point range	-> TBD
+		-- Recurrence range	-> TBD
+	} Dz1Asn1Constraint;								// with api dumpX, fdumpX
+
+	---------------------------------------------------------------------
+	-- Type Conformance
+	---------------------------------------------------------------------
+	typedef func bool Dz1Asn1TypeComformanceF(Dz1Asn1Constraint *cons, void *user_data, bool *ret_is_ext);
+	typedef struct Dz1Asn1TypeComformance
+	{
+		Dz1Asn1Constraint				*cons;
+		Dz1Asn1TypeComformanceF			 check;
+	} Dz1Asn1TypeComformance;
+
+}

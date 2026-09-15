@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{A021BB46-A90A-4D62-9BD5-EF4BA38924E8}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{CC3648BE-2ED1-4368-BB2D-C94FE84A0095}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{287E6B77-8491-48A2-8949-8807B8860DC4}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\engine">
+      <UniqueIdentifier>{11C04E48-D5CA-4030-9CF1-05D49D8C6119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\message">
+      <UniqueIdentifier>{D3975F93-B6B6-4EB5-879F-A4E362514A2C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\process">
+      <UniqueIdentifier>{c1777b43-8de6-4684-a552-789032b0342b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\util">
+      <UniqueIdentifier>{276aa714-f55b-4a27-8714-b0e7ad97dedf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenario.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioDef.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioArg.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioEnv.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioTimer.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioTimerUtil.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioMsgs.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioDefJson.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioEnvUtil.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenario_commandMsgProc.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioProc.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioProcServerRole.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioProcLinkUnitRole.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ITSK00144_2TestScenarioTest.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\ITSK00144_2TestScenario.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ITSK00144_2TestScenarioDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ITSK00144_2TestScenarioArg.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ITSK00144_2TestScenarioEnv.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ITSK00144_2TestScenarioTimer.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ITSK00144_2TestScenarioTimerUtil.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ITSK00144_2TestScenarioMsg.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ITSK00144_2TestScenarioMsgs.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ITSK00144_2TestScenarioDefJson.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ITSK00144_2TestScenarioProc.h">
+      <Filter>소스 파일\process</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ITSK00144_2TestScenarioEnvUtil.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ITSK00144_2TestScenarioTest.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\ITSK00144_2TestScenarioDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ITSK00144_2TestScenarioArg.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ITSK00144_2TestScenarioEnv.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ITSK00144_2TestScenarioTimer.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ITSK00144_2TestScenarioMsgs.tdc">
+      <Filter>소스 파일\message</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\ITSK00144_2TestScenarioDef.tjsonc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+message set definition
+{
+	include libdz1_support;
+	typedef func void Dz1TcpCallbackServerException(void *exceptionArg, Dz1Error *reason);
+	
+	typedef enum Dz1TcpCallbackServerDef
+	{
+		pseudo
+	} Dz1TcpCallbackServerDef;
+}

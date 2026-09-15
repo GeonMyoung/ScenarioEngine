@@ -1,0 +1,9 @@
+JSON interface generate from dz1_jsonTestDef
+{
+	object MyComponent cascade;
+	object StringList;
+
+	object Asn1MetaDataModule;
+	object Asn1MetaData;
+	object Asn1MetaDataList;
+}

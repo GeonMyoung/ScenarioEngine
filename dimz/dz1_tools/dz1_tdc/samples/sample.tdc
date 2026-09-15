@@ -1,0 +1,64 @@
+message set definition
+{
+--	include libdz1_support;
+	include inc;
+
+	union RefUnionType;
+	typedef array RefUnionTypeList [union RefUnionType];
+
+	typedef union RefUnionType
+	{
+		union RefUnionType	*a;
+		union RefUnionType	*b;
+	} RefUnionType;
+
+/*
+	typedef union SomeUnion
+	{
+		uint32				a;
+		uint32				b;
+	} SomeUnion;					// with api dump, fdump
+	typedef table SomeUnionTable [SomeUnion] "";
+
+	typedef enum SomeEnum
+	{
+		aaa,
+		bbb,
+		ccc
+	} SomeEnum;						// with api dump, fdump
+	typedef table SomeEnumTable [SomeEnum] "";
+
+	typedef enum MyEnum
+	{
+		aaa,
+		bbb,
+		ccc	= 9
+	} MyEnum;
+
+	include libdz1_support;
+	include dz1_asn1_support;
+
+	typedef struct TestDataType
+	{
+		int32				 id;					// is key
+	} TestDataType;									// with api dump, fdump, compare, clone
+
+	typedef struct ArrayMemberData1
+	{
+		uint32				 int_arr1[int_arr1_cnt];
+		uint32				 int_arr1_cnt;
+
+		TestDataType		 data_arr1[data_arr1_cnt];
+		uint32				 data_arr1_cnt;
+	} ArrayMemberData1;								// with api dump, fdump, clone
+
+	typedef struct ArrayMemberData2
+	{
+		uint32				 int_arr1[16];
+		uint32				 int_arr2["$$ == 0"];
+
+		TestDataType		 data_arr1[16];
+		TestDataType		 data_arr2["$$->id == 0"];
+	} ArrayMemberData2;								// with api dump, fdump, clone
+*/
+}

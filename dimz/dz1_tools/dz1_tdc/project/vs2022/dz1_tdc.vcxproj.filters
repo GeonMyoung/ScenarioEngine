@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{29a8f857-82a0-483a-9688-f459ab1e7cd2}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\publish">
+      <UniqueIdentifier>{d7633a65-aaa7-4f0c-8759-913432865d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\spec">
+      <UniqueIdentifier>{b569d073-3896-4ba7-ac70-52f30c8ae49e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parser">
+      <UniqueIdentifier>{d497ac6e-7482-480b-a138-528c2394008f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{d1f36b2b-a687-40ae-a1d2-8834c8df0e25}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Source Files\emitter">
+      <UniqueIdentifier>{ec61ede4-1327-4c19-b4e2-de159a531c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{736dd3f7-9b45-4482-848f-8eb3f8a37b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\sample">
+      <UniqueIdentifier>{cd2ea401-0b78-446b-b06a-73f96283f6cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\misc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_list_array_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_enum_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_list_index_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_structure_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_tdc.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_union_c.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_spec_dz1.c">
+      <Filter>Source Files\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_spec_parser.c">
+      <Filter>Source Files\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_asn_parser.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_parser.c">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_env.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_union.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_struct.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_array.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_index.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_func.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_defined.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_extern.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_enum.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_constant.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_macro.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_api.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_util.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_struct_util.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_asnconv.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_list_util.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_union_util.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\publish_inner_array.c">
+      <Filter>Source Files\publish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dz1_mdefc_emit_util.c">
+      <Filter>Source Files\emitter</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\misc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_list_array_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_enum_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_list_index_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_structure_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_tdc.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_union_c.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_spec_dz1.h">
+      <Filter>Source Files\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_spec_parser.h">
+      <Filter>Source Files\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_asn_parser.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_mdefc_parser.h">
+      <Filter>Source Files\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_mdefc_env.h">
+      <Filter>Source Files\emitter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_mdefc_emit.h">
+      <Filter>Source Files\emitter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_util.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_struct_util.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_asnconv.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_list_util.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_union_util.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\publish_inner_array.h">
+      <Filter>Source Files\publish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dz1_mdefc_emit_util.h">
+      <Filter>Source Files\emitter</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\samples\BUSLANE_ENFORCEMENTSYSTEM_EXCHANGEINFO.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\CAM_CONTROL_TYPES.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\Dz1TdcObject.tdc">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\EFC_FOUNDATION_TYPES.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\ILLEGALPARK_ENFORCEMENTSYSTEM_EXCHANGEINFO.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\INTEGRATED_CONTROLLER.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\ISO14827_1.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\ISO14827_2.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\sample_module.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\sample_module.tdc">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\T_APDUs.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\VMS_MESSAGE.asn">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\sample.tdc">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\sample.c">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\sample.h">
+      <Filter>Resource\sample</Filter>
+    </None>
+    <None Include="..\..\samples\inc.tdc">
+      <Filter>Resource\sample</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,121 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_sync;
+	include dz1_meta_tag_def;
+	include dz1_storage_def;
+--	typedef native Dz1StorageHandle from dz1_storage;			// with api dump
+
+	---------------------------------------------------------------------------
+	-- FILE
+	---------------------------------------------------------------------------
+	typedef struct Dz1VfsFile
+	{
+		uint32						 idx;			// is key					-- CODEC에 관여 하지 않음
+		Dz1MetaTagTargetType		 body_type;
+		uint32						 body_idx;
+		Dz1MetaTagData				*tags;
+	} Dz1VfsFile;									// with api dump, compare
+
+	---------------------------------------------------------------------------
+	-- Child Node & List
+	---------------------------------------------------------------------------
+	typedef struct Dz1VfsChildNode
+	{
+		Dz1Asn1UTF8Str				*name;			// is key
+		uint32						 idx;
+	} Dz1VfsChildNode;								// with api dump, compare
+	typedef unique table Dz1VfsChildList(find, extract, count) [Dz1VfsChildNode];
+
+	---------------------------------------------------------------------------
+	-- Directory
+	---------------------------------------------------------------------------
+	typedef struct Dz1VfsDir
+	{
+		uint32						 idx;			// is key					-- CODEC에 관여 하지 않음
+		uint32						 parent_idx;								-- 구조 추적을 위한 상위 디렉토리
+		Dz1MetaTagData				*tags;										-- 할당된 Tag
+		Dz1VfsChildList				*dirs;			// is notarg				-- 자식 디렉토리의 이름과 인덱스
+		Dz1VfsChildList				*files;			// is notarg				-- 자식 파일의 이름과 인덱스
+	} Dz1VfsDir;									// with api dump, compare
+	
+	---------------------------------------------------------------------------
+	-- Handle for file
+	---------------------------------------------------------------------------
+	typedef struct Dz1VfsHandleFileInfo
+	{
+		uint32						 handle_id;		// is key
+		
+		bool						 read;
+		bool						 write;
+		bool						 seek;
+		
+		bool						 tagChanged;
+		bool						 dataChanged;
+
+		Dz1StoragePos				*pos;
+	} Dz1VfsHandleFileInfo;							// with api dump, compare
+	typedef unique table Dz1VfsHandleFileInfoList(find, extract, count) [Dz1VfsHandleFileInfo];
+	
+	typedef struct Dz1VfsHandleFileEntry
+	{
+		uint32						 idx;			// is key
+		Dz1Sync						*sync;
+		
+		Dz1VfsFile					*source;
+				
+		Dz1VfsHandleFileInfoList	*handles;		// is notarg
+	} Dz1VfsHandleFileEntry;						// with api dump, compare
+	typedef unique table Dz1VfsHandleFileList(find, extract, count) [Dz1VfsHandleFileEntry];
+	
+	---------------------------------------------------------------------------
+	-- Handle for directory
+	---------------------------------------------------------------------------
+	typedef struct Dz1VfsHandleDir
+	{
+		uint32						 handle_id;		// is key
+		bool						 tagChanged;
+		bool						 childChanged;
+		bool						 fileChanged;
+	} Dz1VfsHandleDir;								// with api dump, compare
+	typedef unique table Dz1VfsHandleDirInfoList(find, extract, count) [Dz1VfsHandleDir];
+	
+	typedef struct Dz1VfsHandleDirEntry
+	{
+		uint32						 idx;			// is key
+		Dz1Sync						*sync;			// is nodump
+		
+		Dz1VfsDir					*source;
+		
+		Dz1VfsHandleDirInfoList		*handles;		// is notarg
+	} Dz1VfsHandleDirEntry;							// with api dump, compare
+	typedef unique table Dz1VfsHandleDirList(find, extract, count) [Dz1VfsHandleDirEntry];
+
+	---------------------------------------------------------------------------
+	-- Access
+	---------------------------------------------------------------------------
+	typedef struct Dz1VfsHandleID
+	{
+		uint32					 idx;
+		uint32					 handle;
+	} Dz1VfsHandleID;							// with api dump
+	
+	typedef union Dz1VfsAccess
+	{
+		Dz1VfsHandleID			*dir;
+		Dz1VfsHandleID			*file;
+	} Dz1VfsAccess;								// with api dump
+	
+	---------------------------------------------------------------------------
+	-- VFS
+	---------------------------------------------------------------------------
+	typedef struct Dz1Vfs
+	{
+		Dz1VfsAccess			*root;
+		
+		Dz1StorageHandle		*io;
+		
+		Dz1VfsHandleDirList		*dirHandles;	// is notarg
+		Dz1VfsHandleFileList	*fileHandles;	// is notarg
+	} Dz1Vfs;									// with api dump
+}

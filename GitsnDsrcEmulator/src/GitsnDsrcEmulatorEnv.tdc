@@ -1,0 +1,39 @@
+message set definition
+{
+	include GitsnDsrcEmulatorDef;
+	include Dz1SockUtilDef;
+	include Dz1JsonDef;
+
+	typedef struct GitsnDsrcEmulatorClientSession
+	{
+		Dz1SockAddr				*peer;			// is key
+		Dz1SockAddr				*local;			// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} GitsnDsrcEmulatorClientSession;		// with api dump, compare
+
+	typedef struct GitsnDsrcEmulatorServerSession
+	{
+		uint32					 acceptor;
+		Dz1SockAddr				*peer;		// is key
+		Dz1SockAddr				*local;		// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} GitsnDsrcEmulatorServerSession;		// with api dump, compare
+
+	typedef union GitsnDsrcEmulatorSession
+	{
+		GitsnDsrcEmulatorClientSession	*client;
+		GitsnDsrcEmulatorServerSession	*server;
+	} GitsnDsrcEmulatorSession;	// with api dump, compare
+
+	typedef struct GitsnDsrcEmulatorEnv
+	{
+		void *tSelf;
+		GitsnDsrcEmulatorSession			*session;	// is notarg
+	} GitsnDsrcEmulatorEnv;				// with api dump
+}

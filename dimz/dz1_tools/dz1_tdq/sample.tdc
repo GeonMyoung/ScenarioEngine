@@ -1,0 +1,61 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef union MyBinData
+	{
+		TString						 fn;
+		Dz1Binary					*buf;
+	} MyBinData;											// with api dump, clone
+	
+	typedef struct MyDataRow
+	{
+		uint32						 id;					// is key
+		TString						 name;
+		MyBinData					*data;
+	} MyDataRow;											// with api dump, clone, compare
+	typedef unique table MyDataTbl(find, extract, count, gethead) [MyDataRow];
+	
+	typedef struct MyStructAAAA
+	{
+		uint64						 my_unum64;				// is key
+		int64						 my_num64;
+		uint32						 my_unum32;				// is notarg
+		int32						 my_num32;				// is notarg
+		uint16						 my_unum16;				// is notarg
+		int16						 my_num16;				// is notarg
+		uint8						 my_unum8;				// is notarg
+		int8						 my_num8;				// is notarg
+		real64						 my_real;				// is notarg
+		TString						 my_str;				// is notarg
+		time						 my_date;				// is notarg
+		time						 my_clock;				// is notarg
+		time						 my_stamp;				// is notarg
+		Dz1Binary					*my_blob;				// is notarg
+		Dz1Binary					*my_blobl;				// is notarg
+	} MyStructAAAA;											// with api dump, clone, compare
+	typedef unique table MyStructAAAAList(find, extract, count) [MyStructAAAA];
+	
+	typedef struct MyStructBBBB
+	{
+		uint64						 my_unum64;				// is key
+		int64						 my_num64;				// is key
+		uint32						 my_unum32;				// is notarg
+		int32						 my_num32;				// is notarg
+		uint16						 my_unum16;				// is notarg
+		int16						 my_num16;				// is notarg
+		uint8						 my_unum8;				// is notarg
+		int8						 my_num8;				// is notarg
+	} MyStructBBBB;											// with api dump, clone, compare
+	typedef unique table MyStructBBBBList(find, extract, count) [MyStructBBBB];
+	
+	typedef struct CentralEntry
+	{
+		uint64						 my_unum64;				// is key
+		uint32						 my_unum32;				// is notarg
+		uint16						 my_unum16;				// is notarg
+		Dz1Binary					*my_blob;				// is notarg
+		uint64						 value;					// is notarg
+	} CentralEntry;											// with api dump, clone, compare
+	typedef unique table CentralList(find, extract, count) [CentralEntry];
+}

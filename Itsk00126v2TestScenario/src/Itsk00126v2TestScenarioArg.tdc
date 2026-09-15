@@ -1,0 +1,11 @@
+message set definition
+{
+	include Itsk00126v2TestScenarioDef;
+	typedef struct Itsk00126V2TestScenarioArg
+	{
+		void *tMain;
+		TString	testScenario;
+		Itsk00126V2TestScenarioException exceptionProc;
+		void *exceptionArg;
+	} Itsk00126V2TestScenarioArg;
+}

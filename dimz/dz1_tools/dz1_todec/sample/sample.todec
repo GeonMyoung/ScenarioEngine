@@ -1,0 +1,117 @@
+message codecs for "sample.tdo"
+{
+	include "sample_util";
+    ----------------------------------------
+    -- MyData
+    ----------------------------------------
+    target MyData
+    {
+        codec default public
+        {
+            sequence
+            {
+                simple data1;
+                simple data2;
+                simple data3;
+            }
+        }
+    };
+
+    ----------------------------------------
+    -- StructSample
+    ----------------------------------------
+    target StructSample
+    {
+        codec default public
+        {
+            sequence
+            {
+                simple data1;
+                simple data2;
+                simple data3 postfix(aaaa);
+                simple data4 subbyte(1,0);
+                simple nullflag(8) data5 postfix(check);
+            },
+			postfix(check);
+        },
+		codec Other public
+		{
+            sequence
+            {
+				simple		data1;
+				omit		data2;
+				simple		data3;
+				simple		data4 subbyte(1,0);
+				conditional data5("$$->data1 == 0") postfix(check);
+            },
+			postfix(check);
+		}
+    };
+
+    ----------------------------------------
+    -- StructSampleList
+    ----------------------------------------
+    target StructSampleList
+    {
+        codec default public
+        {
+            array (count default, entry default postfix("Entry_fix"));
+        }
+    };
+
+    ----------------------------------------
+    -- UnionSample
+    ----------------------------------------
+    target UnionSample
+    {
+        codec default public
+        {
+            union (present default);
+            sequence
+            {
+                simple data1;
+                simple data2;
+                simple data3;
+                simple data4 subbyte(1,0);
+                simple nullflag(16) data5;
+            }
+        },
+        codec Indication public
+        {
+            union (present default);
+            sequence
+            {
+                simple data1;
+                simple data2;
+                simple data3;
+                simple data4;
+                simple data5;
+            },
+			postfix(Indication);
+        },
+        codec Other public
+        {
+            union (present subbyte(1,0));
+            sequence
+            {
+                simple	data1 alter("OtherInt");
+                omit	data2;
+                simple	data3 postfix(aaaa);
+                simple	data4 subbyte(1,0);
+                omit	data5;
+            },
+			postfix(Indication);
+        }
+    };
+
+    ----------------------------------------
+    -- UnionSampleList
+    ----------------------------------------
+    target UnionSampleList
+    {
+        codec default public
+        {
+            array (count default, entry default postfix(fixNode));
+        }
+    };
+}

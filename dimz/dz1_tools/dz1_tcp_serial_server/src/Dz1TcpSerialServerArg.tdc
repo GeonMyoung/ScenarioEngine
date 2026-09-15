@@ -1,0 +1,10 @@
+message set definition
+{
+	include Dz1TcpSerialServerDef;
+	typedef struct Dz1TcpSerialServerArg
+	{
+		Dz1TcpSerialServerConfig		*config;
+		Dz1TcpSerialServerException	 exceptionProc;
+		void							*exceptionArg;
+	} Dz1TcpSerialServerArg;
+}

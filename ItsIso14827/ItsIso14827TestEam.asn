@@ -1,0 +1,45 @@
+ItsIso14827TestEam DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+-- IMPORTS ISO14827-MESSAGE FROM ISO14827-1 { iso(1) standard(0) std14827(14827) part1(1) };
+
+ItsIso14827TestTimeFormat ::= ENUMERATED
+{
+	full, 
+	hhmmss,
+	hhmm
+}
+
+ItsIso14827TestTimeRequest ::= SEQUENCE
+{
+	fmt			ItsIso14827TestTimeFormat
+}
+
+ItsIso14827TestTimeResponse ::= SEQUENCE
+{
+	str			UTF8String
+}
+
+SafetyC2PTraceCameraSpeedControl ::= SEQUENCE
+{
+	sfcp-SystemID		UTF8String (SIZE(1..13)),
+	sfcp-DeviceIndex	UTF8String (SIZE(1..8)),
+	sfcp-PTCommand		ENUMERATED { stop(0), left(1), right(2), up(3), down(4), leftup(5), leftdown(6), rightup(7), rightdown(8) },
+	sfcp-PTSpeed		INTEGER (0..100),
+	sfcp-ZoomCommand	ENUMERATED { stop(0), in(1), out(2) },
+	sfcp-ZoomSpeed		INTEGER (0..100),
+	sfcp-FocusCommand	ENUMERATED { stop(0), near(1), far(2) },
+	sfcp-FocusSpeed		INTEGER (0..100)
+}
+
+/*
+itsIso14827TestTimeRequest	ISO14827-MESSAGE ::= { &id { 1 2 410 20053 0 1 1 }, &MessageBody ItsIso14827TestTimeRequest }
+itsIso14827TestTimeResponse ISO14827-MESSAGE ::= { &id { 1 2 410 20053 0 2 1 }, &MessageBody ItsIso14827TestTimeResponse }
+
+ItsIso14827TestMessage ISO14827-MESSAGE ::= 
+{
+	itsIso14827TestTimeRequest |
+	itsIso14827TestTimeResponse
+}
+*/
+
+END

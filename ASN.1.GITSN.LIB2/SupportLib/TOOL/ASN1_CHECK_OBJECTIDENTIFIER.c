@@ -1,0 +1,7 @@
+#include "ASN1_CHECK_OBJECTIDENTIFIER.h"
+
+
+int ASN1_CHECK_OBJECTIDENTIFIER(OBJECTIDENTIFIER *ValueChecked, ASNUINT8 *ConsChecked)
+{
+	return 0;
+}

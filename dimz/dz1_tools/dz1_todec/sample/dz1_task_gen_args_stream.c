@@ -1,0 +1,343 @@
+#include "dz1_task_gen_args_util.h"
+#include "dz1_task_gen_args.h"
+
+ssize_t GenArgs2VisualStudioEntry_read(void *_dst, Dz1Stream *src, Dz1IOStreamEndian ed, Dz1StreamCallStk *_parent, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2VisualStudioEntry *dst = (GenArgs2VisualStudioEntry *)_dst;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1StreamCallStk __param = { _parent, dst, _parent->user_ptr }, *param = &__param;
+		u32_t v32; 
+
+		DZ1_STREAM_READ4(&v32, src, ed, errp, ret); dst->ver = (GenArgs2VisualStudioVer)v32;
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->middle_path, src, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->proj_file_name, src, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->proj_guid, src, ed, param, errp), errp);
+	}
+	return ret;
+}
+
+ssize_t GenArgs2VisualStudioEntry_write(Dz1Stream *dst, void *_src, Dz1IOStreamEndian ed, void *param, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2VisualStudioEntry *src = (GenArgs2VisualStudioEntry *)_src;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		DZ1_STREAM_WRITE4(dst, (u32_t)src->ver, ed, errp, ret);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->middle_path, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->proj_file_name, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->proj_guid, ed, param, errp), errp);
+	}
+	return ret;
+}
+
+static Dz1Error _GenArgs2VisualStudioList_write(void *ptr, GenArgs2VisualStudioEntry *node)
+{
+	DZ1_ERROR_SAFE_VAR(errp, err);
+	Dz1ListStreamArg *arg = (Dz1ListStreamArg *)ptr;
+	Dz1Stream *dst = arg->stream;
+	Dz1IOStreamEndian ed = arg->ed;
+	void *param = arg->option;
+	ssize_t sz = 0;
+	if ((sz = GenArgs2VisualStudioEntry_write(dst, node, ed, param, errp)) < 0) ERR_OUT(errp);
+	else
+	{
+		arg->ret += sz;
+		Dz1Error_set(errp, 0);
+	}
+	return err;
+}
+ssize_t GenArgs2VisualStudioList_read(void *_dst, Dz1Stream *src, Dz1IOStreamEndian ed, Dz1StreamCallStk *_parent, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2VisualStudioList *dst = (GenArgs2VisualStudioList *)_dst;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1StreamCallStk __param = { _parent, dst, _parent->user_ptr }, *param = &__param;
+		u32_t i, cnt = 0;
+		GenArgs2VisualStudioEntry *node = NULL;
+		DZ1_STREAM_READ4(&cnt, src, ed, errp, ret);
+		for (i = 0; errp->code == 0 && i < cnt; i++)
+		{
+			if ((node = GenArgs2VisualStudioEntry_gen(errp)) == NULL) ERR_OUT(errp);
+			else
+			{
+				ssize_t sz;
+				pthread_cleanup_push(GenArgs2VisualStudioEntry_delAndSetNull, (void *)&node);
+				if ((sz = GenArgs2VisualStudioEntry_read(node, src, ed, param, errp)) < 0) ERR_OUT(errp);
+				else if ((*errp = dst->add(dst, node)).code) ERR_OUT(errp);
+				else
+				{
+					node = NULL;
+					ret += sz;
+					Dz1Error_set(errp, 0);
+				}
+				pthread_cleanup_pop(1); // (GenArgs2VisualStudioEntry_delAndSetNull, (void *)&node);
+			}
+		}
+	}
+	return ret;
+}
+
+ssize_t GenArgs2VisualStudioList_write(Dz1Stream *dst, void *_src, Dz1IOStreamEndian ed, void *param, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2VisualStudioList *src = (GenArgs2VisualStudioList *)_src;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1ListStreamArg arg = { dst, 0, ed, param };
+		u32_t cnt = src->count(src);
+		DZ1_STREAM_WRITE4(dst, cnt, ed, errp, ret);
+		if ((*errp = src->travel(src, _GenArgs2VisualStudioList_write, (void *)&arg)).code) ERR_OUT_RET(errp, -1);
+		else { Dz1Error_set(errp, 0); ret += arg.ret; }
+	}
+	return ret;
+}
+
+ssize_t GenArgs2LibraryEntry_read(void *_dst, Dz1Stream *src, Dz1IOStreamEndian ed, Dz1StreamCallStk *_parent, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2LibraryEntry *dst = (GenArgs2LibraryEntry *)_dst;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1StreamCallStk __param = { _parent, dst, _parent->user_ptr }, *param = &__param;
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->name, src, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->path_root_abs, src, ed, param, errp), errp);
+		DZ1_STREAM_READ4(&dst->order, src, ed, errp, ret);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->root2inc_path, src, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->root2lib_path, src, ed, param, errp), errp);
+		if (dst->projects == NULL && (dst->projects = GenArgs2VisualStudioList_new(errp)) == NULL) ERR_OUT_RET(errp, -1);
+		else DZ1_IO_STREAM_FUNC(ret, GenArgs2VisualStudioList_read(dst->projects, src, ed, param, errp), errp);
+
+	}
+	return ret;
+}
+
+ssize_t GenArgs2LibraryEntry_write(Dz1Stream *dst, void *_src, Dz1IOStreamEndian ed, void *param, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2LibraryEntry *src = (GenArgs2LibraryEntry *)_src;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->name, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->path_root_abs, ed, param, errp), errp);
+		DZ1_STREAM_WRITE4(dst, src->order, ed, errp, ret);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->root2inc_path, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->root2lib_path, ed, param, errp), errp);
+		if (src->projects == NULL) ERR_OUT_RET(errp, -1);
+		else DZ1_IO_STREAM_FUNC(ret, GenArgs2VisualStudioList_write(dst, src->projects, ed, param, errp), errp);
+
+	}
+	return ret;
+}
+
+static Dz1Error _GenArgs2LibraryList_write(void *ptr, GenArgs2LibraryEntry *node)
+{
+	DZ1_ERROR_SAFE_VAR(errp, err);
+	Dz1ListStreamArg *arg = (Dz1ListStreamArg *)ptr;
+	Dz1Stream *dst = arg->stream;
+	Dz1IOStreamEndian ed = arg->ed;
+	void *param = arg->option;
+	ssize_t sz = 0;
+	if ((sz = GenArgs2LibraryEntry_write(dst, node, ed, param, errp)) < 0) ERR_OUT(errp);
+	else
+	{
+		arg->ret += sz;
+		Dz1Error_set(errp, 0);
+	}
+	return err;
+}
+ssize_t GenArgs2LibraryList_read(void *_dst, Dz1Stream *src, Dz1IOStreamEndian ed, Dz1StreamCallStk *_parent, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2LibraryList *dst = (GenArgs2LibraryList *)_dst;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1StreamCallStk __param = { _parent, dst, _parent->user_ptr }, *param = &__param;
+		u32_t i, cnt = 0;
+		GenArgs2LibraryEntry *node = NULL;
+		DZ1_STREAM_READ4(&cnt, src, ed, errp, ret);
+		for (i = 0; errp->code == 0 && i < cnt; i++)
+		{
+			if ((node = GenArgs2LibraryEntry_gen(errp)) == NULL) ERR_OUT(errp);
+			else
+			{
+				ssize_t sz;
+				pthread_cleanup_push(GenArgs2LibraryEntry_delAndSetNull, (void *)&node);
+				if ((sz = GenArgs2LibraryEntry_read(node, src, ed, param, errp)) < 0) ERR_OUT(errp);
+				else if ((*errp = dst->add(dst, node)).code) ERR_OUT(errp);
+				else
+				{
+					node = NULL;
+					ret += sz;
+					Dz1Error_set(errp, 0);
+				}
+				pthread_cleanup_pop(1); // (GenArgs2LibraryEntry_delAndSetNull, (void *)&node);
+			}
+		}
+	}
+	return ret;
+}
+
+ssize_t GenArgs2LibraryList_write(Dz1Stream *dst, void *_src, Dz1IOStreamEndian ed, void *param, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2LibraryList *src = (GenArgs2LibraryList *)_src;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1ListStreamArg arg = { dst, 0, ed, param };
+		u32_t cnt = src->count(src);
+		DZ1_STREAM_WRITE4(dst, cnt, ed, errp, ret);
+		if ((*errp = src->travel(src, _GenArgs2LibraryList_write, (void *)&arg)).code) ERR_OUT_RET(errp, -1);
+		else { Dz1Error_set(errp, 0); ret += arg.ret; }
+	}
+	return ret;
+}
+
+ssize_t GenArgs2LibraryInfo_read(void *_dst, Dz1Stream *src, Dz1IOStreamEndian ed, Dz1StreamCallStk *_parent, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2LibraryInfo *dst = (GenArgs2LibraryInfo *)_dst;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1StreamCallStk __param = { _parent, dst, _parent->user_ptr }, *param = &__param;
+		if (dst->table == NULL && (dst->table = GenArgs2LibraryList_new(errp)) == NULL) ERR_OUT_RET(errp, -1);
+		else DZ1_IO_STREAM_FUNC(ret, GenArgs2LibraryList_read(dst->table, src, ed, param, errp), errp);
+
+	}
+	return ret;
+}
+
+ssize_t GenArgs2LibraryInfo_write(Dz1Stream *dst, void *_src, Dz1IOStreamEndian ed, void *param, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2LibraryInfo *src = (GenArgs2LibraryInfo *)_src;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		if (src->table == NULL) ERR_OUT_RET(errp, -1);
+		else DZ1_IO_STREAM_FUNC(ret, GenArgs2LibraryList_write(dst, src->table, ed, param, errp), errp);
+
+	}
+	return ret;
+}
+
+ssize_t GenArgs2VisualStudio_read(void *_dst, Dz1Stream *src, Dz1IOStreamEndian ed, Dz1StreamCallStk *_parent, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2VisualStudio *dst = (GenArgs2VisualStudio *)_dst;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1StreamCallStk __param = { _parent, dst, _parent->user_ptr }, *param = &__param;
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrAUTF8_read(&dst->pthread_root, src, ed, param, errp), errp);
+		DZ1_STREAM_READ4(&dst->gen_project, src, ed, errp, ret);
+	}
+	return ret;
+}
+
+ssize_t GenArgs2VisualStudio_write(Dz1Stream *dst, void *_src, Dz1IOStreamEndian ed, void *param, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2VisualStudio *src = (GenArgs2VisualStudio *)_src;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrAUTF8_write(dst, src->pthread_root, ed, param, errp), errp);
+		DZ1_STREAM_WRITE4(dst, src->gen_project, ed, errp, ret);
+	}
+	return ret;
+}
+
+ssize_t GenArgs2_read(void *_dst, Dz1Stream *src, Dz1IOStreamEndian ed, Dz1StreamCallStk *_parent, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2 *dst = (GenArgs2 *)_dst;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		Dz1StreamCallStk __param = { _parent, dst, _parent->user_ptr }, *param = &__param;
+		u32_t v32; 
+
+		DZ1_IO_STREAM_FUNC(ret, Dz1Stream_readConst(src, 4, (u8_t *)"\x00\x08\x00\x01", errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->gen_parent_path, src, ed, param, errp), errp);
+		DZ1_STREAM_READ4(&v32, src, ed, errp, ret); dst->gen_target_type = (Dz1GenTarget)v32;
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->gen_target_name, src, ed, param, errp), errp);
+		DZ1_STREAM_READ4(&v32, src, ed, errp, ret); dst->gen_test_main = (bool_t)v32;
+		DZ1_STREAM_READ4(&v32, src, ed, errp, ret); dst->gen_makefile = (bool_t)v32;
+		DZ1_STREAM_READ4(&v32, src, ed, errp, ret); // Flag
+		if (v32)
+		{
+			if (dst->gen_studios == NULL && (dst->gen_studios = GenArgs2VisualStudio_gen(errp)) == NULL) ERR_OUT_RET(errp, -1);
+			else DZ1_IO_STREAM_FUNC(ret, GenArgs2VisualStudio_read(dst->gen_studios, src, ed, param, errp), errp);
+		}
+		DZ1_STREAM_READ4(&v32, src, ed, errp, ret); dst->txt_mode = (Dz1GenTextMode)v32;
+		DZ1_STREAM_READ4(&v32, src, ed, errp, ret); dst->endian = (Dz1TaskGenEndian)v32;
+		DZ1_STREAM_READ4(&v32, src, ed, errp, ret); dst->name_rule = (GenArgs2Naming)v32;
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->codeconv_root, src, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_read(&dst->dimz_root, src, ed, param, errp), errp);
+		if (dst->libraries == NULL && (dst->libraries = GenArgs2LibraryInfo_gen(errp)) == NULL) ERR_OUT_RET(errp, -1);
+		else DZ1_IO_STREAM_FUNC(ret, GenArgs2LibraryInfo_read(dst->libraries, src, ed, param, errp), errp);
+		if (GenArgs2LibraryInfo_rebuild(dst->libraries, param, errp) == FALSE) ERR_OUT_RET(errp, -1);
+
+	}
+	return ret;
+}
+
+ssize_t GenArgs2_write(Dz1Stream *dst, void *_src, Dz1IOStreamEndian ed, void *param, Dz1Error *err)
+{
+	ssize_t ret = 0;
+	DZ1_ERROR_SAFE_PTR(errp, err);
+	GenArgs2 *src = (GenArgs2 *)_src;
+	if (dst == NULL || src == NULL) ERR_SET_OUT_RET(errp, EINVAL, -1);
+	else
+	{
+		u32_t v32; 
+
+		DZ1_STREAM_WRITE(dst, (u8_t *)"\x00\x08\x00\x01", 4, errp, ret);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->gen_parent_path, ed, param, errp), errp);
+		DZ1_STREAM_WRITE4(dst, (u32_t)src->gen_target_type, ed, errp, ret);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->gen_target_name, ed, param, errp), errp);
+		DZ1_STREAM_WRITE4(dst, (v32 = (u32_t)src->gen_test_main), ed, errp, ret);
+		DZ1_STREAM_WRITE4(dst, (v32 = (u32_t)src->gen_makefile), ed, errp, ret);
+		if (src->gen_studios == NULL) DZ1_STREAM_WRITE4(dst, 0, ed, errp, ret);
+		else
+		{
+			DZ1_STREAM_WRITE4(dst, 1, ed, errp, ret);
+			DZ1_IO_STREAM_FUNC(ret, GenArgs2VisualStudio_write(dst, src->gen_studios, ed, param, errp), errp);
+		}
+		DZ1_STREAM_WRITE4(dst, (u32_t)src->txt_mode, ed, errp, ret);
+		DZ1_STREAM_WRITE4(dst, (u32_t)src->endian, ed, errp, ret);
+		DZ1_STREAM_WRITE4(dst, (u32_t)src->name_rule, ed, errp, ret);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->codeconv_root, ed, param, errp), errp);
+		DZ1_IO_STREAM_FUNC(ret, Dz1StrUTF8_write(dst, src->dimz_root, ed, param, errp), errp);
+		if (src->libraries == NULL) ERR_OUT_RET(errp, -1);
+		else DZ1_IO_STREAM_FUNC(ret, GenArgs2LibraryInfo_write(dst, src->libraries, ed, param, errp), errp);
+
+	}
+	return ret;
+}
+

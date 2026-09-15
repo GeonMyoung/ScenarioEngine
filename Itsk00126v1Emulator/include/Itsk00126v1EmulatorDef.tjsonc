@@ -1,0 +1,4 @@
+JSON interface generate from Itsk00126v1EmulatorDef
+{
+	object Itsk00126v1EAM cascade;
+}

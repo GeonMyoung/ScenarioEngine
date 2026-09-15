@@ -1,0 +1,8 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct dz1_socket_ssl
+	{
+		int32		dummy;
+	} dz1_socket_ssl;
+}

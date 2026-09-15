@@ -1,0 +1,23 @@
+CAM-CONTROL-TYPES DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+
+
+Cmcn-CctvPTControl ::= SEQUENCE
+{
+	command					ENUMERATED { stop(0), left(1), right(2), up(3), down(4), leftup(5), leftdown(6), rightup(7), rightdown(8) },
+	speed 					INTEGER (0..100)
+}
+
+Cmcn-CctvZoomControl ::= SEQUENCE
+{
+	command					ENUMERATED { stop(0), in(1), out(2) },
+	speed 					INTEGER (0..100)
+}
+
+Cmcn-CctvFocusControl ::= SEQUENCE
+{
+	command					ENUMERATED { stop(0), near(1), 	far(2) },
+	speed 					INTEGER (0..100)
+}
+
+END

@@ -1,0 +1,196 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_io_stream_support;
+	include dz1_asn1_support;
+
+	typedef native Dz1Asn1Stream from dz1_asn1_codec_stream;
+
+	------------------------------------------------------------------------------------
+	-- References
+	------------------------------------------------------------------------------------
+	typedef reference Dz1Asn1TypeDescr					from dz1_asn1_typedescr_def;
+
+	---------------------------------------------------------------------
+	-- ASN.1 Class
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1TagClass
+	{
+		universal,															-- 00
+		application,														-- 01
+		context_specific,													-- 10
+		privated															-- 11
+	} Dz1Asn1TagClass;														// with api dumpX, fdumpX
+
+	---------------------------------------------------------------------
+	-- ASN.1 TAG Flag
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1TagFlag
+	{
+		variable = -1,
+		primitive,
+		construct
+	} Dz1Asn1TagFlag;
+
+	---------------------------------------------------------------------
+	-- ASN.1 TAG
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1Tag
+	{
+		Dz1Asn1TagClass									 cls;				// is key
+		Dz1Asn1TagFlag									 flag;
+		uint64											 numb;				// is key
+	} Dz1Asn1Tag;															// with api userdumpX, userfdumpX, clone, compare
+
+	---------------------------------------------------------------------
+	-- ASN.1 TAG Option
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1TagOpt
+	{
+		implicit,
+		explicit
+	} Dz1Asn1TagOpt;														// with api dumpX, fdumpX
+
+	---------------------------------------------------------------------
+	-- ASN Work In Progress Type : OpenType
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1WipOpenTypeEntry
+	{
+		uint32											 order;				// is key
+		struct Dz1Asn1WipOpenType						*data;
+	} Dz1Asn1WipOpenTypeEntry;												// with api dumpX, compare
+	typedef unique table Dz1Asn1WipOpenTypeList(find, extract, count) [Dz1Asn1WipOpenTypeEntry];
+
+	typedef union Dz1Asn1WipOpenData
+	{
+		Dz1ElasticBuf									*primitive;
+		Dz1Asn1WipOpenTypeList							*construct;
+	} Dz1Asn1WipOpenData;													// with api dumpX
+
+	typedef struct Dz1Asn1WipOpenType
+	{
+		Dz1Asn1TagClass									 cls;
+		uint64											 number;
+		uint64											 len;
+		Dz1Asn1WipOpenData								*contents;
+	} Dz1Asn1WipOpenType;													// with api dumpX
+
+	---------------------------------------------------------------------
+	-- ASN Work In Progress Type : Bit String
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1WipBitString
+	{
+		Dz1ElasticBuf									*elb;
+		uint32											 trim_bits;
+	} Dz1Asn1WipBitString;													// with api dumpX
+
+	---------------------------------------------------------------------
+	-- ASN Work In Progress Type : OID
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1WipOidArc
+	{
+		uint32											 ord;				// is key
+		uint32											 num;
+	} Dz1Asn1WipOidArc;														// with api dumpX, clone, compare
+	typedef unique table Dz1Asn1WipOid(find, extract, count, gethead, gettail) [Dz1Asn1WipOidArc];
+
+	---------------------------------------------------------------------
+	-- ASN Work In Progress Type : Unified External & Instance-of
+	---------------------------------------------------------------------
+	typedef union Dz1Asn1WipExtOrInst
+	{
+		Dz1Asn1External									*external;
+		Dz1Asn1InstanceOf								*instance_of;
+	} Dz1Asn1WipExtOrInst;													// with api dumpX, fdumpX, clone, compare -- modified by gm 20230912
+
+	---------------------------------------------------------------------
+	-- ASN Work In Progress Type : REAL
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1WipReal
+	{
+		Dz1Asn1Real										 value;				// is notarg
+		Dz1ElasticBuf									*elb;
+	} Dz1Asn1WipReal;
+
+	---------------------------------------------------------------------
+	-- ASN Work In Progress Type : SEQUENCE
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1WipCst
+	{
+		Dz1Asn1Custom									*storage;
+		Dz1Asn1WipOpenTypeList							*unknowns;			// is notarg
+		Dz1Asn1TypeDescr								*indirect;
+	} Dz1Asn1WipCst;
+
+	---------------------------------------------------------------------
+	-- ASN Work In Progress Type
+	---------------------------------------------------------------------
+	typedef union Dz1Asn1WipValue
+	{
+		Dz1Asn1WipOpenType	[0]							*any;				--  0
+		Dz1Asn1Bool			[Dz1Asn1Type_boolean]		 boolean;			--  1							*
+		Dz1Asn1Int			[Dz1Asn1Type_integer]		 number;			--  2							*
+		Dz1Asn1WipBitString	[Dz1Asn1Type_bit_str]		*bit_str;			--  3							*
+		Dz1ElasticBuf		[Dz1Asn1Type_octet_str]		*octet_str;			--  4, 7, 12, 14, 18~28, 30~34	*
+		Dz1Asn1Null			[Dz1Asn1Type_nul]			 nul;				--  5							*
+		Dz1Asn1WipOid		[Dz1Asn1Type_oid]			*oid;				--  6, 13						*
+--		Dz1ElasticBuf		[Dz1Asn1Type_obj_descr]		*obj_descr;			--  7							*
+		Dz1Asn1WipExtOrInst	[Dz1Asn1Type_external]		*ext_or_inst;		--	8								TBD
+		Dz1Asn1WipReal		[Dz1Asn1Type_realnum]		*realnum;			--  9							*
+		Dz1Asn1Enum			[Dz1Asn1Type_enumerated]	 enumerated;		-- 10							*
+		Dz1Asn1EmbPdv		[Dz1Asn1Type_embPDV]		*embPDV;			-- 11								TBD
+--		Dz1ElasticBuf		[Dz1Asn1Type_utf8str]		*utf8str;			-- 12							*
+--		Dz1Asn1WipOid		[Dz1Asn1Type_oid]			*reloid;			-- 13							*
+--		Dz1ElasticBuf		[Dz1Asn1Type_time]			*tim;				-- 14
+
+--		void				[15]						*reserved;			-- 15
+
+		Dz1Asn1WipCst		[Dz1Asn1Type_set]			*cst_seq;			-- 16, SEQ OF						TBD
+		Dz1Asn1WipCst		[Dz1Asn1Type_seq]			*cst_set;			-- 17. SET OF						TBD
+
+--		Dz1ElasticBuf		[Dz1Asn1Type_digit_str]		*digit_str;			-- 18							*
+--		Dz1ElasticBuf		[Dz1Asn1Type_print_str]		*print_str;			-- 19							*
+--		Dz1ElasticBuf		[Dz1Asn1Type_teletex_str]	*teletex_str;		-- 20		T64Str				*
+--		Dz1ElasticBuf		[Dz1Asn1Type_videotex_str]	*videotex_str;		-- 21							*
+--		Dz1ElasticBuf		[Dz1Asn1Type_ia5_str]		*ia5_str;			-- 22							*
+
+--		Dz1ElasticBuf		[Dz1Asn1Type_utc_time]		*utc_time;			-- 23							*
+--		Dz1ElasticBuf		[Dz1Asn1Type_general_time]	*general_time;		-- 24							*
+
+--		Dz1ElasticBuf		[Dz1Asn1Type_graphic_str]	*graphic_str;		-- 25							*
+--		Dz1ElasticBuf		[Dz1Asn1Type_visible_str]	*visible_str;		-- 26		ISO646Str			*
+--		Dz1ElasticBuf		[Dz1Asn1Type_general_str]	*general_str;		-- 27							*
+--		Dz1ElasticBuf		[Dz1Asn1Type_uni_str]		*uni_str;			-- 28							*
+
+		Dz1Asn1CharStr		[Dz1Asn1Type_char_str]		*char_str;			-- 29							*
+
+--		Dz1ElasticBuf		[Dz1Asn1Type_bmp_str]		*bmp_str;			-- 30							*
+
+--		Dz1ElasticBuf		[Dz1Asn1Type_date]			*date;				-- 31
+--		Dz1ElasticBuf		[Dz1Asn1Type_time_of_day]	*time_of_day;		-- 32
+--		Dz1ElasticBuf		[Dz1Asn1Type_date_time]		*date_time;			-- 33
+--		Dz1ElasticBuf		[Dz1Asn1Type_duration]		*duration;			-- 34
+	} Dz1Asn1WipValue;
+
+	------------------------------------------------------------------------------------
+	-- Common Function Type
+	------------------------------------------------------------------------------------
+	typedef func void *Dz1Asn1GetChildF(void *struct_ptr, Dz1Asn1TypeDescr **opt_ret_type);
+	typedef func bool  Dz1Asn1ApplyChildF(Dz1Asn1WipValue *parent_wip, Dz1Asn1TypeDescr *type, Dz1Asn1WipValue *data, uint32 opt_order, Dz1Error *errp);
+
+	------------------------------------------------------------------------------------
+	-- Meta Data Ranges
+	------------------------------------------------------------------------------------
+	typedef struct Dz1Asn1MetaDataRange
+	{
+		Dz1Asn1Int						 low;						// is key
+		Dz1Asn1Int						 high;						// is key
+	} Dz1Asn1MetaDataRange;											// with api dumpX, fdumpX, usercmp
+
+	typedef struct Dz1Asn1MetaDataRealRange
+	{
+		Dz1Asn1Real						 low;						// is key
+		Dz1Asn1Real						 high;						// is key
+	} Dz1Asn1MetaDataRealRange;										// with api dumpX, fdumpX, usercmp
+
+}

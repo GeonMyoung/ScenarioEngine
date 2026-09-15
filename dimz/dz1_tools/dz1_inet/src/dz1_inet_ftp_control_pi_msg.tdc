@@ -1,0 +1,92 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef enum Dz1InetFtpDTPTextForm
+	{
+		nonPrint,
+		telnet,
+		asa
+	} Dz1InetFtpDTPTextForm;
+	
+	typedef union Dz1InetFtpDTPType
+	{
+		Dz1InetFtpDTPTextForm		*ascii;
+		Dz1InetFtpDTPTextForm		*ebcdic;
+		uint32						*image;
+		uint32						 local;
+	} Dz1InetFtpDTPType;							// with api dump
+	
+	typedef enum Dz1InetFtpDTPStruct
+	{
+		file,
+		record,
+		page
+	} Dz1InetFtpDTPStruct;
+	
+	typedef enum Dz1InetFtpDTPMode
+	{
+		stream,
+		block,
+		compressed
+	} Dz1InetFtpDTPMode;
+	
+	typedef struct Dz1InetFtpAlloc
+	{
+		uint32						 numOfOctet;
+		uint32						*numOfRecord;	-- nullable
+	} Dz1InetFtpAlloc;								// with api dump
+	
+	typedef union Dz1InetFtpCPIMsgReq
+	{
+		str							 user;
+		str							 pass;
+		str							 acct;
+		str							 cwd;
+		uint32						*cdup;
+		str							 smnt;
+		uint32						*quit;
+		uint32						*rein;
+		Dz1SockAddr					*port;
+		uint32						*pasv;
+		Dz1InetFtpDTPType			*type;
+		Dz1InetFtpDTPStruct			 stru;
+		Dz1InetFtpDTPMode			 mode;
+		str							 retr;
+		str							 stor;
+		uint32						*stou;
+		str							 appe;
+		Dz1InetFtpAlloc				*allo;
+		str							 rest;
+		str							 rnfr;
+		str							 rnto;
+		uint32						*abor;
+		str							 dele;
+		str							 rmd;
+		str							 mkd;
+		uint32						*pwd;
+		str							 list;		-- nullable
+		str							 nlst;		-- nullable
+		str							 site;
+		uint32						*syst;
+		str							 stat;		-- nullable
+		str							 help;		-- nullable
+		str							 size;
+		uint32						*feat;
+	} Dz1InetFtpCPIMsgReq;						// with api dump
+	
+	typedef array Dz1InetFtpCPIMsgReplyTextList(count, gettail) [str];	// with api dump
+	
+	typedef struct Dz1InetFtpCPIMsgReply
+	{
+		uint32							 code;
+		str								 title;
+		Dz1InetFtpCPIMsgReplyTextList	*list;		// is notarg
+	} Dz1InetFtpCPIMsgReply;						// with api dump
+	
+	typedef union Dz1InetFtpCPIMsg
+	{
+		Dz1InetFtpCPIMsgReq			*req;
+		Dz1InetFtpCPIMsgReply		*reply;
+	} Dz1InetFtpCPIMsg;							// with api dump
+}

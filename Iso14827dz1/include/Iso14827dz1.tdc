@@ -1,0 +1,335 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+--	include Iso14827dz1_hdrForm;
+
+	typedef struct Iso14827Cost
+	{
+		Dz1Asn1OctetStr	*currency;
+		int32			 factor;
+		int32			 qty;
+	} Iso14827Cost;			// with api dump, clone
+
+	typedef union Iso14827TimeFrac
+	{
+		int32				 deci;
+		int32				 centi;
+		int32				 milli;
+	} Iso14827TimeFrac;			// with api dump, clone
+
+	typedef struct Iso14827TimeZone
+	{
+		int32				 modH;
+		int32				 modM;
+	} Iso14827TimeZone;			// with api dump, clone
+
+	typedef struct Iso14827Time
+	{
+		int32				*year;
+		int32				*month;
+		int32				*day;
+		int32				 h;
+		int32				 m;
+		int32				 s;
+		Iso14827TimeFrac	*frac;
+		Iso14827TimeZone	*zone;
+	} Iso14827Time;			// with api userdump, clone
+
+	typedef struct Iso14827HdrOpt
+	{
+		Dz1Asn1UTF8Str	*origin;
+		Dz1Asn1OctetStr	*originAddr;
+		Dz1Asn1UTF8Str	*sender;
+		Dz1Asn1OctetStr	*senderAddr;
+		Dz1Asn1UTF8Str	*dest;
+		Dz1Asn1OctetStr	*destAddr;
+		Iso14827Cost	*cost;
+		Iso14827Time	*t;
+	} Iso14827HdrOpt;			// with api dump, clone
+
+	typedef struct Iso14827Initiate
+	{
+		Dz1Asn1UTF8Str	*sender;
+		Dz1Asn1UTF8Str	*dest;
+	} Iso14827Initiate;			// with api dump, clone
+
+	typedef array Dz1OIDList(find) [Dz1Asn1OID];
+
+	typedef enum Iso14827LoginInitiator { serverInitiated, clientInitiated } Iso14827LoginInitiator;
+
+	typedef struct Iso14827Login
+	{
+		Dz1Asn1UTF8Str			*sender;
+		Dz1Asn1UTF8Str			*dest;
+		Dz1Asn1OctetStr			*user;
+		Dz1Asn1OctetStr			*pass;
+		Dz1OIDList				*encRules;	// is notarg
+		int32					 hbDur;
+		int32					 timeout;
+		Iso14827LoginInitiator	 initiator;
+		uint16					 datagramSize;
+	} Iso14827Login;			// with api dump, clone
+
+	typedef enum Iso14827Terminate
+	{
+		other,
+		serverRequested,
+		clientRequested,
+		serverShutdown,
+		clientShutdown,
+		serverCommProblems,
+		clientCommProblems
+	} Iso14827Terminate;
+
+	typedef enum Iso14827Logout
+	{
+		other,
+		serverRequested,
+		clientRequested,
+		serverShutdown,
+		clientShutdown,
+		serverCommProblems,
+		clientCommProblems
+	} Iso14827Logout;
+
+	typedef enum Iso14827SubscriptionDataStatus { NEW, UPDATED } Iso14827SubscriptionDataStatus;
+
+	typedef struct Iso14827RegisteredContinuous
+	{
+		uint32							 updateDelay;		-- DEFAULT 0
+		Iso14827Time					*start;				-- OPTIONAL
+		Iso14827Time					*end;				-- OPTIONAL
+	} Iso14827RegisteredContinuous;			// with api dump, clone
+
+	typedef struct Iso14827RegisteredDaily
+	{
+		uint32							 updateDelay;		-- DEFAULT 0
+		uint8							 daysOfWeek;		-- other(0), sunday(1)..saturday(7)
+		Iso14827Time					*startDate;			-- OPTIONAL
+		Iso14827Time					*endDate;			-- OPTIONAL
+		Iso14827Time					*startTime;			-- OPTIONAL(=00:00:00)
+		uint16							*duration;			-- OPTIONAL(=1440)
+	} Iso14827RegisteredDaily;			// with api dump, clone
+
+	typedef union Iso14827Registered
+	{
+		Iso14827RegisteredContinuous	*continuous;
+		Iso14827RegisteredDaily			*daily;
+	} Iso14827Registered;			// with api dump, clone
+
+	typedef union Iso14827SubscriptionDataMode
+	{
+		int32				*single;
+		Iso14827Registered	*eventDriven;
+		Iso14827Registered	*periodic;
+	} Iso14827SubscriptionDataMode;			// with api dump, clone
+
+	typedef enum Iso14827SubscriptionDataFormat { other, ftp, tftp, dataPacket } Iso14827SubscriptionDataFormat;
+
+	-- END APPLICATION MESSAGE DEFINITION
+	typedef struct Iso14827EndAppMsg
+	{
+		Dz1Asn1OID						*oid;
+		Dz1Asn1Any						*data;
+	} Iso14827EndAppMsg;			// with api dump, clone
+
+	typedef struct Iso14827SubscriptionData
+	{
+		bool							 persistent;
+		Iso14827SubscriptionDataStatus	 status;
+		Iso14827SubscriptionDataMode	*mode;
+		Iso14827SubscriptionDataFormat	 fmt;
+		int32							 priority;
+		bool							 guarantee;
+		Iso14827EndAppMsg				*msg;
+	} Iso14827SubscriptionData;			// with api dump, clone
+
+	typedef enum Iso14827SubscriptionCancel
+	{
+		other,
+		dataNotNeeded,
+		errorsInPublication,
+		pendingLogout,
+		processingMgmt,
+		bandwidthMgmt
+	} Iso14827SubscriptionCancel;
+
+	typedef union Iso14827SubscriptionType
+	{
+		Iso14827SubscriptionData	*data;
+		Iso14827SubscriptionCancel	 reason;
+	} Iso14827SubscriptionType;			// with api dump, clone
+
+	typedef struct Iso14827Subscription
+	{
+		uint32						 serial;
+		Iso14827SubscriptionType	*type;
+	} Iso14827Subscription;			// with api dump, clone
+
+	typedef enum Iso14827PublicationMgmt
+	{
+		temporarilySuspended,
+		resume,
+		terminateOther,
+		terminateDataNoLongerAvailable,
+		terminatePublicationsBeingRejected,
+		terminatePendingShutdown,
+		terminateProcessingMgmt,
+		terminateBandwidthMgmt,
+		terminateAccessDenied,
+		unknownRequest
+	} Iso14827PublicationMgmt;
+
+	typedef union Iso14827PublicationType
+	{
+		Iso14827PublicationMgmt		 mgmt;
+		Iso14827EndAppMsg			*msg;
+	} Iso14827PublicationType;			// with api dump, clone
+
+	typedef struct Iso14827PublicationData
+	{
+		uint32						 subscriptionSerial;	// is key
+		uint32						 serial;				// is key
+		bool						 isLated;
+		Iso14827PublicationType		*type;
+	} Iso14827PublicationData;			// with api dump, compare, clone
+
+	typedef unique array Iso14827PublicationDataList(find, extract, gethead) [Iso14827PublicationData];
+
+	typedef union Iso14827PublishFormat
+	{
+		Iso14827PublicationDataList		*dataList;
+		Dz1Asn1UTF8Str					*filename;
+	} Iso14827PublishFormat;								// with api dump, clone
+
+	typedef struct Iso14827Publication
+	{
+		bool						 guaranteed;
+		Iso14827PublishFormat		*fmt;
+	} Iso14827Publication;			// with api dump, clone
+
+	typedef struct Iso14827TransferDone
+	{
+		Dz1Asn1UTF8Str				*filename;
+		bool						 isSuccess;
+	} Iso14827TransferDone;			// with api dump, clone
+
+	typedef union Iso14827AcceptType
+	{
+		Dz1Asn1OID					*login;
+		int32						*singleSubscription;
+		uint32						 registeredSubscription;	-- Registered Subscription Serial
+		int32						*publication;
+	} Iso14827AcceptType;			// with api dump, clone
+
+	typedef struct Iso14827Accept
+	{
+		uint32						 pktNbr;
+		Iso14827AcceptType			*acceptType;
+	} Iso14827Accept;			// with api dump, clone
+
+	typedef enum Iso14827RejectLogin
+	{
+		other,
+		unknownDomainName,
+		accessDenied,
+		invalidPassword,
+		timeoutTooSmall,
+		timeoutTooLarge,
+		heartbeatTooSmall,
+		heartbeatTooLarge,
+		sessionExist,
+		maxSessionReached
+	} Iso14827RejectLogin;
+
+	typedef enum Iso14827RejectSubscription
+	{
+		other,
+		unknownSubscriptionNbr,
+		invalidTimes,
+		frequencyTooSmall,
+		frequencyTooLarge,
+		invalidMode,
+		publishFormatNotSupported,
+		unknownSubscriptionMsgId,
+		invalidSubscriptionMsgId,
+		invalidSubscriptionContent
+	} Iso14827RejectSubscription;
+
+	typedef enum Iso14827RejectPublication
+	{
+		other,
+		invalidPublishFormat
+	} Iso14827RejectPublication;
+
+	typedef enum Iso14827RejectPubDataReason
+	{
+		other,
+		unknownSubscription,
+		unknownPublicationNbr,
+		unknownPublicationMsgId,
+		invalidPublicationMsgId,
+		invalidPublicationMsgContent,
+		repeatedPublicationNbr
+	} Iso14827RejectPubDataReason;
+
+	typedef struct Iso14827RejectPubData
+	{
+		uint32						subSerial;
+		uint32						pubSerial;
+		Iso14827RejectPubDataReason	reason;
+	} Iso14827RejectPubData;			// with api dump, clone
+
+	typedef union Iso14827RejectType
+	{
+		Iso14827RejectLogin			login;
+		Iso14827RejectSubscription	subscription;
+		Iso14827RejectPublication	publication;
+		Iso14827RejectPubData		*pubData;
+	} Iso14827RejectType;			// with api dump, clone
+
+	typedef struct Iso14827Reject
+	{
+		uint32						 pktNbr;
+		Iso14827RejectType			*type;
+		Iso14827SubscriptionType	*altReq;
+	} Iso14827Reject;			// with api dump, clone
+
+	typedef union Iso14827PDUs
+	{
+		Iso14827Initiate		*initiate;
+		Iso14827Login			*login;
+		uint32					 fred;
+		Iso14827Terminate		 term;
+		Iso14827Logout			 logout;
+		Iso14827Subscription	*subscription;
+		Iso14827Publication		*publication;
+		Iso14827TransferDone	*transferDone;
+		Iso14827Accept			*ack;
+		Iso14827Reject			*nak;
+	} Iso14827PDUs;			// with api dump, clone
+
+	typedef struct Iso14827C2CAuthMsg
+	{
+		Dz1Asn1OctetStr	*authInfo;
+		uint32			 pktNbr;			// is key
+		int32			 priority;
+		Iso14827HdrOpt	*hdrOpt;
+		Iso14827PDUs	*pdu;
+	} Iso14827C2CAuthMsg;					// with api dump, compare, clone
+
+	typedef enum Iso14827DatexVersionNumber
+	{
+		experimental = 0,
+		version1 = 1,
+		version2 = 2
+	} Iso14827DatexVersionNumber;
+	
+	typedef struct Iso14827DatexDataPacket
+	{
+		Iso14827DatexVersionNumber	 version;
+		Dz1Asn1OctetStr				*data;
+		uint16						 crc16;
+	} Iso14827DatexDataPacket;	// with api dump
+}

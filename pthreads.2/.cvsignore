@@ -1,0 +1,12 @@
+*.o
+*.a
+*.dll
+*.ilc
+*.ild
+*.ilf
+*.ilr
+*.ils
+*.map
+*.tds
+pthreadBC2.lib
+pthreadBC2.ildw_*

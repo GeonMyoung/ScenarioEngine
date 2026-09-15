@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <ScenarioEngineWorkspaceRoot>$(MSBuildThisFileDirectory)</ScenarioEngineWorkspaceRoot>
+    <OPEN_SSL_SDK_ROOT>$(ScenarioEngineWorkspaceRoot).deps\sdk\OpenSSL-Win64</OPEN_SSL_SDK_ROOT>
+    <VcpkgEnabled>false</VcpkgEnabled>
+    <ScenarioEngineRegenerateSources Condition="'$(ScenarioEngineRegenerateSources)' == ''">false</ScenarioEngineRegenerateSources>
+  </PropertyGroup>
+</Project>

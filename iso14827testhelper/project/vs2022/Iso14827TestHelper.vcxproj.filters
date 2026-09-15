@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{F9870C6B-D58F-4FC1-9108-41A347040766}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{9B3E8DEC-6DF5-4845-8BA4-406EDDB77A56}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{F383225C-2BF2-47AE-99E3-A90FFAA50D46}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\engine">
+      <UniqueIdentifier>{B55F9C03-2AF9-4AFA-AEE4-D3334AF68DA9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\message">
+      <UniqueIdentifier>{DE11E567-27A3-49C6-83E3-F227BFECB286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MsgSet">
+      <UniqueIdentifier>{a1b45ea9-9ad5-40d5-bfbc-d1663421f972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\process">
+      <UniqueIdentifier>{977cb3e3-2fe3-4034-8629-9dd64dacef76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\ItsIso14827">
+      <UniqueIdentifier>{f949368c-1502-4ce6-94a8-eae9df981e0b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Iso14827TestHelper.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperDef.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperArg.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperEnv.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperTimer.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperTimerUtil.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperMsgs.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperMsgUtil.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperMsgSet.c">
+      <Filter>소스 파일\MsgSet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperEnvUtil.c">
+      <Filter>소스 파일\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenario.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioClient1.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioClient2.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioServer1.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioServer2.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioDuoClient.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioDuoSession.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioUtil.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperProc14827.c">
+      <Filter>소스 파일\ItsIso14827</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperCommandMsgProc.c">
+      <Filter>소스 파일\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperDefJson.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioServer3.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperTest.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Iso14827TestHelperScenarioClient1_TechnicalRegualtion.c">
+      <Filter>소스 파일\process</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\Iso14827TestHelper.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Iso14827TestHelperDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperArg.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperEnv.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperTimer.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperTimerUtil.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperMsg.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperMsgs.h">
+      <Filter>소스 파일\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperScenario.h">
+      <Filter>소스 파일\process</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperEnvUtil.h">
+      <Filter>소스 파일\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperScenarioUtil.h">
+      <Filter>소스 파일\process</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Iso14827TestHelperProc14827.h">
+      <Filter>소스 파일\ItsIso14827</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Iso14827TestHelperDefJson.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\Iso14827TestHelperDefUtil.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\Iso14827TestHelperDef.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Iso14827TestHelperArg.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Iso14827TestHelperEnv.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Iso14827TestHelperTimer.tdc">
+      <Filter>소스 파일\engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\Iso14827TestHelperMsgs.tdc">
+      <Filter>소스 파일\message</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\Iso14827TestHelperDef.tjsonc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

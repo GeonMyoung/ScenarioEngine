@@ -1,0 +1,45 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "libio"=..\libio\libio.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "libmem"=.\libmem.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/ASN/PER/CODE/PER/Prj/libmem", VRLAAAAA
+    ..\..\..\..\..\asn1project\asn\per081217\per\prj\libmem
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

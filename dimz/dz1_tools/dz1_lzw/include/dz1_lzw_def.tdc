@@ -1,0 +1,53 @@
+message set definition
+{
+	include libdz1_support;
+	------------------------------------------
+	-- Basic Entry & Array
+	typedef struct Dz1LzwDictData
+	{
+		uint32						 code;
+		Dz1Binary					*bin;
+	} Dz1LzwDictData;							// with api dump
+	typedef array Dz1LzwDictDataArray(count) [Dz1LzwDictData];
+	
+	------------------------------------------
+	-- Word Entry & List
+	typedef struct Dz1LzwDictWord
+	{	
+		uint32						 code;
+		Dz1Binary					*bin;		// is key
+	} Dz1LzwDictWord;							// with api dump, compare
+	typedef unique table Dz1LzwDictWordList(find, extract, count) [&Dz1LzwDictWord];
+	
+	typedef struct Dz1LzwDictSizeNode
+	{
+		uint32						 size;		// is key
+		Dz1LzwDictWordList			*list;		// is notarg
+	} Dz1LzwDictSizeNode;						// with api dump, compare
+	typedef unique table Dz1LzwDictSizeTable(find, extract, count) [Dz1LzwDictSizeNode];
+
+	------------------------------------------
+	-- Code Entry & List
+	typedef struct Dz1LzwDictCode
+	{	
+		uint32						 code;		// is key
+		Dz1Binary					*bin;
+	} Dz1LzwDictCode;							// with api dump, compare
+	typedef unique table Dz1LzwDictCodeList(find, extract, count) [&Dz1LzwDictCode];
+	
+	------------------------------------------
+	-- Dictionary
+	typedef struct Dz1LzwDictionary
+	{
+		uint32						 code_bits;		// is notarg
+		
+		uint32						 base_code_max;	// is notarg
+		uint32						 curr_code_max;	// is notarg
+		uint32						 alloc_code;	// is notarg
+		
+		Dz1LzwDictDataArray			*arr;			// is notarg
+		Dz1LzwDictSizeTable			*sizes;			// is nodump, notarg
+		Dz1LzwDictCodeList			*codes;			// is nodump, notarg
+	} Dz1LzwDictionary;								// with api dump
+
+}

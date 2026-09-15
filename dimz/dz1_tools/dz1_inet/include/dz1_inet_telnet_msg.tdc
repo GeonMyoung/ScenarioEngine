@@ -1,0 +1,155 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef union Dz1InetTelnetOptTerminalType
+	{
+		str							 is;
+		uint32						*send;
+	} Dz1InetTelnetOptTerminalType;	// with api dump
+	
+	typedef struct Dz1InetTelnetOptWindowSize
+	{
+		uint16						 width;
+		uint16						 height;
+	} Dz1InetTelnetOptWindowSize;	// with api dump
+	
+	typedef union Dz1InetTelnetOpt
+	{
+		uint32							*binary;
+		uint32							*echo;
+		uint32							*prepareReconnect;
+		uint32							*suppressGoAhead;
+		uint32							*approximateMsgSize;
+		uint32							*status;
+		uint32							*timingMark;
+		uint32							*rcTxAndEcho;
+		uint32							*lineWidth;
+		uint32							*pageSize;
+		uint32							*crDisposition;
+		uint32							*hTabStop;
+		uint32							*hTabDisposition;
+		uint32							*formFeedDisposition;
+		uint32							*vTabStop;
+		uint32							*vTabDisposition;
+		uint32							*lfDisposition;
+		uint32							*xAscii;
+		uint32							*forceLogout;
+		uint32							*byteMacro;
+		uint32							*dataEntryTerminal;
+		uint32							*supdupProtocol;
+		uint32							*supdupOutput;
+		uint32							*sendLocation;
+		Dz1InetTelnetOptTerminalType	*terminalType;
+		uint32							*endOfRecord;
+		uint32							*tacacsUserID;
+		uint32							*OutputMarking;
+		uint32							*ttyNumber;
+		uint32							*regime3270;
+		uint32							*xDot3Pad;
+		Dz1InetTelnetOptWindowSize		*windowSize;
+		uint32							*terminalSpeed;
+		uint32							*remoteFlowControl;
+		uint32							*lineMode;
+		uint32							*xDispLoc;
+		uint32							*oldEnvs;
+		uint32							*auth;
+		uint32							*encryption;
+		uint32							*newEnvs;
+		uint32							*extOptList;
+	} Dz1InetTelnetOpt;		// with api dump
+	
+	typedef enum Dz1InetTelnetOptCode
+	{
+		binary,
+		echo,
+		prepareReconnect,
+		suppressGoAhead,
+		approximateMsgSize,
+		status,
+		timingMark,
+		rcTxAndEcho,
+		lineWidth,
+		pageSize,
+		crDisposition,
+		hTabStop,
+		hTabDisposition,
+		formFeedDisposition,
+		vTabStop,
+		vTabDisposition,
+		lfDisposition,
+		xAscii,
+		forceLogout,
+		byteMacro,
+		dataEntryTerminal,
+		supdupProtocol,
+		supdupOutput,
+		sendLocation,
+		terminalType,
+		endOfRecord,
+		tacacsUserID,
+		OutputMarking,
+		ttyNumber,
+		regime3270,
+		xDot3Pad,
+		windowSize,
+		terminalSpeed,
+		remoteFlowControl,
+		lineMode,
+		xDispLoc,
+		oldEnvs,
+		auth,
+		encryption,
+		newEnvs,
+		extOptList = 255
+	} Dz1InetTelnetOptCode;
+	
+	typedef union Dz1InetTelnetCmd
+	{
+		uint32					*endOfSubNego;
+		uint32					*noOper;
+		uint32					*dataMark;
+		uint32					*brk;
+		uint32					*interruptProcess;
+		uint32					*abortOutput;
+		uint32					*areYouThere;
+		uint32					*eraseChar;
+		uint32					*eraseLine;
+		uint32					*goAhead;
+		Dz1InetTelnetOpt		*subNego;
+		Dz1InetTelnetOpt		*willOpt;
+		Dz1InetTelnetOpt		*wontOpt;
+		Dz1InetTelnetOpt		*doOpt;
+		Dz1InetTelnetOpt		*dontOpt;
+	} Dz1InetTelnetCmd;			// with api dump
+	
+	typedef enum Dz1InetTelnetCmdCode
+	{
+		endOfSubNego = 240,
+		noOper,
+		dataMark,
+		brk,
+		interruptProcess,
+		abortOutput,
+		areYouThere,
+		eraseChar,
+		eraseLine,
+		goAhead,
+		subNego,
+		willOpt,
+		wontOpt,
+		doOpt,
+		dontOpt
+	} Dz1InetTelnetCmdCode;
+
+	typedef enum Dz1InetTelnetEsc
+	{
+		IAC = 255
+	} Dz1InetTelnetEsc;
+	
+	typedef union Dz1InetTelnetMsg
+	{
+		Dz1InetTelnetCmd	*cmd;
+		Dz1Binary			*bytes;
+	} Dz1InetTelnetMsg;		// with api dump
+}

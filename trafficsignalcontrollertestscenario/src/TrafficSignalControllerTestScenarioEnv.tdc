@@ -1,0 +1,72 @@
+message set definition
+{
+	include TrafficSignalControllerTestScenarioDef;
+	include TrafficSignalControllerTestMsgDef;
+	include TrafficSignalControllerTestMsgFrameDef;
+	include Dz1JsonDef;
+	include Dz1SockUtilDef;
+	
+	typedef struct TrafficSignalControllerSession
+	{
+		uint32									 acceptor;
+		Dz1SockAddr						*peer;			// is key
+		Dz1SockAddr						*local;			// is key
+		Dz1TcpClientSocket				*sock;
+		Dz1ElasticBuf					*rx_buf;
+		Dz1Stream						*rx_stream;
+		Dz1SockUtilTxFifo				*tx_fifo;
+		-- TrafficLightChkReq				*request;
+	} TrafficSignalControllerSession;			// with api dump
+
+	-- typedef struct TrafficSignalControllerScenarioConfig
+	-- {
+	-- 	TrafficSignalControllerScenarioArgument *sc_arg;
+	-- 	uint32									 acceptor;
+	-- 	TrafficSignalControllerSession			*session;
+	-- 	TrafficSignalControllerTestMsgFrame		*received;
+	-- 	bool									 result;
+	-- } TrafficSignalControllerScenarioConfig;			// with api dump
+
+
+	typedef struct TrafficSignalControllerScenario
+	{
+		TrafficSignalControllerTestMsgFrame		*received;
+		bool									 result;
+		TString									 ip;
+		uint16									 port;
+		uint8									 cross_id;
+		TString									 req_str;
+		uint8									 eam_type;
+	} TrafficSignalControllerScenario;		// with api dump, clone
+
+	typedef enum TrafficSignalControllerScenarioEvent
+	{
+		start,
+		auth,
+		trigger,
+		data,
+		validate,
+		disconnected
+	} TrafficSignalControllerScenarioEvent;		// with api dump, clone
+
+	typedef enum TrafficSignalControllerScenarioState
+	{
+		initial,
+		wait_test,
+		complete
+	} TrafficSignalControllerScenarioState;
+
+	typedef struct TrafficSignalControllerTestScenarioEnv
+	{
+		void *tSelf;
+		void *tMain;
+		Dz1JsonSpec *spec;
+		TrafficSignalControllerSession	*session;			// is notarg
+		TrafficSignalControllerScenario	*scenario;			// is notarg
+		uint32							 testIdx;			// is notarg
+		int32							 state;					// is notarg
+		uint32							 flags;					// is notarg
+		bool							 is_run;			// is notarg
+		bool							 is_r29;			// is notarg
+	} TrafficSignalControllerTestScenarioEnv;				// with api dump
+}

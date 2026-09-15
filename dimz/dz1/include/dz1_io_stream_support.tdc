@@ -1,0 +1,15 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef native Dz1ElasticBuf from dz1_elastic_buf;			// with api dump, clone
+
+	typedef native Dz1InStream from dz1_io_stream;
+	typedef native Dz1OutStream from dz1_io_stream;
+	
+	typedef native Dz1FileBufStream from dz1_io_stream;
+	typedef native Dz1StaticBufStream from dz1_io_stream;
+	typedef native Dz1ElasticBufStream from dz1_io_stream;
+
+	typedef native Dz1Stream from dz1_io_stream;				// with api dump
+}

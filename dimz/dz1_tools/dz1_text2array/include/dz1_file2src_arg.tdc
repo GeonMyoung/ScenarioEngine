@@ -1,0 +1,70 @@
+message set definition
+{
+	typedef enum File2SrcConvTextPublish
+	{
+		String,
+		Binary
+	} File2SrcConvTextPublish;
+
+	typedef union File2SrcConvTextAttr
+	{
+		File2SrcConvTextPublish		 PlaneText;
+		uint32						*HexDump;
+	} File2SrcConvTextAttr;
+	
+	typedef enum File2SrcVariableForm
+	{
+		SingleVariable,
+		ArrayByLine,
+		ArrayByBlock
+	} File2SrcVariableForm;
+	
+	typedef struct File2SrcConvTextOpt
+	{
+		File2SrcConvTextAttr		*attr;
+		File2SrcVariableForm		 form;
+	} File2SrcConvTextOpt;
+	
+	typedef union File2SrcConvOpt
+	{
+		File2SrcConvTextOpt	 *textMode;
+		uint32				 *binMode;
+	} File2SrcConvOpt;
+	
+	typedef enum File2SrcOutputMode
+	{
+		DOS,
+		UNIX
+	} File2SrcOutputMode;
+
+	typedef struct File2SrcConvArg
+	{
+		str					 srcPath;
+		str					 srcName;
+		File2SrcConvOpt		*opt;
+		str					 var_name;
+		str					 dstPath;
+		str					 dstName;
+		File2SrcOutputMode	 mode;
+	} File2SrcConvArg;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

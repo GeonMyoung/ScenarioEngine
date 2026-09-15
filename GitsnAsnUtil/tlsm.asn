@@ -1,0 +1,82 @@
+TESTTLSM DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+TrafficLightStatusMessage ::= SEQUENCE {
+  traffiLightID       TrafficLightID-KOR,
+  long                Longitude            OPTIONAL,
+  lat                 Latitude 		         OPTIONAL,
+  operationStatus     TrafficLightOperationStatus-KOR,
+  controllerStatus    TrafficLightControllerStatus-KOR,
+  cycleCounter        TimeInSecond-B16-KOR,
+  cycleTime     	  TimeInSecond-B16-KOR,
+  currentTime         DDateTime,
+  trafficLightStatus  TrafficLightStatusList-KOR,
+  ...
+}
+TrafficLightID-KOR ::= INTEGER(0..4294967295)
+TrafficLightOperationStatus-KOR ::= BIT STRING {
+  manual 		  	(0),
+  flashing 		  (1),
+  off 			  	(2),
+  actuted 		  (3),
+  transition 	  (4),
+  priority 		  (5),
+  holding-phase (6),
+  reserved 		  (7)
+} (SIZE(8))
+TrafficLightControllerStatus-KOR ::= BIT STRING {
+  conflict 			  (0),
+  center-comm-error   (1),
+  scu-comm-error	  (2),
+  reserved1			  (3),
+  reserved2			  (4),
+  reserved3			  (5),
+  reserved4			  (6),
+  reserved5           (7)
+} (SIZE(8))
+
+
+TrafficLightStatusList-KOR ::= SEQUENCE (SIZE(1..255)) OF TrafficLightStatus-KOR
+TrafficLightStatus-KOR ::= SEQUENCE {
+  trafficLightType		      TrafficLightType-KOR,
+  consecutiveTrafficLight   ConsecutiveTrafficLight-KOR,
+  trafficLightIntervalType	TrafficLightIntervalType-KOR,
+  pedestrianCall		        PedestrianCall-KOR,
+  actuatedinterval		      ActuatedInterval-KOR,
+  permissiveNonProtected	  PermissiveNonProtected-KOR,
+  lightingStatus		        TrafficLightingStatus-KOR,
+  maxIntervalLength		      TimeInSecond-B8-KOR,
+  remainingTime		          TimeInSecond-B8-KOR,
+  directionCode		          TrafficLightDirectionCode-KOR,
+  reserved			            ReservedBit-KOR,
+  ...
+}
+TrafficLightType-KOR ::= INTEGER(0..15)
+ConsecutiveTrafficLight-KOR ::= INTEGER(0..15)
+TrafficLightIntervalType-KOR ::= ENUMERATED {
+  static   (0),
+  variable (1),
+  ...
+}
+PedestrianCall-KOR ::= BOOLEAN
+ActuatedInterval-KOR ::= BOOLEAN
+PermissiveNonProtected-KOR ::= BOOLEAN
+TrafficLightingStatus-KOR ::= INTEGER(0..10)
+TimeInSecond-B16-KOR ::= INTEGER (0..65535)
+
+TimeInSecond-B8-KOR ::= INTEGER (0..255)
+TrafficLightDirectionCode-KOR ::= INTEGER(10..89)
+ReservedBit-KOR ::= BOOLEAN
+Longitude ::= INTEGER (-1799999999..1800000001)  
+Latitude ::= INTEGER (-900000000..900000001)  
+
+DDateTime ::= SEQUENCE {
+   year    DYear    OPTIONAL,    
+   month   DMonth   OPTIONAL,   
+   day     DDay     OPTIONAL,  
+   hour    DHour    OPTIONAL,   
+   minute  DMinute  OPTIONAL,  
+   second  DSecond  OPTIONAL,  
+   offset  DOffset  OPTIONAL -- time zone
+   }
+
+END

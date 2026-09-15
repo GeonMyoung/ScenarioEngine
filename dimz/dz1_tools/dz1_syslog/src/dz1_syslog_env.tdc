@@ -1,0 +1,7 @@
+message set definition
+{
+	typedef struct Dz1SysLogEnv
+	{
+		int32			dummy;		// is notarg
+	} Dz1SysLogEnv;					// with api dump
+}

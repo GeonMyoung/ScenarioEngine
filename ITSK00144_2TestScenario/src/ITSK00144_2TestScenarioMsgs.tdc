@@ -1,0 +1,8 @@
+message set definition
+{
+	include ITSK00144_2TestScenarioDef;
+	typedef struct ITSK001442TestScenarioMsgDefault
+	{
+		uint32 *dummy;
+	} ITSK001442TestScenarioMsgDefault;					// with api dump
+}

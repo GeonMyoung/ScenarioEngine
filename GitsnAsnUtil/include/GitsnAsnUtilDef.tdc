@@ -1,0 +1,2924 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct GitsnAsnUtil
+	{
+		int32		dummy;
+	} GitsnAsnUtil;
+
+
+	
+	-- DE
+	-- DE / DF
+	typedef int64 Gitsn_MsgCount;
+	typedef int64 Gitsn_DYear;			
+	typedef int64 Gitsn_DMonth;			
+	typedef int64 Gitsn_DDay;			
+	typedef int64 Gitsn_DHour;			
+	typedef int64 Gitsn_DMinute;			
+	typedef int64 Gitsn_DSecond;			
+	typedef int64 Gitsn_DOffset;
+	
+	typedef int64 Gitsn_Longitude;
+	typedef int64 Gitsn_Latitude;
+	typedef int64 Gitsn_Heading;
+	typedef int64 Gitsn_Velocity;
+
+	typedef int64 Gitsn_SemiMajorAxisAccuracy;
+	typedef int64 Gitsn_SemiMinorAxisAccuracy;
+	typedef int64 Gitsn_SemiMajorAxisOrientation;
+	typedef int64 Gitsn_Elevation;
+	typedef int64 Gitsn_ObjectDistance;
+
+	typedef uint8 Gitsn_GNSSstatus;
+	typedef int64 Gitsn_Acceleration;
+	typedef int64 Gitsn_VerticalAcceleration;
+	typedef int64 Gitsn_YawRate;
+	typedef int64 Gitsn_VehicleWidth;
+	typedef int64 Gitsn_VehicleLength;
+	typedef int64 Gitsn_VehicleHeight;
+
+	typedef int64 Gitsn_VertOffset_B12;
+	typedef int64 Gitsn_Speed;
+	typedef int64 Gitsn_CoarseHeading;
+	typedef int64 Gitsn_MinuteOfTheYear;
+	typedef int64 Gitsn_LayerID;
+	typedef int64 Gitsn_LaneWidth;
+	typedef TString Gitsn_DescriptiveName;
+	typedef int64 Gitsn_RoadRegulatorID;
+	typedef int64 Gitsn_RoadSegmentID;
+	typedef int64 Gitsn_IntersectionID;
+	typedef int64 Gitsn_LaneID;
+	typedef int64 Gitsn_ApproachID;
+	typedef uint8 Gitsn_AllowedManeuvers;	 -- BIT STRING
+	typedef uint8 Gitsn_LaneDirection;		 -- BIT STRING
+	typedef uint8 Gitsn_LaneSharing;			 -- BIT STRING
+
+	typedef uint8 Gitsn_LaneAttributes_Vehicle;				 -- BIT STRING
+	typedef uint8 Gitsn_LaneAttributes_Crosswalk;			 -- BIT STRING
+	typedef uint8 Gitsn_LaneAttributes_Bike;					 -- BIT STRING
+	typedef uint8 Gitsn_LaneAttributes_Sidewalk;				 -- BIT STRING
+	typedef uint8 Gitsn_LaneAttributes_Barrier;				 -- BIT STRING
+	typedef uint8 Gitsn_LaneAttributes_Striping;				 -- BIT STRING
+	typedef uint8 Gitsn_LaneAttributes_TrackedVehicle;		 -- BIT STRING
+	typedef uint8 Gitsn_LaneAttributes_Parking;				 -- BIT STRING
+
+	typedef int64				Gitsn_Offset_B09;
+	typedef int64				Gitsn_Offset_B10;
+	typedef int64				Gitsn_Offset_B11;
+	typedef int64				Gitsn_Offset_B12;
+	typedef int64				Gitsn_Offset_B13;
+	typedef int64				Gitsn_Offset_B14;
+	typedef int64				Gitsn_Offset_B16;
+	typedef int64				Gitsn_OffsetLL_B12;
+	typedef int64				Gitsn_OffsetLL_B14;
+	typedef int64				Gitsn_OffsetLL_B16;
+	typedef int64				Gitsn_OffsetLL_B18;
+	typedef int64				Gitsn_OffsetLL_B22;
+	typedef int64				Gitsn_OffsetLL_B24;
+	typedef int64				Gitsn_DeltaAngle;
+	typedef int64				Gitsn_RoadwayCrownAngle;
+	typedef int64				Gitsn_MergeDivergeNodeAngle;
+	typedef int64				Gitsn_DrivenLineOffsetSm;
+	typedef int64				Gitsn_DrivenLineOffsetLg;
+	typedef int64				Gitsn_Angle;
+	typedef int64				Gitsn_Scale_B12;
+	typedef int64				Gitsn_RestrictionClassID;
+	typedef int64				Gitsn_SignalGroupID;
+	typedef int64				Gitsn_LaneConnectionID;
+	typedef int64				Gitsn_TimeOffset;
+	typedef int64				Gitsn_TimeMark;
+	typedef int64				Gitsn_BasicVehicleClass;
+	typedef int64				Gitsn_Iso3833VehicleType;
+	typedef int64				Gitsn_FuelType;
+
+	typedef uint8				Gitsn_VehicleEventFlags;		-- BIT STRING
+	typedef uint8				Gitsn_ExteriorLights;		-- BIT STRING
+	typedef int64				Gitsn_RadiusOfCurvature;
+	typedef int64				Gitsn_Confidence;
+
+	typedef int64							Gitsn_WiperRate;
+	typedef uint8							Gitsn_BrakeAppliedStatus;	-- BIT STRING
+	typedef int64							Gitsn_CoefficientOfFriction;
+	typedef int64							Gitsn_SunSensor;
+	typedef int64							Gitsn_AmbientAirTemperature;
+	typedef int64							Gitsn_AmbientAirPressure;
+	typedef int64							Gitsn_SteeringWheelAngle;
+	typedef int64							Gitsn_SteeringWheelAngleRateOfChange;
+	typedef int64							Gitsn_DrivingWheelAngle;
+	typedef uint8							Gitsn_VerticalAccelerationThreshold;
+	typedef int64							Gitsn_ObstacleDistance;
+	typedef int64							Gitsn_ThrottlePosition;
+	typedef int64							Gitsn_VehicleMass;
+	typedef int64							Gitsn_TrailerWeight;
+	typedef int64							Gitsn_BumperHeight;
+	typedef TString							Gitsn_VINstring;
+	typedef TString							Gitsn_IA5String;
+	typedef int64							Gitsn_StationID;
+	typedef int64							Gitsn_CargoWeight;
+	typedef int64							Gitsn_SteeringAxleTemperature;
+	typedef int64							Gitsn_DriveAxleLocation;
+	typedef int64							Gitsn_DriveAxleLiftAirPressure;
+	typedef int64							Gitsn_DriveAxleTemperature;
+	typedef int64							Gitsn_DriveAxleLubePressure;
+	typedef int64							Gitsn_SteeringAxleLubePressure;
+	typedef int64							Gitsn_TireLocation;
+	typedef int64							Gitsn_TirePressure;
+	typedef int64							Gitsn_TireTemp;
+	typedef int64							Gitsn_TireLeakageRate;
+	typedef TString							Gitsn_TemporaryID;
+	typedef int64							Gitsn_AxleLocation;
+	typedef int64							Gitsn_AxleWeight;
+	typedef int64							Gitsn_EssPrecipRate;
+	typedef int64							Gitsn_EssSolarRadiation;
+	typedef int64							Gitsn_EssMobileFriction;
+	typedef int64							Gitsn_ProbeSegmentNumber;
+	typedef uint8							Gitsn_IntersectionStatusObject;
+	typedef int64							Gitsn_TimeIntervalConfidence;
+	typedef int64							Gitsn_SpeedAdvice;
+	typedef int64							Gitsn_ZoneLength;
+	typedef bool							Gitsn_WaitOnStopline;
+	typedef bool							Gitsn_PedestrianBicycleDetect;
+
+	typedef int64							Gitsn_ClassificationConfidence;
+	typedef int64							Gitsn_ObjectID;
+	typedef int64							Gitsn_MeasurementTimeOffset;
+	typedef int64							Gitsn_PitchDetected;
+	typedef int64							Gitsn_RollDetected;
+	typedef int64							Gitsn_YawDetected;
+	typedef int64							Gitsn_PitchRate;
+	typedef int64							Gitsn_RollRate;
+	typedef int64							Gitsn_AttachmentRadius;
+	typedef int64							Gitsn_SizeValue;
+	typedef int64							Gitsn_ITIScodes;
+	typedef TString							Gitsn_Priority;
+	typedef uint8							Gitsn_HeadingSlice;
+	typedef uint16							Gitsn_FurtherInfoID;			-- OCTET STRING (SIZE(2))
+	typedef TString							Gitsn_UniqueMSGID;
+	typedef TString							Gitsn_URL_Base;
+	typedef TString							Gitsn_URL_Short;
+	typedef int64							Gitsn_SSPindex;
+	typedef TString							Gitsn_MsgCRC;
+	typedef int64							Gitsn_MinutesDuration;
+	typedef int64							Gitsn_SignPriority;
+	typedef int64							Gitsn_Zoom;
+	typedef int64							Gitsn_Radius_B12;
+	typedef TString							Gitsn_ITIStext;
+	typedef int64							Gitsn_INTEGER;
+	typedef uint8							Gitsn_TrafficLightOperationStatus;
+	typedef uint8							Gitsn_TrafficLightControllerStatus;
+	typedef int64							Gitsn_TimeInSecond_B16;
+	typedef int64							Gitsn_TimeInSecond_B8;
+	typedef bool							Gitsn_PedestrianCall;
+	typedef bool							Gitsn_ActuatedInterval;
+	typedef int64							Gitsn_TrafficLightDirectionCode;
+	typedef bool							Gitsn_ReservedBit;
+	-- ...
+	typedef int64							Gitsn_TrafficLightID_KOR;
+
+	typedef uint8							Gitsn_OCTETSTRING;
+	typedef uint8							Gitsn_VisibleString;
+	typedef uint8							Gitsn_PrivilegedEventFlags;		-- BIT STRING (SIZE(16))
+	typedef TString							Gitsn_RTCMmessage;
+	typedef int64							Gitsn_RequestID;	
+	typedef uint8							Gitsn_TransitVehicleStatus;		-- BIT STRING (SIZE(8))
+	typedef int64							Gitsn_DeltaTime;
+	typedef uint8							Gitsn_PersonalDeviceUsageState;	-- BIT STRING (SIZE(9,...))
+	typedef bool							Gitsn_PersonalCrossingRequest;
+	typedef bool							Gitsn_PersonalCrossingInProgress;
+	typedef int64							Gitsn_PersonalClusterRadius;
+	typedef uint8							Gitsn_PublicSafetyAndRoadWorkerActivity;	-- BIT STRING (SIZE(6,...))
+	typedef uint8							Gitsn_PublicSafetyDirectingTrafficSubType;  -- BIT STRING (SIZE(7, ...))
+	typedef uint8							Gitsn_PersonalAssistive;					-- BIT STRING (SIZE(6, ...))
+	typedef uint8							Gitsn_UserSizeAndBehaviour;					-- BIT STRING (SIZE(5,...))
+	typedef enum Gitsn_TransmissionState
+	{
+		neutral,
+		park,
+		forwardGears,
+		reverseGears,
+		reserved1,
+		reserved2,
+		reserved3,
+		unavailable
+	} Gitsn_TransmissionState;
+
+	typedef enum Gitsn_TimeConfidence
+	{
+		unavailable = 0,
+		time-100-000,
+		time-050-000,
+		time-020-000,
+		time-010-000,
+		time-002-000,
+		time-001-000,
+		time-000-500,
+		time-000-200,
+		time-000-100,
+		time-000-050,
+		time-000-020,
+		time-000-010,
+		time-000-005,
+		time-000-002,
+		time-000-001,
+		time-000-000-5,
+		time-000-000-2,
+		time-000-000-1,
+		time-000-000-05,
+		time-000-000-02,
+		time-000-000-01,
+		time-000-000-005,
+		time-000-000-002,
+		time-000-000-001,
+		time-000-000-000-5,
+		time-000-000-000-2,
+		time-000-000-000-1,
+		time-000-000-000-05,
+		time-000-000-000-02,
+		time-000-000-000-01,
+		time-000-000-000-005,
+		time-000-000-000-002,
+		time-000-000-000-001,
+		time-000-000-000-000-5,
+		time-000-000-000-000-2,
+		time-000-000-000-000-1,
+		time-000-000-000-000-05,
+		time-000-000-000-000-02,
+		time-000-000-000-000-01
+	} Gitsn_TimeConfidence;
+
+	typedef enum Gitsn_PositionConfidence
+	{
+		unavailable = 0,
+		a500m,
+		a200m,
+		a100m,
+		a50m,
+		a20m,
+		a10m,
+		a5m,
+		a2m,
+		a1m,
+		a50cm,
+		a20cm,
+		a10cm,
+		a5cm,
+		a2cm,
+		a1cm
+	} Gitsn_PositionConfidence;	
+
+	typedef enum Gitsn_ElevationConfidence
+	{
+		unavailable,
+		elev-500-00,
+		elev-200-00,
+		elev-100-00,
+		elev-050-00,
+		elev-020-00,
+		elev-010-00,
+		elev-005-00,
+		elev-002-00,
+		elev-001-00,
+		elev-000-50,
+		elev-000-20,
+		elev-000-10,
+		elev-000-05,
+		elev-000-02,
+		elev-000-01
+	} Gitsn_ElevationConfidence;
+
+	typedef enum Gitsn_HeadingConfidence
+	{
+		unavailable,
+		prec10deg,
+		prec05deg,
+		prec01deg,
+		prec0-1deg,
+		prec0-05deg,
+		prec0-01deg,
+		prec0-0125deg
+	} Gitsn_HeadingConfidence;
+
+	typedef enum Gitsn_SpeedConfidence
+	{
+		unavailable,
+		prec100ms,
+		prec10ms,
+		prec5ms,
+		prec1ms,
+		prec0-1ms,
+		prec0-05ms,
+		prec0-01ms
+	} Gitsn_SpeedConfidence;
+
+	typedef enum Gitsn_ThrottleConfidence
+	{
+		unavailable,
+		prec10percent,
+		prec1percent,
+		prec0-5percent
+	} Gitsn_ThrottleConfidence;
+
+	typedef enum Gitsn_LightbarInUse
+	{
+		unavailable = 0,
+		notInUse = 1,
+		inUse = 2,
+		yellowCautionLights = 3,
+		schooldBusLights = 4,
+		arrowSignsActive = 5,
+		slowMovingVehicle = 6,
+		freqStops = 7
+	} Gitsn_LightbarInUse;
+
+	typedef enum Gitsn_RainSensor
+	{
+		none = 0,
+		lightMist = 1,
+		heavyMist = 2,
+		lightRainOrDrizzle = 3,
+		rain = 4,
+		moderateRain = 5,
+		heavyRain = 6,
+		heavyDownpour = 7
+	} Gitsn_RainSensor;
+
+	typedef enum Gitsn_BasicVehicleRole
+	{
+		basicVehicle,
+		publicTransport,
+		specialTransport,
+		dangerousGoods,
+		roadWork,
+		roadRescue,
+		emergency,
+		safetyCar,
+		none,
+		truck,
+		motorcycle,
+		roadSideSource,
+		police,
+		fire,
+		ambulance,
+		dot,
+		transit,
+		slowMoving,
+		stopNgo,
+		cyclist,
+		pedestrian,
+		nonMotorized,
+		military
+	} Gitsn_BasicVehicleRole;
+
+	typedef enum Gitsn_VehicleType
+	{	
+		none,
+		unknown,
+		special,
+		moto,
+		car,
+		carOther,
+		bus,
+		axleCnt2,
+		axleCnt3,
+		axleCnt4,
+		axleCnt4Trailer,
+		axleCnt5Trailer,
+		axleCnt6Trailer,
+		axleCnt5MultiTrailer,
+		axleCnt6MultiTrailer,
+		axleCnt7MultiTrailer
+	} Gitsn_VehicleType;
+
+	typedef enum Gitsn_VehicleGroupAffected
+	{
+		all = 9217,
+		bicycles,
+		motorcycles,
+		cars,
+		light-vehicles,
+		cars-and-light-vehicles,
+		cars-with-trailers,
+		cars-with-recreational-trailers,
+		vehicles-with-trailers,
+		heavy-vehicles,
+		trucks,
+		buses,
+		articulated-buses,
+		school-buses,
+		vehicles-with-semi-trailers,
+		vehicles-with-double-trailers,
+		high-profile-vehicles,
+		wide-vehicles,
+		long-vehicles,
+		hazardous-loads,
+		exceptional-loads,
+		abnormal-loads,
+		convoys,
+		maintenance-vehicles,
+		delivery-vehicles,
+		vehicles-with-even-numbered-license-plates,
+		vehicles-with-odd-numbered-license-plates,
+		vehicles-with-parking-permits,
+		vehicles-with-catalytic-converters,
+		vehicles-without-catalytic-converters,
+		gas-powered-vehicles,
+		diesel-powered-vehicles,
+		lPG-vehicles,
+		military-convoys,
+		military-vehicles
+	}Gitsn_VehicleGroupAffected;
+
+	typedef enum Gitsn_IncidentResponseEquipment
+	{
+		ground-fire-suppression = 9985,
+		heavy-ground-equipment,
+		aircraft,
+		marine-equipment,
+		support-equipment,
+		medical-rescue-unit,
+		other,
+		ground-fire-suppression-other,
+		engine,
+		truck-or-aerial,
+		quint,
+		tanker-pumper-combination,
+		brush-truck,
+		aircraft-rescue-firefighting,
+		heavy-ground-equipment-other,
+		dozer-or-plow,
+		tractor,
+		tanker-or-tender,
+		aircraft-other,
+		aircraft-fixed-wing-tanker,
+		helitanker,
+		helicopter,
+		marine-equipment-other,
+		fire-boat-with-pump,
+		boat-no-pump,
+		support-apparatus-other,
+		breathing-apparatus-support,
+		light-and-air-unit,
+		medical-rescue-unit-other,
+		rescue-unit,
+		urban-search-rescue-unit,
+		high-angle-rescue,
+		crash-fire-rescue,
+		bLS-unit,
+		aLS-unit,
+		mobile-command-post,
+		chief-officer-car,
+		hAZMAT-unit,
+		type-i-hand-crew,
+		type-ii-hand-crew,
+		privately-owned-vehicle,
+		other-apparatus-resource,
+		ambulance,
+		bomb-squad-van,
+		combine-harvester,
+		construction-vehicle,
+		farm-tractor,
+		grass-cutting-machines,
+		hAZMAT-containment-tow,
+		heavy-tow,
+		light-tow,
+		flatbed-tow,
+		hedge-cutting-machines,
+		mobile-crane,
+		refuse-collection-vehicle,
+		resurfacing-vehicle,
+		road-sweeper,
+		roadside-litter-collection-crews,
+		salvage-vehicle,
+		sand-truck,
+		snowplow,
+		steam-roller,
+		swat-team-van,
+		track-laying-vehicle,
+		unknown-vehicle,
+		white-lining-vehicle,
+		dump-truck,
+		supervisor-vehicle,
+		snow-blower,
+		rotary-snow-blower,
+		road-grader,
+		steam-truck
+	} Gitsn_IncidentResponseEquipment;
+
+	typedef enum Gitsn_ResponderGroupAffected
+	{
+		emergency-vehicle-units = 9729,
+		
+		federal-law-enforcement-units,
+		state-police-units,
+		county-police-units,
+		local-police-units,
+		ambulance-units,
+		rescue-units,
+		fire-units,
+		hAZMAT-units,
+		light-tow-unit,
+		heavy-tow-unit,
+		freeway-service-patrols,
+		transportation-response-units,
+		private-contractor-response-units
+	} Gitsn_ResponderGroupAffected;
+
+	typedef enum Gitsn_WiperStatus
+	{
+		unavailable,
+		off,
+		intermittent,
+		low,
+		high,
+		washerInUse,
+		automaticPresent
+	} Gitsn_WiperStatus;
+
+	typedef enum Gitsn_TractionControlStatus
+	{
+		unavailable,
+		off,
+		on,
+		engaged
+	} Gitsn_TractionControlStatus;	
+
+	typedef enum Gitsn_AntiLockBrakeStatus
+	{
+		unavailable,
+		off,
+		on,
+		engaged
+	} Gitsn_AntiLockBrakeStatus;
+
+	typedef enum Gitsn_StabilityControlStatus
+	{
+		unavailable,
+		off,
+		on,
+		engaged
+	} Gitsn_StabilityControlStatus;	
+
+	typedef enum Gitsn_BrakeBoostApplied
+	{
+		unavailable,
+		off,
+		on
+	} Gitsn_BrakeBoostApplied;	
+
+	typedef enum Gitsn_AuxiliaryBrakeStatus
+	{
+		unavailable,
+		off,
+		on,
+		reserved
+	} Gitsn_AuxiliaryBrakeStatus;	
+
+	typedef enum Gitsn_BrakeAppliedPressure
+	{
+		unavailable,
+		minPressure,
+		bkLvl_2,
+		bkLvl_3,
+		bkLvl_4,
+		bkLvl_5,
+		bkLvl_6,
+		bkLvl_7,
+		bkLvl_8,
+		bkLvl_9,
+		bkLvl_10,
+		bkLvl_11,
+		bkLvl_12,
+		bkLvl_13,
+		bkLvl_14,
+		maxPressure
+	} Gitsn_BrakeAppliedPressure;		
+
+	typedef enum Gitsn_SteeringWheelAngleConfidence
+	{
+		unavailable,
+		prec2deg,
+		prec1deg,
+		prec0_02deg
+	} Gitsn_SteeringWheelAngleConfidence;
+
+	typedef enum Gitsn_YawRateConfidence
+	{
+		unavailable,
+		degSec_100_00,
+		degSec_010_00,
+		degSec_005_00,
+		degSec_001_00,
+		degSec_000_10,
+		degSec_000_05,
+		degSec_000_01
+	} Gitsn_YawRateConfidence;
+
+	typedef enum Gitsn_AccelerationConfidence
+	{
+		unavailable,
+		accl_100_00,
+		accl_010_00,
+		accl_005_00,
+		accl_001_00,
+		accl_000_10,
+		accl_000_05,
+		accl_000_01
+	} Gitsn_AccelerationConfidence;
+
+	typedef enum Gitsn_WheelSensorStatus
+	{
+		off,
+		on,
+		notDefined,
+		notSupported
+	} Gitsn_WheelSensorStatus;
+
+	typedef enum Gitsn_WheelEndElectFault
+	{
+		isOk,
+		isNotDefined,
+		isError,
+		isNotSupported
+	} Gitsn_WheelEndElectFault;	
+
+	typedef enum Gitsn_TirePressureThresholdDetection
+	{
+		noData,
+		overPressure,
+		noWarningPressure,
+		underPressure,
+		extremeUnderPressure,
+		undefined,
+		errorIndicator,
+		notAvailable
+	} Gitsn_TirePressureThresholdDetection;
+
+	typedef enum Gitsn_EssPrecipYesNo
+	{
+		EssPrecipYesNo_precip = 1,
+		EssPrecipYesNo_noPrecip,
+		EssPrecipYesNo_error
+	} Gitsn_EssPrecipYesNo;
+
+	typedef enum Gitsn_EssPrecipSituation
+	{
+		EssPrecipSituation_other = 1,
+		EssPrecipSituation_unknown,
+		EssPrecipSituation_noPrecipitation,
+		EssPrecipSituation_unidentifiedSlight,
+		EssPrecipSituation_unidentifiedModerate,
+		EssPrecipSituation_unidentifiedHeavy,
+		EssPrecipSituation_snowSlight,
+		EssPrecipSituation_snowModerate,
+		EssPrecipSituation_snowHeavy,
+		EssPrecipSituation_rainSlight,
+		EssPrecipSituation_rainModerate,
+		EssPrecipSituation_rainHeavy,
+		EssPrecipSituation_frozenPrecipitationSlight,
+		EssPrecipSituation_frozenPrecipitationModerate,
+		EssPrecipSituation_frozenPrecipitationHeavy
+	} Gitsn_EssPrecipSituation;
+
+	typedef enum Gitsn_LayerType
+	{
+		none,
+		mixedContent,
+		generalMapData,
+		intersectionData,
+		curveData,
+		roadwaySectionData,
+		parkingAreaData,
+		sharedLaneData
+	} Gitsn_LayerType;
+
+	typedef enum Gitsn_SpeedLimitType
+	{
+		unknown,
+		maxSpeedInSchoolZone,
+		maxSpeedInSchoolZoneWhenChildrenArePresent,
+		maxSpeedInConstructionZone,
+		
+		vehicleMinSpeed,
+		vehicleMaxSpeed,
+		vehicleNightMaxSpeed,
+
+		truckMinSpeed,
+		truckMaxSpeed,
+		truckNightMaxSpeed,
+
+		vehicleWithTrailersMinSpeed,
+		vehicleWithTrailersMaxSpeed,
+		vehicleWithTrailersNightMaxSpeed
+		-- e
+	} Gitsn_SpeedLimitType;
+	typedef enum Gitsn_NodeAttributeXY
+	{
+		-- General Items
+		reversed,
+		stopLine,
+
+		-- Path finish details
+		roundedCapStyleA,
+		roundedCapStyleB,
+
+		-- Topography Points (items with no concept of a distance along the path)
+		mergePoint,
+		divergePoint,
+		downstreamStopLine,
+		downstreamStartNode,
+
+		-- Pedestrian Support Attributes
+		closedToTraffic,
+		safeIsland,
+		curbPresentAtStepOff,
+
+		-- Lane geometry details (see standard for defined shapes)
+		hydrantPresent
+		
+		-- e
+	} Gitsn_NodeAttributeXY;			// with api dump, clone			
+
+	typedef enum Gitsn_SegmentAttributeXY
+	{
+		-- General Items
+		reserved,
+		doNotBlock,
+		whiteLine,
+
+		-- Porous Lane states, merging, turn outs, packing etc.
+		mergingLaneLeft,
+		megingLaneRight,
+		curbOnLeft,
+		curbOnRight,
+		loadingzoneOnLeft,
+		loadingzoneOnRight,
+		turnOutPointOnLeft,
+		turnOutPointOnRight,
+		
+		-- Bike Lane Needs
+		adjacentBikeLaneOnLeft,
+		adjacentBikeLaneOnRight,
+		sharedBikeLane,
+		bikeBoxInFront,
+
+		-- Transit Needs
+		transitStopOnLeft,
+		transitStopOnRight,
+		transitStopInLane,
+		sharedWithTrackedVehicle,
+
+		-- Pedestrian Support Attributes
+		safeIsland,
+		lowCurbsPresent,
+		rumbleStipPresent,
+		audibleSignalingPresent,
+		adaptiveTimingPresent,
+		rfSignalRequestPresent,
+		partialCurbIntrusion,
+
+		-- Lane geometry details (see standard for defined shapes)
+		taperToLeft,
+		taperToRight,
+		taperToCenterLine,
+
+		-- Parking Lane and Curb Attributes
+		parallelParking,
+		headInParking,
+		freeParking,
+		timeRestrictionsOnParking,
+		constToPark,
+		midBlockCurbPresent,
+		unEvenPavementPresent
+		-- e
+	} Gitsn_SegmentAttributeXY;				// with api dump, clone
+
+	typedef enum Gitsn_RestrictionAppliesTo
+	{
+		none,
+		equippedTransit,
+		equippedTaxis,
+		equippedOther,
+		emissionCompliant,
+		equippedBicycle,
+		weightCompliant,
+		heightCompliant,
+		pedestrians,
+		slowMovingPersons,
+		wheelchairUsers,
+		visualDisabilities,
+		audioDisabilities,
+		otherUnknownDisabilities
+	} Gitsn_RestrictionAppliesTo;
+
+	typedef enum Gitsn_MovementPhaseState
+	{
+		unavailable,
+		dark,
+		stop_Then_Proceed,
+		stop_And_Remain,
+		pre_Movement,
+		permissive_Movement_Allowed,
+		protected_Movement_Allowed,
+		permissive_clearance,
+		protected_clearance,
+		caution_Conflicting_Traffic
+	} Gitsn_MovementPhaseState;
+
+	typedef enum Gitsn_AdvisorySpeedType
+	 {
+		none,
+		greenwave,
+		ecoDrive,
+		transit
+	 } Gitsn_AdvisorySpeedType;
+
+	 typedef enum Gitsn_Extent
+	 {
+		useInstantlyOnly     = 0,
+		useFor3meters        = 1,
+		useFor10meters       = 2,
+		useFor50meters       = 3,
+		useFor100meters      = 4,
+		useFor500meters      = 5,
+		useFor1000meters     = 6,
+		useFor5000meters     = 7,
+		useFor10000meters    = 8,
+		useFor50000meters    = 9,
+		useFor100000meters   = 10,
+		useFor500000meters   = 11,
+		useFor1000000meters  = 12,
+		useFor5000000meters  = 13,
+		useFor10000000meters = 14,
+		forever              = 15  -- very wide area
+	 } Gitsn_Extent;
+
+	 typedef enum Gitsn_TravelerInfoType
+	 {
+		unknown			= 0,
+		advisory		= 1,
+		roadSignage		= 2,
+		commercialSignage = 3
+	 } Gitsn_TravelerInfoType;	
+
+	 typedef enum Gitsn_MUTCDCode
+	 {
+		none			= 0,
+		regulartory		= 1,
+		warning			= 2,
+		maintenance		= 3,
+		motoristService	= 4,
+		guide			= 5,
+		rec				= 6
+	 } Gitsn_MUTCDCode;
+
+	 typedef enum Gitsn_DirectionOfUse
+	 {
+		unavailable			= 0,
+		forward				= 1,
+		reverse				= 2,
+		both				= 3
+	 } Gitsn_DirectionOfUse;
+
+	 typedef enum Gitsn_NodeAttributeLL
+	 {
+		-- Various values which pertain only to the current node point
+   
+		   -- General Items
+		   reserved,  
+		   stopLine,             -- point where a mid-path stop line exists
+								 -- See also 'do not block' for segments
+
+		   -- Path finish details 
+		   roundedCapStyleA,      -- Used to control final path rounded end shape
+								  -- with edge of curve at final point in a circle
+		   roundedCapStyleB,      -- Used to control final path rounded end shape
+								  -- with edge of curve extending 50% of width past
+								  -- final point in a circle
+   
+		   -- Topography Points (items with no concept of a distance along the path)
+		   mergePoint,           -- Japan merge with 1 or more lanes
+		   divergePoint,         -- Japan diverge with 1 or more lanes
+		   downstreamStopLine,   -- Japan style downstream intersection 
+										   -- (a 2nd intersection) stop line
+		   downstreamStartNode,  -- Japan style downstream intersection 
+										   -- (a 2nd intersection) start node
+     
+		   -- Pedestrian Support Attributes
+		   closedToTraffic,      -- where a pedestrian may NOT go
+								 -- to be used during construction events
+		   safeIsland,           -- a pedestrian safe stopping point
+								 -- also called a traffic island
+								 -- This usage described a point feature on a path, 
+								 -- other entries can describe a path
+		   curbPresentAtStepOff, -- the sidewalk to street curb is NOT 
+								 -- angled where it meets the edge of the 
+								 -- roadway (user must step up/down)
+ 
+		   -- Lane geometry details  (see standard for defined shapes)
+		 hydrantPresent       -- Or other services access 
+	 } Gitsn_NodeAttributeLL;		// with api dump, clone
+
+	 typedef enum Gitsn_SegmentAttributeLL
+	 {
+		reserved			= 0,  
+	   doNotBlock           = 1,
+	   whiteLine            = 2,
+	   mergingLaneLeft      = 3,  -- indicates porous lanes
+	   mergingLaneRight     = 4,
+	   curbOnLeft           = 5,  -- indicates presence of curbs
+	   curbOnRight          = 6,
+	   loadingzoneOnLeft    = 7,  -- loading or drop off zones
+	   loadingzoneOnRight   = 8,
+	   turnOutPointOnLeft   = 9,  -- opening to adjacent street/alley/road
+	   turnOutPointOnRight  = 10,
+	   adjacentParkingOnLeft   = 11, 
+	   adjacentParkingOnRight  = 12,
+	   adjacentBikeLaneOnLeft    = 13, 
+	   adjacentBikeLaneOnRight   = 14,
+	   sharedBikeLane            = 15, 
+	   bikeBoxInFront            = 16,
+	   transitStopOnLeft         = 17, 
+	   transitStopOnRight        = 18, 
+	   transitStopInLane         = 19, 
+	   sharedWithTrackedVehicle  = 20, 
+	   safeIsland                = 21, 
+	   lowCurbsPresent           = 22, 
+	   rumbleStripPresent        = 23, 
+	   audibleSignalingPresent   = 24, 
+	   adaptiveTimingPresent     = 25, 
+	   rfSignalRequestPresent    = 26, 
+	   partialCurbIntrusion      = 27, 
+	   taperToLeft               = 28, 
+	   taperToRight              = 29, 
+	   taperToCenterLine         = 30, 
+	   parallelParking            = 31, 
+	   headInParking              = 32, 
+	   freeParking                = 33, 
+	   timeRestrictionsOnParking  = 34, 
+	   costToPark                = 35, 
+	   midBlockCurbPresent       = 36, 
+	   unEvenPavementPresent     = 37 
+	} Gitsn_SegmentAttributeLL;	// with api dump, clone
+
+	typedef enum Gitsn_DistanceUnits
+	{
+		centimeter = 0,
+		cm2 = 1,
+		decimeter = 2,
+		meter = 3,
+		kilometer = 4,
+		foot = 5,
+		yard = 6,
+		mile = 7 
+	} Gitsn_DistanceUnits;
+
+	-- TLS
+	typedef enum Gitsn_TrafficLightType
+	{
+		reserved        = 0,
+		straight        = 1,
+		left-turn       = 2,
+		pedestrian      = 3,
+		bicycle         = 4,
+		right-turn      = 5,
+		bus             = 6,
+		u-turn          = 7
+	} Gitsn_TrafficLightType;		// with api dump, clone
+
+	typedef enum Gitsn_ConsecutiveTrafficLight
+	{
+		none    = 0,
+		first   = 1,
+		second  = 2
+	} Gitsn_ConsecutiveTrafficLight;		// with api dump, clone
+
+	typedef enum Gitsn_TrafficLightIntervalType
+	{
+		static		= 0,
+		variable	= 1
+	} Gitsn_TrafficLightIntervalType;		// with api dump, clone
+
+	typedef enum Gitsn_PermissiveNonProtected
+	{
+		none			= 0,
+		permissive		= 1
+	} Gitsn_PermissiveNonProtected;		// with api dump, clone
+
+	typedef enum Gitsn_TrafficLightingStatus
+	{
+		off             = 0,
+		red-on          = 1,
+		yellow-on       = 2,
+		green-on        = 3,
+		red-blinking    = 4,
+		yellow-blinking = 5,
+		green-blinking  = 6
+	} Gitsn_TrafficLightingStatus;		// with api dump, clone
+
+	-- DF
+
+	typedef struct Gitsn_PositionalAccuracy
+	{
+		Gitsn_SemiMajorAxisAccuracy		semiMajor;
+		Gitsn_SemiMinorAxisAccuracy		semiMinor;
+		Gitsn_SemiMajorAxisOrientation		orientation;
+	} Gitsn_PositionalAccuracy;		// with api dump, clone
+
+	typedef struct Gitsn_AccelerationSet4Way
+	{
+		Gitsn_Acceleration				 lon;
+		Gitsn_Acceleration				 lat;
+		Gitsn_VerticalAcceleration		 vert;
+		Gitsn_YawRate					 yaw;
+	} Gitsn_AccelerationSet4Way;		// with api dump, clone
+
+	typedef struct Gitsn_BrakeSystemStatus
+	{
+		Gitsn_BrakeAppliedStatus			*wheelBrakes;
+		Gitsn_TractionControlStatus		 traction;
+		Gitsn_AntiLockBrakeStatus			 abs;
+		Gitsn_StabilityControlStatus		 scs;
+		Gitsn_BrakeBoostApplied			 brakeBoost;
+		Gitsn_AuxiliaryBrakeStatus			 auxBrakes;
+	} Gitsn_BrakeSystemStatus;		// with api dump, clone
+
+	typedef struct Gitsn_VehicleSize
+	{
+		Gitsn_VehicleWidth					width;
+		Gitsn_VehicleLength				length;
+	} Gitsn_VehicleSize;				// with api dump, clone
+
+	typedef struct Gitsn_BSMCoreData
+	{
+		Gitsn_MsgCount				 msgCnt;
+		Gitsn_TemporaryID			 id;
+		Gitsn_DSecond				 secMark;
+		Gitsn_Latitude				 lat;
+		Gitsn_Longitude			 lon;
+		Gitsn_Elevation			 elev;
+		Gitsn_PositionalAccuracy	*accuracy;
+		Gitsn_TransmissionState	 transmission;
+		Gitsn_Speed				 speed;
+		Gitsn_Heading				 heading;
+		Gitsn_SteeringWheelAngle	 angle;
+		Gitsn_AccelerationSet4Way	*accelSet;
+		Gitsn_BrakeSystemStatus	*brakes;
+		Gitsn_VehicleSize			*size;
+	} Gitsn_BSMCoreData;		// with api dump, clone
+
+	typedef struct Gitsn_IntersectionReferenceID
+	{
+		Gitsn_RoadRegulatorID			 region;		// is notarg
+		Gitsn_IntersectionID				 id;
+	} Gitsn_IntersectionReferenceID;		// with api dump, clone
+
+	typedef struct Gitsn_Position3D
+	{
+		Gitsn_Latitude					 lat;
+		Gitsn_Longitude					 lon;
+		Gitsn_Elevation					 elevation;		// is notarg
+		-- region
+	} Gitsn_Position3D;				// with api dump, clone
+
+	typedef struct Gitsn_RegulatorySpeedLimit
+	{
+		Gitsn_SpeedLimitType			 type;
+		Gitsn_Velocity				 speed;
+	} Gitsn_RegulatorySpeedLimit;	// with api dump, clone
+	typedef array Gitsn_SpeedLimitList(gethead, extract) [Gitsn_RegulatorySpeedLimit];
+
+	typedef union Gitsn_LaneTypeAttributes
+	{
+		Gitsn_LaneAttributes_Vehicle				*vehicle;				-- BIT STRING SIZE (8, ...)
+		Gitsn_LaneAttributes_Crosswalk			*crosswalk;				-- BIT STRING SIZE (16)
+		Gitsn_LaneAttributes_Bike				*bikeLane;				-- BIT STRING SIZE (16)
+		Gitsn_LaneAttributes_Sidewalk			*sidewalk;				-- BIT STRING SIZE (16)
+		Gitsn_LaneAttributes_Barrier				*median;				-- BIT STRING SIZE (16)
+		Gitsn_LaneAttributes_Striping			*striping;				-- BIT STRING SIZE (16)
+		Gitsn_LaneAttributes_TrackedVehicle		*trackedVehicle;		-- BIT STRING SIZE (16)
+		Gitsn_LaneAttributes_Parking				*parking;				-- BIT STRING SIZE (16)
+	} Gitsn_LaneTypeAttributes;		// with api dump, clone
+
+	typedef struct Gitsn_LaneAttributes
+	{
+		Gitsn_LaneDirection			*directionalUse;		 -- BIT STRING SIZE(2)
+		Gitsn_LaneSharing			*sharedWith;			 -- BIT STRING SIZE(10)
+		Gitsn_LaneTypeAttributes		*laneType;
+		-- regional
+	} Gitsn_LaneAttributes;			// with api dump, clone
+
+	typedef struct Gitsn_Node_XY_20b
+	{
+		Gitsn_Offset_B10					 x;
+		Gitsn_Offset_B10					 y;
+	} Gitsn_Node_XY_20b;					// with api dump, clone
+	
+	typedef struct Gitsn_Node_XY_22b
+	{
+		Gitsn_Offset_B11					 x;
+		Gitsn_Offset_B11					 y;
+	} Gitsn_Node_XY_22b;					// with api dump, clone
+
+	typedef struct Gitsn_Node_XY_24b
+	{
+		Gitsn_Offset_B12					 x;
+		Gitsn_Offset_B12					 y;
+	} Gitsn_Node_XY_24b;					// with api dump, clone
+
+	typedef struct Gitsn_Node_XY_26b
+	{
+		Gitsn_Offset_B13					 x;
+		Gitsn_Offset_B13					 y;
+	} Gitsn_Node_XY_26b;					// with api dump, clone
+
+	typedef struct Gitsn_Node_XY_28b
+	{
+		Gitsn_Offset_B14					 x;
+		Gitsn_Offset_B14					 y;
+	} Gitsn_Node_XY_28b;					// with api dump, clone
+
+	typedef struct Gitsn_Node_XY_32b
+	{
+		Gitsn_Offset_B16					 x;
+		Gitsn_Offset_B16					 y;
+	} Gitsn_Node_XY_32b;					// with api dump, clone
+
+	typedef struct Gitsn_Node_LLmD_64b
+	{
+		Gitsn_Longitude					 lon;
+		Gitsn_Latitude					 lat;
+	} Gitsn_Node_LLmD_64b;				// with api dump, clone
+
+	typedef union Gitsn_NodeOffsetPointXY
+	{
+		Gitsn_Node_XY_20b				*node_XY1;
+		Gitsn_Node_XY_22b				*node_XY2;
+		Gitsn_Node_XY_24b				*node_XY3;
+		Gitsn_Node_XY_26b				*node_XY4;
+		Gitsn_Node_XY_28b				*node_XY5;
+		Gitsn_Node_XY_32b				*node_XY6;
+		Gitsn_Node_LLmD_64b				*node_LatLon;
+	} Gitsn_NodeOffsetPointXY;			// with api dump, clone
+
+	typedef array Gitsn_NodeAttributeXYList (gethead, extract) [Gitsn_NodeAttributeXY];		-- (SIZE(1..8))
+
+	typedef array Gitsn_SegmentAttributeXYList (gethead, extract) [Gitsn_SegmentAttributeXY];	-- (SIZE(1..8))
+
+	typedef union Gitsn_LaneDataAttribute
+	{
+		Gitsn_DeltaAngle					 pathEndPointAngle;
+		Gitsn_RoadwayCrownAngle			 laneCrownPointCenter;
+		Gitsn_RoadwayCrownAngle			 laneCrownPointLeft;
+		Gitsn_RoadwayCrownAngle			 laneCrownPointRight;
+		Gitsn_MergeDivergeNodeAngle		 laneAngle;
+		Gitsn_SpeedLimitList				*speedLimits;
+		-- regional
+	} Gitsn_LaneDataAttribute;			// with api dump, clone
+	typedef array Gitsn_LaneDataAttributeList (gethead, extract) [Gitsn_LaneDataAttribute]; -- (SIZE(1..8))
+
+	typedef struct Gitsn_NodeAttributeSetXY
+	{
+		Gitsn_NodeAttributeXYList		*localNode;			// is notarg
+		Gitsn_SegmentAttributeXYList		*disabled;			// is notarg
+		Gitsn_SegmentAttributeXYList		*enabled;			// is notarg
+		Gitsn_LaneDataAttributeList		*data;				// is notarg
+		Gitsn_Offset_B10					 dWidth;			// is notarg
+		Gitsn_Offset_B10					 dElevation;		// is notarg
+		-- regional
+	} Gitsn_NodeAttributeSetXY;			// with api dump, clone
+
+	typedef struct Gitsn_NodeXY
+	{
+		Gitsn_NodeOffsetPointXY			*delta;
+		Gitsn_NodeAttributeSetXY			*attributes;
+	} Gitsn_NodeXY;					// with api dump, clone
+	typedef array Gitsn_NodeSetXY (gethead, extract) [Gitsn_NodeXY];	-- (SIZE(2..64))
+
+	typedef union Gitsn_ComputedLane_offsetXaxis
+	{
+		Gitsn_DrivenLineOffsetSm			 small;
+		Gitsn_DrivenLineOffsetLg			 large;
+	} Gitsn_ComputedLane_offsetXaxis;		// with api dump, clone
+
+	typedef union Gitsn_ComputedLane_offsetYaxis
+	{
+		Gitsn_DrivenLineOffsetSm			 small;
+		Gitsn_DrivenLineOffsetLg			 large;
+	} Gitsn_ComputedLane_offsetYaxis;		// with api dump, clone
+
+	typedef struct Gitsn_ComputedLane
+	{
+		Gitsn_LaneID						 referenceLaneId;
+		Gitsn_ComputedLane_offsetXaxis	*offsetXaxis;
+		Gitsn_ComputedLane_offsetYaxis	*offsetYaxis;
+		Gitsn_Angle						 rotateXY;			// is notarg
+		Gitsn_Scale_B12					 scaleXaxis;	// is notarg
+		Gitsn_Scale_B12					 scaleYaxis;	// is notarg
+		-- regional
+	} Gitsn_ComputedLane;			// with api dump, clone
+
+	typedef union Gitsn_NodeListXY
+	{
+		Gitsn_NodeSetXY					*nodes;
+		Gitsn_ComputedLane				*computed;
+	} Gitsn_NodeListXY;				// with api dump, clone
+
+	typedef struct Gitsn_ConnectingLane
+	{
+		Gitsn_LaneID						 lane;
+		Gitsn_AllowedManeuvers			*maneuver;		// is notarg	-- BIT STRING SIZE (12)
+	} Gitsn_ConnectingLane;		// with api dump, clone
+	
+	typedef struct Gitsn_Connection
+	{
+		Gitsn_ConnectingLane				*connecctingLnae;
+		Gitsn_IntersectionReferenceID	*remoteIntersection;		// is notarg
+		Gitsn_SignalGroupID				 signalGroup;				// is notarg
+		Gitsn_RestrictionClassID			 userClass;					// is notarg
+		Gitsn_LaneConnectionID			 connectionID;				// is notarg
+	} Gitsn_Connection;		// with api dump, clone
+	typedef array Gitsn_ConnectsToList (gethead, extract) [Gitsn_Connection];
+
+	typedef array Gitsn_OverlayLaneList (gethead, extract) [Gitsn_LaneID];
+
+	typedef struct Gitsn_GenericLane
+	{
+		Gitsn_LaneID						 laneID;
+		Gitsn_DescriptiveName			 name;				// is notarg  -- IA5String (SIZE(1..63))
+		Gitsn_ApproachID					 ingressApproach;	// is notarg
+		Gitsn_ApproachID					 egressApproach;	// is notarg
+		Gitsn_LaneAttributes				*laneAttributes;	
+		Gitsn_AllowedManeuvers			*maneuvers;			// is notarg	-- BIT STRING SIZE(12)
+		Gitsn_NodeListXY					*nodeList;			
+		Gitsn_ConnectsToList				*connectsTo;		// is notarg
+		Gitsn_OverlayLaneList			*overlays;			// is notarg
+		-- region
+	} Gitsn_GenericLane;		// with api dump, clone
+	typedef array Gitsn_LaneList (gethead, extract) [Gitsn_GenericLane];
+
+	typedef struct Gitsn_SignalControlZone
+	{
+		uint8						 *zone;		-- j2735¿Í ´Ù¸§
+	} Gitsn_SignalControlZone; // with api dump, clone
+	typedef array Gitsn_PreemptPriorityList(gethead, extract) [Gitsn_SignalControlZone];
+
+
+	typedef struct Gitsn_IntersectionGeometry
+	{
+		Gitsn_DescriptiveName			 name;					// is notarg
+		Gitsn_IntersectionReferenceID	*id;
+		Gitsn_MsgCount					 revision;
+		Gitsn_Position3D				*refPoint;
+		Gitsn_LaneWidth				 laneWidth;				// is notarg
+		Gitsn_SpeedLimitList			*speedLimits;			// is notarg
+		Gitsn_LaneList					*laneSet;			
+		Gitsn_PreemptPriorityList		*preemptPriorityData;	// is notarg
+	} Gitsn_IntersectionGeometry;		// with api dump, clone
+	typedef array Gitsn_IntersectionGeometryList(gethead, extract) [Gitsn_IntersectionGeometry];	
+
+	typedef struct Gitsn_RoadSegmentReferenceID
+	{
+		Gitsn_RoadRegulatorID			 region;
+		Gitsn_RoadSegmentID				 id;
+	} Gitsn_RoadSegmentReferenceID;		// with api dump, clone
+
+	typedef array Gitsn_RoadLaneSetList(gethead, extract) [Gitsn_GenericLane];
+
+	typedef struct Gitsn_RoadSegment
+	{
+		Gitsn_DescriptiveName			 name;			// is notarg -- IA5String (SIZE(1..63))
+		Gitsn_RoadSegmentReferenceID		*id;
+		Gitsn_MsgCount					 revision;
+		Gitsn_Position3D					*refPoint;
+		Gitsn_LaneWidth					 laneWidth;		// is notarg
+		Gitsn_SpeedLimitList				*speedLimits;	// is notarg
+		Gitsn_RoadLaneSetList			*roadLaneSet;
+		-- region
+	} Gitsn_RoadSegment;		// with api dump, clone
+	typedef array Gitsn_RoadSegmentList(gethead, extract) [Gitsn_RoadSegment];
+
+	typedef struct Gitsn_DataParameters
+	{
+		TString						 processMethod;  // is notarg		-- IA5String (SIZE(1..255))
+		TString						 processAgency;  // is notarg		-- IA5String (SIZE(1..255))
+		TString						 lastCheckedDate;  // is notarg		-- IA5String (SIZE(1..255))
+		TString						 geoidUsed;  // is notarg			-- IA5String (SIZE(1..255))
+	} Gitsn_DataParameters;		// with api dump, clone
+
+	typedef union Gitsn_RestrictionUserType
+	{
+		Gitsn_RestrictionAppliesTo			basicType;
+	} Gitsn_RestrictionUserType;		// with api dump, clone
+
+	typedef array Gitsn_RestrictionUserTypeList(gethead, extract) [Gitsn_RestrictionUserType];
+
+	typedef struct Gitsn_RestrictionClassAssignment
+	{
+		Gitsn_RestrictionClassID					id;
+		Gitsn_RestrictionUserTypeList			*users;
+	} Gitsn_RestrictionClassAssignment;		// with api dump, clone
+
+	typedef array Gitsn_RestrictionClassList(gethead, extract) [Gitsn_RestrictionClassAssignment];
+
+	typedef array Gitsn_EnabledLaneList (gethead, extract) [Gitsn_LaneID];
+
+	 typedef struct Gitsn_AdvisorySpeed
+	 {
+		Gitsn_AdvisorySpeedType				 type;
+		Gitsn_SpeedAdvice					 speed;				// is notarg
+		Gitsn_SpeedConfidence				 confidence;		// is notarg
+		Gitsn_ZoneLength						 distance;			// is notarg
+		Gitsn_RestrictionClassID				 class;				// is notarg
+		-- AdvisorySpeed_regional regional;
+	 } Gitsn_AdvisorySpeed;				// with api dump, clone
+	 typedef array Gitsn_AdvisorySpeedList (gethead, extract) [Gitsn_AdvisorySpeed];
+
+	 typedef struct Gitsn_TimeChangeDetails
+	 {
+		Gitsn_TimeMark						 startTime;						// is notarg
+		Gitsn_TimeMark						 minEndTime;					// is notarg
+		Gitsn_TimeMark						 maxEndTime;					// is notarg
+		Gitsn_TimeMark						 likelyTime;					// is notarg
+		Gitsn_TimeIntervalConfidence			 confidence;					// is notarg
+		Gitsn_TimeMark						 nextTime;						// is notarg
+	 } Gitsn_TimeChangeDetails;			// with api dump, clone
+
+	typedef struct Gitsn_MovementEvent
+	{
+		Gitsn_MovementPhaseState					 eventState;
+		Gitsn_TimeChangeDetails					*timing;				// is notarg
+		Gitsn_AdvisorySpeedList					*speeds;				// is notarg
+		-- MovementEvent_regional
+	}Gitsn_MovementEvent;		// with api dump, clone
+	typedef array Gitsn_MovementEventList (gethead, extract) [Gitsn_MovementEvent];
+
+	typedef struct Gitsn_ConnectionManeuverAssist
+	{
+		Gitsn_LaneConnectionID					 connectionID;
+		Gitsn_ZoneLength							 queueLength;					// is notarg
+		Gitsn_ZoneLength							 availableStorageLength;		// is notarg
+		Gitsn_WaitOnStopline						 waitOnStop;					// is notarg
+		Gitsn_PedestrianBicycleDetect			 pedBicycleDetect;				// is notarg
+		-- ConnectionManeuverAssist_regional regional;
+	} Gitsn_ConnectionManeuverAssist;		// with api dump, clone
+	typedef array Gitsn_ManeuverAssistList (gethead, extract) [Gitsn_ConnectionManeuverAssist];
+
+	typedef struct Gitsn_MovementState
+	{
+		Gitsn_DescriptiveName					 movementName;					// is notarg
+		Gitsn_SignalGroupID						 signalGroup;
+		Gitsn_MovementEventList					*state_time_speed;				
+		Gitsn_ManeuverAssistList					*maneuverAssistList;			// is notarg
+		--MovementState_regional
+	} Gitsn_MovementState;			// with api dump, clone
+	typedef array Gitsn_MovementList (gethead, extract) [Gitsn_MovementState];
+
+	typedef struct Gitsn_IntersectionState
+	{
+		Gitsn_DescriptiveName							 name;					// is notarg
+		Gitsn_IntersectionReferenceID					*id;			
+		Gitsn_MsgCount									 revision;
+		Gitsn_IntersectionStatusObject					*status;
+		Gitsn_MinuteOfTheYear							 moy;					// is notarg
+		Gitsn_DSecond									 timeStamp;				// is notarg
+		Gitsn_EnabledLaneList							*enabledLanes;			// is notarg
+		Gitsn_MovementList								*states;				// is notarg
+		Gitsn_ManeuverAssistList							*maneuverAssistList;	// is notarg
+		-- Gitsn_IntersectionState_regional
+	} Gitsn_IntersectionState;				// with api dump, clone
+	typedef array Gitsn_IntersectionStateList (gethead, extract) [Gitsn_IntersectionState];
+
+	typedef union Gitsn_VehicleID
+	{
+		Gitsn_TemporaryID							 entityID;
+		Gitsn_StationID							 stationID;
+	} Gitsn_VehicleID;		// with api dump, clone
+
+	typedef union Gitsn_VehicleIdent_vehicleClass
+	{
+		Gitsn_VehicleGroupAffected				 vGroup;
+		Gitsn_ResponderGroupAffected				 rGroup;
+		Gitsn_IncidentResponseEquipment			 rEquip;
+	} Gitsn_VehicleIdent_vehicleClass;		// with api dump, clone
+
+	typedef struct Gitsn_VehicleIdent
+	{
+		Gitsn_DescriptiveName						 name;				// is notarg
+		Gitsn_VINstring								 vin;				// is notarg
+		Gitsn_IA5String								 ownerCode;			// is notarg
+		Gitsn_VehicleID								*id;				// is notarg
+		Gitsn_VehicleType							 vehicleType;		// is notarg
+		Gitsn_VehicleIdent_vehicleClass				*vehicleClass;		// is notarg
+	} Gitsn_VehicleIdent;			// with api dump, clone
+
+	typedef struct Gitsn_DDateTime
+	{			
+		Gitsn_DYear		 year;		// is notarg
+		Gitsn_DMonth		 month;		// is notarg
+		Gitsn_DDay		 day;		// is notarg
+		Gitsn_DHour		 hour;		// is notarg
+		Gitsn_DMinute	 minute;	// is notarg
+		Gitsn_DSecond	 second;	// is notarg
+		Gitsn_DOffset	 offset;	// is notarg
+	} Gitsn_DDateTime;				// with api dump, clone
+
+	typedef struct Gitsn_TransmissionAndSpeed
+	{
+		Gitsn_TransmissionState		 transmission;
+		Gitsn_Velocity				 speed;
+	} Gitsn_TransmissionAndSpeed;		// with api dump, clone
+
+	typedef struct Gitsn_PositionConfidenceSet
+	{
+		Gitsn_PositionConfidence			 pos;
+		Gitsn_ElevationConfidence		 elevation;
+	} Gitsn_PositionConfidenceSet;		// with api dump, clone
+
+	typedef struct Gitsn_SpeedandHeadingandThrottleConfidence
+	{
+		Gitsn_HeadingConfidence			 heading;
+		Gitsn_SpeedConfidence			 speed;
+		Gitsn_ThrottleConfidence			 throttle;
+	} Gitsn_SpeedandHeadingandThrottleConfidence;		// with api dump, clone
+
+	typedef struct Gitsn_FullPositionVector
+	{
+		Gitsn_DDateTime									*utcTime;				// is notarg
+		Gitsn_Longitude									 lon;
+		Gitsn_Latitude									 lat;
+		Gitsn_Elevation									 elevation;				// is notarg
+		Gitsn_Heading									 heading;				// is notarg
+		Gitsn_TransmissionAndSpeed						*speed;					// is notarg
+		Gitsn_PositionalAccuracy							*posAccuracy;			// is notarg
+		Gitsn_TimeConfidence								 timeConfidence;		// is notarg
+		Gitsn_PositionConfidenceSet						*posConfidence;			// is notarg
+		Gitsn_SpeedandHeadingandThrottleConfidence		*speedConfidence;		// is notarg
+	} Gitsn_FullPositionVector;		// with api dump, clone
+	
+	typedef struct Gitsn_VehicleClassification
+	{
+		Gitsn_BasicVehicleClass				 keyType;		// is notarg
+		Gitsn_BasicVehicleRole				 role;			// is notarg
+		Gitsn_Iso3833VehicleType				 iso3883;		// is notarg
+		Gitsn_VehicleType					 hpmsType;		// is notarg
+		Gitsn_VehicleGroupAffected			 vehicleType;	// is notarg
+		Gitsn_IncidentResponseEquipment		 responseEquip;	// is notarg
+		Gitsn_ResponderGroupAffected			 responderType;	// is notarg
+		Gitsn_FuelType						 fuelType;		// is notarg
+	} Gitsn_VehicleClassification;		// with api dump, clone
+
+	typedef struct Gitsn_PathHistoryPoint
+	{
+		Gitsn_OffsetLL_B18 			 latOffset;			
+		Gitsn_OffsetLL_B18 			 lonOffset;			
+		Gitsn_VertOffset_B12 		 elevationOffset;	
+		Gitsn_TimeOffset				 timeOffset;		
+		Gitsn_Speed					 speed;			// is notarg
+		Gitsn_PositionalAccuracy		*posAccuracy;	// is notarg		 
+		Gitsn_CoarseHeading			 heading;		// is notarg
+	} Gitsn_PathHistoryPoint;		// with api dump, clone
+	typedef array Gitsn_PathHistoryPointList (gethead, extract) [Gitsn_PathHistoryPoint];
+
+	typedef struct Gitsn_PathHistory
+	{
+		Gitsn_FullPositionVector			*initialPosition;	// is notarg
+		Gitsn_GNSSstatus					*currGNSSstatus;	// is notarg
+		Gitsn_PathHistoryPointList		*crumbData;	
+	} Gitsn_PathHistory;				// with api dump, clone
+
+	typedef struct Gitsn_PathPrediction
+	{
+		Gitsn_RadiusOfCurvature			 radiusOfCurve;
+		Gitsn_Confidence					 confidence;
+	} Gitsn_PathPrediction;			// with api dump, clone
+
+	typedef struct Gitsn_VehicleSafetyExtensions
+	{
+		Gitsn_VehicleEventFlags				*events;			// is notarg
+		Gitsn_PathHistory					*pathHistory;		// is notarg
+		Gitsn_PathPrediction					*pathPrediction;	// is notarg
+		Gitsn_ExteriorLights					*lights;			// is notarg
+	} Gitsn_VehicleSafetyExtensions;		// with api dump, clone
+
+	typedef struct Gitsn_WiperSet
+	{
+		Gitsn_WiperStatus						statusFront;
+		Gitsn_WiperRate							rateFront;
+		Gitsn_WiperStatus						statusRear;			// is notarg
+		Gitsn_WiperRate							rateRear;			// is notarg
+	} Gitsn_WiperSet;			// with api dump, clone
+
+	typedef struct Gitsn_VehicleStatus_steering
+	{
+		Gitsn_SteeringWheelAngle						 angle;
+		Gitsn_SteeringWheelAngleConfidence			 confidence;	// is notarg
+		Gitsn_SteeringWheelAngleRateOfChange			 rate;			// is notarg
+		Gitsn_DrivingWheelAngle						 wheels;		// is notarg
+	}Gitsn_VehicleStatus_steering;		// with api dump, clone
+
+	typedef struct Gitsn_AccelSteerYawRateConfidence
+	{
+		Gitsn_YawRateConfidence				 yawRate;
+		Gitsn_AccelerationConfidence			 acceleration;
+		Gitsn_SteeringWheelAngleConfidence	 steeringWheelAngle;
+	} Gitsn_AccelSteerYawRateConfidence;		// with api dump, clone
+
+	typedef struct Gitsn_ConfidenceSet
+	{
+		Gitsn_AccelSteerYawRateConfidence					*accelConfidence;			// is notarg
+		Gitsn_SpeedandHeadingandThrottleConfidence			*speedConfidence;			// is notarg
+		Gitsn_TimeConfidence									 timeConfidence;			// is notarg
+		Gitsn_PositionConfidenceSet							*posConfidence;				// is notarg
+		Gitsn_SteeringWheelAngleConfidence					 steerConfidence;			// is notarg
+		Gitsn_HeadingConfidence								 headingConfidence;			// is notarg
+		Gitsn_ThrottleConfidence								 throttleConfidence;		// is notarg
+	} Gitsn_ConfidenceSet;					// with api dump, clone
+
+	typedef struct Gitsn_VehicleStatus_accelSets
+	{
+		Gitsn_AccelerationSet4Way					*accel4way;			// is notarg
+		Gitsn_VerticalAccelerationThreshold			*vertAccelThres;	// is notarg
+		Gitsn_YawRateConfidence						 yawRateCon;		// is notarg
+		Gitsn_AccelerationConfidence					 hozAccelCon;		// is notarg
+		Gitsn_ConfidenceSet							*confidenceSet;		// is notarg
+	} Gitsn_VehicleStatus_accelSets;		// with api dump, clone
+
+	typedef struct Gitsn_VehicleStatus_object
+	{
+		Gitsn_ObstacleDistance						 obDist;
+		Gitsn_Angle									 obDirect;
+		Gitsn_DDateTime								*dateTime;
+	} Gitsn_VehicleStatus_object;		// with api dump, clone
+
+	typedef struct Gitsn_BumperHeights
+	{
+		Gitsn_BumperHeight						front;
+		Gitsn_BumperHeight						rear;
+	} Gitsn_BumperHeights;				// with api dump, clone
+
+	typedef struct Gitsn_VehicleStatus_vehicleData
+	{
+		Gitsn_VehicleHeight							 height;
+		Gitsn_BumperHeights							*bumpers;
+		Gitsn_VehicleMass							 mass;
+		Gitsn_TrailerWeight							 trailerWeight;
+		Gitsn_VehicleType							 type;
+	} Gitsn_VehicleStatus_vehicleData;	// with api dump, clone
+
+	typedef struct Gitsn_TireData
+	{
+		Gitsn_TireLocation						location;							// is notarg
+		Gitsn_TirePressure						pressure;							// is notarg
+		Gitsn_TireTemp							temp;								// is notarg
+		Gitsn_WheelSensorStatus					wheelSensorStatus;					// is notarg
+		Gitsn_WheelEndElectFault					wheelEndElectFault;					// is notarg
+		Gitsn_TireLeakageRate					leakageRate;						// is notarg
+		Gitsn_TirePressureThresholdDetection		detection;							// is notarg
+	} Gitsn_TireData;		// with api dump, clone
+	typedef array Gitsn_TireDataList(gethead, extract) [Gitsn_TireData];
+
+	typedef struct Gitsn_AxleWeightSet
+	{
+		Gitsn_AxleLocation						 location;							// is notarg
+		Gitsn_AxleWeight							 weight;							// is notarg
+	}Gitsn_AxleWeightSet;			// with api dump, clone
+	typedef array Gitsn_AxleWeightList (gethead, extract) [Gitsn_AxleWeightSet];
+
+	typedef struct Gitsn_J1939DataItems
+	{
+		Gitsn_TireDataList						*tires;								// is notarg
+		Gitsn_AxleWeightList						*axles;								// is notarg
+		Gitsn_TrailerWeight						 trailerWeight;						// is notarg
+		Gitsn_CargoWeight						 cargoWeight;						// is notarg
+		Gitsn_SteeringAxleTemperature			 steeringAxleTemperature;			// is notarg
+		Gitsn_DriveAxleLocation					 driveAxleLocation;					// is notarg
+		Gitsn_DriveAxleLiftAirPressure			 driveAxleLiftAirPressure;			// is notarg
+		Gitsn_DriveAxleTemperature				 driveAxleTemperature;				// is notarg
+		Gitsn_DriveAxleLubePressure				 driveAxleLubePressure;				// is notarg
+		Gitsn_SteeringAxleLubePressure			 steeringAxleLubePressure;			// is notarg
+	} Gitsn_J1939DataItems;				// with api dump, clone
+
+	typedef struct Gitsn_VehicleStatus_weatherReport
+	{
+		Gitsn_EssPrecipYesNo						 isRaining;
+		Gitsn_EssPrecipRate						 rainRate;							// is notarg
+		Gitsn_EssPrecipSituation					 precipSituation;					// is notarg
+		Gitsn_EssSolarRadiation					 solarRadiation;					// is notarg
+		Gitsn_EssMobileFriction					 friction;							// is notarg
+	} Gitsn_VehicleStatus_weatherReport;		// with api dump, clone
+
+	typedef struct Gitsn_VehicleStatus
+	{
+		Gitsn_ExteriorLights									*lights;				// is notarg
+		Gitsn_LightbarInUse									 lightBar;				// is notarg
+		Gitsn_WiperSet										*wipers;				// is notarg
+		Gitsn_BrakeSystemStatus								*brakeStatus;			// is notarg
+		Gitsn_BrakeAppliedPressure							 brakePressure;			// is notarg
+		Gitsn_CoefficientOfFriction							 roadFriction;			// is notarg
+		Gitsn_SunSensor										 sunData;				// is notarg
+		Gitsn_RainSensor										 rainData;				// is notarg
+		Gitsn_AmbientAirTemperature							 airTemp;				// is notarg
+		Gitsn_AmbientAirPressure								 airPres;				// is notarg
+		Gitsn_VehicleStatus_steering							*steering;				// is notarg
+		Gitsn_VehicleStatus_accelSets						*accelSets;				// is notarg
+		Gitsn_VehicleStatus_object							*object;				// is notarg
+		Gitsn_FullPositionVector								*fullPos;				// is notarg
+		Gitsn_ThrottlePosition								 throttlePos;			// is notarg
+		Gitsn_SpeedandHeadingandThrottleConfidence			*speedHeadC;			// is notarg
+		Gitsn_SpeedConfidence								 speedC;				// is notarg
+		Gitsn_VehicleStatus_vehicleData						*vehicleData;			// is notarg
+		Gitsn_VehicleIdent									*vehicleIdent;			// is notarg
+		Gitsn_J1939DataItems										*j1939DataItems;				// is notarg
+		Gitsn_VehicleStatus_weatherReport					*weatherReport;			// is notarg
+		Gitsn_GNSSstatus										*gnssStatus;			// is notarg
+	} Gitsn_VehicleStatus;				// with api dump, clone
+
+	typedef struct Gitsn_Snapshot
+	{
+		Gitsn_FullPositionVector				*thePosition;
+		Gitsn_VehicleSafetyExtensions		*safetyExt;			// is notarg
+		Gitsn_VehicleStatus					*dataSet;			// is notarg
+	} Gitsn_Snapshot;		// with api dump, clone
+	typedef array Gitsn_ProbeVehicleData_snapshots(gethead, extract) [Gitsn_Snapshot];
+
+	typedef array Gitsn_RoadSideAlert_description (gethead, extract) [Gitsn_ITIScodes];
+
+	typedef struct Gitsn_RoadSignID
+	{
+		Gitsn_Position3D			*position;
+		Gitsn_HeadingSlice			*viewAngle;
+		Gitsn_MUTCDCode			 mutcdCode;			// is notarg
+		Gitsn_MsgCRC				 crc;				// is notarg
+	} Gitsn_RoadSignID;		// with api dump, clone
+
+	typedef union Gitsn_TravelerDataFrame_msgId
+	{
+		Gitsn_FurtherInfoID					 furtherInfoID;
+		Gitsn_RoadSignID					*roadSignID;
+	} Gitsn_TravelerDataFrame_msgId;		// with api dump, clone
+
+	typedef struct Gitsn_Node_LL_24B
+	{ 
+		Gitsn_OffsetLL_B12				 lon;
+		Gitsn_OffsetLL_B12				 lat;
+	} Gitsn_Node_LL_24B;		// with api dump, clone
+
+	typedef struct Gitsn_Node_LL_28B
+	{ 
+		Gitsn_OffsetLL_B14				 lon;
+		Gitsn_OffsetLL_B14				 lat;
+	} Gitsn_Node_LL_28B;		// with api dump, clone
+
+	typedef struct Gitsn_Node_LL_32B
+	{ 
+		Gitsn_OffsetLL_B16				 lon;
+		Gitsn_OffsetLL_B16				 lat;
+	} Gitsn_Node_LL_32B;		// with api dump, clone
+
+	typedef struct Gitsn_Node_LL_36B
+	{ 
+		Gitsn_OffsetLL_B18				 lon;
+		Gitsn_OffsetLL_B18				 lat;
+	} Gitsn_Node_LL_36B;		// with api dump, clone
+
+	typedef struct Gitsn_Node_LL_44B
+	{ 
+		Gitsn_OffsetLL_B22				 lon;
+		Gitsn_OffsetLL_B22				 lat;
+	} Gitsn_Node_LL_44B;		// with api dump, clone
+
+	typedef struct Gitsn_Node_LL_48B
+	{ 
+		Gitsn_OffsetLL_B24				 lon;
+		Gitsn_OffsetLL_B24				 lat;
+	} Gitsn_Node_LL_48B;		// with api dump, clone
+
+
+	typedef union Gitsn_NodeOffsetPointLL
+	{
+		Gitsn_Node_LL_24B				*node_LL1;
+		Gitsn_Node_LL_28B				*node_LL2;
+		Gitsn_Node_LL_32B				*node_LL3;
+		Gitsn_Node_LL_36B				*node_LL4;
+		Gitsn_Node_LL_44B				*node_LL5;
+		Gitsn_Node_LL_48B				*node_LL6;
+		Gitsn_Node_LLmD_64b			*node_LatLon;
+		-- regional
+	} Gitsn_NodeOffsetPointLL;		// with api dump, clone
+	
+	typedef array Gitsn_NodeAttributeLLList (gethead, extract) [Gitsn_NodeAttributeLL];
+	typedef array Gitsn_SegmentAttributeLLList (gethead, extract) [Gitsn_SegmentAttributeLL];
+
+	typedef struct Gitsn_NodeAttributeSetLL
+	{
+		Gitsn_NodeAttributeLLList		*localNode;		// is notarg
+		Gitsn_SegmentAttributeLLList	*disabled;		// is notarg
+		Gitsn_SegmentAttributeLLList	*enabled;		// is notarg
+		Gitsn_LaneDataAttributeList	*data;			// is notarg
+		Gitsn_Offset_B10				 dWidth;		// is notarg
+		Gitsn_Offset_B10				 dElevation;	// is notarg
+		-- regional
+	} Gitsn_NodeAttributeSetLL;	// with api dump, clone
+
+	typedef struct Gitsn_NodeLL
+	{
+		Gitsn_NodeOffsetPointLL			*delta;
+		Gitsn_NodeAttributeSetLL			*attributes;		// is notarg
+	} Gitsn_NodeLL;		// with api dump, clone
+	typedef array Gitsn_NodeSetLL (gethead, extract) [Gitsn_NodeLL];	-- (SIZE(2..63))
+
+	typedef union Gitsn_NodeListLL
+	{
+		Gitsn_NodeSetLL			*nodes;
+	} Gitsn_NodeListLL;		// with api dump, clone	
+
+	typedef union Gitsn_OffsetSystem_offset
+	{
+		Gitsn_NodeListXY			*xy;
+		Gitsn_NodeListLL			*ll;
+	} Gitsn_OffsetSystem_offset;		// with api dump, clone
+
+	typedef struct Gitsn_OffsetSystem
+	{
+		Gitsn_Zoom					 scale;			// is notarg
+		Gitsn_OffsetSystem_offset	*offset;
+	} Gitsn_OffsetSystem;		// with api dump, clone
+
+	typedef struct Gitsn_Circle
+	{
+		Gitsn_Position3D			*center;
+		Gitsn_Radius_B12			 radius;
+		Gitsn_DistanceUnits		 units;
+	} Gitsn_Circle;		// with api dump, clone
+
+	typedef struct Gitsn_GeometricProjection
+	{
+		Gitsn_HeadingSlice				*direction;
+		Gitsn_Extent					 extent;		// is notarg
+		Gitsn_LaneWidth				 laneWidth;		// is notarg
+		Gitsn_Circle					*circle;
+		-- regional
+	} Gitsn_GeometricProjection;		// with api dump, clone
+
+	typedef struct Gitsn_ShapePointSet
+	{
+		Gitsn_Position3D				*anchor;			// is notarg
+		Gitsn_LaneWidth				 laneWidth;		// is notarg
+		Gitsn_DirectionOfUse			 directionality;	// is notarg
+		Gitsn_NodeListXY				*nodeList;
+	} Gitsn_ShapePointSet;		// with api dump, clone
+
+	typedef struct Gitsn_RegionOffsets
+	{
+		Gitsn_Offset_B16			 xOffset;
+		Gitsn_Offset_B16			 yOffset;
+		Gitsn_Offset_B16			 zOffset;		// is notarg
+	} Gitsn_RegionOffsets;	// with api dump, clone
+	typedef array Gitsn_RegionList (gethead, extract) [Gitsn_RegionOffsets];
+
+	typedef struct Gitsn_RegionPointSet
+	{
+		Gitsn_Position3D				*anchor;			// is notarg
+		Gitsn_Zoom						 scale;				// is notarg
+		Gitsn_RegionList				*nodeList;		
+	} Gitsn_RegionPointSet;	// with api dump, clone
+
+	typedef union Gitsn_ValidRegion_area
+	{
+		Gitsn_ShapePointSet			*shapePointSet;
+		Gitsn_Circle					*circle;
+		Gitsn_RegionPointSet			*regionPointSet;
+	} Gitsn_ValidRegion_area;	// with api dump, clone
+
+	typedef struct Gitsn_ValidRegion
+	{
+		Gitsn_HeadingSlice				*direction;
+		Gitsn_Extent					 extent;		// is notarg
+		Gitsn_ValidRegion_area			*area;
+	} Gitsn_ValidRegion;		// with api dump, clone
+
+	typedef union Gitsn_GeographicalPath_description
+	{
+		Gitsn_OffsetSystem					*path;
+		Gitsn_GeometricProjection			*geometry;
+		Gitsn_ValidRegion					*oldRegion;
+	} Gitsn_GeographicalPath_description;		// with api dump, clone
+
+	typedef struct Gitsn_GeographicalPath
+	{
+		Gitsn_DescriptiveName					 name;				// is notarg
+		Gitsn_RoadSegmentReferenceID			*id;				// is notarg
+		Gitsn_Position3D						*anchor;			// is notarg
+		Gitsn_LaneWidth						 laneWidth;			// is notarg
+		Gitsn_DirectionOfUse					 directionality;	// is notarg
+		bool								 closedPath;		// is notarg
+		Gitsn_HeadingSlice						*direction;			// is notarg
+		Gitsn_GeographicalPath_description		*description;		// is notarg
+		-- regional
+	} Gitsn_GeographicalPath;			// with api dump, clone
+	typedef array Gitsn_TravelerDataFrame_regions (gethead, extract) [Gitsn_GeographicalPath]; 
+
+
+	typedef union Gitsn_ITIScodesAndText_element_item
+	{
+		Gitsn_ITIScodes				 itis;
+		Gitsn_ITIStext					 text;
+	} Gitsn_ITIScodesAndText_element_item;		// with api dump, clone
+
+	typedef struct Gitsn_ITIScodesAndText_element
+	{
+		Gitsn_ITIScodesAndText_element_item		*item;
+	} Gitsn_ITIScodesAndText_element;		// with api dump, clone
+	typedef array Gitsn_ITIScodesAndText (gethead, extract) [Gitsn_ITIScodesAndText_element];
+
+	typedef union Gitsn_WorkZone_element_item
+	{
+		Gitsn_ITIScodes				 itis;
+		Gitsn_ITIStext					 text;
+	} Gitsn_WorkZone_element_item;		// with api dump, clone
+
+	typedef struct Gitsn_WorkZone_element
+	{
+		Gitsn_WorkZone_element_item		*item;
+	} Gitsn_WorkZone_element;		// with api dump, clone
+	typedef array Gitsn_WorkZone (gethead, extract) [Gitsn_WorkZone_element];
+
+	typedef union Gitsn_GenericSignage_element_item
+	{
+		Gitsn_ITIScodes				 itis;
+		Gitsn_ITIStext					 text;
+	} Gitsn_GenericSignage_element_item;		// with api dump, clone
+
+	typedef struct Gitsn_GenericSignage_element
+	{
+		Gitsn_GenericSignage_element_item		*item;
+	} Gitsn_GenericSignage_element;		// with api dump, clone
+	typedef array Gitsn_GenericSignage (gethead, extract) [Gitsn_GenericSignage_element];
+
+	typedef union Gitsn_SpeedLimit_element_item
+	{
+		Gitsn_ITIScodes				 itis;
+		Gitsn_ITIStext					 text;
+	} Gitsn_SpeedLimit_element_item;		// with api dump, clone
+
+	typedef struct Gitsn_SpeedLimit_element
+	{
+		Gitsn_SpeedLimit_element_item		*item;
+	} Gitsn_SpeedLimit_element;		// with api dump, clone
+	typedef array Gitsn_SpeedLimit (gethead, extract) [Gitsn_SpeedLimit_element];
+
+	typedef union Gitsn_ExitService_element_item
+	{
+		Gitsn_ITIScodes				 itis;
+		Gitsn_ITIStext					 text;
+	} Gitsn_ExitService_element_item;		// with api dump, clone
+
+	typedef struct Gitsn_ExitService_element
+	{
+		Gitsn_ExitService_element_item		*item;
+	} Gitsn_ExitService_element;		// with api dump, clone
+	typedef array Gitsn_ExitService (gethead, extract) [Gitsn_ExitService_element];
+
+	typedef union Gitsn_TravelerDataFrame_content
+	{
+		Gitsn_ITIScodesAndText				*advisory;
+		Gitsn_WorkZone						*workZone;
+		Gitsn_GenericSignage				*genericSign;
+		Gitsn_SpeedLimit					*speedLimit;
+		Gitsn_ExitService					*exitService;
+	} Gitsn_TravelerDataFrame_content;		// with api dump, clone
+
+	typedef struct Gitsn_TravelerDataFrame
+	{
+		-- Part I
+		Gitsn_SSPindex						 notUsed;
+		Gitsn_TravelerInfoType				 frameType;
+		Gitsn_TravelerDataFrame_msgId		*msgId;
+		Gitsn_DYear						 startYear;			// is notarg
+		Gitsn_MinuteOfTheYear				 startTime;
+		Gitsn_MinutesDuration				 durationTime;
+		Gitsn_SignPriority					 priority;
+		-- Part II
+		Gitsn_SSPindex						 notUsed1;
+		Gitsn_TravelerDataFrame_regions		*regions;
+		-- Part III
+		Gitsn_SSPindex						 notUsed2;
+		Gitsn_SSPindex						 notUsed3;
+		Gitsn_TravelerDataFrame_content		*content;
+		Gitsn_URL_Short						url;				// is notarg
+	} Gitsn_TravelerDataFrame;				// with api dump, clone
+
+	typedef array Gitsn_TravelerDataFrameList (gethead, extract) [Gitsn_TravelerDataFrame];
+
+	
+	-- TLS
+	typedef struct Gitsn_OBJECTIDENTIFIER
+	{
+		uint32								 numids;
+		uint32								*subid;
+	} Gitsn_OBJECTIDENTIFIER;		// with api dump, clone
+
+	typedef union Gitsn_TrafficLightID
+	{
+		Gitsn_INTEGER						 id;
+		Gitsn_OBJECTIDENTIFIER				*oid;
+	} Gitsn_TrafficLightID;		// with api dump, clone
+
+	typedef struct Gitsn_TrafficLightStatus
+	{
+		Gitsn_TrafficLightType					 trafficLightType;
+		Gitsn_ConsecutiveTrafficLight			 consecutiveTrafficLight;
+		Gitsn_TrafficLightIntervalType			 trafficLightIntervalType;
+		Gitsn_PedestrianCall					 pedestrianCall;
+		Gitsn_ActuatedInterval					 actuatedinterval;
+		Gitsn_PermissiveNonProtected			 permissiveNonProtected;
+		Gitsn_TrafficLightingStatus				 lightingStatus;
+		Gitsn_TimeInSecond_B8					 maxIntervalLength;
+		Gitsn_TimeInSecond_B8					 remainingTime;
+		Gitsn_TrafficLightDirectionCode			 directionCode;
+		Gitsn_ReservedBit						 reserved;
+	} Gitsn_TrafficLightStatus;		// with api dump, clone
+	typedef array Gitsn_TrafficLightStatusList(gethead, extract) [Gitsn_TrafficLightStatus];
+
+	-- MSG
+	typedef struct Gitsn_MapData
+	{
+		Gitsn_MinuteOfTheYear				 timeStamp;				// is notarg
+		Gitsn_MsgCount						 msgIssueRevision;		
+		Gitsn_LayerType					 layerType;				// is notarg
+		Gitsn_LayerID						 layerID;				// is notarg
+		Gitsn_IntersectionGeometryList		*intersections;			// is notarg
+		Gitsn_RoadSegmentList				*roadSegments;			// is notarg
+		Gitsn_DataParameters				*dataParameters;		// is notarg
+		Gitsn_RestrictionClassList			*restrictionList;		// is notarg
+		-- regional
+	} Gitsn_MapData;			// with api dump, clone
+
+	typedef struct Gitsn_BasicSafetyMessage
+	{
+		Gitsn_BSMCoreData					*coreData;
+		-- Gitsn_BasicSafetyMessage_partII	*partII;			// is notarg
+		-- Gitsn_BasicSafetyMessage_regional	*regional;			// is notarg
+	} Gitsn_BasicSafetyMessage;		// with api dump, clone
+
+	-- SPAT (SPAT)
+	typedef struct Gitsn_SPAT
+	{
+		Gitsn_MinuteOfTheYear				 timeStamp;			// is notarg
+		Gitsn_DescriptiveName				 name;				// is notarg
+		Gitsn_IntersectionStateList		*intersections;
+		-- Gitsn_SPAT_regional				 regional;			// is notarg
+	} Gitsn_SPAT;			// with api dump, clone
+
+	typedef struct Gitsn_ProbeVehicleData
+	{
+		Gitsn_MinuteOfTheYear					 timeStamp;			// is notarg 
+		Gitsn_ProbeSegmentNumber				 segNum;			// is notarg
+		Gitsn_VehicleIdent						*probeID;			// is notarg
+		Gitsn_FullPositionVector				*startVector;		
+		Gitsn_VehicleClassification			*vehicleType;
+		Gitsn_ProbeVehicleData_snapshots		*snapshots;
+	} Gitsn_ProbeVehicleData;		// with api dump, clone
+
+
+	typedef struct Gitsn_RoadSideAlert
+	{
+		Gitsn_MsgCount						 msgCnt;
+		Gitsn_MinuteOfTheYear				 timeStamp;				// is notarg
+		Gitsn_ITIScodes					 typeEvent;
+		Gitsn_RoadSideAlert_description	*description;			// is notarg
+		Gitsn_Priority						 priority;				// is notarg
+		Gitsn_HeadingSlice					*heading;				// is notarg
+		Gitsn_Extent						 extent;				// is notarg
+		Gitsn_FullPositionVector			*position;				// is notarg
+		Gitsn_FurtherInfoID					 furtherInfoID;			// is notarg
+		-- regional
+	} Gitsn_RoadSideAlert;		// with api dump, clone
+
+	typedef struct Gitsn_TravelerInformation
+	{
+		Gitsn_MsgCount						 msgCnt;
+		Gitsn_MinuteOfTheYear				 timeStamp;				// is notarg
+		Gitsn_UniqueMSGID					 packetID;				// is notarg
+		Gitsn_URL_Base						 urlB;					// is notarg
+		Gitsn_TravelerDataFrameList			*dataFrames;			
+		-- regional
+	} Gitsn_TravelerInformation;		// with api dump, clone
+
+
+	----------------------------------------------------------------------------------------------------------
+	-- SDSM (SensorDataSharingMessage) / prj2
+	----------------------------------------------------------------------------------------------------------
+	typedef enum Gitsn_EquipmentType
+	{
+		unknown,
+		rsu,
+		obu,
+		vru
+	} Gitsn_EquipmentType;
+
+	typedef enum Gitsn_ObjectType
+	{
+		unknown,
+		vehicle,
+		vru,
+		animal
+	} Gitsn_ObjectType;
+
+	typedef struct Gitsn_PositionOffsetXYZ
+	{
+		Gitsn_ObjectDistance			 offsetX;
+		Gitsn_ObjectDistance			 offsetY;
+		Gitsn_ObjectDistance			 offsetZ;
+
+	} Gitsn_PositionOffsetXYZ;		// with api dump, clone
+
+	typedef struct Gitsn_DetectedObjectCommonData
+	{
+		Gitsn_ObjectType								 objType;	
+		Gitsn_ClassificationConfidence				 objTypeCfd;
+		Gitsn_ObjectID								 objectID; 
+		Gitsn_MeasurementTimeOffset					 measurementTime;
+		Gitsn_TimeConfidence							 timeConfidence;
+		Gitsn_PositionOffsetXYZ						*pos;
+		Gitsn_PositionConfidenceSet					*posConfidence;
+		Gitsn_Speed									 speed;
+		Gitsn_SpeedConfidence						 speedConfidence;			
+		Gitsn_Speed									 speedZ;				// is notarg
+		Gitsn_SpeedConfidence						 speedConfidenceZ;
+		Gitsn_Heading								 heading;
+		Gitsn_HeadingConfidence						 headingConf;
+		Gitsn_AccelerationSet4Way					*accel4way;				// is notarg
+		Gitsn_AccelerationConfidence					 accCfdX;				// is notarg
+		Gitsn_AccelerationConfidence					 accCfdY;				// is notarg
+		Gitsn_AccelerationConfidence					 accCfdZ;				// is notarg
+		Gitsn_YawRateConfidence						 accCfdYaw;				// is notarg
+	} Gitsn_DetectedObjectCommonData;			// with api dump, clone
+
+	typedef struct Gitsn_Attitude
+	{
+		Gitsn_PitchDetected							 pitch;
+		Gitsn_RollDetected							 roll;
+		Gitsn_YawDetected							 yaw;
+	} Gitsn_Attitude;		// with api dump, clone
+
+	typedef struct Gitsn_AttitudeConfidence
+	{
+		Gitsn_HeadingConfidence						 pitchConfidence;
+		Gitsn_HeadingConfidence						 rollConfidence;
+		Gitsn_HeadingConfidence						 yawConfidence;
+	} Gitsn_AttitudeConfidence;		// with api dump, clone
+
+	typedef struct Gitsn_AngularVelocity
+	{
+		Gitsn_PitchRate								 pitchRate;
+		Gitsn_RollRate								 rollRate;
+	} Gitsn_AngularVelocity;			// with api dump, clone
+
+	typedef enum Gitsn_PitchRateConfidence
+	{
+		unavailable,
+		degSec_100_00,
+		degSec_010_00,
+		degSec_005_00,
+		degSec_001_00,
+		degSec_000_10,
+		degSec_000_05,
+		degSec_000_01
+	} Gitsn_PitchRateConfidence;
+
+	typedef enum Gitsn_RollRateConfidence
+	{
+		unavailable,
+		degSec_100_00,
+		degSec_010_00,
+		degSec_005_00,
+		degSec_001_00,
+		degSec_000_10,
+		degSec_000_05,
+		degSec_000_01
+	} Gitsn_RollRateConfidence;
+
+	typedef struct Gitsn_AngularVelocityConfidence
+	{
+		Gitsn_PitchRateConfidence					 pitchRateConfidence;			// is notarg
+		Gitsn_RollRateConfidence						 rollRateConfidence;			// is notarg
+	} Gitsn_AngularVelocityConfidence;	// with api dump, clone
+
+	typedef enum Gitsn_SizeValueConfidence
+	{
+		unavailable,
+		size_100_00,
+		size_050_00,
+		size_020_00,
+		size_010_00,
+		size_005_00,
+		size_002_00,
+		size_001_00,
+		size_000_50,
+		size_000_20,
+		size_000_10,
+		size_000_05,
+		size_000_02,
+		size_000_01
+	} Gitsn_SizeValueConfidence;	
+	
+	typedef struct Gitsn_VehicleSizeConfidence
+	{
+		Gitsn_SizeValueConfidence					 vehicleWidthConfidence;
+		Gitsn_SizeValueConfidence					 vehicleLengthConfidence;
+		Gitsn_SizeValueConfidence					 vehicleHeightConfidence;		// is notarg
+	} Gitsn_VehicleSizeConfidence;		// with api dump, clone
+
+	typedef struct Gitsn_DetectedVehicleData
+	{
+		Gitsn_ExteriorLights							*lights;						// is notarg
+		Gitsn_Attitude								*vehAttitude;					// is notarg
+		Gitsn_AttitudeConfidence						*vehAttitudeConfidence;			// is notarg
+		Gitsn_AngularVelocity						*vehAngVel;						// is notarg
+		Gitsn_AngularVelocityConfidence				*vehAngleConfidence;			// is notarg
+		Gitsn_VehicleSize							*size;							// is notarg
+		Gitsn_VehicleHeight							 height;						// is notarg
+		Gitsn_VehicleSizeConfidence					*vehicleSizeConfidence;			// is notarg
+		Gitsn_BasicVehicleClass						 vehicleClass;					// is notarg
+		Gitsn_ClassificationConfidence				 classConf;						// is notarg
+	} Gitsn_DetectedVehicleData;		// with api dump, clone
+
+	typedef enum Gitsn_PersonalDeviceUserType
+	{
+		unavailable,
+		aPEDESTRIAN,
+		aPEDALCYCLIST,
+		aPUBLICSAFETYWORKER,
+		anANIMAL
+	} Gitsn_PersonalDeviceUserType;
+	 
+	 typedef enum Gitsn_HumanPropelledType
+	 {
+		unavailable,
+		otherTypes,
+		onFoot,
+		skateboard,
+		pushOrKickScooter,
+		wheelchair
+	 } Gitsn_HumanPropelledType;
+
+
+
+	 typedef enum Gitsn_AnimalPropelledType
+	 {
+		unavailable,
+		otherTypes,
+		animalMounted,
+		animalDrawnCarriage
+	 } Gitsn_AnimalPropelledType;
+
+	 typedef enum Gitsn_MotorizedPropelledType
+	 {
+		unavailable,
+		otherTypes,
+		wheelChair,
+		bicycle,
+		scooter,
+		selfBalancingDevice
+	 } Gitsn_MotorizedPropelledType;
+
+	typedef union Gitsn_PropelledInformation
+	{
+		Gitsn_HumanPropelledType						 human;
+		Gitsn_AnimalPropelledType					 animal;
+		Gitsn_MotorizedPropelledType					 motor;
+	} Gitsn_PropelledInformation;		// with api dump, clone
+
+	typedef enum Gitsn_Attachment	
+	{
+		unavailable,
+		stroller,
+		bicycleTrailer,
+		cart,
+		wheelchair,
+		otherWalkAssistAttachments,
+		pet
+	} Gitsn_Attachment;
+
+	typedef struct Gitsn_DetectedVRUData
+	{
+		Gitsn_PersonalDeviceUserType					 basicType;					// is notarg
+		Gitsn_PropelledInformation					*propulsion;				// is notarg
+		Gitsn_Attachment								 attachment;				// is notarg
+		Gitsn_AttachmentRadius						 radius;					// is notarg
+	} Gitsn_DetectedVRUData;			// with api dump, clone
+
+	typedef struct Gitsn_ObstacleSize
+	{
+		Gitsn_SizeValue								 width;
+		Gitsn_SizeValue								 length;
+		Gitsn_SizeValue								 height;					// is notarg
+	} Gitsn_ObstacleSize;			// with api dump, clone
+
+	typedef struct Gitsn_ObstacleSizeConfidence
+	{
+		Gitsn_SizeValueConfidence					 widthConfidence;
+		Gitsn_SizeValueConfidence					 lengthConfidence;
+		Gitsn_SizeValueConfidence					 heightConfidence;			// is notarg
+	} Gitsn_ObstacleSizeConfidence;		// with api dump, clone
+
+	typedef struct Gitsn_DetectedObstacleData
+	{
+		Gitsn_ObstacleSize						*obstSize;
+		Gitsn_ObstacleSizeConfidence				*obstSizeConfidence;
+	} Gitsn_DetectedObstacleData;	// with api dump, clone
+
+	typedef union Gitsn_DetectedObjectOptionalData
+	{
+		Gitsn_DetectedVehicleData				*detVeh;
+		Gitsn_DetectedVRUData					*detVRU;
+		Gitsn_DetectedObstacleData				*detObst;
+	} Gitsn_DetectedObjectOptionalData;			// with api dump, clone
+
+	typedef struct Gitsn_DetectedObjectData
+	{
+		Gitsn_DetectedObjectCommonData			*detObjCommon;
+		Gitsn_DetectedObjectOptionalData			*detObjOptData;		// is notarg
+	} Gitsn_DetectedObjectData;			// with api dump, clone
+	typedef array Gitsn_DetectedObjectList (gethead, extract) [Gitsn_DetectedObjectData];
+	
+	typedef struct Gitsn_SensorDataSharingMessage
+	{
+		Gitsn_MsgCount						 msgCnt;
+		Gitsn_TemporaryID					 sourceID;
+		Gitsn_EquipmentType					 equipmentType;
+		Gitsn_DDateTime						*sDSMTimeStamp;
+		Gitsn_Position3D						*refPos;
+		Gitsn_PositionalAccuracy				*refPosXYConf;
+		Gitsn_ElevationConfidence			 refPosElConf;		// is notarg
+		Gitsn_DetectedObjectList				*objects;
+	} Gitsn_SensorDataSharingMessage;		// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- SDSM (SensorDataSharingMessage) / prj2
+	----------------------------------------------------------------------------------------------------------
+
+
+	----------------------------------------------------------------------------------------------------------
+	-- TLS (TrafficLightStatusMessage) 
+	----------------------------------------------------------------------------------------------------------
+
+	typedef struct Gitsn_TLS
+	{
+		Gitsn_TrafficLightID					*trafficLightID;
+		Gitsn_Latitude							 lat;						// is notarg
+		Gitsn_Longitude							 lon;						// is notarg
+		Gitsn_TrafficLightOperationStatus		*operationStatus;
+		Gitsn_TrafficLightControllerStatus		*controllerStatus;
+		Gitsn_TimeInSecond_B16					 cyclecounter;
+		Gitsn_TimeInSecond_B16					 cycletime;
+		Gitsn_DDateTime							*currentTime;
+		Gitsn_TrafficLightStatusList			*trafficLightStatus;
+	} Gitsn_TLS;		// with api dump, clone
+
+	----------------------------------------------------------------------------------------------------------
+	-- TLS (TrafficLightStatusMessage) 
+	----------------------------------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------------------------------
+	-- (TrafficLightStatusMessage) 
+	----------------------------------------------------------------------------------------------------------
+	typedef struct Gitsn_TrafficLightStatusMessage
+	{
+		Gitsn_TrafficLightID_KOR				 trafficLightID;
+		Gitsn_Latitude							 lat;						// is notarg
+		Gitsn_Longitude							 lon;						// is notarg
+		Gitsn_TrafficLightOperationStatus		*operationStatus;
+		Gitsn_TrafficLightControllerStatus		*controllerStatus;
+		Gitsn_TimeInSecond_B16					 cyclecounter;
+		Gitsn_TimeInSecond_B16					 cycletime;
+		Gitsn_DDateTime							*currentTime;
+		Gitsn_TrafficLightStatusList			*trafficLightStatus;
+	} Gitsn_TrafficLightStatusMessage;		// with api dump, clone
+
+
+	----------------------------------------------------------------------------------------------------------
+	-- (TrafficLightStatusMessage) 
+	----------------------------------------------------------------------------------------------------------
+
+
+	----------------------------------------------------------------------------------------------------------
+	-- (EmergencyVehicleAlert) 
+	----------------------------------------------------------------------------------------------------------
+	typedef enum Gitsn_ResponseType
+	{
+		notInUseOrNotEquipped      = 0,            
+		emergency                  = 1,  -- active service call at emergency level           
+		nonEmergency               = 2,  -- also used when returning from service call          
+		pursuit                    = 3,  -- sender driving may be erratic 
+		stationary                 = 4,  -- sender is not moving, stopped along roadside
+		slowMoving                 = 5,  -- such a mowers, litter trucks, etc.
+		stopAndGoMovement          = 6  -- such as school bus or garbage truck   
+		-- ...
+	} Gitsn_ResponseType;		// with api dump, clone
+	
+	typedef enum Gitsn_SirenInUse
+	{
+		unavailable   = 0, -- Not Equipped or unavailable
+		notInUse      = 1,  
+		inUse         = 2,  
+		reserved      = 3  -- for future use
+	} Gitsn_SirenInUse;	// with api dump, clone
+
+	typedef enum Gitsn_MultiVehicleResponse
+	{
+		unavailable = 0,  
+		singleVehicle = 1,  
+		multiVehicle = 2,  
+		reserved = 3  
+	} Gitsn_MultiVehicleResponse;		// with api dump, clone
+
+	typedef struct Gitsn_PrivilegedEvents
+	{
+		Gitsn_SSPindex					 doNotUse;
+		Gitsn_PrivilegedEventFlags		*event;
+		-- ...
+	} Gitsn_PrivilegedEvents;		// with api dump, clone
+
+	typedef struct Gitsn_EmergencyDetails
+	{
+		Gitsn_SSPindex					 doNotUse;
+		Gitsn_SirenInUse				 sirenUse;
+		Gitsn_LightbarInUse				 lightsUse;
+		Gitsn_MultiVehicleResponse		 multi;
+		Gitsn_PrivilegedEvents			*events;			// is notarg
+		Gitsn_ResponseType				 responseType;		// is notarg
+		-- ... 
+	} Gitsn_EmergencyDetails;		// with api dump, clone
+
+	typedef struct Gitsn_EmergencyVehicleAlert
+	{
+	Gitsn_MinuteOfTheYear					 timeStamp;					// is notarg
+	Gitsn_TemporaryID						 id;						// is notarg
+	Gitsn_RoadSideAlert						*rsaMsg;
+	Gitsn_ResponseType						 responseType;				// is notarg
+	Gitsn_EmergencyDetails					*details;					// is notarg
+	Gitsn_VehicleMass						 mass;						// is notarg
+	Gitsn_VehicleType						 basicType;					// is notarg
+	Gitsn_VehicleGroupAffected				 vehicleType;				// is notarg
+	Gitsn_IncidentResponseEquipment			 responseEquip;				// is notarg
+	Gitsn_ResponderGroupAffected			 responderType;				// is notarg
+	-- Gitsn_EmergencyVehicleAlert_regional regional;
+	} Gitsn_EmergencyVehicleAlert;		// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- (EmergencyVehicleAlert) 
+	----------------------------------------------------------------------------------------------------------
+
+
+	----------------------------------------------------------------------------------------------------------
+	-- (RTCMcorrections) 
+	----------------------------------------------------------------------------------------------------------
+	typedef enum Gitsn_RTCM_Revision
+	{
+		unknown		= 1,
+		rtcmRev2	= 2,
+		rtcmRev3	= 3,
+		reserved	= 4
+		-- ... 
+	} Gitsn_RTCM_Revision;		// with api dump, clone
+
+	typedef struct Gitsn_AntennaOffsetSet
+	{
+		Gitsn_Offset_B12			antOffsetX;
+		Gitsn_Offset_B09			antOffsetY;
+		Gitsn_Offset_B10			antOffsetZ;
+	} Gitsn_AntennaOffsetSet;	// with api dump, clone
+
+	typedef struct Gitsn_RTCMheader
+	{
+		Gitsn_GNSSstatus		*status;
+		Gitsn_AntennaOffsetSet	*offsetSet;
+	} Gitsn_RTCMheader;		// with api dump, clone
+
+
+	typedef array Gitsn_RTCMmessageList (gethead, extract) [Gitsn_RTCMmessage];
+
+	typedef struct Gitsn_RTCMcorrections
+	{
+		Gitsn_MsgCount				 msgCnt;
+		Gitsn_RTCM_Revision			 rev;
+		Gitsn_MinuteOfTheYear		 timeStamp;			// is notarg
+		Gitsn_FullPositionVector	*anchorPoint;		// is notarg
+		Gitsn_RTCMheader			*rtcmHeader;		// is notarg
+		Gitsn_RTCMmessageList		*msgs;
+		-- Gitsn_RTCMcorrections_regional
+		-- ...
+	} Gitsn_RTCMcorrections;		// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- (RTCMcorrections) 
+	----------------------------------------------------------------------------------------------------------
+
+
+	----------------------------------------------------------------------------------------------------------
+	-- (SignalRequestMessage) 
+	----------------------------------------------------------------------------------------------------------
+
+	typedef enum Gitsn_PriorityRequestType
+	{
+		 priorityRequestTypeReserved = 0,
+		 priorityRequest             = 1, 
+		 priorityRequestUpdate       = 2,
+		 priorityCancellation        = 3
+		 -- ...
+	} Gitsn_PriorityRequestType;		// with api dump, clone
+
+	typedef union Gitsn_IntersectionAccessPoint
+	{
+		Gitsn_LaneID					lane;
+		Gitsn_ApproachID				approach;
+		Gitsn_LaneConnectionID			connection;
+	} Gitsn_IntersectionAccessPoint;		// with api dump, clone
+
+	typedef struct Gitsn_SignalRequest
+	{
+		Gitsn_IntersectionReferenceID			*id;
+		Gitsn_RequestID							 requestID;
+		Gitsn_PriorityRequestType				 requestType;
+		Gitsn_IntersectionAccessPoint			*inBoundLane;		// is notarg
+		Gitsn_IntersectionAccessPoint			*outBoundLane;		// is notarg
+		-- Gitsn_SignalRequest_regional
+	} Gitsn_SignalRequest;		// with api dump, clone
+
+	typedef struct Gitsn_SignalRequestPackage
+	{
+		Gitsn_SignalRequest				*request;			
+		Gitsn_MinuteOfTheYear			 minute;			// is notarg
+		Gitsn_DSecond					 second;			// is notarg
+		Gitsn_DSecond					 duration;			// is notarg
+		-- SignalRequestPackage_regional
+		-- ...
+	} Gitsn_SignalRequestPackage;	// with api dump, clone
+	typedef array Gitsn_SignalRequestList (gethead, extract) [Gitsn_SignalRequestPackage];
+
+	typedef enum Gitsn_RequestSubRole
+	{
+		requestSubRoleUnKnown   = 0,
+		requestSubRole1         = 1, -- The first type of sub role
+		requestSubRole2         = 2, -- The values here shall be assigned
+		requestSubRole3         = 3, -- Meanings based on regional needs
+		requestSubRole4         = 4, -- to refine and expand the basic
+		requestSubRole5         = 5, -- roles which are defined elsewhere
+		requestSubRole6         = 6,
+		requestSubRole7         = 7,
+		requestSubRole8         = 8,
+		requestSubRole9         = 9,
+		requestSubRole10        = 10,
+		requestSubRole11        = 11,
+		requestSubRole12        = 12,
+		requestSubRole13        = 13,
+		requestSubRole14        = 14, -- The last type of sub role
+		requestSubRoleReserved  = 15  -- Reserved for future use
+	} Gitsn_RequestSubRole;		// with api dump, clone
+
+	typedef enum Gitsn_RequestImportanceLevel
+	{
+		requestImportanceLevelUnKnown  = 0,
+		requestImportanceLevel1        = 1, -- The least important request
+		requestImportanceLevel2        = 2, -- The values here shall be assigned
+		requestImportanceLevel3        = 3, -- Meanings based on regional needs
+		requestImportanceLevel4        = 4, -- for each of the basic roles which
+		requestImportanceLevel5        = 5, -- are defined elsewhere
+		requestImportanceLevel6        = 6,
+		requestImportanceLevel7        = 7,
+		requestImportanceLevel8        = 8,
+		requestImportanceLevel9        = 9,
+		requestImportanceLevel10      = 10,
+		requestImportanceLevel11      = 11,
+		requestImportanceLevel12      = 12,
+		requestImportanceLevel13      = 13,
+		requestImportanceLevel14      = 14, -- The most important request
+		requestImportanceReserved     = 15  -- Reserved for future use
+	} Gitsn_RequestImportanceLevel;		// with api dump, clone
+	typedef struct Gitsn_RequestorType
+	{
+		Gitsn_BasicVehicleRole						 role;
+		Gitsn_RequestSubRole						 subrole;		// is notarg
+		Gitsn_RequestImportanceLevel				 request;		// is notarg
+		Gitsn_Iso3833VehicleType					 iso3883;		// is notarg
+		Gitsn_VehicleType							 hpmsType;		// is notarg
+		-- reigional
+		-- ...
+	} Gitsn_RequestorType;		// with api dump, clone
+
+	typedef struct Gitsn_RequestorPositionVector
+	{
+		Gitsn_Position3D				*position;
+		Gitsn_Angle						 heading;		// is notarg
+		Gitsn_TransmissionAndSpeed		*speed;		// is notarg
+		-- ... 
+	} Gitsn_RequestorPositionVector;		// with api dump, clone
+
+	typedef enum Gitsn_TransitVehicleOccupancy
+	{
+		 occupancyUnknown    = 0,  
+		 occupancyEmpty      = 1,  
+		 occupancyVeryLow    = 2,  
+		 occupancyLow        = 3,  
+		 occupancyMed        = 4,  
+		 occupancyHigh       = 5,  
+		 occupancyNearlyFull = 6,  
+		 occupancyFull       = 7
+	} Gitsn_TransitVehicleOccupancy;	// with api dump, clone
+
+	typedef struct Gitsn_RequestorDescription
+	{
+		Gitsn_VehicleID							*id;
+		Gitsn_RequestorType						*type;				// is notarg
+		Gitsn_RequestorPositionVector			*position;			// is notarg
+		Gitsn_DescriptiveName					 name;				// is notarg	
+		Gitsn_DescriptiveName					 routeName;			// is notarg
+		Gitsn_TransitVehicleStatus				*transitStatus;		// is notarg
+		Gitsn_TransitVehicleOccupancy			 transitOccupancy;	// is notarg
+		Gitsn_DeltaTime							 transitSchedule;	// is notarg
+		-- region
+		-- ...
+	} Gitsn_RequestorDescription;		// with api dump, clone
+
+	typedef struct Gitsn_SignalRequestMessage
+	{
+		Gitsn_MinuteOfTheYear				 timeStamp;			// is notarg
+		Gitsn_DSecond						 second;
+		Gitsn_MsgCount						 sequenceNumber;	// is notarg
+		Gitsn_SignalRequestList				*requests;			// is notarg
+		Gitsn_RequestorDescription			*requestor;
+		-- regional
+		-- ...
+	} Gitsn_SignalRequestMessage;		// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- (SignalRequestMessage) 
+	----------------------------------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------------------------------
+	-- (SignalStatusMessage) 
+	----------------------------------------------------------------------------------------------------------
+	typedef struct Gitsn_SignalRequesterInfo
+	{
+		Gitsn_VehicleID				*id;
+		Gitsn_RequestID				 request;
+		Gitsn_MsgCount				 sequenceNumber;
+		Gitsn_BasicVehicleRole		 role;				// is notarg
+		Gitsn_RequestorType			*typeData;			// is notarg
+		-- ...
+	} Gitsn_SignalRequesterInfo;		// with api dump, clone
+
+	typedef enum Gitsn_PrioritizationResponseStatus
+	{
+		unknown           = 0,
+		requested         = 1,
+		processing        = 2,
+		watchOtherTraffic = 3,
+		granted           = 4,
+		rejected          = 5,
+		maxPresence       = 6,
+		reserviceLocked   = 7
+	} Gitsn_PrioritizationResponseStatus;		// with api dump, clone
+
+	typedef struct Gitsn_SignalStatusPackage
+	{
+		Gitsn_SignalRequesterInfo					*requester;		// is notarg
+		Gitsn_IntersectionAccessPoint				*inboundOn;		// is notarg
+		Gitsn_IntersectionAccessPoint				*outboundOn;	// is notarg
+		Gitsn_MinuteOfTheYear						 minute;		// is notarg
+		Gitsn_DSecond								 second;		// is notarg
+		Gitsn_DSecond								 duration;		// is notarg
+		Gitsn_PrioritizationResponseStatus			 status;
+		-- regional
+		-- ...
+	} Gitsn_SignalStatusPackage;		// with api dump, clone
+	typedef array Gitsn_SignalStatusPackageList (gethead, extract) [Gitsn_SignalStatusPackage];
+
+	typedef struct Gitsn_SignalStatus
+	{
+		Gitsn_MsgCount						 sequenceNumber;
+		Gitsn_IntersectionReferenceID		*id;
+		Gitsn_SignalStatusPackageList		*sigStatus;
+		-- Gitsn_SignalStatus_regional
+		-- Gitsn_ASNUINT64
+	} Gitsn_SignalStatus;		// with api dump, clone
+	typedef array Gitsn_SignalStatusList(gethead, extract) [Gitsn_SignalStatus];
+
+	typedef struct Gitsn_SignalStatusMessage
+	{
+		Gitsn_MinuteOfTheYear				 timeStamp;			// is notarg
+		Gitsn_DSecond						 second;
+		Gitsn_MsgCount						 sequenceNumber;	// is notarg
+		Gitsn_SignalStatusList				*status;
+		-- Gitsn_SignalStatusMessage_regional
+		-- Gitsn_ASNUINT64
+	} Gitsn_SignalStatusMessage;		// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- (SignalStatusMessage) 
+	----------------------------------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------------------------------
+	-- (PersonalSafetyMessage) 
+	----------------------------------------------------------------------------------------------------------
+	typedef enum Gitsn_NumberOfParticipantsInCluster
+	{
+		unavailable  = 0,
+		small        = 1,   -- 2-5
+		medium       = 2,   -- 6-10
+		large        = 3   -- >10
+		 -- ...
+	} Gitsn_NumberOfParticipantsInCluster;		// with api dump, clone
+
+	typedef enum Gitsn_PublicSafetyEventResponderWorkerType
+	{
+		unavailable               = 0,
+	    towOperater               = 1,
+	    fireAndEMSWorker          = 2,
+	    aDOTWorker                = 3,
+	    lawEnforcement            = 4,
+	    hazmatResponder           = 5, -- also any toxicSubstanceCleanupCrew
+	    animalControlWorker       = 6,
+	    otherPersonnel            = 7
+		-- ...
+	} Gitsn_PublicSafetyEventResponderWorkerType;		// with api dump, clone
+
+	typedef enum Gitsn_AnimalType
+	{
+		unavailable    = 0, 
+		serviceUse     = 1,  -- Includes guide or police animals
+		pet            = 2,
+		farm           = 3
+		-- ...
+	} Gitsn_AnimalType;		// with api dump, clone
+
+	typedef struct Gitsn_PersonalSafetyMessage
+	{
+		Gitsn_PersonalDeviceUserType						 basicType;
+		Gitsn_DSecond										 secMark;
+		Gitsn_MsgCount										 msgCnt;
+		Gitsn_TemporaryID									 id;
+		Gitsn_Position3D									*position;
+		Gitsn_PositionalAccuracy							*accuracy;
+		Gitsn_Velocity										 speed;
+		Gitsn_Heading										 heading;
+		Gitsn_AccelerationSet4Way							*accelSet;						// is notarg
+		Gitsn_PathHistory									*pathHistory;					// is notarg
+		Gitsn_PathPrediction								*pathPrediction;				// is notarg
+		Gitsn_PropelledInformation							*propulsion;			// is notarg
+		Gitsn_PersonalDeviceUsageState						*useState;						// is notarg
+		Gitsn_PersonalCrossingRequest						 crossRequest;					// is notarg
+		Gitsn_PersonalCrossingInProgress					 crossState;					// is notarg
+		Gitsn_NumberOfParticipantsInCluster					 clusterSize;					// is notarg
+		Gitsn_PersonalClusterRadius							 clusterRadius;					// is notarg
+		Gitsn_PublicSafetyEventResponderWorkerType			 eventResponderType;			// is notarg
+		Gitsn_PublicSafetyAndRoadWorkerActivity				*activityType;					// is notarg
+		Gitsn_PublicSafetyDirectingTrafficSubType			*activitySubType;				// is notarg
+		Gitsn_PersonalAssistive								*assistType;					// is notarg
+		Gitsn_UserSizeAndBehaviour							*sizing;						// is notarg
+		Gitsn_Attachment									 attachment;					// is notarg
+		Gitsn_AttachmentRadius								 attachmentRadius;				// is notarg
+		Gitsn_AnimalType									 animalType;					// is notarg
+		-- PersonalSafetyMessage_regional
+		-- ...
+	} Gitsn_PersonalSafetyMessage;		// with api dump, clone
+
+	----------------------------------------------------------------------------------------------------------
+	-- (PersonalSafetyMessage) 
+	----------------------------------------------------------------------------------------------------------
+
+
+
+
+	typedef union GitsnDSRCMsg
+	{
+		Gitsn_MapData							*map;
+		Gitsn_SPAT								*spat;
+		Gitsn_BasicSafetyMessage				*bsm;
+		Gitsn_EmergencyVehicleAlert				*eva;
+		Gitsn_ProbeVehicleData					*pvd;
+		Gitsn_RoadSideAlert						*rsa;
+		Gitsn_RTCMcorrections					*rtcm;
+		Gitsn_SignalRequestMessage				*srm;
+		Gitsn_SignalStatusMessage				*ssm;
+		Gitsn_TravelerInformation				*tim;
+		Gitsn_PersonalSafetyMessage				*psm;
+		Gitsn_SensorDataSharingMessage			*sdsm;
+		Gitsn_TLS								*tls;
+		Gitsn_TrafficLightStatusMessage			*tlsm;
+	} GitsnDSRCMsg;		// with api dump, clone
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	----------------------------------------------------------------------------------------------------------
+	-- (IncidentDetectionInfo) 
+	----------------------------------------------------------------------------------------------------------
+	typedef enum Gitsn_IncidentDetectionInfo_incident_Detected_Type
+	{
+		stalledVehicle = 1,
+		reverseDriving = 2,
+		pedestrian = 3,
+		roadwayDebris = 4,
+		rireSmoke = 5,
+		roadShouldersVehicle = 6,
+		roadkill = 7,
+		slowVehicle = 8,
+		delayCongested = 9
+	} Gitsn_IncidentDetectionInfo_incident_Detected_Type;		// with api dump, clone
+	
+	typedef enum Gitsn_NMEACoord_compass
+	{
+		north,
+		south
+	} Gitsn_NMEACoord_compass;		// with api dump, clone
+
+	typedef struct Gitsn_NMEACoord_latitude
+	{
+		int64					 integerValue;
+		int64					 fractionValue;
+		int64					 fracSize;
+		Gitsn_NMEACoord_compass  compass;
+	} Gitsn_NMEACoord_latitude;		// with api dump, clone
+
+	typedef struct Gitsn_NMEACoord_longitude
+	{
+		int64					 integerValue;
+		int64					 fractionValue;
+		int64					 fracSize;
+		Gitsn_NMEACoord_compass  compass;
+	} Gitsn_NMEACoord_longitude;		// with api dump, clone
+
+	typedef struct Gitsn_NMEACoord
+	{
+		Gitsn_NMEACoord_latitude		*latitude;
+		Gitsn_NMEACoord_longitude		*longitude;
+		Dz1Binary						*optData;						// is notarg
+	} Gitsn_NMEACoord;		// with api dump, clone
+
+	typedef struct Gitsn_IncidentDetectionInfo
+	{
+		TString													 incident_Detected_Time;
+		Gitsn_IncidentDetectionInfo_incident_Detected_Type		 incident_Detected_Type;
+		Gitsn_NMEACoord											*incident_Detected_Site;
+		int64													 detected_Object_Size;		// is notarg
+		int64													 detected_Object_Distance;
+		int64													 detected_Object_Angle;
+		int64													 detected_Object_Speed;
+	} Gitsn_IncidentDetectionInfo;		// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- (IncidentDetectionInfo) 
+	----------------------------------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------------------------------
+	-- (IncidentTerminationInfo) 
+	----------------------------------------------------------------------------------------------------------
+
+	typedef enum Gitsn_IncidentTerminationInfo_terminate_incidentType
+	{
+		termination = 1,
+		timeout = 2
+	} Gitsn_IncidentTerminationInfo_terminate_incidentType;		// with api dump, clone
+
+	typedef struct Gitsn_IncidentTerminationInfo
+	{
+		Gitsn_IncidentTerminationInfo_terminate_incidentType	 terminate_incidentType;
+	} Gitsn_IncidentTerminationInfo;		// with api dump, clone
+
+	----------------------------------------------------------------------------------------------------------
+	-- (IncidentTerminationInfo) 
+	----------------------------------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------------------------------
+	-- (IncidentDetectionVideoFileInfoProvide) 
+	----------------------------------------------------------------------------------------------------------
+	typedef enum Gitsn_IncidentDetectionVideoFileInfoProvide_fileStatus
+	{
+		videoFileExists = 0,
+		videoFileAlreadyExists = 1
+	} Gitsn_IncidentDetectionVideoFileInfoProvide_fileStatus;		//with api dump, clone
+
+	typedef struct Gitsn_IncidentDetectionVideoFileInfoProvide
+	{
+		Gitsn_IncidentDetectionVideoFileInfoProvide_fileStatus	 fileSatatus;
+		TString													 fileName;			// is notarg
+		int64													 fileSize;			// is notarg
+	} Gitsn_IncidentDetectionVideoFileInfoProvide;		// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- (IncidentDetectionVideoFileInfoProvide) 
+	----------------------------------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------------------------------
+	-- (ControlStateInfo) 
+	----------------------------------------------------------------------------------------------------------
+	typedef struct Gitsn_ControlStateInfo
+	{
+		int64			 cpu;
+		int64			 ram;
+		int64			 disk;
+	} Gitsn_ControlStateInfo;	// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- (ControlStateInfo) 
+	----------------------------------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------------------------------
+	-- (SensorStateInfo) 
+	----------------------------------------------------------------------------------------------------------
+	typedef enum Gitsn_SensorStateInfo_state
+	{
+		normal = 0,
+		abnormal = 1
+	} Gitsn_SensorStateInfo_state;		// with api dump, clone
+
+	typedef struct Gitsn_SensorStateInfo
+	{
+		Gitsn_SensorStateInfo_state					 msm;
+		Gitsn_SensorStateInfo_state					 txb;
+		Gitsn_SensorStateInfo_state					 rxb;
+		Gitsn_SensorStateInfo_state					 pwr;
+	} Gitsn_SensorStateInfo;		// with api dump, clone
+	----------------------------------------------------------------------------------------------------------
+	-- (SensorStateInfo) 
+	----------------------------------------------------------------------------------------------------------
+
+	----------------------------------------------------------------------------------------------------------
+	-- (MovingObject) 
+	----------------------------------------------------------------------------------------------------------
+	typedef enum Gitsn_MovingObject_objectType
+	{
+		pedestrian = 0,
+		vehicle = 1,
+		bike = 2
+	} Gitsn_MovingObject_objectType;	// with api dump, clone
+
+	typedef enum Gitsn_Novelty
+	{
+		noveltyNew = 0,
+		noveltyUpdate = 1
+	} Gitsn_Novelty;		// with api dump, clone
+
+	typedef struct Gitsn_MovingObject
+	{
+		Gitsn_MovingObject_objectType				 objectType;
+		Gitsn_ObjectID								 objectID;
+		Gitsn_Novelty								 novelty;			// is notarg
+		int64										 reliability;
+		Gitsn_FullPositionVector					*fullPositionVector;
+	} Gitsn_MovingObject;		// with api dump, clone
+
+	----------------------------------------------------------------------------------------------------------
+	-- (MovingObject) 
+	----------------------------------------------------------------------------------------------------------
+
+	typedef array Gitsn_IncidentDetectionInfoResponse (gethead, extract) [Gitsn_IncidentDetectionInfo];
+	typedef array Gitsn_IncidentTerminationInfoResponse (gethead, extract) [Gitsn_IncidentTerminationInfo];
+	typedef array Gitsn_IncidentDetectionVideoFileInfoProvideResponse (gethead, extract) [Gitsn_IncidentDetectionVideoFileInfoProvide];
+	typedef array Gitsn_ControlStateInfoResponse (gethead, extract) [Gitsn_ControlStateInfo];
+	typedef array Gitsn_SensorStateInfoResponse (gethead, extract) [Gitsn_SensorStateInfo];
+	typedef array Gitsn_MovingObjectResponse (gethead, extract) [Gitsn_MovingObject];
+
+
+}

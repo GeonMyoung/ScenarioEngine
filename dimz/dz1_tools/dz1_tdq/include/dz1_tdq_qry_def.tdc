@@ -1,0 +1,99 @@
+message set definition
+{
+	include dz1_tdq_tbl_def;
+	
+	typedef native Dz1TdqPageSpec from dz1_tdq_types;					// with api dump, clone
+	struct Dz1TdqQueryTblName;
+	-------------------------------------------------------------------------------------------
+	-- Table's Column Indicator
+	-------------------------------------------------------------------------------------------
+	typedef struct Dz1TdqQryTblCol
+	{
+		struct Dz1TdqQueryTblName		*tbl;							// is ref
+		TString							 col_name;
+	} Dz1TdqQryTblCol;													// with api dump, clone
+	
+	-------------------------------------------------------------------------------------------
+	-- Expression Column Descriptor
+	-------------------------------------------------------------------------------------------
+	typedef struct Dz1TdqQryExprCol
+	{
+		Dz1TdqSqlTypeSpec				*type;
+		TString							 expression;
+	} Dz1TdqQryExprCol;													// with api dump, clone
+	
+	-------------------------------------------------------------------------------------------
+	-- Select Column Descriptor
+	-------------------------------------------------------------------------------------------
+	typedef union Dz1TdqQryCol
+	{
+		Dz1TdqQryTblCol					*tcol;
+		Dz1TdqQryExprCol				*ecol;
+	} Dz1TdqQryCol;														// with api dump, clone
+	
+	-------------------------------------------------------------------------------------------
+	-- Select Column & List
+	-------------------------------------------------------------------------------------------
+	typedef struct Dz1TdqQryColumn
+	{
+		uint32							 order;							// is key
+		Dz1TdqQryCol					*src;
+		TString							 alias;
+	} Dz1TdqQryColumn;													// with api userdump, clone, compare
+	typedef unique table Dz1TdqQryRow(find, extract) [Dz1TdqQryColumn];
+	typedef array Dz1TdqQryRefCols [&Dz1TdqQryColumn];
+	
+	-------------------------------------------------------------------------------------------
+	-- Table Join Mode
+	-------------------------------------------------------------------------------------------
+	typedef enum Dz1TdqQueryTblJoin
+	{
+		inner,
+		left,
+		right,
+		outer
+	} Dz1TdqQueryTblJoin;
+	
+	-------------------------------------------------------------------------------------------
+	-- Selecting Table Name Descriptor
+	-------------------------------------------------------------------------------------------
+	typedef struct Dz1TdqQueryTblName
+	{
+		Dz1TdqTblInstance				*instance;						// is ref
+		TString							 alias;
+	} Dz1TdqQueryTblName;												// with api userdump, clone
+	
+	-------------------------------------------------------------------------------------------
+	-- Join Table Descriptor & List
+	-------------------------------------------------------------------------------------------
+	typedef struct Dz1TdqQueryTblEntry
+	{
+		Dz1TdqQueryTblName				*tbl;
+		Dz1TdqQueryTblJoin				 mode;
+		TString							 match_on;
+	} Dz1TdqQueryTblEntry;												// with api userdump, clone
+	typedef array Dz1TdqQueryTblSeq	[Dz1TdqQueryTblEntry];
+	
+	-------------------------------------------------------------------------------------------
+	-- Selecting Table Spec
+	-------------------------------------------------------------------------------------------
+	typedef struct Dz1TdqQueryTblSpec
+	{
+		Dz1TdqQueryTblName				*basis;
+		Dz1TdqQueryTblSeq				*join_tbls;		// is notarg
+	} Dz1TdqQueryTblSpec;												// with api dump, clone
+	
+	-------------------------------------------------------------------------------------------
+	-- Query & List
+	-------------------------------------------------------------------------------------------
+	typedef struct Dz1TdqQuery
+	{
+		TString							 name;							// is key
+		Dz1TdqQryRow					*sel;							-- NULL = *
+		Dz1TdqQueryTblSpec				*from;
+		-- dynamic where and args
+		
+		Dz1TdqQryRefCols				*groupby;						// is notarg
+	} Dz1TdqQuery;														// with api dump, clone, compare
+	typedef unique table Dz1TdqQueryList(find, extract) [Dz1TdqQuery];
+}

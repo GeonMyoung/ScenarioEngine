@@ -1,0 +1,335 @@
+#ifndef _DZ1_TDC_SAMPLE_H_
+#define _DZ1_TDC_SAMPLE_H_
+
+////////////////////////////////////////////////////////////////////////////////
+#include <dz1_error.h>
+#include <dz1_int.h>
+#include <dz1_real.h>
+#include <dz1_str.h>
+#include <dz1_sock_addr.h>
+////////////////////////////////////////////////////////////////////////////////
+
+#include "libdz1_support.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// MyBinDataPresent
+typedef enum MyBinDataPresent
+{
+	MyBinDataPresent_fn,
+	MyBinDataPresent_buf,
+	MyBinDataPresent_max
+} MyBinDataPresent;
+
+DZ1_CPPLINK str_t MyBinDataPresentStrA(MyBinDataPresent v);
+DZ1_CPPLINK MyBinDataPresent MyBinDataPresentFromStrA(str_t str);
+#ifndef UNIX_SYSTEM
+DZ1_CPPLINK wstr_t MyBinDataPresentStrW(MyBinDataPresent v);
+DZ1_CPPLINK MyBinDataPresent MyBinDataPresentFromStrW(wstr_t str);
+#ifdef UNICODE
+#define MyBinDataPresentStr MyBinDataPresentStrW
+#define MyBinDataPresentFromStr MyBinDataPresentFromStrW
+#else // UNICODE
+#define MyBinDataPresentStr MyBinDataPresentStrA
+#define MyBinDataPresentFromStr MyBinDataPresentFromStrA
+#endif // UNICODE
+#else // UNIX_SYSTEM
+#define MyBinDataPresentStr MyBinDataPresentStrA
+#define MyBinDataPresentFromStr MyBinDataPresentFromStrA
+#endif // UNIX_SYSTEM
+DZ1_CPPLINK DZ1_DLLPORT MyBinDataPresent *MyBinDataPresent_new(MyBinDataPresent *src, Dz1Error *err);
+static __inline__ MyBinDataPresent *MyBinDataPresent_gen(Dz1Error *err) { MyBinDataPresent v = MyBinDataPresent_max; return MyBinDataPresent_new(&v, err); }
+#define MyBinDataPresent_clone             MyBinDataPresent_new
+static __inline__ void MyBinDataPresent_del(MyBinDataPresent *p) { if (p != NULL) Dz1Free(p); }
+static __inline__ void MyBinDataPresent_delAndSetNull(void *ptr)
+{
+	MyBinDataPresent **p = (MyBinDataPresent **)ptr;
+	if (p != NULL) { MyBinDataPresent_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void MyBinDataPresent_dump(MyBinDataPresent *v, int tab);
+// MyBinDataPresent
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// MyBinData
+typedef struct MyBinData
+{
+	MyBinDataPresent present;
+	union
+	{
+		void *__ptr__;
+		unsigned char b1[1];
+		unsigned char b2[2];
+		unsigned char b4[4];
+		Dz1Str			 fn;
+		Dz1Binary		*buf;
+	} x;
+} MyBinData;
+
+DZ1_CPPLINK DZ1_DLLPORT MyBinData *MyBinData_new(MyBinDataPresent present, void *ptr, Dz1Error *err);
+static __inline__ MyBinData *MyBinData_gen(Dz1Error *err) { return MyBinData_new(MyBinDataPresent_max, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t  MyBinData_copy(MyBinData *dst, MyBinData *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT MyBinData *MyBinData_clone(MyBinData *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void MyBinData_purge(MyBinData *p);
+DZ1_CPPLINK DZ1_DLLPORT void MyBinData_del(MyBinData *p);
+static __inline__ void MyBinData_delAndSetNull(void *ptr)
+{
+	MyBinData **p = (MyBinData **)ptr;
+	if (p != NULL) { MyBinData_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void MyBinData_dump(MyBinData *p, int tab);
+// MyBinData
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// MyDataRow
+typedef struct MyDataRow
+{
+	u32_t			 id;
+	Dz1Str			 name;
+	MyBinData		*data;
+} MyDataRow;
+
+DZ1_CPPLINK DZ1_DLLPORT MyDataRow *MyDataRow_new(u32_t id, 
+												 Dz1Str name, 
+												 MyBinData *data, Dz1Error *err);
+static __inline__ MyDataRow *MyDataRow_gen(Dz1Error *err) { return MyDataRow_new(0, NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t MyDataRow_copy(MyDataRow *dst, MyDataRow *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT MyDataRow *MyDataRow_clone(MyDataRow *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void MyDataRow_purge(MyDataRow *p);
+DZ1_CPPLINK DZ1_DLLPORT void MyDataRow_del(MyDataRow *p);
+static __inline__ void MyDataRow_delAndSetNull(void *ptr)
+{
+	MyDataRow **p = (MyDataRow **)ptr;
+	if (p) { MyDataRow_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void MyDataRow_dump(MyDataRow *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int MyDataRow_cmp(MyDataRow *a, MyDataRow *b); 
+// MyDataRow
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// MyDataTbl
+typedef struct MyDataTbl
+{
+	void *storage;
+	unsigned int (*count)(struct MyDataTbl *p);
+	Dz1Error (*travel)(struct MyDataTbl *p, Dz1Error (*func)(void *ptr, MyDataRow *entry), void *ptr);
+	Dz1Error (*travelForward)(struct MyDataTbl *p, Dz1Error (*func)(void *ptr, MyDataRow *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct MyDataTbl *p, Dz1Error (*func)(void *ptr, MyDataRow *entry), void *ptr);
+	MyDataRow **(*get_array)(struct MyDataTbl *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct MyDataTbl *p, MyDataRow *data);
+	bool_t (*remove)(struct MyDataTbl *p, MyDataRow *key);
+	MyDataRow *(*extract)(struct MyDataTbl *p, MyDataRow *key);
+	MyDataRow *(*find)(struct MyDataTbl *p, MyDataRow *key);
+	MyDataRow *(*getHead)(struct MyDataTbl *p);
+	int (*cmp)(MyDataRow *a, MyDataRow *b);
+} MyDataTbl;
+
+DZ1_CPPLINK DZ1_DLLPORT MyDataTbl *MyDataTbl_new(Dz1Error *err);
+static __inline__ MyDataTbl *MyDataTbl_gen(Dz1Error *err) { return MyDataTbl_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT MyDataTbl *MyDataTbl_clone(MyDataTbl *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void MyDataTbl_purge(MyDataTbl *p);
+DZ1_CPPLINK DZ1_DLLPORT void MyDataTbl_del(MyDataTbl *p);
+static __inline__ void MyDataTbl_delAndSetNull(void *ptr)
+{
+	MyDataTbl **p = (MyDataTbl **)ptr;
+	if (p != NULL) { MyDataTbl_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void MyDataTbl_dump(MyDataTbl *p, int tab);
+
+// MyDataTbl
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// MyStructAAAA
+typedef struct MyStructAAAA
+{
+	u64_t			 my_unum64;
+	s64_t			 my_num64;
+	u32_t			 my_unum32;
+	s32_t			 my_num32;
+	u16_t			 my_unum16;
+	s16_t			 my_num16;
+	u8_t			 my_unum8;
+	s8_t			 my_num8;
+	real64_t		 my_real;
+	Dz1Str			 my_str;
+	time_t			 my_date;
+	time_t			 my_clock;
+	time_t			 my_stamp;
+	Dz1Binary		*my_blob;
+	Dz1Binary		*my_blobl;
+} MyStructAAAA;
+
+DZ1_CPPLINK DZ1_DLLPORT MyStructAAAA *MyStructAAAA_new(u64_t my_unum64, 
+													   s64_t my_num64, Dz1Error *err);
+static __inline__ MyStructAAAA *MyStructAAAA_gen(Dz1Error *err) { return MyStructAAAA_new(0, 0, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t MyStructAAAA_copy(MyStructAAAA *dst, MyStructAAAA *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT MyStructAAAA *MyStructAAAA_clone(MyStructAAAA *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void MyStructAAAA_purge(MyStructAAAA *p);
+DZ1_CPPLINK DZ1_DLLPORT void MyStructAAAA_del(MyStructAAAA *p);
+static __inline__ void MyStructAAAA_delAndSetNull(void *ptr)
+{
+	MyStructAAAA **p = (MyStructAAAA **)ptr;
+	if (p) { MyStructAAAA_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void MyStructAAAA_dump(MyStructAAAA *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int MyStructAAAA_cmp(MyStructAAAA *a, MyStructAAAA *b); 
+// MyStructAAAA
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// MyStructAAAAList
+typedef struct MyStructAAAAList
+{
+	void *storage;
+	unsigned int (*count)(struct MyStructAAAAList *p);
+	Dz1Error (*travel)(struct MyStructAAAAList *p, Dz1Error (*func)(void *ptr, MyStructAAAA *entry), void *ptr);
+	Dz1Error (*travelForward)(struct MyStructAAAAList *p, Dz1Error (*func)(void *ptr, MyStructAAAA *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct MyStructAAAAList *p, Dz1Error (*func)(void *ptr, MyStructAAAA *entry), void *ptr);
+	MyStructAAAA **(*get_array)(struct MyStructAAAAList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct MyStructAAAAList *p, MyStructAAAA *data);
+	bool_t (*remove)(struct MyStructAAAAList *p, MyStructAAAA *key);
+	MyStructAAAA *(*extract)(struct MyStructAAAAList *p, MyStructAAAA *key);
+	MyStructAAAA *(*find)(struct MyStructAAAAList *p, MyStructAAAA *key);
+	int (*cmp)(MyStructAAAA *a, MyStructAAAA *b);
+} MyStructAAAAList;
+
+DZ1_CPPLINK DZ1_DLLPORT MyStructAAAAList *MyStructAAAAList_new(Dz1Error *err);
+static __inline__ MyStructAAAAList *MyStructAAAAList_gen(Dz1Error *err) { return MyStructAAAAList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT MyStructAAAAList *MyStructAAAAList_clone(MyStructAAAAList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void MyStructAAAAList_purge(MyStructAAAAList *p);
+DZ1_CPPLINK DZ1_DLLPORT void MyStructAAAAList_del(MyStructAAAAList *p);
+static __inline__ void MyStructAAAAList_delAndSetNull(void *ptr)
+{
+	MyStructAAAAList **p = (MyStructAAAAList **)ptr;
+	if (p != NULL) { MyStructAAAAList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void MyStructAAAAList_dump(MyStructAAAAList *p, int tab);
+
+// MyStructAAAAList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// MyStructBBBB
+typedef struct MyStructBBBB
+{
+	u64_t		my_unum64;
+	s64_t		my_num64;
+	u32_t		my_unum32;
+	s32_t		my_num32;
+	u16_t		my_unum16;
+	s16_t		my_num16;
+	u8_t		my_unum8;
+	s8_t		my_num8;
+} MyStructBBBB;
+
+DZ1_CPPLINK DZ1_DLLPORT MyStructBBBB *MyStructBBBB_new(u64_t my_unum64, 
+													   s64_t my_num64, Dz1Error *err);
+static __inline__ MyStructBBBB *MyStructBBBB_gen(Dz1Error *err) { return MyStructBBBB_new(0, 0, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t MyStructBBBB_copy(MyStructBBBB *dst, MyStructBBBB *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT MyStructBBBB *MyStructBBBB_clone(MyStructBBBB *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void MyStructBBBB_purge(MyStructBBBB *p);
+DZ1_CPPLINK DZ1_DLLPORT void MyStructBBBB_del(MyStructBBBB *p);
+static __inline__ void MyStructBBBB_delAndSetNull(void *ptr)
+{
+	MyStructBBBB **p = (MyStructBBBB **)ptr;
+	if (p) { MyStructBBBB_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void MyStructBBBB_dump(MyStructBBBB *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int MyStructBBBB_cmp(MyStructBBBB *a, MyStructBBBB *b); 
+// MyStructBBBB
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// MyStructBBBBList
+typedef struct MyStructBBBBList
+{
+	void *storage;
+	unsigned int (*count)(struct MyStructBBBBList *p);
+	Dz1Error (*travel)(struct MyStructBBBBList *p, Dz1Error (*func)(void *ptr, MyStructBBBB *entry), void *ptr);
+	Dz1Error (*travelForward)(struct MyStructBBBBList *p, Dz1Error (*func)(void *ptr, MyStructBBBB *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct MyStructBBBBList *p, Dz1Error (*func)(void *ptr, MyStructBBBB *entry), void *ptr);
+	MyStructBBBB **(*get_array)(struct MyStructBBBBList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct MyStructBBBBList *p, MyStructBBBB *data);
+	bool_t (*remove)(struct MyStructBBBBList *p, MyStructBBBB *key);
+	MyStructBBBB *(*extract)(struct MyStructBBBBList *p, MyStructBBBB *key);
+	MyStructBBBB *(*find)(struct MyStructBBBBList *p, MyStructBBBB *key);
+	int (*cmp)(MyStructBBBB *a, MyStructBBBB *b);
+} MyStructBBBBList;
+
+DZ1_CPPLINK DZ1_DLLPORT MyStructBBBBList *MyStructBBBBList_new(Dz1Error *err);
+static __inline__ MyStructBBBBList *MyStructBBBBList_gen(Dz1Error *err) { return MyStructBBBBList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT MyStructBBBBList *MyStructBBBBList_clone(MyStructBBBBList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void MyStructBBBBList_purge(MyStructBBBBList *p);
+DZ1_CPPLINK DZ1_DLLPORT void MyStructBBBBList_del(MyStructBBBBList *p);
+static __inline__ void MyStructBBBBList_delAndSetNull(void *ptr)
+{
+	MyStructBBBBList **p = (MyStructBBBBList **)ptr;
+	if (p != NULL) { MyStructBBBBList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void MyStructBBBBList_dump(MyStructBBBBList *p, int tab);
+
+// MyStructBBBBList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CentralEntry
+typedef struct CentralEntry
+{
+	u64_t			 my_unum64;
+	u32_t			 my_unum32;
+	u16_t			 my_unum16;
+	Dz1Binary		*my_blob;
+	u64_t			 value;
+} CentralEntry;
+
+DZ1_CPPLINK DZ1_DLLPORT CentralEntry *CentralEntry_new(u64_t my_unum64, Dz1Error *err);
+static __inline__ CentralEntry *CentralEntry_gen(Dz1Error *err) { return CentralEntry_new(0, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t CentralEntry_copy(CentralEntry *dst, CentralEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT CentralEntry *CentralEntry_clone(CentralEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void CentralEntry_purge(CentralEntry *p);
+DZ1_CPPLINK DZ1_DLLPORT void CentralEntry_del(CentralEntry *p);
+static __inline__ void CentralEntry_delAndSetNull(void *ptr)
+{
+	CentralEntry **p = (CentralEntry **)ptr;
+	if (p) { CentralEntry_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void CentralEntry_dump(CentralEntry *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int CentralEntry_cmp(CentralEntry *a, CentralEntry *b); 
+// CentralEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// CentralList
+typedef struct CentralList
+{
+	void *storage;
+	unsigned int (*count)(struct CentralList *p);
+	Dz1Error (*travel)(struct CentralList *p, Dz1Error (*func)(void *ptr, CentralEntry *entry), void *ptr);
+	Dz1Error (*travelForward)(struct CentralList *p, Dz1Error (*func)(void *ptr, CentralEntry *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct CentralList *p, Dz1Error (*func)(void *ptr, CentralEntry *entry), void *ptr);
+	CentralEntry **(*get_array)(struct CentralList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct CentralList *p, CentralEntry *data);
+	bool_t (*remove)(struct CentralList *p, CentralEntry *key);
+	CentralEntry *(*extract)(struct CentralList *p, CentralEntry *key);
+	CentralEntry *(*find)(struct CentralList *p, CentralEntry *key);
+	int (*cmp)(CentralEntry *a, CentralEntry *b);
+} CentralList;
+
+DZ1_CPPLINK DZ1_DLLPORT CentralList *CentralList_new(Dz1Error *err);
+static __inline__ CentralList *CentralList_gen(Dz1Error *err) { return CentralList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT CentralList *CentralList_clone(CentralList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void CentralList_purge(CentralList *p);
+DZ1_CPPLINK DZ1_DLLPORT void CentralList_del(CentralList *p);
+static __inline__ void CentralList_delAndSetNull(void *ptr)
+{
+	CentralList **p = (CentralList **)ptr;
+	if (p != NULL) { CentralList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void CentralList_dump(CentralList *p, int tab);
+
+// CentralList
+////////////////////////////////////////////////////////////////////////////////
+
+#endif

@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{9968F8C7-6724-465D-AF79-EDD4BB66F221}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Engine">
+      <UniqueIdentifier>{5eeb0679-5ed3-4b8a-a5d6-29dd429a3534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SocketIO">
+      <UniqueIdentifier>{99f5fc12-173c-4819-8a9c-21eda517ae54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SocketIO\Acceptor">
+      <UniqueIdentifier>{a9ac997a-82a8-4095-ab93-ed5974bb3f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SocketIO\Receiver">
+      <UniqueIdentifier>{9145c644-7817-4bf0-bc4c-7858c56dc0a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Domain">
+      <UniqueIdentifier>{fb70ef5b-684c-444a-8285-3cbdd91de43a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Domain\Server">
+      <UniqueIdentifier>{379f3892-157a-4874-ac3a-c13d1e6fd380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Domain\Client">
+      <UniqueIdentifier>{07c297cb-612d-4b56-bfdd-a4cea262515a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Session">
+      <UniqueIdentifier>{437cd82b-2d56-4644-98a6-d7001aa1b25c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{C0D52C39-FE68-4039-A455-F62FE2F310A2}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{AE401BB8-BA16-46CC-A961-1B3298986664}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\ItsIso14827_license.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827Def.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827DefLocal.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827TaskSupport.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827Arg.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827Env.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827Msgs.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827Timer.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827TimerUtil.c">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827SocketAcceptor.c">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827SocketAcceptorDef.c">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827SocketAcceptorMsgs.c">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827SocketReceiver.c">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827SocketReceiverDef.c">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827SocketReceiverMsgs.c">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827Domain_send.c">
+      <Filter>소스 파일\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827Domain_txFIFO.c">
+      <Filter>소스 파일\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827DomainDef.c">
+      <Filter>소스 파일\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827DomainMgr_main.c">
+      <Filter>소스 파일\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827DomainMsgs.c">
+      <Filter>소스 파일\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827DomainTxFifoDef.c">
+      <Filter>소스 파일\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomain_main.c">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomain_send.c">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomain_subscription.c">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomainDef.c">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827ServerDomainTimer.c">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827ClientDomain_main.c">
+      <Filter>소스 파일\Domain\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827ClientDomain_send.c">
+      <Filter>소스 파일\Domain\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827ClientDomainDef.c">
+      <Filter>소스 파일\Domain\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827SessionDef.c">
+      <Filter>소스 파일\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827SessionMgr_main.c">
+      <Filter>소스 파일\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ItsIso14827Types.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\ItsIso14827_license.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827DefLocal.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827TaskSupport.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827Arg.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827Env.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827Msg.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827Msgs.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827Timer.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827TimerUtil.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SocketAcceptor.h">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SocketAcceptorDef.h">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SocketAcceptorMsg.h">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SocketAcceptorMsgs.h">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SocketReceiver.h">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SocketReceiverDef.h">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SocketReceiverMsg.h">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SocketReceiverMsgs.h">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827Domain_send.h">
+      <Filter>소스 파일\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827Domain_txFIFO.h">
+      <Filter>소스 파일\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827DomainDef.h">
+      <Filter>소스 파일\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827DomainMgr_main.h">
+      <Filter>소스 파일\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827DomainMsg.h">
+      <Filter>소스 파일\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827DomainMsgs.h">
+      <Filter>소스 파일\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827DomainTxFifoDef.h">
+      <Filter>소스 파일\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomain_main.h">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomain_send.h">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomain_subscription.h">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomainDef.h">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827ServerDomainTimer.h">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827ClientDomain_main.h">
+      <Filter>소스 파일\Domain\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827ClientDomain_send.h">
+      <Filter>소스 파일\Domain\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827ClientDomainDef.h">
+      <Filter>소스 파일\Domain\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SessionDef.h">
+      <Filter>소스 파일\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827SessionMgr_main.h">
+      <Filter>소스 파일\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ItsIso14827.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ItsIso14827Def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ItsIso14827TaskSupport.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ItsIso14827Types.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ItsIso14827Types.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\src\ItsIso14827DefLocal.tdc">
+      <Filter>소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827Arg.tdc">
+      <Filter>소스 파일\Engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827Env.tdc">
+      <Filter>소스 파일\Engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827Msgs.tdc">
+      <Filter>소스 파일\Engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827Timer.tdc">
+      <Filter>소스 파일\Engine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SocketAcceptorDef.tdc">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SocketAcceptorMsgs.tdc">
+      <Filter>소스 파일\SocketIO\Acceptor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SocketReceiverDef.tdc">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SocketReceiverMsgs.tdc">
+      <Filter>소스 파일\SocketIO\Receiver</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827DomainDef.tdc">
+      <Filter>소스 파일\Domain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827DomainMsgs.tdc">
+      <Filter>소스 파일\Domain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827DomainTxFifoDef.tdc">
+      <Filter>소스 파일\Domain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827ServerDomainDef.tdc">
+      <Filter>소스 파일\Domain\Server</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827ClientDomainDef.tdc">
+      <Filter>소스 파일\Domain\Client</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\ItsIso14827SessionDef.tdc">
+      <Filter>소스 파일\Session</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\ItsIso14827Def.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

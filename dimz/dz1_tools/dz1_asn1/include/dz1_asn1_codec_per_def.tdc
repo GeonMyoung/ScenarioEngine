@@ -1,0 +1,71 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+	include dz1_asn1_types_def;
+
+	typedef reference Dz1Asn1TypeDescr			 from dz1_asn1_codec;
+	typedef reference Dz1Asn1TypeDescrChild		 from dz1_asn1_codec;
+
+	---------------------------------------------------------------------
+	-- PER Mode
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1PerMode
+	{
+		aligned,
+		unaligned
+	} Dz1Asn1PerMode;
+
+	---------------------------------------------------------------------
+	-- PER Decode Stack
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1PerDecoderStk
+	{
+		struct Dz1Asn1PerDecoderStk		*next;			// is notarg, cascadedump
+
+		Dz1Asn1TypeDescr				*descr;			// is ref
+		Dz1Asn1TypeDescrChild			*child;			// is ref, notarg
+
+		uint32							 consumed;		// is notarg
+
+		Dz1Asn1PerDecoderStk			*ret_stk;		// is notarg
+
+		int32							 tab;
+	} Dz1Asn1PerDecoderStk;								// with api dumpX
+
+	---------------------------------------------------------------------
+	-- PER Decode Context
+	---------------------------------------------------------------------
+	typedef enum Dz1Asn1PerDecoderDataState
+	{
+		initial,
+		data_wait
+	} Dz1Asn1PerDecoderDataState;						// with api dumpX
+
+	typedef struct Dz1Asn1PerDecoderDataCtx
+	{
+		Dz1Asn1PerDecoderDataState		 state;			// is notarg
+		Dz1Asn1WipValue					*wip;			// is notarg
+
+		uint64							 u64data;		// is notarg
+	} Dz1Asn1PerDecoderDataCtx;							// with api dumpX
+
+	---------------------------------------------------------------------
+	-- PER Decoder
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1PerDecoder
+	{
+		Dz1Asn1TypeDescr				*target;		// is ref
+		Dz1Asn1PerMode					 mode;
+		Dz1Asn1PerDecoderStk			*stk;
+		Dz1Asn1WipValue					*ret;			// is notarg
+	} Dz1Asn1PerDecoder;								// with api dumpX
+
+	---------------------------------------------------------------------
+	-- PER Encode Argument
+	---------------------------------------------------------------------
+	typedef struct Dz1Asn1PerEncoderArg
+	{
+		Dz1Asn1PerMode					 mode;
+	} Dz1Asn1PerEncoderArg;
+}

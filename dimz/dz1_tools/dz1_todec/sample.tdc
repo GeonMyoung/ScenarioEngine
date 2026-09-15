@@ -1,0 +1,38 @@
+message set definition
+{
+	include libdz1_support;
+
+	typedef enum EnumSample
+	{
+		value0,
+		value1,
+		value2
+	} EnumSample;
+	
+	typedef struct MyData
+	{
+		uint32					 data1;					// is key
+		uint16					 data2;
+		uint8					 data3;
+	} MyData;											// with api dump, clone, compare
+	
+	typedef struct StructSample
+	{
+		uint32					 data1;					// is key
+		uint16					 data2;
+		uint8					 data3;
+		EnumSample				 data4;
+		MyData					*data5;
+	} StructSample;										// with api dump, clone, compare
+	typedef unique table StructSampleList(find, extract, count) [StructSample];
+
+	typedef union UnionSample
+	{
+		uint32					 data1;
+		uint16					 data2;
+		uint8					 data3;
+		EnumSample				 data4;
+		MyData					*data5;
+	} UnionSample;										// with api dump, clone
+	typedef			array UnionSampleList			[UnionSample];
+}

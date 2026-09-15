@@ -1,0 +1,20 @@
+message set definition
+{
+	include libdz1_support;
+	
+	typedef native ObjectInfo from Dz1TdcInfoObject;			// with api dump, compare
+	typedef native StructMemberEntry from Dz1TdcInfoStructure;	// with api dump
+	
+	struct ListControlGenNode;
+	typedef array ListControlGenList(find, extract, count) [struct ListControlGenNode];
+	
+	typedef struct ListControlGenNode
+	{
+		str							 name;				// is key
+		ObjectInfo					*obj;				// is ref
+		bool						 isItem;
+		struct ListControlGenNode	*parent;
+		ListControlGenList			*childs;			// is notarg
+		void						*hTreeItem;			// is notarg
+	} ListControlGenNode;								// with api dump, clone, compare
+}

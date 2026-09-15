@@ -1,0 +1,42 @@
+message set definition
+{
+	include Itsk00126v1EmulatorDef;
+	include Dz1SockUtilDef;
+	include Dz1JsonDef;
+	typedef struct Itsk00126v1ClientSession
+	{
+		Dz1SockAddr				*peer;			// is key
+		Dz1SockAddr				*local;			// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} Itsk00126v1ClientSession;		// with api dump, compare
+
+	typedef struct Itsk00126v1ServerSession
+	{
+		uint32					 acceptor;
+		Dz1SockAddr				*peer;		// is key
+		Dz1SockAddr				*local;		// is key
+		Dz1TcpClientSocket		*sock;
+		Dz1ElasticBuf			*rx_buf;
+		Dz1Stream				*rx_stream;
+		Dz1SockUtilTxFifo		*tx_fifo;
+	} Itsk00126v1ServerSession;		// with api dump, compare
+
+	typedef union Itsk00126v1Session
+	{
+		Itsk00126v1ClientSession		*client;
+		Itsk00126v1ServerSession		*server;
+	} Itsk00126v1Session;		// with api dump
+
+
+
+	typedef struct Itsk00126V1EmulatorEnv
+	{
+		void *tSelf;
+		Dz1JsonSpec *spec; 
+		Itsk00126v1Session	*session;	// is notarg
+		TString				 local_center_id; // is notarg
+	} Itsk00126V1EmulatorEnv;				// with api dump
+}

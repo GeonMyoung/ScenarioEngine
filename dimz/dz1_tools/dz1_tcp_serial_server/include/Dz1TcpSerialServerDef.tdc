@@ -1,0 +1,31 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_serial;
+	typedef func void Dz1TcpSerialServerException(void *exceptionArg, Dz1Error *reason);
+
+	typedef struct Dz1TcpSerialServerPreset
+	{
+		uint32							 serialPort;				// is key
+		Dz1SockAddr						*presetListen;
+		uint32							 serialBaud;
+		int32							 bitPerByte;
+		Dz1SerialParity					 serialParity;
+		Dz1SerialStopBit				 serialStopBit;
+		Dz1SerialXONXOFF				 serialFlowCtrlXonXoff;
+	} Dz1TcpSerialServerPreset;										// with api dump, clone, compare
+	
+	typedef unique table Dz1TcpSerialServerPresetList(find, extract, count) [Dz1TcpSerialServerPreset];
+	
+	typedef struct Dz1TcpSerialServerConfig
+	{
+		Dz1SockAddr						*emulater;
+		Dz1TcpSerialServerPresetList	*presets;					// is notarg
+	} Dz1TcpSerialServerConfig;										// with api dump, clone
+	
+	typedef struct Dz1TcpSerialServerCfgParserEnv
+	{
+		Dz1TcpSerialServerConfig			*dst;
+		Dz1TcpSerialServerPreset			*preset;
+	} Dz1TcpSerialServerCfgParserEnv;
+}

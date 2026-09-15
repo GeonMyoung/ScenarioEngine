@@ -1,0 +1,100 @@
+message set definition
+{
+	include dz1_stdio_support;
+
+	typedef struct Dz1MfcFileEntry
+	{
+		TString					 name_ext;			// is key
+		TString					 name;				// is notarg,nodump -- optional
+		TString					 ext;				// is notarg,nodump -- optional
+	} Dz1MfcFileEntry;								// with api dump, compare, clone
+	typedef unique table Dz1MfcFileList(find, extract, count) [Dz1MfcFileEntry];
+	
+	typedef enum Dz1MfcFileOperState
+	{
+		initial,
+		prepared,
+		success,
+		fail
+	} Dz1MfcFileOperState;
+	
+	typedef struct Dz1MfcFileOperDeleteEntry
+	{
+		TString					 path;				// is key
+		Dz1MfcFileEntry			*file;				// is key
+		
+		Dz1MfcFileOperState		 state;				// is notarg
+		int32					 fail_code;			// is notarg
+	} Dz1MfcFileOperDeleteEntry;					// with api dump, compare, clone
+	typedef unique table Dz1MfcFileOperDeleteList(find, extract, count) [Dz1MfcFileOperDeleteEntry];
+	typedef unique table Dz1MfcFileOperDelRefList(find, extract, count) [&Dz1MfcFileOperDeleteEntry];
+	typedef struct Dz1MfcFileOperDeleteData
+	{
+		Dz1MfcFileOperDeleteList	*list;			// is notarg
+		Dz1MfcFileOperDelRefList	*failed;		// is notarg
+	} Dz1MfcFileOperDeleteData;						// with api dump, clone
+	
+	typedef struct Dz1MfcFileOperRenameEntry
+	{
+		Dz1MfcFileEntry			*src;				// is key
+		Dz1MfcFileEntry			*dst;
+		
+		Dz1MfcFileOperState		 state;				// is notarg
+		int32					 fail_code;			// is notarg
+	} Dz1MfcFileOperRenameEntry;					// with api dump, compare, clone
+	typedef unique table Dz1MfcFileOperRenameList(find, extract, count) [Dz1MfcFileOperRenameEntry];
+	typedef unique table Dz1MfcFileOperRenRefList(find, extract, count) [&Dz1MfcFileOperRenameEntry];
+	typedef index Dz1MfcFileOperRenameDstIndex [&Dz1MfcFileOperRenameEntry(dst)];
+	typedef struct Dz1MfcFileOperRenameData
+	{
+		TString							 path;
+		Dz1MfcFileOperRenameList		*list;		// is notarg
+		Dz1MfcFileOperRenameDstIndex	*index;		// is notarg
+		Dz1MfcFileOperRenRefList		*failed;	// is notarg
+	} Dz1MfcFileOperRenameData;						// with api dump, clone
+
+	-- typedef func void Dz1MfcFileSimpleOperCBF(void *user_ptr, int32 phase, uint32 curr, uint32 total, void *entry);
+
+
+	typedef union Dz1MfcFileOperCopyOpt
+	{
+		TString					 rename;
+		uint32					*overwirte;
+		uint32					*skip;
+	} Dz1MfcFileOperCopyOpt;						// with api dump, clone
+	
+	typedef struct Dz1MfcFileOperCopyCollision
+	{
+		uint64					 src_size;		
+		uint64					 dst_size;
+	} Dz1MfcFileOperCopyCollision;					// with api dump, clone
+	
+	typedef struct Dz1MfcFileOperCopyEntry
+	{
+		Dz1MfcFileEntry				*file;				// is key
+		
+		Dz1MfcFileOperCopyOpt		*opt;				// is notarg
+		
+		Dz1MfcFileOperState			 state;				// is notarg
+		int32						 fail_code;			// is notarg
+		Dz1MfcFileOperCopyCollision	*collision;			// is notarg	-- fail_code == EEXIST 
+		
+		int64						 copied;			// is notarg
+		int64						 total;				// is notarg
+	} Dz1MfcFileOperCopyEntry;							// with api dump, compare, clone
+	typedef unique table Dz1MfcFileOperCopyList(find, extract, count) [Dz1MfcFileOperCopyEntry];
+	typedef unique table Dz1MfcFileOperCopyRefList(find, extract, count) [&Dz1MfcFileOperCopyEntry];
+	typedef struct Dz1MfcFileOperCopyData
+	{
+		TString						 src_path;
+		TString						 dst_path;
+		Dz1MfcFileOperCopyList		*files;				// is notarg
+		
+		int64						 copied;			// is notarg
+		int64						 total;				// is notarg
+		
+		Dz1MfcFileOperCopyRefList	*failed;			// is notarg
+	} Dz1MfcFileOperCopyData;							// with api dump, clone
+
+	typedef func void Dz1MfcFileCopyOperCBF(void *user_ptr, int32 phase, int32 phase_flag, void *entry);
+}

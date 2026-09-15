@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ASN.1.GITSN.LIB2\project\vs2022\ASN.1.GITSN.LIB2.vcxproj">
+      <Project>{B6B94C84-1937-4698-AD5B-C874256DD328}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\dimz\dz1_tools\dz1_gasn_support\project\vs2022\dz1_gasn_support.vcxproj">
+      <Project>{1078A2CA-86AA-4611-862C-BBAE31164914}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\dimz\dz1_tools\dz1_json\project\vs2022\dz1_json.vcxproj">
+      <Project>{0B4A6ABE-24DD-42BE-B6F8-1E7331896B0B}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Iso14827TestMsgUtil\project\vs2022\Iso14827TestMsgUtil.vcxproj">
+      <Project>{36613e70-a12f-4350-b22b-3d8cd42b18d0}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{AAF7A5F4-A8BA-4036-B6C0-21CE92D3DB3E}</ProjectGuid>
+    <RootNamespace>TechnicalRegulation1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\Iso14827UtilMsg\include;..\..\..\Iso14827TestMsgUtil\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\Iso14827UtilMsg\include;..\..\..\Iso14827TestMsgUtil\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\Iso14827UtilMsg\include;..\..\..\Iso14827TestHelper\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\iso14827testmsgutil\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\include\TechnicalRegulation1EAM.h" />
+    <ClCompile Include="..\..\include\TechnicalRegulation1EamDz1.h" />
+    <ClCompile Include="..\..\src\TechnicalRegulation1Def.c" />
+    <ClCompile Include="..\..\src\TechnicalRegulation1DefJson.c" />
+    <ClCompile Include="..\..\src\TechnicalRegulation1MsgStructAPI.c" />
+    <ClCompile Include="..\..\src\TechnicalRegulation1EAM.c" />
+    <ClCompile Include="..\..\src\TechnicalRegulation1EamDz1.c" />
+    <ClCompile Include="..\..\src\TechnicalRegulation1Util.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\TechnicalRegulation1DefJson.h" />
+    <ClInclude Include="..\..\include\TechnicalRegulation1MsgStructAPI.h" />
+    <ClInclude Include="..\..\include\TechnicalRegulation1Def.h" />
+    <ClInclude Include="..\..\include\TechnicalRegulation1Util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\TechnicalRegulation1Def.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\Iso14827UtilMsg\include;..\..\..\Iso14827TestHelper\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\include\%(Filename).h;..\..\src\%(Filename).c;..\..\include\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\Iso14827UtilMsg\include;..\..\..\Iso14827TestHelper\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\include\%(Filename).h;..\..\src\%(Filename).c;..\..\include\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\Iso14827UtilMsg\include;..\..\..\Iso14827TestHelper\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\include\%(Filename).h;..\..\src\%(Filename).c;..\..\include\%(Filename).tdo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\dimz\dz1_tools\tdc.exe -I ..\..\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\dimz\dz1_tools\dz1_gasn_support\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\Iso14827UtilMsg\include;..\..\..\Iso14827TestHelper\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile for %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\include\%(Filename).h;..\..\src\%(Filename).c;..\..\include\%(Filename).tdo</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\TechnicalRegulation1Def.tjsonc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\dimz\dz1_tools\tjsonc.exe -I..\..\include -S..\..\src -H..\..\include -oJson ..\..\include\%(FileName).tjsonc</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(FileName)Json.c;..\..\include\%(FileName)Json.h;</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\include\%(FileName).tdo</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\dimz\dz1_tools\tjsonc.exe -I..\..\include -S..\..\src -H..\..\include -oJson ..\..\include\%(FileName).tjsonc</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(FileName)Json.c;..\..\include\%(FileName)Json.h;</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\include\%(FileName).tdo</AdditionalInputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

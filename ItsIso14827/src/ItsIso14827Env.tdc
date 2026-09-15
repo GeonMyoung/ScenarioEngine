@@ -1,0 +1,12 @@
+message set definition
+{
+	include ItsIso14827DomainDef;
+	
+	typedef struct ItsIso14827Env
+	{
+		void *tSelf;
+		ItsIso14827SessionMgr		*sessionMgr;
+		ItsIso14827DomainMgr		*domainMgr;
+		uint32						 pktDumpFlag;
+	} ItsIso14827Env;				// with api dump
+}

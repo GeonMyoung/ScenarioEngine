@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugDLL|Win32">
+      <Configuration>DebugDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugDLL|x64">
+      <Configuration>DebugDLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseDLL|Win32">
+      <Configuration>ReleaseDLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseDLL|x64">
+      <Configuration>ReleaseDLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{53196AE2-9232-4927-8038-74CA3493F06F}</ProjectGuid>
+    <RootNamespace>dz1_asn1</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.32819.101</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
+    <OutDir>$(Configuration)$(PlatformArchitecture)\</OutDir>
+    <IntDir>$(Configuration)$(PlatformArchitecture)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2;..\..\..\..\..\codeconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2;..\..\..\..\..\codeconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2;..\..\..\..\..\codeconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2;..\..\..\..\..\codeconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2;..\..\..\..\..\codeconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2;..\..\..\..\..\codeconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;NDEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2;..\..\..\..\..\codeconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2;..\..\..\..\..\codeconv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_LIB;__CLEANUP_C;__WORDSIZE=64;__SYSTEM_ENDIAN_LITTLE__;_DEBUG</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\dz1_asn1_codec.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_codec_ber.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_codec_ber_def.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_codec_def.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_codec_per.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_codec_per_def.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_codec_stream.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_constraint.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_constraint_def.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_constraint_types.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_typedescr.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_types_def.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_types.h" />
+    <ClInclude Include="..\..\include\dz1_asn1_typedescr_def.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_codec_ber.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_codec.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_codec_stream.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_constraint_types.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_types.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_codec_per.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_struct.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_constraint.h" />
+    <ClInclude Include="..\..\src\dz1_asn1_typedescr.h" />
+    <ClInclude Include="..\..\test\Dz1Asn1ExternalModule.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\test\Dz1Asn1TestModule.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\dz1_asn1_ber_bitstring.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_char_str.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_choice.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_codec_ber.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_boolean.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_cst_arr.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_cst_seq.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_prefix.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_util.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_codec.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_codec_ber_def.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_codec_def.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_codec_def_util.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_cst_set.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_open_type.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_restricted_str.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_emb_pdv.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_enum.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_external.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_instance_of.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_integer.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_null.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_octet_str.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_oid.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_real.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_relative_oid.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_codec_per_def.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_codec_stream.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_constraint_def.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_constraint_types.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_per_integer.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_typedescr_f.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_typedescr_td.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_types_def.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_types.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_codec_per.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_per_boolean.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_struct.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_ber_time.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_constraint.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_typedescr.c" />
+    <ClCompile Include="..\..\src\dz1_asn1_typedescr_def.c" />
+    <ClCompile Include="..\..\test\Dz1Asn1ExternalModule.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\test\Dz1Asn1TestModule.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\dz1_asn1_codec_def.tdc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\doc\informations.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\src\dz1_asn1_struct.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\src;..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TDC Compile : %(Filename).tdc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\tdc.exe -I ..\..\src;..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">TDC Compile : %(Filename).tdc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\tdc.exe -I ..\..\src;..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">TDC Compile : %(Filename).tdc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\src;..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TDC Compile : %(Filename).tdc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\src;..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TDC Compile : %(Filename).tdc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\tdc.exe -I ..\..\src;..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">TDC Compile : %(Filename).tdc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\tdc.exe -I ..\..\src;..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">TDC Compile : %(Filename).tdc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\src;..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. ..\..\src\%(Filename).tdc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TDC Compile : %(Filename).tdc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\src\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\dz1_asn1_types_def.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\. -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_codec_ber_def.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_codec_per_def.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_typedescr_def.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_asn1_constraint_def.tdc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\tdc.exe -I ..\..\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include -s ..\..\src ..\..\include\%(Filename).tdc</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\src\%(Filename).c;..\..\include\%(Filename).h;</Outputs>
+    </CustomBuild>
+    <None Include="..\..\doc\ASN.1-PER.vsd" />
+    <None Include="..\..\doc\PER_RestrictedCharacterString.xlsx" />
+    <None Include="..\..\doc\syntax.vsd" />
+    <None Include="..\..\test\sample.asn" />
+    <None Include="..\..\test\sample.bat" />
+    <None Include="..\..\test\sample_hana_tech.bat" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

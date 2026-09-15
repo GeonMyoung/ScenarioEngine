@@ -1,0 +1,54 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+	-----------------------------------------------------------------
+	-- A mode
+	-----------------------------------------------------------------
+	typedef struct MyDataEntryA
+	{
+		str							 name;				// is key
+		uint32						 val;				// is key
+	} MyDataEntryA;										// with api dumpA, fdumpA, clone, compare
+
+	typedef unique table MyDataUniqueListA(find, extract, gethead, gettail) [MyDataEntryA];
+	typedef unique table MyDataUniqueRefListA(find, extract, gethead, gettail) [&MyDataEntryA];
+
+	typedef ordered table MyDataOrderedListA(find, extract, gethead, gettail) [MyDataEntryA];
+	typedef ordered table MyDataOrderedRefListA(find, extract, gethead, gettail) [&MyDataEntryA];
+
+	typedef table MyDataListA(find, extract, gethead, gettail) [MyDataEntryA];
+	typedef table MyDataRefListA(find, extract, gethead, gettail) [&MyDataEntryA];
+
+	typedef unique array MyDataUniqueArrayA(find, extract, gethead, gettail) [MyDataEntryA];
+	typedef unique array MyDataUniqueRefArrayA(find, extract, gethead, gettail) [&MyDataEntryA];
+
+	typedef ordered array MyDataOrderedArrayA(find, extract, gethead, gettail) [MyDataEntryA];
+	typedef ordered array MyDataOrderedRefArrayA(find, extract, gethead, gettail) [&MyDataEntryA];
+
+	typedef array MyDataArrayA(find, extract, gethead, gettail) [MyDataEntryA];
+	typedef array MyDataRefArrayA(find, extract, gethead, gettail) [&MyDataEntryA];
+
+	typedef index MyDataIndexA [MyDataEntryA(val)];
+	typedef index MyDataRefIndexA [&MyDataEntryA(val)];
+
+	typedef struct ArrayMemberTypeA
+	{
+		MyDataEntryA				*obj_ptr_arr[obj_ptr_cnt];
+		uint32						 obj_ptr_cnt;
+
+		MyDataEntryA				 obj_arr[obj_cnt];
+		uint32						 obj_cnt;
+
+		uint64						 prims_arr[prims_cnt];
+		uint32						 prims_cnt;
+
+		uint64						*primptrs_arr[primptrs_cnt];
+		uint32						 primptrs_cnt;
+
+		str							 str_arr[str_cnt];
+		uint32						 str_cnt;
+
+		int32						*i_val;				// is ref
+	} ArrayMemberTypeA;									// with api dumpA, fdumpA, clone
+}

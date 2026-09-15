@@ -1,0 +1,25 @@
+message set definition
+{
+	include libdz1_support;
+	include Iso14827dz1;
+	include dz1_asn1_support;
+
+	typedef func ssize_t Iso14827MsgDecodeFunc(void **dst, Dz1Asn1Any *src, Dz1Asn1Codec codec, Dz1Error *err);
+
+	typedef struct Iso14827HdrForm
+	{
+		bool					 originDomainPresent;
+		bool					 originAddrPresent;
+
+		bool					 senderDomainPresent;
+		bool					 senderAddrPresent;
+
+		bool					 destDomainPresent;
+		bool					 destAddrPresent;
+
+		str						 currency;		// is ref
+		int32					 factor;
+
+		uint8					 timeFlag;
+	} Iso14827HdrForm;							// with api dump
+}

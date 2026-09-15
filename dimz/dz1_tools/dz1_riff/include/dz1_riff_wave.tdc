@@ -1,0 +1,34 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct Dz1RiffWaveUnknown
+	{
+		str						 id;
+		Dz1Binary				*chunk;					// is nodump
+	} Dz1RiffWaveUnknown;								// with api dump, clone
+	
+	typedef struct Dz1RiffWaveFmt
+	{
+		uint16					 audioFormat;
+		uint16					 numOfChannel;
+		uint32					 sampleRate;
+		uint32					 byteRate;
+		uint16					 blockAlign;
+		uint16					 bitPerSample;
+		Dz1Binary				*extra;
+	} Dz1RiffWaveFmt;									// with api dump, clone
+
+	typedef struct Dz1RiffWaveData
+	{
+		Dz1Binary				*data;					// is nodump
+	} Dz1RiffWaveData;									// with api dump, clone
+	
+	typedef union Dz1RiffWaveChunk
+	{
+		Dz1RiffWaveFmt			*fmt;
+		Dz1RiffWaveData			*data;
+		Dz1RiffWaveUnknown		*unknown;
+	} Dz1RiffWaveChunk;									// with api dump, clone
+	
+	typedef array Dz1RiffWave(count) [Dz1RiffWaveChunk];
+}

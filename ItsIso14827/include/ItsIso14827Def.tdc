@@ -1,0 +1,343 @@
+message set definition
+{
+	include libdz1_support;
+	include Iso14827dz1;
+	typedef func void ItsIso14827Exception(void *exceptionArg, Dz1Error *reason);
+
+	----------------------------------
+	-- Misc Structure
+	----------------------------------
+	/*
+	typedef struct ItsIso14827SessionKey
+	{
+		Dz1SockAddr						*peer;				// is key
+		Dz1SockAddr						*local;				// is key
+		uint32							 sid;				// is key
+	} ItsIso14827SessionKey;								// with api dump, compare, clone
+	*/
+	typedef native ItsIso14827SessionKey from ItsIso14827Types;		// with api dump, compare, clone
+	
+	typedef enum ItsIso14827CRCCheck
+	{
+		explict,
+		warning,
+		ignore
+	} ItsIso14827CRCCheck;
+	
+	-------------------------------------------
+	-- Domain Type
+	-------------------------------------------
+	typedef enum ItsIso14827DomainType
+	{
+		server,
+		client
+	} ItsIso14827DomainType;
+
+	typedef func void ItsIso14827CallbackDisconnected(void *param, Dz1Asn1UTF8Str *myDomain,
+													  Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user);
+
+	-------------------------------------------
+	-- Server Domain Callback
+	-------------------------------------------
+	typedef func void ItsIso14827CallbackAuthenticate(void *param, Dz1Asn1UTF8Str *myDomain,
+													Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+													Dz1Asn1OctetStr *pass, Dz1Asn1OctetStr *authInfo,
+													int32 hbDur, int32 timeout, uint8 codecBits, bool is_retried);
+	
+	typedef func void ItsIso14827CallbackEstablished(void *param, Dz1Asn1UTF8Str *myDomain,
+													Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+													Dz1Asn1Codec selected);
+													
+	typedef func void ItsIso14827CallbackEchoRequest(void *param, Dz1Asn1UTF8Str *myDomain,
+													 Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user, uint32 echoID);
+	
+	
+	---------------------------------------------------------------------------------------------------------
+	-- Single Subscription Callback	
+	---------------------------------------------------------------------------------------------------------
+	typedef func void ItsIso14827CallbackSingle(void *param, Dz1Asn1UTF8Str *myDomain,
+												Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+												uint32 subID, str oidStr, uint8 *encodedEAM, uint32 encodedEAMSize);
+	
+	
+	---------------------------------------------------------------------------------------------------------
+	-- Event-driven Subscription Callback	
+	---------------------------------------------------------------------------------------------------------
+	typedef func void ItsIso14827CallbackEventPrepare(void *param, Dz1Asn1UTF8Str *myDomain,
+													  Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+													  uint32 subID, uint32 latency_sec,
+													  str oidStr, uint8 *encodedEAM, uint32 encodedEAMSize);
+
+	---------------------------------------------------------------------------------------------------------
+	-- Periodic Subscription Callback	
+	---------------------------------------------------------------------------------------------------------
+	typedef func void ItsIso14827CallbackPeriodicPrepare(void *param, Dz1Asn1UTF8Str *myDomain,
+														  Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+														  uint32 subID, uint32 period_sec,
+														  str oidStr, uint8 *encodedEAM, uint32 encodedEAMSize);
+														  
+	typedef func void ItsIso14827CallbackPublicationStart(void *param, Dz1Asn1UTF8Str *myDomain,
+														  Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+														  uint32 subID, str oidStr, uint8 *encodedEAM, uint32 encodedEAMSize);
+														
+	typedef func void ItsIso14827CallbackPublicationInvoke(void *param, Dz1Asn1UTF8Str *myDomain,
+														   Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+														   uint32 subID, str oidStr, uint8 *encodedEAM, uint32 encodedEAMSize);
+	
+	---------------------------------------------------------------------------------------------------------
+	-- Common : Subscription Terminate/Canceled Callback
+	---------------------------------------------------------------------------------------------------------
+	typedef union ItsIso14827PublicarionError
+	{
+		Iso14827RejectPublication		 pubError;
+		Iso14827RejectPubDataReason		 pubDataError;
+	} ItsIso14827PublicarionError;							// with api dump, clone
+	
+	typedef func void ItsIso14827CallbackSubscriptionPubInfom(void *param, Dz1Asn1UTF8Str *myDomain,
+																Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+																uint32 subID, ItsIso14827PublicarionError *reason);
+
+	typedef func void ItsIso14827CallbackSubscriptionStop(void *param, Dz1Asn1UTF8Str *myDomain,
+														  Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+														  uint32 subID);
+														  
+	typedef union ItsIso14827SubscriptionExpireReason
+	{
+		uint32							*subscriptionExpired;
+		uint32							*clientDisconnected;
+		Iso14827SubscriptionCancel		 clientRequested;
+	} ItsIso14827SubscriptionExpireReason;					// with api dump, clone
+	
+	typedef func void ItsIso14827CallbackSubscriptionExpire(void *param, Dz1Asn1UTF8Str *myDomain,
+															Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+															uint32 subID, ItsIso14827SubscriptionExpireReason *reason);
+
+	typedef func void ItsIso14827CallbackSysHealthWarning(void *param);
+
+	-------------------------------------------
+	-- Server Domain Callback Struct
+	-------------------------------------------
+	typedef struct ItsIso14827ServerDomainCallback
+	{
+		ItsIso14827CallbackAuthenticate				 authenticate;
+		ItsIso14827CallbackEstablished				 established;
+		ItsIso14827CallbackDisconnected				 disconnected;
+		
+		ItsIso14827CallbackEchoRequest				 echoRequest;
+		
+		ItsIso14827CallbackSingle					 singleRequest;
+		
+		ItsIso14827CallbackEventPrepare				 eventPrepare;
+		ItsIso14827CallbackPublicationStart			 eventStart;
+		
+		ItsIso14827CallbackPeriodicPrepare			 periodicPreapre;
+		ItsIso14827CallbackPublicationStart			 periodicStart;
+		ItsIso14827CallbackPublicationInvoke		 periodicInvoke;
+		
+		ItsIso14827CallbackSubscriptionPubInfom		 pubErrorInform;
+		
+		ItsIso14827CallbackSubscriptionStop			 stopped;
+		
+		ItsIso14827CallbackSubscriptionExpire		 expired;
+		
+		ItsIso14827CallbackSysHealthWarning			 sysHealthWarning;
+		
+		void										*param;
+	} ItsIso14827ServerDomainCallback;								// with api clone
+
+	-------------------------------------------
+	-- Client Domain Callback Struct
+	-------------------------------------------
+	typedef constant ItsIso14827ClientCtrlFlag_HeartBeatOFF		0x00000001;
+	typedef constant ItsIso14827ClientCtrlFlag_PubAckDeferred	0x00000002;
+
+	typedef func void ItsIso14827CallbackInitiated(void *param, Dz1Asn1UTF8Str *myDomain, Dz1Asn1UTF8Str *peerDomain, Dz1Asn1Codec initial_codec, ItsIso14827SessionKey *key);
+	
+	typedef func void ItsIso14827CallbackTerminate(void *param, Dz1Asn1UTF8Str *myDomain, Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user, Iso14827Terminate reason);
+	
+	typedef func void ItsIso14827CallbackPublication(void *param, Dz1Asn1UTF8Str *myDomain,
+													Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+													uint32 subscriptionID, uint32 pubSerial,
+													str oidStr, uint8 *encodedEAM, uint32 encodedEAMSize);
+													
+	typedef func void ItsIso14827CallbackPubControl(void *param, Dz1Asn1UTF8Str *myDomain,
+													Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+													uint32 subscriptionID, uint32 pubSerial,
+													Iso14827PublicationMgmt cmd);
+	
+	typedef struct ItsIso14827ClientDomainCallback
+	{
+		ItsIso14827CallbackInitiated		 initiated;
+		ItsIso14827CallbackDisconnected		 echo_responsed;
+		ItsIso14827CallbackTerminate		 terminate;
+		
+		ItsIso14827CallbackPublication		 publication;
+		ItsIso14827CallbackPubControl		 pubControl;
+
+		ItsIso14827CallbackDisconnected		 disconnected;
+				
+		void								*param;
+	} ItsIso14827ClientDomainCallback;								// with api clone
+
+	-------------------------------------------
+	-- Callback for non-standard operation
+	-------------------------------------------
+	typedef func void ItsIso14827CallbackViolatedSubRcvd(void *param, Dz1Asn1UTF8Str *myDomain, Dz1Asn1UTF8Str *peerDomain, Dz1Asn1OctetStr *user,
+														 bool guaranteed, uint32 subID, str oidStr, uint8 *encodedEAM, uint32 encodedEAMSize);
+
+	------------------------------------------------------------------------
+	-- Server Event 4 task
+	------------------------------------------------------------------------
+	typedef struct ItsIso14827ServerEventAuth
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		Dz1Asn1OctetStr *pass;
+		Dz1Asn1OctetStr *authInfo;
+		int32 hbDur;
+		int32 timeout;
+		uint8 codecBits;
+		bool is_retried;
+	} ItsIso14827ServerEventAuth;									// with api dump, clone
+	
+	typedef struct ItsIso14827ServerEventConnected
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		Dz1Asn1Codec selected;
+	} ItsIso14827ServerEventConnected;								// with api dump, clone
+	
+	typedef struct ItsIso14827ServerEventEcho
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		uint32 echoID;
+	} ItsIso14827ServerEventEcho;									// with api dump, clone
+
+	typedef struct ItsIso14827ServerEventSubSignle
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		uint32 subID;
+		str oidStr;
+		uint8 *encodedEAM;
+		uint32 encodedEAMSize;
+	} ItsIso14827ServerEventSubSignle;								// with api dump, clone
+	
+	typedef struct ItsIso14827ServerEventSubPrepareED
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		uint32 subID;
+		uint32 latency_sec;
+		str oidStr;
+		uint8 *encodedEAM;
+		uint32 encodedEAMSize;
+	} ItsIso14827ServerEventSubPrepareED;							// with api dump, clone
+
+	typedef struct ItsIso14827ServerEventSubPrepareP
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		uint32 subID;
+		uint32 period_sec;
+		str oidStr;
+		uint8 *encodedEAM;
+		uint32 encodedEAMSize;
+	} ItsIso14827ServerEventSubPrepareP;							// with api dump, clone
+														  
+	typedef struct ItsIso14827ServerEventPubStart					-- and Invoke on periodic
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		uint32 subID;
+		str oidStr;
+		uint8 *encodedEAM;
+		uint32 encodedEAMSize;
+	} ItsIso14827ServerEventPubStart;								// with api dump, clone
+	
+	typedef struct ItsIso14827ServerEventPubInform
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		uint32 subID;
+		ItsIso14827PublicarionError *reason;
+	} ItsIso14827ServerEventPubInform;								// with api dump, clone
+
+	typedef struct ItsIso14827ServerEventPubStop
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		uint32 subID;
+	} ItsIso14827ServerEventPubStop;								// with api dump, clone
+
+	typedef struct ItsIso14827ServerEventPubExpire
+	{
+		Dz1Asn1UTF8Str *myDomain;
+		Dz1Asn1UTF8Str *peerDomain;
+		Dz1Asn1OctetStr *user;
+		uint32 subID;
+		ItsIso14827SubscriptionExpireReason *reason;
+	} ItsIso14827ServerEventPubExpire;								// with api dump, clone
+
+	------------------------------------------------------------------------
+	-- Client Event 4 task
+	------------------------------------------------------------------------
+	typedef struct ItsIso14827ClientEventInitiate
+	{
+		Dz1Asn1UTF8Str			*myDomain;
+		Dz1Asn1UTF8Str			*peerDomain;
+		Dz1Asn1Codec			 initial_codec;
+		ItsIso14827SessionKey	*key;
+	} ItsIso14827ClientEventInitiate;							// with api dump, clone
+
+	typedef struct ItsIso14827ClientEventTerminate
+	{
+		Dz1Asn1UTF8Str			*myDomain;
+		Dz1Asn1UTF8Str			*peerDomain;
+		Dz1Asn1OctetStr			*user;
+		Iso14827Terminate		 reason;
+	} ItsIso14827ClientEventTerminate;							// with api dump, clone
+
+	typedef struct ItsIso14827ClientEventPublication
+	{
+		Dz1Asn1UTF8Str			*myDomain;
+		Dz1Asn1UTF8Str			*peerDomain;
+		Dz1Asn1OctetStr			*user;
+		uint32					 sid;
+		uint32					 pubSerial;
+		str						 oidStr;
+		uint8					*encodedEAM;
+		uint32					 encodedEAMSize;
+	} ItsIso14827ClientEventPublication;						// with api dump, clone
+
+	typedef struct ItsIso14827ClientEventPubControl
+	{
+		Dz1Asn1UTF8Str			*myDomain;
+		Dz1Asn1UTF8Str			*peerDomain;
+		Dz1Asn1OctetStr			*user;
+		uint32					 sid;
+		uint32					 pubSerial;
+		Iso14827PublicationMgmt	 cmd;
+	} ItsIso14827ClientEventPubControl;							// with api dump, clone
+
+	------------------------------------------------------------------------
+	-- Server / Client Common Event 4 task
+	------------------------------------------------------------------------
+	typedef struct ItsIso14827EventDisconnected
+	{
+		Dz1Asn1UTF8Str			*myDomain;
+		Dz1Asn1UTF8Str			*peerDomain;
+		Dz1Asn1OctetStr			*user;
+	} ItsIso14827EventDisconnected;							// with api dump, clone
+
+}

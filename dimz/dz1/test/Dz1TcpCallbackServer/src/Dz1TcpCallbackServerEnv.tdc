@@ -1,0 +1,44 @@
+message set definition
+{
+	include Dz1TcpCallbackServerDef;
+	-- typedef native Dz1SocketBuf from dz1_socket_buf;
+	-- typedef native Dz1SocketFifo from dz1_socket_fifo;
+	
+	typedef enum Dz1TcpCallbackSessionLife
+	{
+		immediateDie,
+		negotiateAndDie,
+		tenSeconds,
+		halfHour,
+		immotal0,
+		immotal1,
+		immotal2,
+		immotal3,
+		immotal4
+	} Dz1TcpCallbackSessionLife;
+	
+	typedef struct Dz1TcpCallbackSession
+	{
+		Dz1SockAddr					*peer;		// is key
+		Dz1SockAddr					*local;		// is key
+		Dz1TcpClientSocket			*sock;
+		Dz1SocketBuf				*rx_buf;
+		Dz1SocketFifo				*tx_fifo;
+	} Dz1TcpCallbackSession;					// with api dump, compare
+	
+	typedef unique table Dz1TcpCallbackSessionList(find, extract, count) [Dz1TcpCallbackSession];
+	
+	typedef struct Dz1TcpCallbackServerEnv
+	{
+		void						*tSelf;
+		
+		uint32						 acceptor;
+		uint32						 acceptor_ssl;
+		
+		Dz1TcpCallbackSessionList	*sessions;	// is notarg
+		
+		Dz1TimeVal					 tLast;		// is notarg
+		uint64						 tx_amt;	// is notarg
+		uint64						 rx_amt;	// is notarg
+	} Dz1TcpCallbackServerEnv;					// with api dump
+}

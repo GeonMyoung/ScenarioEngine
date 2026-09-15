@@ -1,0 +1,30 @@
+message set definition
+{
+	include dz1_inet_ftp_env;
+	
+	typedef array DataFragmentList(count) [Dz1Binary];
+	
+	typedef union Dz1InetFtpRXDTPDest
+	{
+		FILE					*fp;
+		DataFragmentList		*list;
+	} Dz1InetFtpRXDTPDest;
+	
+	typedef struct Dz1InetFtpRXDTPArg
+	{
+		void					*tFTP;
+		Dz1InetFtpDTPSpec		*spec;	// is ref
+		Dz1InetFtpTransfer		*job;	// is ref
+--		int32					 size;
+	} Dz1InetFtpRXDTPArg;
+
+	typedef struct Dz1InetFtpTXDTPArg
+	{
+		void					*tFTP;
+		Dz1SockAddr				*peer;
+		Dz1SockAddr				*local;
+		Dz1TcpClientSocket		*sock;	// is ref
+		Dz1InetFtpDTPSpec		*spec;	// is ref
+		Dz1InetFtpTransfer		*job;	// is ref
+	} Dz1InetFtpTXDTPArg;
+}

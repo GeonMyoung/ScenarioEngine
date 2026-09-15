@@ -1,0 +1,25 @@
+message set definition
+{
+	include Dz1MfcDef;
+
+	---------------------------------------------------------------------------
+	-- Folder Tree
+	---------------------------------------------------------------------------
+	struct Dz1MfcFolderTreeNode;
+	typedef unique table Dz1MfcFolderTreeChilds(find, extract, count) [struct Dz1MfcFolderTreeNode];
+	typedef struct Dz1MfcFolderTreeNode
+	{
+		TString								 name;			// is key
+		TString								 full_path;		// is notarg
+		time								 stamp;
+		struct Dz1MfcFolderTreeNode			*parent;
+		Dz1MfcFolderTreeChilds				*childs;		// is notarg
+	} Dz1MfcFolderTreeNode;									// with api dump, compare, clone
+	typedef unique table Dz1MfcFolderTreeRefChilds(find, extract, count) [&Dz1MfcFolderTreeNode];
+	
+	typedef struct Dz1MfcFolderTree
+	{
+		Dz1MfcFolderTreeChilds				*hdd_roots;		// is notarg
+		Dz1MfcFolderTreeChilds				*share_roots;	// is notarg				
+	} Dz1MfcFolderTree;										// with api dump
+}

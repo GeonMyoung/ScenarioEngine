@@ -1,0 +1,15 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_riff_wave;
+	
+	typedef union Dz1RiffData
+	{
+		Dz1RiffWave		*wave;
+	} Dz1RiffData;			// with api dump, clone
+	
+	typedef struct Dz1Riff
+	{
+		Dz1RiffData		*data;
+	} Dz1Riff;				// with api dump, clone
+}

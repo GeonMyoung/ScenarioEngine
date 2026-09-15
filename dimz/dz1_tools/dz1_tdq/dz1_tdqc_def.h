@@ -1,0 +1,477 @@
+#ifndef _DZ1_TDC_DZ1_TDQC_DEF_H_
+#define _DZ1_TDC_DZ1_TDQC_DEF_H_
+
+////////////////////////////////////////////////////////////////////////////////
+#include <dz1_error.h>
+#include <dz1_int.h>
+#include <dz1_real.h>
+#include <dz1_str.h>
+#include <dz1_sock_addr.h>
+////////////////////////////////////////////////////////////////////////////////
+
+#include "libdz1_support.h"
+#include "dz1_tdq_def.h"
+#include "Dz1TdcInfoObject.h"
+#include "Dz1TdcInfoModule.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcShapeOptEntry
+typedef struct Dz1TdqcShapeOptEntry
+{
+	Dz1Str		instance;
+	Dz1Str		api_prefix;
+} Dz1TdqcShapeOptEntry;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcShapeOptEntry *Dz1TdqcShapeOptEntry_new(Dz1Str instance, 
+																	   Dz1Str api_prefix, Dz1Error *err);
+static __inline__ Dz1TdqcShapeOptEntry *Dz1TdqcShapeOptEntry_gen(Dz1Error *err) { return Dz1TdqcShapeOptEntry_new(NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t Dz1TdqcShapeOptEntry_copy(Dz1TdqcShapeOptEntry *dst, Dz1TdqcShapeOptEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcShapeOptEntry *Dz1TdqcShapeOptEntry_clone(Dz1TdqcShapeOptEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeOptEntry_purge(Dz1TdqcShapeOptEntry *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeOptEntry_del(Dz1TdqcShapeOptEntry *p);
+static __inline__ void Dz1TdqcShapeOptEntry_delAndSetNull(void *ptr)
+{
+	Dz1TdqcShapeOptEntry **p = (Dz1TdqcShapeOptEntry **)ptr;
+	if (p) { Dz1TdqcShapeOptEntry_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeOptEntry_dump(Dz1TdqcShapeOptEntry *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int Dz1TdqcShapeOptEntry_cmp(Dz1TdqcShapeOptEntry *a, Dz1TdqcShapeOptEntry *b); 
+// Dz1TdqcShapeOptEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcShapeOptList
+typedef struct Dz1TdqcShapeOptList
+{
+	void *storage;
+	unsigned int (*count)(struct Dz1TdqcShapeOptList *p);
+	Dz1Error (*travel)(struct Dz1TdqcShapeOptList *p, Dz1Error (*func)(void *ptr, Dz1TdqcShapeOptEntry *entry), void *ptr);
+	Dz1Error (*travelForward)(struct Dz1TdqcShapeOptList *p, Dz1Error (*func)(void *ptr, Dz1TdqcShapeOptEntry *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct Dz1TdqcShapeOptList *p, Dz1Error (*func)(void *ptr, Dz1TdqcShapeOptEntry *entry), void *ptr);
+	Dz1TdqcShapeOptEntry **(*get_array)(struct Dz1TdqcShapeOptList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct Dz1TdqcShapeOptList *p, Dz1TdqcShapeOptEntry *data);
+	bool_t (*remove)(struct Dz1TdqcShapeOptList *p, Dz1TdqcShapeOptEntry *key);
+	Dz1TdqcShapeOptEntry *(*extract)(struct Dz1TdqcShapeOptList *p, Dz1TdqcShapeOptEntry *key);
+	Dz1TdqcShapeOptEntry *(*find)(struct Dz1TdqcShapeOptList *p, Dz1TdqcShapeOptEntry *key);
+	int (*cmp)(Dz1TdqcShapeOptEntry *a, Dz1TdqcShapeOptEntry *b);
+} Dz1TdqcShapeOptList;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcShapeOptList *Dz1TdqcShapeOptList_new(Dz1Error *err);
+static __inline__ Dz1TdqcShapeOptList *Dz1TdqcShapeOptList_gen(Dz1Error *err) { return Dz1TdqcShapeOptList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcShapeOptList *Dz1TdqcShapeOptList_clone(Dz1TdqcShapeOptList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeOptList_purge(Dz1TdqcShapeOptList *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeOptList_del(Dz1TdqcShapeOptList *p);
+static __inline__ void Dz1TdqcShapeOptList_delAndSetNull(void *ptr)
+{
+	Dz1TdqcShapeOptList **p = (Dz1TdqcShapeOptList **)ptr;
+	if (p != NULL) { Dz1TdqcShapeOptList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeOptList_dump(Dz1TdqcShapeOptList *p, int tab);
+
+// Dz1TdqcShapeOptList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcShape
+typedef struct Dz1TdqcShape
+{
+	Dz1Str					 name;
+	ObjectInfo				*src_obj;
+	ObjectInfo				*dst_obj;
+	Dz1TdqcShapeOptList		*memb_opt;
+	Dz1TdqTblShape			*target;
+	bool_t					 is_qurty_shape;
+} Dz1TdqcShape;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcShape *Dz1TdqcShape_new(Dz1Str name, 
+													   ObjectInfo *src_obj_ref, 
+													   ObjectInfo *dst_obj_ref, 
+													   Dz1TdqTblShape *target, Dz1Error *err);
+static __inline__ Dz1TdqcShape *Dz1TdqcShape_gen(Dz1Error *err) { return Dz1TdqcShape_new(NULL, NULL, NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t Dz1TdqcShape_copy(Dz1TdqcShape *dst, Dz1TdqcShape *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcShape *Dz1TdqcShape_clone(Dz1TdqcShape *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShape_purge(Dz1TdqcShape *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShape_del(Dz1TdqcShape *p);
+static __inline__ void Dz1TdqcShape_delAndSetNull(void *ptr)
+{
+	Dz1TdqcShape **p = (Dz1TdqcShape **)ptr;
+	if (p) { Dz1TdqcShape_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShape_dump(Dz1TdqcShape *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int Dz1TdqcShape_cmp(Dz1TdqcShape *a, Dz1TdqcShape *b); 
+// Dz1TdqcShape
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcShapeList
+typedef struct Dz1TdqcShapeList
+{
+	void *storage;
+	unsigned int (*count)(struct Dz1TdqcShapeList *p);
+	Dz1Error (*travel)(struct Dz1TdqcShapeList *p, Dz1Error (*func)(void *ptr, Dz1TdqcShape *entry), void *ptr);
+	Dz1Error (*travelForward)(struct Dz1TdqcShapeList *p, Dz1Error (*func)(void *ptr, Dz1TdqcShape *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct Dz1TdqcShapeList *p, Dz1Error (*func)(void *ptr, Dz1TdqcShape *entry), void *ptr);
+	Dz1TdqcShape **(*get_array)(struct Dz1TdqcShapeList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct Dz1TdqcShapeList *p, Dz1TdqcShape *data);
+	bool_t (*remove)(struct Dz1TdqcShapeList *p, Dz1TdqcShape *key);
+	Dz1TdqcShape *(*extract)(struct Dz1TdqcShapeList *p, Dz1TdqcShape *key);
+	Dz1TdqcShape *(*find)(struct Dz1TdqcShapeList *p, Dz1TdqcShape *key);
+	int (*cmp)(Dz1TdqcShape *a, Dz1TdqcShape *b);
+} Dz1TdqcShapeList;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcShapeList *Dz1TdqcShapeList_new(Dz1Error *err);
+static __inline__ Dz1TdqcShapeList *Dz1TdqcShapeList_gen(Dz1Error *err) { return Dz1TdqcShapeList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcShapeList *Dz1TdqcShapeList_clone(Dz1TdqcShapeList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeList_purge(Dz1TdqcShapeList *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeList_del(Dz1TdqcShapeList *p);
+static __inline__ void Dz1TdqcShapeList_delAndSetNull(void *ptr)
+{
+	Dz1TdqcShapeList **p = (Dz1TdqcShapeList **)ptr;
+	if (p != NULL) { Dz1TdqcShapeList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcShapeList_dump(Dz1TdqcShapeList *p, int tab);
+
+// Dz1TdqcShapeList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcTblInstance
+typedef struct Dz1TdqcTblInstance
+{
+	Dz1Str			 name;
+	Dz1TdqcShape	*shape;
+	Dz1TdqFKList	*fks;
+	Dz1Str			 prefix;
+} Dz1TdqcTblInstance;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcTblInstance *Dz1TdqcTblInstance_new(Dz1Str name, 
+																   Dz1TdqcShape *shape_ref, Dz1Error *err);
+static __inline__ Dz1TdqcTblInstance *Dz1TdqcTblInstance_gen(Dz1Error *err) { return Dz1TdqcTblInstance_new(NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t Dz1TdqcTblInstance_copy(Dz1TdqcTblInstance *dst, Dz1TdqcTblInstance *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcTblInstance *Dz1TdqcTblInstance_clone(Dz1TdqcTblInstance *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstance_purge(Dz1TdqcTblInstance *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstance_del(Dz1TdqcTblInstance *p);
+static __inline__ void Dz1TdqcTblInstance_delAndSetNull(void *ptr)
+{
+	Dz1TdqcTblInstance **p = (Dz1TdqcTblInstance **)ptr;
+	if (p) { Dz1TdqcTblInstance_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstance_dump(Dz1TdqcTblInstance *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int Dz1TdqcTblInstance_cmp(Dz1TdqcTblInstance *a, Dz1TdqcTblInstance *b); 
+// Dz1TdqcTblInstance
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcTblInstanceList
+typedef struct Dz1TdqcTblInstanceList
+{
+	void *storage;
+	unsigned int (*count)(struct Dz1TdqcTblInstanceList *p);
+	Dz1Error (*travel)(struct Dz1TdqcTblInstanceList *p, Dz1Error (*func)(void *ptr, Dz1TdqcTblInstance *entry), void *ptr);
+	Dz1Error (*travelForward)(struct Dz1TdqcTblInstanceList *p, Dz1Error (*func)(void *ptr, Dz1TdqcTblInstance *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct Dz1TdqcTblInstanceList *p, Dz1Error (*func)(void *ptr, Dz1TdqcTblInstance *entry), void *ptr);
+	Dz1TdqcTblInstance **(*get_array)(struct Dz1TdqcTblInstanceList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct Dz1TdqcTblInstanceList *p, Dz1TdqcTblInstance *data);
+	bool_t (*remove)(struct Dz1TdqcTblInstanceList *p, Dz1TdqcTblInstance *key);
+	Dz1TdqcTblInstance *(*extract)(struct Dz1TdqcTblInstanceList *p, Dz1TdqcTblInstance *key);
+	Dz1TdqcTblInstance *(*find)(struct Dz1TdqcTblInstanceList *p, Dz1TdqcTblInstance *key);
+	int (*cmp)(Dz1TdqcTblInstance *a, Dz1TdqcTblInstance *b);
+} Dz1TdqcTblInstanceList;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcTblInstanceList *Dz1TdqcTblInstanceList_new(Dz1Error *err);
+static __inline__ Dz1TdqcTblInstanceList *Dz1TdqcTblInstanceList_gen(Dz1Error *err) { return Dz1TdqcTblInstanceList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcTblInstanceList *Dz1TdqcTblInstanceList_clone(Dz1TdqcTblInstanceList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstanceList_purge(Dz1TdqcTblInstanceList *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstanceList_del(Dz1TdqcTblInstanceList *p);
+static __inline__ void Dz1TdqcTblInstanceList_delAndSetNull(void *ptr)
+{
+	Dz1TdqcTblInstanceList **p = (Dz1TdqcTblInstanceList **)ptr;
+	if (p != NULL) { Dz1TdqcTblInstanceList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstanceList_dump(Dz1TdqcTblInstanceList *p, int tab);
+
+// Dz1TdqcTblInstanceList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcTblInstanceSeq
+typedef struct Dz1TdqcTblInstanceSeq
+{
+	void *storage;
+	unsigned int (*count)(struct Dz1TdqcTblInstanceSeq *p);
+	Dz1Error (*travel)(struct Dz1TdqcTblInstanceSeq *p, Dz1Error (*func)(void *ptr, Dz1TdqcTblInstance *entry), void *ptr);
+	Dz1Error (*travelForward)(struct Dz1TdqcTblInstanceSeq *p, Dz1Error (*func)(void *ptr, Dz1TdqcTblInstance *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct Dz1TdqcTblInstanceSeq *p, Dz1Error (*func)(void *ptr, Dz1TdqcTblInstance *entry), void *ptr);
+	Dz1TdqcTblInstance **(*get_array)(struct Dz1TdqcTblInstanceSeq *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct Dz1TdqcTblInstanceSeq *p, Dz1TdqcTblInstance *data);
+	int (*cmp)(Dz1TdqcTblInstance *a, Dz1TdqcTblInstance *b);
+} Dz1TdqcTblInstanceSeq;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcTblInstanceSeq *Dz1TdqcTblInstanceSeq_new(Dz1Error *err);
+static __inline__ Dz1TdqcTblInstanceSeq *Dz1TdqcTblInstanceSeq_gen(Dz1Error *err) { return Dz1TdqcTblInstanceSeq_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcTblInstanceSeq *Dz1TdqcTblInstanceSeq_clone(Dz1TdqcTblInstanceSeq *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstanceSeq_purge(Dz1TdqcTblInstanceSeq *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstanceSeq_del(Dz1TdqcTblInstanceSeq *p);
+static __inline__ void Dz1TdqcTblInstanceSeq_delAndSetNull(void *ptr)
+{
+	Dz1TdqcTblInstanceSeq **p = (Dz1TdqcTblInstanceSeq **)ptr;
+	if (p != NULL) { Dz1TdqcTblInstanceSeq_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTblInstanceSeq_dump(Dz1TdqcTblInstanceSeq *p, int tab);
+
+// Dz1TdqcTblInstanceSeq
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcQuery
+typedef struct Dz1TdqcQuery
+{
+	Dz1Str					 name;
+	ObjectInfo				*src_obj;
+	ObjectInfo				*dst_obj;
+	Dz1TdqQryRow			*sel;
+	Dz1TdqQueryTblSpec		*from;
+	Dz1TdqQryRefCols		*groupby;
+	Dz1TdqcShapeOptList		*memb_opt;
+} Dz1TdqcQuery;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcQuery *Dz1TdqcQuery_new(Dz1Str name, 
+													   ObjectInfo *src_obj_ref, 
+													   ObjectInfo *dst_obj_ref, 
+													   Dz1TdqQryRow *sel, 
+													   Dz1TdqQueryTblSpec *from, Dz1Error *err);
+static __inline__ Dz1TdqcQuery *Dz1TdqcQuery_gen(Dz1Error *err) { return Dz1TdqcQuery_new(NULL, NULL, NULL, NULL, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t Dz1TdqcQuery_copy(Dz1TdqcQuery *dst, Dz1TdqcQuery *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcQuery *Dz1TdqcQuery_clone(Dz1TdqcQuery *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcQuery_purge(Dz1TdqcQuery *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcQuery_del(Dz1TdqcQuery *p);
+static __inline__ void Dz1TdqcQuery_delAndSetNull(void *ptr)
+{
+	Dz1TdqcQuery **p = (Dz1TdqcQuery **)ptr;
+	if (p) { Dz1TdqcQuery_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcQuery_dump(Dz1TdqcQuery *p, int tab);
+DZ1_CPPLINK DZ1_DLLPORT int Dz1TdqcQuery_cmp(Dz1TdqcQuery *a, Dz1TdqcQuery *b); 
+// Dz1TdqcQuery
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcQueryList
+typedef struct Dz1TdqcQueryList
+{
+	void *storage;
+	unsigned int (*count)(struct Dz1TdqcQueryList *p);
+	Dz1Error (*travel)(struct Dz1TdqcQueryList *p, Dz1Error (*func)(void *ptr, Dz1TdqcQuery *entry), void *ptr);
+	Dz1Error (*travelForward)(struct Dz1TdqcQueryList *p, Dz1Error (*func)(void *ptr, Dz1TdqcQuery *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct Dz1TdqcQueryList *p, Dz1Error (*func)(void *ptr, Dz1TdqcQuery *entry), void *ptr);
+	Dz1TdqcQuery **(*get_array)(struct Dz1TdqcQueryList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct Dz1TdqcQueryList *p, Dz1TdqcQuery *data);
+	bool_t (*remove)(struct Dz1TdqcQueryList *p, Dz1TdqcQuery *key);
+	Dz1TdqcQuery *(*extract)(struct Dz1TdqcQueryList *p, Dz1TdqcQuery *key);
+	Dz1TdqcQuery *(*find)(struct Dz1TdqcQueryList *p, Dz1TdqcQuery *key);
+	int (*cmp)(Dz1TdqcQuery *a, Dz1TdqcQuery *b);
+} Dz1TdqcQueryList;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcQueryList *Dz1TdqcQueryList_new(Dz1Error *err);
+static __inline__ Dz1TdqcQueryList *Dz1TdqcQueryList_gen(Dz1Error *err) { return Dz1TdqcQueryList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcQueryList *Dz1TdqcQueryList_clone(Dz1TdqcQueryList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcQueryList_purge(Dz1TdqcQueryList *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcQueryList_del(Dz1TdqcQueryList *p);
+static __inline__ void Dz1TdqcQueryList_delAndSetNull(void *ptr)
+{
+	Dz1TdqcQueryList **p = (Dz1TdqcQueryList **)ptr;
+	if (p != NULL) { Dz1TdqcQueryList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcQueryList_dump(Dz1TdqcQueryList *p, int tab);
+
+// Dz1TdqcQueryList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcOrderEntryPresent
+typedef enum Dz1TdqcOrderEntryPresent
+{
+	Dz1TdqcOrderEntryPresent_shp,
+	Dz1TdqcOrderEntryPresent_tbl,
+	Dz1TdqcOrderEntryPresent_qry,
+	Dz1TdqcOrderEntryPresent_max
+} Dz1TdqcOrderEntryPresent;
+
+DZ1_CPPLINK str_t Dz1TdqcOrderEntryPresentStrA(Dz1TdqcOrderEntryPresent v);
+DZ1_CPPLINK Dz1TdqcOrderEntryPresent Dz1TdqcOrderEntryPresentFromStrA(str_t str);
+#ifndef UNIX_SYSTEM
+DZ1_CPPLINK wstr_t Dz1TdqcOrderEntryPresentStrW(Dz1TdqcOrderEntryPresent v);
+DZ1_CPPLINK Dz1TdqcOrderEntryPresent Dz1TdqcOrderEntryPresentFromStrW(wstr_t str);
+#ifdef UNICODE
+#define Dz1TdqcOrderEntryPresentStr Dz1TdqcOrderEntryPresentStrW
+#define Dz1TdqcOrderEntryPresentFromStr Dz1TdqcOrderEntryPresentFromStrW
+#else // UNICODE
+#define Dz1TdqcOrderEntryPresentStr Dz1TdqcOrderEntryPresentStrA
+#define Dz1TdqcOrderEntryPresentFromStr Dz1TdqcOrderEntryPresentFromStrA
+#endif // UNICODE
+#else // UNIX_SYSTEM
+#define Dz1TdqcOrderEntryPresentStr Dz1TdqcOrderEntryPresentStrA
+#define Dz1TdqcOrderEntryPresentFromStr Dz1TdqcOrderEntryPresentFromStrA
+#endif // UNIX_SYSTEM
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcOrderEntryPresent *Dz1TdqcOrderEntryPresent_new(Dz1TdqcOrderEntryPresent *src, Dz1Error *err);
+static __inline__ Dz1TdqcOrderEntryPresent *Dz1TdqcOrderEntryPresent_gen(Dz1Error *err) { Dz1TdqcOrderEntryPresent v = Dz1TdqcOrderEntryPresent_max; return Dz1TdqcOrderEntryPresent_new(&v, err); }
+#define Dz1TdqcOrderEntryPresent_clone             Dz1TdqcOrderEntryPresent_new
+static __inline__ void Dz1TdqcOrderEntryPresent_del(Dz1TdqcOrderEntryPresent *p) { if (p != NULL) Dz1Free(p); }
+static __inline__ void Dz1TdqcOrderEntryPresent_delAndSetNull(void *ptr)
+{
+	Dz1TdqcOrderEntryPresent **p = (Dz1TdqcOrderEntryPresent **)ptr;
+	if (p != NULL) { Dz1TdqcOrderEntryPresent_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcOrderEntryPresent_dump(Dz1TdqcOrderEntryPresent *v, int tab);
+// Dz1TdqcOrderEntryPresent
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcOrderEntry
+typedef struct Dz1TdqcOrderEntry
+{
+	Dz1TdqcOrderEntryPresent present;
+	union
+	{
+		void *__ptr__;
+		unsigned char b1[1];
+		unsigned char b2[2];
+		unsigned char b4[4];
+		Dz1TdqcShape			*shp;
+		Dz1TdqcTblInstance		*tbl;
+		Dz1TdqcQuery			*qry;
+	} x;
+} Dz1TdqcOrderEntry;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcOrderEntry *Dz1TdqcOrderEntry_new(Dz1TdqcOrderEntryPresent present, void *ptr, Dz1Error *err);
+static __inline__ Dz1TdqcOrderEntry *Dz1TdqcOrderEntry_gen(Dz1Error *err) { return Dz1TdqcOrderEntry_new(Dz1TdqcOrderEntryPresent_max, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT bool_t  Dz1TdqcOrderEntry_copy(Dz1TdqcOrderEntry *dst, Dz1TdqcOrderEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcOrderEntry *Dz1TdqcOrderEntry_clone(Dz1TdqcOrderEntry *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcOrderEntry_purge(Dz1TdqcOrderEntry *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcOrderEntry_del(Dz1TdqcOrderEntry *p);
+static __inline__ void Dz1TdqcOrderEntry_delAndSetNull(void *ptr)
+{
+	Dz1TdqcOrderEntry **p = (Dz1TdqcOrderEntry **)ptr;
+	if (p != NULL) { Dz1TdqcOrderEntry_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcOrderEntry_dump(Dz1TdqcOrderEntry *p, int tab);
+// Dz1TdqcOrderEntry
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcOrderList
+typedef struct Dz1TdqcOrderList
+{
+	void *storage;
+	unsigned int (*count)(struct Dz1TdqcOrderList *p);
+	Dz1Error (*travel)(struct Dz1TdqcOrderList *p, Dz1Error (*func)(void *ptr, Dz1TdqcOrderEntry *entry), void *ptr);
+	Dz1Error (*travelForward)(struct Dz1TdqcOrderList *p, Dz1Error (*func)(void *ptr, Dz1TdqcOrderEntry *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct Dz1TdqcOrderList *p, Dz1Error (*func)(void *ptr, Dz1TdqcOrderEntry *entry), void *ptr);
+	Dz1TdqcOrderEntry **(*get_array)(struct Dz1TdqcOrderList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct Dz1TdqcOrderList *p, Dz1TdqcOrderEntry *data);
+} Dz1TdqcOrderList;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcOrderList *Dz1TdqcOrderList_new(Dz1Error *err);
+static __inline__ Dz1TdqcOrderList *Dz1TdqcOrderList_gen(Dz1Error *err) { return Dz1TdqcOrderList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcOrderList *Dz1TdqcOrderList_clone(Dz1TdqcOrderList *src, Dz1Error *err);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcOrderList_purge(Dz1TdqcOrderList *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcOrderList_del(Dz1TdqcOrderList *p);
+static __inline__ void Dz1TdqcOrderList_delAndSetNull(void *ptr)
+{
+	Dz1TdqcOrderList **p = (Dz1TdqcOrderList **)ptr;
+	if (p != NULL) { Dz1TdqcOrderList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcOrderList_dump(Dz1TdqcOrderList *p, int tab);
+
+// Dz1TdqcOrderList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1MdefcModuleList
+typedef struct Dz1MdefcModuleList
+{
+	void *storage;
+	unsigned int (*count)(struct Dz1MdefcModuleList *p);
+	Dz1Error (*travel)(struct Dz1MdefcModuleList *p, Dz1Error (*func)(void *ptr, Dz1MdefcModule *entry), void *ptr);
+	Dz1Error (*travelForward)(struct Dz1MdefcModuleList *p, Dz1Error (*func)(void *ptr, Dz1MdefcModule *entry), void *ptr);
+	Dz1Error (*travelBackward)(struct Dz1MdefcModuleList *p, Dz1Error (*func)(void *ptr, Dz1MdefcModule *entry), void *ptr);
+	Dz1MdefcModule **(*get_array)(struct Dz1MdefcModuleList *p, unsigned int *ret_cnt, Dz1Error *err);
+	Dz1Error (*add)(struct Dz1MdefcModuleList *p, Dz1MdefcModule *data);
+	bool_t (*remove)(struct Dz1MdefcModuleList *p, Dz1MdefcModule *key);
+	Dz1MdefcModule *(*extract)(struct Dz1MdefcModuleList *p, Dz1MdefcModule *key);
+	Dz1MdefcModule *(*find)(struct Dz1MdefcModuleList *p, Dz1MdefcModule *key);
+	int (*cmp)(Dz1MdefcModule *a, Dz1MdefcModule *b);
+} Dz1MdefcModuleList;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1MdefcModuleList *Dz1MdefcModuleList_new(Dz1Error *err);
+static __inline__ Dz1MdefcModuleList *Dz1MdefcModuleList_gen(Dz1Error *err) { return Dz1MdefcModuleList_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT void Dz1MdefcModuleList_purge(Dz1MdefcModuleList *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1MdefcModuleList_del(Dz1MdefcModuleList *p);
+static __inline__ void Dz1MdefcModuleList_delAndSetNull(void *ptr)
+{
+	Dz1MdefcModuleList **p = (Dz1MdefcModuleList **)ptr;
+	if (p != NULL) { Dz1MdefcModuleList_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1MdefcModuleList_dump(Dz1MdefcModuleList *p, int tab);
+
+// Dz1MdefcModuleList
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcArg
+typedef struct Dz1TdqcArg
+{
+	Dz1Str		mod_inc_path;
+	Dz1Str		dst_path_c;
+	Dz1Str		dst_path_h;
+	Dz1Str		fn_postfix;
+	bool_t		output_src;
+	bool_t		output_hdr;
+	Dz1Str		target_file;
+} Dz1TdqcArg;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcArg *Dz1TdqcArg_new(Dz1Str mod_inc_path, 
+												   Dz1Str dst_path_c, 
+												   Dz1Str dst_path_h, 
+												   Dz1Str fn_postfix, 
+												   bool_t output_src, 
+												   bool_t output_hdr, 
+												   Dz1Str target_file, Dz1Error *err);
+static __inline__ Dz1TdqcArg *Dz1TdqcArg_gen(Dz1Error *err) { return Dz1TdqcArg_new(NULL, NULL, NULL, NULL, 0, 0, NULL, err); }
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcArg_purge(Dz1TdqcArg *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcArg_del(Dz1TdqcArg *p);
+static __inline__ void Dz1TdqcArg_delAndSetNull(void *ptr)
+{
+	Dz1TdqcArg **p = (Dz1TdqcArg **)ptr;
+	if (p) { Dz1TdqcArg_del(*p); *p = NULL; }
+}
+// Dz1TdqcArg
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Dz1TdqcTarget
+typedef struct Dz1TdqcTarget
+{
+	Dz1MdefcModuleList			*src;
+	Dz1TdqNameList				*incs;
+	Dz1TdqcShapeList			*shapes;
+	Dz1TdqcTblInstanceList		*tables;
+	Dz1TdqcTblInstanceSeq		*tblseq;
+	Dz1TdqcQueryList			*queries;
+	Dz1TdqcOrderList			*ord;
+} Dz1TdqcTarget;
+
+DZ1_CPPLINK DZ1_DLLPORT Dz1TdqcTarget *Dz1TdqcTarget_new(Dz1Error *err);
+static __inline__ Dz1TdqcTarget *Dz1TdqcTarget_gen(Dz1Error *err) { return Dz1TdqcTarget_new(err); }
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTarget_purge(Dz1TdqcTarget *p);
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTarget_del(Dz1TdqcTarget *p);
+static __inline__ void Dz1TdqcTarget_delAndSetNull(void *ptr)
+{
+	Dz1TdqcTarget **p = (Dz1TdqcTarget **)ptr;
+	if (p) { Dz1TdqcTarget_del(*p); *p = NULL; }
+}
+DZ1_CPPLINK DZ1_DLLPORT void Dz1TdqcTarget_dump(Dz1TdqcTarget *p, int tab);
+// Dz1TdqcTarget
+////////////////////////////////////////////////////////////////////////////////
+
+#endif

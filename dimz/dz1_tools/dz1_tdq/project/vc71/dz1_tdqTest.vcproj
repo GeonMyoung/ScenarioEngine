@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ks_c_5601-1987"?>
+    <VisualStudioProject
+    ProjectType="Visual C++"
+    Version="7.10"
+    Name="dz1_tdqTest"
+    ProjectGUID="{03FB6399-8E6D-4008-9CF6-E4DCA8C2A2F2}"
+    RootNamespace="dz1_tdqTest"
+    Keyword="Win32Proj"
+>
+    <Platforms>
+        <Platform Name="Win32"/>
+    </Platforms>
+    <Configurations>
+        <Configuration
+            Name="Release|Win32"
+            OutputDirectory="$(ConfigurationName)"
+            IntermediateDirectory="$(ConfigurationName)"
+            ConfigurationType="1"
+            UseOfMFC="1"
+            CharacterSet="2">
+            <Tool
+                Name="VCCLCompilerTool"
+                Optimization="2"
+                AdditionalIncludeDirectories="..\..\include;..\..\..\dz1_tdc_info\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\.;$(OPEN_SSL_SDK_ROOT)\include"
+                PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+                MinimalRebuild="FALSE"
+                BasicRuntimeChecks="0"
+                RuntimeLibrary="0"
+                UsePrecompiledHeader="0"
+                WarningLevel="3"
+                Detect64BitPortabilityProblems="FALSE"
+                DebugInformationFormat="0"/>
+
+            <Tool
+                Name="VCLinkerTool"
+                AdditionalDependencies="ws2_32.lib"
+                OutputFile="$(OutDir)/dz1_tdqTest.exe"
+                LinkIncremental="1"
+                AdditionalLibraryDirectories="$(OPEN_SSL_SDK_ROOT)\lib"
+                GenerateDebugInformation="TRUE"
+                SubSystem="1"
+                OptimizeReferences="2"
+                EnableCOMDATFolding="2"
+                TargetMachine="1"/>
+            <Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="copy ..\..\..\..\..\pthreads.2\project\vc71\$(IntDir)\pthreadVC2.dll $(IntDir)"/>
+        </Configuration>
+        <Configuration
+            Name="Debug|Win32"
+            OutputDirectory="$(ConfigurationName)"
+            IntermediateDirectory="$(ConfigurationName)"
+            ConfigurationType="1"
+            UseOfMFC="1"
+            CharacterSet="2">
+            <Tool
+                Name="VCCLCompilerTool"
+                Optimization="0"
+                AdditionalIncludeDirectories="..\..\include;..\..\..\dz1_tdc_info\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\.;$(OPEN_SSL_SDK_ROOT)\include"
+                PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+                MinimalRebuild="FALSE"
+                BasicRuntimeChecks="3"
+                RuntimeLibrary="1"
+                UsePrecompiledHeader="0"
+                WarningLevel="3"
+                Detect64BitPortabilityProblems="FALSE"
+                DebugInformationFormat="1"/>
+
+            <Tool
+                Name="VCLinkerTool"
+                AdditionalDependencies="ws2_32.lib"
+                OutputFile="$(OutDir)/dz1_tdqTest.exe"
+                LinkIncremental="1"
+                AdditionalLibraryDirectories="$(OPEN_SSL_SDK_ROOT)\lib"
+                GenerateDebugInformation="TRUE"
+                SubSystem="1"
+                TargetMachine="1"/>
+            <Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="copy ..\..\..\..\..\pthreads.2\project\vc71\$(IntDir)\pthreadVC2.dll $(IntDir)"/>
+        </Configuration>
+        <Configuration
+            Name="ReleaseDLL|Win32"
+            OutputDirectory="$(ConfigurationName)"
+            IntermediateDirectory="$(ConfigurationName)"
+            ConfigurationType="1"
+            UseOfMFC="1"
+            CharacterSet="2">
+            <Tool
+                Name="VCCLCompilerTool"
+                Optimization="2"
+                AdditionalIncludeDirectories="..\..\include;..\..\..\dz1_tdc_info\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\.;$(OPEN_SSL_SDK_ROOT)\include"
+                PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+                MinimalRebuild="FALSE"
+                BasicRuntimeChecks="0"
+                RuntimeLibrary="2"
+                UsePrecompiledHeader="0"
+                WarningLevel="3"
+                Detect64BitPortabilityProblems="FALSE"
+                DebugInformationFormat="0"/>
+
+            <Tool
+                Name="VCLinkerTool"
+                AdditionalDependencies="ws2_32.lib"
+                OutputFile="$(OutDir)/dz1_tdqTest.exe"
+                LinkIncremental="1"
+                AdditionalLibraryDirectories="$(OPEN_SSL_SDK_ROOT)\lib"
+                GenerateDebugInformation="TRUE"
+                SubSystem="1"
+                OptimizeReferences="2"
+                EnableCOMDATFolding="2"
+                TargetMachine="1"/>
+            <Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="copy ..\..\..\..\..\pthreads.2\project\vc71\$(IntDir)\pthreadVC2.dll $(IntDir)"/>
+        </Configuration>
+        <Configuration
+            Name="DebugDLL|Win32"
+            OutputDirectory="$(ConfigurationName)"
+            IntermediateDirectory="$(ConfigurationName)"
+            ConfigurationType="1"
+            UseOfMFC="1"
+            CharacterSet="2">
+            <Tool
+                Name="VCCLCompilerTool"
+                Optimization="0"
+                AdditionalIncludeDirectories="..\..\include;..\..\..\dz1_tdc_info\include;..\..\..\..\..\codeconv\include;..\..\..\..\dz1\include;..\..\..\..\..\pthreads.2\.;$(OPEN_SSL_SDK_ROOT)\include"
+                PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;__CLEANUP_C;__WORDSIZE=32;__SYSTEM_ENDIAN_LITTLE__"
+                MinimalRebuild="FALSE"
+                BasicRuntimeChecks="3"
+                RuntimeLibrary="3"
+                UsePrecompiledHeader="0"
+                WarningLevel="3"
+                Detect64BitPortabilityProblems="FALSE"
+                DebugInformationFormat="1"/>
+
+            <Tool
+                Name="VCLinkerTool"
+                AdditionalDependencies="ws2_32.lib"
+                OutputFile="$(OutDir)/dz1_tdqTest.exe"
+                LinkIncremental="1"
+                AdditionalLibraryDirectories="$(OPEN_SSL_SDK_ROOT)\lib"
+                GenerateDebugInformation="TRUE"
+                SubSystem="1"
+                TargetMachine="1"/>
+            <Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="copy ..\..\..\..\..\pthreads.2\project\vc71\$(IntDir)\pthreadVC2.dll $(IntDir)"/>
+        </Configuration>
+    </Configurations>
+    <References>
+    </References>
+    <Files>
+        <Filter
+            Name="소스 파일"
+            Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+            UniqueIdentifier="{5436E05D-43BF-465A-9E1F-23CD3C10BFC7}">
+            <File
+                RelativePath="..\..\dz1_tdqTest.c">
+            </File>
+        </Filter>
+        <Filter
+            Name="헤더 파일"
+            Filter="h;hpp;hxx;hm;inl;inc;xsd"
+            UniqueIdentifier="{C1B9E204-5A81-4FB3-9990-15E16799584E}">
+        </Filter>
+        <Filter
+            Name="리소스 파일"
+            Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+            UniqueIdentifier="{499462EE-9A74-45EC-8BAC-F75148AC886C}">
+        </Filter>
+    </Files>
+    <Globals>
+    </Globals>
+</VisualStudioProject>

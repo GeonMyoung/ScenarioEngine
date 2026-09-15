@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\common">
+      <UniqueIdentifier>{facfeb65-6890-40c8-9f42-d20748b72302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\utility">
+      <UniqueIdentifier>{57446f48-d7a0-401d-9c30-11a47552620a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\VC">
+      <UniqueIdentifier>{669356d8-1c84-4060-b44e-754ef5097aef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\VC\vc_common">
+      <UniqueIdentifier>{92fcc5ed-6f40-4cbf-aecc-c9dee4ac0d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\dz1_task_gen.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_task_gen_args.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dz1_task_gen_args_util.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\global_def_gen.c">
+      <Filter>소스 파일\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task_arg_gen.c">
+      <Filter>소스 파일\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task_env_gen.c">
+      <Filter>소스 파일\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task_main_gen.c">
+      <Filter>소스 파일\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task_msg_gen.c">
+      <Filter>소스 파일\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\task_timer_gen.c">
+      <Filter>소스 파일\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\test_main_gen.c">
+      <Filter>소스 파일\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\txt_replace_env.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\txt_util.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stdafx_gen.c">
+      <Filter>소스 파일\VC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vc_common.c">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vc_common_def.c">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vc_common_proj.c">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vc_common_sln.c">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\dz1_task_gen.h">
+      <Filter>소스 파일\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\txt_replace_env.h">
+      <Filter>소스 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\txt_util.h">
+      <Filter>소스 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stdafx_gen.h">
+      <Filter>소스 파일\VC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vc_common.h">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vc_common_def.h">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vc_common_proj.h">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vc_common_sln.h">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_task_gen.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_task_gen_args.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_task_gen_args_util.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dz1_task_gen_def.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\src\txt_replace_env.tdc">
+      <Filter>소스 파일\utility</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\vc_common_def.tdc">
+      <Filter>소스 파일\VC\vc_common</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\include\dz1_task_gen_args.tdc">
+      <Filter>헤더 파일</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

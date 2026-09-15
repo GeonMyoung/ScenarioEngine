@@ -1,0 +1,8 @@
+message set definition
+{
+	include TrafficSignalControllerTestScenarioDef;
+	typedef struct TrafficSignalControllerTestScenarioTimer
+	{
+		uint32 id; // is key
+	} TrafficSignalControllerTestScenarioTimer; // with api dump, compare
+}

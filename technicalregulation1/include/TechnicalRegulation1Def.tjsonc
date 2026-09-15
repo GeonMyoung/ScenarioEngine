@@ -1,0 +1,4 @@
+JSON interface generate from TechnicalRegulation1Def
+{
+	object TechnicalRegulation1_Eam cascade;
+}

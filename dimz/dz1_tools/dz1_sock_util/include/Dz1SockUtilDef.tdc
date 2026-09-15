@@ -1,0 +1,126 @@
+message set definition
+{
+--	include dz1_stdio;	
+	include libdz1_support;
+	typedef native Dz1Stream from dz1_io_stream;
+	typedef native Dz1ElasticBuf from dz1_elastic_buf;
+
+	-------------------------------------------------------
+	-- Receiver Mode1 Arguments
+	-------------------------------------------------------
+	typedef struct Dz1SockUtilReceiverArg
+	{
+		uint32								 parentQueueID;
+	} Dz1SockUtilReceiverArg;
+		
+	-------------------------------------------------------
+	-- Receiver Mode2 Arguments
+	-------------------------------------------------------
+	typedef struct Dz1SockUtilReceiver2Arg
+	{
+		uint32								 parentQueueID;
+		uint32								 sessionID;
+	} Dz1SockUtilReceiver2Arg;
+
+	-------------------------------------------------------
+	-- Acceptor Message
+	-------------------------------------------------------
+	typedef struct Dz1SockUtilAcceptorConnected
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+		uint32							 acceptorID;
+		Dz1TcpClientSocket				*sock;
+	} Dz1SockUtilAcceptorConnected;								// with api dumpX
+	
+	typedef struct Dz1SockUtilAcceptorException
+	{
+		uint32							 acceptorID;
+	} Dz1SockUtilAcceptorException;								// with api dumpX
+	
+	-------------------------------------------------------
+	-- Receiver Message
+	-------------------------------------------------------
+	typedef struct Dz1SockUtilReceiverReceived
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+		Dz1Binary						*stream;
+	} Dz1SockUtilReceiverReceived;								// with api dumpX
+	
+	typedef struct Dz1SockUtilTransmiterSent
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+	} Dz1SockUtilTransmiterSent;								// with api dumpX
+
+	-------------------------------------------------------
+	-- Receiver Mode 2 Message
+	-------------------------------------------------------
+	typedef struct Dz1SockUtilReceiver2Received
+	{
+		uint32							 sessionID;
+		Dz1Binary						*stream;				
+	} Dz1SockUtilReceiver2Received;								// with api dumpX
+	
+	typedef struct Dz1SockUtilTransmiter2Sent
+	{
+		uint32							 sessionID;
+	} Dz1SockUtilTransmiter2Sent;								// with api dumpX
+	
+	-------------------------------------------------------
+	-- Connector
+	-------------------------------------------------------
+	typedef struct Dz1SockUtilBulkConnectEntry
+	{
+		Dz1SockAddr						*addr;
+		uint32							 thid;
+	} Dz1SockUtilBulkConnectEntry;								// with api dumpX
+	
+	typedef struct Dz1SockUtilBulkConnectResult
+	{
+		Dz1SockAddr						*peer;
+		Dz1SockAddr						*local;
+		Dz1TcpClientSocket				*sock;
+		void							*userData;
+	} Dz1SockUtilBulkConnectResult;								// with api dumpX
+	
+	-------------------------------------------------------
+	-- Socket RX Buffer : deprecated
+	-------------------------------------------------------
+	typedef struct Dz1SockUtilRxBuf
+	{
+		uint32							 elastic_size;
+		Dz1Stream						*st;					// is notarg
+		Dz1ElasticBuf					*elb;					// is notarg
+	} Dz1SockUtilRxBuf;											// with api usernew, dumpX
+	
+	-------------------------------------------------------
+	-- Socket TX FIFO
+	-------------------------------------------------------
+	typedef struct Dz1SockUtilTxEntry
+	{
+		struct Dz1SockUtilTxEntry		*next;					// is ref, nodump
+		Dz1Binary						*chunk;					// is valdump
+	} Dz1SockUtilTxEntry;										// with api dumpX, clone
+	
+	typedef struct Dz1SockUtilTxFifo
+	{
+		Dz1SockUtilTxEntry				*head;					// is notarg, cascadedump
+		Dz1SockUtilTxEntry				*tail;					// is notarg, nodump
+	} Dz1SockUtilTxFifo;										// with api dumpX, clone, userdel
+
+	-------------------------------------------------------
+	-- Callback Socket Foundation IO
+	-------------------------------------------------------
+	typedef struct Dz1CallbackSockIO
+	{
+		Dz1SockAddr						*peer;					// is key
+		Dz1SockAddr						*local;					// is key
+
+		Dz1ElasticBuf					*rx_buf;
+		Dz1Stream						*rx_stream;
+
+		Dz1SockUtilTxFifo				*tx_fifo;
+	} Dz1CallbackSockIO;										// with api nonew, nogen, compare, dumpX
+}

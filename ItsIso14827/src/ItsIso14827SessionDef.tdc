@@ -1,0 +1,49 @@
+message set definition
+{
+	include ItsIso14827Def;
+	include dz1_io_stream_support;
+	typedef native Dz1Fsm2 from dz1_fsm2;
+	typedef reference ItsIso14827DomainKey from ItsIso14827DomainDef;
+
+	typedef struct ItsIso14827SessionEntry
+	{
+		ItsIso14827SessionKey			*key;				// is key
+		Dz1TcpClientSocket				*sock;				// is nodump
+		uint32							 receiver;
+--		Dz1SocketBuf					*buf;
+		Dz1ElasticBuf					*buf;
+		Dz1Asn1Codec					 codecRule;
+		ItsIso14827CRCCheck				 CRCCheck;
+		
+		uint32							 txSerial;			// is notarg
+		uint32							*rxSerial;			// is notarg
+		
+		void							*initiator;
+		void							*uRsc;
+		void							*timer;
+		
+	} ItsIso14827SessionEntry;								// with api dump, compare
+
+	typedef unique table ItsIso14827SessionList(find, extract, count) [ItsIso14827SessionEntry];
+	
+	
+	typedef struct ItsIso14827AcceptorEntry
+	{
+		Dz1SockAddr						*server;			// is key
+		uint32							 thID;
+		Dz1Asn1Codec					 initial;
+		ItsIso14827CRCCheck				 CRCCheck;
+		int32							 ref;				// is notarg
+	} ItsIso14827AcceptorEntry;								// with api dump, compare
+	
+	typedef unique table ItsIso14827AcceptorList(find, extract, count) [ItsIso14827AcceptorEntry];
+	
+	typedef struct ItsIso14827SessionMgr
+	{
+		uint32							 myQueueID;
+		ItsIso14827AcceptorList			*listener;			// is notarg
+		uint32							 allocSID;			// is notarg
+		ItsIso14827SessionList			*sessions;			// is notarg
+		bool							 debug_dump;		// is notarg
+	} ItsIso14827SessionMgr;								// with api dump
+}

@@ -1,0 +1,41 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+	-----------------------------------------------------------------
+	-- X mode
+	-----------------------------------------------------------------
+	typedef struct MyXDataEntry
+	{
+		Dz1Asn1UTF8Str				*name;				// is key
+		uint32						 val;				// is key
+	} MyXDataEntry;										// with api dumpX, fdumpX, clone, compare
+
+	typedef unique	table  MyXDataUniqueList(find, extract, gethead, gettail) [MyXDataEntry];
+	typedef ordered table MyXDataOrderedList(find, extract, gethead, gettail) [MyXDataEntry];
+	typedef			table		 MyXDataList(find, extract, gethead, gettail) [MyXDataEntry];
+
+	typedef unique	table  MyXDataUniqueRefList	(find, extract, gethead, gettail) [&MyXDataEntry];
+	typedef ordered table MyXDataOrderedRefList	(find, extract, gethead, gettail) [&MyXDataEntry];
+	typedef			table		 MyXDataRefList	(find, extract, gethead, gettail) [&MyXDataEntry];
+
+	typedef index MyXDataIndex		[MyXDataEntry(val)];
+	typedef index MyXDataRefIndex	[&MyXDataEntry(val)];
+
+	typedef struct MyXDataInfo
+	{
+		MyXDataEntry				*obj_ptr_arr[obj_ptr_cnt];
+		uint32						 obj_ptr_cnt;
+
+		MyXDataEntry				 obj_arr[obj_cnt];
+		uint32						 obj_cnt;
+
+		uint64						 prims_arr[prims_cnt];
+		uint32						 prims_cnt;
+
+		uint64						*primptrs_arr[primptrs_cnt];
+		uint32						 primptrs_cnt;
+
+		int32						*i_val;				// is ref
+	} MyXDataInfo;										// with api dumpX, fdumpX, clone
+}

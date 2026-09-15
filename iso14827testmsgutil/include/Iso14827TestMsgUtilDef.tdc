@@ -1,0 +1,8 @@
+message set definition
+{
+	include libdz1_support;
+	typedef struct Iso14827TestMsgUtil
+	{
+		int32		dummy;
+	} Iso14827TestMsgUtil;
+}

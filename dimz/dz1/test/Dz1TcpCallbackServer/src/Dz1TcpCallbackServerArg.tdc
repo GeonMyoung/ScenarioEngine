@@ -1,0 +1,10 @@
+message set definition
+{
+	include Dz1TcpCallbackServerDef;
+	typedef struct Dz1TcpCallbackServerArg
+	{
+		uint16 port;
+		Dz1TcpCallbackServerException exceptionProc;
+		void *exceptionArg;
+	} Dz1TcpCallbackServerArg;
+}

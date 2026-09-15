@@ -1,0 +1,38 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_asn1_support;
+	-----------------------------------------------------------------
+	-- normal mode
+	-----------------------------------------------------------------
+	typedef union MyUnionXData
+	{
+		Dz1Asn1UTF8Str				*name;
+		uint32						 val;
+	} MyUnionXData;										// with api dumpX, fdumpX, clone, compare
+
+	typedef unique  table	 MyUnionXDataUniqueList(find, extract, gethead, gettail) [MyUnionXData];
+	typedef ordered table	MyUnionXDataOrderedList(find, extract, gethead, gettail) [MyUnionXData];
+	typedef			table		   MyUnionXDataList(remove, find, extract, gethead, gettail) [MyUnionXData];
+
+	typedef unique  table	 MyUnionXDataUniqueRefList(find, extract, gethead, gettail) [&MyUnionXData];
+	typedef ordered table	MyUnionXDataOrderedRefList(find, extract, gethead, gettail) [&MyUnionXData];
+	typedef			table		   MyUnionXDataRefList(remove, find, extract, gethead, gettail) [&MyUnionXData];
+
+	typedef struct MyUnionXDataInfo
+	{
+		MyUnionXData				*obj_ptr_arr[obj_ptr_cnt];
+		uint32						 obj_ptr_cnt;
+
+		MyUnionXData				 obj_arr[obj_cnt];
+		uint32						 obj_cnt;
+
+		uint64						 prims_arr[prims_cnt];
+		uint32						 prims_cnt;
+
+		uint64						*primptrs_arr[primptrs_cnt];
+		uint32						 primptrs_cnt;
+
+		int32						*i_val;				// is ref
+	} MyUnionXDataInfo;									// with api dump, fdump, clone
+}

@@ -1,0 +1,15 @@
+dz1_task_gen_gui.exe
+dz1_code_gen_gui.exe
+dz1_json_compiler.exe
+pthreadVC2.dll
+libeay32.dll
+tdc.exe
+tjsonc.exe
+todec.exe
+tdqc.exe
+dz1_text2array_gui.exe
+*.dz1start
+*.dz1start2
+*.path
+tdc
+*-tdc
