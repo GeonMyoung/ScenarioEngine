@@ -112,6 +112,14 @@ fingerprint는 key/id/title/requirementText로 계산하며 상태 갱신 시각
 - 완료 동기화는 재조회한 isDone=true와 모순되지 않는 상태 분류가 필요하다.
 - 자료 대기·보완·차단 판단에 isDone=true를 기록하지 않는다.
 
+완료 분류가 복구되면 중앙이 같은 eventId의 원격 커밋·요구사항·최신 댓글을 다시 대조하고, 기존 결과 댓글과 완료 상태를 재조회한다. 기존 receipt를 보존하며 아래 명령으로 동기화 기록을 추가한다. 입력 tasks는 직전 검토/동기화 결과 전체를 복사하고 복구한 항목의 sync, statusType, statusId, isDone만 갱신한다. 검토 판단과 commentId는 유지한다.
+
+```powershell
+python tools/workflow.py sync-receipt --event-id <제출이벤트ID> --result .local/sync-result.json --requirements .local/latest-requirements.json
+```
+
+`syncReceipts`에는 복구 기록이 추가되고 같은 결과 재전달은 기존 syncId를 재사용한다. 여러 작업 중 일부만 복구할 수 있으며 모두 동기화돼야 riidoCompletionSynchronized=true가 된다. 원격 커밋·본문 변경, 최신 댓글 미확인, 보완 판단의 임의 완료 변경은 거절된다. 복구 실패는 기존 대기 기록을 유지한다.
+
 검토 수용, Riido 저장 확인, 완료 동기화를 구분한다. 계정 설정/브라우저 로그인이 필요하면 사용자 조치로 명시한다.
 
 GitHub workflow 파일을 올리는 HTTPS OAuth 인증에 workflow scope가 없으면 원격에서 거절될 수 있다. 이번 PC는 기존 GeonMyoung SSH 인증의 push 성공을 확인했다. 동일 저장소의 SSH push를 사용하며 token 권한을 임의로 확장하지 않는다.
@@ -119,6 +127,7 @@ GitHub workflow 파일을 올리는 HTTPS OAuth 인증에 workflow scope가 없�
 ## 실패와 변경 후 재처리
 
 - 전송 실패: pending 유지, 연결 복구 후 동일 eventId의 처리 여부 확인 후 전달.
+- 완료 분류 장애 복구: 같은 eventId에 sync-receipt를 추가한다. 새 사용자 요청/실행으로 우회하거나 기존 receipt를 덮어쓰지 않는다.
 - 새 커밋/본문 변경: supersede로 변경 근거를 남기고 새 기준의 실행/제출 등록. 기존 검토는 덮어쓰지 않음.
 - 수정 중 보류: release --run-id ... --reason ...으로 기록하고 슬롯 반환. 작업 파일 보존.
 - 남은 잠금: PID·실행 상태를 확인해 복구. 시간 경과만으로 삭제하지 않음.

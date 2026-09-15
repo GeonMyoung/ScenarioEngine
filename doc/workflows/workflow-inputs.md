@@ -83,3 +83,9 @@ validation.outcome: passed / failed / not-run / blocked. `taskResults`에는 등
 ```
 
 완료 조건이 남으면 decision을 needs_changes / waiting_sources / blocked로 기록한다. sync=verified는 실제 판단에 맞는 저장값을 확인했을 때만 사용한다. accepted+verified는 실제 isDone=true가 필요하다. 전송 도구의 성공을 Riido 저장 검증으로 대신하지 않는다.
+
+## 완료 상태 복구 sync-receipt
+
+위 결과의 eventId, reviewedSha, 검토 판단, commentId와 모든 작업을 유지한다. 중앙이 원격 커밋·요구사항·댓글을 다시 확인하고 Riido 완료 상태를 저장·재조회한 뒤, 복구 항목만 `sync: "verified"`, `statusType: "completed"`, `isDone: true`, 실제 `statusId`로 변경한다. 최상위 재조회/댓글 확인은 모두 true여야 한다.
+
+`sync-receipt --event-id ... --result .local/sync-result.json --requirements .local/latest-requirements.json`으로 기록한다. 기존 receipt는 보존되고 syncReceipts에 추가된다. 실패 후 같은 JSON 재시도는 중복 기록을 만들지 않는다. 이전에 완료된 항목과 검토 판단·댓글 ID는 수정할 수 없다.

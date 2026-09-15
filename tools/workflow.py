@@ -384,6 +384,61 @@ class Store:
             event["reviewedAt"] = now()
         return {"eventId": event_id, "recorded": True, "reused": False}
 
+    def sync_receipt(self, event_id, receipt, current_requirements):
+        """기존 검토를 보존하고 완료 분류 복구 후의 저장 재조회 기록을 추가한다."""
+        identifier(event_id)
+        if self.git.repository() != self.config()["repository"]:
+            raise WorkflowError("설정한 저장소와 현재 origin이 다릅니다.")
+        with self.transaction() as state:
+            event = self._event(state, event_id)
+            run = self._run(state, event["runId"])
+            if event["kind"] != "submitted" or not event["receipt"] or event.get("supersededAt"):
+                raise WorkflowError("기존 제출 검토가 있어야 완료 동기화를 복구할 수 있습니다.")
+            if event_id != run["submissions"][-1]:
+                raise WorkflowError("더 최신 제출이 있습니다. 이전 검토의 동기화를 보류하세요.")
+            remote = self.github.current(event["github"])
+            sha = event["github"]["headRefOid"]
+            if remote["headRefOid"] != sha or receipt.get("reviewedSha") != sha:
+                raise WorkflowError("원격/검토 SHA가 변경됐습니다. 이전 검토의 동기화를 보류하세요.")
+            validate_tasks(current_requirements.get("tasks"))
+            if task_fingerprint(current_requirements["tasks"]) != event["requirementsHash"]:
+                raise WorkflowError("요구사항 본문이 변경됐습니다. 이전 검토의 동기화를 보류하세요.")
+            if (receipt.get("eventId") != event_id or receipt.get("riidoReadbackVerified") is not True
+                    or receipt.get("latestCommentsReviewed") is not True):
+                raise WorkflowError("이벤트 ID와 최신 댓글·Riido 저장 재조회 확인이 필요합니다.")
+            history = event.get("syncReceipts", [])
+            for saved in history:
+                if saved["receipt"] == receipt:
+                    return {"eventId": event_id, "syncId": saved["id"], "reused": True}
+            previous = history[-1]["receipt"] if history else event["receipt"]
+            reviews = receipt.get("tasks")
+            if not isinstance(reviews, list) or any(not isinstance(t, dict) for t in reviews):
+                raise WorkflowError("동기화 결과 tasks는 객체 배열이어야 합니다.")
+            old = {t["key"]: t for t in previous["tasks"]}
+            keys = [t.get("key") for t in reviews]
+            if len(keys) != len(set(keys)) or set(keys) != set(old):
+                raise WorkflowError("기존 검토의 모든 작업을 한 번씩 포함해야 합니다.")
+            recovered = 0
+            mutable = {"sync", "statusType", "statusId", "isDone"}
+            for task in reviews:
+                prior = old[task["key"]]
+                if task == prior:
+                    continue
+                if prior.get("decision") != "accepted" or prior.get("sync") != "pending-status-definition":
+                    raise WorkflowError("완료 분류 대기 중인 수용 판단만 복구할 수 있습니다.")
+                if ({k: v for k, v in task.items() if k not in mutable}
+                        != {k: v for k, v in prior.items() if k not in mutable}):
+                    raise WorkflowError("기존 검토 판단·댓글·작업 식별자는 변경할 수 없습니다.")
+                if task.get("sync") != "verified" or task.get("isDone") is not True or task.get("statusType") != "completed":
+                    raise WorkflowError("복구는 completed/isDone=true의 실제 저장 재조회가 필요합니다.")
+                recovered += 1
+            if not recovered:
+                raise WorkflowError("새로 복구된 완료 동기화가 없습니다. 같은 결과는 원래 JSON으로 재시도하세요.")
+            sync_id = "sync-" + digest(receipt)[:24]
+            event.setdefault("syncReceipts", []).append({"id": sync_id, "receipt": copy.deepcopy(receipt), "recordedAt": now()})
+            run["riidoCompletionSynchronized"] = all(t.get("isDone") is True for t in reviews)
+        return {"eventId": event_id, "syncId": sync_id, "recorded": True, "reused": False}
+
     def supersede(self, event_id, reason, current_requirements):
         """원격/요구사항 변경으로 낡은 제출을 보류한다. 새 작업은 별도 start/submit으로 기록."""
         identifier(event_id)
@@ -423,6 +478,7 @@ def main(argv=None):
     for name in ("handoff", "dispatched"):
         p = sub.add_parser(name); p.add_argument("--event-id", required=True)
     p = sub.add_parser("receipt"); p.add_argument("--event-id", required=True); p.add_argument("--result", required=True); p.add_argument("--requirements")
+    p = sub.add_parser("sync-receipt"); p.add_argument("--event-id", required=True); p.add_argument("--result", required=True); p.add_argument("--requirements", required=True)
     p = sub.add_parser("release"); p.add_argument("--run-id", required=True); p.add_argument("--reason", required=True)
     p = sub.add_parser("supersede"); p.add_argument("--event-id", required=True); p.add_argument("--reason", required=True); p.add_argument("--requirements", required=True)
     sub.add_parser("status")
@@ -435,12 +491,13 @@ def main(argv=None):
     elif args.action == "handoff": result = store.handoff(args.event_id)
     elif args.action == "dispatched": result = store.dispatched(args.event_id)
     elif args.action == "receipt": result = store.receipt(args.event_id, read_json(args.result), read_json(args.requirements) if args.requirements else None)
+    elif args.action == "sync-receipt": result = store.sync_receipt(args.event_id, read_json(args.result), read_json(args.requirements))
     elif args.action == "release": result = store.release(args.run_id, args.reason)
     elif args.action == "supersede": result = store.supersede(args.event_id, args.reason, read_json(args.requirements))
     else:
         state = store.snapshot()
         result = {"stateDirectory": str(store.directory), "runs": [{"id": k, "title": r["manifest"]["title"], "status": r["status"],
-                  "submissions": r["submissions"]} for k, r in state["runs"].items()],
+                  "submissions": r["submissions"], "riidoCompletionSynchronized": r.get("riidoCompletionSynchronized")} for k, r in state["runs"].items()],
                   "pendingEvents": [{"id": e["id"], "kind": e["kind"], "dispatch": e["dispatch"]} for e in state["events"].values() if e["receipt"] is None and not e.get("supersededAt")]}
     print(json.dumps(result, ensure_ascii=False, indent=2))
 

@@ -15,7 +15,7 @@
 | 대상 | 변경 |
 |---|---|
 | tools/workflow.py | 실행 등록, 중복 없는 제출, 중앙 인계 payload, 원격·요구사항 확인, 검토 receipt, 실패/대체 기록 |
-| tests/test_workflow.py | 23개 정상·오류·동시 기록·중복·오래된 결과 방지 검사 |
+| tests/test_workflow.py | 30개 정상·오류·동시 기록·중복·오래된 결과·완료 동기화 복구 검사 |
 | .github/workflows/workflow-tools.yml | Windows/Linux Python 3.12에서 도구 관련 검사 |
 | AGENTS.md / doc/development-workflow.md | 작업 창의 자동 인계, 중앙의 Riido 쓰기, 주기 조회 중지, 환경 재사용 |
 | doc/workflows/workflow-inputs.md | 설정·시작·제출·중앙 결과 입력 계약 |
@@ -25,7 +25,7 @@
 
 ## 검증 근거
 
-- 로컬 Python 3.12: `python -m unittest discover -s tests -p test_workflow.py -v` — 23개 통과.
+- 로컬 Python 3.12: `python -m unittest discover -s tests -p test_workflow.py -v` — 중앙 검토 보완 후 30개 통과.
 - GitHub Actions: 코드 커밋 `0cf1766418981ca02122487c0cf5374a1fbf8811`의 Windows/Linux 검사 모두 성공. [실행 결과](https://github.com/GeonMyoung/ScenarioEngine/actions/runs/34933674669).
 - 실제 공통 기록 경로: `C:\Implement\ScenarioEngine\.local\coordination`.
 - 최초 실행 ID: `GM-85-20260915-setup`.
@@ -51,3 +51,5 @@
 - 검토 대기 상태 ID: `J-jmh-FyWPiCfvbMXRtHE` / inProgress.
 - 처음의 HTTPS push는 OAuth workflow scope 부족으로 거절됐다. 기존 SSH 인증으로 같은 저장소에 push했고 원격 SHA와 Actions 결과를 확인했다.
 - Riido 기본 연동의 실제 이벤트 확인을 위해 GM-85 키가 포함된 제출 브랜치를 사용한다. 기존 문서 안내 PR과 제출 이력은 보존하며 최종 구축 PR에 연결한다.
+- PR #3 생성과 사용자 매핑 후 재열기에서 기본 연동의 PR 자동 표시·상태 전환은 확인되지 않았다. 현재 진행·검토·완료 반영은 중앙 Codex의 MCP 쓰기와 재조회로 수행한다.
+- 중앙 검토에서 완료 분류 대기 이후의 복구 누락을 재현했다. 같은 이벤트의 기존 검토를 보존하는 sync-receipt 경로를 추가했고, 정상 복구·부분 복구·중복·원격/본문 불일치·네트워크 실패 검사를 추가했다.

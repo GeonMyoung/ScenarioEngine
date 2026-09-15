@@ -172,6 +172,105 @@ class WorkflowTests(unittest.TestCase):
         with self.assertRaises(workflow.WorkflowError):
             self.record(event, receipt)
 
+    def pending_receipt(self):
+        event = self.submit()
+        pending = self.receipt(event)
+        pending["tasks"][0].update(isDone=False, statusType="inProgress", sync="pending-status-definition")
+        self.record(event, pending)
+        return event, pending
+
+    def test_completion_recovery_preserves_review_and_deduplicates(self):
+        event, pending = self.pending_receipt()
+        completed = self.receipt(event)
+        first = self.store.sync_receipt(event, completed, self.manifest)
+        retry = self.store.sync_receipt(event, completed, self.manifest)
+        state = self.store.snapshot()
+        self.assertEqual(state["events"][event]["receipt"], pending)
+        self.assertEqual(len(state["events"][event]["syncReceipts"]), 1)
+        self.assertEqual(first["syncId"], retry["syncId"])
+        self.assertTrue(retry["reused"])
+        self.assertTrue(state["runs"]["run-1"]["riidoCompletionSynchronized"])
+        self.assertEqual(state["runs"]["run-1"]["status"], "reviewed")
+
+    def test_completion_recovery_rejects_changed_head_or_requirements(self):
+        event, _ = self.pending_receipt()
+        before = self.store.path.read_bytes()
+        self.github.pr["headRefOid"] = "b" * 40
+        with self.assertRaises(workflow.WorkflowError):
+            self.store.sync_receipt(event, self.receipt(event), self.manifest)
+        self.github.pr["headRefOid"] = SHA
+        changed = copy.deepcopy(self.manifest)
+        changed["tasks"][0]["requirementText"] = "새 완료 조건"
+        with self.assertRaises(workflow.WorkflowError):
+            self.store.sync_receipt(event, self.receipt(event), changed)
+        self.assertEqual(self.store.path.read_bytes(), before)
+
+    def test_completion_recovery_requires_actual_readback_and_same_review(self):
+        event, _ = self.pending_receipt()
+        before = self.store.path.read_bytes()
+        changes = [
+            ("top", {"latestCommentsReviewed": False}), ("top", {"riidoReadbackVerified": False}),
+            ("top", {"reviewedSha": "b" * 40}), ("task", {"isDone": False}),
+            ("task", {"statusType": "inProgress"}), ("task", {"commentId": "other-comment"}),
+            ("task", {"decision": "needs_changes"}), ("top", {"tasks": []})]
+        for target, change in changes:
+            with self.subTest(change=change):
+                result = self.receipt(event)
+                (result if target == "top" else result["tasks"][0]).update(change)
+                with self.assertRaises(workflow.WorkflowError):
+                    self.store.sync_receipt(event, result, self.manifest)
+        self.assertEqual(self.store.path.read_bytes(), before)
+
+    def test_completion_recovery_network_failure_can_retry_same_event(self):
+        event, pending = self.pending_receipt()
+        self.github.error = True
+        with self.assertRaises(workflow.WorkflowError):
+            self.store.sync_receipt(event, self.receipt(event), self.manifest)
+        self.assertEqual(self.store.snapshot()["events"][event]["receipt"], pending)
+        self.assertFalse(self.store.snapshot()["runs"]["run-1"]["riidoCompletionSynchronized"])
+        self.github.error = False
+        self.store.sync_receipt(event, self.receipt(event), self.manifest)
+        self.assertTrue(self.store.snapshot()["runs"]["run-1"]["riidoCompletionSynchronized"])
+
+    def test_completion_recovery_does_not_override_new_submission(self):
+        event, _ = self.pending_receipt()
+        # 다른 작업이 보완 필요인 혼합 검토라면 동일 실행에 새 제출이 허용된다.
+        with self.store.transaction() as state:
+            state["runs"]["run-1"]["status"] = "needs_changes"
+        self.report["summary"] = "다른 항목의 보완 제출"
+        self.store.submit("run-1", 3, self.report)
+        with self.assertRaises(workflow.WorkflowError):
+            self.store.sync_receipt(event, self.receipt(event), self.manifest)
+
+    def test_completion_recovery_supports_partial_progress_without_rewriting_history(self):
+        self.manifest["tasks"].append({"key": "GM-86", "id": "task-2", "title": "추가 인계", "requirementText": "두 번째 완료 조건"})
+        self.report["taskResults"].append({"key": "GM-86", "outcome": "ready-for-review"})
+        event = self.submit()
+        pending = self.receipt(event)
+        pending["tasks"][0].update(isDone=False, statusType="inProgress", sync="pending-status-definition")
+        pending["tasks"].append(dict(pending["tasks"][0], key="GM-86", commentId="comment-2"))
+        self.record(event, pending)
+        first = copy.deepcopy(pending)
+        first["tasks"][0].update(isDone=True, statusType="completed", sync="verified")
+        self.store.sync_receipt(event, first, self.manifest)
+        self.assertFalse(self.store.snapshot()["runs"]["run-1"]["riidoCompletionSynchronized"])
+        final = copy.deepcopy(first)
+        final["tasks"][1].update(isDone=True, statusType="completed", sync="verified")
+        self.store.sync_receipt(event, final, self.manifest)
+        self.assertTrue(self.store.sync_receipt(event, first, self.manifest)["reused"])
+        saved = self.store.snapshot()
+        self.assertTrue(saved["runs"]["run-1"]["riidoCompletionSynchronized"])
+        self.assertEqual(saved["events"][event]["receipt"], pending)
+        self.assertEqual([x["receipt"] for x in saved["events"][event]["syncReceipts"]], [first, final])
+
+    def test_completion_recovery_cannot_rewrite_a_verified_result(self):
+        event = self.submit()
+        self.record(event)
+        changed = self.receipt(event)
+        changed["tasks"][0]["statusId"] = "different-status"
+        with self.assertRaises(workflow.WorkflowError):
+            self.store.sync_receipt(event, changed, self.manifest)
+
     def test_remote_head_change_prevents_stale_review(self):
         event = self.submit()
         self.github.pr["headRefOid"] = "b" * 40
