@@ -26,6 +26,7 @@
 ## 검증 근거
 
 - 로컬 Python 3.12: `python -m unittest discover -s tests -p test_workflow.py -v` — 23개 통과.
+- GitHub Actions: 코드 커밋 `0cf1766418981ca02122487c0cf5374a1fbf8811`의 Windows/Linux 검사 모두 성공. [실행 결과](https://github.com/GeonMyoung/ScenarioEngine/actions/runs/34933674669).
 - 실제 공통 기록 경로: `C:\Implement\ScenarioEngine\.local\coordination`.
 - 최초 실행 ID: `GM-85-20260915-setup`.
 - 시작 이벤트: `start-51d95f1dd50f024a3da298a6`.
@@ -35,11 +36,18 @@
 
 ## 실제 운영의 경계
 
-1. GitHub–Riido native 연동 설치와 팀별 이벤트 매핑은 계정 설정에서 별도로 확인해야 한다. 초기 경로는 작업 창의 제출 인계와 중앙의 MCP 반영으로 동작한다.
-2. 최신 Riido 조회에서 완료=inProgress, 완료 (1)=notStarted다. 분류 정비 전에는 중앙 판단을 결과 댓글로 남기고 완료 상태 동기화 대기를 명시한다.
+1. Riido 설정 화면에서 ScenarioEngine 저장소의 기존 연결을 확인했다. gm 팀의 Branch Create → 진행 중, PR Open → 검토 대기 매핑을 구성했다. Merge/PR Close에 완료 자동화는 설정하지 않는다.
+2. 검토 대기(inProgress)와 검토 완료(completed)를 추가하고 MCP 재조회로 확인했다. 기존 완료/완료 (1) 상태는 보존하며 새 완료 반영에는 검토 완료를 사용한다. 중앙이 실제 isDone과 저장 내용을 재조회한다.
 3. 앱 도구·인증을 사용할 수 없으면 이벤트가 반영 대기로 남는다. 연결 복구 후 같은 eventId의 처리 여부를 확인하고 재전달한다.
 4. 브랜치 보호와 무인 병합/배포는 설정하지 않는다. 저장소 반영은 사용자 승인 범위를 따른다.
 5. `working` 상태의 실행은 기본적으로 하나다. 동시 수정 확대는 별도 환경 계획 후 진행한다.
 6. 기존 workers.json/review-state.json/중지된 automation.json은 초기 운영 이력으로 보존한다. 신규 실행의 기준 기록은 workflow-state.json이다.
 
 이 기록은 도구 구현·로컬 적용과 서비스별 설정 상태를 구분한다. 검토 수용이 Riido 완료 상태의 동기화까지 의미하는 것은 아니다.
+
+## 설정과 반영 범위
+
+- 검토 완료 상태 ID: `nuCm-pOcSStA8t96QhKyk` / completed.
+- 검토 대기 상태 ID: `J-jmh-FyWPiCfvbMXRtHE` / inProgress.
+- 처음의 HTTPS push는 OAuth workflow scope 부족으로 거절됐다. 기존 SSH 인증으로 같은 저장소에 push했고 원격 SHA와 Actions 결과를 확인했다.
+- Riido 기본 연동의 실제 이벤트 확인을 위해 GM-85 키가 포함된 제출 브랜치를 사용한다. 기존 문서 안내 PR과 제출 이력은 보존하며 최종 구축 PR에 연결한다.

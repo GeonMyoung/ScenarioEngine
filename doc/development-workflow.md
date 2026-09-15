@@ -9,7 +9,7 @@
 - 작업 창: 요구사항 조회, 실행 등록, 구현·자체 검증, GitHub 제출, 중앙 인계, 결과 확인.
 - 중앙: 업무 연결/등록, 실제 착수 상태, 독립 검토, Riido 댓글·상태 쓰기와 재조회.
 - 기본 실행 계기: **작업 시작·제출 메시지**. 주기 조회는 중지 상태를 유지한다.
-- GitHub–Riido 기본 연동은 별도 설정 확인 후 사용할 수 있다. PR 병합이 자료 대기 업무까지 일괄 완료시키지 않도록 중앙 정책과 맞춘다.
+- GitHub–Riido의 ScenarioEngine 저장소 연결을 확인했다. gm 팀은 Branch Create → 진행 중, PR Open → 검토 대기로 연결한다. Merge/PR Close에는 완료 자동화를 연결하지 않고 중앙이 작업별 완료 조건을 판단한다.
 - 분석만/로컬만/커밋 금지 등 현재 사용자 제한이 기본 절차보다 우선한다. 단순 읽기 질문에 실행 등록이나 GitHub 변경을 만들지 않는다.
 
 ## 작업 환경
@@ -103,9 +103,9 @@ fingerprint는 key/id/title/requirementText로 계산하며 상태 갱신 시각
 
 원격 head·요구사항 본문·작업별 결과·완료 표시가 맞지 않으면 receipt가 거절된다. 외부 쓰기 전에 같은 조건을 확인해야 하며, 이 CLI가 잘못 쓰인 Riido 상태를 되돌려 주지는 않는다.
 
-## 완료 분류가 미정일 때
+## 완료 상태와 분류 확인
 
-2026-09-15 조회에서 ‘완료’는 inProgress, ‘완료 (1)’은 notStarted였다. 표시 이름만으로 완료로 전환하지 않는다.
+2026-09-15 운영 구성에서 ‘검토 대기’(inProgress)와 ‘검토 완료’(completed)를 추가하고 API로 확인했다. 중앙은 최신 목록에서 이 분류를 확인해 사용한다. 기존 ‘완료’(inProgress)·‘완료 (1)’(notStarted)은 새 완료 반영에 사용하지 않는다.
 
 - 검토 수용은 decision=accepted로 기록한다.
 - 완료 분류 때문에 상태를 동기화하지 못하면 sync=pending-status-definition, 실제 isDone=false와 statusType을 기록한다.
@@ -113,6 +113,8 @@ fingerprint는 key/id/title/requirementText로 계산하며 상태 갱신 시각
 - 자료 대기·보완·차단 판단에 isDone=true를 기록하지 않는다.
 
 검토 수용, Riido 저장 확인, 완료 동기화를 구분한다. 계정 설정/브라우저 로그인이 필요하면 사용자 조치로 명시한다.
+
+GitHub workflow 파일을 올리는 HTTPS OAuth 인증에 workflow scope가 없으면 원격에서 거절될 수 있다. 이번 PC는 기존 GeonMyoung SSH 인증의 push 성공을 확인했다. 동일 저장소의 SSH push를 사용하며 token 권한을 임의로 확장하지 않는다.
 
 ## 실패와 변경 후 재처리
 
