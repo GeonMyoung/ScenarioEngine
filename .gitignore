@@ -49,3 +49,7 @@
 .env
 .env.*
 !.env.example
+
+# Local Python workflow tool output
+__pycache__/
+*.py[cod]
