@@ -1,0 +1,131 @@
+message set definition
+{
+	include libdz1_support;
+	include dz1_io_stream_support;
+
+	typedef func void GitsnOpenApiException(void *exceptionArg, Dz1Error *reason);
+
+	typedef enum GitsnOpenApiConnectionEventType
+	{
+		response_sent,
+		peer_closed,
+		server_idle_timeout,
+		connection_close,
+		transport_error
+	} GitsnOpenApiConnectionEventType;
+
+	typedef struct GitsnOpenApiConnectionEvent
+	{
+		GitsnOpenApiConnectionEventType event_type;
+		uint32 session_id;
+		uint32 response_sequence;
+		uint32 configured_timeout_ms;
+		uint64 response_sent_monotonic_ms;
+		uint64 connection_closed_monotonic_ms;
+		uint64 elapsed_ms;
+	} GitsnOpenApiConnectionEvent; // with api dump, clone
+
+	typedef func void GitsnOpenApiConnectionCallback(void *user_ptr, GitsnOpenApiConnectionEvent *event);
+
+	-----------------------------------------------------------------------------------
+	-- Data Entry & List
+	-----------------------------------------------------------------------------------
+	typedef struct GitsnOpenApiDataEntry
+	{
+		str							 key_utf8;
+		str							 value_utf8;
+	} GitsnOpenApiDataEntry;								// with api userdump, clone
+	typedef array GitsnOpenApiDataList(extract)	[ GitsnOpenApiDataEntry] "";
+	typedef index GitsnOpenApiDataIndex [&GitsnOpenApiDataEntry(key_utf8)];
+
+	typedef struct GitsnOpenApiDatas
+	{
+		GitsnOpenApiDataList		*storage;				// is notarg
+		GitsnOpenApiDataIndex		*index;					// is notarg, nodump
+	} GitsnOpenApiDatas;									// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- GitsnOpenApiResult
+	-----------------------------------------------------------------------------------
+	typedef struct GitsnOpenApiResult
+	{
+		int32						 code;
+		Dz1ElasticBuf				*data;
+		TString						 content_type;			// is notarg
+		GitsnOpenApiDatas *headers; // is notarg, nodump
+		GitsnOpenApiDatas *request_headers; // is notarg, nodump
+	} GitsnOpenApiResult;									// with api dump
+
+	-----------------------------------------------------------------------------------
+	-- Streaming download result
+	-----------------------------------------------------------------------------------
+	typedef struct GitsnOpenApiDownloadResult
+	{
+		int32 code;
+		uint64 bytes_written;
+		TString content_type;
+		TString sha256_hex;
+	} GitsnOpenApiDownloadResult; // with api dump
+
+	-----------------------------------------------------------------------------------
+	-- GitsnOpenApiHttpReq
+	-----------------------------------------------------------------------------------
+	typedef enum GitsnOpenApiHttpReqMethod
+	{
+		GET,
+		POST
+	} GitsnOpenApiHttpReqMethod;
+
+	typedef struct GitsnOpenApiHttpReq
+	{
+		GitsnOpenApiHttpReqMethod	 method;
+		str							 target_utf8;
+		GitsnOpenApiDatas			*args;					// is notarg
+		str							 prot;
+		uint16						 ver_maj;
+		uint16						 ver_min;
+
+		GitsnOpenApiDatas			*header;
+		Dz1Binary					*body;					// is notarg
+	} GitsnOpenApiHttpReq;									// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- GitsnOpenApiHttpRsp
+	-----------------------------------------------------------------------------------
+	typedef struct GitsnOpenApiHttpRsp
+	{
+		str							 prot;
+		uint16						 ver_maj;
+		uint16						 ver_min;
+
+		uint32						 code;
+		str							 code_txt_utf8;
+
+		GitsnOpenApiDatas			*header;
+		Dz1ElasticBuf				*body;
+	} GitsnOpenApiHttpRsp;									// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- GitsnOpenApiHttpMsg
+	-----------------------------------------------------------------------------------
+	typedef union GitsnOpenApiHttpMsg
+	{
+		GitsnOpenApiHttpReq			*req;
+		GitsnOpenApiHttpRsp			*rsp;
+		Dz1Binary					*ws_payload;
+	} GitsnOpenApiHttpMsg;									// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- GitsnOpenApiMsg
+	-----------------------------------------------------------------------------------
+	typedef struct GitsnOpenApiMsg
+	{
+		uint32						 session_id;
+		GitsnOpenApiHttpMsg			*ctx;
+	} GitsnOpenApiMsg;										// with api dump, clone
+
+	-----------------------------------------------------------------------------------
+	-- Receive Callback
+	-----------------------------------------------------------------------------------
+	typedef func void GitsnOpenApiCallback(void *user_ptr, GitsnOpenApiMsg **msg);
+}

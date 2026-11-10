@@ -1,0 +1,17 @@
+{
+  "id": "REST-AUTO-001",
+  "nativeSchemaVersion": 4,
+  "assessmentScope": "ENGINE_OBSERVABLE",
+  "standardAssessment": "AUTOMATIC_SCOPE_ONLY",
+  "supportedNotifications": ["START", "SUCCESS", "FAIL", "STOPPED", "FINISH"],
+  "unsupportedNotificationsNeverSent": ["COMPLETE", "EVIDENCE_PENDING", "NOT_RUN"],
+  "mandatoryPostRunEvidence": false,
+  "optionalPeerCrossCheck": {
+    "sameRunContradiction": "FAIL",
+    "missingOrOtherRunOrUnavailable": "preserve automatic verdict and record not confirmed",
+    "userStop": "STOPPED"
+  },
+  "preserveFailuresAndStops": true,
+  "unobservedTargetBehaviorRecorded": true,
+  "doesNotClaimFullInternalProcessingConformance": true
+}

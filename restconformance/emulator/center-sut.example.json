@@ -1,0 +1,6 @@
+{
+  "base_url": "http://127.0.0.1:55307",
+  "api_key": "SC07_LOCAL_KEY",
+  "repetitions": 10,
+  "request_timeout_s": 30
+}

@@ -1,0 +1,2130 @@
+{
+  "date": "2026-09-24",
+  "files": [
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\altsvc.c",
+      "destination": "libcurl-8.12.0/src/altsvc.c",
+      "sha256": "d51934da35577f9b07776f5e6ec107002e8e35b29f5c4a9da4a167a3632b78b2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\altsvc.h",
+      "destination": "libcurl-8.12.0/src/altsvc.h",
+      "sha256": "093f79ec0773eac2471c14008358d390dace456f2872a877d8bca709a298806b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\amigaos.c",
+      "destination": "libcurl-8.12.0/src/amigaos.c",
+      "sha256": "7128ff4b12dc692466c10dac0873d1a0c70a1741f9b52d6d43cb32ba9fd7d8c2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\amigaos.h",
+      "destination": "libcurl-8.12.0/src/amigaos.h",
+      "sha256": "113afef0f59aba19599782af12cb1373a57e12414829b5d7b83cd913f04a4ae3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\arpa_telnet.h",
+      "destination": "libcurl-8.12.0/src/arpa_telnet.h",
+      "sha256": "d63fce1251fc0c0930d7901dc300efbfa9d37b377f245afc43ca724c9a76c011"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\asyn-ares.c",
+      "destination": "libcurl-8.12.0/src/asyn-ares.c",
+      "sha256": "2366ec8fe0a608bc8ad0bd7cf818cadf91907172be0403a16a4113202635ce8e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\asyn-thread.c",
+      "destination": "libcurl-8.12.0/src/asyn-thread.c",
+      "sha256": "e6eb58fc52ba18baf80d82d9a6dd55cab6095a7bb577da057b2c1a8a6d6ba487"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\asyn.h",
+      "destination": "libcurl-8.12.0/src/asyn.h",
+      "sha256": "b5b54d74fb94d24ad6e7b60d8325fb4755e686adfc5841d62d0cd07b7432c654"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\base64.c",
+      "destination": "libcurl-8.12.0/src/base64.c",
+      "sha256": "b81be82f226e827e066f223353ec7cd1af097a4b2ca0ae01788261330bed13d6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\bufq.c",
+      "destination": "libcurl-8.12.0/src/bufq.c",
+      "sha256": "c792b9bd2be11825a18f9dce385655ab388e0bceadba31ff704fe37f9d1b7c63"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\bufq.h",
+      "destination": "libcurl-8.12.0/src/bufq.h",
+      "sha256": "b384095ef876d8e1198f9f9c0273f1ede8417dfbec8d872d69ffe4dccf117ff0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\bufref.c",
+      "destination": "libcurl-8.12.0/src/bufref.c",
+      "sha256": "09ff3baa684141d4dd28e642584f7ccb77656e60c9e83b11563226a40fb2b857"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\bufref.h",
+      "destination": "libcurl-8.12.0/src/bufref.h",
+      "sha256": "6dc6bf8d2eb25ce3ee6e6e428dcad1596a1dfcc2a107f0a3030449b97c74a04c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-h1-proxy.c",
+      "destination": "libcurl-8.12.0/src/cf-h1-proxy.c",
+      "sha256": "542c13463e03f7c45e78ec962d5ee55d27d7afdf64a605f113dba08b50dab2c0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-h1-proxy.h",
+      "destination": "libcurl-8.12.0/src/cf-h1-proxy.h",
+      "sha256": "a397905eaeff02e43b61510c5f8fa211f72164037d68ee2f9c9c79580f4507d7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-h2-proxy.c",
+      "destination": "libcurl-8.12.0/src/cf-h2-proxy.c",
+      "sha256": "431c9ec4f674d0c670cb244c6b55ab7de63c2b2820195128425563f7b2618aa1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-h2-proxy.h",
+      "destination": "libcurl-8.12.0/src/cf-h2-proxy.h",
+      "sha256": "9b95a1a42db42439061ffad25fbbe608284d8dc9c9380112d206848aae0d0b88"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-haproxy.c",
+      "destination": "libcurl-8.12.0/src/cf-haproxy.c",
+      "sha256": "2be88f21c86fdd10ea241d93090d116c806f5e5a4953168c245d5e54098bfaa7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-haproxy.h",
+      "destination": "libcurl-8.12.0/src/cf-haproxy.h",
+      "sha256": "ba29096c04d98f31e2d27f35c398e887d8853a3bd8b517dc12eb5ce41b009c04"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-https-connect.c",
+      "destination": "libcurl-8.12.0/src/cf-https-connect.c",
+      "sha256": "909dd895a1a503085b5ec3028cc18cd84ce664406d426562ff3d255364e8ef66"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-https-connect.h",
+      "destination": "libcurl-8.12.0/src/cf-https-connect.h",
+      "sha256": "5f8ed6cb76844888ff296745b3fb0c9b3abff79adb15827694b54f61ebd42050"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-socket.c",
+      "destination": "libcurl-8.12.0/src/cf-socket.c",
+      "sha256": "cc4f2f38aef97ecd6237c76fba9064988ede26796f83771f07481a327463d243"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cf-socket.h",
+      "destination": "libcurl-8.12.0/src/cf-socket.h",
+      "sha256": "cce2d2ff26904d835eeafb3e388cf27afc47b3c7c272ac29e51aab6604845469"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cfilters.c",
+      "destination": "libcurl-8.12.0/src/cfilters.c",
+      "sha256": "ba227f2c76562a533d7f969d1a7c24b32025f49ed2aac1526621161dcad19597"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cfilters.h",
+      "destination": "libcurl-8.12.0/src/cfilters.h",
+      "sha256": "edfe2434b59c6985cf29df26b5342aca96355609ea0f5c12962ae5a91ab5faf5"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\CMakeLists.txt",
+      "destination": "libcurl-8.12.0/src/CMakeLists.txt",
+      "sha256": "df640e7805b2a4100fe6487d4b1af5f92804f68f822d4e26800737fcaa0b7832"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\config-mac.h",
+      "destination": "libcurl-8.12.0/src/config-mac.h",
+      "sha256": "5ce84fe510043f068f0dda3448e45ee6bc4de2faec713b0aea49c11dc04f27e6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\config-os400.h",
+      "destination": "libcurl-8.12.0/src/config-os400.h",
+      "sha256": "3027e52670000f2ff2ec4e24d49a5c812ae9eb0bdc4a95ab7a0d62610bc6c5ea"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\config-plan9.h",
+      "destination": "libcurl-8.12.0/src/config-plan9.h",
+      "sha256": "6d8e855ad529d6169be1795b5eb1333ef40c34c5002c70bf03add2e74d9270e6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\config-riscos.h",
+      "destination": "libcurl-8.12.0/src/config-riscos.h",
+      "sha256": "5685ebceb0ae49c6d1f33fa7999dc951b3f694c08b36ae3d9c7844389892b622"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\config-win32.h",
+      "destination": "libcurl-8.12.0/src/config-win32.h",
+      "sha256": "87afd6d617e446e296e4efc07acaad79677a826a3bf682abedfb290156f49dc9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\conncache.c",
+      "destination": "libcurl-8.12.0/src/conncache.c",
+      "sha256": "7e8a565b1bb6c8ff10200776adcc56b78b90f0e4deb55d39bd1100e3d5b2acc7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\conncache.h",
+      "destination": "libcurl-8.12.0/src/conncache.h",
+      "sha256": "e2c8cbc06b6e20df253fa4540dca215ceab0ac6b20b0bf4988e50bbd63b59f54"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\connect.c",
+      "destination": "libcurl-8.12.0/src/connect.c",
+      "sha256": "b46ef658eeb8a012ad1b838b5a9ceedbb11fb9a37fc20f8ef39247da810546e4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\connect.h",
+      "destination": "libcurl-8.12.0/src/connect.h",
+      "sha256": "6c8ba13ecb6aec7495650c0e0c265c120e2c62eb9d5e5e291d550f0e2eff8fe5"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\content_encoding.c",
+      "destination": "libcurl-8.12.0/src/content_encoding.c",
+      "sha256": "52f0286202e542d21c5ed80ef973f0328c10cbddc77c80a2e5187fd30492b08d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\content_encoding.h",
+      "destination": "libcurl-8.12.0/src/content_encoding.h",
+      "sha256": "13d071ed881e259de2144afef9a410ad8d36c75bb5b53b0efd2130f8d034e5c4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cookie.c",
+      "destination": "libcurl-8.12.0/src/cookie.c",
+      "sha256": "943cf627a79812a272ca1805c728b3a77e6f5893c3c92429087cd532506f5fa1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cookie.h",
+      "destination": "libcurl-8.12.0/src/cookie.h",
+      "sha256": "3aead27ef5ab1c222245d9afb051f496b49501445d16082065075e7408aa2824"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curlx.h",
+      "destination": "libcurl-8.12.0/src/curlx.h",
+      "sha256": "408f04a99149a7f49584177b69b8a93342712abad879f8c6bdad281a0620c66f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_addrinfo.c",
+      "destination": "libcurl-8.12.0/src/curl_addrinfo.c",
+      "sha256": "9b4341cddbe13b4c3d9eec729e0ebfa4fc61f76f4226fed20d3a66e82ba3927e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_addrinfo.h",
+      "destination": "libcurl-8.12.0/src/curl_addrinfo.h",
+      "sha256": "ca312fcdf6e2601cb1d364ddd6167c21f43fd4fd4bb1962a07ab041af5c31d47"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_base64.h",
+      "destination": "libcurl-8.12.0/src/curl_base64.h",
+      "sha256": "83ae6392e4bfc1c4d06dedc9a52675cdba2e9457e337161e92fbc2bcd6e53bce"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_ctype.h",
+      "destination": "libcurl-8.12.0/src/curl_ctype.h",
+      "sha256": "549460b6872f51b0e5c72d03bb99317d0c5b3ea17d241152b2b1a674c141d1cc"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_des.c",
+      "destination": "libcurl-8.12.0/src/curl_des.c",
+      "sha256": "41be5e732af5277996af95aff311118be5a93382d85683b0d4a28f5f4cf42180"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_des.h",
+      "destination": "libcurl-8.12.0/src/curl_des.h",
+      "sha256": "d9a467a99e2357eed4354e66ffdae54ef183afc08e5b5583a8d8b4a0c181eb74"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_endian.c",
+      "destination": "libcurl-8.12.0/src/curl_endian.c",
+      "sha256": "697b1a2966756f76a889b18c36e2d79a40030eb52566dd8bffb3a6ae7f0ae54d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_endian.h",
+      "destination": "libcurl-8.12.0/src/curl_endian.h",
+      "sha256": "cb009520d5daba273789d20116e0eceec36a2ae98fbd65143718b7b77663c641"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_fnmatch.c",
+      "destination": "libcurl-8.12.0/src/curl_fnmatch.c",
+      "sha256": "fd0a28836246b50e0b8dfd59b25b56f5baf8a3370cf74eda48ca8c9230a7e892"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_fnmatch.h",
+      "destination": "libcurl-8.12.0/src/curl_fnmatch.h",
+      "sha256": "ddfdf111f4ded80726ec0be7cdecf5f1a5cf3d2370bf81125f03b3ea0542bef2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_gethostname.c",
+      "destination": "libcurl-8.12.0/src/curl_gethostname.c",
+      "sha256": "a15db199799a6e70a25b2acef25f3f2459119f9fb5c35a4afa22394e6493b53b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_gethostname.h",
+      "destination": "libcurl-8.12.0/src/curl_gethostname.h",
+      "sha256": "e94516e2e296e5e37a85c67d5721ef983731a005a176683baa54965e9dc45cb9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_get_line.c",
+      "destination": "libcurl-8.12.0/src/curl_get_line.c",
+      "sha256": "12754862c5aaf03566e7451006b2fd678b325bb8bc1e55cecbd34cb4245c078a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_get_line.h",
+      "destination": "libcurl-8.12.0/src/curl_get_line.h",
+      "sha256": "cbd120bec8c8ec04052fb145ea51eb3b5f964635db3b376b84198927f2968ee4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_gssapi.c",
+      "destination": "libcurl-8.12.0/src/curl_gssapi.c",
+      "sha256": "22c0a2bf41e6cd5838354ba74d0a4e414455270baefcc4ebde85559f4bfd2f85"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_gssapi.h",
+      "destination": "libcurl-8.12.0/src/curl_gssapi.h",
+      "sha256": "c86b4da952c361deabdc5d377467a2438cbc29a47ce0612407fda39f028e85ea"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_hmac.h",
+      "destination": "libcurl-8.12.0/src/curl_hmac.h",
+      "sha256": "be0921f2999167ee2773400f47dc730354e0eac4750928e5a50881354efe5a9b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_krb5.h",
+      "destination": "libcurl-8.12.0/src/curl_krb5.h",
+      "sha256": "8fc612babfa7540c1613f9455f01d2dbfd74ed441541ae5cab187e297c77eadd"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_ldap.h",
+      "destination": "libcurl-8.12.0/src/curl_ldap.h",
+      "sha256": "9945755917a3a3616ac34c7d412f69ad34380bf1ab533ae2bf12de78a8517dc1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_md4.h",
+      "destination": "libcurl-8.12.0/src/curl_md4.h",
+      "sha256": "10d628fe1f37874e6cc0ddb9607e2512c6ca3c7ed314251b418a385f7eea6fc2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_md5.h",
+      "destination": "libcurl-8.12.0/src/curl_md5.h",
+      "sha256": "8b64c8c2c0240c60ba67e835db79910d5256e7fa50833c3862e7b2f70698d114"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_memory.h",
+      "destination": "libcurl-8.12.0/src/curl_memory.h",
+      "sha256": "d1eab2281cc6e820753fbfd29125e5e920e9803548321f5fb04ed3be20bb4bba"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_memrchr.c",
+      "destination": "libcurl-8.12.0/src/curl_memrchr.c",
+      "sha256": "92d6328d1b2ce85be35935ee0db6856d5b6b0b4508ed9fd66f3f6c58e9d81565"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_memrchr.h",
+      "destination": "libcurl-8.12.0/src/curl_memrchr.h",
+      "sha256": "20996b9c6a6255ffe928b763de9fb4a7aeb8ad9156c76e59f6f49d30ffb44acf"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_multibyte.c",
+      "destination": "libcurl-8.12.0/src/curl_multibyte.c",
+      "sha256": "7b700cda2a28f40039d3ff89d977bb7b62190916b7246d0606b2efb4f3735335"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_multibyte.h",
+      "destination": "libcurl-8.12.0/src/curl_multibyte.h",
+      "sha256": "8a464268328f11405ae88af7efd60e94377f7cdab49c9c05c86ecce16fd0e14a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_ntlm_core.c",
+      "destination": "libcurl-8.12.0/src/curl_ntlm_core.c",
+      "sha256": "0e69dabe95abdcb9c675ec2c7142cbb6c220b5169972a8108a021d46b62601fd"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_ntlm_core.h",
+      "destination": "libcurl-8.12.0/src/curl_ntlm_core.h",
+      "sha256": "93bfa23161be2d83eb98b3a3a3c4d82a9c4a754636189381778bca08d56d55fe"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_printf.h",
+      "destination": "libcurl-8.12.0/src/curl_printf.h",
+      "sha256": "5e6a959a2cecf9651510045968a8ac15b733482f09bee016ea286316be241210"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_range.c",
+      "destination": "libcurl-8.12.0/src/curl_range.c",
+      "sha256": "dbb5f5de32371fdd3cda36f61ff3e49ef1ba9f50655d4c785477995fda4e01ab"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_range.h",
+      "destination": "libcurl-8.12.0/src/curl_range.h",
+      "sha256": "c037e6767f86effcf257105a836f2245ebed6b61f8f1de6fa10cc0c0c68309e3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_rtmp.c",
+      "destination": "libcurl-8.12.0/src/curl_rtmp.c",
+      "sha256": "321fb4790c17d122010e5a47167a6828c62e49338e57c35546429a436d699d26"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_rtmp.h",
+      "destination": "libcurl-8.12.0/src/curl_rtmp.h",
+      "sha256": "cd71796041d7e86385429d91497372f03ed80443ba78bf5e0947be792dd11123"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_sasl.c",
+      "destination": "libcurl-8.12.0/src/curl_sasl.c",
+      "sha256": "720fb28ac636bb911c3f8a51f1743eaedcc2fb62ea29ba2609fe099a48321163"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_sasl.h",
+      "destination": "libcurl-8.12.0/src/curl_sasl.h",
+      "sha256": "8495fe921ad9d54c6f14958399fc482cc3f95b498a12119cec57813981e194af"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_setup.h",
+      "destination": "libcurl-8.12.0/src/curl_setup.h",
+      "sha256": "d3ea22a94ef71421536d64dee80c82f6b9e9b1165da5f23ab82b3253d3daee1b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_setup_once.h",
+      "destination": "libcurl-8.12.0/src/curl_setup_once.h",
+      "sha256": "f114d57c98b32252b47c8e3a71787aad1a15c9343146091b00c99c4e095a4621"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_sha256.h",
+      "destination": "libcurl-8.12.0/src/curl_sha256.h",
+      "sha256": "ae3a55540c825a305ed56b3137f6e5d733e902cc412f435a60d8434d0ac34718"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_sha512_256.c",
+      "destination": "libcurl-8.12.0/src/curl_sha512_256.c",
+      "sha256": "f0650e6b2f5a3df6f3dabaef2d5c7573c91180f8b24913d4af2130f1c3f6ce75"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_sha512_256.h",
+      "destination": "libcurl-8.12.0/src/curl_sha512_256.h",
+      "sha256": "93befffb9e7013a71a50283cc2fa8a87360483aa01c1d6406227a25a7a9717cb"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_sspi.c",
+      "destination": "libcurl-8.12.0/src/curl_sspi.c",
+      "sha256": "0f7f0cbba871fec807568133d4e69c15c7aff368862d672a6a1abb9795590d54"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_sspi.h",
+      "destination": "libcurl-8.12.0/src/curl_sspi.h",
+      "sha256": "1c415729996567076de5db212adcd5dd97a1e812d52ea157dc21650f38223c21"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_threads.c",
+      "destination": "libcurl-8.12.0/src/curl_threads.c",
+      "sha256": "205900bc31dfd1215d53b80053ee8b16eaa6bd6f54e6796bcb7a2005004523e7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_threads.h",
+      "destination": "libcurl-8.12.0/src/curl_threads.h",
+      "sha256": "c5cef104cbf463c7594284bbe18332016f28a9f67e332d68102e5d40db24a95f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_trc.c",
+      "destination": "libcurl-8.12.0/src/curl_trc.c",
+      "sha256": "8b0585ca2610d2697f5345278375804837b0324bbaa3f2b3917d6483973e92ee"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\curl_trc.h",
+      "destination": "libcurl-8.12.0/src/curl_trc.h",
+      "sha256": "49cbd5643a1fe4d81e4d16c281a0466b70958c74b401276542beb48ece19949e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cw-out.c",
+      "destination": "libcurl-8.12.0/src/cw-out.c",
+      "sha256": "ca74a0b712ec9f60bf344bf8dc09ed6069a25f6a19e75deaf4f84dfd0225eabd"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\cw-out.h",
+      "destination": "libcurl-8.12.0/src/cw-out.h",
+      "sha256": "840f25da41847cea16c7ec49e554eb38bb80ac93e3dfaac84d65cbb162f150db"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\dict.c",
+      "destination": "libcurl-8.12.0/src/dict.c",
+      "sha256": "bcdf68f2b84aa82866cce0e07f5889ec041b1e84b068c861b69ae741e4248a42"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\dict.h",
+      "destination": "libcurl-8.12.0/src/dict.h",
+      "sha256": "37cfdb2c409760383d1899a09dd3a769fb2020c721afabef8040dac92a1a5515"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\dllmain.c",
+      "destination": "libcurl-8.12.0/src/dllmain.c",
+      "sha256": "0758f3c6de36a068e6081860facb9338bf2704129375dfe6e052563fdad3f90f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\doh.c",
+      "destination": "libcurl-8.12.0/src/doh.c",
+      "sha256": "a309e9cffc9c99ebbab8f3808bcf7ba1986acf26011150541933cb3de7101e52"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\doh.h",
+      "destination": "libcurl-8.12.0/src/doh.h",
+      "sha256": "339f2b5cf535f8fc26fa1919fdf94dc47181575bc8768cc8f3902ac07ce87db2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\dynbuf.c",
+      "destination": "libcurl-8.12.0/src/dynbuf.c",
+      "sha256": "92d0029363da654fc8d8f6fc539380d98a70e648795d95f0dc7c0c681d79155d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\dynbuf.h",
+      "destination": "libcurl-8.12.0/src/dynbuf.h",
+      "sha256": "1938b0e99bf7f11cd212f00a33db20bb339c1a90f39c08fd600e283e616b5f89"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\dynhds.c",
+      "destination": "libcurl-8.12.0/src/dynhds.c",
+      "sha256": "19f61ab3fb32568f7c92afef41d4e39d82ee77fc3681c67763eb719178e11ca8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\dynhds.h",
+      "destination": "libcurl-8.12.0/src/dynhds.h",
+      "sha256": "1fee971c475a7f0b73076fba2ea7d3b8aa2212fac4505101727c8e710bcd4d3c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\easy.c",
+      "destination": "libcurl-8.12.0/src/easy.c",
+      "sha256": "ea0cf4f8cb5a87b2bd873f84b9ae08ae16a54b8ed0441b5d01617ce7d9ad1c69"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\easygetopt.c",
+      "destination": "libcurl-8.12.0/src/easygetopt.c",
+      "sha256": "21bf218e90b05118beb550e2bff3a878c5fe5c4e5c35025824bf14937386bce9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\easyif.h",
+      "destination": "libcurl-8.12.0/src/easyif.h",
+      "sha256": "2a00cee893ac3c5535c0ffda173108951d83384453fb47179181b5c08a116f6e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\easyoptions.c",
+      "destination": "libcurl-8.12.0/src/easyoptions.c",
+      "sha256": "114db3dde735eb8840e2ffd4ea892b9708168b52ed51022b260f39fc8989ccfc"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\easyoptions.h",
+      "destination": "libcurl-8.12.0/src/easyoptions.h",
+      "sha256": "85522c5ad91e37fb2338c1939f1e6821330882f145c7ea19221e389a28266939"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\easy_lock.h",
+      "destination": "libcurl-8.12.0/src/easy_lock.h",
+      "sha256": "fee7b3a3e37653e0c069297e7286a14c7dc25170f2a78d973a62740e029bc726"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\escape.c",
+      "destination": "libcurl-8.12.0/src/escape.c",
+      "sha256": "4234090cae0b1b9645c39f620a436973a672fbba586261fdc2cb21b0527cf0c1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\escape.h",
+      "destination": "libcurl-8.12.0/src/escape.h",
+      "sha256": "d7ff02f1b491b2bf466b1830fafd037ed5df85db75ae956d21e2be3c67b939ce"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\file.c",
+      "destination": "libcurl-8.12.0/src/file.c",
+      "sha256": "ad2738d777672a59b6b1ec05a119debcd4319e915ec03cb986fcd7990a72e55f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\file.h",
+      "destination": "libcurl-8.12.0/src/file.h",
+      "sha256": "47e57e98a4e0792bbd63ec55e2865cc0d7c4c2353c1c8e18c6aba0d7b8da9c97"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\fileinfo.c",
+      "destination": "libcurl-8.12.0/src/fileinfo.c",
+      "sha256": "7c6515d19fe7705ebef25dc2e537ee4b482c62539a2c110693b441d13ed8b756"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\fileinfo.h",
+      "destination": "libcurl-8.12.0/src/fileinfo.h",
+      "sha256": "cffcbdec757ca9e87783fdecf00c90a37414bbac0f867fc21bf426dcb426bed6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\fopen.c",
+      "destination": "libcurl-8.12.0/src/fopen.c",
+      "sha256": "e253f3723def9858272121f4287dcdcdf686729cc128dd0aa33128fe6f63f0b2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\fopen.h",
+      "destination": "libcurl-8.12.0/src/fopen.h",
+      "sha256": "42270ac9670ef7c027aaa70b5eabb4e5b18934b2f453acc9fb7072168ea3a9d6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\formdata.c",
+      "destination": "libcurl-8.12.0/src/formdata.c",
+      "sha256": "b230818d92724f390ba678b607b997d393d331b609d6b0657910535ec4f9aea3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\formdata.h",
+      "destination": "libcurl-8.12.0/src/formdata.h",
+      "sha256": "5fcd5a9a752337da2abdbab5fa6650bb1798ae67e2e52457a01f24b73ce8e0e2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\ftp.c",
+      "destination": "libcurl-8.12.0/src/ftp.c",
+      "sha256": "848abf3fff02f14d2cc287b2d22f152421a4909bb2142a2cbeeef92ca0e2263e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\ftp.h",
+      "destination": "libcurl-8.12.0/src/ftp.h",
+      "sha256": "b2f37faface39c79bc70c0ccecaeb5d113e94c2c73b61d71da03cb3c30f90c17"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\ftplistparser.c",
+      "destination": "libcurl-8.12.0/src/ftplistparser.c",
+      "sha256": "bca264a56f189bf7d2cb552529d347dd7164698119f37f48f7b41c51e79b0e78"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\ftplistparser.h",
+      "destination": "libcurl-8.12.0/src/ftplistparser.h",
+      "sha256": "43956dfccd0e98ac4cb4ed1a4aa23e41ed5d8fe03694491cb62f50c1363db817"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\functypes.h",
+      "destination": "libcurl-8.12.0/src/functypes.h",
+      "sha256": "8440299de9a4094527563cd8e974d97e02e836dac052825a9027b0aa6890bfa4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\getenv.c",
+      "destination": "libcurl-8.12.0/src/getenv.c",
+      "sha256": "662ba25decd8980a951990cbee026b211b48d4bb8ef91ad2b1a5c74909ad6889"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\getinfo.c",
+      "destination": "libcurl-8.12.0/src/getinfo.c",
+      "sha256": "6301c693f01a8102c73de611f5b8d23e3e4855835f1cbdd82da3ff7fb9f6123d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\getinfo.h",
+      "destination": "libcurl-8.12.0/src/getinfo.h",
+      "sha256": "c713b8555c6adee274b8e8625445cd5a61758e49a9710b65cc3397f168be49de"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\gopher.c",
+      "destination": "libcurl-8.12.0/src/gopher.c",
+      "sha256": "616b6487d253c4994a144a554081d0899e8b7080e19b00901cf0c0bde38748d3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\gopher.h",
+      "destination": "libcurl-8.12.0/src/gopher.h",
+      "sha256": "02bd7c2074d6e99edd231a0872e10454dd4a0266f07728d4e7e2f4a28cf6f504"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hash.c",
+      "destination": "libcurl-8.12.0/src/hash.c",
+      "sha256": "83c906df74d9f0163e0c84a42e665d31f10526bcf8871ceb2cff281f2f690016"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hash.h",
+      "destination": "libcurl-8.12.0/src/hash.h",
+      "sha256": "219e5d80b8daff8483119aeec8ebcdbb3ece92ec9832bb4b6019796311a11222"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\headers.c",
+      "destination": "libcurl-8.12.0/src/headers.c",
+      "sha256": "cd615723cf0a2fcf994f004c8268b259b79e7c12eb70575d2b4bc531abe2c6f8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\headers.h",
+      "destination": "libcurl-8.12.0/src/headers.h",
+      "sha256": "0e20b366258e3e6901f766ea7d2b66ce763b4753b589aee692e531e6f5d49610"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hmac.c",
+      "destination": "libcurl-8.12.0/src/hmac.c",
+      "sha256": "6922cf0b4ab936d4939f210c2c82932594c3d822676c32613cee9955a50e38e4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hostasyn.c",
+      "destination": "libcurl-8.12.0/src/hostasyn.c",
+      "sha256": "ee2f382f6a1f8c089f2d268673881939e024fbdfa232afb6d5becc85c75f18e2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hostip.c",
+      "destination": "libcurl-8.12.0/src/hostip.c",
+      "sha256": "4d852c2d01a7f2f6c0015db68643c54e456aa7dad034f7bb981a7148b02ebe75"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hostip.h",
+      "destination": "libcurl-8.12.0/src/hostip.h",
+      "sha256": "97d0609ed339350982f97792eaeb028415043d3aa52d134a69946689deb16461"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hostip4.c",
+      "destination": "libcurl-8.12.0/src/hostip4.c",
+      "sha256": "1ca509eb2b65dea21bf2de8bc10ebc07e2c1deac55012d16dfe0903fa85cd0c3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hostip6.c",
+      "destination": "libcurl-8.12.0/src/hostip6.c",
+      "sha256": "c7578044cf764c9fea64c8cb1e2b29d1ac3a93a79151ff29d50fef7d9fa94daf"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hostsyn.c",
+      "destination": "libcurl-8.12.0/src/hostsyn.c",
+      "sha256": "223de2c469b096fe6adedfbee621b8f77c04185543e14852813e668e6ee160a8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hsts.c",
+      "destination": "libcurl-8.12.0/src/hsts.c",
+      "sha256": "2522a346674273eded7d8df027a20c67710a25f020f44479ee89c4fa85beaf35"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\hsts.h",
+      "destination": "libcurl-8.12.0/src/hsts.h",
+      "sha256": "4502163124bc6db183f0fdc193d3675eaf73ba568768edee85bfb1c5533a80c7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http.c",
+      "destination": "libcurl-8.12.0/src/http.c",
+      "sha256": "b7238fda58c96663c1e0ed2099d46f8a13d0508e0b7bd3cf9c341dc7e7a2c409"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http.h",
+      "destination": "libcurl-8.12.0/src/http.h",
+      "sha256": "c089c1224a9513813b584b0f6a6e073727bb595762139cb778361d2734ae0ad4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http1.c",
+      "destination": "libcurl-8.12.0/src/http1.c",
+      "sha256": "f2c262d0ecbca2cd569d9082dfe3de6ff60b87b87e323b00b6973b17e8f18ece"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http1.h",
+      "destination": "libcurl-8.12.0/src/http1.h",
+      "sha256": "6906c64dda7583b9c6cd7e39e31decf2238718d750b6568720a51c9c3c79a7f8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http2.c",
+      "destination": "libcurl-8.12.0/src/http2.c",
+      "sha256": "41e20c38da77cd1d41f1fa19a43ff5dac524f13e8e14b137caced37a3f41a076"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http2.h",
+      "destination": "libcurl-8.12.0/src/http2.h",
+      "sha256": "827529083c6a2338525fb0154fc35eaa2413a9b80c90b1e430f67afd974dca8a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\httpsrr.c",
+      "destination": "libcurl-8.12.0/src/httpsrr.c",
+      "sha256": "c67da9d846a7ca3b36b110ec9d4ea5de9fe4590ae93c49130e46807a1711ab26"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\httpsrr.h",
+      "destination": "libcurl-8.12.0/src/httpsrr.h",
+      "sha256": "21afe9dccc5709f5b135dc6e6b944062e7ec1b8570431d8fc11e61b1dfa5e636"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_aws_sigv4.c",
+      "destination": "libcurl-8.12.0/src/http_aws_sigv4.c",
+      "sha256": "252143f32dbb1e6b3dfa86934106bf159d4f77db8d63f81edadce2691ae30189"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_aws_sigv4.h",
+      "destination": "libcurl-8.12.0/src/http_aws_sigv4.h",
+      "sha256": "ecfc9b421fb4a61767002c23e0734773ecfb845045dd39a13cc4506386f4332c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_chunks.c",
+      "destination": "libcurl-8.12.0/src/http_chunks.c",
+      "sha256": "bb2ae30357dbd15fa5e5189017840a4006070708612218116376307ac540fc45"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_chunks.h",
+      "destination": "libcurl-8.12.0/src/http_chunks.h",
+      "sha256": "e28c5a215e704b43f63a14ddb03bd21af8288c21baabd3b4b9d4557e01689141"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_digest.c",
+      "destination": "libcurl-8.12.0/src/http_digest.c",
+      "sha256": "34012d527888a65cc9306c566c4551c87512b2acf22c6855d9e118840ac6c20e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_digest.h",
+      "destination": "libcurl-8.12.0/src/http_digest.h",
+      "sha256": "dace607273a7b4ad200368c76d247274e1acff217c0b0264dada89c6af44aa9f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_negotiate.c",
+      "destination": "libcurl-8.12.0/src/http_negotiate.c",
+      "sha256": "9b0fa92c51a7cf31dc2a332ce75f995609a0edbd79dad3dcc539afa84182b18c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_negotiate.h",
+      "destination": "libcurl-8.12.0/src/http_negotiate.h",
+      "sha256": "f8685e63cca8f9f9f7dd6bfc4c069ab0a591e2c50cd97d320645ce9eb9ef07d5"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_ntlm.c",
+      "destination": "libcurl-8.12.0/src/http_ntlm.c",
+      "sha256": "2ae67d689fe84e80838fd65d2c5ffe69f5b2296fb2274b95f853e4370698263e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_ntlm.h",
+      "destination": "libcurl-8.12.0/src/http_ntlm.h",
+      "sha256": "722ec86918ba2d163e243452da18e1eb2fcec6e375d256de01a118b63535f056"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_proxy.c",
+      "destination": "libcurl-8.12.0/src/http_proxy.c",
+      "sha256": "21e8203195f3ebcfad92913a698716063d22765183f2a46c69114853b5f7ba65"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\http_proxy.h",
+      "destination": "libcurl-8.12.0/src/http_proxy.h",
+      "sha256": "49b9f9b3ff39f852f3101b9b5e09bd8b037acbf2ca83c095b2c930e8bb94d2f1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\idn.c",
+      "destination": "libcurl-8.12.0/src/idn.c",
+      "sha256": "55f91f54c965eb9ec078627a065aaf7a421b9bd50371d21c7d5bdbf3642be97e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\idn.h",
+      "destination": "libcurl-8.12.0/src/idn.h",
+      "sha256": "50d3808d6a86a7639842ee7c8b7a7c39e2f32cb6851858b1c3d66318201d779c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\if2ip.c",
+      "destination": "libcurl-8.12.0/src/if2ip.c",
+      "sha256": "3dc5ddd92940bdde24ed9588f2658a730293374df8df371b973c7a046236bc39"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\if2ip.h",
+      "destination": "libcurl-8.12.0/src/if2ip.h",
+      "sha256": "f61001366380952495f5f7dec2e01ab2669027efa3517d6f7b3c88476993e25d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\imap.c",
+      "destination": "libcurl-8.12.0/src/imap.c",
+      "sha256": "ea023792ce090e927b50de3ea9482db3856fe69f8c21f24f9d4b8c8cf854b898"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\imap.h",
+      "destination": "libcurl-8.12.0/src/imap.h",
+      "sha256": "26aebad25ace1b065bc915a1160c539faa4ba57f06a0c4d4aeafd5800aed7417"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\inet_ntop.c",
+      "destination": "libcurl-8.12.0/src/inet_ntop.c",
+      "sha256": "3bb0556978b2d0ab400cacca38126f5c9e9284cba3823aef95a3f59d78405574"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\inet_ntop.h",
+      "destination": "libcurl-8.12.0/src/inet_ntop.h",
+      "sha256": "434bdd76d90066d7925dd8eba6e7a7ddfe900b6a7d37b57e25194d64d1f77552"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\inet_pton.c",
+      "destination": "libcurl-8.12.0/src/inet_pton.c",
+      "sha256": "42e9581fd0675bfb9d10fc0605f0fc9bd394eb08b940c4c4adaa5ef7932127ce"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\inet_pton.h",
+      "destination": "libcurl-8.12.0/src/inet_pton.h",
+      "sha256": "bc14284727058e8c4c6a5621187e0808aca8889e0d275f5a7e5447537a532c28"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\krb5.c",
+      "destination": "libcurl-8.12.0/src/krb5.c",
+      "sha256": "6814aad251476a145004623dd150a96ab6e3f55f61854623d98e034036e34ae6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\ldap.c",
+      "destination": "libcurl-8.12.0/src/ldap.c",
+      "sha256": "f366c719dcb41af0bb1682027f109e679fb5ed45cf2664a8d56dfbfeea4f617f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\libcurl.def",
+      "destination": "libcurl-8.12.0/src/libcurl.def",
+      "sha256": "ada17d201a9c74368d60d1faa579c1439695a6fe2d6368ce4cf9f810432a5cf3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\libcurl.rc",
+      "destination": "libcurl-8.12.0/src/libcurl.rc",
+      "sha256": "50846f2f4b2569adeb6dee3ddda9bd7e2402afb7b4b6776b27231c838ed3f25b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\llist.c",
+      "destination": "libcurl-8.12.0/src/llist.c",
+      "sha256": "d068d4aae646f1d6ea014b0d2ae2536283e9b95b0db73f207ef7269d8e57ac19"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\llist.h",
+      "destination": "libcurl-8.12.0/src/llist.h",
+      "sha256": "b742a96d4bc10182a56ec060f2e85bd528729446391c3073e2a6bfa080f3ea50"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\macos.c",
+      "destination": "libcurl-8.12.0/src/macos.c",
+      "sha256": "7fa45e95dabdd0be6c98ac30590577fa7d98e120cc02bc95a83545ce1b88c5b3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\macos.h",
+      "destination": "libcurl-8.12.0/src/macos.h",
+      "sha256": "eb913180f8fcd98d9c6d259030b8e7a808c1656d96fade54b6ff90060eeb0357"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\md4.c",
+      "destination": "libcurl-8.12.0/src/md4.c",
+      "sha256": "7f9f880004ecffd1cbda753f38859e910edcd6ee1a1016e3d1b35ede90eab2a4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\md5.c",
+      "destination": "libcurl-8.12.0/src/md5.c",
+      "sha256": "5bed3fb7dc0e4186b124edbe9d9e411c62c995dcf5d883890ba55cf3e19405a7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\memdebug.c",
+      "destination": "libcurl-8.12.0/src/memdebug.c",
+      "sha256": "ac32ca9223d52643ba309e37d12fa8ef5e395690a842b96cc20552662e740921"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\memdebug.h",
+      "destination": "libcurl-8.12.0/src/memdebug.h",
+      "sha256": "956cabddc1ff254c96d7b55706b2ad63307f73562eb7f7dc8fbefcb6822f8d92"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\mime.c",
+      "destination": "libcurl-8.12.0/src/mime.c",
+      "sha256": "aa918cef55abda99c65040eb0043768d7f1430023c3ac726606a0de292b37c59"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\mime.h",
+      "destination": "libcurl-8.12.0/src/mime.h",
+      "sha256": "f34554b7a396b1753527e78cce5aad99cbbd745964a48acf701ed51b4e7da9b2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\mprintf.c",
+      "destination": "libcurl-8.12.0/src/mprintf.c",
+      "sha256": "561ecb731d8e37034a0f8618a7a16c23a27b3a7af80acaea217093f93328738a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\mqtt.c",
+      "destination": "libcurl-8.12.0/src/mqtt.c",
+      "sha256": "4f3050d896494a7e2ea487e1fc0adb131430e85d31568d08950b26c4fa005bbf"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\mqtt.h",
+      "destination": "libcurl-8.12.0/src/mqtt.h",
+      "sha256": "5419a82b8ed530cd7d15909f959c7e6e2c872eaa4d1c60288f30d8b876916331"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\multi.c",
+      "destination": "libcurl-8.12.0/src/multi.c",
+      "sha256": "89cfef83997b8a7f197c36372a941336aa7623b8393755e6a69b0a2f1c9b7a9e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\multihandle.h",
+      "destination": "libcurl-8.12.0/src/multihandle.h",
+      "sha256": "69e5b5ae4649a9f49cc625d086046b4cbeeb67965b2f6280a876f800cc740eef"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\multiif.h",
+      "destination": "libcurl-8.12.0/src/multiif.h",
+      "sha256": "0976bdc81d69e48235209ed7ef04a52b81ad143a2ba2d2912e86c087128df96e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\netrc.c",
+      "destination": "libcurl-8.12.0/src/netrc.c",
+      "sha256": "e7be0eddec119b980316247f46c94ddb67cb56f486dabbbf7d6285a7e366e4ba"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\netrc.h",
+      "destination": "libcurl-8.12.0/src/netrc.h",
+      "sha256": "0fcd2382e57871cb5c93d8e50c23e2d86f1e73e2599282a604a417130431a020"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\nonblock.c",
+      "destination": "libcurl-8.12.0/src/nonblock.c",
+      "sha256": "dbedd58707ce0c04c7559e142c1ef98effd93b99979ea1d20d8486a0d3c76819"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\nonblock.h",
+      "destination": "libcurl-8.12.0/src/nonblock.h",
+      "sha256": "53315c66b169e964a25927449707dd420abb9d67ab9b14d7b498203e91291369"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\noproxy.c",
+      "destination": "libcurl-8.12.0/src/noproxy.c",
+      "sha256": "1ab7185f9585517a5160f88fb729252a16564ed04ae8e7c09a1198df01406625"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\noproxy.h",
+      "destination": "libcurl-8.12.0/src/noproxy.h",
+      "sha256": "fec1a47832f63d428192c44c08f27a1c70efe03e104707eb725da1bdeb5e8cb4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\openldap.c",
+      "destination": "libcurl-8.12.0/src/openldap.c",
+      "sha256": "4a96ce9bee0fa0b1f63cc059981cbab1f6d7ec37b1b23206a3b8dfb3d342226a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\parsedate.c",
+      "destination": "libcurl-8.12.0/src/parsedate.c",
+      "sha256": "508b4c3231f56a445204b422706364c6068f5a2e6f686c62a435e362781bf931"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\parsedate.h",
+      "destination": "libcurl-8.12.0/src/parsedate.h",
+      "sha256": "4ccc01bc33fcce0a1bb773adf4dfc7edf8c11726f8c1a484075118c596df9949"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\pingpong.c",
+      "destination": "libcurl-8.12.0/src/pingpong.c",
+      "sha256": "367231db049942b4b218c56490579b3b13b19534997a0a959bf0f091f6b79305"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\pingpong.h",
+      "destination": "libcurl-8.12.0/src/pingpong.h",
+      "sha256": "3f332207fbd80ae87394400b513912180d746d3186f6bcce145ee16f1f8294a0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\pop3.c",
+      "destination": "libcurl-8.12.0/src/pop3.c",
+      "sha256": "eb05814231b8b32000174046b77b0839a7165945ba891c828656480261369b5c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\pop3.h",
+      "destination": "libcurl-8.12.0/src/pop3.h",
+      "sha256": "6ff91c28a6b5692c5d558c4b516c9a687662c3f29423f73e114c6808d2f45d1b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\progress.c",
+      "destination": "libcurl-8.12.0/src/progress.c",
+      "sha256": "2ee7d51bc15700a13cc9c48a63cbe051b8a008ec14043d5ccd0d8018823e85e5"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\progress.h",
+      "destination": "libcurl-8.12.0/src/progress.h",
+      "sha256": "3d011b0d912b4177180a503a45df4796d10fd785732a33ac5bac0ab41d13af53"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\psl.c",
+      "destination": "libcurl-8.12.0/src/psl.c",
+      "sha256": "94a39aeade4760bde08bbddaf3a930a62b064ec9b296e6f6a674ea2feca149bc"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\psl.h",
+      "destination": "libcurl-8.12.0/src/psl.h",
+      "sha256": "513cbf93262e4b82bd8865803006254b4536e6204ce6002949075cadb735dd1f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\rand.c",
+      "destination": "libcurl-8.12.0/src/rand.c",
+      "sha256": "00da26f0e7b8c625ec67989d1689faf39ae92268528346bf11ce9fe22f97d7c0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\rand.h",
+      "destination": "libcurl-8.12.0/src/rand.h",
+      "sha256": "e0326f9391ed66baf7563f85576f99a819d2359a828506a92a900597fe7d26f1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\rename.c",
+      "destination": "libcurl-8.12.0/src/rename.c",
+      "sha256": "05adef32b6519223b40d21f21e926bda371bf68b023424c6494afd5668446daf"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\rename.h",
+      "destination": "libcurl-8.12.0/src/rename.h",
+      "sha256": "f46e7c124a093a785c3ff3906cb10a759a9931d1d0cd4d6ca2bffaeec7aef4c5"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\request.c",
+      "destination": "libcurl-8.12.0/src/request.c",
+      "sha256": "935397cbd1529eb91be420207da1ec61721c2a2fa9b18aaa5380515f340a65a4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\request.h",
+      "destination": "libcurl-8.12.0/src/request.h",
+      "sha256": "c14379743136939ae6010ed5621d457f8e0bef673f4e560f8d8775dde70219e6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\rtsp.c",
+      "destination": "libcurl-8.12.0/src/rtsp.c",
+      "sha256": "56e9bf0e42a6ef1d6218ef5ffe528f2d31a953aad59c28146601f3a8bd7559f1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\rtsp.h",
+      "destination": "libcurl-8.12.0/src/rtsp.h",
+      "sha256": "3ca57e4daa30c0acce63e538ff8f308751c06aaba66f8c93c17ae541f805dfdb"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\select.c",
+      "destination": "libcurl-8.12.0/src/select.c",
+      "sha256": "7db7f879612b8be18f313d98cabd6e47d32b2ec784313973616954c6faea3527"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\select.h",
+      "destination": "libcurl-8.12.0/src/select.h",
+      "sha256": "02daf7764a2105baffbaca5328c8d674d708b4420c7051182b1396c70fa43016"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\sendf.c",
+      "destination": "libcurl-8.12.0/src/sendf.c",
+      "sha256": "3a12f71af0910878bb3c512a1d982b56007a0a8f53a0e271e20681bb1a7b9732"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\sendf.h",
+      "destination": "libcurl-8.12.0/src/sendf.h",
+      "sha256": "ddb383624c9f28da73add3c0b4d16719ad35dd836868239907c5dea45a79a005"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\setopt.c",
+      "destination": "libcurl-8.12.0/src/setopt.c",
+      "sha256": "c9480a00c65d0f7d70448d86493d016e5a378767ddd5604b9b9a2451ee90e45c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\setopt.h",
+      "destination": "libcurl-8.12.0/src/setopt.h",
+      "sha256": "2d29eea3187d215e3c83add73c76bbde17e96dc02fc12ca1fb2e55b9f23e1ab8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\setup-os400.h",
+      "destination": "libcurl-8.12.0/src/setup-os400.h",
+      "sha256": "18e8e06c873764e73a4827bc5c7c3ab6a65690b6024f0aeec63fa53f93f69152"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\setup-vms.h",
+      "destination": "libcurl-8.12.0/src/setup-vms.h",
+      "sha256": "151938902ce4e37132f31069470ba138497d3fa8a63db18d464f4826ae7ea3e8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\setup-win32.h",
+      "destination": "libcurl-8.12.0/src/setup-win32.h",
+      "sha256": "a062797b1775ead2aa0d5985e52de0ce8aa56aa74ed3482ff6467dfd8728745f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\sha256.c",
+      "destination": "libcurl-8.12.0/src/sha256.c",
+      "sha256": "fc734b6d41848fb31b1075f95785926902a9871a4f5e5503082a412e24ef0c52"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\share.c",
+      "destination": "libcurl-8.12.0/src/share.c",
+      "sha256": "d2d805f5a712ca4ce8aa024ab5bb61b2865e2a4558230d485251e391aee455a7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\share.h",
+      "destination": "libcurl-8.12.0/src/share.h",
+      "sha256": "00935daf4f825cafc2eefeade9282b8f62498f1f127ac9d7057473a4df4051b3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\sigpipe.h",
+      "destination": "libcurl-8.12.0/src/sigpipe.h",
+      "sha256": "e94ed61ce069806aa8f65eac3ee5a9ecf32fac6ae3f58733422308eabacb0e5f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\slist.c",
+      "destination": "libcurl-8.12.0/src/slist.c",
+      "sha256": "f8c421c28f7b2db5b603c63523b6703b718c43da9fafe2cb9af5bdd0d5f5c7e0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\slist.h",
+      "destination": "libcurl-8.12.0/src/slist.h",
+      "sha256": "849f6b0b31e41d28c3002cff6a6b1078723b838cc41c7b8b03c35f6bc549e3db"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\smb.c",
+      "destination": "libcurl-8.12.0/src/smb.c",
+      "sha256": "48573d366fca73d3838f6b8566fecacc02e1086e1762920f36e8df8447388129"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\smb.h",
+      "destination": "libcurl-8.12.0/src/smb.h",
+      "sha256": "ad00e5f280d03fb5238ff5b272e67df5c3df8b93f815cb04dab24f8943d92a5e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\smtp.c",
+      "destination": "libcurl-8.12.0/src/smtp.c",
+      "sha256": "fbe031d525b852d101754ba57b6dbcef8ea7fdf3228ab6a17689b331149a87aa"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\smtp.h",
+      "destination": "libcurl-8.12.0/src/smtp.h",
+      "sha256": "eb89d83da0a6de4e994c7b40c20b9a3e622a213b5da24e8e8d75330a86355767"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\sockaddr.h",
+      "destination": "libcurl-8.12.0/src/sockaddr.h",
+      "sha256": "d10b4d2051d2ca8feabe9451b80dd19120992a3ddcb2d1a154d7c27755341571"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\socketpair.c",
+      "destination": "libcurl-8.12.0/src/socketpair.c",
+      "sha256": "818582b8148a09b31ce52982ce2baf36c83e98c9ef733597664f72242a82fa90"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\socketpair.h",
+      "destination": "libcurl-8.12.0/src/socketpair.h",
+      "sha256": "3d7d065024a3aca93f6104d9ada031493ff27301cdafcf9df6ef5235a89e3ac0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\socks.c",
+      "destination": "libcurl-8.12.0/src/socks.c",
+      "sha256": "8a3ce5f03ee66567af3853cf0cc603b509950bcbf781651b6ef8a67bd464704c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\socks.h",
+      "destination": "libcurl-8.12.0/src/socks.h",
+      "sha256": "e526f34a9a87ec78d5297aa385609814d7254d72823b0620d2f82dc1aacf2898"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\socks_gssapi.c",
+      "destination": "libcurl-8.12.0/src/socks_gssapi.c",
+      "sha256": "15dad0109cab7be586564842fe71672ae7dbacdbdc48358ede312107db3bc3b5"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\socks_sspi.c",
+      "destination": "libcurl-8.12.0/src/socks_sspi.c",
+      "sha256": "7ad0e45fc4a87211152d0493e8f618a561350a55f8f950ad4a7be21842518f1c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\speedcheck.c",
+      "destination": "libcurl-8.12.0/src/speedcheck.c",
+      "sha256": "a37c0da412c734d3b72b1edc9f1a90a3512223f9ac1673a0dd32cf850b049bdb"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\speedcheck.h",
+      "destination": "libcurl-8.12.0/src/speedcheck.h",
+      "sha256": "6c3815a52510b25b703eb71a41226cd801c9af86cdbae3ecbebca19d4b9d76b6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\splay.c",
+      "destination": "libcurl-8.12.0/src/splay.c",
+      "sha256": "5fd031bfdc5b52dec4dde7456c163305ef8f742532d2a863de5f550910738568"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\splay.h",
+      "destination": "libcurl-8.12.0/src/splay.h",
+      "sha256": "c019054eb3272449db83c77e0edd2e95bae0bf348aad4b3d12aab6f922ce5a87"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strcase.c",
+      "destination": "libcurl-8.12.0/src/strcase.c",
+      "sha256": "68ffb67039d2ee41792d90154b82f089bf2ad7c3b10b99741eaabefc6ff6a43a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strcase.h",
+      "destination": "libcurl-8.12.0/src/strcase.h",
+      "sha256": "336d8fda5df6b6d1b30373236db0ba9f5b984c8c55ca48aaca04db61c3bd088c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strdup.c",
+      "destination": "libcurl-8.12.0/src/strdup.c",
+      "sha256": "bc85c23206bcfd7319c6c19db82ab1f7768a6c988924de1171f8b9ed58cf5197"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strdup.h",
+      "destination": "libcurl-8.12.0/src/strdup.h",
+      "sha256": "60fe7e9c866597b69ffa0ca9ac581440d270864d475263704373238cb145461a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strerror.c",
+      "destination": "libcurl-8.12.0/src/strerror.c",
+      "sha256": "1425d2bf5ffd73f8f5b07baad3d83123d71070f336f6914518333417d7bca5e5"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strerror.h",
+      "destination": "libcurl-8.12.0/src/strerror.h",
+      "sha256": "ceb2b802925b656fb1647023a96c784a22794121981bac2a0bd0ab302f6ce9c7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strparse.c",
+      "destination": "libcurl-8.12.0/src/strparse.c",
+      "sha256": "481584750a946236f8b0909411f3da6a9df730b93b81d74df7275d20f18795f8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strparse.h",
+      "destination": "libcurl-8.12.0/src/strparse.h",
+      "sha256": "607b4db0e9d43e6e1c637ab1d7ae0661fc9d1415be7c952df16b1b36104189e8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strtok.c",
+      "destination": "libcurl-8.12.0/src/strtok.c",
+      "sha256": "dc71100607de322d621b4a23764ca56c04bc4ffd63ea4987049c0a51e2608b52"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strtok.h",
+      "destination": "libcurl-8.12.0/src/strtok.h",
+      "sha256": "3b77400c5f78fe8aa62a4a05f28bd791fb1c1a2a635788e450e8e064bf3a1d57"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strtoofft.c",
+      "destination": "libcurl-8.12.0/src/strtoofft.c",
+      "sha256": "38a6b75347bb9b234b356f84aded91177b5213ae601124a6f1efa02b37f9e171"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\strtoofft.h",
+      "destination": "libcurl-8.12.0/src/strtoofft.h",
+      "sha256": "e57e05b9142546a4c0a9cf0db930e77d6b58330ab48c4e4d71f7dc21a6256c24"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\system_win32.c",
+      "destination": "libcurl-8.12.0/src/system_win32.c",
+      "sha256": "3febc68b1260c1898778ae87c9809f8a25d6ee543dc8d218b7b1d1c07c04a526"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\system_win32.h",
+      "destination": "libcurl-8.12.0/src/system_win32.h",
+      "sha256": "6b5ca9bcec788352eb73ff8265294f9f18395182a583b16f50620d25f52d00e8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\telnet.c",
+      "destination": "libcurl-8.12.0/src/telnet.c",
+      "sha256": "5dc4fd161953ed4ca59e593de42a9338312e36058deb107f7dbc511d8849f799"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\telnet.h",
+      "destination": "libcurl-8.12.0/src/telnet.h",
+      "sha256": "8e17f3e0d0b18280d3bd1cfe9459e1d82315582b3744478a0d9d5dcfd6078092"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\tftp.c",
+      "destination": "libcurl-8.12.0/src/tftp.c",
+      "sha256": "de640195de6cf3fbd5147c45d73e9816b3b9c0f3ce66cc32db67b120b4cc9ed1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\tftp.h",
+      "destination": "libcurl-8.12.0/src/tftp.h",
+      "sha256": "595c90a73b1a99913276ab7257fb39b7bb28555ee1aa5869075e7999717558e8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\timediff.c",
+      "destination": "libcurl-8.12.0/src/timediff.c",
+      "sha256": "ef5a0b3d71605e5801b2021a8d64883d4f9c79dc19a7b03a0a19ce3dc8bda8b7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\timediff.h",
+      "destination": "libcurl-8.12.0/src/timediff.h",
+      "sha256": "85d92475dbd0014dbe699464974ac440df8f31cb7a89ca5b2413c0f528faaf8c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\timeval.c",
+      "destination": "libcurl-8.12.0/src/timeval.c",
+      "sha256": "52050e52c0ecc6ad539096df3082115a8dded579c17c484c591d2b17cc2c4a1b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\timeval.h",
+      "destination": "libcurl-8.12.0/src/timeval.h",
+      "sha256": "fb8e2407a7abe7eb46309851faebd5ed61f55214ef2ee9d779bee9b747432272"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\transfer.c",
+      "destination": "libcurl-8.12.0/src/transfer.c",
+      "sha256": "099442d9eb2f39bfeafe754eec97cc373cebf3f6fcfb854ba51cdf079a6bb154"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\transfer.h",
+      "destination": "libcurl-8.12.0/src/transfer.h",
+      "sha256": "790361e84f67bf1b83e1d6e8809ffd0075624a4f50799051e78cca8c46a5892a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\url.c",
+      "destination": "libcurl-8.12.0/src/url.c",
+      "sha256": "a492d07303c0171b54c073122db54a4c6ec8b923032d3e5b9518e890ea97dc1c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\url.h",
+      "destination": "libcurl-8.12.0/src/url.h",
+      "sha256": "6c870cc26d712e2afdfa6010b4d07f105d0d7b9fd80221c9c0416a74589263cf"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\urlapi-int.h",
+      "destination": "libcurl-8.12.0/src/urlapi-int.h",
+      "sha256": "c8884b231d34755fe58ddbf9bb351f027588dab0e265480b1dcbb33c451137f8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\urlapi.c",
+      "destination": "libcurl-8.12.0/src/urlapi.c",
+      "sha256": "bf76f861b911584404e9a770a6873cb40af7771a8415b56da0ada4ecf9526557"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\urldata.h",
+      "destination": "libcurl-8.12.0/src/urldata.h",
+      "sha256": "ca8bb79c28fd2eeee63b6439042fa150f1d8b3fc1263243660af0dfcbf20d952"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\version.c",
+      "destination": "libcurl-8.12.0/src/version.c",
+      "sha256": "3721290368a7c9eb00f02938996de0478bb432ab7340f80ccc62dda5280f22c2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\version_win32.c",
+      "destination": "libcurl-8.12.0/src/version_win32.c",
+      "sha256": "a8c05723cc8301daf1d9b9e46f3600746d9b7cac4b85ae3c8275aec2fa0a1234"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\version_win32.h",
+      "destination": "libcurl-8.12.0/src/version_win32.h",
+      "sha256": "e5b1c97028b13395db8aa2f13350db4ff36ef96a1bdab5ae910817930f5ad2ed"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\warnless.c",
+      "destination": "libcurl-8.12.0/src/warnless.c",
+      "sha256": "eb20d624db5de5ad9e308a398d408d8f227d0a74d1cbefb596c419bf2810072d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\warnless.h",
+      "destination": "libcurl-8.12.0/src/warnless.h",
+      "sha256": "3db3de7a7fec2fc5448a67e85807166274ed9b5ab308086ba3cadeb9ddf791a3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\ws.c",
+      "destination": "libcurl-8.12.0/src/ws.c",
+      "sha256": "400c6cf3f2d922a9ac94c2f55218cce5db57b05c9edbb64f818f33e9392f6530"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\ws.h",
+      "destination": "libcurl-8.12.0/src/ws.h",
+      "sha256": "c84ee37685991c01b6dd5d262c2dbe0cdeaef1894b2930300b9d44d2aec7cca2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\curl.h",
+      "destination": "libcurl-8.12.0/include/curl/curl.h",
+      "sha256": "a9743c170f60477bed68c3b758d8eaddf2c81224b0dc84b9e7466792a05a1a86"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\curlver.h",
+      "destination": "libcurl-8.12.0/include/curl/curlver.h",
+      "sha256": "6cb58bcf6979ba46872bb39ab9ab84544a2ccef32ecc55478320ca1d7949e474"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\easy.h",
+      "destination": "libcurl-8.12.0/include/curl/easy.h",
+      "sha256": "baa80dcf6cad0531fd3fb08cfa69f9b5cbdbf69656655bd11cc2de92009ac0d9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\header.h",
+      "destination": "libcurl-8.12.0/include/curl/header.h",
+      "sha256": "199a72e4a6b280c6934ec63a9433b8a4d80d510ccf00cb23b38b4b61583588c0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\mprintf.h",
+      "destination": "libcurl-8.12.0/include/curl/mprintf.h",
+      "sha256": "d536ae9b5eb1cea4a3e915d9f8785b7ee66983300f554ddcc304451fdbeb5cb4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\multi.h",
+      "destination": "libcurl-8.12.0/include/curl/multi.h",
+      "sha256": "28ce016fd3f6612e4ad7fb512f837276d502e2eaf3b35a23db255ab1b8d7a2d4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\options.h",
+      "destination": "libcurl-8.12.0/include/curl/options.h",
+      "sha256": "1b79655d1948442bb3cf7118eb2ac8b54493002a48b393ff37b519e853149f1b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\stdcheaders.h",
+      "destination": "libcurl-8.12.0/include/curl/stdcheaders.h",
+      "sha256": "9d0b5afefc537de44975cf6d74d73b81393aa477c5f27d32c63e628f5eadd609"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\system.h",
+      "destination": "libcurl-8.12.0/include/curl/system.h",
+      "sha256": "578b09c046d3e97af8831e81434e0adee68d70d35572cd6a4e9262ce4c81cf98"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\typecheck-gcc.h",
+      "destination": "libcurl-8.12.0/include/curl/typecheck-gcc.h",
+      "sha256": "fd5539363503821977bdb59321763e85b1b3c1e450af0530763077d215ee6fd4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\urlapi.h",
+      "destination": "libcurl-8.12.0/include/curl/urlapi.h",
+      "sha256": "ec0f7cd7ae9107eb7a4c8695935b4097dd7659362ffaa19a0227dcad68c58de6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\include\\curl\\websockets.h",
+      "destination": "libcurl-8.12.0/include/curl/websockets.h",
+      "sha256": "e41c756233d16de30677628048578750f648b313954421eedcdfd1c07d3524fc"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\project\\VS2022\\libcurl-8.12.0.sln",
+      "destination": "libcurl-8.12.0/project/VS2022/libcurl-8.12.0.sln",
+      "sha256": "258b1c1eb693587bbdf7437b9c5ca943c9cc5f842538ced8e3e14388a03df9ac"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\project\\VS2022\\libcurl-8.12.0.vcxproj",
+      "destination": "libcurl-8.12.0/project/VS2022/libcurl-8.12.0.vcxproj",
+      "sha256": "99b844b33454bf94b145b2ed933491e21e8c9f596609d83c30b065991eb4f03a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\project\\VS2022\\libcurl-8.12.0.vcxproj.filters",
+      "destination": "libcurl-8.12.0/project/VS2022/libcurl-8.12.0.vcxproj.filters",
+      "sha256": "34dca32bad58ba1951cfdbcc58377aa941191d49179fcb8267aa60c4e9ede705"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\cleartext.c",
+      "destination": "libcurl-8.12.0/src/vauth/cleartext.c",
+      "sha256": "6f39f9e45e30d3f234af02956c0ab06e8b73976d44429039066c73a923ab6536"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\cram.c",
+      "destination": "libcurl-8.12.0/src/vauth/cram.c",
+      "sha256": "de69f116903b65f4f0887e9822fc8ae482470b41c2a5d5148a66a9c5d5608cfe"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\digest.c",
+      "destination": "libcurl-8.12.0/src/vauth/digest.c",
+      "sha256": "8d31d74839e74413b99de8d43069e65b9576e878cbd21b7135efccb54503883f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\digest.h",
+      "destination": "libcurl-8.12.0/src/vauth/digest.h",
+      "sha256": "3305a874de98cf0fedbc8312bfb6c6dbee31690ba42e669419e05dd6df0e72c3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\digest_sspi.c",
+      "destination": "libcurl-8.12.0/src/vauth/digest_sspi.c",
+      "sha256": "18e474316c24215f9796740283ac4979815aa425ee10c719571800d69381f3a1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\gsasl.c",
+      "destination": "libcurl-8.12.0/src/vauth/gsasl.c",
+      "sha256": "44a414ceb414bcca1c7ebeade779a5e664062cacbabd4f0de9c84a494ed5e0f8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\krb5_gssapi.c",
+      "destination": "libcurl-8.12.0/src/vauth/krb5_gssapi.c",
+      "sha256": "6a4423fce9a5992943faca29e0b15a288806a664c380d7a41214847eb688345e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\krb5_sspi.c",
+      "destination": "libcurl-8.12.0/src/vauth/krb5_sspi.c",
+      "sha256": "ef50b00bbc97059c4eeca39bb61d7505388af74feb3ba30431d44965e5c12521"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\ntlm.c",
+      "destination": "libcurl-8.12.0/src/vauth/ntlm.c",
+      "sha256": "7eb231a767f973ba3fcde75fc97d739a61b8a00ce3ea0bac77de4b56c1f2ea64"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\ntlm.h",
+      "destination": "libcurl-8.12.0/src/vauth/ntlm.h",
+      "sha256": "901664177ed9314febfaca5f5983c324dd3b6d8e3d9f16738e324b031f6e0705"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\ntlm_sspi.c",
+      "destination": "libcurl-8.12.0/src/vauth/ntlm_sspi.c",
+      "sha256": "df66bae1cb41cfab5335c94ddd29d070c49cbd0c84f5f5d83b09465ac3cd4648"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\oauth2.c",
+      "destination": "libcurl-8.12.0/src/vauth/oauth2.c",
+      "sha256": "be7f4a68d4b288c39aab267058f5120e271959f917808c9add30e56cd64629f1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\spnego_gssapi.c",
+      "destination": "libcurl-8.12.0/src/vauth/spnego_gssapi.c",
+      "sha256": "63e0b2fd0ef85117b5f5f502280379866fcf28a7b3e2bdcb8cbdde669a905b6e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\spnego_sspi.c",
+      "destination": "libcurl-8.12.0/src/vauth/spnego_sspi.c",
+      "sha256": "0955c613f4418778f016e98141b56ec07c392cc8e3d3c237c14835697e8daecf"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\vauth.c",
+      "destination": "libcurl-8.12.0/src/vauth/vauth.c",
+      "sha256": "8dd5e53755ac1f77152f0ffd814edd663d98e68152a6e5fd701506202fe79cb2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vauth\\vauth.h",
+      "destination": "libcurl-8.12.0/src/vauth/vauth.h",
+      "sha256": "204f25184bd9cf67778c9c219b465a9638354f2583e7d28429c5b37161a0dfdc"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\curl_msh3.c",
+      "destination": "libcurl-8.12.0/src/vquic/curl_msh3.c",
+      "sha256": "f129eb50f80a58534481d97d12db1755913c4ab396332bfddf7e39165c4f82b6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\curl_msh3.h",
+      "destination": "libcurl-8.12.0/src/vquic/curl_msh3.h",
+      "sha256": "6e83087cc17ccc3a53fcd3b153dc96eee06df2858dd4f8fddc963900e946829a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\curl_ngtcp2.c",
+      "destination": "libcurl-8.12.0/src/vquic/curl_ngtcp2.c",
+      "sha256": "473ae777427575dfbd8b108e52da10c7b515b9ace2ab9b0dadd2d46a865a41a8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\curl_ngtcp2.h",
+      "destination": "libcurl-8.12.0/src/vquic/curl_ngtcp2.h",
+      "sha256": "2de905faf2b0d456fc8a7aeb8a12716a3481ab45a77a2f66871e8de12fedbb6f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\curl_osslq.c",
+      "destination": "libcurl-8.12.0/src/vquic/curl_osslq.c",
+      "sha256": "70f3a98a8c8fd5baf7e2daafb974246d52b4d010cd7752ee512e269192458b08"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\curl_osslq.h",
+      "destination": "libcurl-8.12.0/src/vquic/curl_osslq.h",
+      "sha256": "ecf6093d00dd7b9bc3a1285a54bf967505964357b8dae74ea6fbdb51633423d9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\curl_quiche.c",
+      "destination": "libcurl-8.12.0/src/vquic/curl_quiche.c",
+      "sha256": "29e81ee8b841ca79ea100d2259d4f0295c3c6c478cbeead604577c7639b8dcb0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\curl_quiche.h",
+      "destination": "libcurl-8.12.0/src/vquic/curl_quiche.h",
+      "sha256": "684b1e92b7e7bc10873d3d7eefa818dfdf14625d1ec729908c4844903fba2f14"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\vquic-tls.c",
+      "destination": "libcurl-8.12.0/src/vquic/vquic-tls.c",
+      "sha256": "e18a1c304fac806286a91377b92574e21eeeab4b84bc15ea924d4d7f3bbc8ae2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\vquic-tls.h",
+      "destination": "libcurl-8.12.0/src/vquic/vquic-tls.h",
+      "sha256": "c8b4860db31607ac356651b1b8140aa12e7fa836e0cddaf663f73f8a0e47135d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\vquic.c",
+      "destination": "libcurl-8.12.0/src/vquic/vquic.c",
+      "sha256": "cc49c5669b5029a960c41801fc3844fd984437e109a6ecd3fc8055c40ec0f685"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\vquic.h",
+      "destination": "libcurl-8.12.0/src/vquic/vquic.h",
+      "sha256": "fdd17893e2c0ff9fbcadbd1dedccd043f342bed535a3eb021327b6e212cb18d2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vquic\\vquic_int.h",
+      "destination": "libcurl-8.12.0/src/vquic/vquic_int.h",
+      "sha256": "853f7788dc31235ec5489b4a1925467b2c0e8f2d85c3a3d0b2769fee689cf926"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vssh\\curl_path.c",
+      "destination": "libcurl-8.12.0/src/vssh/curl_path.c",
+      "sha256": "0d0fc909cd70baae02f6798dc99dd18594d8bccac38fe4562bae4a86631d26b0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vssh\\curl_path.h",
+      "destination": "libcurl-8.12.0/src/vssh/curl_path.h",
+      "sha256": "bae4a0f5c3e6b8dec20d6ae9a69049e40b3628d5bb1cd7a2d9aa9f77f6993fa7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vssh\\libssh.c",
+      "destination": "libcurl-8.12.0/src/vssh/libssh.c",
+      "sha256": "c481e205ef37d8f8ee7cf7e2a0fb063651004daf99b6ad69bf62e01fcb3dae06"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vssh\\libssh2.c",
+      "destination": "libcurl-8.12.0/src/vssh/libssh2.c",
+      "sha256": "9499c708612e18c0491df90a798604660eba97fecfc7121297606335625dcfc9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vssh\\ssh.h",
+      "destination": "libcurl-8.12.0/src/vssh/ssh.h",
+      "sha256": "f1c7015a50040491a420553116b51c1457fb1e22b9025679faadecd3c2eecd00"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vssh\\wolfssh.c",
+      "destination": "libcurl-8.12.0/src/vssh/wolfssh.c",
+      "sha256": "1fd0956794efd27527fbf365d02aef2af23762744448cef81cef73194193730f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\bearssl.c",
+      "destination": "libcurl-8.12.0/src/vtls/bearssl.c",
+      "sha256": "6f7dccb5e413bac3f195c002147856c4cbf1185c66be32cfd2a8572e5f222476"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\bearssl.h",
+      "destination": "libcurl-8.12.0/src/vtls/bearssl.h",
+      "sha256": "b8366b28410cb025f93210dda459b391c4dacccbc72e1f016552d369522fbc00"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\cipher_suite.c",
+      "destination": "libcurl-8.12.0/src/vtls/cipher_suite.c",
+      "sha256": "d36ef6ff58ee71ec538f4d3dbd880adda900ab0c8ae047a9be0f2764f2b659ff"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\cipher_suite.h",
+      "destination": "libcurl-8.12.0/src/vtls/cipher_suite.h",
+      "sha256": "c1bd37856607efbba3404c62856a45d727b6f1cf89aa381d0743189263666610"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\gtls.c",
+      "destination": "libcurl-8.12.0/src/vtls/gtls.c",
+      "sha256": "93b1d22fefe7f777deba250cd27a105f182aa72ca2e0ef31d31fef897fae7573"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\gtls.h",
+      "destination": "libcurl-8.12.0/src/vtls/gtls.h",
+      "sha256": "b0cdaf4897ad2c0fb838bfebfa282d198ec9370076c1558408bcd146de3b5840"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\hostcheck.c",
+      "destination": "libcurl-8.12.0/src/vtls/hostcheck.c",
+      "sha256": "0f14d2c37f8fa36b9c7d42b6fd36f807e2d55dca96606028d0c698ddf43cfb4b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\hostcheck.h",
+      "destination": "libcurl-8.12.0/src/vtls/hostcheck.h",
+      "sha256": "afea417d698c3778f48079adafbe48c110b2d32276c9a859e90f7ba02bf9cf59"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\keylog.c",
+      "destination": "libcurl-8.12.0/src/vtls/keylog.c",
+      "sha256": "63dd2631c1a5fd61e55de32f003f6c01a5ae8cf27fc2fc783c1cc22c3bd191e2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\keylog.h",
+      "destination": "libcurl-8.12.0/src/vtls/keylog.h",
+      "sha256": "2843b2df9fbc272132aafbd205582824a84c4ce4a39f9b960e98d8b4dd9ce1ee"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\mbedtls.c",
+      "destination": "libcurl-8.12.0/src/vtls/mbedtls.c",
+      "sha256": "d71fe26ebb0e28b798ec3f872f62e8173d1212792c0ac0ace8996e305b694186"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\mbedtls.h",
+      "destination": "libcurl-8.12.0/src/vtls/mbedtls.h",
+      "sha256": "e5dd0cf270da93d80df76d1a532119e3d40ef16caacfaa2331576e2e314af2e2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\mbedtls_threadlock.c",
+      "destination": "libcurl-8.12.0/src/vtls/mbedtls_threadlock.c",
+      "sha256": "b983614bfe058e82550b6f6502b7823056fbae6440d167db0e8d5fe0e535f8f8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\mbedtls_threadlock.h",
+      "destination": "libcurl-8.12.0/src/vtls/mbedtls_threadlock.h",
+      "sha256": "2ff50221513b3021a184c0f0994c9f5a5b3c6f7562f66a5668a65edec4572fb8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\openssl.c",
+      "destination": "libcurl-8.12.0/src/vtls/openssl.c",
+      "sha256": "52d0aa5b9d991b4d2655045ab564b37cdaca823ba80451d10f56efdfbe2b14c3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\openssl.h",
+      "destination": "libcurl-8.12.0/src/vtls/openssl.h",
+      "sha256": "f137aa08cb65614fa829a2939fd24610c6a2495d583db60f9f39fe97a48ffa97"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\rustls.c",
+      "destination": "libcurl-8.12.0/src/vtls/rustls.c",
+      "sha256": "e3e2ef0870fd8bae1ac0af7b8984c76a557c946c5157ba26d2cbab141968d737"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\rustls.h",
+      "destination": "libcurl-8.12.0/src/vtls/rustls.h",
+      "sha256": "9d101048661a2e5cd80953869cbcdb7012f98235ba326d995e9c3ccc8e76bc05"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\schannel.c",
+      "destination": "libcurl-8.12.0/src/vtls/schannel.c",
+      "sha256": "513844073802cafe55740714a35926ab6a24cb1e0cd24abd8062b5e52921cd13"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\schannel.h",
+      "destination": "libcurl-8.12.0/src/vtls/schannel.h",
+      "sha256": "82c5dd7b5a36a602baa2c2f7b80e184f50c610b1f31ca5bb8b31451c57154714"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\schannel_int.h",
+      "destination": "libcurl-8.12.0/src/vtls/schannel_int.h",
+      "sha256": "1840d44b0c20ada1fe5f648bf192b29fd4ff4d81154c9c3c65bc7832ef994331"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\schannel_verify.c",
+      "destination": "libcurl-8.12.0/src/vtls/schannel_verify.c",
+      "sha256": "c20201269243b2d58ae21243b9b5a8fff8ef62bd8f5029c51f3247d7a7b90d60"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\sectransp.c",
+      "destination": "libcurl-8.12.0/src/vtls/sectransp.c",
+      "sha256": "2ef2236654f202139698d1dcd3a32bf93f917540f66dbdea20b19191de5118c6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\sectransp.h",
+      "destination": "libcurl-8.12.0/src/vtls/sectransp.h",
+      "sha256": "fb1cb675cafa741ab368ff4fdc97e3ee269cb14f4d1c5e372de24f7c027308f9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\vtls.c",
+      "destination": "libcurl-8.12.0/src/vtls/vtls.c",
+      "sha256": "302607421ff67489901ed0992d6815f39f6c25a50520da2ccd8ea5347223e1c3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\vtls.h",
+      "destination": "libcurl-8.12.0/src/vtls/vtls.h",
+      "sha256": "2a71d265f78269c2a022c8999062a7743603f40d74feb36902cfc0c6b7218cb8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\vtls_int.h",
+      "destination": "libcurl-8.12.0/src/vtls/vtls_int.h",
+      "sha256": "b1015ed9fb1f45ae98480c3aadc1004e0dad17ff08bec7ebdc8bb2fcb3d6a5b6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\vtls_scache.c",
+      "destination": "libcurl-8.12.0/src/vtls/vtls_scache.c",
+      "sha256": "8d87d27f47cf0293ef405cdd27efac29b5b9013ff3019e142e5c552757fedff5"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\vtls_scache.h",
+      "destination": "libcurl-8.12.0/src/vtls/vtls_scache.h",
+      "sha256": "8047ca01435c1b2468a82042abc333200f5b64a9589ef62dea51d6b8a86525a9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\vtls_spack.c",
+      "destination": "libcurl-8.12.0/src/vtls/vtls_spack.c",
+      "sha256": "cb0a9ce2700a9ba9363656f9caceefa1ee1c0584e03d1c5e8f821ba0bfd597d7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\vtls_spack.h",
+      "destination": "libcurl-8.12.0/src/vtls/vtls_spack.h",
+      "sha256": "238892799a166178d33039778b490b3b18e7d41db2c33f281828eb1058e83c83"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\wolfssl.c",
+      "destination": "libcurl-8.12.0/src/vtls/wolfssl.c",
+      "sha256": "36867fdadb98cee950b3e6735cb0b47d41d8040ed4ed12b860e004b1aadb1e09"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\wolfssl.h",
+      "destination": "libcurl-8.12.0/src/vtls/wolfssl.h",
+      "sha256": "7f8fbebf39f6f7ec272f9e49ab0def3084a9263e229580adb14de6ad5a6209a0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\x509asn1.c",
+      "destination": "libcurl-8.12.0/src/vtls/x509asn1.c",
+      "sha256": "e73eb48197a6f4b86b00186b9e7df16b507c0e0bbc2fce650e8a34ec46600819"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libcurl-8.12.0\\src\\vtls\\x509asn1.h",
+      "destination": "libcurl-8.12.0/src/vtls/x509asn1.h",
+      "sha256": "b29c70e809b95068fd20acda11567b101b8fbd108ac9e335c70e73e4f67095f8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\include\\libssh2.h",
+      "destination": "libssh2-1.11.1/include/libssh2.h",
+      "sha256": "0dc7aa93c315484fba05c048d5bbd6f9c4c160e858d0c94300b8656991607da7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\include\\libssh2_publickey.h",
+      "destination": "libssh2-1.11.1/include/libssh2_publickey.h",
+      "sha256": "6b50f5f5643be0b0879863ebd028ce29ffe802d5b726f9872a8005141d009719"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\include\\libssh2_sftp.h",
+      "destination": "libssh2-1.11.1/include/libssh2_sftp.h",
+      "sha256": "a4fde02aa676506f2edecdd29208068ef3236228905a04f8cb68df3c87f4b979"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\agent.c",
+      "destination": "libssh2-1.11.1/src/agent.c",
+      "sha256": "d6b516454cf710ef425b82a234afdc34572435bba2ec0d3a875a7f2c1dd743b9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\agent_win.c",
+      "destination": "libssh2-1.11.1/src/agent_win.c",
+      "sha256": "9d970c4bb3eb694427d8b9273d19521d0f203f9226eeaebbc7357e06df93c1dd"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\bcrypt_pbkdf.c",
+      "destination": "libssh2-1.11.1/src/bcrypt_pbkdf.c",
+      "sha256": "b0f69007422f018a0f7363280a5c09fa76b3b20706fb3514ac1dd60e5922ade6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\blowfish.c",
+      "destination": "libssh2-1.11.1/src/blowfish.c",
+      "sha256": "fb69e73eb5c1d30c5a011d7406850c4b07abc93f04f7175fa0294f820c4de4d8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\chacha.c",
+      "destination": "libssh2-1.11.1/src/chacha.c",
+      "sha256": "9213c12ec9ff5e9ea177cd84f688470ee626a09c6e6b5a141d57ac5632be9958"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\chacha.h",
+      "destination": "libssh2-1.11.1/src/chacha.h",
+      "sha256": "35211d14179e1a06824c403aa6b86b21c3ba2b3c49dde7a46ed7a8a6f0187bbd"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\channel.c",
+      "destination": "libssh2-1.11.1/src/channel.c",
+      "sha256": "b7fb08ff5db15c48b156dc0d86af66dbcbbecf4ee59cfe65284852dcb851473d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\channel.h",
+      "destination": "libssh2-1.11.1/src/channel.h",
+      "sha256": "f525b48ddd3a10e1d8189f00acd97a6d770fc82a070c95ea68ab5ddf9734a499"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\cipher-chachapoly.c",
+      "destination": "libssh2-1.11.1/src/cipher-chachapoly.c",
+      "sha256": "0c74ffdb37eb4ff395e14f3f9bf3a77af8b5ff6fc988a015e0f236f7275bc60d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\cipher-chachapoly.h",
+      "destination": "libssh2-1.11.1/src/cipher-chachapoly.h",
+      "sha256": "3879879652fc9038970550754674f3c5a9780d9f8cf52022526941ca97f170a9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\CMakeLists.txt",
+      "destination": "libssh2-1.11.1/src/CMakeLists.txt",
+      "sha256": "fc23efd9ed8d1a39a716274ad3639867dd93abfb586da1fe360c04f1a3c053aa"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\comp.c",
+      "destination": "libssh2-1.11.1/src/comp.c",
+      "sha256": "e021f2038bd32841d41c007026635367ad2c113e184a40c9dae3767415f2fc01"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\comp.h",
+      "destination": "libssh2-1.11.1/src/comp.h",
+      "sha256": "0ceb43dea417509ab425e4b6c336651d7b7888f2ee2736297d68e161289f5169"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\crypt.c",
+      "destination": "libssh2-1.11.1/src/crypt.c",
+      "sha256": "4526c181dc55d2a90a8212ef49d61e02b265c4227363214a5732c8a6989b6f2f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\crypto.c",
+      "destination": "libssh2-1.11.1/src/crypto.c",
+      "sha256": "8a462d0e8d877d840a318d22a4ac88dcd61d83b9581e149d7496ecdb5334387d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\crypto.h",
+      "destination": "libssh2-1.11.1/src/crypto.h",
+      "sha256": "6c4ea7eab012324c23cd41d2da1b993e775836b541c0ab8bf6f4336b04faeab6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\crypto_config.h",
+      "destination": "libssh2-1.11.1/src/crypto_config.h",
+      "sha256": "4ea0a0fd43adf3dea4f040a3fa6fe1b4cdf5fba8b74186ea034d93983dddb9ca"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\global.c",
+      "destination": "libssh2-1.11.1/src/global.c",
+      "sha256": "42d24a709d679b22f672d2ca36ccce970bd4fe4cccebb275e6ea5d1b8da9d74e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\hostkey.c",
+      "destination": "libssh2-1.11.1/src/hostkey.c",
+      "sha256": "118488b584759cb58572633819414701bcb46957944d0e280465b377f53b7dca"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\keepalive.c",
+      "destination": "libssh2-1.11.1/src/keepalive.c",
+      "sha256": "30105b52431e464a6e8a3a2c995a6f1b458d20bc07426b7473f93a41010dbac2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\kex.c",
+      "destination": "libssh2-1.11.1/src/kex.c",
+      "sha256": "a3f6f00e0c7528b3c7d4155f972b5898859c49cfd520b0537f1e24b2ff047d30"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\knownhost.c",
+      "destination": "libssh2-1.11.1/src/knownhost.c",
+      "sha256": "0a08bfc7e9866c0c3b855cd8dde9642d6e2cb202ae718a5cdece704aa05d1f37"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\libgcrypt.c",
+      "destination": "libssh2-1.11.1/src/libgcrypt.c",
+      "sha256": "e5bda0b4790cdd5b9339724ed3ebfb4dba01fcfb9a7c95781384d4afc21126b0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\libgcrypt.h",
+      "destination": "libssh2-1.11.1/src/libgcrypt.h",
+      "sha256": "a892751b61229501bc88428932ad254ca96a319074b9cdf51280ee0d1e8a9363"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\libssh2_priv.h",
+      "destination": "libssh2-1.11.1/src/libssh2_priv.h",
+      "sha256": "86805e50e867ee4e8784c4d7e59565d3216b5f6c158d639a3c6fb2c69da4fd76"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\libssh2_setup.h",
+      "destination": "libssh2-1.11.1/src/libssh2_setup.h",
+      "sha256": "530164e968bbb155b16060eb8252c6c45ab7b796cc51c0f5bb5d789b72315269"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\mac.c",
+      "destination": "libssh2-1.11.1/src/mac.c",
+      "sha256": "ab27c0e6d746b2b4586f930a0bfe1b8b81bed84a3af6cb5fff18b0cf3ae6dffb"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\mac.h",
+      "destination": "libssh2-1.11.1/src/mac.h",
+      "sha256": "a900b8ca0d940a3ecd2be483a74fe59a625c8fad141c316745108f1e7f1d16f3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\mbedtls.c",
+      "destination": "libssh2-1.11.1/src/mbedtls.c",
+      "sha256": "d75cbd1005ad6f883df1fd8036c974108bea21cfcaae12e334d4a056a2d205e6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\mbedtls.h",
+      "destination": "libssh2-1.11.1/src/mbedtls.h",
+      "sha256": "16d9abc6553f4168287db6a8a0f2400ee409586117154424ebefd6a1cf1db700"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\misc.c",
+      "destination": "libssh2-1.11.1/src/misc.c",
+      "sha256": "e09552583ec69af65f5b7a88b43370a644c64a137ae9c2b2c54c7ae90f920f57"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\misc.h",
+      "destination": "libssh2-1.11.1/src/misc.h",
+      "sha256": "27676358879ce5299be167acb1800355b7083385534e9e87d806a27c28455871"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\openssl.c",
+      "destination": "libssh2-1.11.1/src/openssl.c",
+      "sha256": "fc2241f62dea98d072b11532877b7b3f1f6e7be111975bde63f959a788b68177"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\openssl.h",
+      "destination": "libssh2-1.11.1/src/openssl.h",
+      "sha256": "05a385cece7c9429fa36e9824a8aa6ce572290d5f15eb6193965bc77f799ac6e"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\os400qc3.c",
+      "destination": "libssh2-1.11.1/src/os400qc3.c",
+      "sha256": "828fb4a90bd1dead7fbcf76b29f338c5244d26d155851930bdb039f0b062d72b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\os400qc3.h",
+      "destination": "libssh2-1.11.1/src/os400qc3.h",
+      "sha256": "4138ed6a564a0a63612280147057e59438c84649d817b587b29d2f40b44e4bb2"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\packet.c",
+      "destination": "libssh2-1.11.1/src/packet.c",
+      "sha256": "985f259c8dbf5b27fb6e5582246b3c75d43dc4ba59b23226be086363466dec01"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\packet.h",
+      "destination": "libssh2-1.11.1/src/packet.h",
+      "sha256": "cda769262956b149b127be4eeb4fd7a33633c415dad753ec4be808a67f3e2dc7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\pem.c",
+      "destination": "libssh2-1.11.1/src/pem.c",
+      "sha256": "137f8af284463dd6d83837eebc7cfcae40a69bcbc1608819810b355717afb246"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\poly1305.c",
+      "destination": "libssh2-1.11.1/src/poly1305.c",
+      "sha256": "bde88e4d29166916c1552f7c4852e31c10b6b7bc3fb5e3994dce921e84004954"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\poly1305.h",
+      "destination": "libssh2-1.11.1/src/poly1305.h",
+      "sha256": "0aa0943445569d72bccaf70cd47e6ee24fca5ce9c886409b16e60ae78a130143"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\publickey.c",
+      "destination": "libssh2-1.11.1/src/publickey.c",
+      "sha256": "e2f809d8c37db95924f55d31a161d7065ce65315eeaaf5052cd43d07bad6b6f6"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\scp.c",
+      "destination": "libssh2-1.11.1/src/scp.c",
+      "sha256": "135761a8e4dd494b50d23f9bf6b6ca01003005b0c988f9b7cb3bcc5c190aa255"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\session.c",
+      "destination": "libssh2-1.11.1/src/session.c",
+      "sha256": "be1dad62762eade2a38fd29a2eec17f485fca43edd1dec82d28f530e40fa647c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\session.h",
+      "destination": "libssh2-1.11.1/src/session.h",
+      "sha256": "7ef8d0e86cbb2643d777c79c62e5bce4d6882458af692fabd0c3f7b75fbf46a4"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\sftp.c",
+      "destination": "libssh2-1.11.1/src/sftp.c",
+      "sha256": "96fd49495076c2b424ea87425451b59942be534d5ed0b66999c16581ac1b447c"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\sftp.h",
+      "destination": "libssh2-1.11.1/src/sftp.h",
+      "sha256": "0c0207d39b0000138c3d980e3d96a877a1a2d75a5cc29f7545346474f4096f43"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\transport.c",
+      "destination": "libssh2-1.11.1/src/transport.c",
+      "sha256": "e9e7c6e5c5bb2cc8ff3cffdba93360bc92cff8dbbe9b8bc7c1c0a15a545b76db"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\transport.h",
+      "destination": "libssh2-1.11.1/src/transport.h",
+      "sha256": "0e3ccc9de3fa80b42b7dfa88431783ce53519f88680ba281e2136b59dedc099f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\userauth.c",
+      "destination": "libssh2-1.11.1/src/userauth.c",
+      "sha256": "31d12d87d4224adf89fc0afc0b651ce4374c0e6cbf8116b8082288ec8a23dce1"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\userauth.h",
+      "destination": "libssh2-1.11.1/src/userauth.h",
+      "sha256": "6c3151a71462e5b857e45034055bb81b6c0d4a0e120cf940254adc80444f9874"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\userauth_kbd_packet.c",
+      "destination": "libssh2-1.11.1/src/userauth_kbd_packet.c",
+      "sha256": "4b3912be93473cf3adeae09ae1d28c861aacfbe1929dfae4053d5b06deda2fe7"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\userauth_kbd_packet.h",
+      "destination": "libssh2-1.11.1/src/userauth_kbd_packet.h",
+      "sha256": "5c688ff7b40b1db21d696b3ceaa242a8e46aef932f15d5a12af8e911aee1ce9d"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\version.c",
+      "destination": "libssh2-1.11.1/src/version.c",
+      "sha256": "1efcc7dc0d9723660be7bd1d4ddd656b2cd20456d5870e3f1c2521d9428208d0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\wincng.c",
+      "destination": "libssh2-1.11.1/src/wincng.c",
+      "sha256": "f067df749d8701bbb7861fcc441112661aaacf853ed651977da7a1a952e280bf"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\src\\wincng.h",
+      "destination": "libssh2-1.11.1/src/wincng.h",
+      "sha256": "72a91063a9c2ee6c88bc3ea6fe657ebdf6e5ec82f2d5e9250e737412fb85520f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\project\\VS2022\\libssh2.sln",
+      "destination": "libssh2-1.11.1/project/VS2022/libssh2.sln",
+      "sha256": "ea0338f07c115efb3edac317eaf86c30fbe21faddb37a928823eda64379d3b03"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\project\\VS2022\\libssh2.vcxproj",
+      "destination": "libssh2-1.11.1/project/VS2022/libssh2.vcxproj",
+      "sha256": "ac0bf6051a709cf5c3be395e7307b22b8a0fceea725cbb362b42f23fcdfc3c49"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\libssh2-1.11.1\\project\\VS2022\\libssh2.vcxproj.filters",
+      "destination": "libssh2-1.11.1/project/VS2022/libssh2.vcxproj.filters",
+      "sha256": "46998e29b41c0057c5b358db9e5d62c7a034e546d13925ebdf0f8a0337eddefa"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi_request.c",
+      "destination": "GitsnOpenApiHttpAdapter/src/GitsnOpenApi_request.c",
+      "sha256": "5b3140091482719edb11fabd8ffbeb7f0ea758ba4e65608ae5a6c974c1e488ab"
+    }
+  ]
+}

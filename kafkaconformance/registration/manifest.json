@@ -1,0 +1,68 @@
+[
+  {
+    "designId": "SC12",
+    "case": "platform2ut_kafka_v1",
+    "title": "통합교통관제시스템-교통안전인프라 플랫폼 연동 시험 : 통합교통관제시스템 오픈데이터·플랫폼 상태 수신 시험",
+    "provider": false,
+    "source": "교통안전인프라 플랫폼",
+    "streams": [
+      "open",
+      "platform"
+    ],
+    "platformId": 76,
+    "platformRegistered": true,
+    "classification": "C2C",
+    "assessmentScope": "ENGINE_OBSERVABLE",
+    "profile": "KAFKA-G4-001"
+  },
+  {
+    "designId": "SC33",
+    "case": "ut2platform_kafka_v1",
+    "title": "통합교통관제시스템-교통안전인프라 플랫폼 연동 시험 : 교통안전인프라 플랫폼 오픈데이터·플랫폼 상태 제공 시험",
+    "provider": true,
+    "source": "교통안전인프라 플랫폼",
+    "streams": [
+      "open",
+      "platform"
+    ],
+    "platformId": 77,
+    "platformRegistered": true,
+    "classification": "C2C",
+    "assessmentScope": "ENGINE_OBSERVABLE",
+    "profile": "KAFKA-G4-001"
+  },
+  {
+    "designId": "SC13",
+    "case": "i2x2ut_kafka_v1",
+    "title": "통합교통관제시스템-I2X 연계장치 연동 시험 : 통합교통관제시스템 시설정보·MAP·상태정보 수신 시험",
+    "provider": false,
+    "source": "I2X 연계장치",
+    "streams": [
+      "facility",
+      "map",
+      "i2x"
+    ],
+    "platformId": 78,
+    "platformRegistered": true,
+    "classification": "C2C",
+    "assessmentScope": "ENGINE_OBSERVABLE",
+    "profile": "KAFKA-G4-001"
+  },
+  {
+    "designId": "SC34",
+    "case": "ut2i2x_kafka_v1",
+    "title": "통합교통관제시스템-I2X 연계장치 연동 시험 : I2X 연계장치 시설정보·MAP·상태정보 제공 시험",
+    "provider": true,
+    "source": "I2X 연계장치",
+    "streams": [
+      "facility",
+      "map",
+      "i2x"
+    ],
+    "platformId": 79,
+    "platformRegistered": true,
+    "classification": "C2C",
+    "assessmentScope": "ENGINE_OBSERVABLE",
+    "profile": "KAFKA-G4-001"
+  }
+]

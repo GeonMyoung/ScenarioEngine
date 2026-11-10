@@ -1,0 +1,158 @@
+[
+  {
+    "case": "centerSubscriber2vehicle_mqtt_v1",
+    "category": "ITSK-00143-MQTT-V1",
+    "classification": "F2C",
+    "sut": "자율주행차량",
+    "engine": "통합교통관제시스템",
+    "title": "자율주행차량 BSM 정보제공시험",
+    "messages": [
+      "bsm"
+    ],
+    "testNames": [
+      "test_bsm_normal"
+    ],
+    "platformId": 80,
+    "platformRegistered": true,
+    "platformTitle": "자율주행차량 BSM 정보제공시험 [MQTT/V2N]",
+    "registrationFile": "centerSubscriber2vehicle_mqtt_v1.tsb",
+    "tsbSha256": "c714c6d156d87384ddb1559dbfdd692a958545585e4ea24c177dd7e7d56ce055",
+    "platformUrl": "https://106.250.189.37:8443/test/scenario/80"
+  },
+  {
+    "case": "vehiclePublisher2center_mqtt_v1",
+    "category": "ITSK-00143-MQTT-V1",
+    "classification": "F2C",
+    "sut": "통합교통관제시스템",
+    "engine": "자율주행차량",
+    "title": "통합교통관제시스템 BSM 정보수신시험",
+    "messages": [
+      "bsm"
+    ],
+    "testNames": [
+      "test_bsm_normal"
+    ],
+    "platformId": 81,
+    "platformRegistered": true,
+    "platformTitle": "통합교통관제시스템 BSM 정보수신시험 [MQTT/V2N]",
+    "registrationFile": "vehiclePublisher2center_mqtt_v1.tsb",
+    "tsbSha256": "30b4f990715a437ebbc26451ae936da7d8c3a4dc9d9078a163ebd48c495fd010",
+    "platformUrl": "https://106.250.189.37:8443/test/scenario/81"
+  },
+  {
+    "case": "vehicleSubscriber2center_mqtt_v1",
+    "category": "ITSK-00143-MQTT-V1",
+    "classification": "F2C",
+    "sut": "통합교통관제시스템",
+    "engine": "자율주행차량",
+    "title": "통합교통관제시스템 SPAT/TLSM/TIM 정보제공시험",
+    "messages": [
+      "spat",
+      "tlsm",
+      "tim"
+    ],
+    "testNames": [
+      "test_spat_normal",
+      "test_tlsm_normal",
+      "test_tim_limit_speed",
+      "test_tim_maintain_speed",
+      "test_tim_left_lane",
+      "test_tim_right_lane",
+      "test_tim_shoulder"
+    ],
+    "platformId": 82,
+    "platformRegistered": true,
+    "platformTitle": "통합교통관제시스템 SPaT/TLSM/TIM 정보제공시험 [MQTT/V2N]",
+    "registrationFile": "vehicleSubscriber2center_mqtt_v1.tsb",
+    "tsbSha256": "7dd5d591c0fd7930cac3c351bc92b3cf286f67a4b64934d25ebe3fa2ad304d00",
+    "platformUrl": "https://106.250.189.37:8443/test/scenario/82"
+  },
+  {
+    "case": "centerPublisher2vehicle_mqtt_v1",
+    "category": "ITSK-00143-MQTT-V1",
+    "classification": "F2C",
+    "sut": "자율주행차량",
+    "engine": "통합교통관제시스템",
+    "title": "자율주행차량 SPAT/TLSM/TIM 정보수신시험",
+    "messages": [
+      "spat",
+      "tlsm",
+      "tim"
+    ],
+    "testNames": [
+      "test_spat_normal",
+      "test_tlsm_normal",
+      "test_tim_normal"
+    ],
+    "platformId": 83,
+    "platformRegistered": true,
+    "platformTitle": "자율주행차량 SPaT/TLSM/TIM 정보수신시험 [MQTT/V2N]",
+    "registrationFile": "centerPublisher2vehicle_mqtt_v1.tsb",
+    "tsbSha256": "3fec3d39628a29e3fde83abf3197d63d65937739c0d4f48200e988498bd086ea",
+    "platformUrl": "https://106.250.189.37:8443/test/scenario/83"
+  },
+  {
+    "case": "vehicleSubscriber2center_spat_mqtt_v1",
+    "category": "ITSK-00143-MQTT-V1",
+    "classification": "F2C",
+    "sut": "통합교통관제시스템",
+    "engine": "자율주행차량",
+    "title": "통합교통관제시스템 SPaT 신호정보 제공시험",
+    "messages": [
+      "spat"
+    ],
+    "testNames": [
+      "test_spat_normal"
+    ],
+    "platformId": 84,
+    "platformRegistered": true,
+    "platformTitle": "통합교통관제시스템 SPaT 신호정보 제공시험 [MQTT/V2N]",
+    "registrationFile": "vehicleSubscriber2center_spat_mqtt_v1.tsb",
+    "tsbSha256": "1b4dc6bccb5ab46163a6562e84d8695e81c0118866a7f4e872da99b9bb23af09",
+    "platformUrl": "https://106.250.189.37:8443/test/scenario/84"
+  },
+  {
+    "case": "vehicleSubscriber2center_tlsm_mqtt_v1",
+    "category": "ITSK-00143-MQTT-V1",
+    "classification": "F2C",
+    "sut": "통합교통관제시스템",
+    "engine": "자율주행차량",
+    "title": "통합교통관제시스템 TLSM 신호등 상태정보 제공시험",
+    "messages": [
+      "tlsm"
+    ],
+    "testNames": [
+      "test_tlsm_normal"
+    ],
+    "platformId": 85,
+    "platformRegistered": true,
+    "platformTitle": "통합교통관제시스템 TLSM 신호등 상태정보 제공시험 [MQTT/V2N]",
+    "registrationFile": "vehicleSubscriber2center_tlsm_mqtt_v1.tsb",
+    "tsbSha256": "59b3f365bb1f998125613ab89d4c54813d91d2f8c51a015de78bda79e6fa5a86",
+    "platformUrl": "https://106.250.189.37:8443/test/scenario/85"
+  },
+  {
+    "case": "vehicleSubscriber2center_tim_mqtt_v1",
+    "category": "ITSK-00143-MQTT-V1",
+    "classification": "F2C",
+    "sut": "통합교통관제시스템",
+    "engine": "자율주행차량",
+    "title": "통합교통관제시스템 TIM 통행지시 제공시험",
+    "messages": [
+      "tim"
+    ],
+    "testNames": [
+      "test_tim_limit_speed",
+      "test_tim_maintain_speed",
+      "test_tim_left_lane",
+      "test_tim_right_lane",
+      "test_tim_shoulder"
+    ],
+    "platformId": 86,
+    "platformRegistered": true,
+    "platformTitle": "통합교통관제시스템 TIM 통행지시 제공시험 [MQTT/V2N]",
+    "registrationFile": "vehicleSubscriber2center_tim_mqtt_v1.tsb",
+    "tsbSha256": "7e24ef6c7ec518bd3974fc74c73d4254909dbf3f568b8a5624841ef53ed5d0b6",
+    "platformUrl": "https://106.250.189.37:8443/test/scenario/86"
+  }
+]

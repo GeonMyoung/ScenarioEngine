@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result><record>
+<incidentId>202609230001</incidentId><incidenteTypeCd>1</incidenteTypeCd><incidenteSubTypeCd>101</incidenteSubTypeCd>
+<addressJibun>서울특별시 중구 태평로1가</addressJibun><addressJibunCd>1114010300</addressJibunCd><addressNew>서울특별시 중구 세종대로</addressNew>
+<linkId>1234567890</linkId><locationDataX>126.978400000</locationDataX><locationDataY>37.566500000</locationDataY><locationTypeCd>C0101</locationTypeCd><locationData></locationData>
+<incidenteTrafficCd>A0503</incidenteTrafficCd><incidenteGradeCd>A0401</incidenteGradeCd><incidentTitle>적합성 시험용 돌발정보</incidentTitle><incidentRegionCd>11</incidentRegionCd>
+<startDate>2026년 09월 23일 09시 00분</startDate><endDate>2026년 09월 23일 10시 00분</endDate><lane>2</lane><roadName>세종대로</roadName><sourceCode>UTIC</sourceCode>
+<controlType>1</controlType><lineLinkId>1234567890</lineLinkId><important>01</important><updateDate>2026년 09월 23일 09시 01분</updateDate>
+</record></result>

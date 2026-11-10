@@ -1,0 +1,13 @@
+{
+  "method": "NOTIFY",
+  "level": "info",
+  "seq": 23,
+  "data": {
+    "testName": "test_normal_vds",
+    "time": 1790227084,
+    "sender": "시험 시스템",
+    "log": "항목 통과: 10/10회 응답이 모두 기대한 HTTP 200(정상 응답)로 확인됐으며, 이 항목의 검사 기준을 충족했습니다. 요청 조건·실제 응답 상태·응답 원문을 판정 근거로 보관했습니다.",
+    "data": "7Jew6rOE7KCV67O0OiBWRFMg7LCo66Gc67OEIOybkOyLnOygleuztCDsnbTroKUgLyBKU09OCu2ZleyduO2VnCDqtZDtmZg6IDEwLzEw7ZqMCu2RnOyLnCDtla3rqqnqs7wg67O466y4IOybkOusuOydtCDqsJnsnYAg6rWQ7ZmY7J2AIO2ajOywqOulvCDrrLbslrQg7ZGc7Iuc7ZWp64uI64ukLiDtkZzsi5zsmqkg67O466y47J2AIOygleugrMK37J247Kad6rCSIOqwgOumvCDrmJDripQg66qF7Iuc65CcIO2BrOq4sCDsoJztlZzsnbQg7KCB7Jqp65CgIOyImCDsnojsirXri4jri6QuIO2MkOygleyXkOuKlCDrs4Trj4Qg67O06rSA7ZWcIOyLpOygnCDsm5DrrLjsnYQg7IKs7Jqp7ZWp64uI64ukLgoKW+q1kO2ZmCDtmozssKggMSwgMiwgMywgNCwgNSwgNiwgNywgOCwgOSwgMTBdCuyalOyyrSDqtazshLE6IEdFVCAvdjEvYWR4Yy92ZHMtbC1yYXdzCuyalOyyreuzgOyImDog7JeG7J2MCuyduOymneygleuztDog7Y+s7ZWoKOqwkiDruYTqs7XqsJwpCuyalOyyrSDrs7jrrLg6IDDrsJTsnbTtirgK7IiY7IugIOydkeuLtTogSFRUUCAyMDAKQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uCuuzuOusuCDtgazquLA6IDI0MuuwlOydtO2KuArrs7jrrLgg7ZGc7IucKOyduOymneqwkiDruYTqs7XqsJwpOgpbCiAgewogICAgImNvbGxlY3REYXRlIjogIjIwMjYwOTI0MTIwMDAwIiwKICAgICJlcnJDb2RlIjogMCwKICAgICJsYW5lTm8iOiAxLAogICAgImxpbmtJZCI6ICJMTkswMDAwMDAwMDEiLAogICAgIm9jYyI6IDEyLjUsCiAgICAic3BkIjogNTIuMzUsCiAgICAic3RuSWQiOiAiU1ROMDAwMDAwMDAxIiwKICAgICJzdG5Mb2NhdGlvbiI6ICLsi5ztl5gg7KeA7KCQIiwKICAgICJ2ZHNJZCI6ICJWRFMwMDAwMDAwMDEiLAogICAgInZvbCI6IDI0LAogICAgInZvbEwiOiAxLAogICAgInZvbE0iOiAzLAogICAgInZvbFMiOiAyMAogIH0KXQo=",
+    "dataType": "TEXT"
+  }
+}

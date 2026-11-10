@@ -1,0 +1,27 @@
+{
+  "id": "NTIC-STANDARD-001",
+  "standard": {"id":"ITSK-00143-3 2026 Ver 2.1","table":"4-12","sha256":"93d78241b4c6a49727f8bab5133ad6df5e8d4becaedae6f115706cc4cd6a6964"},
+  "api": {"title":"국가교통정보센터 차량검지정보(VDS) API 제공 기술기준","version":"1.0","date":"2026-08-07","url":"https://www.its.go.kr/file/opendata/vds/vds_api.hwp","sha256":"035f44ff02e361959bbd4b594fbcbf047d0f957eac1e11e4d8697fb38b5c9737"},
+  "method":"GET",
+  "defaultPath":"/vdsInfo",
+  "explicitAlternatePath":"//vdsInfo",
+  "query":{"apiKey":"required, exactly once","getType":"required, exactly once, json"},
+  "requestBody":false,
+  "responseProfile":{"root":"object","records":"items array","authority":"Adopted test profile based on Part3 items example; complete production wrapper is not documented","optionalMetadata":{"resultCode":"string 0 for normal response","resultMsg":"nonempty string","totalCount":"decimal digit string matching item count"}},
+  "fields":[
+    {"standard":"VDS_ID","json":"vdsId","required":true,"type":"string","maxChars":10},
+    {"standard":"LINK_ID","json":"linkIds","required":true,"type":"string","maxChars":20},
+    {"standard":"VDS_LANE","json":"laneNo","required":true,"type":"number","precision":2,"scale":0},
+    {"standard":"COLLECT_DATE","json":"colctedDate","required":true,"type":"string","format":"YYYYMMDDhhmmss"},
+    {"standard":"SPD","json":"speed","required":true,"type":"number","precision":5,"scale":2},
+    {"standard":"VOL","json":"volume","required":true,"type":"number","precision":5,"scale":2},
+    {"standard":"OCC","json":"occupancy","required":true,"type":"number","precision":5,"scale":2}
+  ],
+  "documentedBusinessErrors":{"badParameter":"4002","badCredential":"4005","badPath":"4004","serverError":"4009"},
+  "projectHttpDefaults":{"badParameter":400,"badCredential":401,"badPath":404,"dataAbsent":404,"serverError":500},
+  "httpAuthority":"Project defaults referenced from prj22; NTIC HWP does not specify these HTTP status mappings",
+  "dataAbsenceBusinessCode":null,
+  "emptySuccessIsSupplemental":true,
+  "assessmentProfile":"REST-AUTO-001",
+  "limitations":["Production JSON wrapper not confirmed","API/standard example strings conflict with table NUMBER types","Example VDS IDs exceed table length 10","Multiple-link example exceeds table length 20","HTML says resultCode 0/1 while versioned HWP defines detailed 400x codes; HWP adopted","Five-minute update period not measured by repeated single requests","Existing engine 1 MiB body limit retained; full production dataset capacity not claimed"]
+}

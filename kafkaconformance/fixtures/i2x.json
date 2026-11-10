@@ -1,0 +1,19 @@
+{
+  "i2xID": "I2X101",
+  "i2xInterId": "12345",
+  "i2xConId": "82",
+  "i2xConName": "대한민국",
+  "SDateTime": "1234",
+  "i2xLocation": {
+    "latitude": "37.5665",
+    "longitude": "126.9780"
+  },
+  "i2xCnncSttus": 0,
+  "iotCnncSttus": 0,
+  "citsCnncSttus": 0,
+  "i2xStrgTemp": 25,
+  "i2xStrgHum": 35,
+  "i2xDoorSttus": 0,
+  "i2xFanSttus": 0,
+  "i2xHeaterSttus": 1
+}

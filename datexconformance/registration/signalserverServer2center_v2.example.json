@@ -1,0 +1,14 @@
+{
+  "my_domain": "TESTER",
+  "peer_domain": "EMULATOR",
+  "user": "datex-local",
+  "pass": "local-datex-check",
+  "hb_dur": 60,
+  "rsp_timeout": 40,
+  "connect_timeout_s": 120,
+  "fred_maintain_s": 300,
+  "receive_s": 120,
+  "period_s": 1,
+  "test_session": true,
+  "local_port": 55205
+}

@@ -1,0 +1,17 @@
+{
+  "my_domain": "TESTER",
+  "peer_domain": "EMULATOR",
+  "user": "traffic-local",
+  "pass": "local-traffic-check",
+  "hb_dur": 60,
+  "rsp_timeout": 40,
+  "connect_timeout_s": 120,
+  "test_normal_map": true,
+  "test_normal_rsa": true,
+  "test_normal_tim": true,
+  "peer_ip": "127.0.0.1",
+  "peer_port": 55163,
+  "fred_maintain_s": 300,
+  "receive_s": 120,
+  "period_s": 60
+}

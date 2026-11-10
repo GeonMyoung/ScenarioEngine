@@ -1,0 +1,19 @@
+{
+  "bootstrap_servers": "127.0.0.1:29092",
+  "group_id": "gyeong4-sc33",
+  "repetitions": 10,
+  "timeout_seconds": 30,
+  "period_samples": 2,
+  "period_tolerance_seconds": 2,
+  "auto_offset_reset": "latest",
+  "open_encoding": "json",
+  "security_file": "",
+  "topic_open": "InfraOpenData",
+  "period_open": 60,
+  "topic_platform": "ServPlatformStat",
+  "period_platform": 600,
+  "test_open_normal": true,
+  "test_open_period": true,
+  "test_platform_normal": true,
+  "test_platform_period": true
+}

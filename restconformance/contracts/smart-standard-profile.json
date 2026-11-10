@@ -1,0 +1,92 @@
+{
+  "id": "SMART-STANDARD-001",
+  "source": {
+    "path": "C:\\Implement\\police-test-platform\\scenarioengine자료\\2026\\개발표준\\[ITSK-00143-3] 자율협력주행 통합교통관제시스템 - 제3부. 정보연계 규격_20260812_F.hwp",
+    "sha256": "93d78241b4c6a49727f8bab5133ad6df5e8d4becaedae6f115706cc4cd6a6964"
+  },
+  "clause": "제4장 표 4-23",
+  "jsonContainer": "array",
+  "fields": [
+    {
+      "jsonKey": "collectDate",
+      "standardName": "COLLECT_DATE",
+      "type": "TIMESTAMP",
+      "constraint": "YYYYMMDDhhmmss",
+      "required": true
+    },
+    {
+      "jsonKey": "nodeId",
+      "standardName": "NODE_ID",
+      "type": "VARCHAR",
+      "constraint": 10,
+      "required": true
+    },
+    {
+      "jsonKey": "linkId",
+      "standardName": "LINK_ID",
+      "type": "VARCHAR",
+      "constraint": 10,
+      "required": true
+    },
+    {
+      "jsonKey": "ascrId",
+      "standardName": "ASCR_ID",
+      "type": "VARCHAR",
+      "constraint": 10,
+      "required": true
+    },
+    {
+      "jsonKey": "laneNo",
+      "standardName": "LANE_NO",
+      "type": "NUMBER",
+      "constraint": [
+        1,
+        0
+      ],
+      "required": true
+    },
+    {
+      "jsonKey": "vkndCd",
+      "standardName": "VKND_CD",
+      "type": "NUMBER",
+      "constraint": [
+        1,
+        0
+      ],
+      "required": true
+    },
+    {
+      "jsonKey": "spd",
+      "standardName": "SPD",
+      "type": "NUMBER",
+      "constraint": [
+        5,
+        2
+      ],
+      "required": true
+    },
+    {
+      "jsonKey": "vol",
+      "standardName": "VOL",
+      "type": "NUMBER",
+      "constraint": [
+        7,
+        0
+      ],
+      "required": true
+    }
+  ],
+  "method": "GET",
+  "path": "/v1/adxc/smt-l-raws",
+  "transportAuth": "Bearer",
+  "apiFieldsNotAdopted": [
+    "intId",
+    "moctLinkId",
+    "acsrId",
+    "totDt",
+    "drtcCd",
+    "vkndCd:string"
+  ],
+  "issues": "../../doc/ambiguities_and_risks.md",
+  "periodicity": "1분 연계주기 관측은 단일 요청 반복 적합 판정과 별도"
+}

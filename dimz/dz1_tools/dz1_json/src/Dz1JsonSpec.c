@@ -824,7 +824,7 @@ static Dz1Error _spec_append_basis(Dz1JsonSpec *dst)
 	else if ((*errp = Dz1JsonSpec_add_primitive(dst, _spec_api_primitive_gDN(Dz1Str))).code) ERR_OUT(errp);
 	else if ((*errp = Dz1JsonSpec_add_primitive(dst, Dz1Text("TString"), NULL, (Dz1DelFunc)Dz1Str_del, Dz1Json_Dz1Str_load, Dz1Json_Dz1Str_stringify)).code) ERR_OUT(errp);
 	else if ((*errp = Dz1JsonSpec_add_primitive(dst, _spec_api_primitive_gDN(Dz1Binary))).code) ERR_OUT(errp);
-	else if ((*errp = Dz1JsonSpec_add_primitive(dst, _spec_api_primitive_gdP(s64_t, Dz1Json_u64_t))).code) ERR_OUT(errp);
+	else if ((*errp = Dz1JsonSpec_add_primitive(dst, Dz1Text("s64_t"), NULL, (Dz1JsonObjDelF)_primitive_t_del, Dz1Json_u64_t_load, Dz1Json_s64_t_stringify)).code) ERR_OUT(errp);
 	else if ((*errp = Dz1JsonSpec_add_primitive(dst, _spec_api_primitive_gdP(s32_t, Dz1Json_u32_t))).code) ERR_OUT(errp);
 	else if ((*errp = Dz1JsonSpec_add_primitive(dst, _spec_api_primitive_gdP(s16_t, Dz1Json_u16_t))).code) ERR_OUT(errp);
 	else if ((*errp = Dz1JsonSpec_add_primitive(dst, _spec_api_primitive_gdP(s8_t,  Dz1Json_u8_t))).code) ERR_OUT(errp);

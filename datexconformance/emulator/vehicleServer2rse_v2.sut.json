@@ -1,0 +1,15 @@
+{
+  "my_domain": "SUT",
+  "peer_domain": "TESTER",
+  "user": "datex-local",
+  "pass": "local-datex-check",
+  "hb_dur": 60,
+  "rsp_timeout": 40,
+  "connect_timeout_s": 120,
+  "fred_maintain_s": 300,
+  "receive_s": 120,
+  "period_s": 1,
+  "test_session": true,
+  "peer_port": 55420,
+  "peer_ip": "127.0.0.1"
+}

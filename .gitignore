@@ -1,6 +1,7 @@
 # Reproducible local setup and build output
 /.deps/
 /.local/
+/datex-results/
 **/.git/
 **/.svn/
 **/CVS/
@@ -49,3 +50,15 @@
 .env
 .env.*
 !.env.example
+
+# Local Python workflow tool output
+__pycache__/
+*.py[cod]
+
+# Local test captures and exports
+/output/
+/outputs/
+/mqttv2n-results/
+*.jsonl
+/*-selection.json
+/user-log-adapter-*.txt

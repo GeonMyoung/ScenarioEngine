@@ -34,6 +34,18 @@
     <ProjectReference Include="..\..\..\GitsnDSRCMsgTestScenario\project\vs2022\GitsnDSRCMsgTestScenario.vcxproj">
       <Project>{a3db9ca5-cc79-427b-baeb-5ab20da2e80b}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\kafkaconformance\project\vs2022\KafkaConformance.vcxproj">
+      <Project>{EB9195ED-FB1D-46C3-BEF3-F386710847E2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\binaryconformance\project\vs2022\BinaryConformance.vcxproj">
+      <Project>{5F3E6E12-62EF-4D68-A04C-62B95D624657}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\restconformance\project\vs2022\RestConformance.vcxproj">
+      <Project>{98E3E2F6-51E4-4274-8D7C-9F97D8A4DD2D}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\datexconformance\project\vs2022\DatexConformance.vcxproj">
+      <Project>{FA282637-5421-4F8B-B0F0-670816CD8148}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\iso14827testhelper\project\vs2022\Iso14827TestHelper.vcxproj">
       <Project>{ea847d9c-5c3d-4fe4-934f-493df1ded869}</Project>
     </ProjectReference>
@@ -131,7 +143,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\mqttv2nconformance\include;..\..\..\kafkaconformance\include;..\..\..\binaryconformance\include;..\..\..\restconformance\include;..\..\..\datexconformance\include;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -152,7 +164,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\include;..\..\..\GitsnAsnUtil\include;..\..\..\GitsnDSRCMsgTestScenario\include;..\..\..\gitsntestdataprotocol\include;..\..\..\ITSK00100_3Util\include;..\..\..\technicalregulation1\include;..\..\..\technicalregulation2\include;..\..\..\Itsk00126v1TestMsg\include;..\..\..\Itsk00126v1TestScenario\include;..\..\..\Itsk00126v2TestMsg\include;..\..\..\Itsk00126v2TestScenario\include;..\..\..\ITSK00144_2TestMsg\include;..\..\..\ITSK00144_2TestScenario\include;..\..\..\Iso14827NewAsn;..\..\..\Iso14827dz1\include;..\..\..\ItsIso14827\include;..\..\..\iso14827testhelper\include;..\..\..\TrafficSignalControllerTestMsg\include;..\..\..\TrafficSignalControllerTestScenario\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\$(Platform)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\mqttv2nconformance\include;..\..\..\kafkaconformance\include;..\..\..\binaryconformance\include;..\..\..\restconformance\include;..\..\..\datexconformance\include;..\..\include;..\..\..\GitsnAsnUtil\include;..\..\..\GitsnDSRCMsgTestScenario\include;..\..\..\gitsntestdataprotocol\include;..\..\..\ITSK00100_3Util\include;..\..\..\technicalregulation1\include;..\..\..\technicalregulation2\include;..\..\..\Itsk00126v1TestMsg\include;..\..\..\Itsk00126v1TestScenario\include;..\..\..\Itsk00126v2TestMsg\include;..\..\..\Itsk00126v2TestScenario\include;..\..\..\ITSK00144_2TestMsg\include;..\..\..\ITSK00144_2TestScenario\include;..\..\..\Iso14827NewAsn;..\..\..\Iso14827dz1\include;..\..\..\ItsIso14827\include;..\..\..\iso14827testhelper\include;..\..\..\TrafficSignalControllerTestMsg\include;..\..\..\TrafficSignalControllerTestScenario\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\ASN.1.GITSN.LIB2\SupportLib;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\$(Platform)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -173,7 +185,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\mqttv2nconformance\include;..\..\..\kafkaconformance\include;..\..\..\binaryconformance\include;..\..\..\restconformance\include;..\..\..\datexconformance\include;..\..\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <StringPooling>true</StringPooling>
@@ -196,7 +208,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\include;..\..\..\GitsnAsnUtil\include;..\..\..\GitsnDSRCMsgTestScenario\include;..\..\..\gitsntestdataprotocol\include;..\..\..\ITSK00100_3Util\include;..\..\..\technicalregulation1\include;..\..\..\technicalregulation2\include;..\..\..\Itsk00126v1TestMsg\include;..\..\..\Itsk00126v1TestScenario\include;..\..\..\Itsk00126v2TestMsg\include;..\..\..\Itsk00126v2TestScenario\include;..\..\..\ITSK00144_2TestMsg\include;..\..\..\ITSK00144_2TestScenario\include;..\..\..\Iso14827NewAsn;..\..\..\Iso14827dz1\include;..\..\..\ItsIso14827\include;..\..\..\iso14827testhelper\include;..\..\..\TrafficSignalControllerTestMsg\include;..\..\..\TrafficSignalControllerTestScenario\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\$(Platform)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\mqttv2nconformance\include;..\..\..\kafkaconformance\include;..\..\..\binaryconformance\include;..\..\..\restconformance\include;..\..\..\datexconformance\include;..\..\include;..\..\..\GitsnAsnUtil\include;..\..\..\GitsnDSRCMsgTestScenario\include;..\..\..\gitsntestdataprotocol\include;..\..\..\ITSK00100_3Util\include;..\..\..\technicalregulation1\include;..\..\..\technicalregulation2\include;..\..\..\Itsk00126v1TestMsg\include;..\..\..\Itsk00126v1TestScenario\include;..\..\..\Itsk00126v2TestMsg\include;..\..\..\Itsk00126v2TestScenario\include;..\..\..\ITSK00144_2TestMsg\include;..\..\..\ITSK00144_2TestScenario\include;..\..\..\Iso14827NewAsn;..\..\..\Iso14827dz1\include;..\..\..\ItsIso14827\include;..\..\..\iso14827testhelper\include;..\..\..\TrafficSignalControllerTestMsg\include;..\..\..\TrafficSignalControllerTestScenario\include;..\..\..\dimz\dz1_tools\dz1_json\include;..\..\..\dimz\dz1_tools\dz1_sock_util\include;..\..\..\dimz\dz1_tools\dz1_socket_ssl\include;..\..\..\dimz\dz1_tools\dz1_web_socket\include;..\..\..\ScenarioEngineWebSockMsg\include;..\..\..\dimz\dz1\include;..\..\..\codeconv\include;..\..\..\pthreads.2;$(OPEN_SSL_SDK_ROOT)\$(Platform)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <StringPooling>true</StringPooling>
@@ -312,4 +324,5 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+<ItemGroup><ProjectReference Include="..\..\..\mqttv2nconformance\project\vs2022\MqttV2NConformance.vcxproj"><Project>{5731A878-EB64-4298-89AC-C03AA8801D01}</Project></ProjectReference></ItemGroup>
 </Project>

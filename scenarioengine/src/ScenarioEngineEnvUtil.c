@@ -6,6 +6,11 @@
 // Scenario Project
  #include <TrafficSignalControllerTestScenario.h>
 #include <Iso14827TestHelper.h>
+#include <DatexConformance.h>
+#include <RestConformance.h>
+#include <BinaryConformance.h>
+#include <KafkaConformance.h>
+#include <MqttV2NConformance.h>
 #include <ITSK00144_2TestScenario.h>
 #include <Itsk00126v1TestScenario.h>
 #include <Itsk00126v2TestScenario.h>
@@ -21,7 +26,7 @@ for (int i = 0; i < cnt; i++)\
 		u32_t log_lv = 0;\
 		pthread_cleanup_push(struct_name##_delAndSetNull, (void*)&msg);\
 		Dz1Thread_getLogLevel(Dz1Thread_self(), &log_lv);\
-		if (log_lv & DZ1_THREAD_LOG_DEBUG)\
+		if ((log_lv & DZ1_THREAD_LOG_DEBUG) && (strcmp(#struct_name, "ScenarioEngineRequestMessageSetup") != 0 || !MqttV2NConformance_isTask(env->tScenario)))\
 		{\
 			_Dz1Thread_log("Received Message = ");\
 			struct_name##_dump(msg, 0);\
@@ -152,6 +157,36 @@ static bool_t ScenarioEngineRequestMessageInitialize_proc(ScenarioEngineEnv* env
 							else Dz1Error_set(errp, 0);
 						}
 						if (0) {}
+						else if (Dz1STRCMP(category, Dz1T("ITSK-00143-MQTT-V1")) == 0)
+                        {
+                            if ((env->tScenario = MqttV2NConformance_new(env->tSelf, testScenario, _task_exception_proc, NULL, errp)) == NULL) ERR_OUT(errp);
+                            else if ((*errp = Dz1Task_start(env->tScenario, DZ1_THREAD_LOG_BASIS)).code) ERR_OUT(errp);
+                            else Dz1Error_set(errp, 0);
+                        }
+                        else if (Dz1STRCMP(category, Dz1T("ITSK-00143-KAFKA-V1")) == 0)
+                        {
+                            if ((env->tScenario = KafkaConformance_new(env->tSelf, testScenario, _task_exception_proc, NULL, errp)) == NULL) ERR_OUT(errp);
+                            else if ((*errp = Dz1Task_start(env->tScenario, DZ1_THREAD_LOG_BASIS)).code) ERR_OUT(errp);
+                            else Dz1Error_set(errp, 0);
+                        }
+                        else if (Dz1STRCMP(category, Dz1T("ITSK-00143-TCP-V1")) == 0)
+                        {
+                            if ((env->tScenario = BinaryConformance_new(env->tSelf, testScenario, _task_exception_proc, NULL, errp)) == NULL) ERR_OUT(errp);
+                            else if ((*errp = Dz1Task_start(env->tScenario, DZ1_THREAD_LOG_BASIS)).code) ERR_OUT(errp);
+                            else Dz1Error_set(errp, 0);
+                        }
+                        else if (Dz1STRCMP(category, Dz1T("ITSK-00143-REST-V1")) == 0)
+						{
+							if ((env->tScenario = RestConformance_new(env->tSelf, testScenario, _task_exception_proc, NULL, errp)) == NULL) ERR_OUT(errp);
+							else if ((*errp = Dz1Task_start(env->tScenario, DZ1_THREAD_LOG_BASIS)).code) ERR_OUT(errp);
+							else Dz1Error_set(errp, 0);
+						}
+						else if (Dz1STRCMP(category, Dz1T("ITSK-00143-DATEX-V2")) == 0)
+						{
+							if ((env->tScenario = DatexConformance_new(env->tSelf, testScenario, _task_exception_proc, NULL, errp)) == NULL) ERR_OUT(errp);
+							else if ((*errp = Dz1Task_start(env->tScenario, DZ1_THREAD_LOG_BASIS)).code) ERR_OUT(errp);
+							else Dz1Error_set(errp, 0);
+						}
 						else if (Dz1STRCMP(category, Dz1T("ITSK-00143-3-15784")) == 0 || Dz1STRCMP(category, Dz1T("ITSK-00143-3-14827")) == 0 || Dz1STRCMP(category, Dz1T("ITSK-00100-3")) == 0 || Dz1STRCMP(category, Dz1T("TechnicalRegulation1")) == 0 || Dz1STRCMP(category, Dz1T("TechnicalRegulation2")) == 0)
 						{
 							if ((env->tScenario = Iso14827TestHelper_new(env->tSelf, testScenario, _task_exception_proc, NULL, errp)) == NULL) ERR_OUT(errp);
@@ -240,12 +275,24 @@ static bool_t ScenarioEngineRequestMessageSetup_proc(ScenarioEngineEnv * env, Sc
 	if (msg == NULL) ERR_OUT(errp);
 	else
 	{
-		ScenarioEngineRequestMessageSetup_dump(msg, 0);
+		/* MQTT credentials are input values; never dump the raw SETUP. */
+		if (!MqttV2NConformance_isTask(env->tScenario)) ScenarioEngineRequestMessageSetup_dump(msg, 0);
 		Dz1Str testConfiguration = NULL;
 		if ((testConfiguration = msg->testConfiguration) == NULL) ERR_OUT(errp);
 		else
 		{
-			if ((*errp = Dz1Task_post(env->tScenario, DZ1_TASK_QUEUE_NONE, SCENARIO_ENGINE_COMMAND_SETUP, (void*)&testConfiguration, NULL, NULL, NULL, NULL, NULL)).code) ERR_OUT(errp);
+			if (DatexConformance_isTask(env->tScenario) || MqttV2NConformance_isTask(env->tScenario))
+			{
+				/* The WebSocket request is freed after this asynchronous dispatch. */
+				Dz1Str ownedConfiguration = Dz1Str_clone(testConfiguration, errp);
+				if (ownedConfiguration == NULL) ERR_OUT(errp);
+				else
+				{
+					*errp = Dz1Task_post(env->tScenario, DZ1_TASK_QUEUE_NONE, SCENARIO_ENGINE_COMMAND_SETUP, (void**)&ownedConfiguration, (Dz1DelFunc)Dz1Str_del, NULL, NULL, NULL, NULL);
+					if (errp->code) { Dz1Str_del(ownedConfiguration); ERR_OUT(errp); }
+				}
+			}
+			else if ((*errp = Dz1Task_post(env->tScenario, DZ1_TASK_QUEUE_NONE, SCENARIO_ENGINE_COMMAND_SETUP, (void*)&testConfiguration, NULL, NULL, NULL, NULL, NULL)).code) ERR_OUT(errp);
 			else Dz1Error_set(errp, 0);
 		}
 
@@ -265,6 +312,7 @@ static bool_t ScenarioEngineRequestMessageNotify_proc(ScenarioEngineEnv * env, S
 
 static bool_t ScenarioEngineResponseMessageValidate_proc(ScenarioEngineEnv * env, ScenarioEngineResponseMessageValidate * msg, Dz1Error * errp)
 {
+	if (DatexConformance_validation(env->tScenario, msg, errp)) return errp->code == 0 ? TRUE : FALSE;
 	ScenarioEngineValidateContext* validate = NULL;
 	if (msg == NULL) ERR_OUT(errp);
 	//else if ((validate = msg->validate) == NULL) ERR_OUT(errp);
@@ -568,8 +616,12 @@ bool_t ScenarioEngineEnv_notifyToServer(ScenarioEngineEnv * env, ScenarioEngineR
 	u32_t log_lv = 0;
 	Dz1Thread_getLogLevel(Dz1Thread_self(), &log_lv);
 
-	Dz1Thread_printf(Dz1T("Send notify Message = "));
-	ScenarioEngineRequestMessageNotify_dump(notify, 0);
+	/* DATEX records complete messages separately; avoid blocking its UI transport with hex dumps. */
+	if (!DatexConformance_isTask(env->tScenario) && !MqttV2NConformance_isTask(env->tScenario))
+	{
+		Dz1Thread_printf(Dz1T("Send notify Message = "));
+		ScenarioEngineRequestMessageNotify_dump(notify, 0);
+	}
 
 	if (notify == NULL) ERR_OUT(errp);
 	else

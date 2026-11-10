@@ -1,0 +1,11 @@
+{
+  "my_domain": "TESTER",
+  "peer_domain": "EMULATOR",
+  "user": "bsm-local",
+  "pass": "local-bsm-check",
+  "local_port": 55162,
+  "hb_dur": 60,
+  "rsp_timeout": 40,
+  "connect_timeout_s": 120,
+  "test_normal_bsm": true
+}

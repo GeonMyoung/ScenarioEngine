@@ -1,0 +1,42 @@
+{
+  "bsm": {
+    "source": "technicalregulation2/src/TechnicalRegulation2MsgStructAPI.c",
+    "symbol": "sample_bsm",
+    "bytes": 40,
+    "sha256": "333f743c7331ba0507a9214b637af9a3246e3a8b9fb68621c883037d89f819c7",
+    "adoption": "Decoded using the previous schema and re-encoded using J2735_20240923_KSR1600 with asn1tools 0.166.0."
+  },
+  "map": {
+    "source": "technicalregulation2/src/TechnicalRegulation2MsgStructAPI.c",
+    "symbol": "sample_map",
+    "bytes": 173,
+    "sha256": "a913db3d7bf51f0b1cf79b5c8382aff8c8465ce9b1e9256a1f29a9a728a30e1b"
+  },
+  "rsa": {
+    "source": "technicalregulation2/src/TechnicalRegulation2MsgStructAPI.c",
+    "symbol": "sample_rsa",
+    "bytes": 48,
+    "sha256": "0b6660ca50f037b7107a1963766e8163944e2b7836a6a5a8b16b3ee8d591b4e6"
+  },
+  "tim": {
+    "source": "technicalregulation2/src/TechnicalRegulation2MsgStructAPI.c",
+    "symbol": "sample_tim2",
+    "bytes": 80,
+    "sha256": "680950f339a59831f56d6f04038edc2f9d797ff3710e313afbb7c7e592f402a7",
+    "adoption": "Decoded using the previous schema and re-encoded using J2735_20240923_KSR1600 with asn1tools 0.166.0."
+  },
+  "spat": {
+    "source": "technicalregulation1/src/TechnicalRegulation1MsgStructAPI.c",
+    "symbol": "sample_spat",
+    "bytes": 67,
+    "sha256": "5ae9b58a9435e82ee30aeb57c09d71af71b71867374b8f88e3ac8ea632b7c9d6",
+    "adoption": "Decoded using the previous schema and re-encoded using J2735_20240923_KSR1600 with asn1tools 0.166.0."
+  },
+  "tls": {
+    "source": "technicalregulation1/src/TechnicalRegulation1MsgStructAPI.c",
+    "symbol": "sample_tlsm",
+    "bytes": 36,
+    "sha256": "790f0844071ef173c61a49dd4e629062307cc660083126099cffc40f34c41cc1",
+    "adoption": "Decoded using the previous schema and re-encoded using J2735_20240923_KSR1600 with asn1tools 0.166.0."
+  }
+}

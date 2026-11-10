@@ -930,7 +930,7 @@ static Gitsn_TransmissionAndSpeed* init_TransmissionAndSpeed_from_ASN(Transmissi
 	else
 	{
 		pthread_cleanup_push(Gitsn_TransmissionAndSpeed_delAndSetNull, (void*)&ret);
-		if ((ret->transmission = (Gitsn_TransmissionState)src->transmisson) > Gitsn_TransmissionState_max) ERR_SET_OUT(errp, EFAULT);
+		if ((ret->transmission = (Gitsn_TransmissionState)src->transmission) > Gitsn_TransmissionState_max) ERR_SET_OUT(errp, EFAULT);
 		ret->speed = src->speed;
 		Dz1Error_set(errp, 0);
 		pthread_cleanup_pop(errp->code); // (Gitsn_TransmissionAndSpeed_delAndSetNull, (void*)&ret);
@@ -4855,7 +4855,7 @@ static Gitsn_PrivilegedEvents* init_PrivilegedEvents_from_ASN(PrivilegedEvents* 
 	{
 		pthread_cleanup_push(Gitsn_PrivilegedEvents_delAndSetNull, (void*)&ret);
 		
-		ret->doNotUse = src->doNotUse;
+		ret->doNotUse = src->notUsed;
 
 		size_t sz = src->event.numbits + 7 / 8;
 		if ((ret->event = Dz1Calloc(sz, 1, errp)) == NULL) ERR_SET_OUT(errp, EFAULT);
@@ -4876,7 +4876,7 @@ static Gitsn_EmergencyDetails* init_EmergencyDetails_from_ASN(EmergencyDetails* 
 	else
 	{
 		pthread_cleanup_push(Gitsn_EmergencyDetails_delAndSetNull, (void*)&ret);
-		ret->doNotUse = src->doNotUse;
+		ret->doNotUse = src->notUsed;
 		ret->sirenUse = src->sirenUse;
 		ret->lightsUse = src->lightsUse;
 		Dz1Error_set(errp, 0);

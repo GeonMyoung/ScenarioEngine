@@ -1,0 +1,18 @@
+{
+  "bind_ip": "127.0.0.1",
+  "local_port": 55342,
+  "bearer_token": "vds-development-token",
+  "response_json_file": "",
+  "repetitions": 10,
+  "request_timeout_s": 30,
+  "test_response_400": false,
+  "test_response_404": false,
+  "test_response_500": false,
+  "test_empty_response": false,
+  "test_malformed_response": false,
+  "test_request_smart": true,
+  "test_no_data_error_response": false,
+  "no_data_error_status": 404,
+  "evidence_directory": "",
+  "evidence_wait_s": 30
+}

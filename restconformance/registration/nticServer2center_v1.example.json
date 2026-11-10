@@ -1,0 +1,19 @@
+{
+  "api_key": "NTIC_LOCAL_KEY",
+  "api_path": "/vdsInfo",
+  "repetitions": 10,
+  "request_timeout_s": 30,
+  "evidence_directory": "",
+  "evidence_wait_s": 30,
+  "no_data_error_status": 404,
+  "bind_ip": "127.0.0.1",
+  "local_port": 55308,
+  "response_json_file": "",
+  "test_request_ntic": true,
+  "test_no_data_error_response": false,
+  "test_response_400": false,
+  "test_response_404": false,
+  "test_response_500": false,
+  "test_empty_response": false,
+  "test_malformed_response": false
+}

@@ -189,8 +189,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\include\TechnicalRegulation1EAM.h" />
-    <ClCompile Include="..\..\include\TechnicalRegulation1EamDz1.h" />
+    <ClInclude Include="..\..\include\TechnicalRegulation1EAM.h" />
+    <ClInclude Include="..\..\include\TechnicalRegulation1EamDz1.h" />
     <ClCompile Include="..\..\src\TechnicalRegulation1Def.c" />
     <ClCompile Include="..\..\src\TechnicalRegulation1DefJson.c" />
     <ClCompile Include="..\..\src\TechnicalRegulation1MsgStructAPI.c" />

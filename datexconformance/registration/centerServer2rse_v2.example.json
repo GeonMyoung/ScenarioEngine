@@ -1,0 +1,14 @@
+{
+  "my_domain": "test-system",
+  "peer_domain": "target-system",
+  "user": "TEST_USER",
+  "pass": "REPLACE_WITH_TEST_PASSWORD",
+  "hb_dur": 60,
+  "rsp_timeout": 40,
+  "connect_timeout_s": 40,
+  "test_session": true,
+  "local_port": 355,
+  "test_normal_map": true,
+  "test_normal_rsa": true,
+  "test_normal_tim": true
+}

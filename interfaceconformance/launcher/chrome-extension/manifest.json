@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "표준적합성시험 웹 연결",
+  "version": "2.0.0",
+  "description": "DATEX·REST API·TCP/Binary·Kafka 간편 실행기를 시험 회차별로 연결합니다. 여러 창의 설정·시작·종료를 각각 처리합니다.",
+  "host_permissions": [
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://106.250.189.37/static/test/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnpFUUncLe7jlEzyVo044WxQg7kGks6X+DHPif5SV/+Fsm3RfW6o6j9m/qheV2Euwc3mzRdPrnf5+Pr0GNS6fatEka51LOJjCntAgGb+P4vGvIJ+KMJb2A6LOm1r01l2OfDx9UKS8OAArTee9mzqlLTq1TtAZ88smklXxe0UGKDtelFiq9n/XHr/K56nHUEAM2xt9DwogDFtnn1nhNwS1/Bu1XcgxlxLaYv12QLNuXzBfzfjIuQ0FQEaR1N5Wa6S/dF6FHtKqDMYmc1+dM9XU+5vPH3hwj0G4Nq6CYzdoaqXLnizDx5zaHAmFHfyxmU+TygP8vYDJYgSQa4zltZstgQIDAQAB"
+}

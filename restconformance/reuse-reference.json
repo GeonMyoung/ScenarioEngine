@@ -1,0 +1,40 @@
+{
+  "prj22Head": "0a09363755078abbcf00c9519ea7244823487a0b",
+  "references": [
+    "C:/Implement/prj22/agent/RestApiTestScenario/include/RestApiTestScenarioProvider.h",
+    "C:/Implement/prj22/agent/RestApiTestScenario/src/RestApiTestScenarioProcCollectGetServer.c",
+    "C:/Implement/prj22/agent/MessageBrokerTestScenario/src/MessageBrokerTestScenarioAdapterFacade.h"
+  ],
+  "adopted": [
+    "transport adapter and per-standard contract separation",
+    "test HTTP Server versus SUT HTTP Client role",
+    "response transport evidence separate from SUT internal processing",
+    "callbacks transfer work outside transport callback"
+  ],
+  "notAdopted": [
+    "prj22 JSON-only providers",
+    "prj22-specific 500/404/malformed sequencing",
+    "fixed prj22 retry timing as ITSK-00143 criteria"
+  ],
+  "utilitySnapshots": {
+    "RestJson.cpp": "d2905633da166b68a7d747d4d144be01f523c1f94e82f564bb85bbb747137c61",
+    "RestThread.h": "8336d515f353eae839c3741377a1b563d80d5db4e50d7e0a6248deb61a142b1d"
+  },
+  "utilityNote": "Independent utility snapshots to avoid a REST dependency on the concurrently developed DATEX module; no DATEX tests or settings imported.",
+  "vdsReferences": [
+    "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi_request.c",
+    "C:\\Implement\\prj22\\agent\\RestApiTestScenario\\src\\RestApiTestScenarioProcProvideGetClient.c",
+    "C:\\Implement\\prj22\\agent\\Prj1RestApiTestSupport\\src\\Prj1RestApiTestSupportValidateResponse.c"
+  ],
+  "vdsAdopted": [
+    "actual prj22 HTTP client transport source and repository-local libcurl/libssh2 build",
+    "HTTP status/content-type/endpoint-specific response validation separation",
+    "bounded response buffering and stop callback added locally"
+  ],
+  "uticProviderAdopted": [
+    "existing prj22 HTTP client with separate XML Accept entry point",
+    "shared GET transport retaining JSON behavior",
+    "existing SC07 XML decoder and selected field profile",
+    "empty result distinguished from normal data provision"
+  ]
+}

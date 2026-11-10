@@ -1,0 +1,66 @@
+{
+  "profile": "BINARY-TRAFFIC-001",
+  "commonProfile": "BINARY-SIGNAL-001",
+  "standards": [
+    "ITSK-00143-3 표 4-27",
+    "ITSK-00143-3 표 4-28",
+    "ITSK-00143-3 표 4-29"
+  ],
+  "messages": {
+    "BSM_INFO": 67,
+    "OPTIONAL_ROUTE": 71,
+    "INC_INFO": 72
+  },
+  "byteOrder": "big-endian",
+  "bsm": {
+    "recordBytes": 64,
+    "CREDATE": "CHAR8, adopted YYYYMMDD",
+    "GEAR": "CHAR4",
+    "floating": "finite IEEE754 float32/float64"
+  },
+  "route": {
+    "commonBytes": 24,
+    "vehicleFixedBytes": 25,
+    "waypointBytes": 24,
+    "viaLinkSeqBytes": 20,
+    "viaLinkSeqDisplay": "exact unsigned decimal string",
+    "viaLinkIdBytes": 3,
+    "linkPosBytes": 3
+  },
+  "incident": {
+    "fixedBytesBeforeCount": 612,
+    "linkCountBytes": 1,
+    "linkBytes": 10,
+    "eventNameFieldBytes": 500,
+    "eventNameNullTerminated": true,
+    "unknownEndDate": "00000000000000"
+  },
+  "periodic": {
+    "bsmMs": 1000,
+    "toleranceMs": 200,
+    "toleranceIsProjectSetting": true
+  },
+  "emptyInformation": {
+    "messages": [
+      71,
+      72
+    ],
+    "shape": "6-byte empty single frame",
+    "heartbeatPeriodNotClaimed": true
+  },
+  "adoptedRules": [
+    "기존 LRC·ACK SeqNo·문자 인코딩·비부호 정수·논리 분할 기준",
+    "IEEE754 및 유한 부동소수",
+    "표준 데이터 우선, 설계서 Belt 구조로 자동 변환하지 않음",
+    "돌발상황은 설계서 Server/Client 표 적용, 재접속 문장 모순 보존"
+  ],
+  "assessmentScope": "ENGINE_OBSERVABLE",
+  "standardConformanceClaim": false,
+  "sessionPolicy": "BINARY-SESSION-001",
+  "connectionScope": "one TCP connection per selected test item",
+  "exchangeInitiation": "provider push; no separate information-request frame defined for messages 67..72",
+  "repeatCount": "repetitions per item; heartbeat uses heartbeat_samples; preparation and fragment repair are not extra completed exchanges",
+  "sequenceScope": "continuous across rounds within a session, modulo 256",
+  "changePreparation": "one baseline exchange before N changing information exchanges",
+  "fragmentRejectionRecovery": "bad_sequence supplementary test: NACK for invalid End, corrected End at expected sequence, ACK, then next round on the same connection; adopted test procedure"
+}

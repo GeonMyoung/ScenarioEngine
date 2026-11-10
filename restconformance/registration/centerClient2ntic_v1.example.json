@@ -1,0 +1,22 @@
+{
+  "api_key": "NTIC_LOCAL_KEY",
+  "api_path": "/vdsInfo",
+  "repetitions": 10,
+  "request_timeout_s": 30,
+  "evidence_directory": "",
+  "evidence_wait_s": 30,
+  "no_data_error_status": 404,
+  "sut_base_url": "http://127.0.0.1:55329",
+  "connect_timeout_s": 5,
+  "bad_request_status": 400,
+  "unauthorized_status": 401,
+  "no_data_status": 200,
+  "confirm_data_absent": false,
+  "test_normal_ntic": true,
+  "test_invalid_request": false,
+  "test_no_data_error": false,
+  "test_missing_credential": false,
+  "test_wrong_credential": false,
+  "test_missing_path": false,
+  "test_no_data": false
+}

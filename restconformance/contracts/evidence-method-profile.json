@@ -1,0 +1,46 @@
+{
+  "id": "REST-EVIDENCE-002",
+  "source": {
+    "path": "C:\\Implement\\police-test-platform\\scenarioengine자료\\2026\\개발표준\\[ITSK-00143-4]+자율협력주행+통합교통관제시스템+-+제4부.+표준+적합성+시험규격.pdf",
+    "sha256": "28b992fa8f297d4ecc26895ce489a7501829e2fdd15138f72c00cefbefa65f57",
+    "clauses": [
+      "제4장 1.1.1",
+      "제4장 1.2.1"
+    ],
+    "printedPages": [
+      15,
+      16
+    ],
+    "pdfPages": [
+      19,
+      20
+    ]
+  },
+  "providerStandard": [
+    "normal",
+    "invalid-request",
+    "data-absence-error"
+  ],
+  "requesterStandard": [
+    "normal-request-processing",
+    "data-absence-error-processing"
+  ],
+  "defaultAbsenceErrorHttpCode": 404,
+  "allowedAbsenceErrorHttpCodes": [
+    400,
+    404,
+    410,
+    422
+  ],
+  "httpCodeAuthority": "Project test profile, not a fixed code in the standard",
+  "emptySuccessCountsAsAbsenceError": false,
+  "minimumExchanges": 10,
+  "requiredEvidence": [
+    "configured endpoint and single request mode",
+    "prepared source data",
+    "valid request and actual response",
+    "target receipt and processing for requesters",
+    "diagnostic fields for unprocessed information"
+  ],
+  "historyPreserved": true
+}

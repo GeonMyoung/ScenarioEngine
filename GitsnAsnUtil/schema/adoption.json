@@ -1,0 +1,17 @@
+{
+  "deliveredSource": "J2735_20240923_KSR1600.asn (external reference)",
+  "deliveredSha256": "1c525aa01c7114f6f7c152d655edc5d089956e5d37fe9d217eef416215b826f8",
+  "adoptedSource": "GitsnAsnUtil/GitsnAsn1.asn",
+  "compilerSha256": "6fd1326c06731005da4b8fdb2715a4c16c94df2e8d32ceea02f76d38c9f63a1c",
+  "transformations": [
+    "long -> lon",
+    "merge five modules and resolve module qualifiers",
+    "retain legacy-only types for existing callers",
+    "order primitive definitions before constructed definitions"
+  ],
+  "deliveredTypesMatched": 484,
+  "typeMismatches": [],
+  "independentBsmSamples": 10,
+  "independentDecoder": "asn1tools 0.166.0",
+  "vert": "required"
+}

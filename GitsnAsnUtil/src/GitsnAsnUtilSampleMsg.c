@@ -237,7 +237,7 @@ static PitchRateConfidence sample_pitch_rate_confidence = PitchRateConfidence_de
 static RollRateConfidence sample_roll_rate_confidence = RollRateConfidence_degSec_000_01;
 
 static SizeValueConfidence sample_size_value_confidence = SizeValueConfidence_size_000_02;
-static PersonalDeviceUserType sample_personal_device_user_type = PersonalDeviceUserType_aPedestrian;
+static PersonalDeviceUserType sample_personal_device_user_type = PersonalDeviceUserType_aPEDESTRIAN;
 static Attachment sample_attachment = Attachment_stroller;
 static AttachmentRadius sample_attachment_radius = 20;
 static HumanPropelledType sample_human_propelled_type = HumanPropelledType_onFoot;

@@ -1,0 +1,55 @@
+message set definition
+{
+	include Dz1SockUtilDef;
+	include GitsnOpenApiDef;
+
+	typedef enum GitsnOpenApiHttpState
+	{
+		header,
+		body
+	} GitsnOpenApiHttpState;
+
+	typedef array GitsnOpenApiHttpLines(extract) [str];
+	typedef struct GitsnOpenApiHttpParser
+	{
+		GitsnOpenApiHttpState		 state;						// is notarg
+		Dz1ElasticBuf				*rx_buf;
+		GitsnOpenApiHttpLines		*hdr_lines;					// is notarg
+		Dz1ElasticBuf				*body;						// is notarg
+		ssize_t						 body_size;
+		GitsnOpenApiHttpReq			*req;						// is notarg
+		bool						 close_after_response;		// is notarg
+	} GitsnOpenApiHttpParser;									// with api dump
+
+	typedef struct GitsnOpenApiSession
+	{
+		uint32						 id;						// is key
+		Dz1SockAddr					*peer;
+		Dz1SockAddr					*local;
+		Dz1TcpClientSocket			*sock;
+
+		GitsnOpenApiHttpParser		*parser;
+
+		bool						 closing;					// is notarg
+		Dz1SockUtilTxFifo			*tx_fifo;
+		bool						 response_pending;			// is notarg
+		void                        *response_call;              // is notarg
+		bool						 idle_timer_armed;			// is notarg
+		uint32					 response_sequence;			// is notarg
+		uint64					 last_response_sent_ms;		// is notarg
+		GitsnOpenApiConnectionEventType close_event_type;	// is notarg
+	} GitsnOpenApiSession;										// with api dump, compare
+	typedef unique table GitsnOpenApiSessionTable(find, extract) [GitsnOpenApiSession];
+	typedef struct GitsnOpenApiSessions
+	{
+		GitsnOpenApiSessionTable	*table;						// is notarg
+		uint32						 alloc_id;					// is notarg
+	} GitsnOpenApiSessions;										// with api dump
+
+	typedef struct GitsnOpenApiEnv
+	{
+		void						*tSelf;
+		uint32						 acceptor;
+		GitsnOpenApiSessions		*sessions;
+	} GitsnOpenApiEnv;											// with api dump
+}

@@ -1,0 +1,13 @@
+{
+  "method": "NOTIFY",
+  "level": "info",
+  "seq": 91,
+  "data": {
+    "testName": "test_missing_path",
+    "time": 1790227085,
+    "sender": "시험 시스템",
+    "log": "항목 통과: 10/10회 응답이 모두 기대한 HTTP 404(찾을 수 없음)로 확인됐으며, 이 항목의 검사 기준을 충족했습니다. 요청 조건·실제 응답 상태·응답 원문을 판정 근거로 보관했습니다.",
+    "data": "7Jew6rOE7KCV67O0OiBWRFMg7LCo66Gc67OEIOybkOyLnOygleuztCDsnbTroKUgLyBKU09OCu2ZleyduO2VnCDqtZDtmZg6IDEwLzEw7ZqMCu2RnOyLnCDtla3rqqnqs7wg67O466y4IOybkOusuOydtCDqsJnsnYAg6rWQ7ZmY7J2AIO2ajOywqOulvCDrrLbslrQg7ZGc7Iuc7ZWp64uI64ukLiDtkZzsi5zsmqkg67O466y47J2AIOygleugrMK37J247Kad6rCSIOqwgOumvCDrmJDripQg66qF7Iuc65CcIO2BrOq4sCDsoJztlZzsnbQg7KCB7Jqp65CgIOyImCDsnojsirXri4jri6QuIO2MkOygleyXkOuKlCDrs4Trj4Qg67O06rSA7ZWcIOyLpOygnCDsm5DrrLjsnYQg7IKs7Jqp7ZWp64uI64ukLgoKW+q1kO2ZmCDtmozssKggMSwgMiwgMywgNCwgNSwgNiwgNywgOCwgOSwgMTBdCuyalOyyrSDqtazshLE6IEdFVCAvdjEvYWR4Yy92ZHMtbC1yYXdzL25vdC1mb3VuZArsmpTssq3rs4DsiJg6IOyXhuydjArsnbjspp3soJXrs7Q6IO2PrO2VqCjqsJIg67mE6rO16rCcKQrsmpTssq0g67O466y4OiAw67CU7J207Yq4CuyImOyLoCDsnZHri7U6IEhUVFAgNDA0CkNvbnRlbnQtVHlwZTogdGV4dC9wbGFpbgrrs7jrrLgg7YGs6riwOiA0N+uwlOydtO2KuArrs7jrrLgg7ZGc7IucKOyduOymneqwkiDruYTqs7XqsJwpOgpFcnJvciByZXNwb25zZSB3aXRob3V0IGEgcHJlc2NyaWJlZCBib2R5IHNjaGVtYQo=",
+    "dataType": "TEXT"
+  }
+}

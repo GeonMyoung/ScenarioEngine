@@ -1,0 +1,60 @@
+{
+  "sourceSha256": "fe8f6d60a5afa921600db61e10a9382c6f6dc603dd6a2ea4df302be8ea144a1c",
+  "operation": "GET /v1/adxc/vds-l-raws",
+  "responses": {
+    "400": {
+      "mediaType": "application/json",
+      "type": "object",
+      "required": [],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "오류코드"
+        },
+        "message": {
+          "type": "string",
+          "description": "오류메시지"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "오류 발생 시간"
+        },
+        "path": {
+          "type": "string",
+          "description": "요청 URI Path"
+        },
+        "request": {
+          "type": "object"
+        }
+      }
+    },
+    "500": {
+      "mediaType": "application/json",
+      "type": "object",
+      "required": [],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "오류코드"
+        },
+        "message": {
+          "type": "string",
+          "description": "오류메시지"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "오류 발생 시간"
+        },
+        "path": {
+          "type": "string",
+          "description": "요청 URI Path"
+        },
+        "request": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

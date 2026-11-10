@@ -1,0 +1,85 @@
+{
+  "utctime": {
+    "year": 2026,
+    "month": 8,
+    "day": 5,
+    "hour": 10,
+    "minute": 42,
+    "second": 17
+  },
+  "objectData": {
+    "objectType": 1,
+    "objectID": 37,
+    "novelty": 0,
+    "reliability": 92,
+    "refPosition": {
+      "long": 1267296100,
+      "lat": 373640446
+    },
+    "FullPositionVector": {
+      "long": 1267296123,
+      "lat": 373640470,
+      "elevation": 45,
+      "heading": 9000,
+      "speed": {
+        "transmission": 2,
+        "speed": 620
+      },
+      "posAccuracy": {
+        "semiMajor": 20,
+        "semiMinor": 15,
+        "orientation": 9000
+      },
+      "posConfidence": {
+        "timeConfidence": 9,
+        "pos": 8,
+        "elevation": 6
+      },
+      "speedConfidence": {
+        "heading": 3,
+        "speed": 3,
+        "throttle": 2
+      }
+    }
+  },
+  "weatherData": {
+    "macAddr": "AC:DE:48:00:11:22",
+    "device-state": 0,
+    "weather": {
+      "temperature": 28.4,
+      "humidity": 62.0,
+      "view-range": 850.0,
+      "wind-dir": 210.0,
+      "wind-speed": 3.2,
+      "air-pressure": 10085,
+      "w-condition": 0,
+      "rain": 0.0,
+      "sun": 420.0,
+      "surface-temp": 31.2,
+      "underground-temp": 24.5,
+      "freezing-temp": -2.0,
+      "salt-concentration": 0.0
+    },
+    "installationStatus": 0,
+    "trafficCount": 128,
+    "forwardAxialStiffness": 0.3,
+    "transverseAxialStiffness": -0.1,
+    "roadCondition": 0,
+    "waterLevel": 0.0
+  },
+  "tailLampIntensity": {
+    "intensity": 5
+  },
+  "safetyMessage": {
+    "safetylevel": 1,
+    "messageclass": 0,
+    "limitspeed": 60,
+    "trafficsign": 12,
+    "vmsmessage": 3
+  },
+  "systemStatus": {
+    "ObjectDetectionSystem": 0,
+    "WeatherSensorSystem": 0,
+    "InfraEdgePlatform": 0
+  }
+}

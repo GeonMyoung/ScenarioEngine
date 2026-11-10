@@ -1,0 +1,58 @@
+{
+  "profile": "WEATHER-STANDARD-001",
+  "dataStandard": "ITSK-00143-3 제4장 표 4-15",
+  "api": {
+    "source": "https://www.data.go.kr/data/15084084/openapi.do",
+    "guide": "기상청41_단기예보 조회서비스_오픈API활용가이드_260623.docx",
+    "download": "https://www.data.go.kr/cmm/cmm/fileDownload.do?atchFileId=FILE_000000003671875&fileDetailSn=1",
+    "method": "GET",
+    "defaultPath": "/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst",
+    "alternatePath": "/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst",
+    "defaultServiceKeyName": "serviceKey",
+    "alternateServiceKeyName": "ServiceKey",
+    "parameters": [
+      "serviceKey",
+      "pageNo",
+      "numOfRows",
+      "dataType",
+      "base_date",
+      "base_time",
+      "nx",
+      "ny"
+    ]
+  },
+  "normalEnvelope": {
+    "adopted": "response.header + response.body.items.item[]",
+    "basis": "API guide XML hierarchy and JSON support; standard business records instead of category records"
+  },
+  "businessCodes": {
+    "normal": "00",
+    "noData": "03",
+    "invalidParameter": "10",
+    "missingKey": "20",
+    "wrongKey": "30",
+    "missingService": "12",
+    "serverError": "01"
+  },
+  "projectHttpDefaults": {
+    "businessError": 200,
+    "missingPath": 404,
+    "serverError": 500,
+    "emptySuccess": 200
+  },
+  "assessmentProfile": "REST-AUTO-001",
+  "limitations": [
+    "운영 경4의 초단기실황/예보 operation 선택 미확정",
+    "표준 업무 필드와 기상청 category 레코드 불일치",
+    "ServiceKey/serviceKey 표기·정상 00/예시 0 불일치",
+    "adstrdCode 날짜·lgt 풍향 등 정의표 의미 확인 필요",
+    "HTTP 매핑 및 JSON 오류 포장 채택 기준",
+    "실제 격자 서비스 가용성·발표 후 호출시각·1시간 연계주기·실장비 상호운용 제외"
+  ],
+  "sourceSha256": {
+    "guide-260623.docx": "20d855aa3071a2bdda6dce3c13bab6428ebb02f8d4a30688e26ed0851d6d0848",
+    "guide-2607.zip": "07f53cd9d6d6512bce6ef870d54cb740046a0a949896e6855caecf739fb8842e",
+    "guide.txt": "88fd06f7519d1f43baf4c6da4a4765ee86245a54e4a4618fb827ae65d252d91f",
+    "page.html": "fd5efea0abb19500d2154077bbd7380d3ea1c815a7b2e7dc00eabc8f4ee71d2b"
+  }
+}

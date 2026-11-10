@@ -1,0 +1,16 @@
+{
+  "source": "GitsnAsnUtil/src/GitsnAsn1.c",
+  "sourceSha256": "2b0d35650d9014a0c5121f4e0cb41bcbcdde1bad3da6c045bd34d1650f8ec9b1",
+  "roots": [
+    "MessageFrame",
+    "BasicSafetyMessage",
+    "SPAT",
+    "TrafficLightStatusMessage",
+    "TravelerInformation",
+    "TravelerInformation_KOR",
+    "GeographicalPath_KOR"
+  ],
+  "functions": 417,
+  "annotatedCalls": 1247,
+  "sharedSourceModified": false
+}

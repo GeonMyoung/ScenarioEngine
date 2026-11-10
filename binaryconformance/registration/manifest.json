@@ -1,0 +1,477 @@
+{
+  "category": "ITSK-00143-TCP-V1",
+  "cases": [
+    {
+      "case": "signalServer2center_binary_v1",
+      "designId": "SC14",
+      "platformId": 68,
+      "title": "통합교통관제시스템-신호운영시스템 연동 시험 : 통합교통관제시스템 교차로 상태·TOD 정보수신 시험",
+      "classification": "C2C",
+      "testSystemRole": "신호제어서버 / TCP Server",
+      "sutRole": "통합교통관제시스템 / TCP Client",
+      "interface": "TCP/Binary",
+      "information": [
+        "INT_ALL_STATUS",
+        "INT_ALTER_STATUS",
+        "INT_TOD_INFO"
+      ],
+      "descriptor": "signalServer2center_binary_v1.tsb",
+      "platformRegistered": true,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/68",
+      "description": "통합교통관제시스템이 TCP로 교차로 상태와 TOD 정보를 수신하고 수신 결과를 회신하는 기능을 확인한다.\n\n연계 구간: 신호운영시스템 – 통합교통관제시스템 (C2C)\n연계 방법: TCP Socket / Binary\n연계 정보: 전체 교차로 상태(INT_ALL_STATUS), 변경 교차로 상태(INT_ALTER_STATUS), 교차로 TOD(INT_TOD_INFO)",
+      "implementedItems": [
+        "test_receive_all_status",
+        "test_receive_alter_status",
+        "test_receive_tod",
+        "test_receive_split_status",
+        "test_receive_multiple_status",
+        "test_receive_tod_heartbeat",
+        "test_reject_bad_lrc",
+        "test_reject_bad_payload",
+        "test_reject_bad_sequence"
+      ],
+      "verifiedExchanges": 82,
+      "verifiedMessages": 226,
+      "profile": "BINARY-SIGNAL-001",
+      "automaticVerdict": "SUCCESS",
+      "completionScope": "표준 데이터와 채택 운용 기준의 에뮬레이터 대상 엔진 자동 관측 범위",
+      "primaryInformationItems": [
+        "test_receive_all_status",
+        "test_receive_alter_status",
+        "test_receive_tod"
+      ],
+      "supplementaryItems": [
+        "test_receive_split_status",
+        "test_receive_multiple_status",
+        "test_receive_tod_heartbeat",
+        "test_reject_bad_lrc",
+        "test_reject_bad_payload",
+        "test_reject_bad_sequence"
+      ],
+      "localItemsVerified": 9,
+      "platformItemsVerified": 9,
+      "finalPlatformReportComplete": true,
+      "latestVerification": "verification-all-20260925.json",
+      "latestPlatformJobs": [
+        270
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/266"
+      ],
+      "heartbeatIntervalsMs": [
+        60012,
+        59997
+      ],
+      "periodIntervalsMs": []
+    },
+    {
+      "case": "centerClient2signal_binary_v1",
+      "designId": "SC35",
+      "platformId": 69,
+      "title": "통합교통관제시스템-신호운영시스템 연동 시험 : 신호운영시스템 교차로 상태·TOD 정보제공 시험",
+      "classification": "C2C",
+      "testSystemRole": "통합교통관제시스템 / TCP Client",
+      "sutRole": "신호운영시스템 / TCP Server",
+      "interface": "TCP/Binary",
+      "information": [
+        "INT_ALL_STATUS",
+        "INT_ALTER_STATUS",
+        "INT_TOD_INFO"
+      ],
+      "descriptor": "centerClient2signal_binary_v1.tsb",
+      "platformRegistered": true,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/69",
+      "description": "신호운영시스템이 TCP 연결 및 상태 변경 조건에 따라 교차로 상태와 TOD 정보를 제공하는 기능을 확인한다.\n\n연계 구간: 신호운영시스템 – 통합교통관제시스템 (C2C)\n연계 방법: TCP Socket / Binary\n연계 정보: 전체 교차로 상태(INT_ALL_STATUS), 변경 교차로 상태(INT_ALTER_STATUS), 교차로 TOD(INT_TOD_INFO)",
+      "implementedItems": [
+        "test_provide_all_status",
+        "test_provide_alter_status",
+        "test_provide_tod",
+        "test_provide_split_status",
+        "test_provide_multiple_status",
+        "test_provide_tod_heartbeat"
+      ],
+      "verifiedExchanges": 52,
+      "verifiedMessages": 146,
+      "profile": "BINARY-SIGNAL-001",
+      "automaticVerdict": "SUCCESS",
+      "completionScope": "표준 데이터와 채택 운용 기준의 에뮬레이터 대상 엔진 자동 관측 범위",
+      "primaryInformationItems": [
+        "test_provide_all_status",
+        "test_provide_alter_status",
+        "test_provide_tod"
+      ],
+      "supplementaryItems": [
+        "test_provide_split_status",
+        "test_provide_multiple_status",
+        "test_provide_tod_heartbeat"
+      ],
+      "localItemsVerified": 6,
+      "platformItemsVerified": 6,
+      "finalPlatformReportComplete": true,
+      "latestVerification": "verification-all-20260925.json",
+      "latestPlatformJobs": [
+        271
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/267"
+      ],
+      "heartbeatIntervalsMs": [
+        60002,
+        60003
+      ],
+      "periodIntervalsMs": []
+    },
+    {
+      "case": "signalClient2center_bsm_binary_v1",
+      "designId": "SC16",
+      "title": "통합교통관제시스템-신호운영시스템 연동 시험 : 통합교통관제시스템 차량운행정보(BSM_INFO) 제공시험",
+      "classification": "C2C",
+      "testSystemRole": "신호운영시스템 / TCP Client",
+      "sutRole": "통합교통관제시스템 / TCP Server",
+      "interface": "TCP/Binary",
+      "information": [
+        "BSM_INFO"
+      ],
+      "descriptor": "signalClient2center_bsm_binary_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 70,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/70",
+      "platformDescription": "통합교통관제시스템이 차량운행정보(BSM_INFO)를 제공하는 기능과 수신 결과 회신을 확인한다.\n\n연계 구간: 통합교통관제시스템 → 신호운영시스템 (C2C)\n연계 방법: TCP Socket / Binary\n연계 정보: 차량운행정보(BSM_INFO)",
+      "registeredAt": "2026-09-25",
+      "profile": "BINARY-TRAFFIC-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "provisionalRules": true,
+      "implementedItems": [
+        "test_provide_bsm",
+        "test_provide_bsm_periodic",
+        "test_provide_bsm_split",
+        "test_provide_bsm_multiple"
+      ],
+      "primaryInformationItems": [
+        "test_provide_bsm"
+      ],
+      "supplementaryItems": [
+        "test_provide_bsm_periodic",
+        "test_provide_bsm_split",
+        "test_provide_bsm_multiple"
+      ],
+      "localItemsVerified": 4,
+      "platformItemsVerified": 4,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "latestVerification": "verification-all-20260925.json",
+      "latestPlatformJobs": [
+        272
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/268"
+      ],
+      "verifiedExchanges": 40,
+      "verifiedMessages": 100,
+      "heartbeatIntervalsMs": [],
+      "periodIntervalsMs": [
+        971,
+        1004,
+        1003,
+        1003,
+        986,
+        1004,
+        1002,
+        1002,
+        986
+      ],
+      "completionScope": "표준 데이터와 채택 운용 기준의 에뮬레이터 대상 엔진 자동 관측 범위"
+    },
+    {
+      "case": "centerServer2signal_bsm_binary_v1",
+      "designId": "SC37",
+      "title": "통합교통관제시스템-신호운영시스템 연동 시험 : 신호운영시스템 차량운행정보(BSM_INFO) 수신시험",
+      "classification": "C2C",
+      "testSystemRole": "통합교통관제시스템 / TCP Server",
+      "sutRole": "신호운영시스템 / TCP Client",
+      "interface": "TCP/Binary",
+      "information": [
+        "BSM_INFO"
+      ],
+      "descriptor": "centerServer2signal_bsm_binary_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 71,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/71",
+      "platformDescription": "신호운영시스템이 차량운행정보(BSM_INFO)를 수신하는 기능과 수신 결과 회신을 확인한다.\n\n연계 구간: 통합교통관제시스템 → 신호운영시스템 (C2C)\n연계 방법: TCP Socket / Binary\n연계 정보: 차량운행정보(BSM_INFO)",
+      "registeredAt": "2026-09-25",
+      "profile": "BINARY-TRAFFIC-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "provisionalRules": true,
+      "implementedItems": [
+        "test_receive_bsm",
+        "test_receive_bsm_periodic",
+        "test_receive_bsm_split",
+        "test_receive_bsm_multiple",
+        "test_receive_bsm_reject_bad_lrc",
+        "test_receive_bsm_reject_bad_payload",
+        "test_receive_bsm_reject_bad_sequence"
+      ],
+      "primaryInformationItems": [
+        "test_receive_bsm"
+      ],
+      "supplementaryItems": [
+        "test_receive_bsm_periodic",
+        "test_receive_bsm_split",
+        "test_receive_bsm_multiple",
+        "test_receive_bsm_reject_bad_lrc",
+        "test_receive_bsm_reject_bad_payload",
+        "test_receive_bsm_reject_bad_sequence"
+      ],
+      "localItemsVerified": 7,
+      "platformItemsVerified": 7,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "latestVerification": "verification-all-20260925.json",
+      "latestPlatformJobs": [
+        273
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/269"
+      ],
+      "verifiedExchanges": 70,
+      "verifiedMessages": 180,
+      "heartbeatIntervalsMs": [],
+      "periodIntervalsMs": [
+        1012,
+        999,
+        1000,
+        999,
+        1000,
+        999,
+        1000,
+        999,
+        1000
+      ],
+      "completionScope": "표준 데이터와 채택 운용 기준의 에뮬레이터 대상 엔진 자동 관측 범위"
+    },
+    {
+      "case": "routeServer2center_binary_v1",
+      "designId": "SC15",
+      "title": "통합교통관제시스템-신호운영시스템 연동 시험 : 통합교통관제시스템 최적경로정보 수신시험",
+      "classification": "C2C",
+      "testSystemRole": "신호운영시스템 / TCP Server",
+      "sutRole": "통합교통관제시스템 / TCP Client",
+      "interface": "TCP/Binary",
+      "information": [
+        "OPTIONAL_ROUTE"
+      ],
+      "descriptor": "routeServer2center_binary_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 72,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/72",
+      "platformDescription": "통합교통관제시스템이 최적경로정보를 수신하는 기능과 수신 결과 회신을 확인한다.\n\n연계 구간: 신호운영시스템 → 통합교통관제시스템 (C2C)\n연계 방법: TCP Socket / Binary\n연계 정보: 최적경로정보",
+      "registeredAt": "2026-09-25",
+      "profile": "BINARY-TRAFFIC-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "provisionalRules": true,
+      "implementedItems": [
+        "test_receive_route",
+        "test_receive_route_change",
+        "test_receive_route_split",
+        "test_receive_route_multiple",
+        "test_receive_route_empty",
+        "test_receive_route_reject_bad_lrc",
+        "test_receive_route_reject_bad_payload",
+        "test_receive_route_reject_bad_sequence"
+      ],
+      "primaryInformationItems": [
+        "test_receive_route"
+      ],
+      "supplementaryItems": [
+        "test_receive_route_change",
+        "test_receive_route_split",
+        "test_receive_route_multiple",
+        "test_receive_route_empty",
+        "test_receive_route_reject_bad_lrc",
+        "test_receive_route_reject_bad_payload",
+        "test_receive_route_reject_bad_sequence"
+      ],
+      "localItemsVerified": 8,
+      "platformItemsVerified": 8,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "latestVerification": "verification-all-20260925.json",
+      "latestPlatformJobs": [
+        274
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/270"
+      ],
+      "verifiedExchanges": 80,
+      "verifiedMessages": 220,
+      "heartbeatIntervalsMs": [],
+      "periodIntervalsMs": [],
+      "completionScope": "표준 데이터와 채택 운용 기준의 에뮬레이터 대상 엔진 자동 관측 범위"
+    },
+    {
+      "case": "centerClient2route_binary_v1",
+      "designId": "SC36",
+      "title": "통합교통관제시스템-신호운영시스템 연동 시험 : 신호운영시스템 최적경로정보 제공시험",
+      "classification": "C2C",
+      "testSystemRole": "통합교통관제시스템 / TCP Client",
+      "sutRole": "신호운영시스템 / TCP Server",
+      "interface": "TCP/Binary",
+      "information": [
+        "OPTIONAL_ROUTE"
+      ],
+      "descriptor": "centerClient2route_binary_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 73,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/73",
+      "platformDescription": "신호운영시스템이 최적경로정보를 제공하는 기능과 수신 결과 회신을 확인한다.\n\n연계 구간: 신호운영시스템 → 통합교통관제시스템 (C2C)\n연계 방법: TCP Socket / Binary\n연계 정보: 최적경로정보",
+      "registeredAt": "2026-09-25",
+      "profile": "BINARY-TRAFFIC-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "provisionalRules": true,
+      "implementedItems": [
+        "test_provide_route",
+        "test_provide_route_change",
+        "test_provide_route_split",
+        "test_provide_route_multiple",
+        "test_provide_route_empty"
+      ],
+      "primaryInformationItems": [
+        "test_provide_route"
+      ],
+      "supplementaryItems": [
+        "test_provide_route_change",
+        "test_provide_route_split",
+        "test_provide_route_multiple",
+        "test_provide_route_empty"
+      ],
+      "localItemsVerified": 5,
+      "platformItemsVerified": 5,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "latestVerification": "verification-all-20260925.json",
+      "latestPlatformJobs": [
+        277
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/273"
+      ],
+      "verifiedExchanges": 50,
+      "verifiedMessages": 140,
+      "heartbeatIntervalsMs": [],
+      "periodIntervalsMs": [],
+      "completionScope": "표준 데이터와 채택 운용 기준의 에뮬레이터 대상 엔진 자동 관측 범위"
+    },
+    {
+      "case": "signalClient2center_incident_binary_v1",
+      "designId": "SC17",
+      "title": "통합교통관제시스템-신호운영시스템 연동 시험 : 통합교통관제시스템 돌발상황정보 제공시험",
+      "classification": "C2C",
+      "testSystemRole": "신호운영시스템 / TCP Client",
+      "sutRole": "통합교통관제시스템 / TCP Server",
+      "interface": "TCP/Binary",
+      "information": [
+        "INC_INFO"
+      ],
+      "descriptor": "signalClient2center_incident_binary_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 74,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/74",
+      "platformDescription": "통합교통관제시스템이 돌발상황정보를 제공하는 기능과 수신 결과 회신을 확인한다.\n\n연계 구간: 통합교통관제시스템 → 신호운영시스템 (C2C)\n연계 방법: TCP Socket / Binary\n연계 정보: 돌발상황정보",
+      "registeredAt": "2026-09-25",
+      "profile": "BINARY-TRAFFIC-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "provisionalRules": true,
+      "implementedItems": [
+        "test_provide_incident",
+        "test_provide_incident_change",
+        "test_provide_incident_split",
+        "test_provide_incident_multiple",
+        "test_provide_incident_empty"
+      ],
+      "primaryInformationItems": [
+        "test_provide_incident"
+      ],
+      "supplementaryItems": [
+        "test_provide_incident_change",
+        "test_provide_incident_split",
+        "test_provide_incident_multiple",
+        "test_provide_incident_empty"
+      ],
+      "localItemsVerified": 5,
+      "platformItemsVerified": 5,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "latestVerification": "verification-all-20260925.json",
+      "latestPlatformJobs": [
+        278
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/274"
+      ],
+      "verifiedExchanges": 50,
+      "verifiedMessages": 140,
+      "heartbeatIntervalsMs": [],
+      "periodIntervalsMs": [],
+      "completionScope": "표준 데이터와 채택 운용 기준의 에뮬레이터 대상 엔진 자동 관측 범위"
+    },
+    {
+      "case": "centerServer2signal_incident_binary_v1",
+      "designId": "SC38",
+      "title": "통합교통관제시스템-신호운영시스템 연동 시험 : 신호운영시스템 돌발상황정보 수신시험",
+      "classification": "C2C",
+      "testSystemRole": "통합교통관제시스템 / TCP Server",
+      "sutRole": "신호운영시스템 / TCP Client",
+      "interface": "TCP/Binary",
+      "information": [
+        "INC_INFO"
+      ],
+      "descriptor": "centerServer2signal_incident_binary_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 75,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/75",
+      "platformDescription": "신호운영시스템이 돌발상황정보를 수신하는 기능과 수신 결과 회신을 확인한다.\n\n연계 구간: 통합교통관제시스템 → 신호운영시스템 (C2C)\n연계 방법: TCP Socket / Binary\n연계 정보: 돌발상황정보",
+      "registeredAt": "2026-09-25",
+      "profile": "BINARY-TRAFFIC-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "provisionalRules": true,
+      "implementedItems": [
+        "test_receive_incident",
+        "test_receive_incident_change",
+        "test_receive_incident_split",
+        "test_receive_incident_multiple",
+        "test_receive_incident_empty",
+        "test_receive_incident_reject_bad_lrc",
+        "test_receive_incident_reject_bad_payload",
+        "test_receive_incident_reject_bad_sequence"
+      ],
+      "primaryInformationItems": [
+        "test_receive_incident"
+      ],
+      "supplementaryItems": [
+        "test_receive_incident_change",
+        "test_receive_incident_split",
+        "test_receive_incident_multiple",
+        "test_receive_incident_empty",
+        "test_receive_incident_reject_bad_lrc",
+        "test_receive_incident_reject_bad_payload",
+        "test_receive_incident_reject_bad_sequence"
+      ],
+      "localItemsVerified": 8,
+      "platformItemsVerified": 8,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "latestVerification": "verification-all-20260925.json",
+      "latestPlatformJobs": [
+        279
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/275"
+      ],
+      "verifiedExchanges": 80,
+      "verifiedMessages": 220,
+      "heartbeatIntervalsMs": [],
+      "periodIntervalsMs": [],
+      "completionScope": "표준 데이터와 채택 운용 기준의 에뮬레이터 대상 엔진 자동 관측 범위"
+    }
+  ]
+}

@@ -1,0 +1,1016 @@
+{
+  "category": "ITSK-00143-REST-V1",
+  "cases": [
+    {
+      "case": "uticServer2center_v1",
+      "designId": "SC07",
+      "title": "통합교통관제시스템-UTIC 연동 시험 : 통합교통관제시스템 돌발정보 요청시험",
+      "testSystemRole": "UTIC / HTTP Server",
+      "sutRole": "UT 센터 / HTTP Client",
+      "interface": "REST/XML",
+      "descriptor": "uticServer2center_v1.tsb",
+      "platformRegistered": true,
+      "defaultRepetitions": 10,
+      "platformId": 51,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/51",
+      "registeredAt": "2026-09-23",
+      "platformJobId": 96,
+      "platformChannelId": 92,
+      "verifiedExchanges": 70,
+      "automaticVerdict": "SUCCESS",
+      "developmentVerification": "PASS",
+      "finalPlatformReportComplete": true,
+      "platformDescription": "통합교통관제시스템과 도시교통정보센터(UTIC)의 연동 구간에서 통합교통관제시스템이 UTIC에 'ITSK-00143-3'에 정의된 정보 연계 방법으로 돌발정보를 요청하는지를 시험하는 시나리오\n\n* 연계 구간 : UTIC(송신) -> 통합교통관제시스템(수신)\n* 연계 방법 : ITSK-00143-3, 자율협력주행 통합교통관제시스템 - 제3부: 정보연계 규격\n* 정보 항목 : UTIC 돌발정보 (UTIC_INC_INFO)",
+      "methodProfile": "REST-EVIDENCE-002",
+      "implementedItems": [
+        "test_normal_utic",
+        "test_no_data_error_response",
+        "test_response_400",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "methodItemsVerified": 7,
+      "latestVerification": "six-scenario-final-verification-20260924.json",
+      "latestPlatformJobs": [
+        225
+      ],
+      "pendingItems": [],
+      "provisionalResponseProfile": true,
+      "dataProfile": "REST-DATA-003",
+      "standardItems": [
+        "test_normal_utic",
+        "test_no_data_error_response"
+      ],
+      "supplementaryItems": [
+        "test_response_400",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "localItemsVerified": 7,
+      "platformStandardItemsVerified": 2,
+      "standardEvidenceReview": "PASS",
+      "previousDataProfile": "REST-PROFILE-001",
+      "dataConstraintVerification": {
+        "profile": "REST-DATA-003",
+        "localVerified": true,
+        "platformVerified": false,
+        "artifact": "standard-fields-verification-20260924.json",
+        "platformPositivePathVerified": true
+      },
+      "evidenceReviewProfile": "REST-REVIEW-003",
+      "evidenceCorrelationVerification": {
+        "localVerified": true,
+        "reReviewedItems": 7,
+        "engineIntegrated": true,
+        "platformReexecuted": false,
+        "artifact": "evidence-correlation-verification-20260924.json"
+      },
+      "evidenceReviewIntegration": {
+        "profile": "REST-REVIEW-LINK-001",
+        "implemented": true,
+        "localItemsVerified": 7,
+        "platformVerified": false,
+        "verification": "review-integration-verification-20260924.json",
+        "optional": true
+      },
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "automaticStateVerification": {
+        "localItemsVerified": 7,
+        "unsupportedStateCount": 0,
+        "verification": "six-scenario-final-verification-20260924.json",
+        "platformVerified": true,
+        "platformItemsVerified": 7
+      },
+      "previousPlatformSummary": {
+        "latestVerification": "evidence-method-verification-20260924.json",
+        "latestPlatformJobs": [
+          176
+        ],
+        "automaticVerdict": "EVIDENCE_PENDING",
+        "finalPlatformReportComplete": false
+      },
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/221"
+      ],
+      "platformItemsVerified": 7,
+      "completionScope": "Engine-observable conformance checks with independent emulator; all selected platform items and reports verified"
+    },
+    {
+      "case": "microClient2center_v1",
+      "designId": "SC11",
+      "title": "통합교통관제시스템-미시교통정보 플랫폼 연동 시험 : 통합교통관제시스템 VDS 원시정보 이력 제공시험",
+      "testSystemRole": "미시교통정보 플랫폼 / HTTP Client",
+      "sutRole": "UT 센터 / HTTP Server",
+      "interface": "REST/JSON",
+      "descriptor": "microClient2center_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 57,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/57",
+      "registeredAt": "2026-09-24",
+      "platformJobId": 117,
+      "verifiedExchanges": 70,
+      "automaticVerdict": "SUCCESS",
+      "finalPlatformReportComplete": true,
+      "implementedItems": [
+        "test_normal_vds",
+        "test_invalid_request",
+        "test_no_data_error",
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "pendingItems": [
+        "smart_intersection",
+        "standard_field_constraint_mapping"
+      ],
+      "platformDescription": "통합교통관제시스템과 음영구간 미시교통정보 플랫폼의 연동 구간에서 통합교통관제시스템이 'ITSK-00143-3'에 정의된 정보 연계 방법으로 VDS 원시정보 이력을 제공하는지를 시험하는 시나리오\n\n* 연계 구간 : 통합교통관제시스템(송신) -> 음영구간 미시교통정보 플랫폼(수신)\n* 연계 방법 : ITSK-00143-3, 자율협력주행 통합교통관제시스템 - 제3부: 정보연계 규격\n* 정보 항목 : VDS 차로 원시정보 이력 (VDS_INFO)",
+      "methodProfile": "REST-EVIDENCE-002",
+      "methodItemsVerified": 7,
+      "latestVerification": "six-scenario-final-verification-20260924.json",
+      "latestPlatformJobs": [
+        229,
+        232,
+        235
+      ],
+      "provisionalResponseProfile": true,
+      "dataProfile": "REST-DATA-003",
+      "standardItems": [
+        "test_normal_vds",
+        "test_invalid_request",
+        "test_no_data_error"
+      ],
+      "supplementaryItems": [
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "localItemsVerified": 7,
+      "platformStandardItemsVerified": 3,
+      "standardEvidenceReview": "PASS",
+      "previousDataProfile": "REST-PROFILE-001",
+      "dataConstraintVerification": {
+        "profile": "REST-DATA-003",
+        "localVerified": true,
+        "platformVerified": false,
+        "artifact": "standard-fields-verification-20260924.json",
+        "platformPositivePathVerified": true
+      },
+      "evidenceReviewProfile": "REST-REVIEW-003",
+      "evidenceCorrelationVerification": {
+        "localVerified": true,
+        "reReviewedItems": 7,
+        "engineIntegrated": true,
+        "platformReexecuted": false,
+        "artifact": "evidence-correlation-verification-20260924.json"
+      },
+      "evidenceReviewIntegration": {
+        "profile": "REST-REVIEW-LINK-001",
+        "implemented": true,
+        "localItemsVerified": 7,
+        "platformVerified": true,
+        "verification": "review-integration-verification-20260924.json",
+        "job": 207,
+        "reportUrl": "https://106.250.189.37:8443/test/report/203",
+        "selectedItemsVerified": 2,
+        "savedReportComplete": true,
+        "optional": true
+      },
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "automaticStateVerification": {
+        "localItemsVerified": 7,
+        "unsupportedStateCount": 0,
+        "verification": "six-scenario-final-verification-20260924.json",
+        "platformVerified": true,
+        "platformItemsVerified": 7
+      },
+      "previousPlatformSummary": {
+        "latestVerification": "evidence-method-verification-20260924.json",
+        "latestPlatformJobs": [
+          177,
+          178
+        ],
+        "automaticVerdict": "SUCCESS",
+        "finalPlatformReportComplete": false
+      },
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/225",
+        "https://106.250.189.37:8443/test/report/228",
+        "https://106.250.189.37:8443/test/report/231"
+      ],
+      "platformItemsVerified": 7,
+      "completionScope": "Engine-observable conformance checks with independent emulator; all selected platform items and reports verified"
+    },
+    {
+      "case": "centerServer2micro_v1",
+      "designId": "SC32",
+      "title": "통합교통관제시스템-미시교통정보 플랫폼 연동 시험 : 미시교통정보 플랫폼 VDS 원시정보 이력 요청시험",
+      "testSystemRole": "UT 센터 / HTTP Server",
+      "sutRole": "미시교통정보 플랫폼 / HTTP Client",
+      "interface": "REST/JSON",
+      "descriptor": "centerServer2micro_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 58,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/58",
+      "registeredAt": "2026-09-24",
+      "platformJobId": 118,
+      "verifiedExchanges": 70,
+      "automaticVerdict": "SUCCESS",
+      "developmentVerification": "PASS",
+      "finalPlatformReportComplete": true,
+      "implementedItems": [
+        "test_request_vds",
+        "test_no_data_error_response",
+        "test_response_400",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "pendingItems": [
+        "smart_intersection",
+        "standard_field_constraint_mapping"
+      ],
+      "platformDescription": "통합교통관제시스템과 음영구간 미시교통정보 플랫폼의 연동 구간에서 미시교통정보 플랫폼이 통합교통관제시스템에 'ITSK-00143-3'에 정의된 정보 연계 방법으로 VDS 원시정보 이력을 요청하는지를 시험하는 시나리오\n\n* 연계 구간 : 통합교통관제시스템(송신) -> 음영구간 미시교통정보 플랫폼(수신)\n* 연계 방법 : ITSK-00143-3, 자율협력주행 통합교통관제시스템 - 제3부: 정보연계 규격\n* 정보 항목 : VDS 차로 원시정보 이력 (VDS_INFO)",
+      "methodProfile": "REST-EVIDENCE-002",
+      "methodItemsVerified": 7,
+      "latestVerification": "six-scenario-final-verification-20260924.json",
+      "latestPlatformJobs": [
+        226
+      ],
+      "provisionalResponseProfile": true,
+      "dataProfile": "REST-DATA-003",
+      "standardItems": [
+        "test_request_vds",
+        "test_no_data_error_response"
+      ],
+      "supplementaryItems": [
+        "test_response_400",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "localItemsVerified": 7,
+      "platformStandardItemsVerified": 2,
+      "standardEvidenceReview": "PASS",
+      "previousDataProfile": "REST-PROFILE-001",
+      "dataConstraintVerification": {
+        "profile": "REST-DATA-003",
+        "localVerified": true,
+        "platformVerified": false,
+        "artifact": "standard-fields-verification-20260924.json",
+        "platformPositivePathVerified": true
+      },
+      "evidenceReviewProfile": "REST-REVIEW-003",
+      "evidenceCorrelationVerification": {
+        "localVerified": true,
+        "reReviewedItems": 7,
+        "engineIntegrated": true,
+        "platformReexecuted": false,
+        "artifact": "evidence-correlation-verification-20260924.json"
+      },
+      "evidenceReviewIntegration": {
+        "profile": "REST-REVIEW-LINK-001",
+        "implemented": true,
+        "localItemsVerified": 7,
+        "platformVerified": false,
+        "verification": "review-integration-verification-20260924.json",
+        "optional": true
+      },
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "automaticStateVerification": {
+        "localItemsVerified": 7,
+        "unsupportedStateCount": 0,
+        "verification": "six-scenario-final-verification-20260924.json",
+        "platformVerified": true,
+        "platformItemsVerified": 7
+      },
+      "previousPlatformSummary": {
+        "latestVerification": "evidence-method-verification-20260924.json",
+        "latestPlatformJobs": [
+          179
+        ],
+        "automaticVerdict": "EVIDENCE_PENDING",
+        "finalPlatformReportComplete": false
+      },
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/222"
+      ],
+      "platformItemsVerified": 7,
+      "completionScope": "Engine-observable conformance checks with independent emulator; all selected platform items and reports verified"
+    },
+    {
+      "case": "centerClient2utic_v1",
+      "designId": "SC28",
+      "title": "통합교통관제시스템-UTIC 연동 시험 : UTIC 돌발정보 제공시험",
+      "testSystemRole": "UT 센터 / HTTP Client",
+      "sutRole": "UTIC / HTTP Server",
+      "interface": "REST/XML",
+      "descriptor": "centerClient2utic_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 59,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/59",
+      "registeredAt": "2026-09-24",
+      "platformJobId": 119,
+      "platformChannelId": 115,
+      "verifiedExchanges": 70,
+      "automaticVerdict": "SUCCESS",
+      "finalPlatformReportComplete": true,
+      "implementedItems": [
+        "test_provide_utic",
+        "test_invalid_request",
+        "test_no_data_error",
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "pendingItems": [
+        "production key/IP authentication",
+        "unresolved standard/API field mapping"
+      ],
+      "platformDescription": "통합교통관제시스템과 도시교통정보센터(UTIC)의 연동 구간에서 UTIC가 'ITSK-00143-3'에 정의된 정보 연계 방법으로 통합교통관제시스템에 돌발정보를 제공하는지를 시험하는 시나리오\n\n* 연계 구간 : UTIC(송신) -> 통합교통관제시스템(수신)\n* 연계 방법 : ITSK-00143-3, 자율협력주행 통합교통관제시스템 - 제3부: 정보연계 규격\n* 정보 항목 : UTIC 돌발정보 (UTIC_INC_INFO)",
+      "methodProfile": "REST-EVIDENCE-002",
+      "methodItemsVerified": 7,
+      "latestVerification": "six-scenario-final-verification-20260924.json",
+      "latestPlatformJobs": [
+        228,
+        231,
+        234
+      ],
+      "provisionalResponseProfile": true,
+      "dataProfile": "REST-DATA-003",
+      "standardItems": [
+        "test_provide_utic",
+        "test_invalid_request",
+        "test_no_data_error"
+      ],
+      "supplementaryItems": [
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "localItemsVerified": 7,
+      "platformStandardItemsVerified": 3,
+      "standardEvidenceReview": "PASS",
+      "previousDataProfile": "REST-PROFILE-001",
+      "dataConstraintVerification": {
+        "profile": "REST-DATA-003",
+        "localVerified": true,
+        "platformVerified": false,
+        "artifact": "standard-fields-verification-20260924.json",
+        "platformPositivePathVerified": true
+      },
+      "evidenceReviewProfile": "REST-REVIEW-003",
+      "evidenceCorrelationVerification": {
+        "localVerified": true,
+        "reReviewedItems": 7,
+        "engineIntegrated": true,
+        "platformReexecuted": false,
+        "artifact": "evidence-correlation-verification-20260924.json"
+      },
+      "evidenceReviewIntegration": {
+        "profile": "REST-REVIEW-LINK-001",
+        "implemented": true,
+        "localItemsVerified": 7,
+        "platformVerified": false,
+        "verification": "review-integration-verification-20260924.json",
+        "optional": true
+      },
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "automaticStateVerification": {
+        "localItemsVerified": 7,
+        "unsupportedStateCount": 0,
+        "verification": "six-scenario-final-verification-20260924.json",
+        "platformVerified": true,
+        "platformItemsVerified": 7
+      },
+      "previousPlatformSummary": {
+        "latestVerification": "evidence-method-verification-20260924.json",
+        "latestPlatformJobs": [
+          174,
+          175
+        ],
+        "automaticVerdict": "SUCCESS",
+        "finalPlatformReportComplete": false
+      },
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/224",
+        "https://106.250.189.37:8443/test/report/227",
+        "https://106.250.189.37:8443/test/report/230"
+      ],
+      "platformItemsVerified": 7,
+      "completionScope": "Engine-observable conformance checks with independent emulator; all selected platform items and reports verified"
+    },
+    {
+      "case": "microClient2center_smart_v1",
+      "designId": "SC11-SMT",
+      "title": "통합교통관제시스템-미시교통정보 플랫폼 연동 시험 : 통합교통관제시스템 스마트교차로 1분 교통정보 제공시험",
+      "testSystemRole": "미시교통정보 플랫폼 / HTTP Client",
+      "sutRole": "UT 센터 / HTTP Server",
+      "interface": "REST/JSON",
+      "descriptor": "microClient2center_smart_v1.tsb",
+      "platformRegistered": true,
+      "platformDescription": "통합교통관제시스템과 음영구간 미시교통정보 플랫폼의 연동 구간에서 통합교통관제시스템이 'ITSK-00143-3'에 정의된 정보 연계 방법과 정보 형식으로 스마트교차로 1분 교통정보를 제공하는지를 시험하는 시나리오\n\n* 연계 구간 : 통합교통관제시스템(송신) -> 음영구간 미시교통정보 플랫폼(수신)\n* 연계 방법 : ITSK-00143-3, 자율협력주행 통합교통관제시스템 - 제3부: 정보연계 규격\n* 정보 항목 : 스마트교차로 원시교통정보 (SMT_L_RAW_INFO)",
+      "methodProfile": "REST-EVIDENCE-002",
+      "dataAuthority": "ITSK-00143-3 2026 Ver 2.1 표 4-23",
+      "implementedItems": [
+        "test_normal_smart",
+        "test_invalid_request",
+        "test_no_data_error",
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "pendingItems": [
+        "production DTO alignment",
+        "one-minute update observation contract"
+      ],
+      "platformId": 60,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/60",
+      "registeredAt": "2026-09-24",
+      "methodItemsVerified": 7,
+      "latestPlatformJobs": [
+        230,
+        233,
+        236
+      ],
+      "verifiedExchanges": 70,
+      "automaticVerdict": "SUCCESS",
+      "developmentVerification": "PASS",
+      "finalPlatformReportComplete": true,
+      "latestVerification": "six-scenario-final-verification-20260924.json",
+      "fileBundleTitle": "scenario",
+      "perMessageDisplayVerified": true,
+      "reportUrls": [
+        "https://106.250.189.37:8443/test/report/162",
+        "https://106.250.189.37:8443/test/report/163"
+      ],
+      "dataProfile": "SMART-STANDARD-001",
+      "standardItems": [
+        "test_normal_smart",
+        "test_invalid_request",
+        "test_no_data_error"
+      ],
+      "supplementaryItems": [
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "localItemsVerified": 7,
+      "platformStandardItemsVerified": 3,
+      "standardEvidenceReview": "PASS",
+      "evidenceReviewProfile": "REST-REVIEW-003",
+      "evidenceCorrelationVerification": {
+        "localVerified": true,
+        "reReviewedItems": 7,
+        "engineIntegrated": true,
+        "platformReexecuted": false,
+        "artifact": "evidence-correlation-verification-20260924.json"
+      },
+      "evidenceReviewIntegration": {
+        "profile": "REST-REVIEW-LINK-001",
+        "implemented": true,
+        "localItemsVerified": 7,
+        "platformVerified": true,
+        "verification": "review-integration-verification-20260924.json",
+        "job": 208,
+        "reportUrl": "https://106.250.189.37:8443/test/report/204",
+        "selectedItemsVerified": 1,
+        "savedReportComplete": true,
+        "optional": true
+      },
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "automaticStateVerification": {
+        "localItemsVerified": 7,
+        "unsupportedStateCount": 0,
+        "verification": "six-scenario-final-verification-20260924.json",
+        "platformVerified": true,
+        "platformItemsVerified": 7
+      },
+      "previousPlatformSummary": {
+        "latestVerification": "evidence-method-verification-20260924.json",
+        "latestPlatformJobs": [
+          180,
+          187
+        ],
+        "automaticVerdict": "SUCCESS",
+        "finalPlatformReportComplete": false
+      },
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/226",
+        "https://106.250.189.37:8443/test/report/229",
+        "https://106.250.189.37:8443/test/report/232"
+      ],
+      "platformItemsVerified": 7,
+      "dataConstraintVerification": {
+        "profile": "SMART-STANDARD-001",
+        "platformPositivePathVerified": true
+      },
+      "completionScope": "Engine-observable conformance checks with independent emulator; all selected platform items and reports verified"
+    },
+    {
+      "case": "centerServer2micro_smart_v1",
+      "designId": "SC32-SMT",
+      "title": "통합교통관제시스템-미시교통정보 플랫폼 연동 시험 : 미시교통정보 플랫폼 스마트교차로 1분 교통정보 요청시험",
+      "testSystemRole": "UT 센터 / HTTP Server",
+      "sutRole": "미시교통정보 플랫폼 / HTTP Client",
+      "interface": "REST/JSON",
+      "descriptor": "centerServer2micro_smart_v1.tsb",
+      "platformRegistered": true,
+      "platformDescription": "통합교통관제시스템과 음영구간 미시교통정보 플랫폼의 연동 구간에서 미시교통정보 플랫폼이 통합교통관제시스템에 'ITSK-00143-3'에 정의된 정보 연계 방법과 정보 형식으로 스마트교차로 1분 교통정보를 요청하고 수신 정보를 처리하는지를 시험하는 시나리오\n\n* 연계 구간 : 통합교통관제시스템(송신) -> 음영구간 미시교통정보 플랫폼(수신)\n* 연계 방법 : ITSK-00143-3, 자율협력주행 통합교통관제시스템 - 제3부: 정보연계 규격\n* 정보 항목 : 스마트교차로 원시교통정보 (SMT_L_RAW_INFO)",
+      "methodProfile": "REST-EVIDENCE-002",
+      "dataAuthority": "ITSK-00143-3 2026 Ver 2.1 표 4-23",
+      "implementedItems": [
+        "test_request_smart",
+        "test_no_data_error_response",
+        "test_response_400",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "pendingItems": [
+        "production DTO alignment",
+        "one-minute update observation contract"
+      ],
+      "platformId": 61,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/61",
+      "registeredAt": "2026-09-24",
+      "methodItemsVerified": 7,
+      "latestPlatformJobs": [
+        227
+      ],
+      "verifiedExchanges": 70,
+      "automaticVerdict": "SUCCESS",
+      "developmentVerification": "PASS",
+      "finalPlatformReportComplete": true,
+      "latestVerification": "six-scenario-final-verification-20260924.json",
+      "fileBundleTitle": "scenario",
+      "perMessageDisplayVerified": true,
+      "dataProfile": "SMART-STANDARD-001",
+      "standardItems": [
+        "test_request_smart",
+        "test_no_data_error_response"
+      ],
+      "supplementaryItems": [
+        "test_response_400",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "localItemsVerified": 7,
+      "platformStandardItemsVerified": 2,
+      "standardEvidenceReview": "PASS",
+      "evidenceReviewProfile": "REST-REVIEW-003",
+      "evidenceCorrelationVerification": {
+        "localVerified": true,
+        "reReviewedItems": 7,
+        "engineIntegrated": true,
+        "platformReexecuted": false,
+        "artifact": "evidence-correlation-verification-20260924.json"
+      },
+      "evidenceReviewIntegration": {
+        "profile": "REST-REVIEW-LINK-001",
+        "implemented": true,
+        "localItemsVerified": 7,
+        "platformVerified": true,
+        "verification": "review-integration-verification-20260924.json",
+        "job": 206,
+        "reportUrl": "https://106.250.189.37:8443/test/report/202",
+        "selectedItemsVerified": 2,
+        "savedReportComplete": true,
+        "optional": true
+      },
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "automaticStateVerification": {
+        "localItemsVerified": 7,
+        "unsupportedStateCount": 0,
+        "verification": "six-scenario-final-verification-20260924.json",
+        "platformVerified": true,
+        "platformItemsVerified": 7
+      },
+      "previousPlatformSummary": {
+        "latestVerification": "evidence-method-verification-20260924.json",
+        "latestPlatformJobs": [
+          188
+        ],
+        "automaticVerdict": "EVIDENCE_PENDING",
+        "finalPlatformReportComplete": false
+      },
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/223"
+      ],
+      "platformItemsVerified": 7,
+      "dataConstraintVerification": {
+        "profile": "SMART-STANDARD-001",
+        "platformPositivePathVerified": true
+      },
+      "completionScope": "Engine-observable conformance checks with independent emulator; all selected platform items and reports verified"
+    },
+    {
+      "case": "nticServer2center_v1",
+      "designId": "SC08",
+      "title": "통합교통관제시스템-NTIC 연동 시험 : 통합교통관제시스템 차량검지정보 요청시험",
+      "classification": "C2C",
+      "testSystemRole": "NTIC / HTTP Server",
+      "sutRole": "통합교통관제시스템 / HTTP Client",
+      "interface": "REST/JSON",
+      "descriptor": "nticServer2center_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 62,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/62",
+      "platformDescription": "통합교통관제시스템과 국가교통정보센터(NTIC)의 연동 구간에서 통합교통관제시스템이 'ITSK-00143-3'에 정의된 정보 연계 방법으로 차량검지정보를 요청하는지를 시험하는 시나리오\n\n* 연계 구간 : 국가교통정보센터(NTIC)(송신) -> 통합교통관제시스템(수신)\n* 연계 방법 : ITSK-00143-3, 자율협력주행 통합교통관제시스템 - 제3부: 정보연계 규격\n* 정보 항목 : NTIC 차량검지정보 (NTIC_VDS_INFO)",
+      "defaultRepetitions": 10,
+      "registeredAt": "2026-09-24",
+      "dataProfile": "NTIC-STANDARD-001",
+      "methodProfile": "REST-EVIDENCE-002",
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "implementedItems": [
+        "test_request_ntic",
+        "test_no_data_error_response",
+        "test_response_400",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "standardItems": [
+        "test_request_ntic",
+        "test_no_data_error_response"
+      ],
+      "supplementaryItems": [
+        "test_response_400",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "localItemsVerified": 7,
+      "platformItemsVerified": 7,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "verifiedExchanges": 70,
+      "latestVerification": "ntic-verification-20260924.json",
+      "latestPlatformJobs": [
+        237
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/233"
+      ],
+      "provisionalResponseProfile": true,
+      "pendingItems": [
+        "production_json_wrapper_confirmation",
+        "standard_api_field_conflicts",
+        "production_http_status_mapping",
+        "update_period_observation"
+      ],
+      "completionScope": "Adopted standard-first emulator profile and engine automatic-observation scope; production API equivalence not claimed"
+    },
+    {
+      "case": "centerClient2ntic_v1",
+      "designId": "SC29",
+      "title": "통합교통관제시스템-NTIC 연동 시험 : NTIC 차량검지정보 제공시험",
+      "classification": "C2C",
+      "testSystemRole": "통합교통관제시스템 / HTTP Client",
+      "sutRole": "NTIC / HTTP Server",
+      "interface": "REST/JSON",
+      "descriptor": "centerClient2ntic_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 63,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/63",
+      "platformDescription": "통합교통관제시스템과 국가교통정보센터(NTIC)의 연동 구간에서 국가교통정보센터(NTIC)가 'ITSK-00143-3'에 정의된 정보 연계 방법으로 차량검지정보를 제공하는지를 시험하는 시나리오\n\n* 연계 구간 : 국가교통정보센터(NTIC)(송신) -> 통합교통관제시스템(수신)\n* 연계 방법 : ITSK-00143-3, 자율협력주행 통합교통관제시스템 - 제3부: 정보연계 규격\n* 정보 항목 : NTIC 차량검지정보 (NTIC_VDS_INFO)",
+      "defaultRepetitions": 10,
+      "registeredAt": "2026-09-24",
+      "dataProfile": "NTIC-STANDARD-001",
+      "methodProfile": "REST-EVIDENCE-002",
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "implementedItems": [
+        "test_normal_ntic",
+        "test_invalid_request",
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data_error",
+        "test_no_data"
+      ],
+      "standardItems": [
+        "test_normal_ntic",
+        "test_invalid_request",
+        "test_no_data_error"
+      ],
+      "supplementaryItems": [
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "localItemsVerified": 7,
+      "platformItemsVerified": 7,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "verifiedExchanges": 70,
+      "latestVerification": "ntic-verification-20260924.json",
+      "latestPlatformJobs": [
+        238,
+        239,
+        240
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/234",
+        "https://106.250.189.37:8443/test/report/235",
+        "https://106.250.189.37:8443/test/report/236"
+      ],
+      "provisionalResponseProfile": true,
+      "pendingItems": [
+        "production_json_wrapper_confirmation",
+        "standard_api_field_conflicts",
+        "production_http_status_mapping",
+        "update_period_observation"
+      ],
+      "completionScope": "Adopted standard-first emulator profile and engine automatic-observation scope; production API equivalence not claimed"
+    },
+    {
+      "case": "microServer2center_shadow_v1",
+      "designId": "SC10",
+      "title": "통합교통관제시스템-미시교통정보 플랫폼 연동 시험 : 통합교통관제시스템 음영구간 미시교통정보 요청시험",
+      "classification": "C2C",
+      "testSystemRole": "음영구간 미시교통정보 플랫폼 / HTTP Server",
+      "sutRole": "통합교통관제시스템 / HTTP Client",
+      "interface": "REST/JSON",
+      "information": "SHAD_TRAF_INFO",
+      "descriptor": "microServer2center_shadow_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 64,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/64",
+      "platformDescription": "통합교통관제시스템이 음영구간 미시교통정보 플랫폼에 정보를 요청하는 기능을 확인한다.\n\n연계 구간: 음영구간 미시교통정보 플랫폼 – 통합교통관제시스템 (C2C)\n연계 방법: HTTP REST API / JSON\n연계 정보: 음영구간 미시교통정보 (SHAD_TRAF_INFO)",
+      "defaultRepetitions": 10,
+      "registeredAt": "2026-09-24",
+      "dataProfile": "SHADOW-STANDARD-001",
+      "methodProfile": "REST-EVIDENCE-002",
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "implementedItems": [
+        "test_request_shadow",
+        "test_no_data_error_response",
+        "test_response_422",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "standardItems": [
+        "test_request_shadow",
+        "test_no_data_error_response"
+      ],
+      "supplementaryItems": [
+        "test_response_422",
+        "test_response_404",
+        "test_response_500",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "localItemsVerified": 7,
+      "platformItemsVerified": 7,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "verifiedExchanges": 70,
+      "latestVerification": "shadow-verification-20260924.json",
+      "latestPlatformJobs": [
+        242
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/238"
+      ],
+      "provisionalResponseProfile": true,
+      "pendingItems": [
+        "normal_response_envelope_confirmation",
+        "standard_example_field_conflicts",
+        "production_authentication_and_absence_error",
+        "cursor_filter_business_semantics",
+        "one_minute_link_period"
+      ],
+      "completionScope": "채택한 표준 우선 개발 기준과 에뮬레이터 대상의 엔진 자동 관측 범위"
+    },
+    {
+      "case": "centerClient2micro_shadow_v1",
+      "designId": "SC31",
+      "title": "통합교통관제시스템-미시교통정보 플랫폼 연동 시험 : 미시교통정보 플랫폼 음영구간 미시교통정보 제공시험",
+      "classification": "C2C",
+      "testSystemRole": "통합교통관제시스템 / HTTP Client",
+      "sutRole": "음영구간 미시교통정보 플랫폼 / HTTP Server",
+      "interface": "REST/JSON",
+      "information": "SHAD_TRAF_INFO",
+      "descriptor": "centerClient2micro_shadow_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 65,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/65",
+      "platformDescription": "통합교통관제시스템의 요청에 대해 음영구간 미시교통정보 플랫폼이 정보를 제공하는 기능을 확인한다.\n\n연계 구간: 음영구간 미시교통정보 플랫폼 – 통합교통관제시스템 (C2C)\n연계 방법: HTTP REST API / JSON\n연계 정보: 음영구간 미시교통정보 (SHAD_TRAF_INFO)",
+      "defaultRepetitions": 10,
+      "registeredAt": "2026-09-24",
+      "dataProfile": "SHADOW-STANDARD-001",
+      "methodProfile": "REST-EVIDENCE-002",
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "implementedItems": [
+        "test_normal_shadow",
+        "test_invalid_request",
+        "test_missing_path",
+        "test_no_data_error",
+        "test_no_data"
+      ],
+      "standardItems": [
+        "test_normal_shadow",
+        "test_invalid_request",
+        "test_no_data_error"
+      ],
+      "supplementaryItems": [
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "localItemsVerified": 5,
+      "platformItemsVerified": 5,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "verifiedExchanges": 50,
+      "latestVerification": "shadow-verification-20260924.json",
+      "latestPlatformJobs": [
+        244,
+        245,
+        246
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/240",
+        "https://106.250.189.37:8443/test/report/241",
+        "https://106.250.189.37:8443/test/report/242"
+      ],
+      "provisionalResponseProfile": true,
+      "pendingItems": [
+        "normal_response_envelope_confirmation",
+        "standard_example_field_conflicts",
+        "production_authentication_and_absence_error",
+        "cursor_filter_business_semantics",
+        "one_minute_link_period"
+      ],
+      "completionScope": "채택한 표준 우선 개발 기준과 에뮬레이터 대상의 엔진 자동 관측 범위"
+    },
+    {
+      "case": "weatherServer2center_v1",
+      "designId": "SC09",
+      "title": "통합교통관제시스템-기상청 연동 시험 : 통합교통관제시스템 기상정보 요청시험",
+      "classification": "C2C",
+      "testSystemRole": "기상청 / HTTP Server",
+      "sutRole": "통합교통관제시스템 / HTTP Client",
+      "interface": "REST/JSON",
+      "information": "WTRT_INFO",
+      "descriptor": "weatherServer2center_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 66,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/66",
+      "platformDescription": "통합교통관제시스템이 기상청에 기상정보를 요청하는 기능을 확인한다.\n\n연계 구간: 기상청 – 통합교통관제시스템 (C2C)\n연계 방법: HTTP REST API / JSON\n연계 정보: 기상정보 (WTRT_INFO)",
+      "defaultRepetitions": 10,
+      "registeredAt": "2026-09-25",
+      "dataProfile": "WEATHER-STANDARD-001",
+      "methodProfile": "REST-EVIDENCE-002",
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "implementedItems": [
+        "test_request_weather",
+        "test_no_data_error_response",
+        "test_response_parameter_error",
+        "test_response_service_error",
+        "test_response_server_error",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "standardItems": [
+        "test_request_weather",
+        "test_no_data_error_response"
+      ],
+      "supplementaryItems": [
+        "test_response_parameter_error",
+        "test_response_service_error",
+        "test_response_server_error",
+        "test_empty_response",
+        "test_malformed_response"
+      ],
+      "localItemsVerified": 7,
+      "platformItemsVerified": 7,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "verifiedExchanges": 70,
+      "latestVerification": "weather-verification-20260925.json",
+      "latestPlatformJobs": [
+        250
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/246"
+      ],
+      "provisionalResponseProfile": true,
+      "pendingItems": [
+        "production_operation_selection",
+        "standard_example_field_and_semantic_conflicts",
+        "production_json_gateway_error_envelope",
+        "http_business_error_mapping",
+        "grid_availability_and_hourly_period"
+      ],
+      "completionScope": "데이터는 표준, 호출은 명세를 적용한 에뮬레이터 대상의 엔진 자동 관측 범위"
+    },
+    {
+      "case": "centerClient2weather_v1",
+      "designId": "SC30",
+      "title": "통합교통관제시스템-기상청 연동 시험 : 기상청 기상정보 제공시험",
+      "classification": "C2C",
+      "testSystemRole": "통합교통관제시스템 / HTTP Client",
+      "sutRole": "기상청 / HTTP Server",
+      "interface": "REST/JSON",
+      "information": "WTRT_INFO",
+      "descriptor": "centerClient2weather_v1.tsb",
+      "platformRegistered": true,
+      "platformId": 67,
+      "platformUrl": "https://106.250.189.37:8443/test/scenario/67",
+      "platformDescription": "통합교통관제시스템의 요청에 대해 기상청이 기상정보를 제공하는 기능을 확인한다.\n\n연계 구간: 기상청 – 통합교통관제시스템 (C2C)\n연계 방법: HTTP REST API / JSON\n연계 정보: 기상정보 (WTRT_INFO)",
+      "defaultRepetitions": 10,
+      "registeredAt": "2026-09-25",
+      "dataProfile": "WEATHER-STANDARD-001",
+      "methodProfile": "REST-EVIDENCE-002",
+      "assessmentProfile": "REST-AUTO-001",
+      "assessmentScope": "ENGINE_OBSERVABLE",
+      "postRunEvidenceRequired": false,
+      "implementedItems": [
+        "test_normal_weather",
+        "test_invalid_request",
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data_error",
+        "test_no_data"
+      ],
+      "standardItems": [
+        "test_normal_weather",
+        "test_invalid_request",
+        "test_no_data_error"
+      ],
+      "supplementaryItems": [
+        "test_missing_credential",
+        "test_wrong_credential",
+        "test_missing_path",
+        "test_no_data"
+      ],
+      "localItemsVerified": 7,
+      "platformItemsVerified": 7,
+      "finalPlatformReportComplete": true,
+      "automaticVerdict": "SUCCESS",
+      "verifiedExchanges": 70,
+      "latestVerification": "weather-verification-20260925.json",
+      "latestPlatformJobs": [
+        251,
+        252,
+        253
+      ],
+      "latestPlatformReports": [
+        "https://106.250.189.37:8443/test/report/247",
+        "https://106.250.189.37:8443/test/report/248",
+        "https://106.250.189.37:8443/test/report/249"
+      ],
+      "provisionalResponseProfile": true,
+      "pendingItems": [
+        "production_operation_selection",
+        "standard_example_field_and_semantic_conflicts",
+        "production_json_gateway_error_envelope",
+        "http_business_error_mapping",
+        "grid_availability_and_hourly_period"
+      ],
+      "completionScope": "데이터는 표준, 호출은 명세를 적용한 에뮬레이터 대상의 엔진 자동 관측 범위"
+    }
+  ]
+}

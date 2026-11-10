@@ -1,0 +1,8 @@
+message set definition
+{
+	include GitsnOpenApiDef;
+	typedef struct GitsnOpenApiTimer
+	{
+		uint32 id; // is key
+	} GitsnOpenApiTimer; // with api dump, compare
+}

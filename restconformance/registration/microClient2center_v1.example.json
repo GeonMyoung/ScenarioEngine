@@ -1,0 +1,21 @@
+{
+  "sut_base_url": "http://127.0.0.1:55311",
+  "bearer_token": "vds-development-token",
+  "repetitions": 10,
+  "connect_timeout_s": 5,
+  "request_timeout_s": 30,
+  "test_normal_vds": true,
+  "test_invalid_request": false,
+  "test_missing_credential": false,
+  "test_wrong_credential": false,
+  "test_missing_path": false,
+  "test_no_data": false,
+  "bad_request_status": 400,
+  "unauthorized_status": 401,
+  "no_data_status": 200,
+  "test_no_data_error": false,
+  "no_data_error_status": 404,
+  "confirm_data_absent": false,
+  "evidence_directory": "",
+  "evidence_wait_s": 30
+}

@@ -1,0 +1,8 @@
+{
+  "sourceRepository": "GeonMyoung/Prj22Agent",
+  "inspectedHead": "9c12d892e527fca1ef693a2ee230fdb76792be0a",
+  "sourcePath": "C:\\Implement\\prj22\\agent\\tools\\easy-launcher\\peers\\mqtt_transport.py",
+  "sourceSha256": "69a76e806ff9bb404d9594dec0aa9479baef13d014ae27ec6325beaa3f956169",
+  "destination": "runtime/mqtt_transport.py",
+  "changes": "See README; local adaptation preserves source project."
+}

@@ -1,0 +1,54 @@
+{
+  "id": "BINARY-SIGNAL-001",
+  "dataStandard": "ITSK-00143-3 표 4-24~4-26",
+  "method": "ITSK-00143-4 제4장 4.1.1 / SC14는 양측 추가 수신 설계",
+  "designSource": {
+    "path": "C:\\Implement\\police-test-platform\\scenarioengine자료\\2026\\개발표준\\[경6-이지트래픽] 05. 인터페이스 설계서_(자율주행기술개발혁신사업)_20260313.hwp",
+    "sha256": "f4b703302a3122bfe433f664d282df9bdc37da47bb278a87f5393e9b435a4054"
+  },
+  "messageIds": [
+    68,
+    69,
+    70
+  ],
+  "recordBytes": {
+    "status": 386,
+    "tod": 42
+  },
+  "frame": {
+    "byteOrder": "big",
+    "headerBytes": 5,
+    "lrcBytes": 1,
+    "ackBytes": 5
+  },
+  "projectDefaults": {
+    "lrc": "xor8",
+    "lrcAlternative": "sum8 twos complement",
+    "ackSequence": "echo",
+    "ackAlternative": "fixed1",
+    "encoding": "UTF-8",
+    "encodingAlternative": "CP949",
+    "padding": "NUL",
+    "integerInterpretation": "unsigned",
+    "fragmentation": "Start(0) + End(1), two frames",
+    "sequence": "per-frame wrap 0..255, reset per connection",
+    "heartbeatBytes": 6,
+    "heartbeatAck": true,
+    "heartbeatPeriodMs": 60000,
+    "timingToleranceMs": 1000
+  },
+  "limitations": [
+    "문서 미정 LRC 계산·ACK SeqNo·문자 인코딩·부호·분할 운용의 개발 기준",
+    "상태 LC_NO 표준 1바이트와 설계서 4바이트 충돌",
+    "별도 정보요청 전문 없이 연결·변경 사건을 자극으로 채택",
+    "TOD Heartbeat의 구체적 형태·ACK 규칙 미정",
+    "원천 변경 시각·대상 내부 처리 로그·실장비 상호운용 미관측"
+  ],
+  "sessionPolicy": "BINARY-SESSION-001",
+  "connectionScope": "one TCP connection per selected test item",
+  "exchangeInitiation": "provider push; no separate information-request frame defined for messages 67..72",
+  "repeatCount": "repetitions per item; heartbeat uses heartbeat_samples; preparation and fragment repair are not extra completed exchanges",
+  "sequenceScope": "continuous across rounds within a session, modulo 256",
+  "changePreparation": "one baseline exchange before N changing information exchanges",
+  "fragmentRejectionRecovery": "bad_sequence supplementary test: NACK for invalid End, corrected End at expected sequence, ACK, then next round on the same connection; adopted test procedure"
+}

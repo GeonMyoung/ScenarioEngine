@@ -1,0 +1,21 @@
+message set definition
+{
+	include GitsnOpenApiDef;
+	typedef struct GitsnOpenApiArg
+	{
+		Dz1SockAddr				*listen_addr;
+
+		str						 servant_name_u8;
+
+		GitsnOpenApiCallback	 http_cb;
+		void					*http_cb_ptr;
+
+		GitsnOpenApiException	 exceptionProc;
+		void					*exceptionArg;
+
+		uint32					 server_idle_timeout_ms;	// is notarg
+		bool					 advertise_keep_alive;	// is notarg
+		GitsnOpenApiConnectionCallback connection_cb;		// is notarg
+		void					*connection_cb_arg;		// is notarg
+	} GitsnOpenApiArg;
+}

@@ -1,0 +1,22 @@
+{
+  "id": "REST-REVIEW-003",
+  "methodProfile": "REST-EVIDENCE-002",
+  "scope": "Exact evidence values and per-item correlation for the six current REST scenarios",
+  "decimalParsing": "Decimal from JSON tokens; no intermediate binary float",
+  "valueComparison": "Boolean, number, string and null are distinct; equal numeric spellings are equivalent",
+  "recordComparison": "Top-level record order is ignored; multiplicity and nested array order are preserved",
+  "reject": [
+    "duplicate JSON keys or nonfinite numbers",
+    "unknown case, item, role, schema or data profile",
+    "item/validation/expected-status mismatch",
+    "missing, duplicate, mixed-run or misordered evidence",
+    "different values, types or record counts between preparation, response and processing",
+    "automatic failure, stop or not-run promoted to success",
+    "schema-3 evidence presented as schema-2"
+  ],
+  "preserveAutomaticVerdict": true,
+  "standardCoverageForSchema2": null,
+  "engineIntegrationImplemented": true,
+  "implementationChoice": "The evidence adapter format and comparisons are project implementation rules, not additional normative test items",
+  "integrationProfile": "REST-REVIEW-LINK-001"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "REST-DATA-003",
+  "source": "ITSK-00143-3, 2026 Ver 2.1, tables 4-16 and 4-22",
+  "sourceSha256": "93d78241b4c6a49727f8bab5133ad6df5e8d4becaedae6f115706cc4cd6a6964",
+  "cases": ["uticServer2center_v1", "centerClient2utic_v1", "microClient2center_v1", "centerServer2micro_v1"],
+  "methodProfile": "REST-EVIDENCE-002",
+  "transportAndErrorProfile": "REST-PROFILE-001",
+  "stringLengthInterpretation": "Unicode code points; not UTF-8 bytes or UTF-16 code units",
+  "numberInterpretation": "Exact decimal NUMBER(p,s), without rounding. Trailing zeroes and equivalent exponent notation do not change the value.",
+  "additionalBusinessRanges": false,
+  "vds": {
+    "required": ["collectDate", "stnId", "laneNo", "vol", "spd", "occ", "errCode", "linkId", "vdsId", "stnLocation"],
+    "optional": ["volS", "volM", "volL"],
+    "timestamp": {"collectDate": "YYYYMMDDhhmmss; valid calendar date and clock time"},
+    "stringMaximum": {"stnId": 12, "linkId": 12, "vdsId": 12, "stnLocation": 50},
+    "numbers": {"laneNo": [1,0], "errCode": [1,0], "vol": [7,0], "spd": [5,2], "occ": [5,2], "volS": [7,0], "volM": [7,0], "volL": [7,0]},
+    "optionalWhenPresent": "Must have numeric type and satisfy precision/scale. Null and string coercion are not allowed."
+  },
+  "utic": {
+    "envelope": "Retain adopted UTIC API result/record XML envelope and field spelling",
+    "coordinateNumbers": {"locationDataX": [15,9], "locationDataY": [15,9]},
+    "optionalStringMaximum": {"sourceCode": 5, "locationTypeCd": 5, "locationData": 3000},
+    "nonemptyLocationTypeCodes": ["C0101", "C0102", "C1013"],
+    "locationTypeAuthority": "Literal table 4-16 values; C1013 is not silently corrected to C0103",
+    "optionalAbsence": "sourceCode is O; locationTypeCd/locationData have M/O '-'. Do not require their presence or invent geometry syntax.",
+    "retainedChecks": "Required fields, required string lengths, dates and existing enumerated codes"
+  },
+  "limits": ["Does not implement collection/update period assessment", "Does not resolve remaining standard/API envelope differences", "Does not repair the separate evidence-review comparator or integrate review into the engine"]
+}

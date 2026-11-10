@@ -1,0 +1,203 @@
+{
+  "messageId": 18,
+  "value": {
+    "timeStamp": 302281,
+    "msgIssueRevision": 0,
+    "layerType": "intersectionData",
+    "layerID": 302,
+    "intersections": [
+      {
+        "name": "월드아파트사거리",
+        "id": {
+          "region": 32992,
+          "id": 302
+        },
+        "revision": 0,
+        "refPoint": {
+          "lat": 373562586,
+          "long": 1267293640,
+          "elevation": 273
+        },
+        "speedLimits": [
+          {
+            "type": 5,
+            "speed": 50
+          }
+        ],
+        "laneSet": [
+          {
+            "laneID": 1,
+            "name": "A222BF785060",
+            "nodeList": {
+              "nodes": [
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373560100,
+                      "lon": 1267292745
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373555997,
+                      "lon": 1267288802
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373550002,
+                      "lon": 1267283025
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373549296,
+                      "lon": 1267282349
+                    }
+                  }
+                }
+              ]
+            },
+            "laneAttributes": {
+              "directionalUse": "10",
+              "sharedWith": "0001110000",
+              "laneType": {
+                "vehicle": "00000000"
+              }
+            },
+            "connectsTo": [
+              {
+                "connectingLane": {
+                  "lane": 47,
+                  "maneuver": "100000000000"
+                }
+              },
+              {
+                "connectingLane": {
+                  "lane": 67,
+                  "maneuver": "001000000000"
+                }
+              }
+            ]
+          },
+          {
+            "laneID": 2,
+            "name": "A222BF785059",
+            "nodeList": {
+              "nodes": [
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373560281,
+                      "lon": 1267292439
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373556181,
+                      "lon": 1267288498
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373550187,
+                      "lon": 1267282725
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373549480,
+                      "lon": 1267282049
+                    }
+                  }
+                }
+              ]
+            },
+            "laneAttributes": {
+              "directionalUse": "10",
+              "sharedWith": "0001110000",
+              "laneType": {
+                "vehicle": "00000000"
+              }
+            },
+            "connectsTo": [
+              {
+                "connectingLane": {
+                  "lane": 46,
+                  "maneuver": "100000000000"
+                }
+              }
+            ]
+          },
+          {
+            "laneID": 3,
+            "name": "A222BF785058",
+            "nodeList": {
+              "nodes": [
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373560450,
+                      "lon": 1267292163
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373556350,
+                      "lon": 1267288217
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373550360,
+                      "lon": 1267282443
+                    }
+                  }
+                },
+                {
+                  "delta": {
+                    "node-LatLon": {
+                      "lat": 373549654,
+                      "lon": 1267281761
+                    }
+                  }
+                }
+              ]
+            },
+            "laneAttributes": {
+              "directionalUse": "10",
+              "sharedWith": "0001110000",
+              "laneType": {
+                "vehicle": "00000000"
+              }
+            },
+            "connectsTo": [
+              {
+                "connectingLane": {
+                  "lane": 45,
+                  "maneuver": "100000000000"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

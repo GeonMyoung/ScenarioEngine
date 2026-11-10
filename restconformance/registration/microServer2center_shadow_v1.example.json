@@ -1,0 +1,20 @@
+{
+  "since": "",
+  "node_link": "",
+  "latest": "",
+  "repetitions": 10,
+  "request_timeout_s": 30,
+  "evidence_directory": "",
+  "evidence_wait_s": 30,
+  "no_data_error_status": 404,
+  "bind_ip": "127.0.0.1",
+  "local_port": 55310,
+  "response_json_file": "",
+  "test_request_shadow": true,
+  "test_no_data_error_response": false,
+  "test_response_422": false,
+  "test_response_404": false,
+  "test_response_500": false,
+  "test_empty_response": false,
+  "test_malformed_response": false
+}

@@ -1,0 +1,6 @@
+{
+  "base_url":"http://127.0.0.1:55332",
+  "bearer_token":"vds-development-token",
+  "repetitions":10,
+  "request_timeout_s":30
+}

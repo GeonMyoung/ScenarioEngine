@@ -1,0 +1,209 @@
+{
+  "referenceRepository": "C:/Implement/prj22/agent",
+  "referenceHead": "0a09363755078abbcf00c9519ea7244823487a0b",
+  "referenceWorkingTreeHasChanges": true,
+  "scope": "HTTP server only; client/libcurl implementation is not imported",
+  "localChanges": [
+    "SDK relative include paths adapted to the integrated repository",
+    "Current SDK own_sock lifetime check under its lock; shared SDK unchanged",
+    "UTF-8 BOM added to servant and DefUtil sources",
+    "Query components decoded after splitting; empty query preserved for provider validation",
+    "Separate asynchronous response message route avoids retaining a synchronous reply signal and permits responsive STOP"
+  ],
+  "files": [
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\include\\GitsnOpenApi.h",
+      "destination": "include\\GitsnOpenApi.h",
+      "sha256": "bfa97f867dd9e88f7293ad6a2d561d6851425297c0b181dc295804559fb7e799"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\include\\GitsnOpenApiDef.h",
+      "destination": "include\\GitsnOpenApiDef.h",
+      "sha256": "afa81379ce8a968a68a58758b7e853e11d4f256f5ff78f127f5e7029ef10f40a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\include\\GitsnOpenApiDef.tdc",
+      "destination": "include\\GitsnOpenApiDef.tdc",
+      "sha256": "e709d057040a697d7eaa29291abc5ea57877a13824b2a385f3f4277a979a46a0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\include\\GitsnOpenApiDef.tdo",
+      "destination": "include\\GitsnOpenApiDef.tdo",
+      "sha256": "b53b0e3ee417e7c62401c34f531ee4df78976d87092c7fc4de661311f6aee38a"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi.c",
+      "destination": "src\\GitsnOpenApi.c",
+      "sha256": "c5167ce5ba2e4f9e6ae3f3b34d5e61f6de4dd691ca2a1387e6a2b0e1c46109dd"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi.h",
+      "destination": "src\\GitsnOpenApi.h",
+      "sha256": "9574ffc53da9467d2f57fa1610bc8e4a4f63cf99c8ad5e0afbc5c923d44b1d64"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiArg.c",
+      "destination": "src\\GitsnOpenApiArg.c",
+      "sha256": "a82625bc8a18ccc8fd7787eba345044d75573b8d6029fcd98e848cc92dd7a130"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiArg.h",
+      "destination": "src\\GitsnOpenApiArg.h",
+      "sha256": "5657db64a84e5566126a3bad2f8dd6454f03d11b026eab73b444af2b6665ada3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiArg.tdc",
+      "destination": "src\\GitsnOpenApiArg.tdc",
+      "sha256": "34296ac6f76567da8d6d0e6cb158b23d7ccd77d983d9ae773c3ca491ae8af080"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiArg.tdo",
+      "destination": "src\\GitsnOpenApiArg.tdo",
+      "sha256": "0178d80899555a783e5a6adefc027c150bc9940ca1af02fa94a5eeec44641e3b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiDef.c",
+      "destination": "src\\GitsnOpenApiDef.c",
+      "sha256": "031b9793f9c11317b5676aeeb0f29ee461d6345fc7a252330db4f7e27998992b"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiDefUtil.c",
+      "destination": "src\\GitsnOpenApiDefUtil.c",
+      "sha256": "d5c17005b51d47a1be2963b0a556c1581cacd6125ef54b8b15d54213f856d317"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiEnv.c",
+      "destination": "src\\GitsnOpenApiEnv.c",
+      "sha256": "7462055e592b6a12b628222a93b20cf3e2e8fc3be3d44a7fb205edcc6bc95a49"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiEnv.h",
+      "destination": "src\\GitsnOpenApiEnv.h",
+      "sha256": "3a0457af16d504212c218756903bf698f1f66fda435c430847546f4ce8056f13"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiEnv.tdc",
+      "destination": "src\\GitsnOpenApiEnv.tdc",
+      "sha256": "173a0beb2e56899d3470cb5e7eb597bc6d16c9b2193e593fec0e78c41e2c49a3"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiEnv.tdo",
+      "destination": "src\\GitsnOpenApiEnv.tdo",
+      "sha256": "1b0579ef4b0e951a7639ee91e4577a1b9e3a5ede806f346fdd955b6deec6f666"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiMsg.h",
+      "destination": "src\\GitsnOpenApiMsg.h",
+      "sha256": "e1e6203d36fab3ea9eec539252d693895a753e748656406d09f24436ab307776"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiMsgs.c",
+      "destination": "src\\GitsnOpenApiMsgs.c",
+      "sha256": "6aba36cc7f84f8105338297358de95a2ee1990b6723d96eadd16b83767eeaf96"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiMsgs.h",
+      "destination": "src\\GitsnOpenApiMsgs.h",
+      "sha256": "e048eee3752ccfb746199d552970dae6b34fdcdec63d9f12a4444c55f0f9e547"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiMsgs.tdc",
+      "destination": "src\\GitsnOpenApiMsgs.tdc",
+      "sha256": "ba264668ecedbe1cbd54c28e24df94350969c6a3bddad86e65b98744dbed1a40"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiMsgs.tdo",
+      "destination": "src\\GitsnOpenApiMsgs.tdo",
+      "sha256": "6a0a25cfe43e5a5362fb7735bb9f8ecbf5f2a3ce18654757c29566be3cb5b7d8"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiTimer.c",
+      "destination": "src\\GitsnOpenApiTimer.c",
+      "sha256": "15807498c586b62f1ac532fa1eee3eff0765d622b8d3cb4d87804df0daf00bd0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiTimer.h",
+      "destination": "src\\GitsnOpenApiTimer.h",
+      "sha256": "9289764137c797d62faa38dde835238e6ebd96a4a000417edfe2421e59300b52"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiTimer.tdc",
+      "destination": "src\\GitsnOpenApiTimer.tdc",
+      "sha256": "9353f1b41f7ebc975ab5da1b4c6459d422b93ea9b5157331bff4e2226dcf62b9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiTimer.tdo",
+      "destination": "src\\GitsnOpenApiTimer.tdo",
+      "sha256": "e7201fb4145fb1a0018826ab03e034d58f3357ee4c522ef92b668508c6aeec6f"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiTimerUtil.c",
+      "destination": "src\\GitsnOpenApiTimerUtil.c",
+      "sha256": "39a804b43688de799c8ab90f34fad3b2c38dd5268b077119b05a2e355b16a424"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApiTimerUtil.h",
+      "destination": "src\\GitsnOpenApiTimerUtil.h",
+      "sha256": "a9c2a5aa499b24ba63f1f3a2599bcee11011de401da054f60d5daaed722547dd"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi_acceptor.c",
+      "destination": "src\\GitsnOpenApi_acceptor.c",
+      "sha256": "36305707d352c8d6a1df530b3891e6c4afcce58606492a6eb2c297ccb6aa5230"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi_acceptor.h",
+      "destination": "src\\GitsnOpenApi_acceptor.h",
+      "sha256": "4b46a4f3c3a42775ff0e35942217ef6597edc086f7bd64cba13dd05e8ea83ef9"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi_servant.c",
+      "destination": "src\\GitsnOpenApi_servant.c",
+      "sha256": "481d48d4053b1241078cd4c44ff69a9134bf03decc2d827c897ce339a7de74a0"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi_servant.h",
+      "destination": "src\\GitsnOpenApi_servant.h",
+      "sha256": "9ef36e6227c2c0761ca6348002b2c887a0f549e05c701cb6b482dd81dfb84079"
+    },
+    {
+      "source": "C:\\Implement\\prj22\\agent\\GitsnOpenApi\\src\\GitsnOpenApi_transport.c",
+      "destination": "src\\GitsnOpenApi_transport.c",
+      "sha256": "4a5e338662fa08ae9da3b4a2547b93a6515a3e5f577d914ed2b3e1e8cfa72207"
+    }
+  ],
+  "currentFilesSha256": {
+    "include\\GitsnOpenApi.h": "bfa97f867dd9e88f7293ad6a2d561d6851425297c0b181dc295804559fb7e799",
+    "include\\GitsnOpenApiDef.h": "afa81379ce8a968a68a58758b7e853e11d4f256f5ff78f127f5e7029ef10f40a",
+    "include\\GitsnOpenApiDef.tdc": "e709d057040a697d7eaa29291abc5ea57877a13824b2a385f3f4277a979a46a0",
+    "include\\GitsnOpenApiDef.tdo": "b53b0e3ee417e7c62401c34f531ee4df78976d87092c7fc4de661311f6aee38a",
+    "src\\GitsnOpenApi.c": "756db409c820ca9663c7a783c99d44242e82b23ad9398164a61b95e38c822158",
+    "src\\GitsnOpenApi.h": "9574ffc53da9467d2f57fa1610bc8e4a4f63cf99c8ad5e0afbc5c923d44b1d64",
+    "src\\GitsnOpenApiArg.c": "a82625bc8a18ccc8fd7787eba345044d75573b8d6029fcd98e848cc92dd7a130",
+    "src\\GitsnOpenApiArg.h": "5657db64a84e5566126a3bad2f8dd6454f03d11b026eab73b444af2b6665ada3",
+    "src\\GitsnOpenApiArg.tdc": "34296ac6f76567da8d6d0e6cb158b23d7ccd77d983d9ae773c3ca491ae8af080",
+    "src\\GitsnOpenApiArg.tdo": "0178d80899555a783e5a6adefc027c150bc9940ca1af02fa94a5eeec44641e3b",
+    "src\\GitsnOpenApiDef.c": "031b9793f9c11317b5676aeeb0f29ee461d6345fc7a252330db4f7e27998992b",
+    "src\\GitsnOpenApiDefUtil.c": "150eb622f7ae4356c6b033c56411e9caed1794ee4a1da6a917c5b150b8886c01",
+    "src\\GitsnOpenApiEnv.c": "7462055e592b6a12b628222a93b20cf3e2e8fc3be3d44a7fb205edcc6bc95a49",
+    "src\\GitsnOpenApiEnv.h": "3a0457af16d504212c218756903bf698f1f66fda435c430847546f4ce8056f13",
+    "src\\GitsnOpenApiEnv.tdc": "173a0beb2e56899d3470cb5e7eb597bc6d16c9b2193e593fec0e78c41e2c49a3",
+    "src\\GitsnOpenApiEnv.tdo": "1b0579ef4b0e951a7639ee91e4577a1b9e3a5ede806f346fdd955b6deec6f666",
+    "src\\GitsnOpenApiMsg.h": "968e0f90ad62af8f8385ce106b8666664d7b31ee6fdbb01f3757e492548f9722",
+    "src\\GitsnOpenApiMsgs.c": "6aba36cc7f84f8105338297358de95a2ee1990b6723d96eadd16b83767eeaf96",
+    "src\\GitsnOpenApiMsgs.h": "e048eee3752ccfb746199d552970dae6b34fdcdec63d9f12a4444c55f0f9e547",
+    "src\\GitsnOpenApiMsgs.tdc": "ba264668ecedbe1cbd54c28e24df94350969c6a3bddad86e65b98744dbed1a40",
+    "src\\GitsnOpenApiMsgs.tdo": "6a0a25cfe43e5a5362fb7735bb9f8ecbf5f2a3ce18654757c29566be3cb5b7d8",
+    "src\\GitsnOpenApiTimer.c": "15807498c586b62f1ac532fa1eee3eff0765d622b8d3cb4d87804df0daf00bd0",
+    "src\\GitsnOpenApiTimer.h": "9289764137c797d62faa38dde835238e6ebd96a4a000417edfe2421e59300b52",
+    "src\\GitsnOpenApiTimer.tdc": "9353f1b41f7ebc975ab5da1b4c6459d422b93ea9b5157331bff4e2226dcf62b9",
+    "src\\GitsnOpenApiTimer.tdo": "e7201fb4145fb1a0018826ab03e034d58f3357ee4c522ef92b668508c6aeec6f",
+    "src\\GitsnOpenApiTimerUtil.c": "39a804b43688de799c8ab90f34fad3b2c38dd5268b077119b05a2e355b16a424",
+    "src\\GitsnOpenApiTimerUtil.h": "a9c2a5aa499b24ba63f1f3a2599bcee11011de401da054f60d5daaed722547dd",
+    "src\\GitsnOpenApi_acceptor.c": "36305707d352c8d6a1df530b3891e6c4afcce58606492a6eb2c297ccb6aa5230",
+    "src\\GitsnOpenApi_acceptor.h": "4b46a4f3c3a42775ff0e35942217ef6597edc086f7bd64cba13dd05e8ea83ef9",
+    "src\\GitsnOpenApi_servant.c": "80e271afa3b45ac66718c4165bf0fad3efc32681110c9e6b9985e55cefa4cf2f",
+    "src\\GitsnOpenApi_servant.h": "9ef36e6227c2c0761ca6348002b2c887a0f549e05c701cb6b482dd81dfb84079",
+    "src\\GitsnOpenApi_transport.c": "e754a19d8917e45ed14b8228b38c9cca19640464ce515a7fc4f15954758ee3a9"
+  }
+}

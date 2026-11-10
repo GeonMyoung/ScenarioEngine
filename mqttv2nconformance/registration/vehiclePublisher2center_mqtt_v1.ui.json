@@ -1,0 +1,130 @@
+{
+  "scenarios": [
+    {
+      "key": "test_bsm_normal",
+      "title": "BSM 발행 절차 확인 (최종 합격은 사후 로그 대조)"
+    }
+  ],
+  "configuration": [
+    {
+      "type": "Div",
+      "option": {
+        "direction": "col"
+      },
+      "components": [
+        {
+          "type": "FieldSet",
+          "option": {
+            "label": "MQTT 접속 · QoS 0 고정"
+          },
+          "components": [
+            {
+              "type": "Input",
+              "option": {
+                "name": "host",
+                "label": "Broker 주소",
+                "type": "text",
+                "value": "127.0.0.1"
+              }
+            },
+            {
+              "type": "Input",
+              "option": {
+                "name": "port",
+                "label": "Broker 포트",
+                "type": "number",
+                "value": "1883"
+              }
+            },
+            {
+              "type": "Input",
+              "option": {
+                "name": "username",
+                "label": "Username (인증 시 입력)",
+                "type": "text",
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "option": {
+                "name": "password",
+                "label": "Password (인증 시 입력)",
+                "type": "text",
+                "value": ""
+              }
+            }
+          ]
+        },
+        {
+          "type": "FieldSet",
+          "option": {
+            "label": "선택 접속 설정"
+          },
+          "components": [
+            {
+              "type": "Input",
+              "option": {
+                "name": "client_id",
+                "label": "시험 시스템 Client ID (비우면 자동 생성)",
+                "type": "text",
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "option": {
+                "name": "ca_file",
+                "label": "TLS CA 인증서 경로 (필요한 경우)",
+                "type": "text",
+                "value": ""
+              }
+            }
+          ]
+        },
+        {
+          "type": "FieldSet",
+          "option": {
+            "label": "BSM 발행 조건 — V2N version 0 · 1초 주기·QoS 0 · 회차별 다른 시험값"
+          },
+          "components": [
+            {
+              "type": "Input",
+              "option": {
+                "name": "topic_bsm",
+                "label": "BSM 발행 토픽",
+                "type": "text",
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "option": {
+                "name": "repetitions",
+                "label": "메시지 발행 횟수",
+                "type": "number",
+                "value": "10"
+              }
+            }
+          ]
+        },
+        {
+          "type": "FieldSet",
+          "option": {
+            "label": "자동 성공은 발행 절차 완료 / 최종 합격은 센터 수신 로그 사후 대조"
+          },
+          "components": [
+            {
+              "type": "Input",
+              "option": {
+                "name": "test_bsm_normal",
+                "label": "BSM 발행 절차 확인 (최종 합격은 사후 로그 대조)",
+                "type": "checkbox"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

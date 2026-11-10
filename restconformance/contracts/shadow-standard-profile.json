@@ -1,0 +1,52 @@
+{
+  "profile": "SHADOW-STANDARD-001",
+  "standard": "ITSK-00143-3 제4장 2.3 표 4-21",
+  "api": {
+    "source": "http://220.124.67.124:8000/openapi.json",
+    "version": "1.3",
+    "sha256": "0754dfb91f7437152effab380d7b8f9b25e65d5c237141d5eed97a052534c4df",
+    "method": "GET",
+    "path": "/data",
+    "parameters": {
+      "since": {
+        "type": "integer",
+        "default": 0
+      },
+      "node_link": {
+        "type": "string",
+        "optional": true
+      },
+      "latest": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 500,
+        "default": 0
+      }
+    }
+  },
+  "normalEnvelope": {
+    "adopted": "root array",
+    "basis": "제3부 예시; OpenAPI 200 schema {}"
+  },
+  "error422": {
+    "detailRequired": false,
+    "detailItemRequired": [
+      "loc",
+      "msg",
+      "type"
+    ]
+  },
+  "projectDefaults": {
+    "absenceError": 404,
+    "missingPath": 404,
+    "serverError": 500,
+    "emptySuccess": 200
+  },
+  "assessmentProfile": "REST-AUTO-001",
+  "excluded": [
+    "실제 since 커서 처리·필터 결과의 업무 의미",
+    "대상 내부 처리 직접 관측",
+    "1분 연계주기",
+    "실장비 상호운용"
+  ]
+}

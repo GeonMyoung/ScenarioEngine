@@ -1,0 +1,8 @@
+message set definition
+{
+	include GitsnOpenApiDef;
+	typedef struct GitsnOpenApiMsgDefault
+	{
+		uint32 *dummy;
+	} GitsnOpenApiMsgDefault;					// with api dump
+}

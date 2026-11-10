@@ -1,0 +1,23 @@
+{
+  "my_domain": "TESTER",
+  "peer_domain": "SUT",
+  "user": "datex-local",
+  "pass": "local-datex-check",
+  "hb_dur": 60,
+  "rsp_timeout": 40,
+  "connect_timeout_s": 120,
+  "fred_maintain_s": 300,
+  "receive_s": 120,
+  "period_s": 1,
+  "peer_ip": "127.0.0.1",
+  "peer_port": 55526,
+  "test_session": true,
+  "test_normal_spat": true,
+  "test_normal_tls": true,
+  "test_invalid_login": true,
+  "test_duplicate_login": true,
+  "test_abnormal_session": true,
+  "test_invalid_subscription": true,
+  "test_publication_retry": true,
+  "test_cancel": true
+}
